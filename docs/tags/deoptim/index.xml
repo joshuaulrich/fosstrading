@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DEoptim on FOSS Trading</title>
-    <link>https://www.fosstrading.com/tags/deoptim/</link>
+    <link>https://joshuaulrich.github.io/fosstrading/tags/deoptim/</link>
     <description>Recent content in DEoptim on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 Mar 2012 20:33:00 -0600</lastBuildDate>
     
-	<atom:link href="https://www.fosstrading.com/tags/deoptim/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://joshuaulrich.github.io/fosstrading/tags/deoptim/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DEoptim in Parallel</title>
-      <link>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</link>
+      <link>https://joshuaulrich.github.io/fosstrading/2012/03/deoptim-in-parallel-comments/</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
+      <guid>https://joshuaulrich.github.io/fosstrading/2012/03/deoptim-in-parallel-comments/</guid>
       <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012
 This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
 If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code.</description>
@@ -24,10 +24,10 @@ If you want to just see it working (though this won&amp;rsquo;t show any speed i
     
     <item>
       <title>DEoptim in Parallel</title>
-      <link>https://www.fosstrading.com/2012/03/deoptim-in-parallel/</link>
+      <link>https://joshuaulrich.github.io/fosstrading/2012/03/deoptim-in-parallel/</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel/</guid>
+      <guid>https://joshuaulrich.github.io/fosstrading/2012/03/deoptim-in-parallel/</guid>
       <description>Running DEoptim in parallel has been on the development team&amp;rsquo;s wishlist for awhile. It had not been a priority though, because none of us have personally needed it. An opportunity arose when Kris Boudt approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.
 We were able to add and test the functionality within a week. The latest revision of DEoptim on R-Forge has the capability to evaluate the objective function on multiple cores using foreach.</description>
     </item>
