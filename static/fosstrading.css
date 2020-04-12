@@ -44,3 +44,9 @@ kbd {
 .footer {
     background: #525252;
 }
+
+/* center CSI banner */
+img.csi-banner {
+    display: block;
+    margin: 0 auto;
+}
