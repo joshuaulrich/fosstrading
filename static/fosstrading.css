@@ -1,0 +1,46 @@
+/* override 'mainroad' theme css */
+.logo__link {
+    text-transform: capitalize;
+}
+.menu__btn {
+    background: #525252;
+}
+.menu__btn-title {
+    text-transform: capitalize;
+}
+.menu__list {
+    background: #525252;
+}
+.menu__link {
+    text-transform: capitalize;
+}
+.tags__item {
+    text-transform: capitalize;
+    background: #525252;
+}
+.toc__title {
+    text-transform: capitalize;
+    background: #525252;
+}
+.post-nav__caption {
+    text-transform: capitalize;
+}
+input[type=reset] {
+    text-transform: capitalize;
+    background: #525252;
+}
+.widget__title {
+    text-transform: capitalize;
+}
+.widget-taglist__link {
+    text-transform: capitalize;
+}
+.btn {
+    background: #525252;
+}
+kbd {
+    background-color: #525252;
+}
+.footer {
+    background: #525252;
+}
