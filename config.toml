@@ -8,6 +8,26 @@ paginate = "10" # Number of posts per page
 disqusShortname = "" # Enable comments by entering your Disqus shortname
 googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    identifier = "disclosures"
+    name = "Disclosures"
+    url  = "page/disclosures/"
+    weight = 2
+
+[[menu.main]]
+    identifier = "enterprise"
+    name = "For Enterprise"
+    url  = "page/enterprise/"
+    weight = 3
+
+[Permalinks]
+    post = ":year/:month/:filename/"
+
 [Author]
   name = "Joshua Ulrich"
   bio = ""
