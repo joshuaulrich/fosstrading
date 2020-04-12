@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API on FOSS Trading</title>
+    <link>https://www.fosstrading.com/tags/api/</link>
+    <description>Recent content in API on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 May 2010 14:23:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.fosstrading.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
+      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010
+Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance Jeff: Awesome work! Hope that you become a regula&amp;hellip; smc - May 1, 2010
+Jeff: Awesome work! Hope that you become a regular contributor!</description>
+    </item>
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
+      <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
+I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
+    </item>
+    
+  </channel>
+</rss>

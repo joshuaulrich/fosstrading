@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Introduction to quantstrat - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Introduction to quantstrat" />
+<meta property="og:description" content="Great idea, Josh. I&rsquo;m looking forward to seein&hellip; Alexis Petit - Aug 5, 2011
+Great idea, Josh. I&rsquo;m looking forward to seeing the next posts! I think this will help many of us make a better use of Quantstrat. Many thanks! package quantstrat is not available (for R version&hellip; [Anonymous]( &ldquo;noreply@blogger.com&rdquo;) - Aug 3, 2011
+package quantstrat is not available (for R version 2.13.1)
+need manual compilation?
+Thank you for your work, really helpful!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fosstrading.com/2011/08/introduction-to-quantstrat-comments/" />
+<meta property="article:published_time" content="2011-08-12T06:48:00-05:00" />
+<meta property="article:modified_time" content="2011-08-12T06:48:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Introduction to quantstrat</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-12T06:48:00-05:00">August 12, 2011</time></div></div>
+		</header><div class="content post__content clearfix">
+			
+
+<h4 id="great-idea-josh-i-m-looking-forward-to-seein">Great idea, Josh. I&rsquo;m looking forward to seein&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/00745357782282599438" title="noreply@blogger.com">Alexis Petit</a> - <time datetime="2011-08-12T08:48:13.212-05:00">Aug 5, 2011</time></p>
+
+<p>Great idea, Josh. I&rsquo;m looking forward to seeing the next posts! I think this will help many of us make a better use of Quantstrat. Many thanks!
+<hr /></p>
+
+<h4 id="package-quantstrat-is-not-available-for-r-version">package quantstrat is not available (for R version&hellip;</h4>
+
+<p>[Anonymous]( &ldquo;noreply@blogger.com&rdquo;) - <time datetime="2011-08-17T09:23:49.119-05:00">Aug 3, 2011</time></p>
+
+<p>package quantstrat is not available (for R version 2.13.1)</p>
+
+<p>need manual compilation?</p>
+
+<p>Thank you for your work, really helpful!
+<hr /></p>
+
+<h4 id="from-windows-install-packages-quantstrat-q">From windows: install.packages(&ldquo;quantstrat&amp;q&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/16947684784224910950" title="noreply@blogger.com">FBSP</a> - <time datetime="2011-08-18T15:32:59.687-05:00">Aug 4, 2011</time></p>
+
+<p>From windows:</p>
+
+<p>install.packages(&ldquo;quantstrat&rdquo;, repos=&ldquo;<a href="http://R-Forge.R-project.org&quot;">http://R-Forge.R-project.org&quot;</a>)<br />
+Installing package(s) into ‘C:/Users/Res1/Documents/R/win-library/2.13’<br />
+(as ‘lib’ is unspecified)<br />
+Warning in install.packages :<br />
+package ‘quantstrat’ is not available (for R version 2.13.1)</p>
+
+<p>What do I do?
+<hr /></p>
+
+<h4 id="arippbbc-and-fbsp-there-s-some-issue-with-r">arippbbc and FBSP, There&rsquo;s some issue with R-&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-08-18T15:37:10.413-05:00">Aug 4, 2011</time></p>
+
+<p>arippbbc and FBSP,</p>
+
+<p>There&rsquo;s some issue with R-forge building quantstrat. We&rsquo;re working with the R-forge maintainers to find a solution.</p>
+
+<p>In the meantime, you can try some of the solutions in the <a href="http://cran.r-project.org/doc/manuals/R-admin.html#Windows-packages">Windows packages</a> section of the R Installation and Administration manual (e.g. <a href="http://win-builder.r-project.org/">win-builder</a>).
+<hr /></p>
+
+<h4 id="after-i-setup-my-windows-box-to-compile-r-packages">After I setup my windows box to compile R packages&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/16947684784224910950" title="noreply@blogger.com">FBSP</a> - <time datetime="2011-08-18T18:04:05.435-05:00">Aug 4, 2011</time></p>
+
+<p>After I setup my windows box to compile R packages - using this link as a guide</p>
+
+<p><a href="http://robjhyndman.com/researchtips/building-r-packages-for-windows/">http://robjhyndman.com/researchtips/building-r-packages-for-windows/</a></p>
+
+<p>(I did have manually add R to my system path variable.)</p>
+
+<p>I was able to build blotter, FinancialInstrument, and quantstrat from source and and install it by following the directions on this post</p>
+
+<p><a href="http://r.789695.n4.nabble.com/Package-quot-quantstrat-quot-td3599657.html#a3599994">http://r.789695.n4.nabble.com/Package-quot-quantstrat-quot-td3599657.html#a3599994</a></p>
+
+<p>JU if you send me an email I will send you the package tar.gz files that were created.
+<hr /></p>
+
+<h4 id="the-windows-binary-of-quantstrat-is-now-building-o">The Windows binary of quantstrat is now building o&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-08-19T09:50:15.953-05:00">Aug 5, 2011</time></p>
+
+<p>The Windows binary of quantstrat is now building on R-forge.
+<hr /></p>
+
+<h4 id="fbsp-s-solution-works-for-me">FBSP&rsquo;s solution works for me.</h4>
+
+<p><a href="https://www.blogger.com/profile/08706098376170260290" title="noreply@blogger.com">Ravi Aranke</a> - <time datetime="2011-08-22T02:20:06.093-05:00">Aug 1, 2011</time></p>
+
+<p>FBSP&rsquo;s solution works for me.
+<hr /></p>
+
+<h4 id="try-this-http-www-programmingr-com-content-ins">Try this: <a href="http://www.programmingr.com/content/ins..">http://www.programmingr.com/content/ins..</a>.</h4>
+
+<p><a href="https://www.blogger.com/profile/02759975199242151968" title="noreply@blogger.com">loc</a> - <time datetime="2012-11-02T12:16:37.568-05:00">Nov 5, 2012</time></p>
+
+<p>Try this:</p>
+
+<p><a href="http://www.programmingr.com/content/installing-quantstrat-r-forge-and-source/">http://www.programmingr.com/content/installing-quantstrat-r-forge-and-source/</a>
+<hr /></p>
+
+<h4 id="hi-all-i-m-very-new-to-r-but-looking-at-getti">Hi all, I&rsquo;m very new to R but looking at getti&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/01994166450043437420" title="noreply@blogger.com">Novice Pete</a> - <time datetime="2012-12-21T05:42:14.510-06:00">Dec 5, 2012</time></p>
+
+<p>Hi all,<br />
+I&rsquo;m very new to R but looking at getting the Quantstrat package but i can&rsquo;t manage /don&rsquo;t understand the method outlined above, can anyone either explain it in layman/idiot terms or provide an alternative solution?<br />
+Regards<br />
+Pete
+<hr /></p>
+
+<h4 id="just-to-let-people-know-i-have-downloaded-rtools-b">Just to let people know I have downloaded rtools b&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/01994166450043437420" title="noreply@blogger.com">Novice Pete</a> - <time datetime="2012-12-21T06:02:13.631-06:00">Dec 5, 2012</time></p>
+
+<p>Just to let people know I have downloaded rtools but i didn&rsquo;t understand the next instructions regarding path setup in the links provided.<br />
+Regards<br />
+Pete
+<hr /></p>
+
+<h4 id="hi-pete">Hi Pete,</h4>
+
+<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2012-12-22T14:55:12.962-06:00">Dec 6, 2012</time></p>
+
+<p>Hi Pete,</p>
+
+<p><a href="http://stackoverflow.com/users/967840/gsee">Garrett See</a> has a nice answer on stackoverflow about how to <a href="http://stackoverflow.com/a/11105132/271616">build R-Forge packages from source</a>.
+<hr /></p>
+
+<h4 id="hi-nice-post-very-helpful-with-demos-and-exampl">Hi Nice post, very helpful with demos and exampl&hellip;</h4>
+
+<p><a href="https://www.blogger.com/profile/00983129499523210138" title="noreply@blogger.com">Morten</a> - <time datetime="2012-12-23T15:04:43.884-06:00">Dec 0, 2012</time></p>
+
+<p>Hi</p>
+
+<p>Nice post, very helpful with demos and examples, thanks.</p>
+
+<p>I tried running the example code directly from the post without any changing anything and I got the result that no trades were generated in:</p>
+
+<p>updatePortf(&ldquo;faber&rdquo;)</p>
+
+<p>although the Cl.gt.SMA and Cl.lt.SMA changed several times<br />
+between 0/1 in the out variable:</p>
+
+<p>out &lt;- try(applyStrategy(strategy=stratFaber, portfolios=&ldquo;faber&rdquo;))</p>
+
+<p>I&rsquo;m running<br />
+R version 2.15.2 from Rstudio<br />
+PerformanceAnalytics 1.0.4.4<br />
+quantstrat 0.7.7<br />
+blotter 0.8.13</p>
+
+<p>Am I missing somthing, or does the example simply not work<br />
+on newer versions?</p>
+
+<p>KR Morten
+<hr /></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/quantstrat/" rel="tag">quantstrat</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Joshua Ulrich</span>
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2011/08/introduction-to-quantstrat/" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Introduction to quantstrat</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2011/08/tactical-asset-allocation-using/" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">Tactical asset allocation using quantstrat</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+        <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran/">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran/">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran/">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran/">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran/">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/deoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/historical-data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ibrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/interactive-brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lspm/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/portfolioanalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/r/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

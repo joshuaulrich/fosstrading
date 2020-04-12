@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TTR on FOSS Trading</title>
+    <link>https://www.fosstrading.com/tags/ttr/</link>
+    <description>Recent content in TTR on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2015 16:04:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.fosstrading.com/tags/ttr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New quantmod and TTR on CRAN</title>
+      <link>https://www.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</link>
+      <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</guid>
+      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA (Hull MA), ALMA, and ultimateOscillator functions.
+James Toll provided a patch to the volatility function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.22-0 on CRAN</title>
+      <link>https://www.fosstrading.com/2013/03/ttr022-0-on-cran/</link>
+      <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2013/03/ttr022-0-on-cran/</guid>
+      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI retuns an object with colnames, and the initial gap for SAR is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD, SAR, EMA/EVWMA, and adjRatios.
+There are some exciting new features, including a rolling single-factor model function (rollSFM, based on a prototype from James Toll), a runPercentRank function from Charlie Friedemann, stoch and WPR return 0.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.21-0 on CRAN</title>
+      <link>https://www.fosstrading.com/2011/09/ttr021-0-on-cran/</link>
+      <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2011/09/ttr021-0-on-cran/</guid>
+      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
+Here are the full contents of the CHANGES file:
+TTR version 0.21-0
+Changes from version 0.20-2
+NEW FEATURES:
+ Added variable moving average function, VMA. Added Brian Peterson&amp;rsquo;s price bands function, PBands.</description>
+    </item>
+    
+    <item>
+      <title>Historical / Future Volatility Correlation Stability</title>
+      <link>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</link>
+      <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</guid>
+      <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010
+I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
+    </item>
+    
+    <item>
+      <title>Historical / Future Volatility Correlation Stability</title>
+      <link>https://www.fosstrading.com/2010/04/historical-future-volatility/</link>
+      <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility/</guid>
+      <description>Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.
+He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.20-2 on CRAN</title>
+      <link>https://www.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</link>
+      <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</guid>
+      <description>Can you describe how the various trading packages &amp;hellip; Milk Trader - Apr 4, 2010
+Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&amp;rsquo;m interested in.
+xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.20-2 on CRAN</title>
+      <link>https://www.fosstrading.com/2010/03/ttr020-2-on-cran/</link>
+      <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/03/ttr020-2-on-cran/</guid>
+      <description>An updated version of TTR is now on CRAN. It fixes a couple bugs and includes a couple handy tweaks. Here&amp;rsquo;s the full contents of the CHANGES file:
+TTR version 0.20-2
+Changes from version 0.20-1
+NEW FEATURES:
+ Added VWAP and VWMA (thanks to Brian Peterson) Added v-factor generalization to DEMA (thanks to John Gavin)   CHANGES:
+ Updated volatility() to handle univariate case of calc=&amp;lsquo;close&amp;rsquo; (thanks to Cedrick Johnson) Moved EMA, SAR, and wilderSum from .</description>
+    </item>
+    
+    <item>
+      <title>Packages featured with Inference for R</title>
+      <link>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
+      <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
+      <description>quantmod, TTR, and xts were (not so) recently featured on the Inference for R Blog. Inference for R is a Integrated Development Environment (IDE) designed specifically for R.
+The post gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.
+I appreciate how they&amp;rsquo;re making R more accessible to a general audience, even though I like a command line interface and my preferred development environment is vim.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.2 on CRAN</title>
+      <link>https://www.fosstrading.com/2009/02/ttr02-on-cran/</link>
+      <pubDate>Sun, 15 Feb 2009 18:51:00 -0600</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/02/ttr02-on-cran/</guid>
+      <description>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
+This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
+NEW FEATURES:
+- Added the zig zag indicator: ZigZag()
+- Added volatility estimators/indicators: volatility(), with the following calculations
+- Close-to-Close
+- Garman Klass</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on FOSS Trading</title>
+    <link>https://www.fosstrading.com/tags/code/</link>
+    <description>Recent content in Code on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Mar 2014 12:25:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.fosstrading.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction to PortfolioAnalytics</title>
+      <link>https://www.fosstrading.com/2014/03/intro-to-portfolioanalytics/</link>
+      <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2014/03/intro-to-portfolioanalytics/</guid>
+      <description>PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &amp;lsquo;DejaVu Sans Mono&amp;rsquo;, &amp;lsquo;Droid Sans Mono&amp;rsquo;, &amp;lsquo;Lucida Console&amp;rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0.</description>
+    </item>
+    
+    <item>
+      <title>quantstrat is slow</title>
+      <link>https://www.fosstrading.com/2013/11/quantstrat-is-slow/</link>
+      <pubDate>Mon, 04 Nov 2013 06:37:00 -0600</pubDate>
+      
+      <guid>https://www.fosstrading.com/2013/11/quantstrat-is-slow/</guid>
+      <description>The complaint I hear most frequently about quantstrat is that it&amp;rsquo;s slow, especially for large data. Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default. Path dependence requires rules to be re-evaluated for each timestamp with a signal. More signals equates to longer run-times.
+If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off. If your strategy truly is path-dependent, keep reading&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>A New plot.xts</title>
+      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</link>
+      <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
+      <description> Wow!!!! Great work RMW. jryan - Aug 3, 2012
+Wow!!!! Great work RMW. </description>
+    </item>
+    
+    <item>
+      <title>A New plot.xts</title>
+      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts/</link>
+      <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts/</guid>
+      <description>The Google Summer of Code (2012) project to extend xts has produced a very promising new plot.xts function. Michael Weylandt, the project&amp;rsquo;s student, wrote R-SIG-Finance to request impressions, feedback, and bug reports. The function is housed in the xtsExtra package of the xts project on R-Forge.
+Please try xtsExtra::plot.xts and let us know what you think. A sample of the eye-candy produced by the code in Michael&amp;rsquo;s email is below. Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!</description>
+    </item>
+    
+    <item>
+      <title>R in Google Summer of Code 2012</title>
+      <link>https://www.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</link>
+      <pubDate>Fri, 23 Mar 2012 13:53:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</guid>
+      <description>This post is a slightly revised (and &amp;ldquo;blogified&amp;rdquo;) version of the message Brian Peterson has sent to various R mailing lists.
+Once again, R has been accepted as a mentoring organization for the Google Summer of Code (2012). We invite students interested in this program to learn more about it. A good starting point is the R GSoC wiki.
+Students participating in the program receive US$5,000 for successful completion of a GSoC project, a great resume item, and an opportunity to work with R package authors.</description>
+    </item>
+    
+    <item>
+      <title>Tactical asset allocation using quantstrat</title>
+      <link>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</link>
+      <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</guid>
+      <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011
+I am trying to run this script in R-Studio on OSX but I am getting the following error:
+&amp;gt; currency(&amp;ldquo;USD&amp;rdquo;)
+Error in assign(primary_id, currency_temp, envir = as.environment(.instrument)) :
+object &amp;lsquo;.instrument&amp;rsquo; not found
+I have installed the dependencies: zoo, xts, TTR, RTAQ, quantstrat, quantmod, Performanceanalytics, FInancialInstrument, Defaults and blotter.
+Any ideas of what is going wrong here?</description>
+    </item>
+    
+    <item>
+      <title>Tactical asset allocation using quantstrat</title>
+      <link>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/</link>
+      <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/</guid>
+      <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
+The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate. There are two major differences:
+ The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
+    </item>
+    
+    <item>
+      <title>Historical / Future Volatility Correlation Stability</title>
+      <link>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</link>
+      <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</guid>
+      <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010
+I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
+    </item>
+    
+    <item>
+      <title>Historical / Future Volatility Correlation Stability</title>
+      <link>https://www.fosstrading.com/2010/04/historical-future-volatility/</link>
+      <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility/</guid>
+      <description>Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.
+He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table.</description>
+    </item>
+    
+    <item>
+      <title>Tactical asset allocation using blotter</title>
+      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</link>
+      <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
+      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009
+Hi,
+If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
+Cheers,
+-&amp;mdash;&amp;mdash;-
+Error in if (!all(i &amp;lt;= 0)) stop(&amp;ldquo;only zeros may be mixed with negative subscripts&amp;rdquo;) :
+missing value where TRUE/FALSE needed
+Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts Thanks Josh for providing this nice example of the&amp;hellip; pg - Nov 4, 2009</description>
+    </item>
+    
+    <item>
+      <title>Tactical asset allocation using blotter</title>
+      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</link>
+      <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</guid>
+      <description>NOTE: If you simply want to test strategies in R, please see the post: Tactical Asset Allocation Using quantstrat. quantstrat uses blotter behind the scenes, but provides a higher level of abstraction.
+blotter is an R package that tracks the P&amp;amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.
+The contents of this post borrow heavily from code and comments in the &amp;ldquo;longtrend&amp;rdquo; demo script in the blotter package.</description>
+    </item>
+    
+    <item>
+      <title>David Varadi&#39;s RSI(2) alternative</title>
+      <link>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</link>
+      <pubDate>Sun, 19 Jul 2009 08:38:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</guid>
+      <description>hello josh, If I want to sell the stock when the R&amp;hellip; Bear - Jul 4, 2009
+hello josh,
+If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code? Hi Bear, You need to use a lagged value of RSI in&amp;hellip; Joshua Ulrich - Jul 5, 2009
+Hi Bear,
+You need to use a lagged value of RSI in addition to the current value.</description>
+    </item>
+    
+    <item>
+      <title>David Varadi&#39;s RSI(2) alternative</title>
+      <link>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</link>
+      <pubDate>Sun, 19 Jul 2009 08:38:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</guid>
+      <description>Here&amp;rsquo;s a quick R implementation of David Varadi&amp;rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
+ Varadi’s RSI(2) Alternative: The DV(2) Alternative: The DV(2)&amp;ldquo;&amp;rdquo;) RSI(2) vs. DV(2) vs. DV(2)&amp;ldquo;&amp;rdquo;) Last Couple of Notes on DV(2)&amp;rdquo;&amp;ldquo;)  Here&amp;rsquo;s the R code:
+  DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {
+# &amp;ldquo;HLC&amp;rdquo; is an _xts_ object with &amp;ldquo;High&amp;rdquo;, &amp;ldquo;Low&amp;rdquo;, and &amp;ldquo;Close&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>RSI(2) Evaluation</title>
+      <link>https://www.fosstrading.com/2009/06/rsi2-evaluation-comments/</link>
+      <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/06/rsi2-evaluation-comments/</guid>
+      <description>I have run this script to see how RIS2 with scalin&amp;hellip; White Cube - Apr 6, 2012
+I have run this script to see how RIS2 with scaling has performed since 2009.
+On the long side the performance has not been as good as before (with some sharp drawdowns).
+On the short side the equity curve went down for 2 years and seems picking up again since 2011.
+Has the magic RSI gone ?</description>
+    </item>
+    
+    <item>
+      <title>RSI(2) Evaluation</title>
+      <link>https://www.fosstrading.com/2009/06/rsi2-evaluation/</link>
+      <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/06/rsi2-evaluation/</guid>
+      <description>This post continues the series of investigating the RSI(2) strategy. The first post replicated this simple RSI(2) strategy from the MarketSci Blog using R. The second post showed how to replicate the strategy that scales in/out of RSI(2).
+If you like the RSI(2), be sure to check out David Varadi&amp;rsquo;s RSI(2) alternative!
+This post will use the PerformanceAnalytics package to evaluate the rules that scale in/out of positions. I&amp;rsquo;ve also provided a simple function that provides some summary statistics.</description>
+    </item>
+    
+    <item>
+      <title>RSI(2) with Position Sizing</title>
+      <link>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</link>
+      <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</guid>
+      <description>i look forward to it &amp;ndash; never could get my head ar&amp;hellip; Autore del blog - May 0, 2009
+i look forward to it &amp;ndash; never could get my head around performance metrics.. This is awesome - very cool. I also was curious i&amp;hellip; Damian - May 5, 2009
+This is awesome - very cool. I also was curious if you could put together a simple example of the following:</description>
+    </item>
+    
+    <item>
+      <title>RSI(2) with Position Sizing</title>
+      <link>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing/</link>
+      <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing/</guid>
+      <description>Though it&amp;rsquo;s more than two weeks later, here&amp;rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with R. You can find the first post here.
+The first post replicated this simple RSI(2) strategy from the MarketSci Blog. This second post will demonstrate how to replicate this strategy that scales in/out of RSI(2).
+A couple notes before moving to the code:</description>
+    </item>
+    
+    <item>
+      <title>Testing RSI(2) with R, First Steps</title>
+      <link>https://www.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</link>
+      <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</guid>
+      <description>Really cool. A lot of questions: &amp;ldquo;# Calcula&amp;hellip; Damian - Apr 3, 2009
+Really cool. A lot of questions:
+&amp;rdquo;# Calculate the RSI indicator
+rsi &amp;lt;- RSI(Cl(GSPC),2)&amp;rdquo;
+When you reference the symbol for getting the data, you referenced it via &amp;ldquo;^GSPC&amp;rdquo; - how did it get assigned to GSPC?
+Secondly, if I have the data stored locally, how would I reference it?
+&amp;rdquo;# Lag signals to align with days in market,</description>
+    </item>
+    
+    <item>
+      <title>Testing RSI(2) with R, First Steps</title>
+      <link>https://www.fosstrading.com/2009/04/testing-rsi2-with-r/</link>
+      <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
+      
+      <guid>https://www.fosstrading.com/2009/04/testing-rsi2-with-r/</guid>
+      <description>This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, R. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.
+In particular, I will be replicating and extending some of the results from Michael Stokes&amp;rsquo; excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy.</description>
+    </item>
+    
+  </channel>
+</rss>

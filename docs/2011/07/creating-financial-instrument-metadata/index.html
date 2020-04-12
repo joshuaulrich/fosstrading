@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Creating Financial Instrument metadata in R - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Creating Financial Instrument metadata in R" />
+<meta property="og:description" content="(This is a guest post by Ilya Kipnis)
+When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata/" />
+<meta property="article:published_time" content="2011-07-27T22:16:00-05:00" />
+<meta property="article:modified_time" content="2011-07-27T22:16:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Creating Financial Instrument metadata in R</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-07-27T22:16:00-05:00">July 27, 2011</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>(This is a guest post by Ilya Kipnis)</p>
+
+<p>When trading stocks in a single currency, instrument <a href="http://en.wikipedia.org/wiki/Metadata">metadata</a> can be safely ignored because the multiplier is 1 and the currencies are all the same.  When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument. The <a href="http://r-forge.r-project.org/R/?group_id=316">FinancialInstrument</a> package provides a construct for storing metadata for tradeable contracts (referred to as instruments, e.g. stocks, futures, options, etc.) and their root representations.  It can be used to create any asset class and complex derivatives, across multiple currencies. </p>
+
+<p>In <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>, Joshua Ulrich used FinancialInstrument (blotter depends on it) to create a stock portfolio.  FinancialInstrument is also a required dependency of the quantstrat quantitative strategy framework in R (quantstrat will be covered in a later post).</p>
+
+<p>Creating a list of historical symbols is a recurring challenge with historical data on derivative instruments.  These symbols tend to follow a deterministic pattern and FinancialInstrument provides utility functions to create the symbols traded over specific periods of time. These symbols could then be used to request historical data from a data vendor or to construct instrument objects in R.</p>
+
+<p>The simplest function for generating a series of symbols is build_series_symbols.  Let&rsquo;s look at it with a small example using crude oil (CL) and STOXX (STXE) futures:</p>
+
+<p>    # install.packages(&ldquo;FinancialInstrument&rdquo;, repos=&ldquo;<a href="http://R-Forge.R-project.org&quot;">http://R-Forge.R-project.org&quot;</a>)<br />
+    require(FinancialInstrument)<br />
+    Data &lt;- data.frame(primary_id=&ldquo;CL&rdquo;, month_cycle=&ldquo;F,G,H,J,K,M,N,Q,U,V,X,Z&rdquo;)<br />
+    Data &lt;- rbind(Data, data.frame(primary_id=&ldquo;STXE&rdquo;, month_cycle=&ldquo;H,M,U,Z&rdquo;))<br />
+    Data<br />
+    #   primary_id               month_cycle<br />
+    # 1         CL   F,G,H,J,K,M,N,Q,U,V,X,Z<br />
+    # 2       STXE                   H,M,U,Z</p>
+
+<p>The Data object contains two columns.  The primary_id is the root contract that identifies the instrument, and the month_cycle defines the months the contracts trade in (e.g. “H,M,U,Z” for Mar/Jun/Sep/Dec).</p>
+
+<p>build_series_symbols only needs Data and yearlist.   yearlist is the suffix for expiration years and 0, 1, 2 represent 2010, 2011, 2012 in this example.  build_series_symbols returns a vector of series symbols that we could use to request data or create future_series instruments.</p>
+
+<p>build_series_symbols(Data, yearlist=c(0,1,2))<br />
+ [1] &ldquo;CLF0&rdquo;   &ldquo;CLG0&rdquo;   &ldquo;CLH0&rdquo;   &ldquo;CLJ0&rdquo;   &ldquo;CLK0&rdquo;   &ldquo;CLM0&rdquo;   &ldquo;CLN0&rdquo;   &ldquo;CLQ0&rdquo; <br />
+ [9] &ldquo;CLU0&rdquo;   &ldquo;CLV0&rdquo;   &ldquo;CLX0&rdquo;   &ldquo;CLZ0&rdquo;   &ldquo;STXEH0&rdquo; &ldquo;STXEM0&rdquo; &ldquo;STXEU0&rdquo; &ldquo;STXEZ0&rdquo;<br />
+ [17] &ldquo;CLF1&rdquo;   &ldquo;CLG1&rdquo;   &ldquo;CLH1&rdquo;   &ldquo;CLJ1&rdquo;   &ldquo;CLK1&rdquo;   &ldquo;CLM1&rdquo;   &ldquo;CLN1&rdquo;   &ldquo;CLQ1&rdquo; <br />
+ [25] &ldquo;CLU1&rdquo;   &ldquo;CLV1&rdquo;   &ldquo;CLX1&rdquo;   &ldquo;CLZ1&rdquo;   &ldquo;STXEH1&rdquo; &ldquo;STXEM1&rdquo; &ldquo;STXEU1&rdquo; &ldquo;STXEZ1&rdquo;<br />
+ [33] &ldquo;CLF2&rdquo;   &ldquo;CLG2&rdquo;   &ldquo;CLH2&rdquo;   &ldquo;CLJ2&rdquo;   &ldquo;CLK2&rdquo;   &ldquo;CLM2&rdquo;   &ldquo;CLN2&rdquo;   &ldquo;CLQ2&rdquo; <br />
+ [41] &ldquo;CLU2&rdquo;   &ldquo;CLV2&rdquo;   &ldquo;CLX2&rdquo;   &ldquo;CLZ2&rdquo;   &ldquo;STXEH2&rdquo; &ldquo;STXEM2&rdquo; &ldquo;STXEU2&rdquo; &ldquo;STXEZ2&rdquo;</p>
+
+<p>A more complicated task is to create symbols for exchange guaranteed calendar spreads.  The build_spread_symbols function creates a vector of symbols for spreads of securities (currently coded for futures calendar spreads but can be extended and generalized) in a very shorthand notation.</p>
+
+<p>build_spread_symbols accepts instrument specifications via either a file path or (preferably) a data frame (using the file or data arguments, respectively). Output can be assigned to an object or written to a file using the optional outputfile argument.  The default starting date is the current date, but the user can manually set a starting date (e.g. historical dates for backtesting, and future dates to create lists of instruments to be traded in the future).</p>
+
+<p>    # read in data that would be suitable for load.instruments on root contracts<br />
+    Data &lt;- read.csv(&rdquo;<a href="https://docs.google.com/leaf?id=0B8wl4QBejPGiMjI2NTQzZjEtZDRkNC00MDRjLWI2ZDgtMzhjOTM5ZGFkYmFk&amp;hl=en_US">series_data.csv</a>&rdquo;, stringsAsFactors=FALSE)<br />
+    # set the type to guaranteed_spread<br />
+    Data$type &lt;- &ldquo;guaranteed_spread&rdquo;<br />
+    # call build_spread_symbols<br />
+    output &lt;- build_spread_symbols(Data[6:7,], start_date=&ldquo;2010-01-01&rdquo;)</p>
+
+<p>The critical fields in the data (CSV or data frame) are the primary_id, the type (e.g. future, calendar spread, intercommodity spread, etc.), the month_cycle, and the active_months (how many contracts to display).  For instance, an active_months value of 12 on a contract that trades quarterly (“H,M,U,Z”) would create front month contracts for the next 3 years.  An active_months value of 6 on this same quarterly contract would produce 1.5 years.  On a contract that trades 12 months a year (“F,G,H,J,K,M,N,Q,U,V,X,Z”), an active_months value of 12 would produce 1 year of contracts, and a value of 6 would only produce half a year.</p>
+
+<p>Lastly, the contracts_ahead field specifies the month spread on calendar spread type securities.  Note that these are <strong>contracts</strong> ahead and not months ahead.  For example, if you consider a contract trading “H,M,U,Z” vs. a contract trading “F,G,H,J,K,M,N,Q,U,V,X,Z”, a value of 1 for the “H,M,U,Z” contract would create an H1-M1 spread or the like, while a value of 1 with the 12-month traded contract would create an F1-G1 spread.</p>
+
+<p>The rest of the columns simply get carried over, for further use in other programs/scripts/procedures, such as the load.instruments function.</p>
+
+<p><em>About the Author: Ilya Kipnis holds a Master&rsquo;s degree in Statistics from Rutgers, and uses and contributes to the R packages blotter, FinancialInstrument, and quantstrat. Ilya may be contacted for consulting and full-time opportunities in finance at ilya.kipnis@gmail.com.</em></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/data/" rel="tag">Data</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/r/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Joshua Ulrich</span>
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2011/06/r-journal-volume-31/" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">The R Journal, Volume 3/1</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2011/07/creating-financial-instrument-metadata-comments/" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">Creating Financial Instrument metadata in R</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+        <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran/">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran/">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran/">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran/">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran/">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/deoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/historical-data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ibrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/interactive-brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lspm/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/portfolioanalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/r/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
