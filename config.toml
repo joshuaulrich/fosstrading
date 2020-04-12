@@ -17,13 +17,13 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 [[menu.main]]
     identifier = "disclosures"
     name = "Disclosures"
-    url  = "page/disclosures/"
+    url  = "/page/disclosures/"
     weight = 2
 
 [[menu.main]]
     identifier = "enterprise"
     name = "For Enterprise"
-    url  = "page/enterprise/"
+    url  = "/page/enterprise/"
     weight = 3
 
 [Permalinks]
