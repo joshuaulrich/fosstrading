@@ -1,5 +1,10 @@
 ---
 title: "Disclosures"
+date: 2017-06-22
+comments: false
+authorbox: false
+toc: false
+mathjax: false
 ---
 
 ## Amazon
@@ -51,5 +56,3 @@ We do not collect your email address. If you choose to share a post via email, G
 
 #### Contacting Us
 Please [contact us](mailto:josh.m.ulrich@gmail.com) if you have any questions regarding this privacy policy.
-
-Last Edited on 2017-06-22
