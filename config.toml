@@ -11,7 +11,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
 [[menu.main]]
     name = "Blog"
-    url = ""
+    url = "/"
     weight = 1
 
 [[menu.main]]
