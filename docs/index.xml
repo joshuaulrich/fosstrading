@@ -150,6 +150,17 @@ Do note that the new plot.xts() includes breaking changes to the original (and r
     </item>
     
     <item>
+      <title>Disclosures</title>
+      <link>https://joshuaulrich.github.io/fosstrading/page/disclosures/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://joshuaulrich.github.io/fosstrading/page/disclosures/</guid>
+      <description>Amazon We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.
+CSI Data We receive an affiliate commission when a reader signs up for a CSI data package via a referring link from this site and/or using the &amp;ldquo;FOSS&amp;rdquo; coupon code.
+Privacy Policy This privacy policy has been compiled to better serve those who are concerned with how this site uses their &amp;lsquo;Personally Identifiable Information&amp;rsquo; (information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context).</description>
+    </item>
+    
+    <item>
       <title>quantmod 0.4-9 on CRAN</title>
       <link>https://joshuaulrich.github.io/fosstrading/2017/06/quantmod-0-4-9-on-cran/</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
@@ -1548,17 +1559,6 @@ Joshua Ulrich is currently the author and maintainer of four R packages:
  TTR - Technical Trading Rules - a suite of technical analysis functions
  opentick - an R API to the opentick databases
  xts - eXtensible Time Series - a time-based data class that integrates all of the current time-series classes (co-authored with Jeff Ryan)</description>
-    </item>
-    
-    <item>
-      <title>Disclosures</title>
-      <link>https://joshuaulrich.github.io/fosstrading/page/disclosures/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://joshuaulrich.github.io/fosstrading/page/disclosures/</guid>
-      <description>Amazon We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.
-CSI Data We receive an affiliate commission when a reader signs up for a CSI data package via a referring link from this site and/or using the &amp;ldquo;FOSS&amp;rdquo; coupon code.
-Privacy Policy This privacy policy has been compiled to better serve those who are concerned with how this site uses their &amp;lsquo;Personally Identifiable Information&amp;rsquo; (information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context).</description>
     </item>
     
     <item>
