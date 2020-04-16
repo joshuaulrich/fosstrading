@@ -2,91 +2,91 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xts on FOSS Trading</title>
-    <link>https://joshuaulrich.github.io/fosstrading/tags/xts/</link>
+    <link>https://www.fosstrading.com/tags/xts/</link>
     <description>Recent content in xts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Nov 2018 06:35:00 -0600</lastBuildDate>
     
-	<atom:link href="https://joshuaulrich.github.io/fosstrading/tags/xts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.fosstrading.com/tags/xts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>xts 0.11-2 on CRAN</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2018/11/xts-011-2-on-cran/</link>
+      <link>https://www.fosstrading.com/2018/11/xts-011-2-on-cran/</link>
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2018/11/xts-011-2-on-cran/</guid>
+      <guid>https://www.fosstrading.com/2018/11/xts-011-2-on-cran/</guid>
       <description>xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
  The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &amp;gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.</description>
     </item>
     
     <item>
       <title>xts 0.11-1 on CRAN</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2018/09/xts-011-1-on-cran/</link>
+      <link>https://www.fosstrading.com/2018/09/xts-011-1-on-cran/</link>
       <pubDate>Wed, 12 Sep 2018 13:36:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2018/09/xts-011-1-on-cran/</guid>
+      <guid>https://www.fosstrading.com/2018/09/xts-011-1-on-cran/</guid>
       <description>xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
  There&amp;rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).</description>
     </item>
     
     <item>
       <title>xts 0.10-2 on CRAN</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2018/03/xts-010-2-on-cran/</link>
+      <link>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</link>
       <pubDate>Mon, 19 Mar 2018 05:30:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2018/03/xts-010-2-on-cran/</guid>
+      <guid>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
  endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors &amp;lsquo;x&amp;rsquo; and &amp;lsquo;xout&amp;rsquo; arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
     </item>
     
     <item>
       <title>xts 0.10-0 on CRAN!</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2017/07/xts-0-10-0-on-cran/</link>
+      <link>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</link>
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2017/07/xts-0-10-0-on-cran/</guid>
+      <guid>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
       <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
     </item>
     
     <item>
       <title>plot.xts RFC</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2015/04/plotxts-rfc/</link>
+      <link>https://www.fosstrading.com/2015/04/plotxts-rfc/</link>
       <pubDate>Mon, 20 Apr 2015 12:45:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2015/04/plotxts-rfc/</guid>
+      <guid>https://www.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
 This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
       <title>A New plot.xts</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2012/08/a-new-plot-xts-comments/</link>
+      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</link>
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2012/08/a-new-plot-xts-comments/</guid>
+      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
       <description> Wow!!!! Great work RMW. jryan - Aug 3, 2012
 Wow!!!! Great work RMW. </description>
     </item>
     
     <item>
       <title>A New plot.xts</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2012/08/a-new-plot-xts/</link>
+      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts/</link>
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2012/08/a-new-plot-xts/</guid>
+      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts/</guid>
       <description>The Google Summer of Code (2012) project to extend xts has produced a very promising new plot.xts function. Michael Weylandt, the project&amp;rsquo;s student, wrote R-SIG-Finance to request impressions, feedback, and bug reports. The function is housed in the xtsExtra package of the xts project on R-Forge.
 Please try xtsExtra::plot.xts and let us know what you think. A sample of the eye-candy produced by the code in Michael&amp;rsquo;s email is below. Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!</description>
     </item>
     
     <item>
       <title>Packages featured with Inference for R</title>
-      <link>https://joshuaulrich.github.io/fosstrading/2009/05/packages-featured-with-inference-for-r/</link>
+      <link>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
-      <guid>https://joshuaulrich.github.io/fosstrading/2009/05/packages-featured-with-inference-for-r/</guid>
+      <guid>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
       <description>quantmod, TTR, and xts were (not so) recently featured on the Inference for R Blog. Inference for R is a Integrated Development Environment (IDE) designed specifically for R.
 The post gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.
 I appreciate how they&amp;rsquo;re making R more accessible to a general audience, even though I like a command line interface and my preferred development environment is vim.</description>
