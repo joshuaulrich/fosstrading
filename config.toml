@@ -1,4 +1,4 @@
-baseurl = "https://joshuaulrich.github.io/fosstrading/"
+baseurl = "https://www.fosstrading.com/"
 title = "FOSS Trading"
 languageCode = "en-us"
 publishDir = "docs"
