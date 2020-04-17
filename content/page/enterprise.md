@@ -5,6 +5,7 @@ comments: false
 authorbox: false
 toc: false
 mathjax: false
+aliases: [ "/p/for-enterprise.html" ]
 ---
 
 Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.
