@@ -83,7 +83,7 @@ extractLineItem <- function(stackedFinancials, line.item) {
 
 Let’s use `extractLineItem()` to compare total revenue for GE and AAPL.
 
-```
+```r
 totalRevenue <- extractLineItem(Data, "total revenue")  
 totalRevenue
 ##          AAPL.Total.Revenue GE.Total.Revenue  
@@ -99,7 +99,7 @@ plot(totalRevenue, main = "Quarterly Total Revenue, AAPL (black) vs GE (red)")
 
 You could also combine multiple calls to `extractLineItem()` to calculate ratios not included in the output from `viewFinancials()`. For example, you could divide operating income by total revenue to calculate operating margin.
 
-```
+```r
 operatingIncome <- extractLineItem(Data, "operating income")  
 operatingIncome 
 ##          AAPL.Operating.Income GE.Operating.Income  
