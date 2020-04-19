@@ -48,6 +48,4 @@ Additional details will be announced via the [conference website](http://www.rin
 
 For the program committee:
 
-Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson, 
-
-Dale Rosenthal, Jeffrey Ryan, Joshua Ulrich
+Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson, Dale Rosenthal, Jeffrey Ryan, Joshua Ulrich

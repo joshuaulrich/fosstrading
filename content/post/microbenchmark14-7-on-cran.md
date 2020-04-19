@@ -10,6 +10,6 @@ I pushed an updated [microbenchmark to CRAN](https://cran.r-project.org/package=
   
 Michael fixed a bug in the check for whether the unit argument was a character string ([#9](https://github.com/joshuaulrich/microbenchmark/issues/9), [#10](https://github.com/joshuaulrich/microbenchmark/pull/10)). The prior behavior was an uninformative error.  
   
-Harvey added a feature to allow you to use a string for common checks: "equal", "identical", and "equivalent" ([#16](https://github.com/joshuaulrich/microbenchmark/pull/16)). So you don't need to create a custom function to use all.equal(), all.equal(..., check.attributes = FALSE), and identical, respectively.  
+Harvey added a feature to allow you to use a string for common checks: "equal", "identical", and "equivalent" ([#16](https://github.com/joshuaulrich/microbenchmark/pull/16)). So you don't need to create a custom function to use `all.equal()`, `all.equal(..., check.attributes = FALSE)`, and identical, respectively.  
   
 I also converted the unit tests to use [RUnit](https://cran.r-project.org/package=RUnit). I also made some changes to the repo, including adding a contributing guide and issue/pull-request templates.

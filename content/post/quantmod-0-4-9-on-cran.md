@@ -6,7 +6,7 @@ aliases: [ "/2017/06/quantmod-0-4-9-on-cran.html" ]
 tags : [HIstorical Data, Releases, quantmod, R]
 ---
 
-A new release of [quantmod](http://www.quantmod.com/) is now on [CRAN](https://cran.r-project.org/package=quantmod)! The only change was to address changes to [Yahoo! Finance](https://finance.yahoo.com/) and their effects on getSymbols.yahoo().  GitHub issue [#157](https://github.com/joshuaulrich/quantmod/issues/157) contains some details about the fix implementation.  
+A new release of [quantmod](http://www.quantmod.com/) is now on [CRAN](https://cran.r-project.org/package=quantmod)! The only change was to address changes to [Yahoo! Finance](https://finance.yahoo.com/) and their effects on `getSymbols.yahoo()`.  GitHub issue [#157](https://github.com/joshuaulrich/quantmod/issues/157) contains some details about the fix implementation.  
   
 Unfortunately, the URL wasn't the only thing that changed.  The actual data available for download changed as well.  
   
