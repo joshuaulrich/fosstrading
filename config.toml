@@ -9,6 +9,13 @@ paginate = "10" # Number of posts per page
 disqusShortname = "" # Enable comments by entering your Disqus shortname
 googleAnalytics = "UA-3314405-2"  # Enable Google Analytics by entering your tracking id
 
+# code highlighting
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+## and make sure javascript highlighting is off
+useHLJS = false
+
+
 [[menu.main]]
     name = "Blog"
     url = "/"
@@ -46,7 +53,7 @@ googleAnalytics = "UA-3314405-2"  # Enable Google Analytics by entering your tra
 
 # mainroad theme
   highlightColor = '#5282d1'
-  customCSS = [ "fosstrading.css" ]
+  customCSS = [ "fosstrading.css", "syntax.css" ]
 
 [Params.sidebar]
   home = "right"   # Configure layout for home page
