@@ -20,7 +20,7 @@ When trading stocks in a single currency, instrument metadata can be safely igno
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,54 +89,39 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-07-27T22:16:00-05:00">July 27, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>(This is a guest post by Ilya Kipnis)</p>
-
 <p>When trading stocks in a single currency, instrument <a href="http://en.wikipedia.org/wiki/Metadata">metadata</a> can be safely ignored because the multiplier is 1 and the currencies are all the same.  When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument. The <a href="http://r-forge.r-project.org/R/?group_id=316">FinancialInstrument</a> package provides a construct for storing metadata for tradeable contracts (referred to as instruments, e.g. stocks, futures, options, etc.) and their root representations.  It can be used to create any asset class and complex derivatives, across multiple currencies. </p>
-
 <p>In <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>, Joshua Ulrich used FinancialInstrument (blotter depends on it) to create a stock portfolio.  FinancialInstrument is also a required dependency of the quantstrat quantitative strategy framework in R (quantstrat will be covered in a later post).</p>
-
 <p>Creating a list of historical symbols is a recurring challenge with historical data on derivative instruments.  These symbols tend to follow a deterministic pattern and FinancialInstrument provides utility functions to create the symbols traded over specific periods of time. These symbols could then be used to request historical data from a data vendor or to construct instrument objects in R.</p>
-
 <p>The simplest function for generating a series of symbols is build_series_symbols.  Let&rsquo;s look at it with a small example using crude oil (CL) and STOXX (STXE) futures:</p>
-
-<p>    # install.packages(&ldquo;FinancialInstrument&rdquo;, repos=&ldquo;<a href="http://R-Forge.R-project.org&quot;">http://R-Forge.R-project.org&quot;</a>)<br />
-    require(FinancialInstrument)<br />
-    Data &lt;- data.frame(primary_id=&ldquo;CL&rdquo;, month_cycle=&ldquo;F,G,H,J,K,M,N,Q,U,V,X,Z&rdquo;)<br />
-    Data &lt;- rbind(Data, data.frame(primary_id=&ldquo;STXE&rdquo;, month_cycle=&ldquo;H,M,U,Z&rdquo;))<br />
-    Data<br />
-    #   primary_id               month_cycle<br />
-    # 1         CL   F,G,H,J,K,M,N,Q,U,V,X,Z<br />
+<p>    # install.packages(&ldquo;FinancialInstrument&rdquo;, repos=&quot;http://R-Forge.R-project.org&rdquo;)<br>
+    require(FinancialInstrument)<br>
+    Data &lt;- data.frame(primary_id=&quot;CL&rdquo;, month_cycle=&quot;F,G,H,J,K,M,N,Q,U,V,X,Z&rdquo;)<br>
+    Data &lt;- rbind(Data, data.frame(primary_id=&quot;STXE&rdquo;, month_cycle=&quot;H,M,U,Z&rdquo;))<br>
+    Data<br>
+    #   primary_id               month_cycle<br>
+    # 1         CL   F,G,H,J,K,M,N,Q,U,V,X,Z<br>
     # 2       STXE                   H,M,U,Z</p>
-
 <p>The Data object contains two columns.  The primary_id is the root contract that identifies the instrument, and the month_cycle defines the months the contracts trade in (e.g. “H,M,U,Z” for Mar/Jun/Sep/Dec).</p>
-
 <p>build_series_symbols only needs Data and yearlist.   yearlist is the suffix for expiration years and 0, 1, 2 represent 2010, 2011, 2012 in this example.  build_series_symbols returns a vector of series symbols that we could use to request data or create future_series instruments.</p>
-
-<p>build_series_symbols(Data, yearlist=c(0,1,2))<br />
- [1] &ldquo;CLF0&rdquo;   &ldquo;CLG0&rdquo;   &ldquo;CLH0&rdquo;   &ldquo;CLJ0&rdquo;   &ldquo;CLK0&rdquo;   &ldquo;CLM0&rdquo;   &ldquo;CLN0&rdquo;   &ldquo;CLQ0&rdquo; <br />
- [9] &ldquo;CLU0&rdquo;   &ldquo;CLV0&rdquo;   &ldquo;CLX0&rdquo;   &ldquo;CLZ0&rdquo;   &ldquo;STXEH0&rdquo; &ldquo;STXEM0&rdquo; &ldquo;STXEU0&rdquo; &ldquo;STXEZ0&rdquo;<br />
- [17] &ldquo;CLF1&rdquo;   &ldquo;CLG1&rdquo;   &ldquo;CLH1&rdquo;   &ldquo;CLJ1&rdquo;   &ldquo;CLK1&rdquo;   &ldquo;CLM1&rdquo;   &ldquo;CLN1&rdquo;   &ldquo;CLQ1&rdquo; <br />
- [25] &ldquo;CLU1&rdquo;   &ldquo;CLV1&rdquo;   &ldquo;CLX1&rdquo;   &ldquo;CLZ1&rdquo;   &ldquo;STXEH1&rdquo; &ldquo;STXEM1&rdquo; &ldquo;STXEU1&rdquo; &ldquo;STXEZ1&rdquo;<br />
- [33] &ldquo;CLF2&rdquo;   &ldquo;CLG2&rdquo;   &ldquo;CLH2&rdquo;   &ldquo;CLJ2&rdquo;   &ldquo;CLK2&rdquo;   &ldquo;CLM2&rdquo;   &ldquo;CLN2&rdquo;   &ldquo;CLQ2&rdquo; <br />
- [41] &ldquo;CLU2&rdquo;   &ldquo;CLV2&rdquo;   &ldquo;CLX2&rdquo;   &ldquo;CLZ2&rdquo;   &ldquo;STXEH2&rdquo; &ldquo;STXEM2&rdquo; &ldquo;STXEU2&rdquo; &ldquo;STXEZ2&rdquo;</p>
-
+<p>build_series_symbols(Data, yearlist=c(0,1,2))<br>
+[1] &ldquo;CLF0&rdquo;   &ldquo;CLG0&rdquo;   &ldquo;CLH0&rdquo;   &ldquo;CLJ0&rdquo;   &ldquo;CLK0&rdquo;   &ldquo;CLM0&rdquo;   &ldquo;CLN0&rdquo;   &ldquo;CLQ0&rdquo; <br>
+[9] &ldquo;CLU0&rdquo;   &ldquo;CLV0&rdquo;   &ldquo;CLX0&rdquo;   &ldquo;CLZ0&rdquo;   &ldquo;STXEH0&rdquo; &ldquo;STXEM0&rdquo; &ldquo;STXEU0&rdquo; &ldquo;STXEZ0&rdquo;<br>
+[17] &ldquo;CLF1&rdquo;   &ldquo;CLG1&rdquo;   &ldquo;CLH1&rdquo;   &ldquo;CLJ1&rdquo;   &ldquo;CLK1&rdquo;   &ldquo;CLM1&rdquo;   &ldquo;CLN1&rdquo;   &ldquo;CLQ1&rdquo; <br>
+[25] &ldquo;CLU1&rdquo;   &ldquo;CLV1&rdquo;   &ldquo;CLX1&rdquo;   &ldquo;CLZ1&rdquo;   &ldquo;STXEH1&rdquo; &ldquo;STXEM1&rdquo; &ldquo;STXEU1&rdquo; &ldquo;STXEZ1&rdquo;<br>
+[33] &ldquo;CLF2&rdquo;   &ldquo;CLG2&rdquo;   &ldquo;CLH2&rdquo;   &ldquo;CLJ2&rdquo;   &ldquo;CLK2&rdquo;   &ldquo;CLM2&rdquo;   &ldquo;CLN2&rdquo;   &ldquo;CLQ2&rdquo; <br>
+[41] &ldquo;CLU2&rdquo;   &ldquo;CLV2&rdquo;   &ldquo;CLX2&rdquo;   &ldquo;CLZ2&rdquo;   &ldquo;STXEH2&rdquo; &ldquo;STXEM2&rdquo; &ldquo;STXEU2&rdquo; &ldquo;STXEZ2&rdquo;</p>
 <p>A more complicated task is to create symbols for exchange guaranteed calendar spreads.  The build_spread_symbols function creates a vector of symbols for spreads of securities (currently coded for futures calendar spreads but can be extended and generalized) in a very shorthand notation.</p>
-
 <p>build_spread_symbols accepts instrument specifications via either a file path or (preferably) a data frame (using the file or data arguments, respectively). Output can be assigned to an object or written to a file using the optional outputfile argument.  The default starting date is the current date, but the user can manually set a starting date (e.g. historical dates for backtesting, and future dates to create lists of instruments to be traded in the future).</p>
-
-<p>    # read in data that would be suitable for load.instruments on root contracts<br />
-    Data &lt;- read.csv(&rdquo;<a href="https://docs.google.com/leaf?id=0B8wl4QBejPGiMjI2NTQzZjEtZDRkNC00MDRjLWI2ZDgtMzhjOTM5ZGFkYmFk&amp;hl=en_US">series_data.csv</a>&rdquo;, stringsAsFactors=FALSE)<br />
-    # set the type to guaranteed_spread<br />
-    Data$type &lt;- &ldquo;guaranteed_spread&rdquo;<br />
-    # call build_spread_symbols<br />
-    output &lt;- build_spread_symbols(Data[6:7,], start_date=&ldquo;2010-01-01&rdquo;)</p>
-
+<p>    # read in data that would be suitable for load.instruments on root contracts<br>
+    Data &lt;- read.csv(&quot;<a href="https://docs.google.com/leaf?id=0B8wl4QBejPGiMjI2NTQzZjEtZDRkNC00MDRjLWI2ZDgtMzhjOTM5ZGFkYmFk&amp;hl=en_US">series_data.csv</a>&quot;, stringsAsFactors=FALSE)<br>
+    # set the type to guaranteed_spread<br>
+    Data$type &lt;- &ldquo;guaranteed_spread&rdquo;<br>
+    # call build_spread_symbols<br>
+    output &lt;- build_spread_symbols(Data[6:7,], start_date=&quot;2010-01-01&rdquo;)</p>
 <p>The critical fields in the data (CSV or data frame) are the primary_id, the type (e.g. future, calendar spread, intercommodity spread, etc.), the month_cycle, and the active_months (how many contracts to display).  For instance, an active_months value of 12 on a contract that trades quarterly (“H,M,U,Z”) would create front month contracts for the next 3 years.  An active_months value of 6 on this same quarterly contract would produce 1.5 years.  On a contract that trades 12 months a year (“F,G,H,J,K,M,N,Q,U,V,X,Z”), an active_months value of 12 would produce 1 year of contracts, and a value of 6 would only produce half a year.</p>
-
 <p>Lastly, the contracts_ahead field specifies the month spread on calendar spread type securities.  Note that these are <strong>contracts</strong> ahead and not months ahead.  For example, if you consider a contract trading “H,M,U,Z” vs. a contract trading “F,G,H,J,K,M,N,Q,U,V,X,Z”, a value of 1 for the “H,M,U,Z” contract would create an H1-M1 spread or the like, while a value of 1 with the 12-month traded contract would create an F1-G1 spread.</p>
-
 <p>The rest of the columns simply get carried over, for further use in other programs/scripts/procedures, such as the load.instruments function.</p>
-
-<p><em>About the Author: Ilya Kipnis holds a Master&rsquo;s degree in Statistics from Rutgers, and uses and contributes to the R packages blotter, FinancialInstrument, and quantstrat. Ilya may be contacted for consulting and full-time opportunities in finance at ilya.kipnis@gmail.com.</em></p>
+<p><em>About the Author: Ilya Kipnis holds a Master&rsquo;s degree in Statistics from Rutgers, and uses and contributes to the R packages blotter, FinancialInstrument, and quantstrat. Ilya may be contacted for consulting and full-time opportunities in finance at <a href="mailto:ilya.kipnis@gmail.com">ilya.kipnis@gmail.com</a>.</em></p>
 
 		</div>
 		<footer class="post__footer">
@@ -231,7 +216,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

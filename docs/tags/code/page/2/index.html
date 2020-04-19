@@ -11,7 +11,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.fosstrading.com/tags/code/" />
-
 <meta property="og:updated_time" content="2014-03-29T12:25:00-05:00" />
 
 	
@@ -20,7 +19,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/tags/code/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -111,11 +110,10 @@ The contents of this post borrow heavily from code and comments in the &ldquo;lo
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-19T08:38:00-05:00">July 19, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		hello josh, If I want to sell the stock when the R&hellip; Bear - Jul 4, 2009
-hello josh,
-If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code? Hi Bear, You need to use a lagged value of RSI in&hellip; Joshua Ulrich - Jul 5, 2009
+		hello josh, If I want to sell the stock when the R&hellip; Bear - Jul 4, 2009hello josh,
+If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?
 Hi Bear,
-You need to use a lagged value of RSI in addition to the current value.
+You need to use a lagged value of RSI in addition to the current value. The code below shows how to do it.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -130,9 +128,8 @@ You need to use a lagged value of RSI in addition to the current value.
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- Varadi’s RSI(2) Alternative: The DV(2) Alternative: The DV(2)&ldquo;&rdquo;) RSI(2) vs. DV(2) vs. DV(2)&ldquo;&rdquo;) Last Couple of Notes on DV(2)&rdquo;&ldquo;)  Here&rsquo;s the R code:
+ [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &ldquo;Permanent Link to &ldquo;Varadi’s RSI(2) Alternative: The DV(2)&quot;&quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &ldquo;Permanent Link to &ldquo;RSI(2) vs. DV(2)&quot;&quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &ldquo;Permanent Link to &ldquo;Last Couple of Notes on DV(2)&quot;&quot;)  Here&rsquo;s the R code:
   DV &lt;- function(HLC, n=2, bounded=FALSE) {
-# &ldquo;HLC&rdquo; is an _xts_ object with &ldquo;High&rdquo;, &ldquo;Low&rdquo;, and &ldquo;Close&rdquo;
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -146,8 +143,7 @@ You need to use a lagged value of RSI in addition to the current value.
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-28T22:02:00-05:00">June 28, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		I have run this script to see how RIS2 with scalin&hellip; White Cube - Apr 6, 2012
-I have run this script to see how RIS2 with scaling has performed since 2009.
+		I have run this script to see how RIS2 with scalin&hellip; White Cube - Apr 6, 2012I have run this script to see how RIS2 with scaling has performed since 2009.
 On the long side the performance has not been as good as before (with some sharp drawdowns).
 On the short side the equity curve went down for 2 years and seems picking up again since 2011.
 Has the magic RSI gone ?
@@ -180,9 +176,10 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-05-01T20:58:00-05:00">May 01, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		i look forward to it &ndash; never could get my head ar&hellip; Autore del blog - May 0, 2009
-i look forward to it &ndash; never could get my head around performance metrics.. This is awesome - very cool. I also was curious i&hellip; Damian - May 5, 2009
+		i look forward to it &ndash; never could get my head ar&hellip; Autore del blog - May 0, 2009i look forward to it &ndash; never could get my head around performance metrics..
 This is awesome - very cool. I also was curious if you could put together a simple example of the following:
+- Take four ETFs (SPY,IWM,QQQQ,TLT) and rank them by their 12m ROC.
+- Buy the top one on the first day of the month.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -212,13 +209,12 @@ A couple notes before moving to the code:
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-13T22:35:00-05:00">April 13, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Really cool. A lot of questions: &ldquo;# Calcula&hellip; Damian - Apr 3, 2009
-Really cool. A lot of questions:
-&rdquo;# Calculate the RSI indicator
+		Really cool. A lot of questions: &ldquo;# Calcula&hellip; Damian - Apr 3, 2009Really cool. A lot of questions:
+&ldquo;# Calculate the RSI indicator
 rsi &lt;- RSI(Cl(GSPC),2)&rdquo;
 When you reference the symbol for getting the data, you referenced it via &ldquo;^GSPC&rdquo; - how did it get assigned to GSPC?
 Secondly, if I have the data stored locally, how would I reference it?
-&rdquo;# Lag signals to align with days in market,
+&ldquo;# Lag signals to align with days in market,
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -297,7 +293,20 @@ In particular, I will be replicating and extending some of the results from Mich
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

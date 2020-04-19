@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API on FOSS Trading</title>
@@ -17,9 +17,10 @@
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
-      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010
-Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance Jeff: Awesome work! Hope that you become a regula&amp;hellip; smc - May 1, 2010
-Jeff: Awesome work! Hope that you become a regular contributor!</description>
+      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
+Jeff: Awesome work! Hope that you become a regular contributor!
+Jeff,
+Great article. I used it to set up and test my IB link.</description>
     </item>
     
     <item>

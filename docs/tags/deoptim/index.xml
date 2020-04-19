@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DEoptim on FOSS Trading</title>
@@ -17,9 +17,8 @@
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
-      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012
-This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code.</description>
+      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
+If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).</description>
     </item>
     
     <item>

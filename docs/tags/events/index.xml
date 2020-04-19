@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Events on FOSS Trading</title>
@@ -53,7 +53,7 @@ The ninth annual R/Finance conference for applied finance using R will be held o
       
       <guid>https://www.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</guid>
       <description>You can find registration information and agenda details on the conference website. Or you can go directly to the Cvent registration page.
-Note that registration fees _will increase by 50%_ at the end of early registration on May 6, 2016.
+Note that registration fees will increase by 50% at the end of early registration on May 6, 2016.
 The conference will take place on May 20 and 21, at UIC in Chicago. Building on the success of the previous conferences in 2009-2015, we expect more than 250 attendees from around the world.</description>
     </item>
     
@@ -139,11 +139,10 @@ The comments below are based on my personal experience. If I don&amp;rsquo;t com
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</guid>
-      <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013
-HI,
-Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks! Hi Vic, The slides and code examples for most of &amp;hellip; Joshua Ulrich - May 3, 2013
+      <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013HI,
+Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks!
 Hi Vic,
-The slides and code examples for most of the presentations will be available on the conference website within a couple weeks after the conference.</description>
+The slides and code examples for most of the presentations will be available on the conference website within a couple weeks after the conference. We can&amp;rsquo;t make all the slides available because some presenter&amp;rsquo;s employers will not allow us to distribute their slides.</description>
     </item>
     
     <item>
@@ -219,11 +218,10 @@ The fourth annual R/Finance conference for applied finance using R will be held 
       <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</guid>
-      <description> Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011
-Hi!
-Will there be a video of it posted online? Hi Luka, There will not be videos of the presenta&amp;hellip; Joshua Ulrich - Mar 2, 2011
+      <description>Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011Hi!
+Will there be a video of it posted online?
 Hi Luka,
-There will not be videos of the presentations, but the presentation slides will be available online after the conference. </description>
+There will not be videos of the presentations, but the presentation slides will be available online after the conference.</description>
     </item>
     
     <item>
@@ -244,7 +242,7 @@ This year we are excited to have longer tutorial sessions and an optional full-d
       
       <guid>https://www.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</guid>
       <description>The 2011 R/Finance conference has an updated call for papers. Dirk Eddelbuettel announced it to the R-SIG-Finance mailing list. I&amp;rsquo;ve reproduced his email in its entirety below. Let me know if you plan on attending.
-Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money
+ Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money
 Dear R / Finance community,
 The preparations for R/Finance 2011 are progressing, and due to favourable responses from the different sponsors we contacted, we are now able to offer</description>
     </item>
@@ -311,10 +309,10 @@ We want to thank everyone who traveled to Chicago to make this happen. With near
       
       <guid>https://www.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</guid>
       <description>The conference website has details on:
- the agenda and speakers,
- travel accommodations,
- registration, and
- sponsors, who made the conference possible.
+  the agenda and speakers,
+  travel accommodations,
+  registration, and
+  sponsors, who made the conference possible.
   Hope to see you there!</description>
     </item>
     
@@ -324,11 +322,12 @@ We want to thank everyone who traveled to Chicago to make this happen. With near
       <pubDate>Tue, 30 Dec 2008 23:54:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments/</guid>
-      <description>Hi, just came across your blog. Am a relatively ne&amp;hellip; Don C - Jan 3, 2009
-Hi, just came across your blog. Am a relatively new R user - used Matlab and other symbolic packages back in school and predominantly Excel/VB at work (finance/trading) since.
+      <description>Hi, just came across your blog. Am a relatively ne&amp;hellip; Don C - Jan 3, 2009Hi, just came across your blog. Am a relatively new R user - used Matlab and other symbolic packages back in school and predominantly Excel/VB at work (finance/trading) since.
 Can I find out more about this conference ?
 Thanks,
-Don C Hi Don, There should be more information by&amp;hellip; Joshua Ulrich - Jan 3, 2009</description>
+Don C
+There should be more information by&amp;hellip; Joshua Ulrich - Jan 3, 2009Hi Don,
+There should be more information by the end of next week.</description>
     </item>
     
     <item>
@@ -356,8 +355,7 @@ David Ruppert (Cornell)</description>
       <pubDate>Fri, 05 Dec 2008 20:39:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2008/12/computational-finance-with-r-comments/</guid>
-      <description> I wanted to let you guys know that I&amp;rsquo;ve taken a lo&amp;hellip; Damian - Dec 6, 2008
-I wanted to let you guys know that I&amp;rsquo;ve taken a look the software it is both overwhelming and fascinating. I&amp;rsquo;ll be spending some time looking at it. Thanks for the pointers! </description>
+      <description>I wanted to let you guys know that I&amp;rsquo;ve taken a lo&amp;hellip; Damian - Dec 6, 2008I wanted to let you guys know that I&amp;rsquo;ve taken a look the software it is both overwhelming and fascinating. I&amp;rsquo;ll be spending some time looking at it. Thanks for the pointers!</description>
     </item>
     
     <item>

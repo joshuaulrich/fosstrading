@@ -20,7 +20,7 @@ Let me start by saying that I’m not an expert in backtesting in Excel – ther
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,37 +89,21 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-14T20:57:00-05:00">March 14, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>(This is a guest post by Damian from <a href="http://skillanalytics.wordpress.com/">Skill Analytics</a> and <a href="http://www.etfprophet.com/">ETF Prophet</a>)</p>
-
 <p>Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at <a href="http://blog.marketsci.com/">marketsci.com</a>, Jeff Pietch over at <a href="http://www.etfprophet.com/">etfprophet.com</a> and the folks (David and Corey) over at <a href="http://cssanalytics.wordpress.com/">cssanalytics.wordpress.com</a>. All of these guys have been gracious enough, over the years, to share with me how to do backtests – so I am indebted to them. And I want to thank Josh here at FOSS Trading as well – because he’s been kind enough to help me in learning how to use R for testing.</p>
-
 <p>With all that in mind, I thought I’d walk through what I consider the four basic steps in producing a backtest in Excel. Note that the <a href="http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx">core Excel file</a> wasn&rsquo;t created by me - it was created by Jared over at <a href="http://www.condoroptions.com/">CondorOptions</a> (another must read if you&rsquo;re not following him).</p>
-
 <p><strong>Step 1: Get the data</strong></p>
-
 <p>The first step is to get your market data into Excel. There are two basic approaches to this – the first involves going to Yahoo Finance and downloading historical data directly as CSV and then loading it into Excel. This is nice, but does require a manual update of that data as you go forward – meaning, you’ll need to re-download that historical data and then copy and paste either the entire dataset or a subset to update your strategy.</p>
-
 <p>The second approach is to use code to go grab data automatically from Yahoo Finance. Plenty of people have written VBA for doing just this – I have not written it myself so I don’t feel comfortable republishing the code. A quick search on Google will provide some examples to work with. There are also 3rd party tools that make the job simple – I’d recommend <a href="http://www.analyzerxl.com/">AnalyzerXL</a> as it provides the most flexibility and options.</p>
-
 <p>How you store this data in Excel is up to you – most people I know have a single sheet where they keep all the data, and then have a separate worksheet for the rest of system. For systems with a single instrument (such as the SPY), it’s not a problem to integrate the data and the system, but as the number of instruments goes up, you’ll want to have them on a separate worksheet to minimize scrolling and make it easy to update.</p>
-
 <p><strong>Step 2: Create your indicator</strong></p>
-
 <p>Now that we’ve got the data, we can use that data to construct an indicator or indicators. In this example, Jared constructed the DVI indicator (originally created by David over as CSS Analytics). You’ll see that we used 5 different columns to create the indicator – each one taking part of the calculation. One nice thing about working with Excel is that it really makes you think about how an indicator is constructed. It can be far too simple, these days, to throw down and indicator without understanding how it actually works.</p>
-
 <p>The final indicator column, DVI, is a weighted sum of the DVI magnitude and DVI stretch columns. I’d also note that AnalyzerXL also contains a large number of indicators predefined to make backtesting easier, and there are other add-ons for Excel that provide similar functionality.</p>
-
 <p><strong>Step 3: Construct your trading rule</strong></p>
-
 <p>Now that you have an indicator, you need to construct your trading rules. In this example (calculation is in the “Signal” column), our trading rule is simple – we’re long if DVI is below 0.5 and short if above. Obviously you could have more complex rules – a neutral state where you’re not long or short, or variable position sizing as opposed to just all-in long or short.</p>
-
 <p><strong>Step 4: The trading rules/equity curve</strong></p>
-
 <p>There are many different approaches here, but what you can see in this example is a simple way to do it. Assume a starting cash value of $10,000 and then increment or decrement that by whether or not we are long or short on the close of the prior day, and whether we were correct or not. In function form, we represent this by saying: if long, then multiple the prior day’s equity by the ratio of today’s close to yesterday’s close, otherwise multiple the prior day’s equity by ratio of yesterday’s close to today’s close. We can then, obviously, graph the results. Note also that we’re using cash here, but you could easily do raw percentages in place of a cash value.</p>
-
 <p>What’s missing here can be important for deciding whether to trade or not trade a system. First of all, the results here are frictionless – they assume there is no cost/commission for the trade. In high frequency swing systems like this one, the commissions could have a major impact on the viability of a given strategy.</p>
-
 <p>Second, we don’t have any statistics on the performance of the strategy – just a graph. Generally we want to know stats like CAGR and the Sharpe ratio to compare it with other strategies. We also don’t have monthly or yearly reporting. All of these things can be constructed in Excel with a bit of work – and again, AnalyzerXL provides a large number of reporting options as part of the package.</p>
-
 <p>That&rsquo;s a basic overview of backtesting in Excel - hope that you all find it useful!</p>
 
 		</div>
@@ -218,7 +202,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Releases on FOSS Trading</title>
@@ -18,7 +18,7 @@
       
       <guid>https://www.fosstrading.com/2020/03/quantmod04-16-on-cran/</guid>
       <description>A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;ldquo;SPY;AAPL&amp;rdquo;).</description>
+Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;quot;SPY;AAPL&amp;quot;).</description>
     </item>
     
     <item>
@@ -81,7 +81,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
       
       <guid>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors &amp;lsquo;x&amp;rsquo; and &amp;lsquo;xout&amp;rsquo; arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
+ endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
     </item>
     
     <item>
@@ -92,8 +92,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
       <guid>https://www.fosstrading.com/2018/01/rquantlib-044-for-windows/</guid>
       <description>I&amp;rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&amp;rsquo;s ghrr drat repo.
 Installation is as simple as:
-drat::addRepo(&amp;ldquo;ghrr&amp;rdquo;) # maybe use &amp;lsquo;install.packages(&amp;ldquo;drat&amp;rdquo;)&amp;rsquo; first install.packages(&amp;ldquo;RQuantLib&amp;rdquo;, type=&amp;ldquo;binary&amp;rdquo;)
-I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
+drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp;#34;drat&amp;#34;)&amp;#39; first  install.packages(&amp;#34;RQuantLib&amp;#34;, type=&amp;#34;binary&amp;#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
     </item>
     
     <item>
@@ -112,7 +111,7 @@ Alpha Vantage is a free web service that provides real-time and historical equit
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
-      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series code.
+      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
     </item>
     
@@ -134,9 +133,9 @@ The most noticeable difference is that the adjusted close column is no longer di
       
       <guid>https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
       <description>I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&amp;rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
     </item>
     
     <item>
@@ -166,7 +165,7 @@ James Toll provided a patch to the volatility function that uses a zero mean (in
       
       <guid>https://www.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
@@ -206,9 +205,8 @@ There are some exciting new features, including a rolling single-factor model fu
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
-      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012
-This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code.</description>
+      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
+If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).</description>
     </item>
     
     <item>

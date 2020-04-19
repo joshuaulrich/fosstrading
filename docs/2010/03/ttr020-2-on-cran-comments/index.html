@@ -8,9 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="TTR_0.20-2 on CRAN" />
-<meta property="og:description" content="Can you describe how the various trading packages &hellip; Milk Trader - Apr 4, 2010
-Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&rsquo;m interested in.
-xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary." />
+<meta property="og:description" content="Can you describe how the various trading packages &hellip; Milk Trader - Apr 4, 2010Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&rsquo;m interested in.
+xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&rsquo;m missing?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2010/03/ttr020-2-on-cran-comments/" />
 <meta property="article:published_time" content="2010-03-30T14:48:00-05:00" />
@@ -21,7 +20,7 @@ xts creates objects that are then passed into quantmod, I think. Is that right? 
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,319 +88,143 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-03-30T14:48:00-05:00">March 30, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
-			
-
-<h4 id="can-you-describe-how-the-various-trading-packages">Can you describe how the various trading packages &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <time datetime="2010-03-31T19:28:11.990-05:00">Apr 4, 2010</time></p>
-
+			<h4 id="can-you-describe-how-the-various-trading-packages-">Can you describe how the various trading packages &hellip;</h4>
+<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <!-- raw HTML omitted -->Apr 4, 2010<!-- raw HTML omitted --></p>
 <p>Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&rsquo;m interested in.</p>
-
-<p>xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&rsquo;m missing?
-<hr /></p>
-
-<h4 id="you-re-correct-that-they-re-complementary">You&rsquo;re correct that they&rsquo;re complementary,&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-03-31T22:14:16.699-05:00">Apr 4, 2010</time></p>
-
+<p>xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&rsquo;m missing?</p>
+<!-- raw HTML omitted -->
 <p>You&rsquo;re correct that they&rsquo;re complementary, but I would think of them as a toolkit rather than a workflow.</p>
-
 <p><em>xts</em> is a time series class; use it to store and manipulate data (e.g. convert it to/from other time series classes).</p>
-
 <p><em>quantmod</em> is probably best explained by the <a href="http://www.quantmod.com/examples/">examples</a> page on quantmod.com.</p>
-
 <p><em>blotter</em> keeps track instruments, transactions, portfolios and accounts for trading systems.</p>
-
 <p><em>TTR</em> contains technical indicators and other functions commonly used in creating trading algorithms.</p>
-
 <p><em>LSPM</em> contains functions to determine position size according to Ralph Vince&rsquo;s Leverage Space Portfolio Model.</p>
-
-<p>You should look at:<br />
+<p>You should look at:<br>
 <em>quantstrat</em> allows you to specify, build, and back-test quantitative financial trading and portfolio strategies.</p>
-
 <p><em>PerformanceAnalytics</em> is a library of econometric functions for performance and risk analysis and aims to aid practitioners and researchers in utilizing the latest research in analysis of non-normal return streams.</p>
-
-<p><em>PortfolioAnalytics</em> is a library of portfolio optimization and analysis routines and graphics.
-<hr /></p>
-
-<h4 id="thanks-for-quantstrat-and-performance-analytics-d">Thanks for quantstrat and Performance Analytics. D&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <time datetime="2010-04-01T07:27:00.719-05:00">Apr 4, 2010</time></p>
-
+<p><em>PortfolioAnalytics</em> is a library of portfolio optimization and analysis routines and graphics.</p>
+<!-- raw HTML omitted -->
 <p>Thanks for quantstrat and Performance Analytics. Do any of these packages excel at the walk-forward technique, or out-of-sample backtesting on set-aside data whose parameters are determined by an objective function applied to a preceding window?</p>
-
 <p>Let me explain that better. I&rsquo;d like to determine a parameter set to trade a system for a pre-determined period, say six months. The first parameter set I choose is based on the most recent two years of backtest data. I run this &ldquo;ideal&rdquo; parameter set on the first six months of out-of-sample data and determine the results, which I set aside for later analysis. Then, I treat the six month out-of-sample data as in-sample data and choose my parameters based on a backtest of two years again. But this time, the oldest six months of original backtest data is replaced with the first walk-forward data (which was 6 months in our example). This technique is widely known and commonly used.</p>
-
-<p>There is a matter of how one chooses the best parameters to walk-forward. Maximum net profit is the most intuitive, but not the ideal objective function. Other objective functions can get fairly complicated so the ability to program it is important.
-<hr /></p>
-
-<h4 id="performanceanalytics-has-return-portfolio-and-retu">PerformanceAnalytics has Return.portfolio and Retu&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/09226525229201110236" title="noreply@blogger.com">Brian G. Peterson</a> - <time datetime="2010-04-01T14:27:50.202-05:00">Apr 4, 2010</time></p>
-
+<p>There is a matter of how one chooses the best parameters to walk-forward. Maximum net profit is the most intuitive, but not the ideal objective function. Other objective functions can get fairly complicated so the ability to program it is important.</p>
+<!-- raw HTML omitted -->
 <p>PerformanceAnalytics has Return.portfolio and Return.rebalancing which can construct return series for portfolios based on a time series of weighting vectors.</p>
-
 <p>PortfolioAnalytics has optimize.portfolio.rebalancing which conducts &lsquo;walk-forward&rsquo; rebalancing on a periodic basis. All of the portfolio objectives in PortfolioAnalytics are layered and based on arbitrary R functions, not limited to simple single-objective or fixed approaches.</p>
-
-<p>quantstrat does not yet have rebalancing or parameter optimization, though those functions will likely be added as parameterization is stabilized over the next couple months.
-<hr /></p>
-
-<h4 id="it-may-be-there-is-no-r-package-for-what-i-have-in">It may be there is no R package for what I have in&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <time datetime="2010-04-02T11:11:49.398-05:00">Apr 5, 2010</time></p>
-
+<p>quantstrat does not yet have rebalancing or parameter optimization, though those functions will likely be added as parameterization is stabilized over the next couple months.</p>
+<!-- raw HTML omitted -->
 <p>It may be there is no R package for what I have in mind specifically, in which case maybe I can develop it.</p>
-
 <p>Here is the basic idea.</p>
-
 <p>Moving average crossover system that calculates the following results for each parameter set over 400 trading days.</p>
-
-<p>Permutation #: 1<br />
-Parameter One: 10<br />
-Parameter Two: 30<br />
-Net Profit: 2,000<br />
-Max Drawdown: 3,000<br />
-Profit/Max DD: .6667<br />
-Perfect Profit: 100,000<br />
-Percent Perfect: .02<br />
+<p>Permutation #: 1<br>
+Parameter One: 10<br>
+Parameter Two: 30<br>
+Net Profit: 2,000<br>
+Max Drawdown: 3,000<br>
+Profit/Max DD: .6667<br>
+Perfect Profit: 100,000<br>
+Percent Perfect: .02<br>
 Correlation PP: .3211</p>
-
 <p>And so on with data generation. But this is the start. Then, populate this array with results from each permutation.</p>
-
 <p>Then, one would need to select a reasonable range of permutations and choose between brute force (for reasonable amount of permutations) or genetic algorithm, particle swarm (for unreasonable number of permutations).</p>
-
 <p>Once this array is populated through permutation n, R would choose the one parameter set that exhibited the max or min of one of the elements of the array (eg, Maximum Net Profit). Once that parameter set is chosen, it is applied to the next 100 days of out-of-sample data and a new set of arrays would be populated. This process continues until you run out of data.</p>
-
 <p>The results are then compiled into a new data frame that can be parsed for statistical analysis. ie, periodAverage &lt;- mean(Results$NetProfit)</p>
-
-<p>Many commercial off the shelf programs like TradersStudio, Amibroker and TradeStation (I believe) already do this, but doing this in R yields many advantages including the ability to script a set of statistical analysis, graph them and the like without being confined to a vendor-specific windowing interface. Extracting custom information from vectors is much easier than trying to generate custom views from the other programs as well.
-<hr /></p>
-
-<h4 id="please-consider-adding-any-development-effort-to">Please consider adding any development effort to &lt;&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/09226525229201110236" title="noreply@blogger.com">Brian G. Peterson</a> - <time datetime="2010-04-03T06:59:49.837-05:00">Apr 6, 2010</time></p>
-
-<p>Please consider adding any development effort to <em>quantstrat</em>. This is what quantstrat is designed for, and the next major area of development is parameterization of signals and indicators, followed closely by parameter optimization.
-<hr /></p>
-
-<h4 id="can-you-explain-how-far-along-quantstrat-is-in-the">Can you explain how far along quantstrat is in the&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <time datetime="2010-04-03T08:47:13.509-05:00">Apr 6, 2010</time></p>
-
+<p>Many commercial off the shelf programs like TradersStudio, Amibroker and TradeStation (I believe) already do this, but doing this in R yields many advantages including the ability to script a set of statistical analysis, graph them and the like without being confined to a vendor-specific windowing interface. Extracting custom information from vectors is much easier than trying to generate custom views from the other programs as well.</p>
+<!-- raw HTML omitted -->
+<p>Please consider adding any development effort to <em>quantstrat</em>. This is what quantstrat is designed for, and the next major area of development is parameterization of signals and indicators, followed closely by parameter optimization.</p>
+<!-- raw HTML omitted -->
 <p>Can you explain how far along quantstrat is in the development cycle? R Forge shows version 0.2. Does it become functional at 1.0? And where is the best place to find the package&rsquo;s author and how could I input some ideas on walk-forward.</p>
-
-<p>Thanks!
-<hr /></p>
-
-<h4 id="quantstrat-is-functional-but-still-in-alph"><em>quantstrat</em> is functional, but still in alph&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-04-03T10:12:44.743-05:00">Apr 6, 2010</time></p>
-
+<p>Thanks!</p>
+<!-- raw HTML omitted -->
 <p><em>quantstrat</em> is functional, but still in alpha status (meaning it may undergo some design changes).</p>
-
-<p>You&rsquo;ve been corresponding with two of <em>quantstrat</em>&rsquo;s authors. ;-) The best way to make contributions is to checkout the <a href="http://r-forge.r-project.org/R/?group_id=316"><em>quantstrat</em> source</a> (part of the TradeAnalytics project) from <a href="http://r-forge.r-project.org">r-forge</a> and email your patches to the package maintainer.
-<hr /></p>
-
-<h4 id="thanks-joshua-i-also-look-forward-to-presentation">Thanks Joshua. I also look forward to presentation&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <time datetime="2010-04-03T20:34:07.445-05:00">Apr 0, 2010</time></p>
-
-<p>Thanks Joshua. I also look forward to presentations at R/Finance 2010 in Chicago.
-<hr /></p>
-
-<h4 id="i-suppose-there-isn-t-any-further-documentatio">I suppose there isn&rsquo;t any further documentatio&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01349972242888715865" title="noreply@blogger.com">G$</a> - <time datetime="2010-04-22T10:09:48.302-05:00">Apr 4, 2010</time></p>
-
-<p>I suppose there isn&rsquo;t any further documentation yet, other than the index html page?
-<hr /></p>
-
-<h4 id="g-ttr-has-complete-documentation-what-are-you">G$, TTR has complete documentation. What are you&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-04-22T10:12:14.022-05:00">Apr 4, 2010</time></p>
-
+<p>You&rsquo;ve been corresponding with two of <em>quantstrat</em>&lsquo;s authors. ;-) The best way to make contributions is to checkout the <a href="http://r-forge.r-project.org/R/?group_id=316"><em>quantstrat</em> source</a> (part of the TradeAnalytics project) from <a href="http://r-forge.r-project.org">r-forge</a> and email your patches to the package maintainer.</p>
+<!-- raw HTML omitted -->
+<p>Thanks Joshua. I also look forward to presentations at R/Finance 2010 in Chicago.</p>
+<!-- raw HTML omitted -->
+<p>I suppose there isn&rsquo;t any further documentation yet, other than the index html page?</p>
+<!-- raw HTML omitted -->
 <p>G$,</p>
-
-<p>TTR has complete documentation. What are you referring to?
-<hr /></p>
-
-<h4 id="sorry-i-was-following-the-thread-i-was-referrin">sorry, i was following the thread. I was referrin&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01349972242888715865" title="noreply@blogger.com">G$</a> - <time datetime="2010-04-22T18:39:08.754-05:00">Apr 4, 2010</time></p>
-
-<p>sorry, i was following the thread. I was referring to blotter and quantstrat
-<hr /></p>
-
-<h4 id="the-documentation-for-blotter-and-quantstrat-is-no">The documentation for blotter and quantstrat is no&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-04-22T18:50:18.731-05:00">Apr 4, 2010</time></p>
-
-<p>The documentation for blotter and quantstrat is not complete, but there is a lot more documentation than just the index page.
-<hr /></p>
-
-<h4 id="is-there-any-presentations-from-r-finance-2010-pub">Is there any presentations from R/Finance 2010 pub&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/03083735023765883793" title="noreply@blogger.com">steffi</a> - <time datetime="2010-04-28T15:39:15.520-05:00">Apr 3, 2010</time></p>
-
-<p>Is there any presentations from R/Finance 2010 published to the general public?
-<hr /></p>
-
-<h4 id="steffi-the-presenters-have-recently-been-contact">steffi, The presenters have recently been contact&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-04-28T18:02:07.922-05:00">Apr 3, 2010</time></p>
-
+<p>TTR has complete documentation. What are you referring to?</p>
+<!-- raw HTML omitted -->
+<p>sorry, i was following the thread. I was referring to blotter and quantstrat</p>
+<!-- raw HTML omitted -->
+<p>The documentation for blotter and quantstrat is not complete, but there is a lot more documentation than just the index page.</p>
+<!-- raw HTML omitted -->
+<p>Is there any presentations from R/Finance 2010 published to the general public?</p>
+<!-- raw HTML omitted -->
 <p>steffi,</p>
-
-<p>The presenters have recently been contacted to ask their permission, so (most of) the presentations should be available in the next few weeks. I will post once they&rsquo;re online.
-<hr /></p>
-
-<h4 id="joshua-the-r-forge-tradeanalytics-page-seems-to-b">Joshua, the R-forge TradeAnalytics page seems to b&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/13779819272552611212" title="noreply@blogger.com">Jack</a> - <time datetime="2010-04-28T21:58:08.256-05:00">Apr 4, 2010</time></p>
-
-<p>Joshua, the R-forge TradeAnalytics page seems to be down. Is there anywhere else we can obtain a copy of these packages? Thanks.
-<hr /></p>
-
-<h4 id="jack-all-the-servers-at-the-vienna-university-of">Jack, All the servers at the Vienna University of&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-04-28T22:10:16.278-05:00">Apr 4, 2010</time></p>
-
+<p>The presenters have recently been contacted to ask their permission, so (most of) the presentations should be available in the next few weeks. I will post once they&rsquo;re online.</p>
+<!-- raw HTML omitted -->
+<p>Joshua, the R-forge TradeAnalytics page seems to be down. Is there anywhere else we can obtain a copy of these packages? Thanks.</p>
+<!-- raw HTML omitted -->
 <p>Jack,</p>
-
 <p>All the servers at the Vienna University of Economics and Business were affected by an electrical system failure earlier this week.</p>
-
-<p>It appears r-forge is still experiencing issues. I would expect it to be resolved in a day or two. Send me an email if you would like me to send you the <em>source code</em> (<strong>not</strong> Windows binaries).
-<hr /></p>
-
-<p><a href="https://www.blogger.com/profile/10506652090696681619" title="noreply@blogger.com">threadline</a> - <time datetime="2010-08-01T15:14:40.677-05:00">Aug 0, 2010</time></p>
-
-<p>This comment has been removed by the author.
-<hr /></p>
-
-<h4 id="i-have-just-run-the-demo-files-e-g-macross-in-q">I have just run the demo files (e.g. macross) in q&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/10506652090696681619" title="noreply@blogger.com">threadline</a> - <time datetime="2010-08-01T15:16:34.145-05:00">Aug 0, 2010</time></p>
-
+<p>It appears r-forge is still experiencing issues. I would expect it to be resolved in a day or two. Send me an email if you would like me to send you the <em>source code</em> (<strong>not</strong> Windows binaries).</p>
+<!-- raw HTML omitted -->
+<p>This comment has been removed by the author.</p>
+<!-- raw HTML omitted -->
 <p>I have just run the demo files (e.g. macross) in quantstrat and played a bit with it. I am trying to complete the scripts to perform trade performance analysis and was wondering if anyone knows a function in quantstrat/quantmod to extract P&amp;L by trade.</p>
-
 <p>My intent is to have a trade table from which i can use to apply performance criteria by strategy and then develop an optimising routine for the strategy parameters.</p>
-
-<p>Since this is an important part of an algo trading module I thought it may be part of the package and I may not know where to find it.
-<hr /></p>
-
-<h4 id="in-reply-to-phil-the-function-getportfolio-will">In reply to phil: the function getPortfolio will &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/09226525229201110236" title="noreply@blogger.com">Brian G. Peterson</a> - <time datetime="2010-08-02T11:54:16.733-05:00">Aug 1, 2010</time></p>
-
+<p>Since this is an important part of an algo trading module I thought it may be part of the package and I may not know where to find it.</p>
+<!-- raw HTML omitted -->
 <p>In reply to phil:</p>
-
 <p>the function getPortfolio will return the portfolio object, which includes all the realized and unrealized P&amp;L by transaction and in the portfolio based on how you mark the book.</p>
-
 <p>There are no summary reports yet. They just haven&rsquo;t been more important than creating the framework itself.</p>
-
-<p>If you have suggestions for what should be in a summary report, we&rsquo;d love to hear it. Even better, of course, would be to provide code to the community, which we could include in the approporiate package (with attribution, of course)
-<hr /></p>
-
-<h4 id="many-thank-brian-i-got-this-working-and-will-writ">Many thank Brian. I got this working and will writ&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/10506652090696681619" title="noreply@blogger.com">threadline</a> - <time datetime="2010-08-03T23:58:40.899-05:00">Aug 3, 2010</time></p>
-
+<p>If you have suggestions for what should be in a summary report, we&rsquo;d love to hear it. Even better, of course, would be to provide code to the community, which we could include in the approporiate package (with attribution, of course)</p>
+<!-- raw HTML omitted -->
 <p>Many thank Brian. I got this working and will write the code over the coming weeks. One question though. When I run the demo(macross) and extract the results using getPosition(), this is what comes out.</p>
-
-<p>$AAPL$txn<br />
-Txn.Qty Txn.Price &hellip;<br />
-1999-12-31 0 0.00 &hellip;<br />
+<p>$AAPL$txn<br>
+Txn.Qty Txn.Price &hellip;<br>
+1999-12-31 0 0.00 &hellip;<br>
 2001-06-26 100 23.75 &hellip;</p>
-
 <p>&hellip;</p>
-
 <p>what is the command to extract specific info from the transaction results part of getPosition() into a proper data frame. It doesn&rsquo;t work when I type APPL$Txn.Qty</p>
-
-<p>Phil
-<hr /></p>
-
-<h4 id="phil-try-getportfolio-instead-this-i">phil, Try &lsquo;getPortfolio&rsquo; instead. This i&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/09226525229201110236" title="noreply@blogger.com">Brian G. Peterson</a> - <time datetime="2010-08-05T12:18:29.834-05:00">Aug 4, 2010</time></p>
-
+<p>Phil</p>
+<!-- raw HTML omitted -->
 <p>phil,</p>
-
-<p>Try &lsquo;getPortfolio&rsquo; instead. This is a list which should contain everything you should need. None of these are data.frame, because all of this data is time series data. data.frames have some useful properties for tabular data, but these are time series, and need to be indexed and subset as time series, which is why we use xts for all of it. Basically, each list element is a time series, and should be able to be manipulated as such. Hope this helps&hellip;
-<hr /></p>
-
-<h4 id="brian-see-below-for-more-info-i-may-not-have-be">Brian, See below for more info. I may not have be&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/10506652090696681619" title="noreply@blogger.com">threadline</a> - <time datetime="2010-08-06T16:29:46.868-05:00">Aug 5, 2010</time></p>
-
+<p>Try &lsquo;getPortfolio&rsquo; instead. This is a list which should contain everything you should need. None of these are data.frame, because all of this data is time series data. data.frames have some useful properties for tabular data, but these are time series, and need to be indexed and subset as time series, which is why we use xts for all of it. Basically, each list element is a time series, and should be able to be manipulated as such. Hope this helps&hellip;</p>
+<!-- raw HTML omitted -->
 <p>Brian,</p>
-
 <p>See below for more info. I may not have been specific enough in my query and I am still learning my way through the blotter/xts. The analysis uses JJG as the stock</p>
-
-<p>&gt;is.xts(JJG)<br />
+<p>&gt;is.xts(JJG)<br>
 [1] TRUE</p>
-
-<p>&gt;getTxns(s$name) # gives a subset of getPortfolio() results<br />
-$JJG$txn<br />
-Txn.Qty Txn.Price Txn.Value<br />
-2000-12-31 0 0.00 0<br />
-2009-05-31 1000 45.67 45670<br />
-2009-05-31 1000 45.67 45670<br />
+<p>&gt;getTxns(s$name) # gives a subset of getPortfolio() results<br>
+$JJG$txn<br>
+Txn.Qty Txn.Price Txn.Value<br>
+2000-12-31 0 0.00 0<br>
+2009-05-31 1000 45.67 45670<br>
+2009-05-31 1000 45.67 45670<br>
 2009-05-31 1000 45.67 45670</p>
-
 <p>My intent is to extract those results in a format which I can manipulate to calculate performance measures on which I will write an optimisation routine on the strategy parameters. Where I am struggling is to find the syntax to extract those.</p>
-
-<p>it appears that the results are not xts<br />
-&gt;is.xts(JJG$txn)<br />
+<p>it appears that the results are not xts<br>
+&gt;is.xts(JJG$txn)<br>
 NULL</p>
-
-<p>it&rsquo;s neither a data frame<br />
-&gt;JJG$txn[]<br />
+<p>it&rsquo;s neither a data frame<br>
+&gt;JJG$txn[]<br>
 NULL</p>
-
 <p>i apologize if this may sound basic to some of you but I really want to learn it and spent a considerable amount of time in trial and errors. Help appreciate</p>
-
-<p>Phil
-<hr /></p>
-
-<h4 id="phil-you-haven-t-actually-extracted-anything">Phil, You haven&rsquo;t actually extracted anything&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/09226525229201110236" title="noreply@blogger.com">Brian G. Peterson</a> - <time datetime="2010-08-26T07:48:33.418-05:00">Aug 4, 2010</time></p>
-
+<p>Phil</p>
+<!-- raw HTML omitted -->
 <p>Phil,</p>
-
 <p>You haven&rsquo;t actually extracted anything using the syntax you&rsquo;ve shown here. All you did was display the information to your screen.</p>
-
 <p>You&rsquo;d have to assign it to a variable to manipulate it.</p>
-
 <p>The data for blotter is stored in a &lsquo;list&rsquo;, in &lsquo;slots&rsquo; (any introductory R text should cover this)</p>
-
 <p>getTxns() extracts these from the environment they&rsquo;re stored in, and makes them available to you to assign to a variable.</p>
-
 <p>So, let&rsquo;s use a reproducible example:</p>
-
 <p>require(&lsquo;blotter&rsquo;)</p>
-
 <p>demo(&lsquo;amzn_test&rsquo;)</p>
-
-<p>getTxns(Portfolio=&lsquo;amzn_port&rsquo;,Symbol=&lsquo;amzn&rsquo;)</p>
-
+<p>getTxns(Portfolio='amzn_port&rsquo;,Symbol='amzn&rsquo;)</p>
 <p># the above command will print stuff to your screen</p>
-
-<p>#let&rsquo;s assign the returned data to a variable instead<br />
-amzn_txns&lt;-getTxns(Portfolio=&lsquo;amzn_port&rsquo;,Symbol=&lsquo;amzn&rsquo;)</p>
-
-<p># now we&rsquo;ll check it<br />
+<p>#let&rsquo;s assign the returned data to a variable instead<br>
+amzn_txns&lt;-getTxns(Portfolio='amzn_port&rsquo;,Symbol='amzn&rsquo;)</p>
+<p># now we&rsquo;ll check it<br>
 class(amzn_txns)</p>
-
-<p># gives:<br />
+<p># gives:<br>
 # [1] &ldquo;transactions&rdquo; &ldquo;xts&rdquo; &ldquo;zoo&rdquo;</p>
-
-<p>#and the test phil tried before<br />
+<p>#and the test phil tried before<br>
 is.xts(amzn_txns)</p>
-
-<p># gives:<br />
-#[1] TRUE
-<hr /></p>
+<p># gives:<br>
+#[1] TRUE</p>
+<!-- raw HTML omitted -->
 
 		</div>
 		<footer class="post__footer">
@@ -493,7 +316,20 @@ is.xts(amzn_txns)</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

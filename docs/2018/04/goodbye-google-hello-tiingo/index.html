@@ -22,7 +22,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -91,33 +91,22 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-13T11:14:00-05:00">April 13, 2018</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>First, the bad news:</p>
-
-<p>Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to getSymbols.google() and getFinancials.google(). (<a href="https://github.com/joshuaulrich/quantmod/issues/221">#221</a>)  They are now defunct as of quantmod 0.4-13.</p>
-
+<p>Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to <code>getSymbols.google()</code> and <code>getFinancials.google()</code>. (<a href="https://github.com/joshuaulrich/quantmod/issues/221">#221</a>)  They are now defunct as of quantmod 0.4-13.</p>
 <p>Now, the good news:</p>
-
-<p>Thanks to <a href="https://github.com/SteveBronder">Steve Bronder</a>, getSymbols() can now import data from <a href="https://www.tiingo.com/">Tiingo</a>! (<a href="https://github.com/joshuaulrich/quantmod/issues/220">#220</a>)  This feature is part of quantmod 0.4-13, which is <a href="https://cran.r-project.org/package=quantmod">now on CRAN</a>.  Windows and Mac binaries should be built in a day or two.</p>
-
+<p>Thanks to <a href="https://github.com/SteveBronder">Steve Bronder</a>, <code>getSymbols()</code> can now import data from <a href="https://www.tiingo.com/">Tiingo</a>! (<a href="https://github.com/joshuaulrich/quantmod/issues/220">#220</a>)  This feature is part of quantmod 0.4-13, which is <a href="https://cran.r-project.org/package=quantmod">now on CRAN</a>.  Windows and Mac binaries should be built in a day or two.</p>
 <p><a href="https://www.tiingo.com/">Tiingo</a> is a web service that provides tools and data for financial analysis.  They provide daily price history for US stocks and ADRs, Chinese stocks, Mutual Funds, and ETFs.  There is up to 30+ years of history, including raw prices and split/dividend adjusted prices.</p>
-
 <p>All this data is accessible for free, with reasonable symbol and bandwidth limits.  All you need to get started is a one-time registration for an API token.  You should see your API token just above the beginning of the <a href="https://api.tiingo.com/docs/tiingo/daily#metaData">metadata section</a>, after logging in, of course.  Tiingo has a well-documented <a href="https://api.tiingo.com/docs/tiingo/daily">daily price data API</a> that returns either JSON or CSV.</p>
-
 <p>To get started, install the latest <a href="https://cran.r-project.org/package=quantmod">quantmod from CRAN</a>.  Then you call:</p>
-
-<p>  getSymbols(&ldquo;MSFT&rdquo;, src = &ldquo;tiingo&rdquo;, api.key = &ldquo;[your key]&rdquo;) </p>
-
-<p>Where you replace &ldquo;[your key]&ldquo; with the API key you receive after registration.  You can use setDefaults() to set your API key one time, and use it for all getSymbols.tiingo() calls.</p>
-
-<p>  setDefaults(&ldquo;getSymbols.tiingo&rdquo;, api.key = &ldquo;[your key]&rdquo;)</p>
-
-<p>Other notable changes:</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>   
+</code></pre></div><p>Where you replace <code>&quot;\[your key\]&quot;</code> with the API key you receive after registration.  You can use <code>setDefaults()</code> to set your API key one time, and use it for all <code>getSymbols.tiingo()</code> calls.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>  
+</code></pre></div><p>Other notable changes:</p>
 <ul>
-<li>There is now a getQuote.alphavantage() that allows you to pull real-time quotes from Alpha Vantage.  Thanks to <a href="https://github.com/ethanbsmith">Ethan Smith</a>! (<a href="https://github.com/joshuaulrich/quantmod/issues/213">#213</a>, <a href="https://github.com/joshuaulrich/quantmod/issues/223">#223</a>)</li>
+<li>There is now a <code>getQuote.alphavantage()</code> that allows you to pull real-time quotes from Alpha Vantage.  Thanks to <a href="https://github.com/ethanbsmith">Ethan Smith</a>! (<a href="https://github.com/joshuaulrich/quantmod/issues/213">#213</a>, <a href="https://github.com/joshuaulrich/quantmod/issues/223">#223</a>)</li>
 <li>Speaking of <a href="https://www.alphavantage.co/">Alpha Vantage</a>, getSymbols.av() can now pull weekly and monthly adjusted prices. (<a href="https://github.com/joshuaulrich/quantmod/issues/212">#212</a>)</li>
-<li>The URL in getSymbols.oanda() and getFX() has been updated, so they work again. (<a href="https://github.com/joshuaulrich/quantmod/issues/225">#225</a>)</li>
-<li>getQuote.yahoo() no longer errors when a field has no data for all requested tickers. (<a href="https://github.com/joshuaulrich/quantmod/issues/208">#208</a>)</li>
-<li>saveChart() actually saves charts now (<a href="https://github.com/joshuaulrich/quantmod/issues/154">#154</a>). Brilliant!</li>
+<li>The URL in <code>getSymbols.oanda()</code> and <code>getFX()</code> has been updated, so they work again. (<a href="https://github.com/joshuaulrich/quantmod/issues/225">#225</a>)</li>
+<li><code>getQuote.yahoo()</code> no longer errors when a field has no data for all requested tickers. (<a href="https://github.com/joshuaulrich/quantmod/issues/208">#208</a>)</li>
+<li><code>saveChart()</code> actually saves charts now (<a href="https://github.com/joshuaulrich/quantmod/issues/154">#154</a>). Brilliant!</li>
 </ul>
 
 		</div>
@@ -216,7 +205,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

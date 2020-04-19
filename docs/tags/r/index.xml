@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on FOSS Trading</title>
@@ -18,7 +18,7 @@
       
       <guid>https://www.fosstrading.com/2020/03/quantmod04-16-on-cran/</guid>
       <description>A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;ldquo;SPY;AAPL&amp;rdquo;).</description>
+Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;quot;SPY;AAPL&amp;quot;).</description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
       
       <guid>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors &amp;lsquo;x&amp;rsquo; and &amp;lsquo;xout&amp;rsquo; arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
+ endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
     </item>
     
     <item>
@@ -115,8 +115,7 @@ The tenth annual R/Finance conference for applied finance using R will be held J
       <guid>https://www.fosstrading.com/2018/01/rquantlib-044-for-windows/</guid>
       <description>I&amp;rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&amp;rsquo;s ghrr drat repo.
 Installation is as simple as:
-drat::addRepo(&amp;ldquo;ghrr&amp;rdquo;) # maybe use &amp;lsquo;install.packages(&amp;ldquo;drat&amp;rdquo;)&amp;rsquo; first install.packages(&amp;ldquo;RQuantLib&amp;rdquo;, type=&amp;ldquo;binary&amp;rdquo;)
-I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
+drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp;#34;drat&amp;#34;)&amp;#39; first  install.packages(&amp;#34;RQuantLib&amp;#34;, type=&amp;#34;binary&amp;#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
     </item>
     
     <item>
@@ -135,7 +134,7 @@ Alpha Vantage is a free web service that provides real-time and historical equit
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
-      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series code.
+      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
     </item>
     
@@ -157,9 +156,9 @@ The most noticeable difference is that the adjusted close column is no longer di
       
       <guid>https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
       <description>I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&amp;rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
     </item>
     
     <item>
@@ -168,8 +167,8 @@ There&amp;rsquo;s a handy new argument to getDividends: split.adjust. It allows 
       <pubDate>Tue, 14 Feb 2017 10:49:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2017/02/stack-financials/</guid>
-      <description>code{white-space: pre;} pre:not([class]) { background-color: white; } if (window.hljs &amp;amp;&amp;amp; document.readyState &amp;amp;&amp;amp; document.readyState === &amp;ldquo;complete&amp;rdquo;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } .main-container { max-width: 940px; margin-left: auto; margin-right: auto; } code { color: inherit; background-color: rgba(0, 0, 0, 0.04); } img { max-width:100%; height: auto; }
-A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years.</description>
+      <description>A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&amp;hellip; hence, this post!
+I called the function stackFinancials() because it would use getFinancials() and viewFinancials() to pull financial statement data for multiple symbols, and stack them together in long form.</description>
     </item>
     
     <item>
@@ -213,7 +212,7 @@ We are working on a whole new course series on applied finance using R. This new
       
       <guid>https://www.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</guid>
       <description>You can find registration information and agenda details on the conference website. Or you can go directly to the Cvent registration page.
-Note that registration fees _will increase by 50%_ at the end of early registration on May 6, 2016.
+Note that registration fees will increase by 50% at the end of early registration on May 6, 2016.
 The conference will take place on May 20 and 21, at UIC in Chicago. Building on the success of the previous conferences in 2009-2015, we expect more than 250 attendees from around the world.</description>
     </item>
     
@@ -244,7 +243,7 @@ James Toll provided a patch to the volatility function that uses a zero mean (in
       
       <guid>https://www.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
@@ -369,11 +368,10 @@ The comments below are based on my personal experience. If I don&amp;rsquo;t com
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</guid>
-      <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013
-HI,
-Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks! Hi Vic, The slides and code examples for most of &amp;hellip; Joshua Ulrich - May 3, 2013
+      <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013HI,
+Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks!
 Hi Vic,
-The slides and code examples for most of the presentations will be available on the conference website within a couple weeks after the conference.</description>
+The slides and code examples for most of the presentations will be available on the conference website within a couple weeks after the conference. We can&amp;rsquo;t make all the slides available because some presenter&amp;rsquo;s employers will not allow us to distribute their slides.</description>
     </item>
     
     <item>
@@ -393,9 +391,10 @@ We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan 
       <pubDate>Wed, 12 Sep 2012 10:33:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments/</guid>
-      <description>I&amp;rsquo;ve been trying to sign up since you posted t&amp;hellip; moumouche - Sep 5, 2012
-I&amp;rsquo;ve been trying to sign up since you posted this, to no avail! Do you know if the class is still accepting student? Sorry, I don&amp;rsquo;t know if the class is still acce&amp;hellip; Joshua Ulrich - Sep 5, 2012
-Sorry, I don&amp;rsquo;t know if the class is still accepting students. I just signed up&amp;hellip; and I am 4 weeks late.</description>
+      <description>I&amp;rsquo;ve been trying to sign up since you posted t&amp;hellip; moumouche - Sep 5, 2012I&amp;rsquo;ve been trying to sign up since you posted this, to no avail! Do you know if the class is still accepting student?
+Sorry, I don&amp;rsquo;t know if the class is still accepting students.
+I just signed up&amp;hellip; and I am 4 weeks late.. Thanks for the link Josh. I&amp;rsquo;m loving it :)
+This comment has been removed by a blog administrator.</description>
     </item>
     
     <item>
@@ -414,8 +413,7 @@ Join me in getting a good refresher on basic statistics, simulation and bootstra
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
-      <description> Wow!!!! Great work RMW. jryan - Aug 3, 2012
-Wow!!!! Great work RMW. </description>
+      <description>Wow!!!! Great work RMW. jryan - Aug 3, 2012Wow!!!! Great work RMW.</description>
     </item>
     
     <item>
@@ -436,8 +434,7 @@ Please try xtsExtra::plot.xts and let us know what you think. A sample of the e
       <guid>https://www.fosstrading.com/2012/06/book-review-parallel-r/</guid>
       <description>You have a problem: R is single-threaded, but your code would be faster if it could simultaneously run on more than one core. You have access to a cluster and/or your computer has multiple cores. Parallel R, by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.
 The book describes 6 approaches to distributed computing. Thoughts on each approach follow:
-1) snow
- The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss MPI clusters, and socket clusters of several machines).</description>
+ snow   The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss MPI clusters, and socket clusters of several machines).</description>
     </item>
     
     <item>
@@ -468,9 +465,8 @@ Building on the success of the three previous conferences in 2009, 2010, and 201
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
-      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012
-This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code.</description>
+      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
+If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).</description>
     </item>
     
     <item>
@@ -503,8 +499,8 @@ The fourth annual R/Finance conference for applied finance using R will be held 
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</guid>
-      <description>Should we consider it good that rules are independ&amp;hellip; [Anonymous]( &amp;ldquo;noreply@blogger.com&amp;rdquo;) - Aug 1, 2011
-Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly. @crasshopper: I think it would be more appropriate&amp;hellip; Brian G. Peterson - Sep 4, 2011</description>
+      <description>Should we consider it good that rules are independ&amp;hellip; Anonymous - Aug 1, 2011Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly.
+@crasshopper: I think it would be more appropriate to say that rules are ipart of the model, and that models are independent of the instruments that they will be applied to.</description>
     </item>
     
     <item>
@@ -554,11 +550,10 @@ This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unne
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</guid>
-      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011
-Thanks for the tutorial.
+      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
 However, when I ran it, I got this error:
-Error: could not find function &amp;ldquo;DVI&amp;rdquo; I can&amp;rsquo;t seem to get the DVI indicator out of T&amp;hellip; Unknown - Mar 6, 2011
-I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.</description>
+Error: could not find function &amp;ldquo;DVI&amp;rdquo;
+I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.packages(&amp;lsquo;TTR&amp;rsquo;,dependencies=TRUE) and from r-forge, using install.packages(&amp;ldquo;TTR&amp;rdquo;,repos=&amp;quot;http://r-forge.r-project.org&amp;rdquo;). In both cases it installs fine, and other indicators work, but there&amp;rsquo;s no DVI indicator.</description>
     </item>
     
     <item>
@@ -578,10 +573,10 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</guid>
-      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011
-Good summary.
-This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++. Thanks for the comment Rocko - I think what you&amp;hellip; Damian - Mar 4, 2011
-Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!</description>
+      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
+This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
+Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
+I use the Sharpe Ratio to judge the effectivness of my investments.</description>
     </item>
     
     <item>
@@ -600,11 +595,10 @@ Let me start by saying that I’m not an expert in backtesting in Excel – ther
       <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</guid>
-      <description> Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011
-Hi!
-Will there be a video of it posted online? Hi Luka, There will not be videos of the presenta&amp;hellip; Joshua Ulrich - Mar 2, 2011
+      <description>Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011Hi!
+Will there be a video of it posted online?
 Hi Luka,
-There will not be videos of the presentations, but the presentation slides will be available online after the conference. </description>
+There will not be videos of the presentations, but the presentation slides will be available online after the conference.</description>
     </item>
     
     <item>
@@ -624,11 +618,11 @@ This year we are excited to have longer tutorial sessions and an optional full-d
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</guid>
-      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011
-Hi Joshua,
+      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011Hi Joshua,
 Thanks for excellent advice. &amp;lsquo;Keep at it till you figure it out&amp;rsquo;. Indeed.
 It would be great if you could offer your thoughts on how to move to next stage of R viz. building packages. How and when did you make that transition? What are the good resources, sites, tools toward that?
-Thanks a lot,</description>
+Thanks a lot,
+Ravi</description>
     </item>
     
     <item>
@@ -647,8 +641,7 @@ I made my voyage from Excel to R more than 5 years ago and learned mostly by tri
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</guid>
-      <description> Looking forward to the posts! Kristianson - Feb 5, 2011
-Looking forward to the posts! </description>
+      <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
     </item>
     
     <item>
@@ -669,7 +662,7 @@ The three-post series will show you:
       
       <guid>https://www.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</guid>
       <description>The 2011 R/Finance conference has an updated call for papers. Dirk Eddelbuettel announced it to the R-SIG-Finance mailing list. I&amp;rsquo;ve reproduced his email in its entirety below. Let me know if you plan on attending.
-Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money
+ Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money
 Dear R / Finance community,
 The preparations for R/Finance 2011 are progressing, and due to favourable responses from the different sponsors we contacted, we are now able to offer</description>
     </item>
@@ -680,8 +673,8 @@ The preparations for R/Finance 2011 are progressing, and due to favourable respo
       <pubDate>Tue, 14 Dec 2010 22:35:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2010/12/why-use-r-comments/</guid>
-      <description>I really like this post because you show a progres&amp;hellip; Phil Rack - Dec 3, 2010
-I really like this post because you show a progression of stat tools you have used. I think that&amp;rsquo;s important for those who are considering using a new product. Everyone wants to see some common ground and how they&amp;rsquo;ve evolved their analytics stack over time. One thing I can&amp;rsquo;t seem to figure out in R is h&amp;hellip; Unknown - Dec 3, 2010</description>
+      <description>I really like this post because you show a progres&amp;hellip; Phil Rack - Dec 3, 2010I really like this post because you show a progression of stat tools you have used. I think that&amp;rsquo;s important for those who are considering using a new product. Everyone wants to see some common ground and how they&amp;rsquo;ve evolved their analytics stack over time.
+One thing I can&amp;rsquo;t seem to figure out in R is how you would use multiple timeframes.</description>
     </item>
     
     <item>
@@ -701,8 +694,7 @@ I was introduced to R while I was working as a Research Analyst at the Federal R
       <pubDate>Tue, 07 Dec 2010 17:20:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments/</guid>
-      <description>Hi Thanks for posting your guidelines, I have trie&amp;hellip; Unknown - Mar 0, 2011
-Hi Thanks for posting your guidelines, I have tried it on a 64bit machine, it seems to be working upto step 11. I&amp;rsquo;m not sure where I am supposed to be entering these last commands. I entered &amp;ldquo;set QUANTLIB_ROOT=c:/R/cpp/QuantLibBuild&amp;rdquo; via a dos prompt and created the environment varable QUANTLIB_ROOT. The last command &amp;ldquo;R CMD INSTALL RQuantLib_0.</description>
+      <description>Hi Thanks for posting your guidelines, I have trie&amp;hellip; Unknown - Mar 0, 2011Hi Thanks for posting your guidelines, I have tried it on a 64bit machine, it seems to be working upto step 11. I&amp;rsquo;m not sure where I am supposed to be entering these last commands. I entered &amp;ldquo;set QUANTLIB_ROOT=c:/R/cpp/QuantLibBuild&amp;rdquo; via a dos prompt and created the environment varable QUANTLIB_ROOT. The last command &amp;ldquo;R CMD INSTALL RQuantLib_0.3.4.tar.gz&amp;rdquo; doesn&amp;rsquo;t seem to be recognised anywhere.</description>
     </item>
     
     <item>
@@ -712,7 +704,7 @@ Hi Thanks for posting your guidelines, I have tried it on a 64bit machine, it se
       
       <guid>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</guid>
       <description>Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
-Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
+ Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
 Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3.</description>
     </item>
     
@@ -722,9 +714,10 @@ Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry A
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
-      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010
-Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance Jeff: Awesome work! Hope that you become a regula&amp;hellip; smc - May 1, 2010
-Jeff: Awesome work! Hope that you become a regular contributor!</description>
+      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
+Jeff: Awesome work! Hope that you become a regular contributor!
+Jeff,
+Great article. I used it to set up and test my IB link.</description>
     </item>
     
     <item>

@@ -11,7 +11,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.fosstrading.com/tags/releases/" />
-
 <meta property="og:updated_time" content="2020-03-10T07:23:00-05:00" />
 
 	
@@ -20,7 +19,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/tags/releases/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -112,9 +111,9 @@ The most noticeable difference is that the adjusted close column is no longer di
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128).
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -159,7 +158,7 @@ James Toll provided a patch to the volatility function that uses a zero mean (in
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).
+This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -219,9 +218,8 @@ There are some exciting new features, including a rolling single-factor model fu
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-03-04T20:33:00-06:00">March 04, 2012</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		This is great work by Josh. If anyone would like &hellip; Unknown - Mar 2, 2012
-This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &lsquo;sandbox&rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&rsquo;t show any speed improvements), here is some minimal code.
+		This is great work by Josh. If anyone would like &hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &lsquo;sandbox&rsquo; directory in the package source, also provided by Josh.
+If you want to just see it working (though this won&rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -301,7 +299,20 @@ We were able to add and test the functionality within a week. The latest revisi
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

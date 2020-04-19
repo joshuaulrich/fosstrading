@@ -21,7 +21,7 @@ A couple notes before moving to the code:" />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,120 +90,97 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-05-01T20:58:00-05:00">May 01, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Though it&rsquo;s more than two weeks later, here&rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with <a href="http://www.r-project.org/">R</a>. You can find the first post <a href="http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html">here</a>.</p>
-
 <p>The <a href="http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html">first post</a> replicated this <a href="http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/">simple RSI(2) strategy</a> from the <a href="http://marketsci.wordpress.com/">MarketSci Blog</a>. This second post will demonstrate how to replicate <a href="http://marketsci.wordpress.com/2008/12/14/trading-strategy-scaling-inout-of-rsi2/">this strategy</a> that scales in/out of RSI(2).</p>
-
 <p>A couple notes before moving to the code:</p>
-
 <ol>
-<li><p>The rsi2pos() function isn&rsquo;t <em>necessary</em>, but it provides an example of how to define a function. Plus, it enables us to test several ideas with much greater speed and flexibility.</p></li>
-
-<li><p>The ifelse() function works on entire vectors at once, avoiding costly loops (loops are costly in R because it&rsquo;s an interpreted language). Since we can potentially modify the entire &lsquo;size&rsquo; vector, we must be mindful of the order of the tests.</p></li>
+<li>
+<p>The rsi2pos() function isn&rsquo;t <em>necessary</em>, but it provides an example of how to define a function. Plus, it enables us to test several ideas with much greater speed and flexibility.</p>
+</li>
+<li>
+<p>The ifelse() function works on entire vectors at once, avoiding costly loops (loops are costly in R because it&rsquo;s an interpreted language). Since we can potentially modify the entire &lsquo;size&rsquo; vector, we must be mindful of the order of the tests.</p>
+</li>
 </ol>
-
 <p>On to the code!</p>
-
 <blockquote>
-<p># Attach the quantmod and TTR packages.<br />
-# You can install packages via:<br />
-# install.packages(c(&ldquo;quantmod&rdquo;,&ldquo;TTR&rdquo;))<br />
-library(quantmod)<br />
+<p># Attach the quantmod and TTR packages.<br>
+# You can install packages via:<br>
+# install.packages(c(&ldquo;quantmod&rdquo;,&ldquo;TTR&rdquo;))<br>
+library(quantmod)<br>
 library(TTR)</p>
-
-<p># Pull S&amp;P500 index data from Yahoo! Finance<br />
-getSymbols(&ldquo;^GSPC&rdquo;, from=&ldquo;2000-01-01&rdquo;, to=&ldquo;2008-12-07&rdquo;)</p>
-
-<p># Calculate the RSI indicator<br />
+<p># Pull S&amp;P500 index data from Yahoo! Finance<br>
+getSymbols(&ldquo;^GSPC&rdquo;, from=&quot;2000-01-01&rdquo;, to=&quot;2008-12-07&rdquo;)</p>
+<p># Calculate the RSI indicator<br>
 rsi &lt;- RSI(Cl(GSPC),2)</p>
-
-<p># Calculate Close-to-Close returns<br />
-# (this assumes we open/close our positions<br />
-# at each day&rsquo;s close)<br />
-ret &lt;- ROC(Cl(GSPC))<br />
+<p># Calculate Close-to-Close returns<br>
+# (this assumes we open/close our positions<br>
+# at each day&rsquo;s close)<br>
+ret &lt;- ROC(Cl(GSPC))<br>
 ret[1] &lt;- 0</p>
-
-<p># Define our position-sizing function<br />
-rsi2pos &lt;- function(ind, indIncr=5, posIncr=0.25) {<br />
-# Inputs:<br />
-# ind : indicator vector<br />
-# indIncr : indicator value increments/breakpoints<br />
+<p># Define our position-sizing function<br>
+rsi2pos &lt;- function(ind, indIncr=5, posIncr=0.25) {<br>
+# Inputs:<br>
+# ind : indicator vector<br>
+# indIncr : indicator value increments/breakpoints<br>
 # posIncr : position value increments/breakpoints</p>
-
-<p># Initialize result vector<br />
+<p># Initialize result vector<br>
 size &lt;- rep(0,NROW(ind))</p>
-
-<p># Long<br />
-size &lt;- ifelse(ind &lt; 4*indIncr, (1-posIncr*3), size)<br />
-size &lt;- ifelse(ind &lt; 3*indIncr, (1-posIncr*2), size)<br />
-size &lt;- ifelse(ind &lt; 2*indIncr, (1-posIncr*1), size)<br />
+<p># Long<br>
+size &lt;- ifelse(ind &lt; 4*indIncr, (1-posIncr*3), size)<br>
+size &lt;- ifelse(ind &lt; 3*indIncr, (1-posIncr*2), size)<br>
+size &lt;- ifelse(ind &lt; 2*indIncr, (1-posIncr*1), size)<br>
 size &lt;- ifelse(ind &lt; 1*indIncr, (1-posIncr*0), size)</p>
-
-<p># Short<br />
-size &lt;- ifelse(ind &gt; 100-4*indIncr, 3*posIncr-1, size)<br />
-size &lt;- ifelse(ind &gt; 100-3*indIncr, 2*posIncr-1, size)<br />
-size &lt;- ifelse(ind &gt; 100-2*indIncr, 1*posIncr-1, size)<br />
+<p># Short<br>
+size &lt;- ifelse(ind &gt; 100-4*indIncr, 3*posIncr-1, size)<br>
+size &lt;- ifelse(ind &gt; 100-3*indIncr, 2*posIncr-1, size)<br>
+size &lt;- ifelse(ind &gt; 100-2*indIncr, 1*posIncr-1, size)<br>
 size &lt;- ifelse(ind &gt; 100-1*indIncr, 0*posIncr-1, size)</p>
-
-<p># Today&rsquo;s position (&lsquo;size&rsquo;) is based on today&rsquo;s<br />
-# indicator, but we need to apply today&rsquo;s position<br />
-# to the Close-to-Close return at tomorrow&rsquo;s close.<br />
+<p># Today&rsquo;s position (&lsquo;size&rsquo;) is based on today&rsquo;s<br>
+# indicator, but we need to apply today&rsquo;s position<br>
+# to the Close-to-Close return at tomorrow&rsquo;s close.<br>
 size &lt;- lag(size)</p>
-
-<p># Replace missing signals with no position<br />
-# (generally just at beginning of series)<br />
+<p># Replace missing signals with no position<br>
+# (generally just at beginning of series)<br>
 size[is.na(size)] &lt;- 0</p>
-
-<p># Return results<br />
-return(size)<br />
+<p># Return results<br>
+return(size)<br>
 }</p>
-
-<p># Calculate signals using the &lsquo;rsi2pos()&rsquo; function<br />
+<p># Calculate signals using the &lsquo;rsi2pos()&rsquo; function<br>
 sig &lt;- rsi2pos(rsi, 5, 0.25)</p>
-
-<p># Break out the long (up) and short (dn) signals<br />
-sigup &lt;- ifelse(sig &gt; 0, sig, 0)<br />
+<p># Break out the long (up) and short (dn) signals<br>
+sigup &lt;- ifelse(sig &gt; 0, sig, 0)<br>
 sigdn &lt;- ifelse(sig &lt; 0, sig, 0)</p>
-
-<p># Calculate equity curves<br />
-eq_up &lt;- exp(cumsum(ret*sigup))<br />
-eq_dn &lt;- exp(cumsum(ret*sigdn))<br />
+<p># Calculate equity curves<br>
+eq_up &lt;- exp(cumsum(ret*sigup))<br>
+eq_dn &lt;- exp(cumsum(ret*sigdn))<br>
 eq_all &lt;- exp(cumsum(ret*sig))</p>
-
-<p># Replicate Michael&rsquo;s nice chart (again)<br />
-png(filename=&ldquo;20090430_rsi2_replication.png&rdquo;)<br />
-plot.zoo( cbind(eq_up, eq_dn), plot.type=&ldquo;single&rdquo;,<br />
-ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br />
-main=&ldquo;RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07&rdquo; )<br />
+<p># Replicate Michael&rsquo;s nice chart (again)<br>
+png(filename=&quot;20090430_rsi2_replication.png&rdquo;)<br>
+plot.zoo( cbind(eq_up, eq_dn), plot.type=&quot;single&rdquo;,<br>
+ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br>
+main=&quot;RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07&rdquo; )<br>
 dev.off()</p>
 </blockquote>
-
-<p><a href="http://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s1600-h/20090501_rsi2_replication.png"><img src="https://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s400/20090501_rsi2_replication.png" alt="" /></a></p>
-
+<p><a href="http://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s1600-h/20090501_rsi2_replication.png"><img src="https://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s400/20090501_rsi2_replication.png" alt=""></a></p>
 <blockquote>
-<p># Calculate signals using the &lsquo;rsi2pos()&rsquo; function<br />
-# with new values<br />
+<p># Calculate signals using the &lsquo;rsi2pos()&rsquo; function<br>
+# with new values<br>
 sig &lt;- rsi2pos(rsi, 10, 0.3)</p>
-
-<p># Break out the long (up) and short (dn) signals<br />
-sigup &lt;- ifelse(sig &gt; 0, sig, 0)<br />
+<p># Break out the long (up) and short (dn) signals<br>
+sigup &lt;- ifelse(sig &gt; 0, sig, 0)<br>
 sigdn &lt;- ifelse(sig &lt; 0, sig, 0)</p>
-
-<p># Calculate equity curves<br />
-eq_up &lt;- exp(cumsum(ret*sigup))<br />
-eq_dn &lt;- exp(cumsum(ret*sigdn))<br />
+<p># Calculate equity curves<br>
+eq_up &lt;- exp(cumsum(ret*sigup))<br>
+eq_dn &lt;- exp(cumsum(ret*sigdn))<br>
 eq_all &lt;- exp(cumsum(ret*sig))</p>
-
-<p># Re-plot equity curves using updated values<br />
-png(filename=&ldquo;20090501_rsi2_updated.png&rdquo;)<br />
-plot.zoo( cbind(eq_up, eq_dn), plot.type=&ldquo;single&rdquo;,<br />
-ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br />
-main=&ldquo;Updated RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07&rdquo; )<br />
+<p># Re-plot equity curves using updated values<br>
+png(filename=&quot;20090501_rsi2_updated.png&rdquo;)<br>
+plot.zoo( cbind(eq_up, eq_dn), plot.type=&quot;single&rdquo;,<br>
+ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br>
+main=&quot;Updated RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07&rdquo; )<br>
 dev.off()</p>
 </blockquote>
-
-<p><a href="http://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s1600-h/20090501_rsi2_updated.png"><img src="https://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s400/20090501_rsi2_updated.png" alt="" /></a><br />
+<p><a href="http://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s1600-h/20090501_rsi2_updated.png"><img src="https://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s400/20090501_rsi2_updated.png" alt=""></a><br>
 Visual inspection of the charts seems to indicate the updated RSI(2) strategy has slightly higher returns, but more volatility and larger drawdowns.</p>
-
 <p>The <a href="http://cran.r-project.org/web/packages/PerformanceAnalytics/index.html">PerformanceAnalytics</a> package can evaluate the volatility, drawdowns, and related metrics for investing and trading strategies.  We&rsquo;ll use it in the next post to <a href="http://blog.fosstrading.com/2009/06/rsi2-evaluation.html">evaluate RSI(2)</a>.</p>
 
 		</div>
@@ -299,7 +276,20 @@ Visual inspection of the charts seems to indicate the updated RSI(2) strategy ha
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

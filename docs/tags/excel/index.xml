@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Excel on FOSS Trading</title>
@@ -17,11 +17,10 @@
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</guid>
-      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011
-Thanks for the tutorial.
+      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
 However, when I ran it, I got this error:
-Error: could not find function &amp;ldquo;DVI&amp;rdquo; I can&amp;rsquo;t seem to get the DVI indicator out of T&amp;hellip; Unknown - Mar 6, 2011
-I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.</description>
+Error: could not find function &amp;ldquo;DVI&amp;rdquo;
+I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.packages(&amp;lsquo;TTR&amp;rsquo;,dependencies=TRUE) and from r-forge, using install.packages(&amp;ldquo;TTR&amp;rdquo;,repos=&amp;quot;http://r-forge.r-project.org&amp;rdquo;). In both cases it installs fine, and other indicators work, but there&amp;rsquo;s no DVI indicator.</description>
     </item>
     
     <item>
@@ -41,10 +40,10 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</guid>
-      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011
-Good summary.
-This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++. Thanks for the comment Rocko - I think what you&amp;hellip; Damian - Mar 4, 2011
-Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!</description>
+      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
+This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
+Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
+I use the Sharpe Ratio to judge the effectivness of my investments.</description>
     </item>
     
     <item>
@@ -63,11 +62,11 @@ Let me start by saying that I’m not an expert in backtesting in Excel – ther
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</guid>
-      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011
-Hi Joshua,
+      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011Hi Joshua,
 Thanks for excellent advice. &amp;lsquo;Keep at it till you figure it out&amp;rsquo;. Indeed.
 It would be great if you could offer your thoughts on how to move to next stage of R viz. building packages. How and when did you make that transition? What are the good resources, sites, tools toward that?
-Thanks a lot,</description>
+Thanks a lot,
+Ravi</description>
     </item>
     
     <item>
@@ -86,8 +85,7 @@ I made my voyage from Excel to R more than 5 years ago and learned mostly by tri
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</guid>
-      <description> Looking forward to the posts! Kristianson - Feb 5, 2011
-Looking forward to the posts! </description>
+      <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
     </item>
     
     <item>

@@ -20,7 +20,7 @@ Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo a
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,23 +89,14 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-03-10T12:09:00-05:00">March 10, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I pushed <a href="http://cran.r-project.org/web/packages/quantmod/">quantmod 0.4-4 to CRAN</a> this weekend.  It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.</p>
-
 <p>Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively.  I didn’t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality.  Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you’ve written.</p>
-
 <p>The getSymbols.yahooj function is a major enhancement provided by <a href="http://morannon.org/">Wouter Thielen</a>.  It allows quantmod users to pull stock data from Yahoo Finance Japan. </p>
-
 <p>Japanese ticker symbols usually start with a number and it is cumbersome to use variable names that start with a number in the R environment, so the string &ldquo;YJ&rdquo; will be prepended to each of the Symbols.  I recommend using setSymbolLookup to prepend the ticker symbols with “YJ” yourself, so you can just use the main getSymbols function.</p>
-
 <p>For example, if you want to pull Sony data, you would run:</p>
-
 <p>require(quantmod)</p>
-
-<p>setSymbolLookup(YJ6758.T=&lsquo;yahooj&rsquo;)</p>
-
+<p>setSymbolLookup(YJ6758.T='yahooj&rsquo;)</p>
 <p>getSymbols(&lsquo;YJ6758.T&rsquo;)</p>
-
 <p>The full list of supported data sources for quantmod is now: Yahoo Finance-US, Yahoo Finance-Japan, Google Finance, csv, RData (including rds and rda), FRED, SQLite, MySQL, and Oanda. </p>
-
 <p>Contributions to add support for additional data sources are welcomed.  The existing getSymbols functions are good templates to start from.</p>
 
 		</div>
@@ -204,7 +195,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

@@ -20,7 +20,7 @@ Alpha Vantage is a free web service that provides real-time and historical equit
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -88,21 +88,14 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-06T16:12:00-05:00">October 06, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Thanks to <a href="http://quantdevel.com/public/">Paul Teetor</a>, getSymbols() can now import data from <a href="https://www.alphavantage.co/">Alpha Vantage</a>!  This feature is part of the <a href="http://www.quantmod.com/">quantmod</a> 0.4-11 release, and provides another <a href="http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html">another data source</a> to avoid any <a href="http://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html">Yahoo Finance API changes</a>*.</p>
-
+			<p>Thanks to <a href="http://quantdevel.com/public/">Paul Teetor</a>, <code>getSymbols()</code> can now import data from <a href="https://www.alphavantage.co/">Alpha Vantage</a>!  This feature is part of the <a href="http://www.quantmod.com/">quantmod</a> 0.4-11 release, and provides another <a href="http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html">another data source</a> to avoid any <a href="http://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html">Yahoo Finance API changes</a>*.</p>
 <p>Alpha Vantage is a free web service that provides real-time and historical equity data.  They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data. They also provide near real-time price bars at a resolution of 1 minute or more, for up to 10 recent days.</p>
-
-<p>All you need to get started is a <a href="https://www.alphavantage.co/support/#api-key">one-time registration for an API key</a>.  Alpha Vantage has <a href="https://www.alphavantage.co/documentation/">clean, documented, public API</a> that returns either JSON-encoded data or a CSV file.  The arguments to getSymbols.av() closely follow the native API, so be sure to use their documentation!</p>
-
+<p>All you need to get started is a <a href="https://www.alphavantage.co/support/#api-key">one-time registration for an API key</a>.  Alpha Vantage has <a href="https://www.alphavantage.co/documentation/">clean, documented, public API</a> that returns either JSON-encoded data or a CSV file.  The arguments to <code>getSymbols.av()</code> closely follow the native API, so be sure to use their documentation!</p>
 <p>To get started, install the latest <a href="https://cran.r-project.org/package=quantmod">quantmod from CRAN</a>.  Then you call:</p>
-
-<p>  getSymbols(&ldquo;MSFT&rdquo;, src = &ldquo;av&rdquo;, api.key = &ldquo;[your key]&rdquo;) </p>
-
-<p>Where you replace &ldquo;[your key&rdquo;] with the API key you receive after registration.  You can use setDefaults() to set your API key one time, and use it for all getSymbols.av() calls.</p>
-
-<p>  setDefaults(&ldquo;getSymbols.av&rdquo;, api.key = &ldquo;[your key]&rdquo;)</p>
-
-<p>*Speaking of API changes, this release also includes a fix for a Yahoo Finance change (<a href="https://github.com/joshuaulrich/quantmod/issues/174">#174</a>).</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span> 
+</code></pre></div><p>Where you replace <code>&quot;\[your key&quot;\]</code> with the API key you receive after registration.  You can use <code>setDefaults()</code> to set your API key one time, and use it for all <code>getSymbols.av()</code> calls.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>
+</code></pre></div><p>* Speaking of API changes, this release also includes a fix for a Yahoo Finance change (<a href="https://github.com/joshuaulrich/quantmod/issues/174">#174</a>).</p>
 
 		</div>
 		<footer class="post__footer">
@@ -200,7 +193,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

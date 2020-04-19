@@ -9,9 +9,8 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="David Varadi&#39;s RSI(2) alternative" />
 <meta property="og:description" content="Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- Varadi’s RSI(2) Alternative: The DV(2) Alternative: The DV(2)&ldquo;&rdquo;) RSI(2) vs. DV(2) vs. DV(2)&ldquo;&rdquo;) Last Couple of Notes on DV(2)&rdquo;&ldquo;)  Here&rsquo;s the R code:
-  DV &lt;- function(HLC, n=2, bounded=FALSE) {
-# &ldquo;HLC&rdquo; is an _xts_ object with &ldquo;High&rdquo;, &ldquo;Low&rdquo;, and &ldquo;Close&rdquo;" />
+ [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &ldquo;Permanent Link to &ldquo;Varadi’s RSI(2) Alternative: The DV(2)&quot;&quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &ldquo;Permanent Link to &ldquo;RSI(2) vs. DV(2)&quot;&quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &ldquo;Permanent Link to &ldquo;Last Couple of Notes on DV(2)&quot;&quot;)  Here&rsquo;s the R code:
+  DV &lt;- function(HLC, n=2, bounded=FALSE) {" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/" />
 <meta property="article:published_time" content="2009-07-19T08:38:00-05:00" />
@@ -22,7 +21,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -91,52 +90,40 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-19T08:38:00-05:00">July 19, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Here&rsquo;s a quick R implementation of <a href="http://cssanalytics.wordpress.com/">David Varadi&rsquo;s</a> alternative to the RSI(2).  Michael Stokes over at the <a href="http://marketsci.wordpress.com/">MarketSci</a> blog has three great posts exploring this indicator:</p>
-
 <ol>
-<li><a href="http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &quot;Permanent Link to &quot;Varadi’s RSI(2">Varadi’s RSI(2) Alternative: The DV(2)</a> Alternative: The DV(2)&ldquo;&rdquo;)</li>
-<li><a href="http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &quot;Permanent Link to &quot;RSI(2">RSI(2) vs. DV(2)</a> vs. DV(2)&ldquo;&rdquo;)</li>
-<li><a href="http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &quot;Permanent Link to &quot;Last Couple of Notes on DV(2">Last Couple of Notes on DV(2)</a>&rdquo;&ldquo;)</li>
+<li>[Varadi’s RSI(2) Alternative: The DV(2)](<a href="http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/">http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/</a> &ldquo;Permanent Link to &ldquo;Varadi’s RSI(2) Alternative: The DV(2)&quot;&quot;)</li>
+<li>[RSI(2) vs. DV(2)](<a href="http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/">http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/</a> &ldquo;Permanent Link to &ldquo;RSI(2) vs. DV(2)&quot;&quot;)</li>
+<li>[Last Couple of Notes on DV(2)](<a href="http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/">http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/</a> &ldquo;Permanent Link to &ldquo;Last Couple of Notes on DV(2)&quot;&quot;)</li>
 </ol>
-
 <p>Here&rsquo;s the R code:</p>
-
 <blockquote>
-<p> DV &lt;- function(HLC, n=2, bounded=FALSE) {<br />
-  # &ldquo;HLC&rdquo; is an _xts_ object with &ldquo;High&rdquo;, &ldquo;Low&rdquo;, and &ldquo;Close&rdquo;<br />
+<p> DV &lt;- function(HLC, n=2, bounded=FALSE) {<br>
+  # &ldquo;HLC&rdquo; is an _xts_ object with &ldquo;High&rdquo;, &ldquo;Low&rdquo;, and &ldquo;Close&rdquo;<br>
   # columns, in that order.</p>
-
-<p>  # This is David Varadi&rsquo;s alternative to the RSI(2).  Calculations<br />
-  # taken from the marketsci blog &ndash; <a href="http://marketsci.wordpress.com">http://marketsci.wordpress.com</a><br />
+<p>  # This is David Varadi&rsquo;s alternative to the RSI(2).  Calculations<br>
+  # taken from the marketsci blog &ndash; <a href="http://marketsci.wordpress.com">http://marketsci.wordpress.com</a><br>
   # Author of this implementation: Joshua Ulrich</p>
-
-<p>  # Calculate each day&rsquo;s high/low mean<br />
+<p>  # Calculate each day&rsquo;s high/low mean<br>
   hlMean &lt;- rowMeans( HLC[,-3] )</p>
-
-<p>  # Calculate the running Mean of the Close divided by the<br />
-  # high/low mean, then subtract 1.<br />
+<p>  # Calculate the running Mean of the Close divided by the<br>
+  # high/low mean, then subtract 1.<br>
   res &lt;- runMean( HLC[,3] / hlMean, n ) - 1</p>
-
-<p>  # If we want the bounded DV&hellip;<br />
-  if(bounded) {<br />
-    # Set the range to calculated the bounded DV<br />
+<p>  # If we want the bounded DV&hellip;<br>
+  if(bounded) {<br>
+    # Set the range to calculated the bounded DV<br>
     rng &lt;- 252:NROW(res)</p>
-
-<p>    # Grab the index of the unbounded results, so we can convert<br />
-    # the bounded results back to an xts object.<br />
+<p>    # Grab the index of the unbounded results, so we can convert<br>
+    # the bounded results back to an xts object.<br>
     indx &lt;- index(res)</p>
-
-<p>    # A simple percent rank function hack<br />
+<p>    # A simple percent rank function hack<br>
     pctRank &lt;- function(x,i) match(x[i], sort(coredata(x[(i-251):i])))</p>
-
-<p>    # Apply the percent rank function to the coredata of our results<br />
+<p>    # Apply the percent rank function to the coredata of our results<br>
     res &lt;- sapply(rng, function(i) pctRank(res, i) / 252)</p>
-
-<p>    # Convert the bounded results to xts<br />
-    res &lt;- xts(c(rep(NA,251),res), indx)<br />
+<p>    # Convert the bounded results to xts<br>
+    res &lt;- xts(c(rep(NA,251),res), indx)<br>
   }</p>
-
-<p>  # Return results<br />
-  return(res)<br />
+<p>  # Return results<br>
+  return(res)<br>
 }</p>
 </blockquote>
 
@@ -230,7 +217,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

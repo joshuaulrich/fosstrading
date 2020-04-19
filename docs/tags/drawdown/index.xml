@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Drawdown on FOSS Trading</title>
@@ -17,8 +17,7 @@
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</guid>
-      <description>Thanks for another great post Josh. I&amp;rsquo;ve looke&amp;hellip; Ralph Vince - Jun 2, 2010
-Thanks for another great post Josh. I&amp;rsquo;ve looked at this at length. Remember &amp;ndash; the way you are calculating probability of drawdown, RD, is on a sample and replacement basis where the probabilities associated at each T to the horizon are unchanged. Thus, if, say, a large loss is seen at time T = t, the probablity of seeing that same large loss, in succession (i.</description>
+      <description>Thanks for another great post Josh. I&amp;rsquo;ve looke&amp;hellip; Ralph Vince - Jun 2, 2010Thanks for another great post Josh. I&amp;rsquo;ve looked at this at length. Remember &amp;ndash; the way you are calculating probability of drawdown, RD, is on a sample and replacement basis where the probabilities associated at each T to the horizon are unchanged. Thus, if, say, a large loss is seen at time T = t, the probablity of seeing that same large loss, in succession (i.</description>
     </item>
     
     <item>

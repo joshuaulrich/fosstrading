@@ -21,7 +21,7 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,106 +90,58 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-26T09:54:00-05:00">March 26, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>This is the third post in the <a href="http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html">Backtesting in Excel and R</a> series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on <a href="http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html">how to backtest a simple strategy in Excel</a>.</p>
-
-<p><strong>Step 1: Get the data</strong><br />
+<p><strong>Step 1: Get the data</strong><br>
 The getSymbols function in <a href="http://www.quantmod.com/">quantmod</a> makes this step easy if you can use daily data from <a href="http://finance.yahoo.com/">Yahoo Finance</a>.  There are also &ldquo;methods&rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.).  You could also use them as a template to write a custom function for a particular vendor you use.</p>
-
 <p># run the command below if quantmod isn&rsquo;t already installed</p>
-
 <p># install.packages(&ldquo;quantmod&rdquo;)</p>
-
 <p># use the quantmod package (loads TTR, xts, and zoo)</p>
-
 <p>require(quantmod)</p>
-
 <p># pull SPX data from Yahoo (getSymbols returns an xts object)</p>
-
 <p>getSymbols(&ldquo;^GSPC&rdquo;)</p>
-
-<p><strong>Step 2: Create your indicator</strong><br />
+<p><strong>Step 2: Create your indicator</strong><br>
 The <a href="http://cran.r-project.org/web/packages/TTR/">TTR package</a> contains a multitude of indicators.  The indicators are written to make it easy to <a href="http://www.rinfinance.com/agenda/2010/JoshUlrich.pdf">combine them in creative and unconventional ways</a>.  Starting with revision 106 on R-forge, TTR has a <a href="http://marketsci.wordpress.com/2010/07/27/css-analytics%E2%80%99-dvi-indicator-revealed/">DVI indicator</a>.</p>
-
 <p># calculate DVI indicator</p>
-
 <p>dvi &lt;- DVI(Cl(GSPC))  # Cl() extracts the close price column</p>
-
-<p><strong>Step 3: Construct your trading rule</strong><br />
+<p><strong>Step 3: Construct your trading rule</strong><br>
 Since this trading rule is simple&ndash;we&rsquo;re long 100% if the DVI is below 0.5 and short 100% otherwise&ndash;it can be written in a single line.  More elaborate rules and/or position sizings can be done as well, but require more code (<a href="http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html">RSI(2) with Position Sizing</a> is an example of more complex position sizing rules).  Also notice that the signal vector is lagged, which avoids look-ahead bias.</p>
-
 <p># create signal: (long (short) if DVI is below (above) 0.5)</p>
-
 <p># lag so yesterday&rsquo;s signal is applied to today&rsquo;s returns</p>
-
 <p>sig &lt;- Lag(ifelse(dvi$dvi &lt; 0.5, 1, -1))</p>
-
-<p><strong>Step 4: The trading rules/equity curve</strong><br />
+<p><strong>Step 4: The trading rules/equity curve</strong><br>
 As in Damian&rsquo;s example, the code below is a simplified approach that is frictionless and does not account for slippage.  The code below takes today&rsquo;s percentage return and multiplies it by yesterday&rsquo;s signal / position size (always +/- 100% in this example).  I also subset the system returns to match the results in the <a href="http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx">Excel file</a>.</p>
-
 <p># calculate signal-based returns</p>
-
 <p>ret &lt;- ROC(Cl(GSPC))*sig</p>
-
 <p># subset returns to match data in Excel file</p>
-
 <p>ret &lt;- ret[&lsquo;2009-06-02/2010-09-07&rsquo;]</p>
-
-<p><strong>Step 5: Evaluate strategy performance</strong><br />
+<p><strong>Step 5: Evaluate strategy performance</strong><br>
 Damian mentioned the importance of evaluating your strategy.  Fortunately for R users, the <a href="http://cran.r-project.org/web/packages/PerformanceAnalytics/">PerformanceAnalytics package</a> makes this easy.  With a few lines of code we can view the drawdowns, downside risks, and a performance summary.</p>
-
 <p># use the PerformanceAnalytics package</p>
-
 <p># install.packages(&ldquo;PerformanceAnalytics&rdquo;)</p>
-
 <p>require(PerformanceAnalytics)</p>
-
 <p># create table showing drawdown statistics</p>
-
 <p>table.Drawdowns(ret, top=10)</p>
-
 <p># create table of downside risk estimates</p>
-
 <p>table.DownsideRisk(ret)</p>
-
 <p># chart equity curve, daily performance, and drawdowns</p>
-
 <p>charts.PerformanceSummary(ret)</p>
-
 <p>That&rsquo;s all there is to backtesting a simple strategy in R.  It wasn&rsquo;t that intimidating, was it?  Please leave feedback if you&rsquo;re moving your backtesting from Excel to R and there&rsquo;s something you&rsquo;re hung up on or you have an awesome tip you&rsquo;d like to share.</p>
-
 <p>Here&rsquo;s a succinct version of the code in the above post if you want to be able to copy / paste it all in one block:</p>
-
 <p>require(quantmod)</p>
-
 <p>require(PerformanceAnalytics)</p>
-
 <p># Step 1: Get the data</p>
-
 <p>getSymbols(&ldquo;^GSPC&rdquo;)</p>
-
 <p># Step 2: Create your indicator</p>
-
 <p>dvi &lt;- DVI(Cl(GSPC))</p>
-
 <p># Step 3: Construct your trading rule</p>
-
 <p>sig &lt;- Lag(ifelse(dvi$dvi &lt; 0.5, 1, -1))</p>
-
 <p># Step 4: The trading rules/equity curve</p>
-
 <p>ret &lt;- ROC(Cl(GSPC))*sig</p>
-
 <p>ret &lt;- ret[&lsquo;2009-06-02/2010-09-07&rsquo;]</p>
-
 <p>eq &lt;- exp(cumsum(ret))</p>
-
 <p>plot(eq)</p>
-
 <p># Step 5: Evaluate strategy performance</p>
-
 <p>table.Drawdowns(ret, top=10)</p>
-
 <p>table.DownsideRisk(ret)</p>
-
 <p>charts.PerformanceSummary(ret)</p>
 
 		</div>
@@ -288,7 +240,20 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

@@ -21,7 +21,7 @@ Students participating in the program receive US$5,000 for successful completion
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,48 +90,33 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-03-23T13:53:00-05:00">March 23, 2012</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>This post is a slightly revised (and &ldquo;blogified&rdquo;) version of the message <a href="http://braverock.com/brian/resume.html">Brian Peterson</a> has sent to various R mailing lists.</p>
-
 <p>Once again, <a href="http://www.r-project.org/">R</a> has been accepted as a mentoring organization for the <a href="http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012">Google Summer of Code (2012)</a>.  We invite students interested in this program to learn more about it.  A good starting point is the <a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012">R GSoC wiki</a>.</p>
-
 <p>Students participating in the program receive US$5,000 for successful completion of a GSoC project, a great resume item, and an opportunity to work with R package authors.</p>
-
 <p>There are four finance-related projects currently on the project ideas list:</p>
-
 <ul>
-<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:performanceanalytics">Performance Attribution</a><br />
+<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:performanceanalytics">Performance Attribution</a><br>
 Add portfolio performance and attribution functionality from Bacon [1] to <a href="http://cran.r-project.org/web/packages/PerformanceAnalytics/">PerformanceAnalytics</a> package.</li>
-<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:meucci">Advanced Risk and Portfolio Management</a><br />
+<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:meucci">Advanced Risk and Portfolio Management</a><br>
 Port <a href="http://www.mathworks.com/products/matlab/">MATLAB</a> code published by Attilio Meucci [2,3,4] for risk and portfolio management to R.  (FYI: there is already a highly qualified student associated with this project idea).</li>
-<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:rtaq">Extend RTAQ</a><br />
+<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:rtaq">Extend RTAQ</a><br>
 Extend the <a href="http://cran.r-project.org/web/packages/RTAQ/">RTAQ</a> package with additional data interoperability and volatility measures.  (FYI: there is already a highly qualified student associated with this project idea).</li>
-<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:portfolioanalytics">PortfolioAnalytics Optimizer Back-ends</a><br />
+<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:portfolioanalytics">PortfolioAnalytics Optimizer Back-ends</a><br>
 Add additional closed form and global optimizer backends to <a href="https://r-forge.r-project.org/R/?group_id=579">PortfolioAnalytics</a>.</li>
 </ul>
-
 <p>and one that is not specifically finance related, but extends <a href="http://cran.r-project.org/web/packages/xts/">xts</a>, which is the most prevalent time series class for finance in R:</p>
-
 <ul>
-<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts">Extend xts</a><br />
+<li><a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts">Extend xts</a><br>
 Improve data and model visualization.  Extend xts objects to contain mixed types (like data.frames).  Add interoperability to existing analytical functions (e.g. <a href="http://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA</a>, <a href="http://en.wikipedia.org/wiki/Holt-Winters#Double_exponential_smoothing">Holt Winters</a>, <a href="http://en.wikipedia.org/wiki/Vector_autoregression">VAR</a>).  (FYI: there is already a highly qualified student associated with this project idea).</li>
 </ul>
-
 <p>The list of finance project ideas above is also by no means exhaustive of the proposed R projects.  There are additional non-finance R project ideas listed on the <a href="http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012">R GSoC wiki</a>.  Interested students or mentors are encouraged to discuss other project ideas on the <a href="http://groups.google.com/group/gsoc-r?pli=1">gsoc-r Google group</a>.</p>
-
 <p>Those interested in either student or mentor participation should join our Google group, as this is the main means of communication.  When you apply for group membership, please introduce yourself with one sentence, so we know you&rsquo;re not a spammer.</p>
-
 <p>Interested students should start working on applications now.  The student application process opens on 26 March, and successful students in prior years have often posted draft applications to melange for comment as soon after the opening of the application process as possible.</p>
-
 <p>Note that GSoC is about <strong>coding</strong>.  It is not intended to fund research; but many activities with R require code to advance our work, so the program can be very helpful to improving R.</p>
-
 <p>For information, the admins this year are Toby Dylan Hocking and John Nash, with Brian Peterson and Virgilio Gomez as backups.</p>
-
-<p>References:<br />
+<p>References:<br>
 [1] Carl Bacon “Practical Portfolio Performance Measurement and Attribution”, (London, John Wiley &amp; Sons. September 2004) ISBN 978-0470856796. 2nd Edition May 2008 ISBN 978-0470059289</p>
-
 <p>[2] Meucci, Attilio, Managing Diversification (April 1, 2010). Risk, pp. 74-79, May 2009; Bloomberg Education &amp; Quantitative Research and Education Paper. Available at SSRN: <a href="http://ssrn.com/abstract=1358533" title="http://ssrn.com/abstract=1358533">http://ssrn.com/abstract=1358533</a></p>
-
 <p>[3] Meucci, Attilio, Exercises in Advanced Risk and Portfolio Management - With Step-by-Step Solutions and Fully Documented Code (August 15, 2010). Available at SSRN: <a href="http://ssrn.com/abstract=1447443" title="http://ssrn.com/abstract=1447443">http://ssrn.com/abstract=1447443</a></p>
-
 <p>[4] Meucci, Attilio, Risk and Asset Allocation. Springer Finance (2005) ISBN: 3540222138</p>
 
 		</div>
@@ -230,7 +215,20 @@ Improve data and model visualization.  Extend xts objects to contain mixed type
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

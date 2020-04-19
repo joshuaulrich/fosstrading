@@ -8,11 +8,10 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="David Varadi&#39;s RSI(2) alternative" />
-<meta property="og:description" content="hello josh, If I want to sell the stock when the R&hellip; Bear - Jul 4, 2009
-hello josh,
-If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code? Hi Bear, You need to use a lagged value of RSI in&hellip; Joshua Ulrich - Jul 5, 2009
+<meta property="og:description" content="hello josh, If I want to sell the stock when the R&hellip; Bear - Jul 4, 2009hello josh,
+If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?
 Hi Bear,
-You need to use a lagged value of RSI in addition to the current value." />
+You need to use a lagged value of RSI in addition to the current value. The code below shows how to do it." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/" />
 <meta property="article:published_time" content="2009-07-19T08:38:00-05:00" />
@@ -23,7 +22,7 @@ You need to use a lagged value of RSI in addition to the current value." />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -91,75 +90,38 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-19T08:38:00-05:00">July 19, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
-			
-
-<h4 id="hello-josh-if-i-want-to-sell-the-stock-when-the-r">hello josh, If I want to sell the stock when the R&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/10301431975043826550" title="noreply@blogger.com">Bear</a> - <time datetime="2009-07-23T16:57:04.533-05:00">Jul 4, 2009</time></p>
-
-<p>hello josh,<br />
-If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?
-<hr /></p>
-
-<h4 id="hi-bear-you-need-to-use-a-lagged-value-of-rsi-in">Hi Bear, You need to use a lagged value of RSI in&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2009-07-24T13:09:55.203-05:00">Jul 5, 2009</time></p>
-
+			<h4 id="hello-josh-if-i-want-to-sell-the-stock-when-the-r">hello josh, If I want to sell the stock when the R&hellip;</h4>
+<p><a href="https://www.blogger.com/profile/10301431975043826550" title="noreply@blogger.com">Bear</a> - <!-- raw HTML omitted -->Jul 4, 2009<!-- raw HTML omitted --></p>
+<p>hello josh,<br>
+If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?</p>
+<!-- raw HTML omitted -->
 <p>Hi Bear,</p>
-
 <p>You need to use a lagged value of RSI in addition to the current value. The code below shows how to do it.</p>
-
-<p><strong>library(TTR)<br />
-price &lt;- .xts(20*cumprod(1+rnorm(50)/100),Sys.Date()-50:1)<br />
-rsi &lt;- RSI(price,2)<br />
-rsiLag &lt;- lag(rsi)<br />
-sig &lt;- rep(0,50)<br />
-sig &lt;- ifelse(rsiLag &gt; 90 &amp; rsi &lt; 90, -1, sig)<br />
+<p><strong>library(TTR)<br>
+price &lt;- .xts(20*cumprod(1+rnorm(50)/100),Sys.Date()-50:1)<br>
+rsi &lt;- RSI(price,2)<br>
+rsiLag &lt;- lag(rsi)<br>
+sig &lt;- rep(0,50)<br>
+sig &lt;- ifelse(rsiLag &gt; 90 &amp; rsi &lt; 90, -1, sig)<br>
 sig &lt;- ifelse(rsiLag &lt; 10 &amp; rsi &gt; 10, 1, sig)</strong></p>
-
 <p>So <strong>sig</strong> will be &lsquo;1&rsquo; if yesterday&rsquo;s RSI (<strong>rsiLag</strong>) is less than 10 and today&rsquo;s RSI (<strong>rsi</strong>) is greater than 10.</p>
-
-<p>Hope that helps,<br />
-Josh
-<hr /></p>
-
-<h4 id="thanks-actually-i-am-testing-rsi-price-14-so-th">Thanks Actually I am testing RSI(price,14), so th&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/10301431975043826550" title="noreply@blogger.com">Bear</a> - <time datetime="2009-07-24T15:50:08.453-05:00">Jul 5, 2009</time></p>
-
-<p>Thanks<br />
+<p>Hope that helps,<br>
+Josh</p>
+<!-- raw HTML omitted -->
+<p>Thanks<br>
 Actually I am testing RSI(price,14), so the indicator may be under 20 or above 80 for a time and I use FOR loop instead of ifelse and lag but FOR is slow in R.</p>
-
-<p>Is there any better solution?
-<hr /></p>
-
-<h4 id="the-solution-i-posted-above-is-better-you-just-h">The solution I posted above is better. You just h&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2009-07-24T16:56:00.679-05:00">Jul 5, 2009</time></p>
-
-<p>The solution I posted above is better. You just have to change the &ldquo;n&rdquo; for the RSI function to &ldquo;14&rdquo; and the upper and lower bounds in the ifelse() statements to 80 and 20.
-<hr /></p>
-
-<h4 id="hello-joshua-is-there-a-reason-why-the-result-is">Hello Joshua, Is there a reason why the result is &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/17745443780811874563" title="noreply@blogger.com">Unknown</a> - <time datetime="2010-02-17T16:05:42.079-06:00">Feb 3, 2010</time></p>
-
-<p>Hello Joshua,<br />
+<p>Is there any better solution?</p>
+<!-- raw HTML omitted -->
+<p>The solution I posted above is better. You just have to change the &ldquo;n&rdquo; for the RSI function to &ldquo;14&rdquo; and the upper and lower bounds in the ifelse() statements to 80 and 20.</p>
+<!-- raw HTML omitted -->
+<p>Hello Joshua,<br>
 Is there a reason why the result is sometimes of typeof &ldquo;list&rdquo; instead of &ldquo;doubles&rdquo; ?</p>
-
 <p>When I load my datas from 1970 with quantmod the result is typeof &ldquo;list&rdquo;; and when I start from 1980 the result is typeof &ldquo;double&rdquo;.</p>
-
-<p>Thank you.
-<hr /></p>
-
-<h4 id="jipibelanger-the-result-should-always-be-an-xts">jipibelanger, The result should always be an xts &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-02-17T21:13:23.737-06:00">Feb 4, 2010</time></p>
-
+<p>Thank you.</p>
+<!-- raw HTML omitted -->
 <p>jipibelanger,</p>
-
-<p>The result should always be an xts object. I&rsquo;m not sure how you&rsquo;re getting a &ldquo;list&rdquo;, but the high / low data prior to 1980 is poor for most Yahoo data.
-<hr /></p>
+<p>The result should always be an xts object. I&rsquo;m not sure how you&rsquo;re getting a &ldquo;list&rdquo;, but the high / low data prior to 1980 is poor for most Yahoo data.</p>
+<!-- raw HTML omitted -->
 
 		</div>
 		<footer class="post__footer">
@@ -251,7 +213,20 @@ Is there a reason why the result is sometimes of typeof &ldquo;list&rdquo; inste
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

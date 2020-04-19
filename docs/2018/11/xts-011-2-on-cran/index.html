@@ -20,7 +20,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,7 +89,6 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-06T06:35:00-06:00">November 06, 2018</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-2 was published to <a href="https://cloud.r-project.org/">CRAN</a> yesterday. <a href="https://cloud.r-project.org/package=xts">xts</a> provides data structure and functions to work with time-indexed data.  This is a bug-fix release, with notable changes below:</p>
-
 <ul>
 <li>The xts method for <code>shift.time()</code> is now registered. Thanks to Philippe Verspeelt for the report and PR (<a href="https://github.com/joshuaulrich/xts/issues/268">#268</a>, <a href="https://github.com/joshuaulrich/xts/issues/273">#273</a>).</li>
 <li>An if-statement in the <code>xts</code> constructor will no longer try to use a logical vector with length &gt; 1. Code like <code>if (c(TRUE, TRUE))</code> will throw a warning in an upcoming R release, and this patch will prevent that warning. Thanks to Hugh Parsonage for the report and PR (<a href="https://github.com/joshuaulrich/xts/issues/270">#270</a>, <a href="https://github.com/joshuaulrich/xts/issues/272">#272</a>).</li>
@@ -97,7 +96,6 @@ if (!doNotTrack) {
 <li>Make column names for <code>merge()</code> results with unnamed objects shorter and more like zoo (<a href="https://github.com/joshuaulrich/xts/issues/248">#248</a>). Previously, column names could be hundreds, even thousands, of characters. This change has the added benefit of making <code>na.fill()</code> much faster (<a href="https://github.com/joshuaulrich/xts/issues/259">#259</a>). NOTE: This may BREAK existing code for integer unnamed objects.</li>
 <li>The <code>to.period()</code> family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports (<a href="https://github.com/joshuaulrich/xts/issues/53">#53</a>, <a href="https://github.com/joshuaulrich/xts/issues/277">#277</a>).</li>
 </ul>
-
 <p>As always, I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="https://stackoverflow.com/">Stack Overflow</a> and use the <a href="https://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="https://stackoverflow.com/questions/tagged/xts">[xts]</a> tags. Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance mailing list</a> (you must subscribe to post). Open an issue <a href="https://github.com/joshuaulrich/xts">on GitHub</a> if you find a bug or want to request a feature, but please read the <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">contributing guide</a> first!</p>
 
 		</div>
@@ -196,7 +194,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

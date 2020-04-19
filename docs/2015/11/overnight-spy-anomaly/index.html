@@ -20,7 +20,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,7 +89,6 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T11:25:00-06:00">November 16, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>This post is in response to Michael Harris&rsquo; <a href="http://www.priceactionlab.com/Blog/2015/11/overnight-trading-anomaly-backtesting-r/">Price Action Lab post</a>, where he uses some simple R code to evaluate the asymmetry of returns from the day&rsquo;s close to the following day&rsquo;s open.  I&rsquo;d like to respond to his 3 notes, which I&rsquo;ve included below.</p>
-
 <blockquote>
 <ol>
 <li>The R backtest assumes fractional shares. This means that equity is fully invested at each new position. This is important because it affects drawdown calculations.</li>
@@ -97,34 +96,25 @@ if (!doNotTrack) {
 <li>The profit factor result in R does not reconcile with results from other platforms or even from excel. PF in R is shown as 1.23 but the correct value is 1.17. Actually, the profit factor is calculated on a per share basis in R, although returns are geometric.</li>
 </ol>
 </blockquote>
-
 <p>I completely agree with the first point.  I&rsquo;m not sure Mike considers the output of  SharpeRatio.annualized with geometric=TRUE to be suspect (he doesn&rsquo;t elaborate).  The overnightRets are calculated as arithmetic returns, so it&rsquo;s proper to aggregate them using geometric chaining (i.e. multiplication).</p>
-
 <p>I also agree with the third point, because the R code used to calculate profit factor is wrong.  My main impetus to write this post was to provide a corrected profit factor calculation.  The calculation (with slightly modified syntax) in Mike&rsquo;s post is:</p>
-
-<p>require(quantmod)<br />
-getSymbols(&lsquo;SPY&rsquo;, from = &lsquo;1900-01-01&rsquo;)<br />
-SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)<br />
-overnightRets &lt;- na.omit(Op(SPY)/lag(Cl(SPY)) - 1)<br />
-posRet &lt;- overnightRets &gt; 0<br />
+<p>require(quantmod)<br>
+getSymbols(&lsquo;SPY&rsquo;, from = &lsquo;1900-01-01&rsquo;)<br>
+SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)<br>
+overnightRets &lt;- na.omit(Op(SPY)/lag(Cl(SPY)) - 1)<br>
+posRet &lt;- overnightRets &gt; 0<br>
 profitFactor &lt;- -sum(overnightRets[posRet])/sum(overnightRets[!posRet])</p>
-
 <p>Note that profit factor in the code above is calculated by summing positive and negative <em>returns</em>, when it should be calculated using positive and negative <em>P&amp;L</em>.  In order to do that, we need to calculate the equity curve and then take its first difference to get P&amp;L.  The corrected calculation is below, and it provides the correct result Mike expected.</p>
-
-<p>grossEquity &lt;- cumprod(overnightRets+1)<br />
-grossPnL &lt;- diff(grossEquity)<br />
-grossProfit &lt;- sum(grossPnL[grossPnL &gt; 0])<br />
-grossLoss &lt;- sum(grossPnL[grossPnL &lt; 0])<br />
+<p>grossEquity &lt;- cumprod(overnightRets+1)<br>
+grossPnL &lt;- diff(grossEquity)<br>
+grossProfit &lt;- sum(grossPnL[grossPnL &gt; 0])<br>
+grossLoss &lt;- sum(grossPnL[grossPnL &lt; 0])<br>
 profitFactor &lt;- grossProfit / abs(grossLoss)</p>
-
 <p>I&rsquo;d also like to respond to Mike&rsquo;s comment:</p>
-
 <blockquote>
 <p>Since in the past I have identified serious flaws in commercially available backtesting platforms, I would not be surprised if some of the R libraries have some flaws.</p>
 </blockquote>
-
 <p>I&rsquo;m certain all of the backtesting R packages have flaws/bugs.  All software has bugs because all software is written by fallible humans.  One nice thing about (most) R packages is that they&rsquo;re open source, which means anyone/everyone can check the code for bugs, and fix any bugs that are found.  With closed-source software, commercial or not, you depend on the vendor to deliver a patched version at their discretion and in their timing.</p>
-
 <p>Now, I&rsquo;m not making an argument that open source software is inherently better. I simply wanted to point out this one difference.  As much as I love open source software, there are times where commercial vendor-supported software presents a more appealing set of tradeoffs than using open source software.  Each situation is different.</p>
 
 		</div>
@@ -217,7 +207,20 @@ profitFactor &lt;- grossProfit / abs(grossLoss)</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

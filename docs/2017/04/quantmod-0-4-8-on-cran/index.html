@@ -9,9 +9,9 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="quantmod 0.4-8 on CRAN" />
 <meta property="og:description" content="I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128)." />
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/" />
 <meta property="article:published_time" content="2017-04-19T10:45:00-05:00" />
@@ -22,7 +22,7 @@ There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you 
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -91,22 +91,16 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-19T10:45:00-05:00">April 19, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I pushed a bug-fix release of <a href="http://www.quantmod.com/">quantmod</a> to <a href="https://cran.r-project.org/">CRAN</a> last night. The major changes were to</p>
-
 <ul>
-<li>getSymbols.FRED (<a href="https://github.com/joshuaulrich/quantmod/issues/141">#141</a>)</li>
-<li>getSymbols.oanda (<a href="https://github.com/joshuaulrich/quantmod/issues/144">#144</a>)</li>
-<li>getSymbols.yahoo (<a href="https://github.com/joshuaulrich/quantmod/issues/149">#149</a>)</li>
+<li><code>getSymbols.FRED()</code> (<a href="https://github.com/joshuaulrich/quantmod/issues/141">#141</a>)</li>
+<li><code>getSymbols.oanda()</code> (<a href="https://github.com/joshuaulrich/quantmod/issues/144">#144</a>)</li>
+<li><code>getSymbols.yahoo()</code> (<a href="https://github.com/joshuaulrich/quantmod/issues/149">#149</a>)</li>
 </ul>
-
 <p>All three providers made breaking changes to their URLs/interfaces.</p>
-
-<p>getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (<a href="https://github.com/joshuaulrich/quantmod/issues/138">#138</a>), and it correctly parses the date column in non-English locales (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#140</a>).</p>
-
-<p>There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#128</a>). Yahoo provides split-adjusted dividends, so you previously had to manually unadjust them for splits if you wanted the original raw values. To import the raw unadjusted dividends, just call:</p>
-
-<p>rawDiv &lt;- getDividends(&ldquo;IBM&rdquo;, split.adjust = FALSE)</p>
-
-<p>Note that the default is split.adjust = TRUE to maintain backward-compatibility.</p>
+<p><code>getSymbols.google()</code> also got some love. It now honors all arguments set via <code>setSymbolLookup()</code> (<a href="https://github.com/joshuaulrich/quantmod/issues/138">#138</a>), and it correctly parses the date column in non-English locales (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#140</a>).</p>
+<p>There&rsquo;s a handy new argument to <code>getDividends()</code>: <code>split.adjust</code>. It allows you to request dividends unadjusted for splits (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#128</a>). Yahoo provides split-adjusted dividends, so you previously had to manually unadjust them for splits if you wanted the original raw values. To import the raw unadjusted dividends, just call:</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rawDiv</span> <span class="o">&lt;-</span> <span class="nf">getDividends</span><span class="p">(</span><span class="s">&#34;IBM&#34;</span><span class="p">,</span> <span class="n">split.adjust</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>  
+</code></pre></div><p>Note that the default is <code>split.adjust = TRUE</code> to maintain backward-compatibility.</p>
 
 		</div>
 		<footer class="post__footer">
@@ -204,7 +198,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

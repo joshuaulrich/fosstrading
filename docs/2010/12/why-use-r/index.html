@@ -21,7 +21,7 @@ I was introduced to R while I was working as a Research Analyst at the Federal R
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,31 +90,18 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-12-14T22:35:00-06:00">December 14, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I use R very frequently and take for granted much that it has to offer.  I forget how R is different from similar tools, so I have trouble communicating the benefits of using R.  The goal of this post is to highlight R&rsquo;s main strengths, but first&hellip; my story.</p>
-
 <p>How I got started with R</p>
-
 <p>I was introduced to R while I was working as a <a href="http://research.stlouisfed.org/">Research Analyst</a> at the <a href="http://stlouisfed.org/">Federal Reserve Bank of St. Louis</a>.  I wanted to do statistical analysis at home but the tools I used at work (<a href="http://www.aptech.com/">GAUSS</a> and <a href="http://www.sas.com/">SAS</a>) were expensive, so I started doing my analysis in Excel.</p>
-
 <p>But as my analysis became more complex, the Excel files became large and cumbersome.  The files also did not document my thought process, which made it difficult to revisit analysis I had started several months earlier.  I asked my fellow analysts for advice and one introduced me to R and <a href="http://www.amazon.com/gp/product/1441930086?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1441930086">Modern Applied Statistics with S</a>.  Thus began my auto-didactic journey with R.</p>
-
 <p>Why should you use R?</p>
-
 <p>R is the leading tool for statistics, data analysis, and machine learning.  It is more than a statistical package; it’s a programming language, so you can create your own objects, functions, and packages.</p>
-
 <p>Speaking of packages, there are over 2,000 cutting-edge, user-contributed packages available on <a href="http://cran.r-project.org/">CRAN</a> (not to mention <a href="http://www.bioconductor.org/">Bioconductor</a> and <a href="http://www.omegahat.net/">Omegahat</a>).  To get an idea of what packages are out there, just take a look at these <a href="http://cran.r-project.org/web/views/">Task Views</a>.  Many packages are submitted by prominent members of their respective fields.</p>
-
 <p>Like all programs, R programs explicitly document the steps of your analysis and make it easy to reproduce and/or update analysis, which means you can quickly try many ideas and/or correct issues.</p>
-
 <p>You can easily use it anywhere.  It&rsquo;s <a href="http://en.wikipedia.org/wiki/Platform-independent">platform-independent</a>, so you can use it on any operating system.  And it&rsquo;s free, so you can use it at any employer without having to persuade your boss to purchase a license.</p>
-
 <p>Not only is R free, but it&rsquo;s also <a href="http://en.wikipedia.org/wiki/Open_source">open-source</a>.  That means anyone can examine the source code to see exactly what it’s doing.  This also means that you, or anyone, can fix bugs and/or add features, rather than waiting for the vendor to find/fix the bug and/or add the feature&ndash;at their discretion&ndash;in a future release.</p>
-
 <p>R allows you to integrate with other languages (C/C++, <a href="http://java.sun.com/">Java</a>, <a href="http://www.python.org/">Python</a>) and enables you to interact with many data sources: <a href="http://en.wikipedia.org/wiki/Odbc">ODBC</a>-compliant databases (Excel, Access) and other statistical packages (<a href="http://www.sas.com/">SAS</a>, <a href="http://www.stata.com/">Stata</a>, <a href="http://www.spss.com/">SPSS</a>, <a href="http://www.minitab.com/">Minitab</a>).</p>
-
 <p>Explicit parallelism is straightforward in R (see the <a href="http://cran.r-project.org/web/views/HighPerformanceComputing.html">High Performance Computing Task View</a>): several packages allow you to take advantage of multiple cores, either on a single machine or across a network.  You can also build R with <a href="http://cran.r-project.org/doc/manuals/R-admin.html#Linear-algebra">custom BLAS</a>.</p>
-
 <p>R has a large, active, and growing community of users.  The <a href="http://www.r-project.org/mail.html">mailing lists</a> provide access to many users and package authors who are experts in their respective fields.  Additionally, there are several R conferences every year.  The most prominent and general is <a href="http://user2010.org/">useR</a>.  Finance-related conferences include <a href="https://www.rmetrics.org/meielisalp2011">Rmetrics Workshop on Computational Finance and Financial Engineering</a> in Meielisalp, Switzerland and <a href="http://www.rinfinance.com/">R/Finance: Applied Finance with R</a> in Chicago, USA.</p>
-
 <p>I hope that&rsquo;s a helpful overview of some benefits of using R.  I&rsquo;m sure I have forgotten some things, so please add them in the comments.</p>
 
 		</div>
@@ -207,7 +194,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

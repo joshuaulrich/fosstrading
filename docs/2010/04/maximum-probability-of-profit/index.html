@@ -20,7 +20,7 @@ These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,69 +89,37 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-04-09T10:04:00-05:00">April 09, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>To continue with the <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">LSPM examples</a>, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from <a href="http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0470455950">The Leverage Space Trading Model</a> by <a href="http://www.ralphvince.com/">Ralph Vince</a>.</p>
-
 <p>These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</p>
-
 <p>The results from the EC2 run were:</p>
-
 <p>iteration: 100 best member: 0.0275 0 0.0315 -0.928 -1 best value: -0.9999</p>
-
 <p>The book results (on p. 173) were:</p>
-
 <p>iteration: 100 best member: 0.085 0.015 0.129 -0.76 -0.992 best value: -0.9999</p>
-
 <p>Specifying an initial population can give DEoptim an initial set of parameters that are within the constraint. This guarantees a starting point but it can slow optimization if the f (and/or z) values are too low. Therefore, experiment with the initial population to find a set of f (and/or z) values that produce a result within, but not far from, the constraint.</p>
-
 <p># Load the LSPM and snow packages</p>
-
 <p>library(LSPM)</p>
-
 <p>library(snow)</p>
-
 <p># Multiple strategy example (data found on pp. 84-87, 169)</p>
-
 <p>trades &lt;- cbind(</p>
-
 <p>  c(-150,-45.333,-45.333,13,13,13,13,13,79.667,79.667,79.667,136),</p>
-
 <p>  c(253,-1000,-64.429,-64.429,-64.429,253,253,448,-64.429,-64.429,-64.429,253),</p>
-
 <p>  c(533,220.143,220.143,-500,533,220.143,799,220.143,-325,220.143,533,220.143))</p>
-
 <p>probs &lt;- c(0.076923076923,0.076923076923,0.153846153846,0.076923076923,</p>
-
 <p>  0.076923076923,0.076923076923,0.076923076923,0.076923076923,</p>
-
 <p>  0.076923076923,0.076923076923,0.076923076923,0.076923076923)</p>
-
 <p># Create a Leverage Space Portfolio object</p>
-
 <p>port &lt;- lsp(trades,probs)</p>
-
 <p># Number of population members</p>
-
 <p>np &lt;- 30</p>
-
 <p># Initial population</p>
-
 <p>initpop &lt;- cbind(runif(np,0,0.01),runif(np,0,0.01),runif(np,0,0.01),</p>
-
 <p>  runif(np,-1,-0.8),runif(np,-1,-0.8))</p>
-
 <p># DEoptim parameters (see ?deoptim)</p>
-
 <p>DEctrl &lt;- list(NP=np, itermax=11, refresh=1, digits=6, initial=initpop)</p>
-
 <p># Create a socket cluster with snow to use both cores</p>
-
 <p># on a dual-core processor</p>
-
 <p>cl &lt;- makeSOCKcluster(2)</p>
-
 <p># Drawdown-constrained maximum probability of profit (results on p. 173)</p>
-
 <p>res &lt;- maxProbProfit(port, 1e-6, 12, probDrawdown, 0.1,</p>
-
 <p>  DD=0.2, calc.max=4, snow=cl, control=DEctrl)</p>
 
 		</div>
@@ -247,7 +215,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

@@ -20,7 +20,7 @@ The comments below are based on my personal experience. If I don&rsquo;t comment
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,44 +89,30 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-06-30T07:40:00-05:00">June 30, 2014</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>It&rsquo;s been more than a month since <a href="http://www.rinfinance.com/">R/Finance 2014</a>, and my job has finally slowed down enough to allow me to write down my thoughts (though I&rsquo;m writing this over two days during my train to and from Chicago).</p>
-
 <p>The comments below are based on my personal experience. If I don&rsquo;t comment on a seminar or presentation, it doesn&rsquo;t mean I didn&rsquo;t like it or it wasn&rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member. All the currently available conference slides are available <a href="http://www.rinfinance.com/agenda/">on the website</a>.</p>
-
-<p>Friday morning seminar:<br />
-I went to <a href="http://www.rinfinance.com/agenda/2014/workshop/DirkEddelbuettel.pdf">Dirk Eddelbuettel&rsquo;s</a> seminar because I may be writing a R package to query <a href="http://www.deltixlab.com/">Deltix&rsquo;s</a> [](<a href="https://www.blogger.com/null">https://www.blogger.com/null</a>) <a href="http://www.deltixlab.com/solutions/timebase.html">TimeBase</a> database. Deltix provides a C++ API, so this is a perfect opportunity to use Rcpp.</p>
-
-<p>Friday talks:<br />
+<p>Friday morning seminar:<br>
+I went to <a href="http://www.rinfinance.com/agenda/2014/workshop/DirkEddelbuettel.pdf">Dirk Eddelbuettel&rsquo;s</a> seminar because I may be writing a R package to query <a href="http://www.deltixlab.com/">Deltix&rsquo;s</a> <a href="https://www.blogger.com/null"></a> <a href="http://www.deltixlab.com/solutions/timebase.html">TimeBase</a> database. Deltix provides a C++ API, so this is a perfect opportunity to use Rcpp.</p>
+<p>Friday talks:<br>
 The first presentation was given by keynote <a href="http://www.rinfinance.com/agenda/2014/talk/LukeTierney.pdf">Luke Tierney</a>, who discussed recent and upcoming performance improvements to R, and introduced some new profiling tools in his <a href="https://github.com/ltierney/Rpkg-proftools">proftools</a> package (and a new <a href="https://github.com/ltierney/Rpkg-proftools-GUI">proftools-GUI</a> package).</p>
-
 <p><a href="http://www.rinfinance.com/agenda/2014/talk/YangLu.pdf">Yang Lu</a> explored the low-risk anomaly on high/low volatility portfolios with similar industry, size, and volume. <a href="http://www.rinfinance.com/agenda/2014/talk/AveryMoon.pdf">Avery Moon</a> discussed how they use R at <a href="http://www.wealthfront.com/">Wealthfront</a> to run cashflow simulations for their tax-loss harvesting strategy. <a href="http://www.rinfinance.com/agenda/2014/talk/StevenPav.pdf">Steven Pav</a> used math and memes to discuss portfolio inference. <a href="http://www.rinfinance.com/agenda/2014/talk/TobiasSetz.pdf">Tobias Setz</a> used the Bayesian Change Point method to analyze time series stability.</p>
-
 <p><a href="http://www.rinfinance.com/agenda/2014/talk/PaulTeetor.pdf">Paul Teetor</a> and <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewClegg.pdf">Matthew Clegg</a> discussed different aspects of pairs trading. <a href="http://www.rinfinance.com/agenda/2014/talk/KentHoxsey.pdf">Kent Hoxsey</a> demonstrated a simple way to explore trading signal expectation. <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewBarry.pdf">Matthew Barry</a> introduced the <a href="https://github.com/mrbcuda/pbo">pbo</a> package, which implements some of the ideas in the paper, <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">The Probability of Backtest Overfitting</a>.</p>
-
 <p><a href="http://www.rinfinance.com/agenda/2014/talk/AlexiosGhalanos.pdf">Alexios Ghalanos</a> was the day&rsquo;s second keynote, and he discussed smooth transition autoregressive models and his new package, <a href="https://bitbucket.org/alexiosg/twinkle">twinkle</a>. Alexios <a href="http://unstarched.net/2014/05/27/twinkletwinkle-little-star/">wrote a post</a> discussing his presentation, which you should definitely read.</p>
-
-<p>Friday food/networking:<br />
+<p>Friday food/networking:<br>
 During the two-hour conference reception at UIC, I had some drinks and hors d&rsquo;ouvres, talked with speakers, and meet people I encouraged to attend and/or present. Next was the (optional) dinner at <a href="http://www.trumphotelcollection.com/chicago/rooftop-restaurants-chicago.php">The Terrace at Trump</a>. It was cold and windy again this year, so we were inside the entire night. Same as last year, the food was fantastic, but the conversations were even better.</p>
-
-<p>Saturday talks:<br />
+<p>Saturday talks:<br>
 The first presentation was a lightning talk by <a href="http://www.rinfinance.com/agenda/2014/talk/ChiragAnand.pdf">Chirag Anand</a>, where he introduced the <a href="http://cran.r-project.org/web/packages/eventstudies/">eventstudies</a> package, which is very well done. <a href="http://www.rinfinance.com/agenda/2014/talk/CaseyKing.pptx">Casey King</a> gave an incredibly informative and entertaining presentation on anti-money laundering and suspicious activity reporting in penny stocks using message board posts. <a href="http://www.rinfinance.com/agenda/2014/talk/BryanLewis.pdf">Bryan Lewis</a> introduced his <a href="https://github.com/bwlewis/IRL">IRL</a> package and ran a 16 million node network analysis in &lt; 2 minutes on his Chromebook, during his talk. <a href="http://www.rinfinance.com/agenda/2014/talk/StephenRush.pdf">Stephen Rush</a> discussed his work on <a href="http://en.wikipedia.org/wiki/VPIN">VPIN</a> (volume synchronized probability of informed trading), while competing with Steven Pav for the &ldquo;presentation with the most memes&rdquo;.</p>
-
 <p><a href="http://www.rinfinance.com/agenda/2014/talk/BobMcDonald.pdf">Bob McDonald</a> gave the third keynote presentation, where he discussed using R to teach derivatives in MBA classes. He also explained his decision to adopt R in terms of valuing an option. <a href="http://www.rinfinance.com/agenda/2014/talk/EricZivot.pdf">Eric Zivot</a> discussed his upcoming book, &ldquo;Modeling Financial Time Series with S-Plus R&rdquo;. <a href="http://www.rinfinance.com/agenda/2014/talk/RohiniGrover.pdf">Rohini Grover</a> measured the imprecision of implied volatility estimates in volatility indexes using the <a href="https://r-forge.r-project.org/projects/ifrogs/">ifrogs</a> package.</p>
-
 <p><a href="http://www.rinfinance.com/agenda/2014/talk/BillCleveland.pdf">Bill Cleveland</a> gave the final keynote and talked about the &ldquo;divide-and-recombine&rdquo; method for large, complex data, using R and Hadoop. <a href="http://www.rinfinance.com/agenda/2014/talk/GregorKastner.pdf">Gregor Kastner</a> introduced his <a href="http://cran.r-project.org/web/packages/stochvol/">stochvol</a> package, and <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewDixon.pdf">Matthew Dixon</a> showed how to calibrate stochastic volatility models using his &ldquo;alpha&rdquo; <a href="https://github.com/mfrdixon/gpusvcalibration">gpusvcalibration</a> package. <a href="http://www.rinfinance.com/agenda/2014/talk/DirkEddelbuettel.pdf">Dirk Eddelbuettel</a> closed the conference with a lightning talk on his recently-released <a href="http://cran.r-project.org/web/packages/RcppRedis/">RcppRedis</a> package.</p>
-
 <p>The committee also presented the awards for best papers. The winners were:</p>
-
 <ul>
 <li><em>Portfolio inference with this one weird trick</em>, Steven E. Pav</li>
 <li><em>Dealing with Stochastic Volatility in Time Series Using the R Package stochvol</em>, Gregor Kastner</li>
 <li><em>Re-Evaluation of the Low-Risk Anomaly in Finance via Matching</em>, Yang Lu, Daniel Wu, Kwok Yu</li>
 <li><em>All words are not equal: Sentiment dynamics and information content within CEO letters</em>, Kris Boudt, James Thewissen</li>
 </ul>
-
-<p>Saturday food/networking:<br />
+<p>Saturday food/networking:<br>
 As always, the conference ended with one more trip to <a href="http://jakstap.com/">Jaks Tap</a>. I spent some time giving college students some advice about starting their careers, and discussed the presentation I gave earlier in the week at the <a href="http://www.meetup.com/ChicagoRUG/">Chicago R User Group</a> on <a href="http://files.meetup.com/1625815/ProfilingForSpeed_Ulrich_05-14.pdf">Profiling for Speed</a>.</p>
-
-<p>Last, but not least: none of this would be possible without the support of fantastic sponsors:<br />
+<p>Last, but not least: none of this would be possible without the support of fantastic sponsors:<br>
 <a href="http://business.uic.edu/academic-centers-and-research/cba-research-centers/international-center-for-futures-and-derivatives">International Center for Futures and Derivatives at UIC</a>, <a href="http://www.revolutionanalytics.com/">Revolution Analytics</a>, <a href="http://depts.washington.edu/compfin/">MS-Computational Finance at University of Washington</a>, <a href="http://www.onetick.com/">OneMarketData</a>, <a href="http://www.rstudio.org/">RStudio</a>, <a href="http://spotfire.tibco.com/">TIBCO</a>, <a href="http://www.symmys.com/arpm-bootcamp">SYMMS</a>, and <a href="http://www.paradigm4.com/">paradigm4</a>.</p>
 
 		</div>
@@ -225,7 +211,20 @@ As always, the conference ended with one more trip to <a href="http://jakstap.co
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

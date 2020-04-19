@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.57.2" />
+	<meta name="generator" content="Hugo 0.68.3" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.fosstrading.com/" />
-
 <meta property="og:updated_time" content="2020-03-10T07:23:00-05:00" />
 
 	
@@ -21,7 +20,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -98,8 +97,8 @@ if (!doNotTrack) {
 TTR version 0.20-2
 Changes from version 0.20-1
 NEW FEATURES:
- Added VWAP and VWMA (thanks to Brian Peterson) Added v-factor generalization to DEMA (thanks to John Gavin)   CHANGES:
- Updated volatility() to handle univariate case of calc=&lsquo;close&rsquo; (thanks to Cedrick Johnson) Moved EMA, SAR, and wilderSum from .
+ Added VWAP and VWMA (thanks to Brian Peterson) Added v-factor generalization to DEMA (thanks to John Gavin)  CHANGES:
+ Updated volatility() to handle univariate case of calc='close&rsquo; (thanks to Cedrick Johnson) Moved EMA, SAR, and wilderSum from .
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -145,8 +144,7 @@ Building on the success of the inaugural R / Finance 2009 event, this two-day co
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010
-Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
+		Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
 -&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
 port &lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))
 probDrawdown(port,0.8,12,13)
@@ -180,8 +178,7 @@ This post will illustrate how the snow package can increase the speed of the pro
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-02T15:35:00-06:00">January 02, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hi Josh I am trying to replicate the results on p&hellip; Chris - Nov 2, 2011
-Hi Josh
+		Hi Josh I am trying to replicate the results on p&hellip; Chris - Nov 2, 2011Hi Josh
 I am trying to replicate the results on page 87 (as mentioned in your post above) of the LSPM book. I do the following:
 &gt; data(port)
 &gt; DEctrl &lt;- list(NP=30, itermax=100)
@@ -189,6 +186,7 @@ I am trying to replicate the results on page 87 (as mentioned in your post above
 The result is :
 Iteration: 100 bestvalit: -1.293917 bestmemit: 1.000000 0.000000 0.857813
 Page 87 reads:
+MktSysA 0.307
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -219,14 +217,14 @@ These examples are based on revision 26 31 from r-forge and will not work under 
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-11-18T21:18:00-06:00">November 18, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hi, If I change to.monthly() to to.weekly() it se&hellip; Unknown - Nov 4, 2009
-Hi,
+		Hi, If I change to.monthly() to to.weekly() it se&hellip; Unknown - Nov 4, 2009Hi,
 If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
 Cheers,
 -&mdash;&mdash;-
 Error in if (!all(i &lt;= 0)) stop(&ldquo;only zeros may be mixed with negative subscripts&rdquo;) :
 missing value where TRUE/FALSE needed
-Calls: updateAcct -&gt; calcPortfSummary -&gt; time -&gt; [ -&gt; [.xts Thanks Josh for providing this nice example of the&hellip; pg - Nov 4, 2009
+Calls: updateAcct -&gt; calcPortfSummary -&gt; time -&gt; [ -&gt; [.xts
+Thanks Josh for providing this nice example of the use of blotter.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -256,10 +254,12 @@ The contents of this post borrow heavily from code and comments in the &ldquo;lo
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-11-05T18:54:00-06:00">November 05, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		I just started looking into getting data again and&hellip; Unknown - Nov 0, 2009
-I just started looking into getting data again and found opentick is gone :(
-Thanks for this post! You&rsquo;re most welcome. Let me know if you find &hellip; Joshua Ulrich - Nov 0, 2009
-You&rsquo;re most welcome. Let me know if you find anything that should be included in the list. Check out this page for other alternatives: Fried Neuron - Nov 4, 2009
+		I just started looking into getting data again and&hellip; Unknown - Nov 0, 2009I just started looking into getting data again and found opentick is gone :(
+Thanks for this post!
+You&rsquo;re most welcome. Let me know if you find anything that should be included in the list.
+Check out this page for other alternatives: Real-Time Tick Data Vendors
+Fried,
+Thanks for the link. I found that page as well, but didn&rsquo;t include any of those vendors because they appear very expensive.
 	</div>
 </article>
 </main>
@@ -323,7 +323,20 @@ You&rsquo;re most welcome. Let me know if you find anything that should be inclu
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

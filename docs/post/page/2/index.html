@@ -11,7 +11,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.fosstrading.com/post/" />
-
 <meta property="og:updated_time" content="2020-03-10T07:23:00-05:00" />
 
 	
@@ -20,7 +19,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -97,8 +96,7 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		I&rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&rsquo;s ghrr drat repo.
 Installation is as simple as:
-drat::addRepo(&ldquo;ghrr&rdquo;) # maybe use &lsquo;install.packages(&ldquo;drat&rdquo;)&rsquo; first install.packages(&ldquo;RQuantLib&rdquo;, type=&ldquo;binary&rdquo;)
-I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.
+drat::addRepo(&#34;ghrr&#34;) # maybe use &#39;install.packages(&#34;drat&#34;)&#39; first  install.packages(&#34;RQuantLib&#34;, type=&#34;binary&#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -127,7 +125,7 @@ Alpha Vantage is a free web service that provides real-time and historical equit
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-07T14:10:00-05:00">July 07, 2017</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&rsquo;s quantmod::chart_Series code.
+		A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.
 	</div>
 </article><article class="list__item post">
@@ -174,9 +172,9 @@ The most noticeable difference is that the adjusted close column is now only spl
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128).
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -190,8 +188,8 @@ There&rsquo;s a handy new argument to getDividends: split.adjust. It allows you 
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-14T10:49:00-06:00">February 14, 2017</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		code{white-space: pre;} pre:not([class]) { background-color: white; } if (window.hljs &amp;&amp; document.readyState &amp;&amp; document.readyState === &ldquo;complete&rdquo;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } .main-container { max-width: 940px; margin-left: auto; margin-right: auto; } code { color: inherit; background-color: rgba(0, 0, 0, 0.04); } img { max-width:100%; height: auto; }
-A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years.
+		A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&hellip; hence, this post!
+I called the function stackFinancials() because it would use getFinancials() and viewFinancials() to pull financial statement data for multiple symbols, and stack them together in long form.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -305,7 +303,20 @@ We are working on a whole new course series on applied finance using R. This new
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

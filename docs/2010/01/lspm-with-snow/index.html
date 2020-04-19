@@ -20,7 +20,7 @@ This post will illustrate how the snow package can increase the speed of the pro
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,37 +89,29 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>My <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">last post</a> provided examples of how to use the <a href="http://r-forge.r-project.org/projects/lspm">LSPM package</a>. Those who experimented with the code have probably found that constrained optimizations with horizons &gt; 6 have long run-times (when calc.max &gt;= horizon).</p>
-
 <p>This post will illustrate how the <a href="http://cran.r-project.org/web/packages/snow/">snow</a> package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores. (Improvements are nearly linear because there is overhead in setting up the cluster and communication between the nodes.)</p>
-
 <p>The first optimization takes 346 seconds on my 2.2Ghz Centrino, while the second optimization (with snow) takes 193 seconds&hellip; nearly a 45% improvement.</p>
-
-<p># Load the libraries<br />
-library(LSPM)<br />
+<p># Load the libraries<br>
+library(LSPM)<br>
 library(snow)</p>
-
-<p># Create a Leverage Space Portfolio object<br />
-trades &lt;- cbind(<br />
-c(-150,-45.33,-45.33,rep(13,5),rep(79.67,3),136),<br />
-c(253,-1000,rep(-64.43,3),253,253,448,rep(-64.43,3),253),<br />
-c(533,220.14,220.14,-500,533,220.14,799,220.14,-325,220.14,533,220.14) )<br />
-probs &lt;- c(rep(0.076923077,2),0.153846154,rep(0.076923077,9))<br />
+<p># Create a Leverage Space Portfolio object<br>
+trades &lt;- cbind(<br>
+c(-150,-45.33,-45.33,rep(13,5),rep(79.67,3),136),<br>
+c(253,-1000,rep(-64.43,3),253,253,448,rep(-64.43,3),253),<br>
+c(533,220.14,220.14,-500,533,220.14,799,220.14,-325,220.14,533,220.14) )<br>
+probs &lt;- c(rep(0.076923077,2),0.153846154,rep(0.076923077,9))<br>
 port &lt;- lsp(trades,probs)</p>
-
-<p># Optimization using one CPU core<br />
-system.time({<br />
-res1 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,control=list(NP=30,itermax=100))<br />
+<p># Optimization using one CPU core<br>
+system.time({<br>
+res1 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,control=list(NP=30,itermax=100))<br>
 })</p>
-
-<p># Create snow socket cluster for both cores<br />
+<p># Create snow socket cluster for both cores<br>
 clust &lt;- makeSOCKcluster(2)</p>
-
-<p># Optimization using both CPU cores<br />
-system.time({<br />
-res2 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,snow=clust,control=list(NP=30,itermax=100))<br />
+<p># Optimization using both CPU cores<br>
+system.time({<br>
+res2 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,snow=clust,control=list(NP=30,itermax=100))<br>
 })</p>
-
-<p># Stop snow cluster<br />
+<p># Stop snow cluster<br>
 stopCluster(clust)</p>
 
 		</div>
@@ -215,7 +207,20 @@ stopCluster(clust)</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

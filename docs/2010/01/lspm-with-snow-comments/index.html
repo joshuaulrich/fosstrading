@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="LSPM with snow" />
-<meta property="og:description" content="Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010
-Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
+<meta property="og:description" content="Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
 -&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
 port &lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))
 probDrawdown(port,0.8,12,13)
@@ -25,7 +24,7 @@ This code shows me value 0.0001982222, but Vince says his dd is 0." />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -93,107 +92,55 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
-			
-
-<h4 id="hi-joshua-could-you-tell-me-how-to-calculate-prob">Hi Joshua! Could you tell me how to calculate prob&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/05832095029637788492" title="noreply@blogger.com">senyai</a> - <time datetime="2010-04-09T07:39:34.366-05:00">Apr 5, 2010</time></p>
-
-<p>Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:<br />
--&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;<br />
-port &lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))<br />
-probDrawdown(port,0.8,12,13)<br />
--&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;<br />
+			<h4 id="hi-joshua-could-you-tell-me-how-to-calculate-prob">Hi Joshua! Could you tell me how to calculate prob&hellip;</h4>
+<p><a href="https://www.blogger.com/profile/05832095029637788492" title="noreply@blogger.com">senyai</a> - <!-- raw HTML omitted -->Apr 5, 2010<!-- raw HTML omitted --></p>
+<p>Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:<br>
+-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;<br>
+port &lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))<br>
+probDrawdown(port,0.8,12,13)<br>
+-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;<br>
 This code shows me value 0.0001982222, but Vince says his dd is 0.012. And when I use my algorithm I get 0.0017759413.</p>
-
-<p>Thx.
-<hr /></p>
-
-<h4 id="nevermind-i-got-wrong-dd-parameter">nevermind, i got wrong dd parameter.</h4>
-
-<p><a href="https://www.blogger.com/profile/05832095029637788492" title="noreply@blogger.com">senyai</a> - <time datetime="2010-04-09T07:48:48.813-05:00">Apr 5, 2010</time></p>
-
-<p>nevermind, i got wrong dd parameter.
-<hr /></p>
-
-<h4 id="i-m-having-trouble-following-the-0-1-argument">I&rsquo;m having trouble following the 0.1 argument &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01349972242888715865" title="noreply@blogger.com">G$</a> - <time datetime="2010-05-18T10:29:10.823-05:00">May 2, 2010</time></p>
-
+<p>Thx.</p>
+<!-- raw HTML omitted -->
+<p>nevermind, i got wrong dd parameter.</p>
+<!-- raw HTML omitted -->
 <p>I&rsquo;m having trouble following the 0.1 argument to the optimalf function. I looked into the help files, and see that probDrawdown is the constraint function here, and the DD=0.2 is the ruin level being passed to probDrawdown, but what is the 0.1 between the probDrawdown and the DD arguments to this optimalf?</p>
-
 <p>Thanks.</p>
-
-<p>optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,snow=clust,control=list(NP=30,itermax=100)
-<hr /></p>
-
-<h4 id="note-the-optimalf-function-only-has-4-arguments-1">Note the optimalf function only has 4 arguments: 1&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-05-18T10:36:18.341-05:00">May 2, 2010</time></p>
-
-<p>Note the optimalf function only has 4 arguments:<br />
-1) the lsp object (&ldquo;port&rdquo;),<br />
-2) the constraint function (&ldquo;probDrawdown&rdquo;),<br />
-3) the constraint value (0.1), and<br />
-4) &lsquo;&hellip;&rsquo;</p>
-
-<p>In this post, &ldquo;port&rdquo;, &ldquo;probDrawdown&rdquo;, and &ldquo;0.1&rdquo; are 1, 2, and 3, respectively. All the other arguments fall into &lsquo;&hellip;&rsquo;, which get passed to the probDrawdown function (note that all arguments in &lsquo;&hellip;&rsquo; must be name/value pairs).</p>
-
-<p>For more information on &lsquo;&hellip;&rsquo;, see<br />
+<p>optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,snow=clust,control=list(NP=30,itermax=100)</p>
+<!-- raw HTML omitted -->
+<p>Note the optimalf function only has 4 arguments:</p>
+<ol>
+<li>the lsp object (&ldquo;port&rdquo;),</li>
+<li>the constraint function (&ldquo;probDrawdown&rdquo;),</li>
+<li>the constraint value (0.1), and</li>
+<li>&lsquo;&hellip;&rsquo;</li>
+</ol>
+<p>In this post, &ldquo;port&rdquo;, &ldquo;probDrawdown&rdquo;, and &ldquo;0.1&rdquo; are 1, 2, and 3, respectively. All the other arguments fall into &lsquo;&hellip;', which get passed to the probDrawdown function (note that all arguments in &lsquo;&hellip;&rsquo; must be name/value pairs).</p>
+<p>For more information on &lsquo;&hellip;', see<br>
 <a href="http://cran.r-project.org/doc/manuals/R-intro.html#Writing-your-own-functions">http://cran.r-project.org/doc/manuals/R-intro.html#Writing-your-own-functions</a></p>
-
-<p>So, after all that background information, 0.1 is the maximum constraint value (i.e. probDrawdown cannot exceed this value).
-<hr /></p>
-
-<h4 id="got-it-thanks-what-i-ve-quickly-realized-is">Got it thanks. What I&rsquo;ve quickly realized is &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01349972242888715865" title="noreply@blogger.com">G$</a> - <time datetime="2010-05-18T12:56:44.031-05:00">May 2, 2010</time></p>
-
-<p>Got it thanks. What I&rsquo;ve quickly realized is my event populations are much too large. I have 10 years of daily historical P&amp;L for strategies and have weighted all days with equal probability. I wonder if anyone has used a Self Organizing Map for their history to chop events into a number of distinct buckets and give back the mean P&amp;L in those areas for each strategy/trade?
-<hr /></p>
-
-<h4 id="it-s-no-self-organizing-map-but-my">It&rsquo;s no self-organizing map, but my</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2010-05-18T22:34:53.566-05:00">May 3, 2010</time></p>
-
-<p>It&rsquo;s no self-organizing map, but my <a href="http://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html">most recent post</a> provides a function that creates a joint probability table from a matrix of input data.
-<hr /></p>
-
-<h4 id="over-the-past-month-i-have-had-our-network-migrate">Over the past month I have had our network migrate&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-09-02T03:04:20.957-05:00">Sep 5, 2011</time></p>
-
+<p>So, after all that background information, 0.1 is the maximum constraint value (i.e. probDrawdown cannot exceed this value).</p>
+<!-- raw HTML omitted -->
+<p>Got it thanks. What I&rsquo;ve quickly realized is my event populations are much too large. I have 10 years of daily historical P&amp;L for strategies and have weighted all days with equal probability. I wonder if anyone has used a Self Organizing Map for their history to chop events into a number of distinct buckets and give back the mean P&amp;L in those areas for each strategy/trade?</p>
+<!-- raw HTML omitted -->
+<p>It&rsquo;s no self-organizing map, but my <a href="http://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html">most recent post</a> provides a function that creates a joint probability table from a matrix of input data.</p>
+<!-- raw HTML omitted -->
 <p>Over the past month I have had our network migrated to Open Directory hosted by OS X Lion servers.</p>
-
 <p>As we also now have a number of OSX/Windows devices on the network (and inspired by a previous thread on the possibility of running R in the cloud) I have been looking at the possibility of leveraging current available processing assets to run LSPM.</p>
-
 <p>Am currently looking at:</p>
-
-<p><a href="http://cran.r-project.org/web/packages/runjags/index.html">http://cran.r-project.org/web/packages/runjags/index.html</a><br />
+<p><a href="http://cran.r-project.org/web/packages/runjags/index.html">http://cran.r-project.org/web/packages/runjags/index.html</a><br>
 [A set of utility functions ….. arbitrary R code submission to Xgrid clusters (requires Mac OS X). ….. Utilities to run user-supplied R functions on Xgrid (using xapply as a replacement for lapply) are also included, and do not require JAGS.]</p>
-
 <p>there is also:</p>
-
-<p><a href="http://cran.r-project.org/web/packages/xgrid/index.html">http://cran.r-project.org/web/packages/xgrid/index.html</a><br />
+<p><a href="http://cran.r-project.org/web/packages/xgrid/index.html">http://cran.r-project.org/web/packages/xgrid/index.html</a><br>
 [Functions to distribute and collate results from simulation studies and other computationally expensive tasks to Apple Xgrid clusters from within R]</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="this-is-just-a-heads-up-to-let-you-know-that-with">This is just a heads up to let you know that with &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-02T02:26:21.826-05:00">Nov 3, 2011</time></p>
-
+<p>Grant</p>
+<!-- raw HTML omitted -->
 <p>This is just a heads up to let you know that with the latest release of R released this week (2.14.0) we now have the &ldquo;parallel&rdquo; libaray which is distributed &ldquo;native&rdquo; with R itself.</p>
-
 <p>It is based upon the snow and multicore packages.</p>
-
 <p>Not sure yet what benefits it brings to the table but to use it simply substitute</p>
-
-<p>clust &lt;- makePSOCKcluster(16)<br />
-for<br />
-clust &lt;- makeSOCKcluster(16)
-<hr /></p>
+<p>clust &lt;- makePSOCKcluster(16)<br>
+for<br>
+clust &lt;- makeSOCKcluster(16)</p>
+<!-- raw HTML omitted -->
 
 		</div>
 		<footer class="post__footer">
@@ -288,7 +235,20 @@ clust &lt;- makeSOCKcluster(16)
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

@@ -21,7 +21,7 @@ To calculate the probability of drawdown, the function traverses all permutation
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,78 +90,61 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-06-19T20:13:00-05:00">June 19, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I&rsquo;ve <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">shown</a> <a href="http://blog.fosstrading.com/2010/01/lspm-with-snow.html">several</a> <a href="http://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html">examples</a> of how to use <a href="http://r-forge.r-project.org/projects/lspm">LSPM&rsquo;s</a> probDrawdown function as a constraint when optimizing a leverage space portfolio.  Those posts implicitly assume the probDrawdown function produces an accurate estimate of actual drawdown.  This post will investigate the function&rsquo;s accuracy.</p>
-
-<p><strong>Calculation Notes:</strong><br />
+<p><strong>Calculation Notes:</strong><br>
 To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.  The probability of each permutation is the product of the probability of each event in the permutation.</p>
-
 <p>In the example below, there are 20 events in each lsp object and the probability of drawdown is calculated over a horizon of 10 days, yielding 20^10 permutations to traverse - <em>for</em> <em>each iteration</em>.  So don&rsquo;t be surprised when the code takes more than a couple minutes to run.</p>
-
-<p>For a more detailed discussion about the calculation, see:<br />
-pp. 89-138 of <a href="http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0470455950">The Leverage Space Trading Model</a>, and/or<br />
-pp. 377-414 of <a href="http://www.amazon.com/gp/product/0471757683?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0471757683">The Handbook of Portfolio Mathematics</a><br />
+<p>For a more detailed discussion about the calculation, see:<br>
+pp. 89-138 of <a href="http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0470455950">The Leverage Space Trading Model</a>, and/or<br>
+pp. 377-414 of <a href="http://www.amazon.com/gp/product/0471757683?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0471757683">The Handbook of Portfolio Mathematics</a><br>
 both by <a href="http://www.ralphvince.com/">Ralph Vince</a>.</p>
-
-<p><strong>Discussion:</strong><br />
+<p><strong>Discussion:</strong><br>
 The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 days of data to estimate the probability of a 5% drawdown over the next 10 days.  Results on daily QQQQ over the same period, and monthly SPX from 1950-present produced similar results.</p>
-
 <p>I chose a prediction horizon of 10 periods to provide a fairly smooth actual probability of drawdown curve without making the probDrawdown calculation time too long.  Using 10 (instead of 20) days of data in the lsp object only changed results slightly.</p>
-
 <p>The chart below shows that probDrawdown nearly always over estimates actual drawdown over the next 10 periods and <em>hardly ever</em> under estimates it.  While it&rsquo;s comforting the function doesn&rsquo;t under estimate risk, I would prefer a less biased estimator.</p>
-
-<p><img src="https://2.bp.blogspot.com/_8iehP8a8rkE/TB0ktswwUmI/AAAAAAAAAHE/hpUbAzc4Fmo/s400/20100619_probDrawdown.png" alt="" /></p>
-
+<p><img src="https://2.bp.blogspot.com/_8iehP8a8rkE/TB0ktswwUmI/AAAAAAAAAHE/hpUbAzc4Fmo/s400/20100619_probDrawdown.png" alt=""></p>
 <p>Notice that the above calculation assumes each event is independently distributed.  <a href="http://braverock.com/brian/">Brian Peterson</a> suggested a <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap">block bootstrap</a> to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.</p>
-
 <p><strong>Code:</strong></p>
-
-<p>library(quantmod)<br />
-library(LSPM)<br />
+<p>library(quantmod)<br>
+library(LSPM)<br>
 library(snow)</p>
-
-<p># Pull data and calculate differences<br />
-symbol &lt;- &ldquo;SPY&rdquo;<br />
-getSymbols(symbol, from=&ldquo;2008-01-01&rdquo;, to=&ldquo;2009-01-01&rdquo;)<br />
-sym &lt;- get(symbol)<br />
-symDiff &lt;- diff(Cl(sym))<br />
+<p># Pull data and calculate differences<br>
+symbol &lt;- &ldquo;SPY&rdquo;<br>
+getSymbols(symbol, from=&quot;2008-01-01&rdquo;, to=&quot;2009-01-01&rdquo;)<br>
+sym &lt;- get(symbol)<br>
+symDiff &lt;- diff(Cl(sym))<br>
 symDiff[1] &lt;- 0</p>
-
-<p>NP &lt;- 20    # number of periods to use in lsp object<br />
-HR &lt;- 10    # drawdown horizon<br />
+<p>NP &lt;- 20    # number of periods to use in lsp object<br>
+HR &lt;- 10    # drawdown horizon<br>
 DD &lt;- 0.05  # drawdown level</p>
-
-<p># Initialize projected / actual drawdown objects<br />
-NR &lt;- NROW(symDiff)<br />
-prjDD &lt;- xts(rep(0,NR),index(symDiff))<br />
+<p># Initialize projected / actual drawdown objects<br>
+NR &lt;- NROW(symDiff)<br>
+prjDD &lt;- xts(rep(0,NR),index(symDiff))<br>
 actDD &lt;- xts(rep(0,NR),index(symDiff))</p>
-
-<p># Socket cluster with snow to speed up probDrawdown()<br />
+<p># Socket cluster with snow to speed up probDrawdown()<br>
 cl &lt;- makeSOCKcluster(2)</p>
-
-<p># Start loop over data<br />
-for( i in (NP+1):(NR-HR) ) {<br />
- <br />
-  # Objects to hold data for the last 20 days and next 10 days<br />
-  last20 &lt;- symDiff[(i-NP):i]<br />
-  next10 &lt;- symDiff[(i+1):(i+HR)]<br />
+<p># Start loop over data<br>
+for( i in (NP+1):(NR-HR) ) {<br>
+ <br>
+  # Objects to hold data for the last 20 days and next 10 days<br>
+  last20 &lt;- symDiff[(i-NP):i]<br>
+  next10 &lt;- symDiff[(i+1):(i+HR)]<br>
   maxLoss &lt;- -Cl(sym)[i]</p>
-
-<p>  # Portfolios to estimate drawdown and calculate actual drawdown<br />
-  prjPort &lt;- lsp(last20, f=1, maxLoss=maxLoss)<br />
-  actPort &lt;- lsp(next10, f=1, maxLoss=maxLoss)<br />
- <br />
-  # Estimate probability of drawdown<br />
-  prjDD[i] &lt;- probDrawdown(prjPort, DD, HR, snow=cl)<br />
- <br />
-  # Calculate actual drawdown probability<br />
-  actDD[i] &lt;- sum(HPR(actPort)/cummax(HPR(actPort)) &lt;= (1-DD)) / HR<br />
-}<br />
+<p>  # Portfolios to estimate drawdown and calculate actual drawdown<br>
+  prjPort &lt;- lsp(last20, f=1, maxLoss=maxLoss)<br>
+  actPort &lt;- lsp(next10, f=1, maxLoss=maxLoss)<br>
+ <br>
+  # Estimate probability of drawdown<br>
+  prjDD[i] &lt;- probDrawdown(prjPort, DD, HR, snow=cl)<br>
+ <br>
+  # Calculate actual drawdown probability<br>
+  actDD[i] &lt;- sum(HPR(actPort)/cummax(HPR(actPort)) &lt;= (1-DD)) / HR<br>
+}<br>
 # End loop over data</p>
-
-<p># Chart results<br />
-drawdown=cbind(projected=prjDD,actual=actDD)<br />
-difference=prjDD-actDD<br />
-chartSeries(sym,log=FALSE,theme=&lsquo;white&rsquo;,name=symbol,<br />
-  TA=&ldquo;addTA(drawdown,col=c(&lsquo;blue&rsquo;,&lsquo;green&rsquo;));addTA(difference)&rdquo;)</p>
+<p># Chart results<br>
+drawdown=cbind(projected=prjDD,actual=actDD)<br>
+difference=prjDD-actDD<br>
+chartSeries(sym,log=FALSE,theme='white&rsquo;,name=symbol,<br>
+  TA=&quot;addTA(drawdown,col=c(&lsquo;blue&rsquo;,&lsquo;green&rsquo;));addTA(difference)&quot;)</p>
 
 		</div>
 		<footer class="post__footer">
@@ -256,7 +239,20 @@ chartSeries(sym,log=FALSE,theme=&lsquo;white&rsquo;,name=symbol,<br />
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

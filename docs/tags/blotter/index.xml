@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blotter on FOSS Trading</title>
@@ -26,14 +26,14 @@
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
-      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009
-Hi,
+      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009Hi,
 If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
 Cheers,
 -&amp;mdash;&amp;mdash;-
 Error in if (!all(i &amp;lt;= 0)) stop(&amp;ldquo;only zeros may be mixed with negative subscripts&amp;rdquo;) :
 missing value where TRUE/FALSE needed
-Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts Thanks Josh for providing this nice example of the&amp;hellip; pg - Nov 4, 2009</description>
+Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts
+Thanks Josh for providing this nice example of the use of blotter.</description>
     </item>
     
     <item>

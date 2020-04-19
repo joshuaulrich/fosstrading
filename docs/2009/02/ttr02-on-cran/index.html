@@ -25,7 +25,7 @@ NEW FEATURES:
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -94,65 +94,38 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-15T18:51:00-06:00">February 15, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.</p>
-
 <p>This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.</p>
-
 <p>NEW FEATURES:</p>
-
 <p>- Added the zig zag indicator: ZigZag()</p>
-
-<p>- Added volatility estimators/indicators: volatility(), with the following calculations<br />
-- Close-to-Close<br />
-- Garman Klass<br />
-- Parkinson<br />
+<p>- Added volatility estimators/indicators: volatility(), with the following calculations<br>
+- Close-to-Close<br>
+- Garman Klass<br>
+- Parkinson<br>
 - Rogers Satchell</p>
-
 <p>- Added Money Flow Index: MFI()</p>
-
 <p>- Added Donchian channel: DonchianChannel()</p>
-
 <p>CHANGES:</p>
-
 <p>- All functions now use xts internally, adding support for all major time series classes. If try.xts() fails on the input object(s), they will be converted to a matrix and a matrix object will be returned.</p>
-
 <p>- Added &lsquo;bounded&rsquo; arg to stoch() and SMI(), which includes the current period in the calculation.</p>
-
 <p>- Added naCheck() and implemented it in the moving average functions.</p>
-
-<p>- Moved maType argument default values from function formals to function body for the following functions:<br />
+<p>- Moved maType argument default values from function formals to function body for the following functions:<br>
 ADX, ATR, CCI, DPO, EMV, KST, MACD, RSI, TRIX, BBands, chaikinVolatility, stoch, SMI</p>
-
 <p>- momentum() in CMO() no longer sets na=100</p>
-
 <p>- Replaced &lsquo;na&rsquo; argument in momentum() and ROC() with &lsquo;na.pad&rsquo;</p>
-
 <p>- Added &lsquo;multiple&rsquo; argument to TDI(), allowing more user control</p>
-
 <p>- getYahooData() now returns an xts object</p>
-
 <p>- Added colnames to output for ADX, EMV, and CLV (for xts)</p>
-
-<p>- Added unit tests using the RUnit package<br />
+<p>- Added unit tests using the RUnit package<br>
 - Used checkEquals on object attributes as well as values</p>
-
 <p>- Removed .First.lib function and added .onLoad with package version.</p>
-
 <p>BUG FIXES:</p>
-
 <p>- Corrected NaN replacement in CLV()</p>
-
 <p>- Corrected williamsAD(): AD=0 if C(t)=C(t-1)</p>
-
 <p>- Corrected runMedian() and runMAD(). The argument controlling which type of median to calculate for even-numbered samples wasn&rsquo;t being passed to the Fortran routine.</p>
-
 <p>- aroon() calculation starts at period n+1, instead of n</p>
-
 <p>- Added NA to first element of closeLag of ATR()</p>
-
 <p>- Corrected BBands() and CCI() for rowMeans use on xts objects</p>
-
 <p>- Made changes to Rd files to pass R CMD check on R-devel (2.9.0)</p>
-
 <p>Please do contact me with any questions, concerns, bug reports, etc.</p>
 
 		</div>
@@ -248,7 +221,20 @@ ADX, ATR, CCI, DPO, EMV, KST, MACD, RSI, TRIX, BBands, chaikinVolatility, stoch,
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

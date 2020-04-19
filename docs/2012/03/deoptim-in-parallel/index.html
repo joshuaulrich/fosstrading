@@ -20,7 +20,7 @@ We were able to add and test the functionality within a week. The latest revisi
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,25 +89,26 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-03-04T20:33:00-06:00">March 04, 2012</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Running <a href="http://cran.r-project.org/package=DEoptim">DEoptim</a> in parallel has been on the development team&rsquo;s wishlist for awhile.  It had not been a priority though, because none of us have personally needed it.  An opportunity arose when <a href="http://www.econ.kuleuven.be/public/n06054/">Kris Boudt</a> approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.</p>
-
 <p>We were able to add and test the functionality within a week.  The latest revision of <a href="https://r-forge.r-project.org/projects/deoptim/">DEoptim on R-Forge</a> has the capability to evaluate the objective function on multiple cores using <a href="http://cran.r-project.org/web/packages/foreach/index.html">foreach</a>.  Very CPU-intensive problems will see speed increases in approximately linear time (less communication overhead).</p>
-
 <p>I gave a <a href="http://files.meetup.com/1772780/20120201_Ulrich_Parallel_DEoptim.pdf">short presentation</a> (PDF) on the parallel functionality at the <a href="http://www.meetup.com/Saint-Louis-RUG/">Saint Louis R User Group</a> meetup in February.  A longer-running version of the code used in the presentation is on R-Forge, in the file <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/DEoptim/sandbox/largeN_doSNOW.R?view=markup&amp;revision=86&amp;root=deoptim">DEoptim/sandbox/largeN_doSNOW.R</a> (revision 86).</p>
-
 <p>There are a few things to keep in mind when using the parallel functionality.  I quote from the meetup presentation:</p>
-
 <ul>
-<li><p>Data communication between nodes can overwhelm gains from processing on multiple CPUs</p></li>
-
-<li><p>Be careful with non-varying objects</p></li>
-
-<li><p>Exclude them from formal function arguments</p></li>
-
-<li><p>Copy them to nodes before optimization (clusterExport)</p></li>
-
-<li><p>If mu and sigma were formal function arguments, they would be copied to each node for all 2037 function evaluations!</p></li>
+<li>
+<p>Data communication between nodes can overwhelm gains from processing on multiple CPUs</p>
+</li>
+<li>
+<p>Be careful with non-varying objects</p>
+</li>
+<li>
+<p>Exclude them from formal function arguments</p>
+</li>
+<li>
+<p>Copy them to nodes before optimization (clusterExport)</p>
+</li>
+<li>
+<p>If mu and sigma were formal function arguments, they would be copied to each node for all 2037 function evaluations!</p>
+</li>
 </ul>
-
 <p>Please try it and give us feedback.  R-Forge has been undergoing major updates, so please anonymously checkout the source and build it yourself if you&rsquo;re unable to download the pre-built source / binaries.</p>
 
 		</div>
@@ -206,7 +207,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

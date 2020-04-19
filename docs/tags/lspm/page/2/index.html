@@ -11,7 +11,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.fosstrading.com/tags/lspm/" />
-
 <meta property="og:updated_time" content="2011-05-01T13:38:00-05:00" />
 
 	
@@ -20,7 +19,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/tags/lspm/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -95,8 +94,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-05-18T22:30:00-05:00">May 18, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Josh, If I may comment: The joint probabilities ta&hellip; Ralph Vince - May 3, 2010
-Josh, If I may comment:
+		Josh, If I may comment: The joint probabilities ta&hellip; Ralph Vince - May 3, 2010Josh, If I may comment:
 The joint probabilities table (&ldquo;jpt&rdquo;) ultimately should encompass and be a proxy for all potential risk for the next period.
 In other words, frequently, in attempting to articulate &ldquo;risk,&rdquo; we see the argument that it is more than mere variance. That there is liquidity risk, there is counter-party risk, this risk and that risk, and there is a notion that risk posses many facets.
 	</div>
@@ -144,9 +142,9 @@ I&rsquo;m certain there are more robust ways to estimate this table, but the cod
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-04-09T10:04:00-05:00">April 09, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Josh, Thanks for another great explanation. I migh&hellip; Ralph Vince - Apr 5, 2010
-Josh, Thanks for another great explanation. I might point out to that it is not just the optimization algorithms used, but in the case of mazimizing for greatest probability of profit, there are many posssible optimal sets (f1,..,fn,z+,z-). There are multiple sets which will result in an equivalent (and highest) probability of profit.
--Ralph Vince If I understand the optimization problem correctly&hellip; Matthew - Apr 0, 2010
+		Josh, Thanks for another great explanation. I migh&hellip; Ralph Vince - Apr 5, 2010Josh, Thanks for another great explanation. I might point out to that it is not just the optimization algorithms used, but in the case of mazimizing for greatest probability of profit, there are many posssible optimal sets (f1,..,fn,z+,z-). There are multiple sets which will result in an equivalent (and highest) probability of profit.
+-Ralph Vince
+If I understand the optimization problem correctly, I think it may be possible to achieve similar results in just minutes of computation with a different optimization approach.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -175,8 +173,7 @@ These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010
-Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
+		Hi Joshua! Could you tell me how to calculate prob&hellip; senyai - Apr 5, 2010Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
 -&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
 port &lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))
 probDrawdown(port,0.8,12,13)
@@ -210,8 +207,7 @@ This post will illustrate how the snow package can increase the speed of the pro
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-02T15:35:00-06:00">January 02, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hi Josh I am trying to replicate the results on p&hellip; Chris - Nov 2, 2011
-Hi Josh
+		Hi Josh I am trying to replicate the results on p&hellip; Chris - Nov 2, 2011Hi Josh
 I am trying to replicate the results on page 87 (as mentioned in your post above) of the LSPM book. I do the following:
 &gt; data(port)
 &gt; DEctrl &lt;- list(NP=30, itermax=100)
@@ -219,6 +215,7 @@ I am trying to replicate the results on page 87 (as mentioned in your post above
 The result is :
 Iteration: 100 bestvalit: -1.293917 bestmemit: 1.000000 0.000000 0.857813
 Page 87 reads:
+MktSysA 0.307
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -299,7 +296,20 @@ These examples are based on revision 26 31 from r-forge and will not work under 
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

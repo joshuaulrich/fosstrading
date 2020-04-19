@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on FOSS Trading</title>
@@ -17,8 +17,8 @@
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</guid>
-      <description>Should we consider it good that rules are independ&amp;hellip; [Anonymous]( &amp;ldquo;noreply@blogger.com&amp;rdquo;) - Aug 1, 2011
-Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly. @crasshopper: I think it would be more appropriate&amp;hellip; Brian G. Peterson - Sep 4, 2011</description>
+      <description>Should we consider it good that rules are independ&amp;hellip; Anonymous - Aug 1, 2011Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly.
+@crasshopper: I think it would be more appropriate to say that rules are ipart of the model, and that models are independent of the instruments that they will be applied to.</description>
     </item>
     
     <item>
@@ -37,10 +37,12 @@ When trading stocks in a single currency, instrument metadata can be safely igno
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2009/11/opentick-alternatives-comments/</guid>
-      <description>I just started looking into getting data again and&amp;hellip; Unknown - Nov 0, 2009
-I just started looking into getting data again and found opentick is gone :(
-Thanks for this post! You&amp;rsquo;re most welcome. Let me know if you find &amp;hellip; Joshua Ulrich - Nov 0, 2009
-You&amp;rsquo;re most welcome. Let me know if you find anything that should be included in the list. Check out this page for other alternatives: Fried Neuron - Nov 4, 2009</description>
+      <description>I just started looking into getting data again and&amp;hellip; Unknown - Nov 0, 2009I just started looking into getting data again and found opentick is gone :(
+Thanks for this post!
+You&amp;rsquo;re most welcome. Let me know if you find anything that should be included in the list.
+Check out this page for other alternatives: Real-Time Tick Data Vendors
+Fried,
+Thanks for the link. I found that page as well, but didn&amp;rsquo;t include any of those vendors because they appear very expensive.</description>
     </item>
     
     <item>
@@ -66,8 +68,7 @@ eSignal
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/10/xasax-closes-shop-comments/</guid>
-      <description>Would you happen to know of any other sources to o&amp;hellip; [Anonymous]( &amp;ldquo;noreply@blogger.com&amp;rdquo;) - Nov 2, 2009
-Would you happen to know of any other sources to obtain tick data (preferably free ones)? I don&amp;rsquo;t know of any free tick data providers, &amp;hellip; Joshua Ulrich - Nov 4, 2009
+      <description>Would you happen to know of any other sources to o&amp;hellip; Anonymous - Nov 2, 2009Would you happen to know of any other sources to obtain tick data (preferably free ones)?
 I don&amp;rsquo;t know of any free tick data providers, but I&amp;rsquo;m working on a post to summarize the data providers I&amp;rsquo;m aware of.</description>
     </item>
     
@@ -87,11 +88,10 @@ It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Dat
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/04/opentick-is-no-more-comments/</guid>
-      <description> I am unable to link to either www.opentick.com or &amp;hellip; gs - Oct 1, 2009
-I am unable to link to either www.opentick.com or www.xasax.com.
-Overpromise &amp;amp; underperform. It looks like Xasax hit funding problems in August&amp;hellip; Joshua Ulrich - Oct 0, 2009
+      <description>I am unable to link to either www.opentick.com or &amp;hellip; gs - Oct 1, 2009I am unable to link to either www.opentick.com or www.xasax.com.
+Overpromise &amp;amp; underperform.
 It looks like Xasax hit funding problems in August&amp;hellip;
-Inside Market Data mentions the above in this story. </description>
+Inside Market Data mentions the above in this story.</description>
     </item>
     
     <item>

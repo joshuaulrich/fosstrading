@@ -10,7 +10,7 @@
 	<meta property="og:title" content="Tactical asset allocation using quantstrat" />
 <meta property="og:description" content="As promised in the introduction to quantstrat, here is an example strategy. I thought I&rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate. There are two major differences:
- The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
+  The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/" />
 <meta property="article:published_time" content="2011-08-23T20:55:00-05:00" />
@@ -21,7 +21,7 @@ The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy bu
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -90,148 +90,83 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-23T20:55:00-05:00">August 23, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>As promised in the <a href="http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html">introduction to quantstrat</a>, here is an example strategy.  I thought I&rsquo;d start with the obligatory tactial asset allocation (TAA) strategy.  This post will replicate the strategy in the post, <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>.</p>
-
 <p>The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate.  There are two major differences:</p>
-
 <ol>
-<li><p>The blotter TAA code initiates a position at the first observation where the close is above the SMA.  The demo only initiates a position when the close <em>crosses</em> the SMA to the upside.</p>
-
-<p>For example, assume the close is above the SMA at the beginning of the sample.  The demo has to wait for the close to drop below the SMA and then cross above it before taking a position; the blotter TAA code initiates a position on the first observation.</p></li>
-
-<li><p>The blotter TAA code calculates order size based on total account equity (as stored in the UnitSize object).  The demo always uses an order size of 1,000 shares, regardless of total account value (in case you&rsquo;re wondering, yes, capital/equity-aware order sizing is on the to-do list).</p></li>
+<li>
+<p>The blotter TAA code initiates a position at the first observation where the close is above the SMA.  The demo only initiates a position when the close <em>crosses</em> the SMA to the upside.</p>
+<p>For example, assume the close is above the SMA at the beginning of the sample.  The demo has to wait for the close to drop below the SMA and then cross above it before taking a position; the blotter TAA code initiates a position on the first observation.</p>
+</li>
+<li>
+<p>The blotter TAA code calculates order size based on total account equity (as stored in the UnitSize object).  The demo always uses an order size of 1,000 shares, regardless of total account value (in case you&rsquo;re wondering, yes, capital/equity-aware order sizing is on the to-do list).</p>
+</li>
 </ol>
-
 <p>We need to make a few changes to the demo(faber) code to make it work more like the blotter TAA post.  First, we change the add.signal calls to use sigCrossover instead of sigComparison.  This allows us to create an order on the first observation, rather than wait for a crossover.</p>
-
 <p>Next, we need to change the first call to add.rule (the entry rule).  sigComparison will be TRUE for every period where the close is above the SMA and we don&rsquo;t want to buy 1000 shares every period, so we need to tell ruleSignal to use the max position order sizing function.  We do this by adding osFUN=osMaxPos to the list of arguments passed to ruleSignal.</p>
-
 <p>Finally, we need to set the position limits for each instrument.  We do this via two calls to addPosLimit (one for each symbol) and we set the maximum position to 1000 shares and the minimum position to 0 shares.</p>
-
 <p>The modified code is below and even includes some simple evaluation of the results at no extra charge.  The tradeStats function has a ton more columns; I&rsquo;ve only selected a few to make the output more readable.  Feel free to tinker.</p>
-
 <p>NOTE: I wrote this code using the latest quantmod, xts, and zoo from CRAN; and the latest blotter, FinancialInstrument, and quantstrat from R-Forge.</p>
-
-<p># This code is a slight modification of the quantstrat &ldquo;faber&rdquo; demo, intended to replicate <br />
-# <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html ">http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html </a><br />
-# Uncomment the line below to install the latest packages on R-Forge:<br />
-#install.packages(c(&ldquo;quantstrat&rdquo;,&ldquo;blotter&rdquo;,&ldquo;FinancialInstrument&rdquo;), repos=&rdquo;<a href="http://r-forge.r-project.org/">http://r-forge.r-project.org</a>&rdquo;)</p>
-
+<p># This code is a slight modification of the quantstrat &ldquo;faber&rdquo; demo, intended to replicate <br>
+# <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html</a> <br>
+# Uncomment the line below to install the latest packages on R-Forge:<br>
+#install.packages(c(&ldquo;quantstrat&rdquo;,&ldquo;blotter&rdquo;,&ldquo;FinancialInstrument&rdquo;), repos=&rdquo;<a href="http://r-forge.r-project.org/">http://r-forge.r-project.org</a>&quot;)</p>
 <p>require(quantstrat)</p>
-
 <p>require(PerformanceAnalytics)</p>
-
 <p># Set initial values</p>
-
 <p>initDate &lt;- &ldquo;2002-07-31&rdquo;</p>
-
 <p>endDate &lt;- &ldquo;2009-10-31&rdquo;</p>
-
 <p>initEq &lt;- 100000</p>
-
 <p># Pull Yahoo Finance data</p>
-
 <p>symbols &lt;- c(&ldquo;IEF&rdquo;, &ldquo;SPY&rdquo;)</p>
-
 <p>getSymbols(symbols, from=initDate, to=endDate, index.class=c(&ldquo;POSIXt&rdquo;,&ldquo;POSIXct&rdquo;))</p>
-
 <p># adjust for splits/dividends (comment to replicate blotter example)</p>
-
 <p>#IEF &lt;- adjustOHLC(IEF, use.Adjusted=TRUE)</p>
-
 <p>#SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)</p>
-
 <p># convert to monthly</p>
-
-<p>IEF &lt;- to.monthly(IEF, indexAt=&ldquo;endof&rdquo;)</p>
-
-<p>SPY &lt;- to.monthly(SPY, indexAt=&ldquo;endof&rdquo;)</p>
-
+<p>IEF &lt;- to.monthly(IEF, indexAt=&quot;endof&rdquo;)</p>
+<p>SPY &lt;- to.monthly(SPY, indexAt=&quot;endof&rdquo;)</p>
 <p># Set up instruments with FinancialInstruments package</p>
-
 <p>currency(&ldquo;USD&rdquo;)</p>
-
 <p>for(symbol in symbols) {</p>
-
-<p>  stock(symbol, currency=&ldquo;USD&rdquo;, multiplier=1)</p>
-
+<p>  stock(symbol, currency=&quot;USD&rdquo;, multiplier=1)</p>
 <p>}</p>
-
 <p># Delete portfolio, account, and order book if they already exist</p>
-
 <p>suppressWarnings(rm(&ldquo;account.faber&rdquo;,&ldquo;portfolio.faber&rdquo;,pos=.blotter))</p>
-
 <p>suppressWarnings(rm(&ldquo;order_book.faber&rdquo;,pos=.strategy))</p>
-
 <p># Initialize portfolio and account</p>
-
 <p>initPortf(&ldquo;faber&rdquo;, symbols=symbols, initDate=initDate)</p>
-
-<p>initAcct(&ldquo;faber&rdquo;, portfolios=&ldquo;faber&rdquo;, initDate=initDate, initEq=initEq)</p>
-
-<p>initOrders(portfolio=&ldquo;faber&rdquo;, initDate=initDate)</p>
-
+<p>initAcct(&ldquo;faber&rdquo;, portfolios=&quot;faber&rdquo;, initDate=initDate, initEq=initEq)</p>
+<p>initOrders(portfolio=&quot;faber&rdquo;, initDate=initDate)</p>
 <p># Initialize a strategy object</p>
-
 <p>stratFaber &lt;- strategy(&ldquo;faber&rdquo;)</p>
-
 <p># Add the 10-month SMA indicator</p>
-
-<p>stratFaber &lt;- add.indicator(strategy=stratFaber, name=&ldquo;SMA&rdquo;,</p>
-
-<p>  arguments=list(x=quote(Cl(mktdata)), n=10), label=&ldquo;SMA10&rdquo;)</p>
-
+<p>stratFaber &lt;- add.indicator(strategy=stratFaber, name=&quot;SMA&rdquo;,</p>
+<p>  arguments=list(x=quote(Cl(mktdata)), n=10), label=&quot;SMA10&rdquo;)</p>
 <p># There are two signals:</p>
-
 <p># The first is when monthly price crosses over the 10-month SMA</p>
-
-<p>stratFaber &lt;- add.signal(stratFaber, name=&ldquo;sigComparison&rdquo;,</p>
-
-<p>  arguments=list(columns=c(&ldquo;Close&rdquo;,&ldquo;SMA10&rdquo;),relationship=&ldquo;gte&rdquo;), label=&ldquo;Cl.gt.SMA&rdquo;)</p>
-
+<p>stratFaber &lt;- add.signal(stratFaber, name=&quot;sigComparison&rdquo;,</p>
+<p>  arguments=list(columns=c(&ldquo;Close&rdquo;,&ldquo;SMA10&rdquo;),relationship=&quot;gte&rdquo;), label=&quot;Cl.gt.SMA&rdquo;)</p>
 <p># The second is when the monthly price crosses under the 10-month SMA</p>
-
-<p>stratFaber &lt;- add.signal(stratFaber, name=&ldquo;sigComparison&rdquo;,</p>
-
-<p>  arguments=list(columns=c(&ldquo;Close&rdquo;,&ldquo;SMA10&rdquo;),relationship=&ldquo;lt&rdquo;), label=&ldquo;Cl.lt.SMA&rdquo;)</p>
-
+<p>stratFaber &lt;- add.signal(stratFaber, name=&quot;sigComparison&rdquo;,</p>
+<p>  arguments=list(columns=c(&ldquo;Close&rdquo;,&ldquo;SMA10&rdquo;),relationship=&quot;lt&rdquo;), label=&quot;Cl.lt.SMA&rdquo;)</p>
 <p># There are two rules:</p>
-
 <p># The first is to buy when the price crosses above the SMA</p>
-
-<p>stratFaber &lt;- add.rule(stratFaber, name=&ldquo;ruleSignal&rdquo;,</p>
-
-<p>  arguments=list(sigcol=&ldquo;Cl.gt.SMA&rdquo;, sigval=TRUE, orderqty=1000, ordertype=&ldquo;market&rdquo;,</p>
-
-<p>  orderside=&ldquo;long&rdquo;, pricemethod=&ldquo;market&rdquo;, TxnFees=-5, osFUN=osMaxPos), type=&ldquo;enter&rdquo;, path.dep=TRUE)</p>
-
+<p>stratFaber &lt;- add.rule(stratFaber, name=&quot;ruleSignal&rdquo;,</p>
+<p>  arguments=list(sigcol=&quot;Cl.gt.SMA&rdquo;, sigval=TRUE, orderqty=1000, ordertype=&quot;market&rdquo;,</p>
+<p>  orderside=&quot;long&rdquo;, pricemethod=&quot;market&rdquo;, TxnFees=-5, osFUN=osMaxPos), type=&quot;enter&rdquo;, path.dep=TRUE)</p>
 <p># The second is to sell when the price crosses below the SMA</p>
-
-<p>stratFaber &lt;- add.rule(stratFaber, name=&ldquo;ruleSignal&rdquo;,</p>
-
-<p>  arguments=list(sigcol=&ldquo;Cl.lt.SMA&rdquo;, sigval=TRUE, orderqty=&ldquo;all&rdquo;, ordertype=&ldquo;market&rdquo;,</p>
-
-<p>  orderside=&ldquo;long&rdquo;, pricemethod=&ldquo;market&rdquo;, TxnFees=-5), type=&ldquo;exit&rdquo;, path.dep=TRUE)</p>
-
+<p>stratFaber &lt;- add.rule(stratFaber, name=&quot;ruleSignal&rdquo;,</p>
+<p>  arguments=list(sigcol=&quot;Cl.lt.SMA&rdquo;, sigval=TRUE, orderqty=&quot;all&rdquo;, ordertype=&quot;market&rdquo;,</p>
+<p>  orderside=&quot;long&rdquo;, pricemethod=&quot;market&rdquo;, TxnFees=-5), type=&quot;exit&rdquo;, path.dep=TRUE)</p>
 <p># Set position limits so we don&rsquo;t add to the position every month Close &gt; SMA10</p>
-
 <p>addPosLimit(&ldquo;faber&rdquo;, &ldquo;SPY&rdquo;, timestamp=initDate, maxpos=1000, minpos=0)</p>
-
 <p>addPosLimit(&ldquo;faber&rdquo;, &ldquo;IEF&rdquo;, timestamp=initDate, maxpos=1000, minpos=0)</p>
-
 <p># Process the indicators and generate trades</p>
-
-<p>out &lt;- try(applyStrategy(strategy=stratFaber, portfolios=&ldquo;faber&rdquo;))</p>
-
+<p>out &lt;- try(applyStrategy(strategy=stratFaber, portfolios=&quot;faber&rdquo;))</p>
 <p>updatePortf(&ldquo;faber&rdquo;)</p>
-
 <p># Evaluate results</p>
-
 <p>portRet &lt;- PortfReturns(&ldquo;faber&rdquo;)</p>
-
 <p>portRet$Total &lt;- rowSums(portRet, na.rm=TRUE)</p>
-
 <p>charts.PerformanceSummary(portRet$Total)</p>
-
 <p>tradeStats(&ldquo;faber&rdquo;)[,c(&ldquo;Symbol&rdquo;,&ldquo;Num.Trades&rdquo;,&ldquo;Net.Trading.PL&rdquo;,&ldquo;Max.Drawdown&rdquo;)]</p>
 
 		</div>
@@ -330,7 +265,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

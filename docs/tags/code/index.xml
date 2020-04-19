@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Code on FOSS Trading</title>
@@ -36,8 +36,7 @@ If your strategy is not path-dependent, you can get a fairly substantial perform
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
-      <description> Wow!!!! Great work RMW. jryan - Aug 3, 2012
-Wow!!!! Great work RMW. </description>
+      <description>Wow!!!! Great work RMW. jryan - Aug 3, 2012Wow!!!! Great work RMW.</description>
     </item>
     
     <item>
@@ -67,8 +66,7 @@ Students participating in the program receive US$5,000 for successful completion
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</guid>
-      <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011
-I am trying to run this script in R-Studio on OSX but I am getting the following error:
+      <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011I am trying to run this script in R-Studio on OSX but I am getting the following error:
 &amp;gt; currency(&amp;ldquo;USD&amp;rdquo;)
 Error in assign(primary_id, currency_temp, envir = as.environment(.instrument)) :
 object &amp;lsquo;.instrument&amp;rsquo; not found
@@ -84,7 +82,7 @@ Any ideas of what is going wrong here?</description>
       <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/</guid>
       <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate. There are two major differences:
- The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
+  The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
     </item>
     
     <item>
@@ -93,8 +91,7 @@ The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA str
       <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</guid>
-      <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010
-I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
+      <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
     </item>
     
     <item>
@@ -113,14 +110,14 @@ He suggests using his table of volatility correlations as a back-of-the-envelope
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
-      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009
-Hi,
+      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009Hi,
 If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
 Cheers,
 -&amp;mdash;&amp;mdash;-
 Error in if (!all(i &amp;lt;= 0)) stop(&amp;ldquo;only zeros may be mixed with negative subscripts&amp;rdquo;) :
 missing value where TRUE/FALSE needed
-Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts Thanks Josh for providing this nice example of the&amp;hellip; pg - Nov 4, 2009</description>
+Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts
+Thanks Josh for providing this nice example of the use of blotter.</description>
     </item>
     
     <item>
@@ -140,11 +137,10 @@ The contents of this post borrow heavily from code and comments in the &amp;ldqu
       <pubDate>Sun, 19 Jul 2009 08:38:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</guid>
-      <description>hello josh, If I want to sell the stock when the R&amp;hellip; Bear - Jul 4, 2009
-hello josh,
-If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code? Hi Bear, You need to use a lagged value of RSI in&amp;hellip; Joshua Ulrich - Jul 5, 2009
+      <description>hello josh, If I want to sell the stock when the R&amp;hellip; Bear - Jul 4, 2009hello josh,
+If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?
 Hi Bear,
-You need to use a lagged value of RSI in addition to the current value.</description>
+You need to use a lagged value of RSI in addition to the current value. The code below shows how to do it.</description>
     </item>
     
     <item>
@@ -154,9 +150,8 @@ You need to use a lagged value of RSI in addition to the current value.</descrip
       
       <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</guid>
       <description>Here&amp;rsquo;s a quick R implementation of David Varadi&amp;rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- Varadi’s RSI(2) Alternative: The DV(2) Alternative: The DV(2)&amp;ldquo;&amp;rdquo;) RSI(2) vs. DV(2) vs. DV(2)&amp;ldquo;&amp;rdquo;) Last Couple of Notes on DV(2)&amp;rdquo;&amp;ldquo;)  Here&amp;rsquo;s the R code:
-  DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {
-# &amp;ldquo;HLC&amp;rdquo; is an _xts_ object with &amp;ldquo;High&amp;rdquo;, &amp;ldquo;Low&amp;rdquo;, and &amp;ldquo;Close&amp;rdquo;</description>
+ [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Varadi’s RSI(2) Alternative: The DV(2)&amp;quot;&amp;quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;RSI(2) vs. DV(2)&amp;quot;&amp;quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Last Couple of Notes on DV(2)&amp;quot;&amp;quot;)  Here&amp;rsquo;s the R code:
+  DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {</description>
     </item>
     
     <item>
@@ -165,8 +160,7 @@ You need to use a lagged value of RSI in addition to the current value.</descrip
       <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/06/rsi2-evaluation-comments/</guid>
-      <description>I have run this script to see how RIS2 with scalin&amp;hellip; White Cube - Apr 6, 2012
-I have run this script to see how RIS2 with scaling has performed since 2009.
+      <description>I have run this script to see how RIS2 with scalin&amp;hellip; White Cube - Apr 6, 2012I have run this script to see how RIS2 with scaling has performed since 2009.
 On the long side the performance has not been as good as before (with some sharp drawdowns).
 On the short side the equity curve went down for 2 years and seems picking up again since 2011.
 Has the magic RSI gone ?</description>
@@ -189,9 +183,10 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
       <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</guid>
-      <description>i look forward to it &amp;ndash; never could get my head ar&amp;hellip; Autore del blog - May 0, 2009
-i look forward to it &amp;ndash; never could get my head around performance metrics.. This is awesome - very cool. I also was curious i&amp;hellip; Damian - May 5, 2009
-This is awesome - very cool. I also was curious if you could put together a simple example of the following:</description>
+      <description>i look forward to it &amp;ndash; never could get my head ar&amp;hellip; Autore del blog - May 0, 2009i look forward to it &amp;ndash; never could get my head around performance metrics..
+This is awesome - very cool. I also was curious if you could put together a simple example of the following:
+- Take four ETFs (SPY,IWM,QQQQ,TLT) and rank them by their 12m ROC.
+- Buy the top one on the first day of the month.</description>
     </item>
     
     <item>
@@ -211,13 +206,12 @@ A couple notes before moving to the code:</description>
       <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</guid>
-      <description>Really cool. A lot of questions: &amp;ldquo;# Calcula&amp;hellip; Damian - Apr 3, 2009
-Really cool. A lot of questions:
-&amp;rdquo;# Calculate the RSI indicator
+      <description>Really cool. A lot of questions: &amp;ldquo;# Calcula&amp;hellip; Damian - Apr 3, 2009Really cool. A lot of questions:
+&amp;ldquo;# Calculate the RSI indicator
 rsi &amp;lt;- RSI(Cl(GSPC),2)&amp;rdquo;
 When you reference the symbol for getting the data, you referenced it via &amp;ldquo;^GSPC&amp;rdquo; - how did it get assigned to GSPC?
 Secondly, if I have the data stored locally, how would I reference it?
-&amp;rdquo;# Lag signals to align with days in market,</description>
+&amp;ldquo;# Lag signals to align with days in market,</description>
     </item>
     
     <item>

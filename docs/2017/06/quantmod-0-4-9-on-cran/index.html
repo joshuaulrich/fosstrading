@@ -21,7 +21,7 @@ The most noticeable difference is that the adjusted close column is no longer di
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,16 +89,11 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-07T12:25:00-05:00">June 07, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>A new release of <a href="http://www.quantmod.com/">quantmod</a> is now on <a href="https://cran.r-project.org/package=quantmod">CRAN</a>! The only change was to address changes to <a href="https://finance.yahoo.com/">Yahoo! Finance</a> and their effects on getSymbols.yahoo().  GitHub issue <a href="https://github.com/joshuaulrich/quantmod/issues/157">#157</a> contains some details about the fix implementation.</p>
-
+			<p>A new release of <a href="http://www.quantmod.com/">quantmod</a> is now on <a href="https://cran.r-project.org/package=quantmod">CRAN</a>! The only change was to address changes to <a href="https://finance.yahoo.com/">Yahoo! Finance</a> and their effects on <code>getSymbols.yahoo()</code>.  GitHub issue <a href="https://github.com/joshuaulrich/quantmod/issues/157">#157</a> contains some details about the fix implementation.</p>
 <p>Unfortunately, the URL wasn&rsquo;t the only thing that changed.  The actual data available for download changed as well.</p>
-
 <p>The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.</p>
-
-<p>There also appear to be issues with the adjusted prices in some instruments.  For example, users reported issues with split data for XLF and SPXL in GitHub issue <a href="https://github.com/joshuaulrich/quantmod/issues/160">#160</a>.  For XLF, there a split _and_ a dividend on 2016-09-16, even on the <a href="https://finance.yahoo.com/quote/XLF/history?period1=1473138000&amp;period2=1474866000&amp;interval=1d&amp;filter=history&amp;frequency=1d">Yahoo! Finance historical price page for XLF</a>. As far as I can tell, there was only a special dividend.  The problem with SPXL is that the adjusted close price isn&rsquo;t adjusted for the <sup>4</sup>&frasl;<sub>1</sub> split on 2017-05-01, which is also reflected on the <a href="https://finance.yahoo.com/quote/SPXL/history?period1=1488088800&amp;period2=1495774800&amp;interval=1d&amp;filter=history&amp;frequency=1d">Yahoo! Finance historical prices page for SPXL</a>.</p>
-
+<p>There also appear to be issues with the adjusted prices in some instruments.  For example, users reported issues with split data for XLF and SPXL in GitHub issue <a href="https://github.com/joshuaulrich/quantmod/issues/160">#160</a>.  For XLF, there a split <em>and</em> a dividend on 2016-09-16, even on the <a href="https://finance.yahoo.com/quote/XLF/history?period1=1473138000&amp;period2=1474866000&amp;interval=1d&amp;filter=history&amp;frequency=1d">Yahoo! Finance historical price page for XLF</a>. As far as I can tell, there was only a special dividend.  The problem with SPXL is that the adjusted close price isn&rsquo;t adjusted for the 4/1 split on 2017-05-01, which is also reflected on the <a href="https://finance.yahoo.com/quote/SPXL/history?period1=1488088800&amp;period2=1495774800&amp;interval=1d&amp;filter=history&amp;frequency=1d">Yahoo! Finance historical prices page for SPXL</a>.</p>
 <p>Another change is that the downloaded data may contain rows where all the values are &ldquo;null&rdquo;.  These appear on the website as &ldquo;0&rdquo;.  This is a major issue for some instruments.  Take XLU for example; 188 of the 624 days of data are missing between 2014-12-04 and 2017-05-26 (ouch!).  You can see this is even true on the <a href="https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;period2=1422079200&amp;interval=1d&amp;filter=history&amp;frequency=1d">Yahoo! Finance historical price page for XLU</a>.</p>
-
 <p>If these changes have made you look for a new data provider, see my post: <a href="http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html">Yahoo! Finance Alternatives</a>.</p>
 
 		</div>
@@ -200,7 +195,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

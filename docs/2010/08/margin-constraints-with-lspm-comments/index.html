@@ -8,11 +8,9 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Margin Constraints with LSPM" />
-<meta property="og:description" content="Josh Thank you for providing the LSPM package - I&hellip; Chris - Apr 2, 2011
-Josh
+<meta property="og:description" content="Josh Thank you for providing the LSPM package - I&hellip; Chris - Apr 2, 2011Josh
 Thank you for providing the LSPM package - I would not have been able to experiment with using LSPM if I could not use the package. I would like to confirm two things:
-1) the maxUnits function has not been built in to the LSPM package - correct?
-2) what should one do if using leverage is not an option." />
+ the maxUnits function has not been built in to the LSPM package - correct? what should one do if using leverage is not an option." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.fosstrading.com/2010/08/margin-constraints-with-lspm-comments/" />
 <meta property="article:published_time" content="2010-08-01T23:31:00-05:00" />
@@ -23,7 +21,7 @@ Thank you for providing the LSPM package - I would not have been able to experim
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -91,823 +89,448 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-08-01T23:31:00-05:00">August 01, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
-			
-
-<h4 id="josh-thank-you-for-providing-the-lspm-package-i">Josh Thank you for providing the LSPM package - I&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-04-26T07:29:15.446-05:00">Apr 2, 2011</time></p>
-
+			<h4 id="josh-thank-you-for-providing-the-lspm-package---i">Josh Thank you for providing the LSPM package - I&hellip;</h4>
+<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <!-- raw HTML omitted -->Apr 2, 2011<!-- raw HTML omitted --></p>
 <p>Josh</p>
-
-<p>Thank you for providing the LSPM package - I would not have been able to experiment with using LSPM if I could not use the package. I would like to confirm two things:<br />
-1) the maxUnits function has not been built in to the LSPM package - correct?<br />
-2) what should one do if using leverage is not an option. I can see that it is similar to the example on this page (&ldquo;margin constraints with LSPM&rdquo;) but do not understand why you set margin &lt;- port$maxLoss (I see in some of your other examples you use multiples of maxLoss). I want to research the LSPM model for investing in mutual funds - where margin is not applicable. What should I set margin to in this case? Also &lt;- to maxLoss? and why?</p>
-
+<p>Thank you for providing the LSPM package - I would not have been able to experiment with using LSPM if I could not use the package. I would like to confirm two things:</p>
+<ol>
+<li>the maxUnits function has not been built in to the LSPM package - correct?</li>
+<li>what should one do if using leverage is not an option. I can see that it is similar to the example on this page (&ldquo;margin constraints with LSPM&rdquo;) but do not understand why you set margin &lt;- port$maxLoss (I see in some of your other examples you use multiples of maxLoss). I want to research the LSPM model for investing in mutual funds - where margin is not applicable. What should I set margin to in this case? Also &lt;- to maxLoss? and why?</li>
+</ol>
 <p>Regards</p>
-
-<p>Chris
-<hr /></p>
-
-<h4 id="hi-chris-you-re-most-welcome-and-i-m-gla">Hi Chris, You&rsquo;re most welcome and I&rsquo;m gla&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-04-26T09:17:29.554-05:00">Apr 2, 2011</time></p>
-
+<p>Chris</p>
+<!-- raw HTML omitted -->
 <p>Hi Chris,</p>
-
 <p>You&rsquo;re most welcome and I&rsquo;m glad you&rsquo;ve found the package useful.</p>
-
-<p>1) Correct, it was just for illustration purposes in the post.</p>
-
-<p>2) For mutual funds, the margin is the current NAV of the fund. It doesn&rsquo;t necessarily have to be the same as maxLoss, but setting them both to the current NAV may make interpreting the output easier.
-<hr /></p>
-
-<h4 id="josh-the-penny-has-dropped-thank-you-regards">Josh The penny has dropped. Thank you. Regards &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-04-26T09:43:36.376-05:00">Apr 2, 2011</time></p>
-
+<ol>
+<li>
+<p>Correct, it was just for illustration purposes in the post.</p>
+</li>
+<li>
+<p>For mutual funds, the margin is the current NAV of the fund. It doesn&rsquo;t necessarily have to be the same as maxLoss, but setting them both to the current NAV may make interpreting the output easier.</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
 <p>Josh</p>
-
 <p>The penny has dropped. Thank you.</p>
-
 <p>Regards</p>
-
-<p>Chris
-<hr /></p>
-
-<h4 id="josh-how-do-i-set-the-individual-maxloss-equal-to">Josh How do I set the individual maxloss equal to&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-05-02T08:01:44.835-05:00">May 1, 2011</time></p>
-
+<p>Chris</p>
+<!-- raw HTML omitted -->
 <p>Josh</p>
-
 <p>How do I set the individual maxloss equal to the individual current NAV. I can see from your samples how to set margin equal to maxloss</p>
-
 <p>Regards</p>
-
-<p>Chris
-<hr /></p>
-
-<h4 id="hi-chris-if-port-is-your-lsp-object-you">Hi Chris, If <em>port</em> is your lsp object, you &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-05-02T08:13:13.775-05:00">May 1, 2011</time></p>
-
+<p>Chris</p>
+<!-- raw HTML omitted -->
 <p>Hi Chris,</p>
-
 <p>If <em>port</em> is your lsp object, you can change maxLoss via something like:</p>
-
-<p># change first maxLoss<br />
+<p># change first maxLoss<br>
 port$maxLoss[1] &lt;- -100</p>
-
-<p># assuming port has 3 systems<br />
-# set maxLoss for all 3 at once<br />
-port$maxLoss &lt;- c(-100,-200,-250)
-<hr /></p>
-
-<h4 id="hi-josh-thank-you-for-the-help-again-i-have-now">Hi Josh Thank you for the help again. I have now&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-05-03T03:20:24.400-05:00">May 2, 2011</time></p>
-
+<p># assuming port has 3 systems<br>
+# set maxLoss for all 3 at once<br>
+port$maxLoss &lt;- c(-100,-200,-250)</p>
+<!-- raw HTML omitted -->
 <p>Hi Josh</p>
-
-<p>Thank you for the help again. I have now tried it - but are still doing something wrong. This is what I do after I have loaded the 5 mutual fund files (the files contain 156 months of percentage returns):<br />
-aa &lt;- cbind(a,b,c,d,e)<br />
-jpt &lt;- jointProbTable(aa,n=c(11,11,11,11,11))<br />
-outcomes&lt;-jpt[[1]]<br />
-probs&lt;-jpt[[2]]<br />
+<p>Thank you for the help again. I have now tried it - but are still doing something wrong. This is what I do after I have loaded the 5 mutual fund files (the files contain 156 months of percentage returns):<br>
+aa &lt;- cbind(a,b,c,d,e)<br>
+jpt &lt;- jointProbTable(aa,n=c(11,11,11,11,11))<br>
+outcomes&lt;-jpt[[1]]<br>
+probs&lt;-jpt[[2]]<br>
 port&lt;-lsp(outcomes,probs)</p>
-
-<p>When I view &ldquo;port&rdquo; all seems fine. I then set the values for DEoptim and determine optimalf<br />
-res &lt;- optimalf(port,control=DEctrl)<br />
-Up to here everything seems fine when I view &ldquo;res&rdquo; – when I divide optimalf by maxLoss I get figures that I can understand. I then change maxLoss<br />
-port$maxLoss &lt;- c(-917,-343,-949,-1969,-1469)<br />
-and run the margin constrained optimal calculation<br />
+<p>When I view &ldquo;port&rdquo; all seems fine. I then set the values for DEoptim and determine optimalf<br>
+res &lt;- optimalf(port,control=DEctrl)<br>
+Up to here everything seems fine when I view &ldquo;res&rdquo; – when I divide optimalf by maxLoss I get figures that I can understand. I then change maxLoss<br>
+port$maxLoss &lt;- c(-917,-343,-949,-1969,-1469)<br>
+and run the margin constrained optimal calculation<br>
 resMargin &lt;- optimalf(port, control=DEctrl, equity=100000, margin=-port$maxLoss)</p>
-
-<p>I then get figures that do not make sense:<br />
+<p>I then get figures that do not make sense:<br>
 Iteration: 1000 bestvalit: -1.000018 bestmemit: 0.000000 0.000000 0.999999 0.000000 0.000000</p>
-
-<p>I would really appreciate your help
-<hr /></p>
-
-<h4 id="chris-your-problem-is-your-5-mutual-fund-files-o">Chris, Your problem is your 5 mutual fund files o&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-05-03T12:12:44.200-05:00">May 2, 2011</time></p>
-
+<p>I would really appreciate your help</p>
+<!-- raw HTML omitted -->
 <p>Chris,</p>
-
 <p>Your problem is your 5 mutual fund files of <strong>percentage returns</strong>. You need to convert those to dollar returns.</p>
-
-<p>The easiest way is to multiply the percentage returns by the current NAV. This also normalizes the dollar returns over time (the actual dollar returns would have been lower / higher when the fund NAV was lower / higher).
-<hr /></p>
-
-<h4 id="thank-you-again-i-now-got-it-working-by-the-way">Thank you again. I now got it working. By the way &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-05-04T04:42:51.658-05:00">May 3, 2011</time></p>
-
-<p>Thank you again. I now got it working. By the way - my tests confirms what you found in your blog post above. What should I do to determine optimalf using drawdown and margin constraints. I have done models with drawdown contsraints- and models with margin constraintsnow - but do not know what to do where both contsraintsare used in one model.
-<hr /></p>
-
-<h4 id="chris-simply-add-a-drawdown-constraint-to-the-op">Chris, Simply add a drawdown constraint to the op&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-05-04T09:13:18.766-05:00">May 3, 2011</time></p>
-
+<p>The easiest way is to multiply the percentage returns by the current NAV. This also normalizes the dollar returns over time (the actual dollar returns would have been lower / higher when the fund NAV was lower / higher).</p>
+<!-- raw HTML omitted -->
+<p>Thank you again. I now got it working. By the way - my tests confirms what you found in your blog post above. What should I do to determine optimalf using drawdown and margin constraints. I have done models with drawdown contsraints- and models with margin constraintsnow - but do not know what to do where both contsraintsare used in one model.</p>
+<!-- raw HTML omitted -->
 <p>Chris,</p>
-
 <p>Simply add a drawdown constraint to the optimalf() call with a margin constraint:</p>
-
-<p>opt &lt;- optimalf(port, probDrawdown, 0.2, margin, initEq, DD=0.05, horizon=3)
-<hr /></p>
-
-<h4 id="josh-i-let-the-following-run-during-the-night">Josh I let the following run during the night : &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-05-05T01:17:24.037-05:00">May 4, 2011</time></p>
-
+<p>opt &lt;- optimalf(port, probDrawdown, 0.2, margin, initEq, DD=0.05, horizon=3)</p>
+<!-- raw HTML omitted -->
 <p>Josh</p>
-
 <p>I let the following run during the night : opt &lt;- optimalf(port, probDrawdown, 0.2, margin=-port$maxLoss, equity=100000, DD=0.05, horizon=3, snow=clust, control=DEctrl)</p>
-
 <p>after setting up a snow cluster. The result is Iteration: 1000 bestvalit: inf bestmemit: 0.003136 0.841765 0.481197 0.889789 0.812577</p>
-
-<p>Does this mean there that there is no solution - or am I doing something wrong
-<hr /></p>
-
-<h4 id="chris-it-may-mean-there-s-no-solution-but-i">Chris, It may mean there&rsquo;s no solution, but i&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-05-05T10:10:15.788-05:00">May 4, 2011</time></p>
-
+<p>Does this mean there that there is no solution - or am I doing something wrong</p>
+<!-- raw HTML omitted -->
 <p>Chris,</p>
-
 <p>It may mean there&rsquo;s no solution, but it&rsquo;s most-likely because the optimization algorithm couldn&rsquo;t find starting values.</p>
-
 <p>Add <strong>initialpop=matrix(runif(np*nc)/100,np,nc)</strong> to <strong>DEctrl</strong>--where np is DEoptim.control$NP (the default is 50) and nc is the number of columns in your joint probability table (appears to be 5 in your example).</p>
-
-<p>This should provide DEoptim with starting values within your constraints. If it doesn&rsquo;t work, try dividing by a number larger than 100.
-<hr /></p>
-
-<h4 id="joshua-thank-you-it-worked-regards-chris">Joshua Thank you. it worked Regards Chris</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-05-06T03:39:17.495-05:00">May 5, 2011</time></p>
-
+<p>This should provide DEoptim with starting values within your constraints. If it doesn&rsquo;t work, try dividing by a number larger than 100.</p>
+<!-- raw HTML omitted -->
 <p>Joshua</p>
-
 <p>Thank you. it worked</p>
-
 <p>Regards</p>
-
-<p>Chris
-<hr /></p>
-
-<h4 id="chris-it-appears-to-me-that-by-setting-your-margi">Chris, It appears to me that by setting your margi&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-08-16T23:37:10.073-05:00">Aug 3, 2011</time></p>
-
-<p>Chris,<br />
-It appears to me that by setting your margin to the CURRENT NAV (via setting of maxLoss as you have done) within the actual objective function you may not be arriving at an optimal margin constrained f due to the past variability of NAV at each i/trade.<br />
-Although the GHPR results (for a fixed margin) do support Josh&rsquo;s findings above, I am wondering myself now whether due to the fluctuating live margin requirements (i.e. MFs, equities, etc) we are best to stick to post optimisation constraints as outlined in Ralph&rsquo;s book instead of incorporating the CURRENT margin constraint into the objective function.<br />
-What do others think on this?<br />
-Grant
-<hr /></p>
-
-<h4 id="hi-grant-thanks-for-the-comment-the-margin-con">Hi Grant, Thanks for the comment. The margin con&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-08-17T22:11:45.583-05:00">Aug 4, 2011</time></p>
-
+<p>Chris</p>
+<!-- raw HTML omitted -->
+<p>Chris,<br>
+It appears to me that by setting your margin to the CURRENT NAV (via setting of maxLoss as you have done) within the actual objective function you may not be arriving at an optimal margin constrained f due to the past variability of NAV at each i/trade.<br>
+Although the GHPR results (for a fixed margin) do support Josh&rsquo;s findings above, I am wondering myself now whether due to the fluctuating live margin requirements (i.e. MFs, equities, etc) we are best to stick to post optimisation constraints as outlined in Ralph&rsquo;s book instead of incorporating the CURRENT margin constraint into the objective function.<br>
+What do others think on this?<br>
+Grant</p>
+<!-- raw HTML omitted -->
 <p>Hi Grant,</p>
-
 <p>Thanks for the comment. The margin constraint only prevents the optimization from providing allocations greater than your available capital. It doesn&rsquo;t change the optimal growth calculation in any way. It removes part of the &ldquo;leverage space&rdquo; surface, similar to what a drawdown constraint does.</p>
-
 <p>Therefore, it uses <em>current</em> NAVs / prices (in the case of mutual funds / equities) because those are those the prices at which we can transact. The historical margin requirements have no bearing on our current capital requirements.</p>
-
-<p>Hope that helps.
-<hr /></p>
-
-<h4 id="thank-you-for-your-reply-josh-it-is-actually-a-r">Thank you for your reply Josh. It is actually a r&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-08-18T02:27:20.707-05:00">Aug 4, 2011</time></p>
-
-<p>Thank you for your reply Josh.</p>
-
-<p>It is actually a relief to hear you say this and based upon the great work that you have already accomplished with LSPM implementation I am pretty sure that you must be correct on this.</p>
-
-<p>However, what I have a hard time with at times is trying to convince myself of such details until I see the logic laid out in front of me, especially as I am currently new to R.</p>
-
-<p>What I am seeing (and please correct me if I am wrong) is that both current margin and current equity is being passed by the objective function:</p>
-
-<p>fun &lt;- function(f, lsp, constrFun, constrVal, margin, equity,<br />
-&hellip;) {<br />
-.Call(&ldquo;objFun_optimalf&rdquo;, f, lsp, margin, equity, constrFun,<br />
-constrVal, new.env(), PACKAGE = &ldquo;LSPM&rdquo;)</p>
-
-<p>to the genetic process:</p>
-
-<p>de &lt;- DEoptim(fun, lower = l, upper = u, lsp = lsp, constrFun = constrFun,<br />
-constrVal = constrVal, margin = margin, equity = equity,<br />
-&hellip;)</p>
-
-<p>So, taking the stance that you are correct (although not convinced of it myself yet / and without delving into DEoptim) my question would therefore be:</p>
-
-<p>In your second example are margin and equity not actually used as part of the objective function to steer the genetic process but simply passed through to constrain the equity within limits at the end of each generation/iteration (much like your first example and Ralph does only once at the end of the last generation)?</p>
-
-<p>I hope I even got that question right? I think that it just needs a yes or a no. If the answer is yes then I&rsquo;m on your page. Thanks Josh.</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="grant-your-understanding-is-close-margin-and-e">Grant, Your understanding is close. margin and e&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-08-18T10:50:14.849-05:00">Aug 4, 2011</time></p>
-
-<p>Grant,</p>
-
-<p>Your understanding is close. margin and equity are used as part of the objective function, but they are only checked after GHPR is calculated. Instead of returning the calculated GHPR, the objective function returns a very large number if you&rsquo;re outside of your margin constraints, which causes DEoptim to ignore that particular set of f values.
-<hr /></p>
-
-<h4 id="on-the-same-page-with-this-now-your-clarification">On the same page with this now. Your clarification&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-08-18T21:20:16.893-05:00">Aug 5, 2011</time></p>
-
-<p>On the same page with this now. Your clarifications have helped with this. Thank you.
-<hr /></p>
-
-<h4 id="josh-i-am-still-trying-to-wrap-my-brain-around-t">Josh, I am still trying to wrap my brain around t&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-08-21T08:35:33.455-05:00">Aug 0, 2011</time></p>
-
-<p>Josh,</p>
-
-<p>I am still trying to wrap my brain around the useful advise that you gave to Chris where you said:</p>
-
-<p>&ldquo;For mutual funds, the margin is the current NAV of the fund. It doesn&rsquo;t necessarily have to be the same as maxLoss, but setting them both to the current NAV may make interpreting the output easier.&rdquo;</p>
-
-<p>For purposes of this discussion lets take an IB Portfolio Margin Account trading equities which will have a margin requirement of 15% [as opposed to Reg-T&rsquo;s 50%].<br />
-Let&rsquo;s also assume that 1 Unit in LSPM is equal to a fixed $10,000 amount/position as opposed to a fixed number of shares [We could view this as a unit of 1 share at a price of $10,000].</p>
-
-<p>So now my question: Bearing in mind that I do not want to alter the actual JPT in anyway are there any implications that I need to be aware of when setting maxLoss equal the to actual margin requirements as just defined with the following:</p>
-
-<p>port$maxLoss &lt;- c(-1500,-1500,-1500) # 15% Margin = 15% of $10,000 [Portfolio Margin Account]<br />
-margin &lt;- -port$maxLoss</p>
-
-<p>I assume that this is in line with what you were suggesting above.</p>
-
-<p>Taking data(port) by way of example we would thus end up with something looking like:</p>
-
-<p>V1 V2 V3<br />
-f 1e-01 1e-01 1e-01<br />
-Max Loss -5e+03 -5e+03 -5e+03<br />
-probs V1 V2 V3<br />
-[1,] 0.07692308 -150.000 253.000 533.000<br />
-[2,] 0.07692308 -45.333 -1000.000 220.143<br />
-[3,] 0.15384615 -45.333 -64.429 220.143<br />
-[4,] 0.07692308 13.000 -64.429 -500.000<br />
-[5,] 0.07692308 13.000 -64.429 533.000<br />
-[6,] 0.07692308 13.000 253.000 220.143<br />
-[7,] 0.07692308 13.000 253.000 799.000<br />
-[8,] 0.07692308 13.000 448.000 220.143<br />
-[9,] 0.07692308 79.667 -64.429 -325.000<br />
-[10,] 0.07692308 79.667 -64.429 220.143<br />
-[11,] 0.07692308 79.667 -64.429 533.000<br />
-[12,] 0.07692308 136.000 253.000 220.143</p>
-
-<p>The JPT thus remains as is with only both of the maxLoss and margins altered.</p>
-
-<p>I am wondering how this might adversely impact upon the leverage space landscape?<br />
-I am also wondering just why it is that you said that setting them both the same makes interpreting the output easier?
-<hr /></p>
-
-<h4 id="correction-the-lsp-object-would-look-like-below">Correction! The lsp object would look like below (&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-08-21T08:45:20.028-05:00">Aug 0, 2011</time></p>
-
-<p>Correction! The lsp object would look like below (the above you will see was for a RegT50% example):</p>
-
-<p>V1 V2 V3<br />
-f 0.1 0.1 0.1<br />
-Max Loss -1500.0 -1500.0 -1500.0<br />
-probs V1 V2 V3<br />
-[1,] 0.07692308 -150.000 253.000 533.000<br />
-[2,] 0.07692308 -45.333 -1000.000 220.143<br />
-[3,] 0.15384615 -45.333 -64.429 220.143<br />
-[4,] 0.07692308 13.000 -64.429 -500.000<br />
-[5,] 0.07692308 13.000 -64.429 533.000<br />
-[6,] 0.07692308 13.000 253.000 220.143<br />
-[7,] 0.07692308 13.000 253.000 799.000<br />
-[8,] 0.07692308 13.000 448.000 220.143<br />
-[9,] 0.07692308 79.667 -64.429 -325.000<br />
-[10,] 0.07692308 79.667 -64.429 220.143<br />
-[11,] 0.07692308 79.667 -64.429 533.000<br />
-[12,] 0.07692308 136.000 253.000 220.143
-<hr /></p>
-
-<h4 id="hi-grant-changing-the-max-loss-doesn-t-alter">Hi Grant, Changing the max loss doesn&rsquo;t alter&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-09-04T17:48:20.277-05:00">Sep 0, 2011</time></p>
-
-<p>Hi Grant,</p>
-
-<p>Changing the max loss doesn&rsquo;t alter the <em>optimum</em> of the leverage space landscape; it only exists to bound the f values between 0 and 1. The maximum GHPR and <em>f$</em> are invariant to max loss. If you&rsquo;re mathimatically inclined, you could think of it as a monotonic transformation.</p>
-
-<p>Chris was asking about mutual funds without margin, so his effective margin was 100% the NAV of the fund. Setting max loss equal to the NAV is optional, but I find it easiest to think of <em>f</em> in terms of &ldquo;% lost if I lose everything&rdquo; rather than &ldquo;% lost if the worst outcome (up to this point) occurs&rdquo;.</p>
-
-<p>So, it&rsquo;s not generally the case that you should set margin = max loss = price.</p>
-
 <p>Hope that helps.</p>
-
-<p>Best,<br />
-Josh
-<hr /></p>
-
-<h4 id="thank-you-for-your-reply-josh-i-am-conversant-wit">Thank you for your reply Josh, I am conversant wit&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-09-06T12:05:16.931-05:00">Sep 2, 2011</time></p>
-
-<p>Thank you for your reply Josh,<br />
-I am conversant with the reason for setting MaxLoss to bound f and so really my concern was just whether you might see any implication with setting an arbitary MaxLoss such as equal to Margin when this is not actually reflected in the JPT that keeps the original MaxLoss values in place.
-<hr /></p>
-
-<h4 id="josh-i-often-find-that-the-integrated-margining-o">Josh, I often find that the integrated margining o&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-07T23:11:25.880-06:00">Nov 2, 2011</time></p>
-
-<p>Josh,<br />
+<!-- raw HTML omitted -->
+<p>Thank you for your reply Josh.</p>
+<p>It is actually a relief to hear you say this and based upon the great work that you have already accomplished with LSPM implementation I am pretty sure that you must be correct on this.</p>
+<p>However, what I have a hard time with at times is trying to convince myself of such details until I see the logic laid out in front of me, especially as I am currently new to R.</p>
+<p>What I am seeing (and please correct me if I am wrong) is that both current margin and current equity is being passed by the objective function:</p>
+<p>fun &lt;- function(f, lsp, constrFun, constrVal, margin, equity,<br>
+&hellip;) {<br>
+.Call(&ldquo;objFun_optimalf&rdquo;, f, lsp, margin, equity, constrFun,<br>
+constrVal, new.env(), PACKAGE = &ldquo;LSPM&rdquo;)</p>
+<p>to the genetic process:</p>
+<p>de &lt;- DEoptim(fun, lower = l, upper = u, lsp = lsp, constrFun = constrFun,<br>
+constrVal = constrVal, margin = margin, equity = equity,<br>
+&hellip;)</p>
+<p>So, taking the stance that you are correct (although not convinced of it myself yet / and without delving into DEoptim) my question would therefore be:</p>
+<p>In your second example are margin and equity not actually used as part of the objective function to steer the genetic process but simply passed through to constrain the equity within limits at the end of each generation/iteration (much like your first example and Ralph does only once at the end of the last generation)?</p>
+<p>I hope I even got that question right? I think that it just needs a yes or a no. If the answer is yes then I&rsquo;m on your page. Thanks Josh.</p>
+<p>Grant</p>
+<!-- raw HTML omitted -->
+<p>Grant,</p>
+<p>Your understanding is close. margin and equity are used as part of the objective function, but they are only checked after GHPR is calculated. Instead of returning the calculated GHPR, the objective function returns a very large number if you&rsquo;re outside of your margin constraints, which causes DEoptim to ignore that particular set of f values.</p>
+<!-- raw HTML omitted -->
+<p>On the same page with this now. Your clarifications have helped with this. Thank you.</p>
+<!-- raw HTML omitted -->
+<p>Josh,</p>
+<p>I am still trying to wrap my brain around the useful advise that you gave to Chris where you said:</p>
+<p>&ldquo;For mutual funds, the margin is the current NAV of the fund. It doesn&rsquo;t necessarily have to be the same as maxLoss, but setting them both to the current NAV may make interpreting the output easier.&rdquo;</p>
+<p>For purposes of this discussion lets take an IB Portfolio Margin Account trading equities which will have a margin requirement of 15% [as opposed to Reg-T&rsquo;s 50%].<br>
+Let&rsquo;s also assume that 1 Unit in LSPM is equal to a fixed $10,000 amount/position as opposed to a fixed number of shares [We could view this as a unit of 1 share at a price of $10,000].</p>
+<p>So now my question: Bearing in mind that I do not want to alter the actual JPT in anyway are there any implications that I need to be aware of when setting maxLoss equal the to actual margin requirements as just defined with the following:</p>
+<p>port$maxLoss &lt;- c(-1500,-1500,-1500) # 15% Margin = 15% of $10,000 [Portfolio Margin Account]<br>
+margin &lt;- -port$maxLoss</p>
+<p>I assume that this is in line with what you were suggesting above.</p>
+<p>Taking data(port) by way of example we would thus end up with something looking like:</p>
+<p>V1 V2 V3<br>
+f 1e-01 1e-01 1e-01<br>
+Max Loss -5e+03 -5e+03 -5e+03<br>
+probs V1 V2 V3<br>
+[1,] 0.07692308 -150.000 253.000 533.000<br>
+[2,] 0.07692308 -45.333 -1000.000 220.143<br>
+[3,] 0.15384615 -45.333 -64.429 220.143<br>
+[4,] 0.07692308 13.000 -64.429 -500.000<br>
+[5,] 0.07692308 13.000 -64.429 533.000<br>
+[6,] 0.07692308 13.000 253.000 220.143<br>
+[7,] 0.07692308 13.000 253.000 799.000<br>
+[8,] 0.07692308 13.000 448.000 220.143<br>
+[9,] 0.07692308 79.667 -64.429 -325.000<br>
+[10,] 0.07692308 79.667 -64.429 220.143<br>
+[11,] 0.07692308 79.667 -64.429 533.000<br>
+[12,] 0.07692308 136.000 253.000 220.143</p>
+<p>The JPT thus remains as is with only both of the maxLoss and margins altered.</p>
+<p>I am wondering how this might adversely impact upon the leverage space landscape?<br>
+I am also wondering just why it is that you said that setting them both the same makes interpreting the output easier?</p>
+<!-- raw HTML omitted -->
+<p>Correction! The lsp object would look like below (the above you will see was for a RegT50% example):</p>
+<p>V1 V2 V3<br>
+f 0.1 0.1 0.1<br>
+Max Loss -1500.0 -1500.0 -1500.0<br>
+probs V1 V2 V3<br>
+[1,] 0.07692308 -150.000 253.000 533.000<br>
+[2,] 0.07692308 -45.333 -1000.000 220.143<br>
+[3,] 0.15384615 -45.333 -64.429 220.143<br>
+[4,] 0.07692308 13.000 -64.429 -500.000<br>
+[5,] 0.07692308 13.000 -64.429 533.000<br>
+[6,] 0.07692308 13.000 253.000 220.143<br>
+[7,] 0.07692308 13.000 253.000 799.000<br>
+[8,] 0.07692308 13.000 448.000 220.143<br>
+[9,] 0.07692308 79.667 -64.429 -325.000<br>
+[10,] 0.07692308 79.667 -64.429 220.143<br>
+[11,] 0.07692308 79.667 -64.429 533.000<br>
+[12,] 0.07692308 136.000 253.000 220.143</p>
+<!-- raw HTML omitted -->
+<p>Hi Grant,</p>
+<p>Changing the max loss doesn&rsquo;t alter the <em>optimum</em> of the leverage space landscape; it only exists to bound the f values between 0 and 1. The maximum GHPR and <em>f$</em> are invariant to max loss. If you&rsquo;re mathimatically inclined, you could think of it as a monotonic transformation.</p>
+<p>Chris was asking about mutual funds without margin, so his effective margin was 100% the NAV of the fund. Setting max loss equal to the NAV is optional, but I find it easiest to think of <em>f</em> in terms of &ldquo;% lost if I lose everything&rdquo; rather than &ldquo;% lost if the worst outcome (up to this point) occurs&rdquo;.</p>
+<p>So, it&rsquo;s not generally the case that you should set margin = max loss = price.</p>
+<p>Hope that helps.</p>
+<p>Best,<br>
+Josh</p>
+<!-- raw HTML omitted -->
+<p>Thank you for your reply Josh,<br>
+I am conversant with the reason for setting MaxLoss to bound f and so really my concern was just whether you might see any implication with setting an arbitary MaxLoss such as equal to Margin when this is not actually reflected in the JPT that keeps the original MaxLoss values in place.</p>
+<!-- raw HTML omitted -->
+<p>Josh,<br>
 I often find that the integrated margining often reduces component f values to zero for all but one component system in a portfolio.</p>
-
-<p>E.g.<br />
+<p>E.g.<br>
 Results &lt;- optimalf(Port, snow=Clust, control=DEctrl, equity=Equity, margin=Margin)</p>
-
 <p>would result in</p>
-
-<p>Iteration: 10000 bestvalit: -1.050794 bestmemit: 0.000010 0.000001 0.000005 0.000001 0.000002 0.000002 0.000003 0.311963 0.000002 0.000024<br />
-&hellip;..<br />
+<p>Iteration: 10000 bestvalit: -1.050794 bestmemit: 0.000010 0.000001 0.000005 0.000001 0.000002 0.000002 0.000003 0.311963 0.000002 0.000024<br>
+&hellip;..<br>
 Iteration: 20000 bestvalit: -1.050796 bestmemit: 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.312016 0.000000 0.000000</p>
-
-<p>whereas<br />
+<p>whereas<br>
 Results &lt;- optimalf(Port, snow=Clust, control=DEctrl)</p>
-
 <p>would result in a working allocation (after adjusting post-op for actual available equity of-course) such as</p>
-
 <p>Iteration: 10000 bestvalit: -1.493334 bestmemit: 0.954889 0.332320 0.000000 1.000000 0.485268 0.291476 1.000000 0.941770 0.806778 0.398070</p>
-
 <p>Have you seen this occurring from your end? Any idea why this could be occurring? Please let me know if you might require any further information to determine why this is happening.</p>
-
 <p>Grant</p>
-
-<p>Myself, I am not sure how to peer into the objective function code to see what is causing this<br />
-fun &lt;- function(f, lsp, constrFun, constrVal, margin, equity,<br />
-&hellip;) {<br />
-.Call(&ldquo;objFun_optimalf&rdquo;, f, lsp, margin, equity, constrFun,<br />
-constrVal, new.env(), PACKAGE = &ldquo;LSPM&rdquo;)
-<hr /></p>
-
-<h4 id="grant-my-personal-experience-is-that-portfolios">Grant, My personal experience is that portfolios &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-11-09T19:14:12.730-06:00">Nov 4, 2011</time></p>
-
+<p>Myself, I am not sure how to peer into the objective function code to see what is causing this<br>
+fun &lt;- function(f, lsp, constrFun, constrVal, margin, equity,<br>
+&hellip;) {<br>
+.Call(&ldquo;objFun_optimalf&rdquo;, f, lsp, margin, equity, constrFun,<br>
+constrVal, new.env(), PACKAGE = &ldquo;LSPM&rdquo;)</p>
+<!-- raw HTML omitted -->
 <p>Grant,</p>
-
 <p>My personal experience is that portfolios optimized for unconstrained-growth tend to be heavily concentrated in a few components, so your results aren&rsquo;t terribly surprising. Try adding a maxDrawdown constraint of 5% or so and you should see more non-zero f values across components.</p>
-
 <p>I would be interested in the GHPR of the portfolio that was optimized without the margin constraint <em>after</em> adjusting for available equity. I would expect it to be less than 1.050796; let me know if you get a different result.</p>
-
 <p>The objective function code is in C, so you would have to look at the source code for <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/src/objectiveFunction.c?view=markup&amp;root=lspm">objectiveFunction.c</a>.</p>
-
-<p>Best,<br />
-Josh
-<hr /></p>
-
-<h4 id="josh-you-said-i-would-be-interested-in-th">Josh, You said: &ldquo;I would be interested in th&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-10T22:45:45.328-06:00">Nov 5, 2011</time></p>
-
+<p>Best,<br>
+Josh</p>
+<!-- raw HTML omitted -->
 <p>Josh,</p>
-
-<p>You said:<br />
+<p>You said:<br>
 &ldquo;I would be interested in the GHPR of the portfolio that was optimized without the margin constraint after adjusting for available equity. I would expect it to be less than 1.050796; let me know if you get a different result.&rdquo;</p>
-
-<p>Response:<br />
+<p>Response:<br>
 I do infact optain results greater than 1.050796 even after adjusting for available equity, GHPR=1.493334 before and GHPR=1.215942 after (please see the details that follow)</p>
-
 <p>*********************************************</p>
-
 <p>Here is the setup with N = 10 stable market-systems:</p>
-
 <p># SETUP HPR DATA</p>
-
 <p>setwd(&ldquo;xxxxx&rdquo;)</p>
-
 <p>N &lt;- 10 # The number of component strategies</p>
-
-<p>A &lt;- read.csv(&ldquo;A.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-B &lt;- read.csv(&ldquo;B.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-C &lt;- read.csv(&ldquo;C.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-D &lt;- read.csv(&ldquo;D.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-E &lt;- read.csv(&ldquo;E.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-F &lt;- read.csv(&ldquo;F.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-G &lt;- read.csv(&ldquo;G.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-H &lt;- read.csv(&ldquo;H.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-I &lt;- read.csv(&ldquo;I.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)<br />
-J &lt;- read.csv(&ldquo;J.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.&rdquo;)</p>
-
-<p>rtns &lt;- cbind(<br />
-A$V2,<br />
-B$V2,<br />
-C$V2,<br />
-D$V2,<br />
-E$V2,<br />
-F$V2,<br />
-G$V2,<br />
-H$V2,<br />
-I$V2,<br />
+<p>A &lt;- read.csv(&ldquo;A.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+B &lt;- read.csv(&ldquo;B.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+C &lt;- read.csv(&ldquo;C.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+D &lt;- read.csv(&ldquo;D.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+E &lt;- read.csv(&ldquo;E.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+F &lt;- read.csv(&ldquo;F.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+G &lt;- read.csv(&ldquo;G.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+H &lt;- read.csv(&ldquo;H.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+I &lt;- read.csv(&ldquo;I.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)<br>
+J &lt;- read.csv(&ldquo;J.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.&quot;)</p>
+<p>rtns &lt;- cbind(<br>
+A$V2,<br>
+B$V2,<br>
+C$V2,<br>
+D$V2,<br>
+E$V2,<br>
+F$V2,<br>
+G$V2,<br>
+H$V2,<br>
+I$V2,<br>
 J$V2)</p>
-
 <p># VARIABLES</p>
-
 <p>cores = 8 # Number of CPU cores available</p>
-
-<p>equity = 1000000 # Equity available for trading<br />
-unit = 10000 # The size of one trade unit<br />
+<p>equity = 1000000 # Equity available for trading<br>
+unit = 10000 # The size of one trade unit<br>
 marginpct = 0.50 # Margin percentage</p>
-
-<p>NP = 10*N # The number of population members<br />
-iterations = 1000 # The maximum number of iterations<br />
+<p>NP = 10*N # The number of population members<br>
+iterations = 1000 # The maximum number of iterations<br>
 crossover = 0.6 # The probability of crossover</p>
-
 <p>bins = 20 # The number of bins</p>
-
 <p># LOAD R PACKAGES</p>
-
-<p>library(LSPM)<br />
+<p>library(LSPM)<br>
 library(parallel)</p>
-
 <p># CREATE A SOCKET CLUSTER FOR ALL CORES</p>
-
 <p>clust &lt;- makePSOCKcluster(cores)</p>
-
 <p># SETUP MARGIN</p>
-
 <p>margin &lt;- rep(marginpct*unit, N)</p>
-
 <p># DEoptim PARAMETERS</p>
-
 <p>#DEctrl &lt;- list(NP=NP, itermax=iterations, CR=crossover, trace=iterations/50)</p>
-
-<p>initialpop=matrix(runif(NP*N)/100,NP,N) # SETUP AN INITIAL POPULATION (if required)<br />
+<p>initialpop=matrix(runif(NP*N)/100,NP,N) # SETUP AN INITIAL POPULATION (if required)<br>
 DEctrl &lt;- list(NP=NP, itermax=iterations, CR=crossover, trace=iterations/50, initialpop=initialpop)</p>
-
 <p># SETUP THE JPT</p>
-
 <p>#port &lt;- jointProbTable(rtns, n=rep(bins,N)) # BINNED</p>
-
-<p>probs &lt;- rep(1/nrow(A), nrow(A)) # RAW<br />
+<p>probs &lt;- rep(1/nrow(A), nrow(A)) # RAW<br>
 port &lt;- lsp(rtns, probs) # RAW</p>
-
-<p>*********************************************
-<hr /></p>
-
-<h4 id="usi">********************************************* Usi&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-10T22:48:56.559-06:00">Nov 5, 2011</time></p>
-
 <p>*********************************************</p>
-
-<p>Using the integrated margin constraints:<br />
+<!-- raw HTML omitted -->
+<p>*********************************************</p>
+<p>Using the integrated margin constraints:<br>
 results &lt;- optimalf(port, snow=clust, control=DEctrl, equity=equity, margin=margin)</p>
-
 <p>would result in the following:</p>
-
 <p>Iteration: 20000 bestvalit: -1.050796 bestmemit: 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.312016 0.000000 0.000000</p>
-
 <p>which clearly favours the 8th market-system above all else</p>
-
-<p>&gt; results$G<br />
-[1] 1.050796<br />
-&gt; # CHECK<br />
+<p>&gt; results$G<br>
+[1] 1.050796<br>
+&gt; # CHECK<br>
 &gt; port$f &lt;- results$f</p>
-
-<p><strong>&gt; GHPR(port)<br />
-[1] 1.050796<br />
-&gt; # Equity Required<br />
-&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br />
+<p><strong>&gt; GHPR(port)<br>
+[1] 1.050796<br>
+&gt; # Equity Required<br>
+&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br>
 [1] 2e+06</strong></p>
-
 <p>*********************************************</p>
-
-<p>However if I am now to run without the integrated margin constraints<br />
+<p>However if I am now to run without the integrated margin constraints<br>
 results &lt;- optimalf(port, snow=clust, control=DEctrl)</p>
-
 <p>would result in the following:</p>
-
 <p>Iteration: 20000 bestvalit: -1.493334 bestmemit: 0.954889 0.332320 0.000000 0.485268 0.291476 0.806778 0.398070 0.941770 1.000000 1.000000</p>
-
 <p>which no longer favours any one market-system using the same data</p>
-
-<p>&gt; results$G<br />
-[1] 1.493334<br />
-&gt; # CHECK<br />
+<p>&gt; results$G<br>
+[1] 1.493334<br>
+&gt; # CHECK<br>
 &gt; port$f &lt;- results$f</p>
-
-<p><strong>&gt; GHPR(port)<br />
-[1] 1.493334<br />
-&gt; # Equity Required<br />
-&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br />
+<p><strong>&gt; GHPR(port)<br>
+[1] 1.493334<br>
+&gt; # Equity Required<br>
+&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br>
 [1] 50147451</strong></p>
-
 <p>Adjusting for the available equity (equity/maginpct=2e+06) now we obtain a realistic GHPR value 0f 1.215942 that is still way above the integrated result of 1.050796 above on the same equity constraint of 2e+06:</p>
-
-<p>&gt; weighting &lt;- port$f/sum(port$f)/marginpct<br />
-&gt; # CHECK<br />
-&gt; sum(weighting)<br />
-[1] 2<br />
+<p>&gt; weighting &lt;- port$f/sum(port$f)/marginpct<br>
+&gt; # CHECK<br>
+&gt; sum(weighting)<br>
+[1] 2<br>
 &gt; port$f &lt;- weighting</p>
-
-<p><strong>&gt; GHPR(port)<br />
-[1] 1.215942<br />
-&gt; # Equity Required<br />
-&gt; sum(weighting*equity)<br />
+<p><strong>&gt; GHPR(port)<br>
+[1] 1.215942<br>
+&gt; # Equity Required<br>
+&gt; sum(weighting*equity)<br>
 [1] 2e+06</strong></p>
-
 <p>*********************************************</p>
-
 <p>So taking these results alone we can see that there is indeed something untoward happening with the integrated magining approach.</p>
-
 <p>What are your thoughts on this?</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="josh-looking-at-the-above-results-further-i-noti">Josh, Looking at the above results further I noti&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-10T23:22:18.123-06:00">Nov 5, 2011</time></p>
-
-<p>Josh,</p>
-
-<p>Looking at the above results further I noticed one other important point of interest.<br />
-Although I have been able to successfully rebalance portfolios by <strong>NOT</strong> using the integrated magining approach I did notice that the final two market systems had maxed out at f=1.000000</p>
-
-<p>This led me to believe that the port$maxLoss values were not always constraining ALL of the market-system f values between 0 and 1 when working with a multiple component case.</p>
-
-<p>It occurred to me to therefore set all the maxLoss values to a standard abitarry value that would accomodate for all components by simply setting to the smallest absolute value:</p>
-
-<p>port$maxLoss &lt;- rep(max(port$maxLoss), N)</p>
-
-<p>This indeed proved successfull with all f$ (f-dollar) values stable at or below this absolute value.</p>
-
-<p>It was my hope that this refinement might address the margining issue we are discussing above but alas it is not related and the above integrated marginging issue still stands. However it did successfully address the f value bounding issue as you can see here:</p>
-
-<p>*********************************************</p>
-
-<p># SETUP THE JPT</p>
-
-<p>#port &lt;- jointProbTable(rtns, n=rep(bins,N)) # BINNED</p>
-
-<p>probs &lt;- rep(1/nrow(A), nrow(A)) # RAW<br />
-port &lt;- lsp(rtns, probs) # RAW</p>
-
-<p><strong>port$maxLoss &lt;- rep(max(port$maxLoss), N)</strong></p>
-
-<p># CALCULATE OPTIMAL F</p>
-
-<p>#(Margin constrained)<br />
-#system.time({ results &lt;- optimalf(port, snow=clust, control=DEctrl, equity=equity, margin=margin) })</p>
-
-<p>#(Unconstrained)<br />
-system.time({ <strong>results &lt;- optimalf(port, snow=clust, control=DEctrl)</strong> })</p>
-
-<p>*********************************************</p>
-
-<p>would result in the following:</p>
-
-<p>Iteration: 20000 bestvalit: -1.529956 bestmemit: 0.759071 0.248085 0.000000 0.267481 0.450634 0.907357 0.183890 0.608468 0.847335 0.883034</p>
-
-<p>which no longer hits f-value limits using the same data</p>
-
-<p>&gt; results$G<br />
-[1] 1.529956<br />
-&gt; # CHECK<br />
-&gt; port$f &lt;- results$f</p>
-
-<p><strong>&gt; GHPR(port)<br />
-[1] 1.529956<br />
-&gt; # Equity Required<br />
-&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br />
-[1] 60538725</strong></p>
-
-<p>Adjusting for the available equity (equity/maginpct=2e+06) now we obtain a realistic GHPR value 0f 1.215942 that is still way above the integrated result of 1.050796 above on the same equity constraint of 2e+06:</p>
-
-<p>&gt; weighting &lt;- port$f/sum(port$f)/marginpct<br />
-&gt; # CHECK<br />
-&gt; sum(weighting)<br />
-[1] 2<br />
-&gt; port$f &lt;- weighting</p>
-
-<p><strong>&gt; GHPR(port)<br />
-[1] 1.285853<br />
-&gt; # Equity Required<br />
-&gt; sum(weighting*equity)<br />
-[1] 2e+06</strong></p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="in-summary-using-integrated-margin-constraint">In Summary: <strong>USING INTEGRATED MARGIN CONSTRAINT&hellip;</strong></h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-10T23:41:50.693-06:00">Nov 5, 2011</time></p>
-
-<p>In Summary:</p>
-
-<p><strong>USING INTEGRATED MARGIN CONSTRAINTS</strong></p>
-
-<p>results &lt;- optimalf(port, snow=clust, control=DEctrl, equity=equity, margin=margin)</p>
-
-<p>GHPR = <strong>1.050796</strong> Equity Required = <strong>2e+06</strong></p>
-
-<p><strong>USING POST-OP MARGIN CONSTRAINTS</strong></p>
-
-<p>results &lt;- optimalf(port, snow=clust, control=DEctrl)</p>
-
-<p>GHPR = 1.493334 Equity Required = 50147451<br />
-GHPR = <strong>1.215942</strong> Equity Required = <strong>2e+06</strong></p>
-
-<p><strong>USING POST-OP MARGIN CONSTRAINTS + RELEASING F FROM HITTING LIMITS</strong></p>
-
-<p>port$maxLoss &lt;- rep(max(port$maxLoss), N)<br />
-results &lt;- optimalf(port, snow=clust, control=DEctrl)</p>
-
-<p>GHPR = 1.529956 Equity Required = 60538725<br />
-GHPR = <strong>1.285853</strong> Equity Required = <strong>2e+06</strong></p>
-
-<p>*********************************************</p>
-
-<p>I appreciate that this is a lot of information but hopefully it paints a clear picture now.</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="grant-rather-than-making-things-clearer-your-4">Grant, Rather than making things clearer, your 4 &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-11-14T18:41:33.439-06:00">Nov 2, 2011</time></p>
-
-<p>Grant,</p>
-
-<p>Rather than making things clearer, your 4 comments only raise more questions. I&rsquo;m afraid I can only respond to your 4 comments if you provide a reproducible example. I don&rsquo;t have the time to consider all the theoretical causes of the results you show, especially when one of them is human error (not necessarily yours).
-<hr /></p>
-
-<h4 id="josh-i-have-sent-you-the-files-necessary-to-repr">Josh, I have sent you the files necessary to repr&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-14T20:38:37.353-06:00">Nov 2, 2011</time></p>
-
-<p>Josh,</p>
-
-<p>I have sent you the files necessary to reproduce the above results for yourself (by email).</p>
-
-<p>Please note that the above is one single report/comment which I sent in response to the conflicting expectations:</p>
-
-<p>&ldquo;I would expect it to be less than 1.050796; let me know if you get a different result.&rdquo;</p>
-
-<p>Please take a look, because you have noted &ldquo;My personal experience is that portfolios optimized for unconstrained-growth tend to be heavily concentrated in a few components&rdquo;. My own observations are showing this to be an issue with the integrated margining only, so this may be of interest for you also.</p>
-
-<p>Could you please also explain what &ldquo;human error&rdquo; you have observed.</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="josh-in-an-earlier-post-you-said-that-i-should-us">Josh In an earlier post you said that I should us&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-11-22T14:41:18.404-06:00">Nov 2, 2011</time></p>
-
-<p>Josh</p>
-
-<p>In an earlier post you said that I should use normalized dollar returns. I have been preparing files in Excel. Is there an easy way command/method in R that I can use to normalize a file that has three columns - security name, date and NAV/close price for that day. A line in the file would for example read:<br />
-Fundname,20110217,1110.00</p>
-
-<p>Regards
-<hr /></p>
-
-<h4 id="hello-chris-if-you-take-a-look-at-the-example-co">Hello Chris, If you take a look at the example co&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01987456606418594625" title="noreply@blogger.com">TradingPro</a> - <time datetime="2011-11-22T19:30:53.106-06:00">Nov 3, 2011</time></p>
-
-<p>Hello Chris,</p>
-
-<p>If you take a look at the example code I posted above you can get your csv data into R with something as simple as:</p>
-
-<p>A &lt;- read.csv(&ldquo;A.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.”)<br />
-B &lt;- read.csv(“B.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&ldquo;,&rdquo;, dec=&ldquo;.”)<br />
-.<br />
-.</p>
-
-<p>rtns &lt;- cbind(A$V3,B$V3,…..)</p>
-
-<p>You can then manipulate your data in R as required.</p>
-
-<p>A$V3,B$V3,….. etc takes your data from the 3rd column.</p>
-
-<p>I’m no expert at R but this works for me, and hopefully for you too.</p>
-
-<p>Grant
-<hr /></p>
-
-<h4 id="grant-i-appreciate-your-reply-i-agree-that-what">Grant I appreciate your reply. I agree that what &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-11-23T00:18:44.960-06:00">Nov 3, 2011</time></p>
-
 <p>Grant</p>
-
-<p>I appreciate your reply. I agree that what you have posted is a way to get CSV data in to R. I am however looking for a way to &ldquo;normalize&rdquo; the dollar returns. I use to do this in Excel by: converting closing prices to percentage returns and then multiplying the result by the current NAV. It is this manipulation that I want to do in R.
-<hr /></p>
-
-<h4 id="chris-here-s-a-snippet-that-should-be-close">Chris, Here&rsquo;s a snippet that should be close &hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-11-24T19:12:52.308-06:00">Nov 5, 2011</time></p>
-
+<!-- raw HTML omitted -->
+<p>Josh,</p>
+<p>Looking at the above results further I noticed one other important point of interest.<br>
+Although I have been able to successfully rebalance portfolios by <strong>NOT</strong> using the integrated magining approach I did notice that the final two market systems had maxed out at f=1.000000</p>
+<p>This led me to believe that the port$maxLoss values were not always constraining ALL of the market-system f values between 0 and 1 when working with a multiple component case.</p>
+<p>It occurred to me to therefore set all the maxLoss values to a standard abitarry value that would accomodate for all components by simply setting to the smallest absolute value:</p>
+<p>port$maxLoss &lt;- rep(max(port$maxLoss), N)</p>
+<p>This indeed proved successfull with all f$ (f-dollar) values stable at or below this absolute value.</p>
+<p>It was my hope that this refinement might address the margining issue we are discussing above but alas it is not related and the above integrated marginging issue still stands. However it did successfully address the f value bounding issue as you can see here:</p>
+<p>*********************************************</p>
+<p># SETUP THE JPT</p>
+<p>#port &lt;- jointProbTable(rtns, n=rep(bins,N)) # BINNED</p>
+<p>probs &lt;- rep(1/nrow(A), nrow(A)) # RAW<br>
+port &lt;- lsp(rtns, probs) # RAW</p>
+<p><strong>port$maxLoss &lt;- rep(max(port$maxLoss), N)</strong></p>
+<p># CALCULATE OPTIMAL F</p>
+<p>#(Margin constrained)<br>
+#system.time({ results &lt;- optimalf(port, snow=clust, control=DEctrl, equity=equity, margin=margin) })</p>
+<p>#(Unconstrained)<br>
+system.time({ <strong>results &lt;- optimalf(port, snow=clust, control=DEctrl)</strong> })</p>
+<p>*********************************************</p>
+<p>would result in the following:</p>
+<p>Iteration: 20000 bestvalit: -1.529956 bestmemit: 0.759071 0.248085 0.000000 0.267481 0.450634 0.907357 0.183890 0.608468 0.847335 0.883034</p>
+<p>which no longer hits f-value limits using the same data</p>
+<p>&gt; results$G<br>
+[1] 1.529956<br>
+&gt; # CHECK<br>
+&gt; port$f &lt;- results$f</p>
+<p><strong>&gt; GHPR(port)<br>
+[1] 1.529956<br>
+&gt; # Equity Required<br>
+&gt; sum(equity/(-port$maxLoss/port$f)*unit)<br>
+[1] 60538725</strong></p>
+<p>Adjusting for the available equity (equity/maginpct=2e+06) now we obtain a realistic GHPR value 0f 1.215942 that is still way above the integrated result of 1.050796 above on the same equity constraint of 2e+06:</p>
+<p>&gt; weighting &lt;- port$f/sum(port$f)/marginpct<br>
+&gt; # CHECK<br>
+&gt; sum(weighting)<br>
+[1] 2<br>
+&gt; port$f &lt;- weighting</p>
+<p><strong>&gt; GHPR(port)<br>
+[1] 1.285853<br>
+&gt; # Equity Required<br>
+&gt; sum(weighting*equity)<br>
+[1] 2e+06</strong></p>
+<p>Grant</p>
+<!-- raw HTML omitted -->
+<p>In Summary:</p>
+<p><strong>USING INTEGRATED MARGIN CONSTRAINTS</strong></p>
+<p>results &lt;- optimalf(port, snow=clust, control=DEctrl, equity=equity, margin=margin)</p>
+<p>GHPR = <strong>1.050796</strong> Equity Required = <strong>2e+06</strong></p>
+<p><strong>USING POST-OP MARGIN CONSTRAINTS</strong></p>
+<p>results &lt;- optimalf(port, snow=clust, control=DEctrl)</p>
+<p>GHPR = 1.493334 Equity Required = 50147451<br>
+GHPR = <strong>1.215942</strong> Equity Required = <strong>2e+06</strong></p>
+<p><strong>USING POST-OP MARGIN CONSTRAINTS + RELEASING F FROM HITTING LIMITS</strong></p>
+<p>port$maxLoss &lt;- rep(max(port$maxLoss), N)<br>
+results &lt;- optimalf(port, snow=clust, control=DEctrl)</p>
+<p>GHPR = 1.529956 Equity Required = 60538725<br>
+GHPR = <strong>1.285853</strong> Equity Required = <strong>2e+06</strong></p>
+<p>*********************************************</p>
+<p>I appreciate that this is a lot of information but hopefully it paints a clear picture now.</p>
+<p>Grant</p>
+<!-- raw HTML omitted -->
+<p>Grant,</p>
+<p>Rather than making things clearer, your 4 comments only raise more questions. I&rsquo;m afraid I can only respond to your 4 comments if you provide a reproducible example. I don&rsquo;t have the time to consider all the theoretical causes of the results you show, especially when one of them is human error (not necessarily yours).</p>
+<!-- raw HTML omitted -->
+<p>Josh,</p>
+<p>I have sent you the files necessary to reproduce the above results for yourself (by email).</p>
+<p>Please note that the above is one single report/comment which I sent in response to the conflicting expectations:</p>
+<p>&ldquo;I would expect it to be less than 1.050796; let me know if you get a different result.&rdquo;</p>
+<p>Please take a look, because you have noted &ldquo;My personal experience is that portfolios optimized for unconstrained-growth tend to be heavily concentrated in a few components&rdquo;. My own observations are showing this to be an issue with the integrated margining only, so this may be of interest for you also.</p>
+<p>Could you please also explain what &ldquo;human error&rdquo; you have observed.</p>
+<p>Grant</p>
+<!-- raw HTML omitted -->
+<p>Josh</p>
+<p>In an earlier post you said that I should use normalized dollar returns. I have been preparing files in Excel. Is there an easy way command/method in R that I can use to normalize a file that has three columns - security name, date and NAV/close price for that day. A line in the file would for example read:<br>
+Fundname,20110217,1110.00</p>
+<p>Regards</p>
+<!-- raw HTML omitted -->
+<p>Hello Chris,</p>
+<p>If you take a look at the example code I posted above you can get your csv data into R with something as simple as:</p>
+<p>A &lt;- read.csv(&ldquo;A.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.”)<br>
+B &lt;- read.csv(“B.csv&rdquo;, header=FALSE, as.is=TRUE, sep=&rdquo;,&quot;, dec=&rdquo;.”)<br>
+.<br>
+.</p>
+<p>rtns &lt;- cbind(A$V3,B$V3,…..)</p>
+<p>You can then manipulate your data in R as required.</p>
+<p>A$V3,B$V3,….. etc takes your data from the 3rd column.</p>
+<p>I’m no expert at R but this works for me, and hopefully for you too.</p>
+<p>Grant</p>
+<!-- raw HTML omitted -->
+<p>Grant</p>
+<p>I appreciate your reply. I agree that what you have posted is a way to get CSV data in to R. I am however looking for a way to &ldquo;normalize&rdquo; the dollar returns. I use to do this in Excel by: converting closing prices to percentage returns and then multiplying the result by the current NAV. It is this manipulation that I want to do in R.</p>
+<!-- raw HTML omitted -->
 <p>Chris,</p>
-
 <p>Here&rsquo;s a snippet that should be close to what you want to do.</p>
-
-<p># create random price data<br />
-set.seed(21)<br />
-price &lt;- matrix(1+rnorm(50)/10,10,5)<br />
-price &lt;- rbind(runif(5)*10,price)<br />
-price &lt;- apply(price,2,cumprod)<br />
-# calculate normalized P&amp;L<br />
-library(TTR)<br />
-# calculate % return<br />
-rtns &lt;- apply(price,2,ROC)<br />
-# initialize P&amp;L object<br />
-pnl &lt;- rtns<br />
-# multiply each % return by last price<br />
-for(i in 1:NCOL(pnl)) {<br />
-pnl[,i] &lt;- rtns[,i]*tail(price,1)[,i]<br />
-}
-<hr /></p>
-
-<h4 id="brilliant-josh-thank-you-i-replicated-the-calcul">Brilliant Josh Thank you. I replicated the calcul&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-11-25T09:24:29.601-06:00">Nov 5, 2011</time></p>
-
+<p># create random price data<br>
+set.seed(21)<br>
+price &lt;- matrix(1+rnorm(50)/10,10,5)<br>
+price &lt;- rbind(runif(5)*10,price)<br>
+price &lt;- apply(price,2,cumprod)<br>
+# calculate normalized P&amp;L<br>
+library(TTR)<br>
+# calculate % return<br>
+rtns &lt;- apply(price,2,ROC)<br>
+# initialize P&amp;L object<br>
+pnl &lt;- rtns<br>
+# multiply each % return by last price<br>
+for(i in 1:NCOL(pnl)) {<br>
+pnl[,i] &lt;- rtns[,i]*tail(price,1)[,i]<br>
+}</p>
+<!-- raw HTML omitted -->
 <p>Brilliant Josh</p>
-
 <p>Thank you. I replicated the calculations in Excel - to make sure that I understand what is being done where in the code you posted - and it works as I expected!</p>
-
-<p>There was an instance where the calculations in R were quite a bit different from the results in R. The two specific random values that R generated was 7.352263 and 5.678313. R gave a ROC of -0.25835388 while Excel gives -0.227678199 - which differs by 0.030675681. Do you think differences like this is small enough to ignore? R is probably more accurate in any case.
-<hr /></p>
-
-<h4 id="chris-it-s-probably-due-to-different-calcula">Chris, It&rsquo;s probably due to different calcula&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2011-11-25T09:32:42.805-06:00">Nov 5, 2011</time></p>
-
+<p>There was an instance where the calculations in R were quite a bit different from the results in R. The two specific random values that R generated was 7.352263 and 5.678313. R gave a ROC of -0.25835388 while Excel gives -0.227678199 - which differs by 0.030675681. Do you think differences like this is small enough to ignore? R is probably more accurate in any case.</p>
+<!-- raw HTML omitted -->
 <p>Chris,</p>
-
-<p>It&rsquo;s probably due to different calculation methods. Read the ROC help page and compare the ROC calculation to how you&rsquo;re calculating % change in Excel.
-<hr /></p>
-
-<h4 id="josh-thank-you-for-your-reply-i-am-however-goin">Josh Thank you for your reply - I am however goin&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-11-26T16:21:08.272-06:00">Nov 6, 2011</time></p>
-
+<p>It&rsquo;s probably due to different calculation methods. Read the ROC help page and compare the ROC calculation to how you&rsquo;re calculating % change in Excel.</p>
+<!-- raw HTML omitted -->
 <p>Josh</p>
-
 <p>Thank you for your reply - I am however going to ignore the difference between the result in R and Excel for the moment.</p>
-
 <p>I am getting a &ldquo;Error: subscript out of bounds&rdquo; when I run the &ldquo;# multiply each % return by last price&rdquo; piece of the code you posted. Could the reason be the size of the matrix? I am working with a matrix that has 439 rows and 41 columns. Would multiplying by zero cause the error - some of the values in the matrix is zero because the price for some funds is the same for two days - resulting in the percentage difference being zero.</p>
-
-<p>I have searched the internet for an explanation of the error but could not find anything that seems related. I would appreciate your help.
-<hr /></p>
-
-<h4 id="josh-my-apologies-i-made-a-mistake-the-code-is">Josh My apologies - I made a mistake. The code is&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/01276455562887525056" title="noreply@blogger.com">Chris</a> - <time datetime="2011-11-29T10:20:45.733-06:00">Nov 2, 2011</time></p>
-
+<p>I have searched the internet for an explanation of the error but could not find anything that seems related. I would appreciate your help.</p>
+<!-- raw HTML omitted -->
 <p>Josh</p>
-
 <p>My apologies - I made a mistake. The code is working now.</p>
-
-<p>Regards
-<hr /></p>
-
-<h4 id="hello-josh-i-have-a-relevant-question-when-using">Hello Josh, I have a relevant question when using&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/13660622390753681532" title="noreply@blogger.com">Unknown</a> - <time datetime="2012-10-02T09:01:33.264-05:00">Oct 2, 2012</time></p>
-
+<p>Regards</p>
+<!-- raw HTML omitted -->
 <p>Hello Josh,</p>
-
-<p>I have a relevant question when using maxProbProfit with margin constraints. Basically when maximizing for horizon&gt;1 , say 6 period, the function returns z- values close to -1 which means that rebalancing on each subsequent period becomes very aggressive which (in some cases) violates the margin constraint. My question is whether the maxProbProfit function takes into account the margin constraint on all subsequent periods during optimization.<br />
+<p>I have a relevant question when using maxProbProfit with margin constraints. Basically when maximizing for horizon&gt;1 , say 6 period, the function returns z- values close to -1 which means that rebalancing on each subsequent period becomes very aggressive which (in some cases) violates the margin constraint. My question is whether the maxProbProfit function takes into account the margin constraint on all subsequent periods during optimization.<br>
 I understand that i can cap the minimum z- values but i would expect the function to handle this.</p>
-
-<p>Many thanks in advance<br />
-Kostas Metaxas
-<hr /></p>
-
-<h4 id="hi-kostas-the-maxprobprofit-function-chec">Hi Kostas, The <em>maxProbProfit</em> function chec&hellip;</h4>
-
-<p><a href="https://www.blogger.com/profile/16641971932645230429" title="noreply@blogger.com">Joshua Ulrich</a> - <time datetime="2012-10-13T19:03:31.185-05:00">Oct 0, 2012</time></p>
-
+<p>Many thanks in advance<br>
+Kostas Metaxas</p>
+<!-- raw HTML omitted -->
 <p>Hi Kostas,</p>
-
 <p>The <em>maxProbProfit</em> function checks the margin constraint before calculating the probability of profit, and the probability of profit calculation does not currently check the margin constraint at each future time step. I would welcome suggestions about how to best incorporate this into the current code.</p>
-
-<p>Best,<br />
-Joshua
-<hr /></p>
+<p>Best,<br>
+Joshua</p>
+<!-- raw HTML omitted -->
 
 		</div>
 		<footer class="post__footer">
@@ -1002,7 +625,20 @@ Joshua
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

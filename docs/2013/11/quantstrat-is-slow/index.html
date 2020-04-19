@@ -20,7 +20,7 @@ If your strategy is not path-dependent, you can get a fairly substantial perform
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,41 +89,34 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-04T06:37:00-06:00">November 04, 2013</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>The complaint I hear most frequently about quantstrat is that it&rsquo;s slow, especially for large data.  Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default.  Path dependence requires rules to be re-evaluated for each timestamp with a signal.  More signals equates to longer run-times.</p>
-
 <p>If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off.  If your strategy truly is path-dependent, keep reading&hellip;</p>
-
 <p>I started working with Brian Peterson in late August of this year, and we&rsquo;ve been working on a series of very large backtests over the last several weeks.  Each backtest consisted of ~7 months of 5-second data on 72 instruments with 15-20 different configurations for each.</p>
-
 <p>These backtests really pushed quantstrat to its limits.  The longest-running job took 32 hours.  I had some time while they were running, so I decided to profile quantstrat.  I was able to make some substantial improvements, so I thought I&rsquo;d write a post to tell you what&rsquo;s changed and highlight some of the performance gains we&rsquo;re seeing.</p>
-
 <p>The biggest issue was how the internal function <strong>ruleProc</strong> was constructing and evaluating the rule function call for each signal.  Basically, the code that constructed the call was evaluating the <strong>mktdata</strong> object before calling the rule function.  This meant that the rule function call looked like this:</p>
-
 <blockquote>
 <p><strong>ruleFunction(c(50.04, 50.23, 50.42, 50.37, 50.24, 50.13, 50.12, 50.42, 50.42, 50.37, 50.24, 50.22, 49.95, 50.23, 50.26, 50.22, 50.11, 49.99, 50.12, 50.4, 50.33, 50.33, 50.18, 49.99), &hellip;)</strong></p>
 </blockquote>
-
 <p>instead of this:</p>
-
 <blockquote>
 <p><strong>ruleFunction(mktdata, &hellip;)</strong></p>
 </blockquote>
-
 <p>You can only imagine how large that first call would be for a 10-million-row <strong>mktdata</strong> object.  Changing the rule function call to use the name (symbol) of the <strong>mktdata</strong> object instead of the <strong>mktdata</strong> object itself helped the 32-hour job finish in just over 2 hours.</p>
-
 <p>If you think I would be happy enough with that, you don&rsquo;t know me.  Several other changes helped get that 2-hour run down to under 30 minutes.</p>
-
 <ul>
-<li><p>We now calculate <strong>periodicity(mktdata)</strong> in <strong>applyRules</strong> and pass that value to <strong>ruleOrderProc</strong>.  This avoids re-calculating that value for every order, since <strong>mktdata</strong> doesn&rsquo;t change inside <strong>applyRules</strong>.</p></li>
-
-<li><p>We also pass current row index value to <strong>ruleOrderProc</strong> and <strong>ruleSignal</strong> because xts subsetting via an integer is much faster than via a POSIXct object.</p></li>
-
-<li><p><strong>applyStrategy</strong> only accumulates values returned from <strong>applyIndicators</strong>, <strong>applySignals</strong>, and <strong>applyRules</strong> if <strong>debug=TRUE</strong>.  This saves a little time, but can save a lot of memory for large <strong>mktdata</strong> objects.</p></li>
-
-<li><p>The dimension reduction algorithm has to look for the first time the price crosses the limit order price.  We were doing that with a call to <strong>which(sigThreshold(&hellip;))[1]</strong>.  The relational operators (<strong>&lt;</strong>, <strong>&lt;=</strong>, <strong>&gt;</strong>, **<strong>&gt;</strong>\=<strong>, and </strong>\==**) and <strong>which</strong> operate on the entire vector, but we only need the first value, so I replaced that code with a with C-based <strong>.firstThreshold</strong> function that stops as soon as it finds the first cross.</p></li>
+<li>
+<p>We now calculate <strong>periodicity(mktdata)</strong> in <strong>applyRules</strong> and pass that value to <strong>ruleOrderProc</strong>.  This avoids re-calculating that value for every order, since <strong>mktdata</strong> doesn&rsquo;t change inside <strong>applyRules</strong>.</p>
+</li>
+<li>
+<p>We also pass current row index value to <strong>ruleOrderProc</strong> and <strong>ruleSignal</strong> because xts subsetting via an integer is much faster than via a POSIXct object.</p>
+</li>
+<li>
+<p><strong>applyStrategy</strong> only accumulates values returned from <strong>applyIndicators</strong>, <strong>applySignals</strong>, and <strong>applyRules</strong> if <strong>debug=TRUE</strong>.  This saves a little time, but can save a lot of memory for large <strong>mktdata</strong> objects.</p>
+</li>
+<li>
+<p>The dimension reduction algorithm has to look for the first time the price crosses the limit order price.  We were doing that with a call to <strong>which(sigThreshold(&hellip;))[1]</strong>.  The relational operators (<strong>&lt;</strong>, <strong>&lt;=</strong>, <strong>&gt;</strong>, <strong><strong>&gt;</strong>=</strong>, and <strong>==</strong>) and <strong>which</strong> operate on the entire vector, but we only need the first value, so I replaced that code with a with C-based <strong>.firstThreshold</strong> function that stops as soon as it finds the first cross.</p>
+</li>
 </ul>
-
 <p>All these changes are most significant for large data sets.  The small demo strategies included with quantstrat are also faster, but the net performance gains increase as the size of the data, the number of signals (and therefore the number of rule evaluations), and number of instruments increases.</p>
-
 <p>You&rsquo;re still reading?  What are you waiting for?  Go <a href="https://r-forge.r-project.org/R/?group_id=316">install the latest from R-Forge</a> and try it for yourself!</p>
 
 		</div>
@@ -222,7 +215,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

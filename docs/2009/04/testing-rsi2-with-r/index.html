@@ -20,7 +20,7 @@ In particular, I will be replicating and extending some of the results from Mich
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,71 +89,54 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-13T22:35:00-05:00">April 13, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, <a href="http://www.r-project.org/">R</a>. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.</p>
-
 <p>In particular, I will be replicating and extending some of the results from Michael Stokes&rsquo; excellent <a href="http://marketsci.wordpress.com/">MarketSci Blog</a>. This post will focus on replicating <a href="http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/">this simple RSI(2) strategy</a>.</p>
-
 <p>Without further ado, let&rsquo;s get to some code&hellip;</p>
-
 <blockquote>
-<p># We will need the quantmod package for charting and pulling<br />
-# data and the TTR package to calculate RSI(2).<br />
-# You can install packages via: install.packages(&ldquo;packageName&rdquo;)<br />
-# install.packages(c(&ldquo;quantmod&rdquo;,&ldquo;TTR&rdquo;))<br />
-library(quantmod)<br />
+<p># We will need the quantmod package for charting and pulling<br>
+# data and the TTR package to calculate RSI(2).<br>
+# You can install packages via: install.packages(&ldquo;packageName&rdquo;)<br>
+# install.packages(c(&ldquo;quantmod&rdquo;,&ldquo;TTR&rdquo;))<br>
+library(quantmod)<br>
 library(TTR)</p>
-
-<p># Pull S&amp;P500 index data from Yahoo! Finance<br />
-getSymbols(&ldquo;^GSPC&rdquo;, from=&ldquo;2000-01-01&rdquo;, to=&ldquo;2008-12-07&rdquo;)</p>
-
-<p># Calculate the RSI indicator<br />
+<p># Pull S&amp;P500 index data from Yahoo! Finance<br>
+getSymbols(&ldquo;^GSPC&rdquo;, from=&quot;2000-01-01&rdquo;, to=&quot;2008-12-07&rdquo;)</p>
+<p># Calculate the RSI indicator<br>
 rsi &lt;- RSI(Cl(GSPC),2)</p>
-
-<p># Create the long (up) and short (dn) signals<br />
-sigup &lt;- ifelse(rsi &lt; 10, 1, 0)<br />
+<p># Create the long (up) and short (dn) signals<br>
+sigup &lt;- ifelse(rsi &lt; 10, 1, 0)<br>
 sigdn &lt;- ifelse(rsi &gt; 90, -1, 0)</p>
-
-<p># Lag signals to align with days in market,<br />
-# not days signals were generated<br />
-#sigup &lt;- Lag(sigup,1) # Use lag() to avoid Toby&rsquo;s error<br />
-#sigdn &lt;- Lag(sigdn,1) # Use lag() to avoid Toby&rsquo;s error<br />
-sigup &lt;- lag(sigup,1) # Note k=1 implies a move *forward*<br />
+<p># Lag signals to align with days in market,<br>
+# not days signals were generated<br>
+#sigup &lt;- Lag(sigup,1) # Use lag() to avoid Toby&rsquo;s error<br>
+#sigdn &lt;- Lag(sigdn,1) # Use lag() to avoid Toby&rsquo;s error<br>
+sigup &lt;- lag(sigup,1) # Note k=1 implies a move *forward*<br>
 sigdn &lt;- lag(sigdn,1) # Note k=1 implies a move *forward*</p>
-
-<p># Replace missing signals with no position<br />
-# (generally just at beginning of series)<br />
-sigup[is.na(sigup)] &lt;- 0<br />
+<p># Replace missing signals with no position<br>
+# (generally just at beginning of series)<br>
+sigup[is.na(sigup)] &lt;- 0<br>
 sigdn[is.na(sigdn)] &lt;- 0</p>
-
-<p># Combine both signals into one vector<br />
+<p># Combine both signals into one vector<br>
 sig &lt;- sigup + sigdn</p>
-
-<p># Calculate Close-to-Close returns<br />
-ret &lt;- ROC(Cl(GSPC))<br />
+<p># Calculate Close-to-Close returns<br>
+ret &lt;- ROC(Cl(GSPC))<br>
 ret[1] &lt;- 0</p>
-
-<p># Calculate equity curves<br />
-eq_up &lt;- exp(cumsum(ret*sigup))<br />
-eq_dn &lt;- exp(cumsum(ret*sigdn*-1))<br />
+<p># Calculate equity curves<br>
+eq_up &lt;- exp(cumsum(ret*sigup))<br>
+eq_dn &lt;- exp(cumsum(ret*sigdn*-1))<br>
 eq_all &lt;- exp(cumsum(ret*sig))</p>
-
-<p># Replicate Michael&rsquo;s nice chart<br />
-plot.zoo( cbind(eq_up, eq_dn),<br />
-ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br />
-main=&ldquo;Simple RSI(2) Strategy: 2000-01-02 through 2008-12-07&rdquo; )</p>
-
-<p># Wait a few seconds before making next chart&hellip;<br />
+<p># Replicate Michael&rsquo;s nice chart<br>
+plot.zoo( cbind(eq_up, eq_dn),<br>
+ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;),<br>
+main=&quot;Simple RSI(2) Strategy: 2000-01-02 through 2008-12-07&rdquo; )</p>
+<p># Wait a few seconds before making next chart&hellip;<br>
 #Sys.sleep(5)</p>
-
-<p># Create a chart showing the S&amp;P500<br />
-#chartSeries(GSPC, type=&ldquo;line&rdquo;)</p>
-
-<p># Add the total equity line<br />
+<p># Create a chart showing the S&amp;P500<br>
+#chartSeries(GSPC, type=&quot;line&rdquo;)</p>
+<p># Add the total equity line<br>
 #addTA(eq_all)</p>
 </blockquote>
-
 <p>My version of Michael&rsquo;s chart is below. Up next, scaling in/out of positions with RSI(2).</p>
-
-<p><a href="http://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s1600-h/20090413_rsi2_long_short.png"><img src="https://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s400/20090413_rsi2_long_short.png" alt="" /></a><br />
+<p><a href="http://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s1600-h/20090413_rsi2_long_short.png"><img src="https://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s400/20090413_rsi2_long_short.png" alt=""></a><br>
 Now, let&rsquo;s look at <a href="http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html">RSI(2) with position sizing</a>.</p>
 
 		</div>
@@ -249,7 +232,20 @@ Now, let&rsquo;s look at <a href="http://blog.fosstrading.com/2009/05/rsi2-with-
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">

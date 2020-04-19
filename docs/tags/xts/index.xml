@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xts on FOSS Trading</title>
@@ -38,7 +38,7 @@
       
       <guid>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors &amp;lsquo;x&amp;rsquo; and &amp;lsquo;xout&amp;rsquo; arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
+ endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
-      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series code.
+      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
     </item>
     
@@ -58,7 +58,7 @@ Do note that the new plot.xts() includes breaking changes to the original (and r
       
       <guid>https://www.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
@@ -67,8 +67,7 @@ This new engine improves the functionality, modularity, and flexibility of plot
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
       <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
-      <description> Wow!!!! Great work RMW. jryan - Aug 3, 2012
-Wow!!!! Great work RMW. </description>
+      <description>Wow!!!! Great work RMW. jryan - Aug 3, 2012Wow!!!! Great work RMW.</description>
     </item>
     
     <item>

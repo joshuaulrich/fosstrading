@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>quantmod on FOSS Trading</title>
@@ -18,7 +18,7 @@
       
       <guid>https://www.fosstrading.com/2020/03/quantmod04-16-on-cran/</guid>
       <description>A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;ldquo;SPY;AAPL&amp;rdquo;).</description>
+Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;quot;SPY;AAPL&amp;quot;).</description>
     </item>
     
     <item>
@@ -71,9 +71,9 @@ The most noticeable difference is that the adjusted close column is no longer di
       
       <guid>https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
       <description>I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED (#141) getSymbols.oanda (#144) getSymbols.yahoo (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google also got some love. It now honors all arguments set via setSymbolLookup (#138), and it correctly parses the date column in non-English locales (#140).
-There&amp;rsquo;s a handy new argument to getDividends: split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
+ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
+There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
     </item>
     
     <item>
@@ -82,8 +82,8 @@ There&amp;rsquo;s a handy new argument to getDividends: split.adjust. It allows 
       <pubDate>Tue, 14 Feb 2017 10:49:00 -0600</pubDate>
       
       <guid>https://www.fosstrading.com/2017/02/stack-financials/</guid>
-      <description>code{white-space: pre;} pre:not([class]) { background-color: white; } if (window.hljs &amp;amp;&amp;amp; document.readyState &amp;amp;&amp;amp; document.readyState === &amp;ldquo;complete&amp;rdquo;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } .main-container { max-width: 940px; margin-left: auto; margin-right: auto; } code { color: inherit; background-color: rgba(0, 0, 0, 0.04); } img { max-width:100%; height: auto; }
-A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years.</description>
+      <description>A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&amp;hellip; hence, this post!
+I called the function stackFinancials() because it would use getFinancials() and viewFinancials() to pull financial statement data for multiple symbols, and stack them together in long form.</description>
     </item>
     
     <item>

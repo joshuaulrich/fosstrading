@@ -20,7 +20,7 @@ The most noticeable difference is that the adjusted close column is now only spl
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/fosstrading.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -89,61 +89,51 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-07T12:20:00-05:00">June 07, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I assume that you&rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!</p>
-
 <p>The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted.  Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).</p>
-
-<p>All these issues can be dealt with using tools that are currently available.  For example, you can unadjust the open, high, and low prices using the ratio of close to adjusted close prices.  And you can adjust for both splits and dividends using quantmod::adjustOHLC().</p>
-
+<p>All these issues can be dealt with using tools that are currently available.  For example, you can unadjust the open, high, and low prices using the ratio of close to adjusted close prices.  And you can adjust for both splits and dividends using <code>quantmod::adjustOHLC()</code>.</p>
 <p>Unfortunately, there also appear to be issues with data quality.  Some instruments have rows where all the prices and volume are zeros (e.g. <a href="https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;period2=1422079200&amp;interval=1d&amp;filter=history&amp;frequency=1d">XLU</a>).  The adjusted close in some instruments is incorrect because of missing split events, or double-counting splits and special dividends.</p>
-
 <p>So, what are your alternatives?  If you&rsquo;re just tinkering, you can try other free data sources like <a href="https://www.google.com/finance">Google Finance</a> or <a href="https://www.quandl.com/">Quandl</a>.  Note that Google Finance data is already split-adjusted, so you might need to adjust for dividends, or un-adjust for splits, depending on your needs.  Quandl has a <a href="https://www.quandl.com/data/WIKI-Wiki-EOD-Stock-Prices">wiki of end-of-day stock prices</a> curated by the community.  You only need a free account to access the data.</p>
-
 <p>If you&rsquo;re using the data to make actual investment decisions, you should really be using a professional data provider.  At the very least, you get someone to yell at when the data have errors. :)  First, you should check if your broker provides the historical data you need (e.g. <a href="https://www.interactivebrokers.com/">Interactive Brokers</a> provides historical and real-time data to account-holders).</p>
-
 <p>If your broker doesn&rsquo;t provide historical data, here are a few providers you may want to consider:</p>
-
-<p><a href="https://api.tiingo.com/">Tiingo</a><br />
-- Free historical end-of-day data (registration and API key required)<br />
-- Up to 50+ years of daily data (split and dividend adjusted) for over 65,000 equities, mutual funds, and ETFs<br />
-- Free historical and real-time crypto data (4+ year of daily prices, 2+ years of intraday data)<br />
-- Free historical and real-time intraday data from IEX, beginning in August 2017<br />
-- <a href="http://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html">Available via getSymbols()</a></p>
-
-<p><a href="https://www.alphavantage.co/">Alpha Vantage</a><br />
-- Free historical and intraday equity data (registration and API key required)<br />
-- Up to 20 years of daily data (split and dividend adjusted available)<br />
-- Up to 10 days of intraday data (1min, 5min, 15min, 30min, 60min)<br />
-- <a href="http://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html">Available via getSymbols()</a></p>
-
+<p><a href="https://api.tiingo.com/">Tiingo</a></p>
+<ul>
+<li>Free historical end-of-day data (registration and API key required)</li>
+<li>Up to 50+ years of daily data (split and dividend adjusted) for over 65,000 equities, mutual funds, and ETFs</li>
+<li>Free historical and real-time crypto data (4+ year of daily prices, 2+ years of intraday data)</li>
+<li>Free historical and real-time intraday data from IEX, beginning in August 2017</li>
+<li><a href="http://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html">Available via <code>getSymbols()</code></a></li>
+</ul>
+<p><a href="https://www.alphavantage.co/">Alpha Vantage</a></p>
+<ul>
+<li>Free historical and intraday equity data (registration and API key required)</li>
+<li>Up to 20 years of daily data (split and dividend adjusted available)</li>
+<li>Up to 10 days of intraday data (1min, 5min, 15min, 30min, 60min)</li>
+<li><a href="http://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html">Available via <code>getSymbols()</code></a></li>
+</ul>
 <p><a href="http://www.eoddata.com/download.aspx">eoddata</a></p>
-
-<p>- Provide limited historical data for free</p>
-
-<p>- For a one-time fee:</p>
-
-<p>  - $20-$50 for 10 years of daily data</p>
-
-<p>  - $40-$100 for 20 years of daily data</p>
-
-<p><a href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU">CSI Data</a>*</p>
-
-<p>- Massive historical equity database</p>
-
-<p>- $600 annually for 30 years of daily data</p>
-
-<p>- Ability to adjust for splits and dividends</p>
-
+<ul>
+<li>Provide limited historical data for free</li>
+<li>For a one-time fee:
+<ul>
+<li>$20-$50 for 10 years of daily data</li>
+<li>$40-$100 for 20 years of daily data</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU">CSI Data</a> <strong>*</strong></p>
+<ul>
+<li>Massive historical equity database</li>
+<li>$600 annually for 30 years of daily data</li>
+<li>Ability to adjust for splits and dividends</li>
+</ul>
 <p><a href="http://www.iqfeed.net/">IQFeed</a></p>
-
-<p>- Mainly a real-time data provider, but also has historical data</p>
-
-<p>- <a href="http://www.iqfeed.net/index.cfm?displayaction=data&amp;section=services">Features</a></p>
-
-<p>- <a href="http://www.iqfeed.net/index.cfm?displayaction=data&amp;section=fees">Pricing</a>, starts at $78/month</p>
-
+<ul>
+<li>Mainly a real-time data provider, but also has historical data</li>
+<li><a href="http://www.iqfeed.net/index.cfm?displayaction=data&amp;section=services">Features</a></li>
+<li><a href="http://www.iqfeed.net/index.cfm?displayaction=data&amp;section=fees">Pricing</a>, starts at $78/month</li>
+</ul>
 <p>Leave a comment if you know of another end-of-day data provider that I didn&rsquo;t list!</p>
-
-<p>*FULL DISCLOSURE: I receive a referral fee for annual subscriptions to CSI products if you use the FOSS coupon code.</p>
+<p><strong>* FULL DISCLOSURE</strong>: I receive a referral fee for annual subscriptions to CSI products if you use the FOSS coupon code.</p>
 
 		</div>
 		<footer class="post__footer">
@@ -235,7 +225,20 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
 	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
+
 </aside>
 		</div>
 		<footer class="footer">
