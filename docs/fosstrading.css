@@ -50,3 +50,9 @@ img.csi-banner {
     display: block;
     margin: 0 auto;
 }
+
+/* inline code should be black, not red */
+code {
+	padding: 0 5px;
+	color: #000;
+}
