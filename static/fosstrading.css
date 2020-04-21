@@ -15,7 +15,7 @@
     text-transform: capitalize;
 }
 .tags__item {
-    text-transform: capitalize;
+    text-transform: none;
     background: #525252;
 }
 .toc__title {
@@ -33,7 +33,7 @@ input[type=reset] {
     text-transform: capitalize;
 }
 .widget-taglist__link {
-    text-transform: capitalize;
+    text-transform: none;
 }
 .btn {
     background: #525252;
