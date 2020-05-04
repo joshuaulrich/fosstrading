@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blotter on FOSS Trading</title>
-    <link>https://www.fosstrading.com/tags/blotter/</link>
+    <link>https://blog.fosstrading.com/tags/blotter/</link>
     <description>Recent content in blotter on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Feb 2010 22:35:00 -0600</lastBuildDate>
     
-	<atom:link href="https://www.fosstrading.com/tags/blotter/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.fosstrading.com/tags/blotter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Updated Tactical Asset Allocation Results</title>
-      <link>https://www.fosstrading.com/2010/02/updated-tactical-asset-allocation/</link>
+      <link>https://blog.fosstrading.com/2010/02/updated-tactical-asset-allocation/</link>
       <pubDate>Sat, 06 Feb 2010 22:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/02/updated-tactical-asset-allocation/</guid>
+      <guid>https://blog.fosstrading.com/2010/02/updated-tactical-asset-allocation/</guid>
       <description>In November, I used the strategy in Mebane Faber&amp;rsquo;s Tactical Asset Allocation paper to provide an introduction to blotter. Faber has updated the strategy&amp;rsquo;s results through the end of 2009. For those interested, he expands on the paper in his book, The Ivy Portfolio.</description>
     </item>
     
     <item>
       <title>Tactical asset allocation using blotter</title>
-      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</link>
+      <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</link>
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
       <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009Hi,
 If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
 Cheers,
@@ -38,10 +38,10 @@ Thanks Josh for providing this nice example of the use of blotter.</description>
     
     <item>
       <title>Tactical asset allocation using blotter</title>
-      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</link>
+      <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</link>
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</guid>
       <description>NOTE: If you simply want to test strategies in R, please see the post: Tactical Asset Allocation Using quantstrat. quantstrat uses blotter behind the scenes, but provides a higher level of abstraction.
 blotter is an R package that tracks the P&amp;amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.
 The contents of this post borrow heavily from code and comments in the &amp;ldquo;longtrend&amp;rdquo; demo script in the blotter package.</description>

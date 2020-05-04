@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FOSS Trading</title>
-    <link>https://www.fosstrading.com/</link>
+    <link>https://blog.fosstrading.com/</link>
     <description>Recent content on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Mar 2020 07:23:00 -0500</lastBuildDate>
     
-	<atom:link href="https://www.fosstrading.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.fosstrading.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>quantmod_0.4-16 on CRAN</title>
-      <link>https://www.fosstrading.com/2020/03/quantmod04-16-on-cran/</link>
+      <link>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran/</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2020/03/quantmod04-16-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran/</guid>
       <description>A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
 Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;quot;SPY;AAPL&amp;quot;).</description>
     </item>
     
     <item>
       <title>microbenchmark_1.4-7 on CRAN</title>
-      <link>https://www.fosstrading.com/2019/10/microbenchmark14-7-on-cran/</link>
+      <link>https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran/</link>
       <pubDate>Thu, 10 Oct 2019 06:21:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2019/10/microbenchmark14-7-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran/</guid>
       <description>I pushed an updated microbenchmark to CRAN a couple weeks ago. There were two noteworthy changes, thanks to great contributions from @MichaelChirico and @harvey131.
 Michael fixed a bug in the check for whether the unit argument was a character string (#9, #10). The prior behavior was an uninformative error.
 Harvey added a feature to allow you to use a string for common checks: &amp;ldquo;equal&amp;rdquo;, &amp;ldquo;identical&amp;rdquo;, and &amp;ldquo;equivalent&amp;rdquo; (#16). So you don&amp;rsquo;t need to create a custom function to use all.</description>
@@ -34,60 +34,60 @@ Harvey added a feature to allow you to use a string for common checks: &amp;ldqu
     
     <item>
       <title>quantmod_0.4-14 on CRAN</title>
-      <link>https://www.fosstrading.com/2019/03/quantmod04-14-on-cran/</link>
+      <link>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran/</link>
       <pubDate>Mon, 25 Mar 2019 06:53:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2019/03/quantmod04-14-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran/</guid>
       <description>I just pushed a new release of quantmod to CRAN! I&amp;rsquo;m most excited about the update to getSymbols() so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now getSymbols() will import all the data it can, and provide an informative error message for any ticker symbols it could not import.
 Another cool feature is that getQuote() can now import quotes from Tiingo. But don&amp;rsquo;t thank me; thank Ethan Smith for the feature request [#247] and pull request [#250].</description>
     </item>
     
     <item>
       <title>xts 0.11-2 on CRAN</title>
-      <link>https://www.fosstrading.com/2018/11/xts-011-2-on-cran/</link>
+      <link>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran/</link>
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/11/xts-011-2-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran/</guid>
       <description>xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
  The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &amp;gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.</description>
     </item>
     
     <item>
       <title>xts 0.11-1 on CRAN</title>
-      <link>https://www.fosstrading.com/2018/09/xts-011-1-on-cran/</link>
+      <link>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran/</link>
       <pubDate>Wed, 12 Sep 2018 13:36:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/09/xts-011-1-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran/</guid>
       <description>xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
  There&amp;rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).</description>
     </item>
     
     <item>
       <title>Learning to code is worth it</title>
-      <link>https://www.fosstrading.com/2018/08/learning-to-code-is-worth-it/</link>
+      <link>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</link>
       <pubDate>Fri, 24 Aug 2018 13:03:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/08/learning-to-code-is-worth-it/</guid>
+      <guid>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</guid>
       <description>Someone recently shared this great talk by Chris Allen from lambda conf 2017. The title of the talk is &amp;ldquo;Why Johnny Can&amp;rsquo;t Code Good,&amp;rdquo; but the content is more about how to grow as a programmer. His points are true whether you&amp;rsquo;re just starting out, or have been coding for years.
 My notes from Chris&amp;rsquo; talk are below, in the order they appear in the presentation. My thoughts are in parentheses.</description>
     </item>
     
     <item>
       <title>R/Finance 2018 Registration</title>
-      <link>https://www.fosstrading.com/2018/04/rfinance-2018-registration/</link>
+      <link>https://blog.fosstrading.com/2018/04/rfinance-2018-registration/</link>
       <pubDate>Fri, 20 Apr 2018 13:26:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/04/rfinance-2018-registration/</guid>
+      <guid>https://blog.fosstrading.com/2018/04/rfinance-2018-registration/</guid>
       <description>This year marks the 10th anniversary of the R/Finance Conference! As in prior years, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 50+ presenters covering all areas of finance with R. The conference will take place on June 1st and 2nd, at UIC in Chicago.
 You can find registration informationon the conference website, or you can go directly to the Cvent registration page.</description>
     </item>
     
     <item>
       <title>Goodbye Google, Hello Tiingo!</title>
-      <link>https://www.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</link>
+      <link>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</link>
       <pubDate>Fri, 13 Apr 2018 11:14:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</guid>
+      <guid>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</guid>
       <description>First, the bad news:
 Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to getSymbols.google() and getFinancials.google(). (#221) They are now defunct as of quantmod 0.4-13.
 Now, the good news:
@@ -96,20 +96,20 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
     
     <item>
       <title>xts 0.10-2 on CRAN</title>
-      <link>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</link>
+      <link>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran/</link>
       <pubDate>Mon, 19 Mar 2018 05:30:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran/</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
  endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
     </item>
     
     <item>
       <title>R/Finance 2018: Call for Papers</title>
-      <link>https://www.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</link>
       <pubDate>Tue, 09 Jan 2018 11:32:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</guid>
       <description>R/Finance 2018: Applied Finance with R
 June 1 and 2, 2018
 University of Illinois at Chicago
@@ -119,10 +119,10 @@ The tenth annual R/Finance conference for applied finance using R will be held J
     
     <item>
       <title>RQuantLib 0.4.4 for Windows</title>
-      <link>https://www.fosstrading.com/2018/01/rquantlib-044-for-windows/</link>
+      <link>https://blog.fosstrading.com/2018/01/rquantlib-044-for-windows/</link>
       <pubDate>Fri, 05 Jan 2018 14:02:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2018/01/rquantlib-044-for-windows/</guid>
+      <guid>https://blog.fosstrading.com/2018/01/rquantlib-044-for-windows/</guid>
       <description>I&amp;rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&amp;rsquo;s ghrr drat repo.
 Installation is as simple as:
 drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp;#34;drat&amp;#34;)&amp;#39; first  install.packages(&amp;#34;RQuantLib&amp;#34;, type=&amp;#34;binary&amp;#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
@@ -130,30 +130,30 @@ drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp
     
     <item>
       <title>getSymbols and Alpha Vantage</title>
-      <link>https://www.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</link>
+      <link>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</link>
       <pubDate>Fri, 06 Oct 2017 16:12:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</guid>
+      <guid>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</guid>
       <description>Thanks to Paul Teetor, getSymbols() can now import data from Alpha Vantage! This feature is part of the quantmod 0.4-11 release, and provides another another data source to avoid any Yahoo Finance API changes*.
 Alpha Vantage is a free web service that provides real-time and historical equity data. They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data.</description>
     </item>
     
     <item>
       <title>xts 0.10-0 on CRAN!</title>
-      <link>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</link>
+      <link>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran/</link>
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
       <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
     </item>
     
     <item>
       <title>Disclosures</title>
-      <link>https://www.fosstrading.com/page/disclosures/</link>
+      <link>https://blog.fosstrading.com/page/disclosures/</link>
       <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.fosstrading.com/page/disclosures/</guid>
+      <guid>https://blog.fosstrading.com/page/disclosures/</guid>
       <description>Amazon We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.
 CSI Data We receive an affiliate commission when a reader signs up for a CSI data package via a referring link from this site and/or using the &amp;ldquo;FOSS&amp;rdquo; coupon code.
 Privacy Policy This privacy policy has been compiled to better serve those who are concerned with how this site uses their &amp;lsquo;Personally Identifiable Information&amp;rsquo; (information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context).</description>
@@ -161,10 +161,10 @@ Privacy Policy This privacy policy has been compiled to better serve those who a
     
     <item>
       <title>quantmod 0.4-9 on CRAN</title>
-      <link>https://www.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</link>
+      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</guid>
       <description>A new release of quantmod is now on CRAN! The only change was to address changes to Yahoo! Finance and their effects on getSymbols.yahoo(). GitHub issue #157 contains some details about the fix implementation.
 Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed. The actual data available for download changed as well.
 The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted). Also, only the close price is unadjusted; the open, high, and low are split-adjusted.</description>
@@ -172,20 +172,20 @@ The most noticeable difference is that the adjusted close column is no longer di
     
     <item>
       <title>Yahoo Finance Alternatives</title>
-      <link>https://www.fosstrading.com/2017/06/yahoo-finance-alternatives/</link>
+      <link>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</link>
       <pubDate>Wed, 07 Jun 2017 12:20:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/06/yahoo-finance-alternatives/</guid>
+      <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</guid>
       <description>I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017). Not only did the URL change, but the actual data changed as well!
 The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted. Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).</description>
     </item>
     
     <item>
       <title>quantmod 0.4-8 on CRAN</title>
-      <link>https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</link>
+      <link>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</link>
       <pubDate>Wed, 19 Apr 2017 10:45:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
       <description>I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
  getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
 getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
@@ -194,20 +194,20 @@ There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allow
     
     <item>
       <title>Stack Financials: Analyze Financial Statement Data</title>
-      <link>https://www.fosstrading.com/2017/02/stack-financials/</link>
+      <link>https://blog.fosstrading.com/2017/02/stack-financials/</link>
       <pubDate>Tue, 14 Feb 2017 10:49:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/02/stack-financials/</guid>
+      <guid>https://blog.fosstrading.com/2017/02/stack-financials/</guid>
       <description>A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&amp;hellip; hence, this post!
 I called the function stackFinancials() because it would use getFinancials() and viewFinancials() to pull financial statement data for multiple symbols, and stack them together in long form.</description>
     </item>
     
     <item>
       <title>R/Finance 2017: Call for Papers</title>
-      <link>https://www.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</link>
       <pubDate>Wed, 04 Jan 2017 08:11:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</guid>
       <description>R/Finance 2017: Applied Finance with R
 May 19 and 20, 2017
 University of Illinois at Chicago
@@ -216,20 +216,20 @@ The ninth annual R/Finance conference for applied finance using R will be held o
     
     <item>
       <title>quantmod 0.4-6 on CRAN</title>
-      <link>https://www.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</link>
+      <link>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</link>
       <pubDate>Mon, 29 Aug 2016 11:38:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</guid>
       <description>CRAN just accepted a bugfix release of quantmod. The most pertinent changes were to fix getSymbols.oanda (#36) and getOptionChain.yahoo (#92). It also includes a fix to addTRIX (#72).
 Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect. Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo. The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.</description>
     </item>
     
     <item>
       <title>DataCamp course: Importing and managing financial data</title>
-      <link>https://www.fosstrading.com/2016/06/importing-and-managing-financial-data/</link>
+      <link>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/</link>
       <pubDate>Fri, 17 Jun 2016 11:32:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2016/06/importing-and-managing-financial-data/</guid>
+      <guid>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/</guid>
       <description>The team at DataCamp announced a new R/Finance course series in a recent email:
  Subject: Data Mining Tutorial, R/Finance course series, and more!
 R/Finance - A new course series in the works
@@ -238,10 +238,10 @@ We are working on a whole new course series on applied finance using R. This new
     
     <item>
       <title>Registration for R/Finance 2016 is open!</title>
-      <link>https://www.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</link>
+      <link>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</link>
       <pubDate>Mon, 11 Apr 2016 08:14:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</guid>
+      <guid>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</guid>
       <description>You can find registration information and agenda details on the conference website. Or you can go directly to the Cvent registration page.
 Note that registration fees will increase by 50% at the end of early registration on May 6, 2016.
 The conference will take place on May 20 and 21, at UIC in Chicago. Building on the success of the previous conferences in 2009-2015, we expect more than 250 attendees from around the world.</description>
@@ -249,69 +249,69 @@ The conference will take place on May 20 and 21, at UIC in Chicago. Building on 
     
     <item>
       <title>Comment on Overnight SPY Anomaly</title>
-      <link>https://www.fosstrading.com/2015/11/overnight-spy-anomaly/</link>
+      <link>https://blog.fosstrading.com/2015/11/overnight-spy-anomaly/</link>
       <pubDate>Mon, 16 Nov 2015 11:25:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/11/overnight-spy-anomaly/</guid>
+      <guid>https://blog.fosstrading.com/2015/11/overnight-spy-anomaly/</guid>
       <description>This post is in response to Michael Harris&amp;rsquo; Price Action Lab post, where he uses some simple R code to evaluate the asymmetry of returns from the day&amp;rsquo;s close to the following day&amp;rsquo;s open. I&amp;rsquo;d like to respond to his 3 notes, which I&amp;rsquo;ve included below.
   The R backtest assumes fractional shares. This means that equity is fully invested at each new position. This is important because it affects drawdown calculations.</description>
     </item>
     
     <item>
       <title>New quantmod and TTR on CRAN</title>
-      <link>https://www.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</link>
+      <link>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</link>
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</guid>
       <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA (Hull MA), ALMA, and ultimateOscillator functions.
 James Toll provided a patch to the volatility function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
     </item>
     
     <item>
       <title>plot.xts RFC</title>
-      <link>https://www.fosstrading.com/2015/04/plotxts-rfc/</link>
+      <link>https://blog.fosstrading.com/2015/04/plotxts-rfc/</link>
       <pubDate>Mon, 20 Apr 2015 12:45:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/04/plotxts-rfc/</guid>
+      <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
 This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
       <title>Registration Open for R/Finance 2015!</title>
-      <link>https://www.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</link>
+      <link>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</link>
       <pubDate>Tue, 31 Mar 2015 10:35:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</guid>
+      <guid>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</guid>
       <description>You can find registration information and agenda details (as they become available) on the conference website. Or you can go directly to the registration page. Note that there&amp;rsquo;s an early-bird registration deadline of May 15.
 The conference will take place on May 29 and 30, at UIC in Chicago. Building on the success of the previous conferences in 2009-2014, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.</description>
     </item>
     
     <item>
       <title>Import Japanese equity data into R with quantmod 0.4-4</title>
-      <link>https://www.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</link>
+      <link>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</link>
       <pubDate>Tue, 10 Mar 2015 12:09:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</guid>
+      <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</guid>
       <description>I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
 Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn’t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you’ve written.</description>
     </item>
     
     <item>
       <title>Google Summer of Code 2015</title>
-      <link>https://www.fosstrading.com/2015/03/google-summer-of-code-2015/</link>
+      <link>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015/</link>
       <pubDate>Tue, 03 Mar 2015 09:04:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2015/03/google-summer-of-code-2015/</guid>
+      <guid>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015/</guid>
       <description>The R Project has once again been selected as a mentoring organization for this year&amp;rsquo;s Google Summer of Code (GSoC). If you&amp;rsquo;re not familiar with GSoC, it&amp;rsquo;s a global program that offers students a stipend to write code for open source projects, under the direction of a mentor. Mentors get code written for their project, but no money. Students get something like a paid summer internship, with open-source contributions they can reference on their resume.</description>
     </item>
     
     <item>
       <title>Updated quantmod on CRAN</title>
-      <link>https://www.fosstrading.com/2014/12/updated-quantmod-on-cran/</link>
+      <link>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran/</link>
       <pubDate>Mon, 15 Dec 2014 09:43:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2014/12/updated-quantmod-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran/</guid>
       <description>An updated version of quantmod has just been released on CRAN. This is my first submission as the new maintainer. The major change was removing the dependency on the now-archived Defaults package. End-users shouldn&amp;rsquo;t notice a difference, since I basically copied the necessary functionality from Defaults and added it to quantmod.
 There are also several bug fixes. A few worth noting are:
  getSplits adjustOHLC getSymbols (when adjust=TRUE) saveSymbols newTA findValleys  </description>
@@ -319,10 +319,10 @@ There are also several bug fixes. A few worth noting are:
     
     <item>
       <title>R/Finance 2015 Call for Papers</title>
-      <link>https://www.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</link>
       <pubDate>Tue, 18 Nov 2014 13:52:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</guid>
       <description>Call for Papers:
 R/Finance 2015: Applied Finance with R
 May 29 and 30, 2015
@@ -332,29 +332,29 @@ The seventh annual R/Finance conference for applied finance using R will be held
     
     <item>
       <title>R/Finance 2014 Review</title>
-      <link>https://www.fosstrading.com/2014/06/rfinance-2014-review/</link>
+      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</link>
       <pubDate>Mon, 30 Jun 2014 07:40:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2014/06/rfinance-2014-review/</guid>
+      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</guid>
       <description>It&amp;rsquo;s been more than a month since R/Finance 2014, and my job has finally slowed down enough to allow me to write down my thoughts (though I&amp;rsquo;m writing this over two days during my train to and from Chicago).
 The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.</description>
     </item>
     
     <item>
       <title>Introduction to PortfolioAnalytics</title>
-      <link>https://www.fosstrading.com/2014/03/intro-to-portfolioanalytics/</link>
+      <link>https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics/</link>
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2014/03/intro-to-portfolioanalytics/</guid>
+      <guid>https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics/</guid>
       <description>PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &amp;lsquo;DejaVu Sans Mono&amp;rsquo;, &amp;lsquo;Droid Sans Mono&amp;rsquo;, &amp;lsquo;Lucida Console&amp;rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0.</description>
     </item>
     
     <item>
       <title>R/Finance 2014 Registration Open</title>
-      <link>https://www.fosstrading.com/2014/03/rfinance-2014-registration-open/</link>
+      <link>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open/</link>
       <pubDate>Sat, 29 Mar 2014 12:24:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2014/03/rfinance-2014-registration-open/</guid>
+      <guid>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open/</guid>
       <description>As announced on the R-SIG-Finance mailing list, registration for R/Finance 2014 is now open! The conference will take place May 17 and 18 in Chicago.
 Building on the success of the previous conferences in 2009-2013, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.
 We are very excited about the four keynote presentations given by Bob McDonald, Bill Cleveland, Alexios Ghalanos, and Luke Tierney.</description>
@@ -362,20 +362,20 @@ We are very excited about the four keynote presentations given by Bob McDonald, 
     
     <item>
       <title>quantstrat is slow</title>
-      <link>https://www.fosstrading.com/2013/11/quantstrat-is-slow/</link>
+      <link>https://blog.fosstrading.com/2013/11/quantstrat-is-slow/</link>
       <pubDate>Mon, 04 Nov 2013 06:37:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/11/quantstrat-is-slow/</guid>
+      <guid>https://blog.fosstrading.com/2013/11/quantstrat-is-slow/</guid>
       <description>The complaint I hear most frequently about quantstrat is that it&amp;rsquo;s slow, especially for large data. Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default. Path dependence requires rules to be re-evaluated for each timestamp with a signal. More signals equates to longer run-times.
 If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off. If your strategy truly is path-dependent, keep reading&amp;hellip;</description>
     </item>
     
     <item>
       <title>R/Finance 2014 Call for Papers</title>
-      <link>https://www.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</link>
       <pubDate>Thu, 17 Oct 2013 20:28:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</guid>
       <description>We&amp;rsquo;re getting ready for this year&amp;rsquo;s R/Finance conference. Here&amp;rsquo;s the call for papers. I hope to see you there!
 R/Finance 2014: Applied Finance with R
 May 16 and 17, 2014
@@ -385,20 +385,20 @@ The sixth annual R/Finance conference for applied finance using R will be held o
     
     <item>
       <title>R/Finance 2013 Review</title>
-      <link>https://www.fosstrading.com/2013/05/r-finance-2013-review/</link>
+      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</link>
       <pubDate>Tue, 28 May 2013 08:00:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/05/r-finance-2013-review/</guid>
+      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</guid>
       <description>It&amp;rsquo;s been one week since the 5th Annual R/Finance conference, and I finally feel sufficiently recovered enough to share my thoughts. The conference is a two-day whirlwind of applied quantitative finance, fantastic networking, and general geekery.
 The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.</description>
     </item>
     
     <item>
       <title>R/Finance 2013 Registration Open</title>
-      <link>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</link>
+      <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</link>
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</guid>
+      <guid>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open-comments/</guid>
       <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013HI,
 Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks!
 Hi Vic,
@@ -407,10 +407,10 @@ The slides and code examples for most of the presentations will be available on 
     
     <item>
       <title>R/Finance 2013 Registration Open</title>
-      <link>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open/</link>
+      <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open/</link>
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/03/rfinance-2013-registration-open/</guid>
+      <guid>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open/</guid>
       <description>The registration for R/Finance 2013 &amp;ndash; which will take place May 17 and 18 in Chicago &amp;ndash; is NOW OPEN!
 Building on the success of the previous conferences in 2009, 2010, 2011 and 2012, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.
 We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan Sheftel, and Ruey Tsay.</description>
@@ -418,20 +418,20 @@ We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan 
     
     <item>
       <title>TTR_0.22-0 on CRAN</title>
-      <link>https://www.fosstrading.com/2013/03/ttr022-0-on-cran/</link>
+      <link>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran/</link>
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2013/03/ttr022-0-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran/</guid>
       <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI retuns an object with colnames, and the initial gap for SAR is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD, SAR, EMA/EVWMA, and adjRatios.
 There are some exciting new features, including a rolling single-factor model function (rollSFM, based on a prototype from James Toll), a runPercentRank function from Charlie Friedemann, stoch and WPR return 0.</description>
     </item>
     
     <item>
       <title>Computational Finance with R on Coursera</title>
-      <link>https://www.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments/</link>
+      <link>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments/</link>
       <pubDate>Wed, 12 Sep 2012 10:33:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments/</guid>
+      <guid>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments/</guid>
       <description>I&amp;rsquo;ve been trying to sign up since you posted t&amp;hellip; moumouche - Sep 5, 2012I&amp;rsquo;ve been trying to sign up since you posted this, to no avail! Do you know if the class is still accepting student?
 Sorry, I don&amp;rsquo;t know if the class is still accepting students.
 I just signed up&amp;hellip; and I am 4 weeks late.. Thanks for the link Josh. I&amp;rsquo;m loving it :)
@@ -440,39 +440,39 @@ This comment has been removed by a blog administrator.</description>
     
     <item>
       <title>Computational Finance with R on Coursera</title>
-      <link>https://www.fosstrading.com/2012/09/computational-finance-with-r-on-coursera/</link>
+      <link>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera/</link>
       <pubDate>Wed, 12 Sep 2012 10:33:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/09/computational-finance-with-r-on-coursera/</guid>
+      <guid>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera/</guid>
       <description>If you haven&amp;rsquo;t signed up for the Introduction to Computational Finance and Financial Econometrics course taught by Eric Zivot on Coursera, it&amp;rsquo;s not too late. The second week just started and the first assignments aren&amp;rsquo;t due until September 18th.
 Join me in getting a good refresher on basic statistics, simulation and bootstrapping, linear algebra, and learning more about portfolio optimization, efficient portfolios, and risk budgeting.</description>
     </item>
     
     <item>
       <title>A New plot.xts</title>
-      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</link>
+      <link>https://blog.fosstrading.com/2012/08/a-new-plot-xts-comments/</link>
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
+      <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts-comments/</guid>
       <description>Wow!!!! Great work RMW. jryan - Aug 3, 2012Wow!!!! Great work RMW.</description>
     </item>
     
     <item>
       <title>A New plot.xts</title>
-      <link>https://www.fosstrading.com/2012/08/a-new-plot-xts/</link>
+      <link>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</link>
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/08/a-new-plot-xts/</guid>
+      <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</guid>
       <description>The Google Summer of Code (2012) project to extend xts has produced a very promising new plot.xts function. Michael Weylandt, the project&amp;rsquo;s student, wrote R-SIG-Finance to request impressions, feedback, and bug reports. The function is housed in the xtsExtra package of the xts project on R-Forge.
 Please try xtsExtra::plot.xts and let us know what you think. A sample of the eye-candy produced by the code in Michael&amp;rsquo;s email is below. Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!</description>
     </item>
     
     <item>
       <title>Book Review: Parallel R</title>
-      <link>https://www.fosstrading.com/2012/06/book-review-parallel-r/</link>
+      <link>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</link>
       <pubDate>Tue, 05 Jun 2012 10:31:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/06/book-review-parallel-r/</guid>
+      <guid>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</guid>
       <description>You have a problem: R is single-threaded, but your code would be faster if it could simultaneously run on more than one core. You have access to a cluster and/or your computer has multiple cores. Parallel R, by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.
 The book describes 6 approaches to distributed computing. Thoughts on each approach follow:
  snow   The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss MPI clusters, and socket clusters of several machines).</description>
@@ -480,10 +480,10 @@ The book describes 6 approaches to distributed computing. Thoughts on each appr
     
     <item>
       <title>Long-Overdue Blogroll Update</title>
-      <link>https://www.fosstrading.com/2012/04/long-overdue-blogroll-update/</link>
+      <link>https://blog.fosstrading.com/2012/04/long-overdue-blogroll-update/</link>
       <pubDate>Sat, 14 Apr 2012 10:18:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/04/long-overdue-blogroll-update/</guid>
+      <guid>https://blog.fosstrading.com/2012/04/long-overdue-blogroll-update/</guid>
       <description>I don&amp;rsquo;t think I&amp;rsquo;ve updated my blogroll for at least a year&amp;hellip; shame on me.
 This update is mostly additions. I only removed Max Dama&amp;rsquo;s blog, and that was only because it no longer exists. I left Skill Analytics because it contains excellent information, even though Damian hasn&amp;rsquo;t posted in a long time.
 The additions are:
@@ -496,10 +496,10 @@ Algorithm Zoo (by Milktrader)SEF-Blog: Signal Extraction and Forecasting</descri
     
     <item>
       <title>R in Google Summer of Code 2012</title>
-      <link>https://www.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</link>
+      <link>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</link>
       <pubDate>Fri, 23 Mar 2012 13:53:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</guid>
+      <guid>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</guid>
       <description>This post is a slightly revised (and &amp;ldquo;blogified&amp;rdquo;) version of the message Brian Peterson has sent to various R mailing lists.
 Once again, R has been accepted as a mentoring organization for the Google Summer of Code (2012). We invite students interested in this program to learn more about it. A good starting point is the R GSoC wiki.
 Students participating in the program receive US$5,000 for successful completion of a GSoC project, a great resume item, and an opportunity to work with R package authors.</description>
@@ -507,10 +507,10 @@ Students participating in the program receive US$5,000 for successful completion
     
     <item>
       <title>R/Finance 2012 Registration Open</title>
-      <link>https://www.fosstrading.com/2012/03/rfinance-2012-registration-open/</link>
+      <link>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open/</link>
       <pubDate>Tue, 20 Mar 2012 10:47:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/rfinance-2012-registration-open/</guid>
+      <guid>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open/</guid>
       <description>You can find more information on the R/Finance conference website. Hope to see you in Chicago in May!
 The registration for R/Finance 2012 &amp;ndash; which will take place May 11 and 12 in Chicago &amp;ndash; is NOW OPEN!
 Building on the success of the three previous conferences in 2009, 2010, and 2011, we expect more than 250 attendees from around the world. R users from industry, academia, and government will join 40+ presenters covering all areas of finance with R.</description>
@@ -518,39 +518,39 @@ Building on the success of the three previous conferences in 2009, 2010, and 201
     
     <item>
       <title>Reno 3/10-3/18</title>
-      <link>https://www.fosstrading.com/2012/03/reno-310-318/</link>
+      <link>https://blog.fosstrading.com/2012/03/reno-310-318/</link>
       <pubDate>Sat, 10 Mar 2012 15:48:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/reno-310-318/</guid>
+      <guid>https://blog.fosstrading.com/2012/03/reno-310-318/</guid>
       <description>I will be in the Reno, NV area from 3/10-3/18. Contact me if you would like to meet over coffee, lunch, drinks, etc.</description>
     </item>
     
     <item>
       <title>DEoptim in Parallel</title>
-      <link>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</link>
+      <link>https://blog.fosstrading.com/2012/03/deoptim-in-parallel-comments/</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
+      <guid>https://blog.fosstrading.com/2012/03/deoptim-in-parallel-comments/</guid>
       <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
 If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).</description>
     </item>
     
     <item>
       <title>DEoptim in Parallel</title>
-      <link>https://www.fosstrading.com/2012/03/deoptim-in-parallel/</link>
+      <link>https://blog.fosstrading.com/2012/03/deoptim-in-parallel/</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2012/03/deoptim-in-parallel/</guid>
+      <guid>https://blog.fosstrading.com/2012/03/deoptim-in-parallel/</guid>
       <description>Running DEoptim in parallel has been on the development team&amp;rsquo;s wishlist for awhile. It had not been a priority though, because none of us have personally needed it. An opportunity arose when Kris Boudt approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.
 We were able to add and test the functionality within a week. The latest revision of DEoptim on R-Forge has the capability to evaluate the objective function on multiple cores using foreach.</description>
     </item>
     
     <item>
       <title>R/Finance 2012 Call for Papers</title>
-      <link>https://www.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</link>
       <pubDate>Thu, 15 Dec 2011 00:38:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</guid>
       <description>I&amp;rsquo;m excited to share the call for papers for the upcoming R/Finance conference. Even if you don&amp;rsquo;t submit a presentation, I hope to see you there!
 Call for Papers:
 R/Finance 2012: Applied Finance with R
@@ -561,19 +561,19 @@ The fourth annual R/Finance conference for applied finance using R will be held 
     
     <item>
       <title>Denver 10/1-10/5</title>
-      <link>https://www.fosstrading.com/2011/09/denver-101-105/</link>
+      <link>https://blog.fosstrading.com/2011/09/denver-101-105/</link>
       <pubDate>Tue, 27 Sep 2011 01:26:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/09/denver-101-105/</guid>
+      <guid>https://blog.fosstrading.com/2011/09/denver-101-105/</guid>
       <description>I will be traveling to Denver from 10/1-10/5. Drop me a line if you&amp;rsquo;re in the area and would like to meet for coffee / drinks.</description>
     </item>
     
     <item>
       <title>TTR_0.21-0 on CRAN</title>
-      <link>https://www.fosstrading.com/2011/09/ttr021-0-on-cran/</link>
+      <link>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran/</link>
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/09/ttr021-0-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran/</guid>
       <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
 Here are the full contents of the CHANGES file:
 TTR version 0.21-0
@@ -584,10 +584,10 @@ NEW FEATURES:
     
     <item>
       <title>Tactical asset allocation using quantstrat</title>
-      <link>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</link>
+      <link>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</link>
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments/</guid>
       <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011I am trying to run this script in R-Studio on OSX but I am getting the following error:
 &amp;gt; currency(&amp;ldquo;USD&amp;rdquo;)
 Error in assign(primary_id, currency_temp, envir = as.environment(.instrument)) :
@@ -598,10 +598,10 @@ Any ideas of what is going wrong here?</description>
     
     <item>
       <title>Tactical asset allocation using quantstrat</title>
-      <link>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/</link>
+      <link>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using/</link>
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/08/tactical-asset-allocation-using/</guid>
+      <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using/</guid>
       <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate. There are two major differences:
   The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
@@ -609,10 +609,10 @@ The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA str
     
     <item>
       <title>Introduction to quantstrat</title>
-      <link>https://www.fosstrading.com/2011/08/introduction-to-quantstrat-comments/</link>
+      <link>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat-comments/</link>
       <pubDate>Fri, 12 Aug 2011 06:48:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/08/introduction-to-quantstrat-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat-comments/</guid>
       <description>Great idea, Josh. I&amp;rsquo;m looking forward to seein&amp;hellip; Alexis Petit - Aug 5, 2011Great idea, Josh. I&amp;rsquo;m looking forward to seeing the next posts! I think this will help many of us make a better use of Quantstrat. Many thanks!
 package quantstrat is not available (for R version 2.13.1)
 need manual compilation?
@@ -625,50 +625,50 @@ Installing package(s) into ‘C:/Users/Res1/Documents/R/win-library/2.13’
     
     <item>
       <title>Introduction to quantstrat</title>
-      <link>https://www.fosstrading.com/2011/08/introduction-to-quantstrat/</link>
+      <link>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat/</link>
       <pubDate>Fri, 12 Aug 2011 06:48:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/08/introduction-to-quantstrat/</guid>
+      <guid>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat/</guid>
       <description>quantstrat provides a generic infrastructure to model and backtest signal-based quantitative strategies. It is a high-level abstraction layer (built on xts, FinancialInstrument, blotter, etc.) that allows you to build and test strategies in very few lines of code. quantstrat is still under heavy development but is being used every day on real portfolios. We encourage you to send contributions and test cases to the project forums.
 This post is a joint effort between me and Brian Peterson.</description>
     </item>
     
     <item>
       <title>Creating Financial Instrument metadata in R</title>
-      <link>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</link>
+      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</link>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</guid>
       <description>Should we consider it good that rules are independ&amp;hellip; Anonymous - Aug 1, 2011Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly.
 @crasshopper: I think it would be more appropriate to say that rules are ipart of the model, and that models are independent of the instruments that they will be applied to.</description>
     </item>
     
     <item>
       <title>Creating Financial Instrument metadata in R</title>
-      <link>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata/</link>
+      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata/</link>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/07/creating-financial-instrument-metadata/</guid>
+      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata/</guid>
       <description>(This is a guest post by Ilya Kipnis)
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
     </item>
     
     <item>
       <title>The R Journal, Volume 3/1</title>
-      <link>https://www.fosstrading.com/2011/06/r-journal-volume-31/</link>
+      <link>https://blog.fosstrading.com/2011/06/r-journal-volume-31/</link>
       <pubDate>Thu, 23 Jun 2011 21:00:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/06/r-journal-volume-31/</guid>
+      <guid>https://blog.fosstrading.com/2011/06/r-journal-volume-31/</guid>
       <description>The most recent issue of The R Journal was recently published. If you&amp;rsquo;re not a regular reader, you should at least check out the following three contributed articles (listed in order of appearance).
  Rmetrics - timeDate Package Differential Evolution with DEoptim Analyzing an Electronic Limit Order Book  </description>
     </item>
     
     <item>
       <title>R/Finance 2011 Presentations are online</title>
-      <link>https://www.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</link>
+      <link>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</link>
       <pubDate>Sun, 29 May 2011 18:00:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</guid>
+      <guid>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</guid>
       <description>For those of you who don&amp;rsquo;t subscribe to the R-SIG-Finance mailing list:
  You really should subscribe ;-) Dirk Eddelbuettel announced the R/Finance 2011 presentations are now available.  I&amp;rsquo;ve included the entire announcement (with some hyperlinks) below.
  The organizing committee for the R/Finance 2011 conference is pleased to announce the availability of presentation slides from the 3rd annual R/Finance conference. This year&amp;rsquo;s two-day conference once again attracted over 200 participants from across the globe.</description>
@@ -676,40 +676,40 @@ When trading stocks in a single currency, instrument metadata can be safely igno
     
     <item>
       <title>Timely Portfolio: LSPM Examples</title>
-      <link>https://www.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments/</link>
+      <link>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments/</link>
       <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments/</guid>
       <description>Josh I have sennt a mail to your gmail address. P&amp;hellip; Chris - May 5, 2011Josh
 I have sennt a mail to your gmail address. Please confirm that you have received it.</description>
     </item>
     
     <item>
       <title>Timely Portfolio: LSPM Examples</title>
-      <link>https://www.fosstrading.com/2011/05/timely-portfolio-lspm-examples/</link>
+      <link>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples/</link>
       <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/05/timely-portfolio-lspm-examples/</guid>
+      <guid>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples/</guid>
       <description>Timely Portfolio has been doing some interesting work with Ralph Vince&amp;rsquo;s Leverage Space Model via the LSPM R package. Here&amp;rsquo;s a short list of his most recent LSPM-related posts:
  The Leverage Space Trading Model Bond Market as a Casino Game Part 1 Bond Market as a Casino Game Part 2 Slightly Different Use of Ralph Vince’s Leverage Space Trading Model Another Use of LSPM in Tactical Portfolio Allocation  I encourage those of you who are interested in LSPM and/or R to check out his blog.</description>
     </item>
     
     <item>
       <title>Leverage Space Indexes Announced</title>
-      <link>https://www.fosstrading.com/2011/04/leverage-space-etfs-announced-comments/</link>
+      <link>https://blog.fosstrading.com/2011/04/leverage-space-etfs-announced-comments/</link>
       <pubDate>Tue, 26 Apr 2011 08:39:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/04/leverage-space-etfs-announced-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/04/leverage-space-etfs-announced-comments/</guid>
       <description>Unless I&amp;rsquo;m misreading, the announcement is of &amp;hellip; Steve - Jun 4, 2011Unless I&amp;rsquo;m misreading, the announcement is of the launch of indices that could potentially underly ETFs, rather than the launch of ETFs themselves.
 Steve, very good catch. Thanks!</description>
     </item>
     
     <item>
       <title>Leverage Space Indexes Announced</title>
-      <link>https://www.fosstrading.com/2011/04/leverage-space-etfs-announced/</link>
+      <link>https://blog.fosstrading.com/2011/04/leverage-space-etfs-announced/</link>
       <pubDate>Tue, 26 Apr 2011 08:39:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/04/leverage-space-etfs-announced/</guid>
+      <guid>https://blog.fosstrading.com/2011/04/leverage-space-etfs-announced/</guid>
       <description>PRESS RELEASE
  The Leverage Space Portfolio (LSP) strategy seeks to maximize the probability of equity portfolio profitability by employing a risk-control process focused on capital preservation and drawdown management. Compared to a traditional buy-and-hold portfolio, an LSP-based portfolio aims for more consistent returns with lower risk.
 The indexes, scheduled to be launched in the second half of 2011, can serve as the basis of both passive and active investment funds, including exchange-traded funds, mutual funds, and institutional accounts, around the world.</description>
@@ -717,20 +717,20 @@ The indexes, scheduled to be launched in the second half of 2011, can serve as t
     
     <item>
       <title>RQuantLib Windows binary on CRAN</title>
-      <link>https://www.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran/</link>
+      <link>https://blog.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran/</link>
       <pubDate>Mon, 04 Apr 2011 11:47:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran/</guid>
       <description>Dirk Eddelbuettel has recently released RQuantLib-0.3.7, which contains the necessary QuantLib builds to allow the CRAN servers to build the Windows binary.
 This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unnecessary for casual users, but may be useful for those who want to develop RQuantLib on Windows.</description>
     </item>
     
     <item>
       <title>How to backtest a strategy in R</title>
-      <link>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</link>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</link>
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</guid>
       <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
 However, when I ran it, I got this error:
 Error: could not find function &amp;ldquo;DVI&amp;rdquo;
@@ -739,10 +739,10 @@ I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried
     
     <item>
       <title>How to backtest a strategy in R</title>
-      <link>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</link>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</link>
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</guid>
       <description>This is the third post in the Backtesting in Excel and R series and it will show how to backtest a simple strategy in R. It will follow the 4 steps Damian outlined in his post on how to backtest a simple strategy in Excel.
 Step 1: Get the data
 The getSymbols function in quantmod makes this step easy if you can use daily data from Yahoo Finance. There are also &amp;ldquo;methods&amp;rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.</description>
@@ -750,19 +750,19 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
     
     <item>
       <title>Risk-Opportunity Analysis: Houston</title>
-      <link>https://www.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</link>
+      <link>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</link>
       <pubDate>Thu, 17 Mar 2011 11:25:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</guid>
       <description>I will be attending Ralph Vince&amp;rsquo;s risk-opportunity analysis workshop in Houston this weekend. I&amp;rsquo;ll be in town Friday-Monday. Drop me a note if you&amp;rsquo;re in the area and would like to meet for coffee / drinks.</description>
     </item>
     
     <item>
       <title>How to backtest a strategy in Excel</title>
-      <link>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</link>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</link>
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</guid>
       <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
 This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
 Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
@@ -771,20 +771,20 @@ I use the Sharpe Ratio to judge the effectivness of my investments.</description
     
     <item>
       <title>How to backtest a strategy in Excel</title>
-      <link>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</link>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</link>
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</guid>
       <description>(This is a guest post by Damian from Skill Analytics and ETF Prophet)
 Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics.</description>
     </item>
     
     <item>
       <title>R/Finance 2011 Registration Open</title>
-      <link>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</link>
+      <link>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</link>
       <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open-comments/</guid>
       <description>Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011Hi!
 Will there be a video of it posted online?
 Hi Luka,
@@ -793,10 +793,10 @@ There will not be videos of the presentations, but the presentation slides will 
     
     <item>
       <title>R/Finance 2011 Registration Open</title>
-      <link>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open/</link>
+      <link>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open/</link>
       <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/rfinance-2011-registration-open/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open/</guid>
       <description>The registration for R/Finance 2011&amp;ndash;which will take place April 29 and 30 in Chicago&amp;ndash;is NOW OPEN!
 Building on the success of the two previous conferences in 2009 and 2010, we are expecting more than 250 attendees from around the world representing both industry and academia to join a record 30+ presentations covering all areas of finance with R.
 This year we are excited to have longer tutorial sessions and an optional full-day workshop on the Thursday before the conference.</description>
@@ -804,10 +804,10 @@ This year we are excited to have longer tutorial sessions and an optional full-d
     
     <item>
       <title>Moving from Excel to R</title>
-      <link>https://www.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</link>
+      <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</link>
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</guid>
       <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011Hi Joshua,
 Thanks for excellent advice. &amp;lsquo;Keep at it till you figure it out&amp;rsquo;. Indeed.
 It would be great if you could offer your thoughts on how to move to next stage of R viz. building packages. How and when did you make that transition? What are the good resources, sites, tools toward that?
@@ -817,29 +817,29 @@ Ravi</description>
     
     <item>
       <title>Moving from Excel to R</title>
-      <link>https://www.fosstrading.com/2011/03/moving-from-excel-to-r/</link>
+      <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r/</link>
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/03/moving-from-excel-to-r/</guid>
+      <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r/</guid>
       <description>This first post of the Backtesting in Excel and R series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of R.
 I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals). Most people don&amp;rsquo;t prefer my approach of &amp;ldquo;keep at it until you figure it out&amp;rdquo;, so I don&amp;rsquo;t have a lot of personal advice to share.</description>
     </item>
     
     <item>
       <title>Backtesting in Excel and R</title>
-      <link>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</link>
+      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</link>
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</guid>
       <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
     </item>
     
     <item>
       <title>Backtesting in Excel and R</title>
-      <link>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r/</link>
+      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r/</link>
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/02/backtesting-in-excel-and-r/</guid>
+      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r/</guid>
       <description>This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R. The impetus for this series started with this tweet by Jared Woodard at Condor Options. After Soren Macbeth introduced us, Jared suggested backtesting a simple DVI strategy in Excel and R.
 The three-post series will show you:
  Resources that make it easier to move from Excel to R How to test DVI in Excel How to test DVI in R  Since I know next to nothing about testing strategies in Excel, I will be writing posts 1 and 3.</description>
@@ -847,10 +847,10 @@ The three-post series will show you:
     
     <item>
       <title>Stack Exchange: Quantitative Finance in public beta</title>
-      <link>https://www.fosstrading.com/2011/02/stack-exchange-quantitative-finance-in/</link>
+      <link>https://blog.fosstrading.com/2011/02/stack-exchange-quantitative-finance-in/</link>
       <pubDate>Mon, 14 Feb 2011 12:12:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2011/02/stack-exchange-quantitative-finance-in/</guid>
+      <guid>https://blog.fosstrading.com/2011/02/stack-exchange-quantitative-finance-in/</guid>
       <description>The Quantitative Finance Stack Exchange community entered public beta last week. To quote the FAQ:
  The Quantitative Finance Stack Exchange is intended specifically for professionals and traders working in investment banking, and academics involved in teaching and research.
   Topics include pricing of securities, derivatives, options, risk modeling, quantitative techniques, and the mathematics used in quantitative finance.
@@ -859,10 +859,10 @@ The three-post series will show you:
     
     <item>
       <title>R/Finance 2011 Call for Papers</title>
-      <link>https://www.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</link>
+      <link>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</link>
       <pubDate>Sun, 26 Dec 2010 18:49:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</guid>
+      <guid>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</guid>
       <description>The 2011 R/Finance conference has an updated call for papers. Dirk Eddelbuettel announced it to the R-SIG-Finance mailing list. I&amp;rsquo;ve reproduced his email in its entirety below. Let me know if you plan on attending.
  Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money
 Dear R / Finance community,
@@ -871,20 +871,20 @@ The preparations for R/Finance 2011 are progressing, and due to favourable respo
     
     <item>
       <title>Why Use R?</title>
-      <link>https://www.fosstrading.com/2010/12/why-use-r-comments/</link>
+      <link>https://blog.fosstrading.com/2010/12/why-use-r-comments/</link>
       <pubDate>Tue, 14 Dec 2010 22:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/12/why-use-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/12/why-use-r-comments/</guid>
       <description>I really like this post because you show a progres&amp;hellip; Phil Rack - Dec 3, 2010I really like this post because you show a progression of stat tools you have used. I think that&amp;rsquo;s important for those who are considering using a new product. Everyone wants to see some common ground and how they&amp;rsquo;ve evolved their analytics stack over time.
 One thing I can&amp;rsquo;t seem to figure out in R is how you would use multiple timeframes.</description>
     </item>
     
     <item>
       <title>Why Use R?</title>
-      <link>https://www.fosstrading.com/2010/12/why-use-r/</link>
+      <link>https://blog.fosstrading.com/2010/12/why-use-r/</link>
       <pubDate>Tue, 14 Dec 2010 22:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/12/why-use-r/</guid>
+      <guid>https://blog.fosstrading.com/2010/12/why-use-r/</guid>
       <description>I use R very frequently and take for granted much that it has to offer. I forget how R is different from similar tools, so I have trouble communicating the benefits of using R. The goal of this post is to highlight R&amp;rsquo;s main strengths, but first&amp;hellip; my story.
 How I got started with R
 I was introduced to R while I was working as a Research Analyst at the Federal Reserve Bank of St.</description>
@@ -892,19 +892,19 @@ I was introduced to R while I was working as a Research Analyst at the Federal R
     
     <item>
       <title>Build RQuantLib on 32-bit Windows</title>
-      <link>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments/</link>
+      <link>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments/</link>
       <pubDate>Tue, 07 Dec 2010 17:20:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments/</guid>
       <description>Hi Thanks for posting your guidelines, I have trie&amp;hellip; Unknown - Mar 0, 2011Hi Thanks for posting your guidelines, I have tried it on a 64bit machine, it seems to be working upto step 11. I&amp;rsquo;m not sure where I am supposed to be entering these last commands. I entered &amp;ldquo;set QUANTLIB_ROOT=c:/R/cpp/QuantLibBuild&amp;rdquo; via a dos prompt and created the environment varable QUANTLIB_ROOT. The last command &amp;ldquo;R CMD INSTALL RQuantLib_0.3.4.tar.gz&amp;rdquo; doesn&amp;rsquo;t seem to be recognised anywhere.</description>
     </item>
     
     <item>
       <title>Build RQuantLib on 32-bit Windows</title>
-      <link>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</link>
+      <link>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</link>
       <pubDate>Tue, 07 Dec 2010 17:20:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</guid>
+      <guid>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</guid>
       <description>Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
  Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
 Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3.</description>
@@ -912,19 +912,19 @@ Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry A
     
     <item>
       <title>Risk-Opportunity Analysis</title>
-      <link>https://www.fosstrading.com/2010/11/risk-opportunity-analysis/</link>
+      <link>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis/</link>
       <pubDate>Fri, 12 Nov 2010 09:05:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/11/risk-opportunity-analysis/</guid>
+      <guid>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis/</guid>
       <description>I will be attending Ralph Vince&amp;rsquo;s risk-opportunity analysis workshop in Tampa this weekend. Drop me a note if you&amp;rsquo;re in the area and would like to meet for coffee / drinks.</description>
     </item>
     
     <item>
       <title>Algorithmic Trading with IBrokers</title>
-      <link>https://www.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</link>
+      <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</link>
       <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</guid>
       <description>As the speaker says, R isn&amp;rsquo;t fast enough to do&amp;hellip; Anonymous - Oct 0, 2010As the speaker says, R isn&amp;rsquo;t fast enough to do HFT.
 You really think anybody can beat the market using the same statistics packages as everybody else and being charged $1/trade?!
 If by HFT, you mean is R fast enough to compete with Getco or Goldman, then the answer is clearly NO. That world is dominated by embedded computing, wire speed, and things like FPGA.</description>
@@ -932,29 +932,29 @@ If by HFT, you mean is R fast enough to compete with Getco or Goldman, then the 
     
     <item>
       <title>Algorithmic Trading with IBrokers</title>
-      <link>https://www.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</link>
+      <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</link>
       <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</guid>
+      <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</guid>
       <description>Kyle Matoba is a Finance PhD student at the UCLA Anderson School of Management. He gave a presentation on Algorithmic Trading with R and IBrokers at a recent meeting of the Los Angeles R User Group. The discussion of IBrokers begins near the 12-minute mark.</description>
     </item>
     
     <item>
       <title>Patrick Burns is blogging</title>
-      <link>https://www.fosstrading.com/2010/08/patrick-burns-is-blogging/</link>
+      <link>https://blog.fosstrading.com/2010/08/patrick-burns-is-blogging/</link>
       <pubDate>Sat, 28 Aug 2010 11:30:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/08/patrick-burns-is-blogging/</guid>
+      <guid>https://blog.fosstrading.com/2010/08/patrick-burns-is-blogging/</guid>
       <description>Patrick Burns is the author of several helpful R resources, including A Guide for the Unwilling S User, The R Inferno, and S Poetry. He also wrote one of my favorite critiques of Microsoft Excel: Spreadsheet Addiction.
 His writing is witty, entertaining, and packed fully of useful bits of information. I strongly recommend you add his blog to your list of regular reading material.</description>
     </item>
     
     <item>
       <title>Margin Constraints with LSPM</title>
-      <link>https://www.fosstrading.com/2010/08/margin-constraints-with-lspm-comments/</link>
+      <link>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm-comments/</link>
       <pubDate>Sun, 01 Aug 2010 23:31:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/08/margin-constraints-with-lspm-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm-comments/</guid>
       <description>Josh Thank you for providing the LSPM package - I&amp;hellip; Chris - Apr 2, 2011Josh
 Thank you for providing the LSPM package - I would not have been able to experiment with using LSPM if I could not use the package. I would like to confirm two things:
  the maxUnits function has not been built in to the LSPM package - correct? what should one do if using leverage is not an option.</description>
@@ -962,28 +962,28 @@ Thank you for providing the LSPM package - I would not have been able to experim
     
     <item>
       <title>Margin Constraints with LSPM</title>
-      <link>https://www.fosstrading.com/2010/08/margin-constraints-with-lspm/</link>
+      <link>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm/</link>
       <pubDate>Sun, 01 Aug 2010 23:31:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/08/margin-constraints-with-lspm/</guid>
+      <guid>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm/</guid>
       <description>When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument. For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity. The optimal amount to trade is 1,000 shares ($100,000/$100). However, that would require $500,000 in equity, while you only have $100,000. What do you do?</description>
     </item>
     
     <item>
       <title>Estimating Probability of Drawdown</title>
-      <link>https://www.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</link>
+      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</link>
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</guid>
       <description>Thanks for another great post Josh. I&amp;rsquo;ve looke&amp;hellip; Ralph Vince - Jun 2, 2010Thanks for another great post Josh. I&amp;rsquo;ve looked at this at length. Remember &amp;ndash; the way you are calculating probability of drawdown, RD, is on a sample and replacement basis where the probabilities associated at each T to the horizon are unchanged. Thus, if, say, a large loss is seen at time T = t, the probablity of seeing that same large loss, in succession (i.</description>
     </item>
     
     <item>
       <title>Estimating Probability of Drawdown</title>
-      <link>https://www.fosstrading.com/2010/06/estimating-probability-of-drawdown/</link>
+      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</link>
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/06/estimating-probability-of-drawdown/</guid>
+      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</guid>
       <description>I&amp;rsquo;ve shown several examples of how to use LSPM&amp;rsquo;s probDrawdown function as a constraint when optimizing a leverage space portfolio. Those posts implicitly assume the probDrawdown function produces an accurate estimate of actual drawdown. This post will investigate the function&amp;rsquo;s accuracy.
 Calculation Notes:
 To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.</description>
@@ -991,10 +991,10 @@ To calculate the probability of drawdown, the function traverses all permutation
     
     <item>
       <title>LSPM Joint Probability Tables</title>
-      <link>https://www.fosstrading.com/2010/05/lspm-joint-probability-tables-comments/</link>
+      <link>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables-comments/</link>
       <pubDate>Tue, 18 May 2010 22:30:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/05/lspm-joint-probability-tables-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables-comments/</guid>
       <description>Josh, If I may comment: The joint probabilities ta&amp;hellip; Ralph Vince - May 3, 2010Josh, If I may comment:
 The joint probabilities table (&amp;ldquo;jpt&amp;rdquo;) ultimately should encompass and be a proxy for all potential risk for the next period.
 In other words, frequently, in attempting to articulate &amp;ldquo;risk,&amp;rdquo; we see the argument that it is more than mere variance. That there is liquidity risk, there is counter-party risk, this risk and that risk, and there is a notion that risk posses many facets.</description>
@@ -1002,10 +1002,10 @@ In other words, frequently, in attempting to articulate &amp;ldquo;risk,&amp;rdq
     
     <item>
       <title>LSPM Joint Probability Tables</title>
-      <link>https://www.fosstrading.com/2010/05/lspm-joint-probability-tables/</link>
+      <link>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables/</link>
       <pubDate>Tue, 18 May 2010 22:30:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/05/lspm-joint-probability-tables/</guid>
+      <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables/</guid>
       <description>I&amp;rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&amp;rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
 I&amp;rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&amp;hellip;
 &amp;lsquo;x&amp;rsquo; is a matrix of market system returns
@@ -1014,10 +1014,10 @@ I&amp;rsquo;m certain there are more robust ways to estimate this table, but the
     
     <item>
       <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</link>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
       <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
 Jeff: Awesome work! Hope that you become a regular contributor!
 Jeff,
@@ -1026,49 +1026,49 @@ Great article. I used it to set up and test my IB link.</description>
     
     <item>
       <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
       <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
 I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
     </item>
     
     <item>
       <title>Thoughts on LSPM from R/Finance 2010</title>
-      <link>https://www.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</link>
+      <link>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</link>
       <pubDate>Sun, 18 Apr 2010 22:24:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</guid>
+      <guid>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</guid>
       <description>I just got back from R/Finance 2010 in Chicago. If you couldn&amp;rsquo;t make it this year, I strongly encourage you to attend next year. I will post a more comprehensive review of the event in the next couple days, but I wanted to share some of my notes specific to LSPM.
  How sensitive are optimal-f values to the method used to construct the joint probability table? Is there an optimizer better suited for this problem (e.</description>
     </item>
     
     <item>
       <title>Historical / Future Volatility Correlation Stability</title>
-      <link>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</link>
+      <link>https://blog.fosstrading.com/2010/04/historical-future-volatility-comments/</link>
       <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility-comments/</guid>
       <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
     </item>
     
     <item>
       <title>Historical / Future Volatility Correlation Stability</title>
-      <link>https://www.fosstrading.com/2010/04/historical-future-volatility/</link>
+      <link>https://blog.fosstrading.com/2010/04/historical-future-volatility/</link>
       <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/04/historical-future-volatility/</guid>
+      <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility/</guid>
       <description>Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.
 He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table.</description>
     </item>
     
     <item>
       <title>Maximum Probability of Profit</title>
-      <link>https://www.fosstrading.com/2010/04/maximum-probability-of-profit-comments/</link>
+      <link>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit-comments/</link>
       <pubDate>Fri, 09 Apr 2010 10:04:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/04/maximum-probability-of-profit-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit-comments/</guid>
       <description>Josh, Thanks for another great explanation. I migh&amp;hellip; Ralph Vince - Apr 5, 2010Josh, Thanks for another great explanation. I might point out to that it is not just the optimization algorithms used, but in the case of mazimizing for greatest probability of profit, there are many posssible optimal sets (f1,..,fn,z+,z-). There are multiple sets which will result in an equivalent (and highest) probability of profit.
 -Ralph Vince
 If I understand the optimization problem correctly, I think it may be possible to achieve similar results in just minutes of computation with a different optimization approach.</description>
@@ -1076,30 +1076,30 @@ If I understand the optimization problem correctly, I think it may be possible t
     
     <item>
       <title>Maximum Probability of Profit</title>
-      <link>https://www.fosstrading.com/2010/04/maximum-probability-of-profit/</link>
+      <link>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit/</link>
       <pubDate>Fri, 09 Apr 2010 10:04:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/04/maximum-probability-of-profit/</guid>
+      <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit/</guid>
       <description>To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
 These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
     </item>
     
     <item>
       <title>TTR_0.20-2 on CRAN</title>
-      <link>https://www.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</link>
+      <link>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</link>
       <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments/</guid>
       <description>Can you describe how the various trading packages &amp;hellip; Milk Trader - Apr 4, 2010Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&amp;rsquo;m interested in.
 xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&amp;rsquo;m missing?</description>
     </item>
     
     <item>
       <title>TTR_0.20-2 on CRAN</title>
-      <link>https://www.fosstrading.com/2010/03/ttr020-2-on-cran/</link>
+      <link>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran/</link>
       <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/03/ttr020-2-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran/</guid>
       <description>An updated version of TTR is now on CRAN. It fixes a couple bugs and includes a couple handy tweaks. Here&amp;rsquo;s the full contents of the CHANGES file:
 TTR version 0.20-2
 Changes from version 0.20-1
@@ -1110,19 +1110,19 @@ NEW FEATURES:
     
     <item>
       <title>Updated Tactical Asset Allocation Results</title>
-      <link>https://www.fosstrading.com/2010/02/updated-tactical-asset-allocation/</link>
+      <link>https://blog.fosstrading.com/2010/02/updated-tactical-asset-allocation/</link>
       <pubDate>Sat, 06 Feb 2010 22:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/02/updated-tactical-asset-allocation/</guid>
+      <guid>https://blog.fosstrading.com/2010/02/updated-tactical-asset-allocation/</guid>
       <description>In November, I used the strategy in Mebane Faber&amp;rsquo;s Tactical Asset Allocation paper to provide an introduction to blotter. Faber has updated the strategy&amp;rsquo;s results through the end of 2009. For those interested, he expands on the paper in his book, The Ivy Portfolio.</description>
     </item>
     
     <item>
       <title>R/Finance 2010: Registration Open</title>
-      <link>https://www.fosstrading.com/2010/02/rfinance-2010-registration-open/</link>
+      <link>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</link>
       <pubDate>Fri, 05 Feb 2010 15:46:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/02/rfinance-2010-registration-open/</guid>
+      <guid>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</guid>
       <description>As posted by Dirk Eddelbuettel on R-SIG-Finance:
  R / Finance 2010: Applied Finance with R
 April 16 &amp;amp; 17, Chicago, IL, US
@@ -1132,10 +1132,10 @@ Building on the success of the inaugural R / Finance 2009 event, this two-day co
     
     <item>
       <title>LSPM with snow</title>
-      <link>https://www.fosstrading.com/2010/01/lspm-with-snow-comments/</link>
+      <link>https://blog.fosstrading.com/2010/01/lspm-with-snow-comments/</link>
       <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/01/lspm-with-snow-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow-comments/</guid>
       <description>Hi Joshua! Could you tell me how to calculate prob&amp;hellip; senyai - Apr 5, 2010Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
 -&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
 port &amp;lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))
@@ -1146,20 +1146,20 @@ This code shows me value 0.0001982222, but Vince says his dd is 0.</description>
     
     <item>
       <title>LSPM with snow</title>
-      <link>https://www.fosstrading.com/2010/01/lspm-with-snow/</link>
+      <link>https://blog.fosstrading.com/2010/01/lspm-with-snow/</link>
       <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/01/lspm-with-snow/</guid>
+      <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow/</guid>
       <description>My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizons &amp;gt; 6 have long run-times (when calc.max &amp;gt;= horizon).
 This post will illustrate how the snow package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.</description>
     </item>
     
     <item>
       <title>LSPM Examples</title>
-      <link>https://www.fosstrading.com/2010/01/lspm-examples-comments/</link>
+      <link>https://blog.fosstrading.com/2010/01/lspm-examples-comments/</link>
       <pubDate>Sat, 02 Jan 2010 15:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/01/lspm-examples-comments/</guid>
+      <guid>https://blog.fosstrading.com/2010/01/lspm-examples-comments/</guid>
       <description>Hi Josh I am trying to replicate the results on p&amp;hellip; Chris - Nov 2, 2011Hi Josh
 I am trying to replicate the results on page 87 (as mentioned in your post above) of the LSPM book. I do the following:
 &amp;gt; data(port)
@@ -1173,10 +1173,10 @@ MktSysA 0.307</description>
     
     <item>
       <title>LSPM Examples</title>
-      <link>https://www.fosstrading.com/2010/01/lspm-examples/</link>
+      <link>https://blog.fosstrading.com/2010/01/lspm-examples/</link>
       <pubDate>Sat, 02 Jan 2010 15:35:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2010/01/lspm-examples/</guid>
+      <guid>https://blog.fosstrading.com/2010/01/lspm-examples/</guid>
       <description>I have received several requests for additional LSPM documentation over the past couple days and a couple months ago I promised an introduction to LSPM.
 In this long-overdue post, I will show how to optimize a Leverage Space Portfolio with the LSPM package. Please use the comments to let me know what you would like to see next.
 Some copious notes before we get to the code:
@@ -1185,10 +1185,10 @@ These examples are based on revision 26 31 from r-forge and will not work under 
     
     <item>
       <title>Tactical asset allocation using blotter</title>
-      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</link>
+      <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</link>
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments/</guid>
       <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009Hi,
 If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
 Cheers,
@@ -1201,10 +1201,10 @@ Thanks Josh for providing this nice example of the use of blotter.</description>
     
     <item>
       <title>Tactical asset allocation using blotter</title>
-      <link>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</link>
+      <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</link>
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/</guid>
       <description>NOTE: If you simply want to test strategies in R, please see the post: Tactical Asset Allocation Using quantstrat. quantstrat uses blotter behind the scenes, but provides a higher level of abstraction.
 blotter is an R package that tracks the P&amp;amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.
 The contents of this post borrow heavily from code and comments in the &amp;ldquo;longtrend&amp;rdquo; demo script in the blotter package.</description>
@@ -1212,10 +1212,10 @@ The contents of this post borrow heavily from code and comments in the &amp;ldqu
     
     <item>
       <title>opentick alternatives</title>
-      <link>https://www.fosstrading.com/2009/11/opentick-alternatives-comments/</link>
+      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments/</link>
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/opentick-alternatives-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments/</guid>
       <description>I just started looking into getting data again and&amp;hellip; Unknown - Nov 0, 2009I just started looking into getting data again and found opentick is gone :(
 Thanks for this post!
 You&amp;rsquo;re most welcome. Let me know if you find anything that should be included in the list.
@@ -1226,10 +1226,10 @@ Thanks for the link. I found that page as well, but didn&amp;rsquo;t include any
     
     <item>
       <title>opentick alternatives</title>
-      <link>https://www.fosstrading.com/2009/11/opentick-alternatives/</link>
+      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives/</link>
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/11/opentick-alternatives/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives/</guid>
       <description>I&amp;rsquo;ve been getting a bit of traffic from people searching for opentick (the defunct company), so I&amp;rsquo;ve started a list of similar (but non-free) data providers.
 I&amp;rsquo;m not affiliated with any of these vendors, and the list is in no particular order. I&amp;rsquo;ll update this post as more information becomes available.
 IQFeed
@@ -1243,50 +1243,50 @@ eSignal
     
     <item>
       <title>Xasax closes shop</title>
-      <link>https://www.fosstrading.com/2009/10/xasax-closes-shop-comments/</link>
+      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments/</link>
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/10/xasax-closes-shop-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments/</guid>
       <description>Would you happen to know of any other sources to o&amp;hellip; Anonymous - Nov 2, 2009Would you happen to know of any other sources to obtain tick data (preferably free ones)?
 I don&amp;rsquo;t know of any free tick data providers, but I&amp;rsquo;m working on a post to summarize the data providers I&amp;rsquo;m aware of.</description>
     </item>
     
     <item>
       <title>Xasax closes shop</title>
-      <link>https://www.fosstrading.com/2009/10/xasax-closes-shop/</link>
+      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop/</link>
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/10/xasax-closes-shop/</guid>
+      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop/</guid>
       <description>Six months after shutting down opentick completely Xasax (opentick&amp;rsquo;s parent company) has followed suit.
 It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Data mentions the above in this story. Here is the full story (subscription required).</description>
     </item>
     
     <item>
       <title>Update</title>
-      <link>https://www.fosstrading.com/2009/09/update-comments/</link>
+      <link>https://blog.fosstrading.com/2009/09/update-comments/</link>
       <pubDate>Tue, 22 Sep 2009 22:37:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/09/update-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/09/update-comments/</guid>
       <description>&amp;gt; blotter: providing support for multi-asset cl&amp;hellip; danice - Sep 4, 2009&amp;gt; blotter: providing support for multi-asset class and multi-currency portfolios.
 hmm.. maybe soon ;)</description>
     </item>
     
     <item>
       <title>Update</title>
-      <link>https://www.fosstrading.com/2009/09/update/</link>
+      <link>https://blog.fosstrading.com/2009/09/update/</link>
       <pubDate>Tue, 22 Sep 2009 22:37:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/09/update/</guid>
+      <guid>https://blog.fosstrading.com/2009/09/update/</guid>
       <description>I can&amp;rsquo;t believe it&amp;rsquo;s been two months since I last posted&amp;hellip; wow, time has a way of slipping through my fingers. Here&amp;rsquo;s a short list of some upcoming posts:
  An introduction to LSPM &amp;ndash; a new R package that implements Ralph Vince&amp;rsquo;s leverage space portfolio model (co-authored with Soren Macbeth). Updated charting with quantmod. An introduction to blotter &amp;ndash; a transaction-based infrastructure for trading systems and simulation, providing support for multi-asset class and multi-currency portfolios.</description>
     </item>
     
     <item>
       <title>David Varadi&#39;s RSI(2) alternative</title>
-      <link>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</link>
+      <link>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</link>
       <pubDate>Sun, 19 Jul 2009 08:38:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments/</guid>
       <description>hello josh, If I want to sell the stock when the R&amp;hellip; Bear - Jul 4, 2009hello josh,
 If I want to sell the stock when the RSI retereat from the 90 or buy it when the RSI above 10 again how can I modify the code?
 Hi Bear,
@@ -1295,10 +1295,10 @@ You need to use a lagged value of RSI in addition to the current value. The code
     
     <item>
       <title>David Varadi&#39;s RSI(2) alternative</title>
-      <link>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</link>
+      <link>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</link>
       <pubDate>Sun, 19 Jul 2009 08:38:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</guid>
+      <guid>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative/</guid>
       <description>Here&amp;rsquo;s a quick R implementation of David Varadi&amp;rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
  [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Varadi’s RSI(2) Alternative: The DV(2)&amp;quot;&amp;quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;RSI(2) vs. DV(2)&amp;quot;&amp;quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Last Couple of Notes on DV(2)&amp;quot;&amp;quot;)  Here&amp;rsquo;s the R code:
   DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {</description>
@@ -1306,10 +1306,10 @@ You need to use a lagged value of RSI in addition to the current value. The code
     
     <item>
       <title>RSI(2) Evaluation</title>
-      <link>https://www.fosstrading.com/2009/06/rsi2-evaluation-comments/</link>
+      <link>https://blog.fosstrading.com/2009/06/rsi2-evaluation-comments/</link>
       <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/06/rsi2-evaluation-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/06/rsi2-evaluation-comments/</guid>
       <description>I have run this script to see how RIS2 with scalin&amp;hellip; White Cube - Apr 6, 2012I have run this script to see how RIS2 with scaling has performed since 2009.
 On the long side the performance has not been as good as before (with some sharp drawdowns).
 On the short side the equity curve went down for 2 years and seems picking up again since 2011.
@@ -1318,10 +1318,10 @@ Has the magic RSI gone ?</description>
     
     <item>
       <title>RSI(2) Evaluation</title>
-      <link>https://www.fosstrading.com/2009/06/rsi2-evaluation/</link>
+      <link>https://blog.fosstrading.com/2009/06/rsi2-evaluation/</link>
       <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/06/rsi2-evaluation/</guid>
+      <guid>https://blog.fosstrading.com/2009/06/rsi2-evaluation/</guid>
       <description>This post continues the series of investigating the RSI(2) strategy. The first post replicated this simple RSI(2) strategy from the MarketSci Blog using R. The second post showed how to replicate the strategy that scales in/out of RSI(2).
 If you like the RSI(2), be sure to check out David Varadi&amp;rsquo;s RSI(2) alternative!
 This post will use the PerformanceAnalytics package to evaluate the rules that scale in/out of positions. I&amp;rsquo;ve also provided a simple function that provides some summary statistics.</description>
@@ -1329,10 +1329,10 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
     
     <item>
       <title>Packages featured with Inference for R</title>
-      <link>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
+      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
+      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
       <description>quantmod, TTR, and xts were (not so) recently featured on the Inference for R Blog. Inference for R is a Integrated Development Environment (IDE) designed specifically for R.
 The post gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.
 I appreciate how they&amp;rsquo;re making R more accessible to a general audience, even though I like a command line interface and my preferred development environment is vim.</description>
@@ -1340,10 +1340,10 @@ I appreciate how they&amp;rsquo;re making R more accessible to a general audienc
     
     <item>
       <title>R/Finance 2009 Presentations Online</title>
-      <link>https://www.fosstrading.com/2009/05/rfinance-2009-presentations-online/</link>
+      <link>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</link>
       <pubDate>Mon, 04 May 2009 10:21:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/05/rfinance-2009-presentations-online/</guid>
+      <guid>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</guid>
       <description>Posted to the R-SIG-Finance mailing list today:
  For those who missed it, the slides for the R/Finance 2009 tutorials
 and presentations are now available on RinFinance.com
@@ -1353,10 +1353,10 @@ We want to thank everyone who traveled to Chicago to make this happen. With near
     
     <item>
       <title>RSI(2) with Position Sizing</title>
-      <link>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</link>
+      <link>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</link>
       <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing-comments/</guid>
       <description>i look forward to it &amp;ndash; never could get my head ar&amp;hellip; Autore del blog - May 0, 2009i look forward to it &amp;ndash; never could get my head around performance metrics..
 This is awesome - very cool. I also was curious if you could put together a simple example of the following:
 - Take four ETFs (SPY,IWM,QQQQ,TLT) and rank them by their 12m ROC.
@@ -1365,10 +1365,10 @@ This is awesome - very cool. I also was curious if you could put together a simp
     
     <item>
       <title>RSI(2) with Position Sizing</title>
-      <link>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing/</link>
+      <link>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing/</link>
       <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/05/rsi2-with-position-sizing/</guid>
+      <guid>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing/</guid>
       <description>Though it&amp;rsquo;s more than two weeks later, here&amp;rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with R. You can find the first post here.
 The first post replicated this simple RSI(2) strategy from the MarketSci Blog. This second post will demonstrate how to replicate this strategy that scales in/out of RSI(2).
 A couple notes before moving to the code:</description>
@@ -1376,20 +1376,20 @@ A couple notes before moving to the code:</description>
     
     <item>
       <title>R/Finance 2009 Overview</title>
-      <link>https://www.fosstrading.com/2009/04/rfinance-2009-overview/</link>
+      <link>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</link>
       <pubDate>Tue, 28 Apr 2009 09:26:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/04/rfinance-2009-overview/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</guid>
       <description>The first international R/Finance 2009 conference in Chicago, IL was a huge success! David Smith from REvolution Computing has written a great summary of the entire event. I&amp;rsquo;ll take the lazy route and point you to his blog post. :)
  The first international conference dedicated to the use of R in the finance industry, R/Finance 2009, was a great success. With over 150 attendees (my poor estimation skills notwithstanding), sold-out tutorials, and an outstanding lineup of invited and contributing speakers from around the world, this event really demonstrated the importance of R in the world of financial analysis.</description>
     </item>
     
     <item>
       <title>opentick is no more</title>
-      <link>https://www.fosstrading.com/2009/04/opentick-is-no-more-comments/</link>
+      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments/</link>
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/04/opentick-is-no-more-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments/</guid>
       <description>I am unable to link to either www.opentick.com or &amp;hellip; gs - Oct 1, 2009I am unable to link to either www.opentick.com or www.xasax.com.
 Overpromise &amp;amp; underperform.
 It looks like Xasax hit funding problems in August&amp;hellip;
@@ -1398,10 +1398,10 @@ Inside Market Data mentions the above in this story.</description>
     
     <item>
       <title>opentick is no more</title>
-      <link>https://www.fosstrading.com/2009/04/opentick-is-no-more/</link>
+      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more/</link>
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/04/opentick-is-no-more/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more/</guid>
       <description>After a year of &amp;ldquo;we plan to accept new subscribers shortly&amp;rdquo;, opentick has shut its doors completely. As of March 20th, the opentick service is no longer available.
 From opentick.com:
  3/16/2009
@@ -1411,10 +1411,10 @@ It has been quite a journey for opentick, and for those of you who have been wit
     
     <item>
       <title>Testing RSI(2) with R, First Steps</title>
-      <link>https://www.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</link>
+      <link>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</link>
       <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments/</guid>
       <description>Really cool. A lot of questions: &amp;ldquo;# Calcula&amp;hellip; Damian - Apr 3, 2009Really cool. A lot of questions:
 &amp;ldquo;# Calculate the RSI indicator
 rsi &amp;lt;- RSI(Cl(GSPC),2)&amp;rdquo;
@@ -1425,20 +1425,20 @@ Secondly, if I have the data stored locally, how would I reference it?
     
     <item>
       <title>Testing RSI(2) with R, First Steps</title>
-      <link>https://www.fosstrading.com/2009/04/testing-rsi2-with-r/</link>
+      <link>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r/</link>
       <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/04/testing-rsi2-with-r/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r/</guid>
       <description>This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, R. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.
 In particular, I will be replicating and extending some of the results from Michael Stokes&amp;rsquo; excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy.</description>
     </item>
     
     <item>
       <title>Registration for R/Finance 2009 is Open!</title>
-      <link>https://www.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</link>
+      <link>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</link>
       <pubDate>Fri, 20 Feb 2009 12:20:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</guid>
+      <guid>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</guid>
       <description>The conference website has details on:
   the agenda and speakers,
   travel accommodations,
@@ -1449,10 +1449,10 @@ In particular, I will be replicating and extending some of the results from Mich
     
     <item>
       <title>TTR_0.2 on CRAN</title>
-      <link>https://www.fosstrading.com/2009/02/ttr02-on-cran/</link>
+      <link>https://blog.fosstrading.com/2009/02/ttr02-on-cran/</link>
       <pubDate>Sun, 15 Feb 2009 18:51:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/02/ttr02-on-cran/</guid>
+      <guid>https://blog.fosstrading.com/2009/02/ttr02-on-cran/</guid>
       <description>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
 This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
 NEW FEATURES:
@@ -1464,10 +1464,10 @@ NEW FEATURES:
     
     <item>
       <title>IBrokers Featured on Quantitative Trading</title>
-      <link>https://www.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</link>
+      <link>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</link>
       <pubDate>Sat, 17 Jan 2009 09:01:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</guid>
+      <guid>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</guid>
       <description>Jeff Ryan&amp;rsquo;s IBrokers package was mentioned on Ernie Chan&amp;rsquo;s blog, Quantitative Trading. Though the package is still in pre-alpha stage, it is generating quite a bit of interest.
 Source:
 Ernie Chan
@@ -1477,10 +1477,10 @@ Quantitative Trading: Algorithmic Trading Technology Update</description>
     
     <item>
       <title>R/Finance 2009: Applied Finance with R</title>
-      <link>https://www.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments/</link>
+      <link>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments/</link>
       <pubDate>Tue, 30 Dec 2008 23:54:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments/</guid>
       <description>Hi, just came across your blog. Am a relatively ne&amp;hellip; Don C - Jan 3, 2009Hi, just came across your blog. Am a relatively new R user - used Matlab and other symbolic packages back in school and predominantly Excel/VB at work (finance/trading) since.
 Can I find out more about this conference ?
 Thanks,
@@ -1491,10 +1491,10 @@ There should be more information by the end of next week.</description>
     
     <item>
       <title>R/Finance 2009: Applied Finance with R</title>
-      <link>https://www.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</link>
+      <link>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</link>
       <pubDate>Tue, 30 Dec 2008 23:54:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</guid>
+      <guid>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</guid>
       <description>Call for Papers
 The Finance Department of the University of Illinois at Chicago (UIC),
 the International Center for Futures and Derivatives at UIC, and
@@ -1510,19 +1510,19 @@ David Ruppert (Cornell)</description>
     
     <item>
       <title>Computational Finance with R</title>
-      <link>https://www.fosstrading.com/2008/12/computational-finance-with-r-comments/</link>
+      <link>https://blog.fosstrading.com/2008/12/computational-finance-with-r-comments/</link>
       <pubDate>Fri, 05 Dec 2008 20:39:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2008/12/computational-finance-with-r-comments/</guid>
+      <guid>https://blog.fosstrading.com/2008/12/computational-finance-with-r-comments/</guid>
       <description>I wanted to let you guys know that I&amp;rsquo;ve taken a lo&amp;hellip; Damian - Dec 6, 2008I wanted to let you guys know that I&amp;rsquo;ve taken a look the software it is both overwhelming and fascinating. I&amp;rsquo;ll be spending some time looking at it. Thanks for the pointers!</description>
     </item>
     
     <item>
       <title>Computational Finance with R</title>
-      <link>https://www.fosstrading.com/2008/12/computational-finance-with-r/</link>
+      <link>https://blog.fosstrading.com/2008/12/computational-finance-with-r/</link>
       <pubDate>Fri, 05 Dec 2008 20:39:00 -0600</pubDate>
       
-      <guid>https://www.fosstrading.com/2008/12/computational-finance-with-r/</guid>
+      <guid>https://blog.fosstrading.com/2008/12/computational-finance-with-r/</guid>
       <description>Krishna Kumar, Jan Vecer and the great folks at REvolution computing put on a great event at the beautiful Columbia University campus on the Upper West Side of New York.
 Presentations by Whit Armstrong, Anthony Brockwell, Bryan Lewis, Scott Payseur, Peter Carl, Brian Peterson, and our own Jeff Ryan made for an impressive display of the power of R in quant finance. Jeff&amp;rsquo;s presentation slides can be found here.
 Some great things are happening in this community, and we are certainly glad to be part of them.</description>
@@ -1530,10 +1530,10 @@ Some great things are happening in this community, and we are certainly glad to 
     
     <item>
       <title>Welcome to FOSS Trading</title>
-      <link>https://www.fosstrading.com/2008/09/welcome-to-foss-trading/</link>
+      <link>https://blog.fosstrading.com/2008/09/welcome-to-foss-trading/</link>
       <pubDate>Sun, 28 Sep 2008 15:51:00 -0500</pubDate>
       
-      <guid>https://www.fosstrading.com/2008/09/welcome-to-foss-trading/</guid>
+      <guid>https://blog.fosstrading.com/2008/09/welcome-to-foss-trading/</guid>
       <description>This blog will highlight the development and use of free open-source software to research, test, and trade financial markets.
 Meet the authors:
 Joshua Ulrich is currently the author and maintainer of four R packages:
@@ -1544,10 +1544,10 @@ Joshua Ulrich is currently the author and maintainer of four R packages:
     
     <item>
       <title>quantmod for enterprise</title>
-      <link>https://www.fosstrading.com/page/enterprise/</link>
+      <link>https://blog.fosstrading.com/page/enterprise/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.fosstrading.com/page/enterprise/</guid>
+      <guid>https://blog.fosstrading.com/page/enterprise/</guid>
       <description>Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.
 Enterprise-ready open source software—managed for you The Tidelift Subscription is a managed open source subscription for application dependencies covering millions of open source projects across JavaScript, Python, Java, PHP, Ruby, .</description>
     </item>
