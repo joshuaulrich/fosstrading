@@ -35,6 +35,7 @@ useHLJS = false
 
 [Permalinks]
     post = ":year/:month/:filename/"
+    tags = "search/label/:title"
 
 [Author]
   name = "Joshua Ulrich"
