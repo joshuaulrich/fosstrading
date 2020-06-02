@@ -48,7 +48,7 @@ useHLJS = false
   opengraph = true
   twitter_cards = false
   readmore = false # Show "Read more" button in list if true
-  authorbox = true
+  authorbox = false
   post_navigation = true
   post_meta = ["date", "categories"] # Order of post meta information
 
