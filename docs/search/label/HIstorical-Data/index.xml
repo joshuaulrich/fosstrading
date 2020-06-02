@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HIstorical Data on FOSS Trading</title>
+    <link>https://blog.fosstrading.com/search/label/HIstorical-Data/</link>
+    <description>Recent content in HIstorical Data on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Jun 2017 12:25:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.fosstrading.com/search/label/HIstorical-Data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>quantmod 0.4-9 on CRAN</title>
+      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</link>
+      <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</guid>
+      <description>A new release of quantmod is now on CRAN! The only change was to address changes to Yahoo! Finance and their effects on getSymbols.yahoo(). GitHub issue #157 contains some details about the fix implementation.
+Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed. The actual data available for download changed as well.
+The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted). Also, only the close price is unadjusted; the open, high, and low are split-adjusted.</description>
+    </item>
+    
+    <item>
+      <title>Yahoo Finance Alternatives</title>
+      <link>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</link>
+      <pubDate>Wed, 07 Jun 2017 12:20:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</guid>
+      <description>I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017). Not only did the URL change, but the actual data changed as well!
+The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted. Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).</description>
+    </item>
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
+      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
+Jeff: Awesome work! Hope that you become a regular contributor!
+Jeff,
+Great article. I used it to set up and test my IB link.</description>
+    </item>
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
+      <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
+I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
+    </item>
+    
+  </channel>
+</rss>

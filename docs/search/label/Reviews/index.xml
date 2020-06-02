@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reviews on FOSS Trading</title>
+    <link>https://blog.fosstrading.com/search/label/Reviews/</link>
+    <description>Recent content in Reviews on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Aug 2018 13:03:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.fosstrading.com/search/label/Reviews/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning to code is worth it</title>
+      <link>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</link>
+      <pubDate>Fri, 24 Aug 2018 13:03:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</guid>
+      <description>Someone recently shared this great talk by Chris Allen from lambda conf 2017. The title of the talk is &amp;ldquo;Why Johnny Can&amp;rsquo;t Code Good,&amp;rdquo; but the content is more about how to grow as a programmer. His points are true whether you&amp;rsquo;re just starting out, or have been coding for years.
+My notes from Chris&amp;rsquo; talk are below, in the order they appear in the presentation. My thoughts are in parentheses.</description>
+    </item>
+    
+    <item>
+      <title>R/Finance 2014 Review</title>
+      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</link>
+      <pubDate>Mon, 30 Jun 2014 07:40:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</guid>
+      <description>It&amp;rsquo;s been more than a month since R/Finance 2014, and my job has finally slowed down enough to allow me to write down my thoughts (though I&amp;rsquo;m writing this over two days during my train to and from Chicago).
+The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.</description>
+    </item>
+    
+    <item>
+      <title>R/Finance 2013 Review</title>
+      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</link>
+      <pubDate>Tue, 28 May 2013 08:00:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</guid>
+      <description>It&amp;rsquo;s been one week since the 5th Annual R/Finance conference, and I finally feel sufficiently recovered enough to share my thoughts. The conference is a two-day whirlwind of applied quantitative finance, fantastic networking, and general geekery.
+The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.</description>
+    </item>
+    
+    <item>
+      <title>Book Review: Parallel R</title>
+      <link>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</link>
+      <pubDate>Tue, 05 Jun 2012 10:31:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</guid>
+      <description>You have a problem: R is single-threaded, but your code would be faster if it could simultaneously run on more than one core. You have access to a cluster and/or your computer has multiple cores. Parallel R, by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.
+The book describes 6 approaches to distributed computing. Thoughts on each approach follow:
+ snow   The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss MPI clusters, and socket clusters of several machines).</description>
+    </item>
+    
+  </channel>
+</rss>

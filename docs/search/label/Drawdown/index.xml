@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Drawdown on FOSS Trading</title>
+    <link>https://blog.fosstrading.com/search/label/Drawdown/</link>
+    <description>Recent content in Drawdown on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Jun 2010 20:13:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.fosstrading.com/search/label/Drawdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Estimating Probability of Drawdown</title>
+      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</link>
+      <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments/</guid>
+      <description>Thanks for another great post Josh. I&amp;rsquo;ve looke&amp;hellip; Ralph Vince - Jun 2, 2010Thanks for another great post Josh. I&amp;rsquo;ve looked at this at length. Remember &amp;ndash; the way you are calculating probability of drawdown, RD, is on a sample and replacement basis where the probabilities associated at each T to the horizon are unchanged. Thus, if, say, a large loss is seen at time T = t, the probablity of seeing that same large loss, in succession (i.</description>
+    </item>
+    
+    <item>
+      <title>Estimating Probability of Drawdown</title>
+      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</link>
+      <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</guid>
+      <description>I&amp;rsquo;ve shown several examples of how to use LSPM&amp;rsquo;s probDrawdown function as a constraint when optimizing a leverage space portfolio. Those posts implicitly assume the probDrawdown function produces an accurate estimate of actual drawdown. This post will investigate the function&amp;rsquo;s accuracy.
+Calculation Notes:
+To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.</description>
+    </item>
+    
+  </channel>
+</rss>

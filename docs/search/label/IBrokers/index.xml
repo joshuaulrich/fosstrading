@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IBrokers on FOSS Trading</title>
+    <link>https://blog.fosstrading.com/search/label/IBrokers/</link>
+    <description>Recent content in IBrokers on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Oct 2010 22:01:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.fosstrading.com/search/label/IBrokers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithmic Trading with IBrokers</title>
+      <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</link>
+      <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments/</guid>
+      <description>As the speaker says, R isn&amp;rsquo;t fast enough to do&amp;hellip; Anonymous - Oct 0, 2010As the speaker says, R isn&amp;rsquo;t fast enough to do HFT.
+You really think anybody can beat the market using the same statistics packages as everybody else and being charged $1/trade?!
+If by HFT, you mean is R fast enough to compete with Getco or Goldman, then the answer is clearly NO. That world is dominated by embedded computing, wire speed, and things like FPGA.</description>
+    </item>
+    
+    <item>
+      <title>Algorithmic Trading with IBrokers</title>
+      <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</link>
+      <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers/</guid>
+      <description>Kyle Matoba is a Finance PhD student at the UCLA Anderson School of Management. He gave a presentation on Algorithmic Trading with R and IBrokers at a recent meeting of the Los Angeles R User Group. The discussion of IBrokers begins near the 12-minute mark.</description>
+    </item>
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments/</guid>
+      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
+Jeff: Awesome work! Hope that you become a regular contributor!
+Jeff,
+Great article. I used it to set up and test my IB link.</description>
+    </item>
+    
+    <item>
+      <title>Introducing IBrokers (and Jeff Ryan)</title>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
+      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
+      <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
+I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
+    </item>
+    
+    <item>
+      <title>IBrokers Featured on Quantitative Trading</title>
+      <link>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</link>
+      <pubDate>Sat, 17 Jan 2009 09:01:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative/</guid>
+      <description>Jeff Ryan&amp;rsquo;s IBrokers package was mentioned on Ernie Chan&amp;rsquo;s blog, Quantitative Trading. Though the package is still in pre-alpha stage, it is generating quite a bit of interest.
+Source:
+Ernie Chan
+Friday, January 16, 2009
+Quantitative Trading: Algorithmic Trading Technology Update</description>
+    </item>
+    
+  </channel>
+</rss>
