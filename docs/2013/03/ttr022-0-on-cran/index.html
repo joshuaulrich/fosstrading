@@ -139,11 +139,6 @@ if (!doNotTrack) {
 	</article>
 </main>
 
-<div class="authorbox clearfix">
-	<div class="authorbox__header">
-		<span class="authorbox__name">About Joshua Ulrich</span>
-	</div>
-</div>
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
@@ -159,6 +154,29 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
 
 
 			</div>
@@ -192,29 +210,30 @@ if (!doNotTrack) {
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="API">API</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/blotter/" title="blotter">blotter</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/code/" title="Code">Code</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/data/" title="Data">Data</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/deoptim/" title="DEoptim">DEoptim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/drawdown/" title="Drawdown">Drawdown</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/events/" title="Events">Events</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/examples/" title="Examples">Examples</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/excel/" title="Excel">Excel</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/historical-data/" title="HIstorical Data">HIstorical Data</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ibrokers/" title="IBrokers">IBrokers</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/interactive-brokers/" title="Interactive Brokers">Interactive Brokers</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/lspm/" title="LSPM">LSPM</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/portfolioanalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/quantmod/" title="quantmod">quantmod</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/quantstrat/" title="quantstrat">quantstrat</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/r/" title="R">R</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/releases/" title="Releases">Releases</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/reviews/" title="Reviews">Reviews</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ttr/" title="TTR">TTR</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/xts/" title="xts">xts</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/api/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/deoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/historical-data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/ibrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/interactive-brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/lspm/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/portfolioanalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/r/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/ttr/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
 	</div>
-</div><div>
+</div>
+<div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
   <ins class="adsbygoogle"

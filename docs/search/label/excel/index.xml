@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Excel on FOSS Trading</title>
+    <link>https://blog.fosstrading.com/search/label/excel/</link>
+    <description>Recent content in Excel on FOSS Trading</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Mar 2011 09:54:00 -0500</lastBuildDate>
+    
+	<atom:link href="https://blog.fosstrading.com/search/label/excel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to backtest a strategy in R</title>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</link>
+      <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments/</guid>
+      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
+However, when I ran it, I got this error:
+Error: could not find function &amp;ldquo;DVI&amp;rdquo;
+I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.packages(&amp;lsquo;TTR&amp;rsquo;,dependencies=TRUE) and from r-forge, using install.packages(&amp;ldquo;TTR&amp;rdquo;,repos=&amp;quot;http://r-forge.r-project.org&amp;rdquo;). In both cases it installs fine, and other indicators work, but there&amp;rsquo;s no DVI indicator.</description>
+    </item>
+    
+    <item>
+      <title>How to backtest a strategy in R</title>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</link>
+      <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r/</guid>
+      <description>This is the third post in the Backtesting in Excel and R series and it will show how to backtest a simple strategy in R. It will follow the 4 steps Damian outlined in his post on how to backtest a simple strategy in Excel.
+Step 1: Get the data
+The getSymbols function in quantmod makes this step easy if you can use daily data from Yahoo Finance. There are also &amp;ldquo;methods&amp;rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.</description>
+    </item>
+    
+    <item>
+      <title>How to backtest a strategy in Excel</title>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</link>
+      <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments/</guid>
+      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
+This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
+Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
+I use the Sharpe Ratio to judge the effectivness of my investments.</description>
+    </item>
+    
+    <item>
+      <title>How to backtest a strategy in Excel</title>
+      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</link>
+      <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</guid>
+      <description>(This is a guest post by Damian from Skill Analytics and ETF Prophet)
+Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics.</description>
+    </item>
+    
+    <item>
+      <title>Moving from Excel to R</title>
+      <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</link>
+      <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments/</guid>
+      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011Hi Joshua,
+Thanks for excellent advice. &amp;lsquo;Keep at it till you figure it out&amp;rsquo;. Indeed.
+It would be great if you could offer your thoughts on how to move to next stage of R viz. building packages. How and when did you make that transition? What are the good resources, sites, tools toward that?
+Thanks a lot,
+Ravi</description>
+    </item>
+    
+    <item>
+      <title>Moving from Excel to R</title>
+      <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r/</link>
+      <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r/</guid>
+      <description>This first post of the Backtesting in Excel and R series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of R.
+I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals). Most people don&amp;rsquo;t prefer my approach of &amp;ldquo;keep at it until you figure it out&amp;rdquo;, so I don&amp;rsquo;t have a lot of personal advice to share.</description>
+    </item>
+    
+    <item>
+      <title>Backtesting in Excel and R</title>
+      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</link>
+      <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments/</guid>
+      <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
+    </item>
+    
+    <item>
+      <title>Backtesting in Excel and R</title>
+      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r/</link>
+      <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r/</guid>
+      <description>This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R. The impetus for this series started with this tweet by Jared Woodard at Condor Options. After Soren Macbeth introduced us, Jared suggested backtesting a simple DVI strategy in Excel and R.
+The three-post series will show you:
+ Resources that make it easier to move from Excel to R How to test DVI in Excel How to test DVI in R  Since I know next to nothing about testing strategies in Excel, I will be writing posts 1 and 3.</description>
+    </item>
+    
+  </channel>
+</rss>
