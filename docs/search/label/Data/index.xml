@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/Data/</link>
+    <link>https://blog.fosstrading.com/search/label/Data.html</link>
     <description>Recent content in Data on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -13,30 +13,30 @@
     
     <item>
       <title>Creating Financial Instrument metadata in R</title>
-      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</link>
+      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments.html</link>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments/</guid>
+      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments.html</guid>
       <description>Should we consider it good that rules are independ&amp;hellip; Anonymous - Aug 1, 2011Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly.
 @crasshopper: I think it would be more appropriate to say that rules are ipart of the model, and that models are independent of the instruments that they will be applied to.</description>
     </item>
     
     <item>
       <title>Creating Financial Instrument metadata in R</title>
-      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata/</link>
+      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</link>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata/</guid>
+      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</guid>
       <description>(This is a guest post by Ilya Kipnis)
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
     </item>
     
     <item>
       <title>opentick alternatives</title>
-      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments/</link>
+      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments.html</link>
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments.html</guid>
       <description>I just started looking into getting data again and&amp;hellip; Unknown - Nov 0, 2009I just started looking into getting data again and found opentick is gone :(
 Thanks for this post!
 You&amp;rsquo;re most welcome. Let me know if you find anything that should be included in the list.
@@ -47,10 +47,10 @@ Thanks for the link. I found that page as well, but didn&amp;rsquo;t include any
     
     <item>
       <title>opentick alternatives</title>
-      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives/</link>
+      <link>https://blog.fosstrading.com/2009/11/opentick-alternatives.html</link>
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives/</guid>
+      <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives.html</guid>
       <description>I&amp;rsquo;ve been getting a bit of traffic from people searching for opentick (the defunct company), so I&amp;rsquo;ve started a list of similar (but non-free) data providers.
 I&amp;rsquo;m not affiliated with any of these vendors, and the list is in no particular order. I&amp;rsquo;ll update this post as more information becomes available.
 IQFeed
@@ -64,30 +64,30 @@ eSignal
     
     <item>
       <title>Xasax closes shop</title>
-      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments/</link>
+      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments.html</link>
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments.html</guid>
       <description>Would you happen to know of any other sources to o&amp;hellip; Anonymous - Nov 2, 2009Would you happen to know of any other sources to obtain tick data (preferably free ones)?
 I don&amp;rsquo;t know of any free tick data providers, but I&amp;rsquo;m working on a post to summarize the data providers I&amp;rsquo;m aware of.</description>
     </item>
     
     <item>
       <title>Xasax closes shop</title>
-      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop/</link>
+      <link>https://blog.fosstrading.com/2009/10/xasax-closes-shop.html</link>
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop/</guid>
+      <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop.html</guid>
       <description>Six months after shutting down opentick completely Xasax (opentick&amp;rsquo;s parent company) has followed suit.
 It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Data mentions the above in this story. Here is the full story (subscription required).</description>
     </item>
     
     <item>
       <title>opentick is no more</title>
-      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments/</link>
+      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments.html</link>
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments.html</guid>
       <description>I am unable to link to either www.opentick.com or &amp;hellip; gs - Oct 1, 2009I am unable to link to either www.opentick.com or www.xasax.com.
 Overpromise &amp;amp; underperform.
 It looks like Xasax hit funding problems in August&amp;hellip;
@@ -96,10 +96,10 @@ Inside Market Data mentions the above in this story.</description>
     
     <item>
       <title>opentick is no more</title>
-      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more/</link>
+      <link>https://blog.fosstrading.com/2009/04/opentick-is-no-more.html</link>
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more/</guid>
+      <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more.html</guid>
       <description>After a year of &amp;ldquo;we plan to accept new subscribers shortly&amp;rdquo;, opentick has shut its doors completely. As of March 20th, the opentick service is no longer available.
 From opentick.com:
  3/16/2009

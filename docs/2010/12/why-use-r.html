@@ -1,1 +1,245 @@
-<!DOCTYPE html><html><head><title>https://blog.fosstrading.com/2010/12/why-use-r/</title><link rel="canonical" href="https://blog.fosstrading.com/2010/12/why-use-r/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.fosstrading.com/2010/12/why-use-r/" /></head></html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Why Use R? - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Why Use R?" />
+<meta property="og:description" content="I use R very frequently and take for granted much that it has to offer. I forget how R is different from similar tools, so I have trouble communicating the benefits of using R. The goal of this post is to highlight R&rsquo;s main strengths, but first&hellip; my story.
+How I got started with R
+I was introduced to R while I was working as a Research Analyst at the Federal Reserve Bank of St." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/12/why-use-r.html" />
+<meta property="article:published_time" content="2010-12-14T22:35:00-06:00" />
+<meta property="article:modified_time" content="2010-12-14T22:35:00-06:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Why Use R?</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-12-14T22:35:00-06:00">December 14, 2010</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>I use R very frequently and take for granted much that it has to offer.  I forget how R is different from similar tools, so I have trouble communicating the benefits of using R.  The goal of this post is to highlight R&rsquo;s main strengths, but first&hellip; my story.</p>
+<p>How I got started with R</p>
+<p>I was introduced to R while I was working as a <a href="http://research.stlouisfed.org/">Research Analyst</a> at the <a href="http://stlouisfed.org/">Federal Reserve Bank of St. Louis</a>.  I wanted to do statistical analysis at home but the tools I used at work (<a href="http://www.aptech.com/">GAUSS</a> and <a href="http://www.sas.com/">SAS</a>) were expensive, so I started doing my analysis in Excel.</p>
+<p>But as my analysis became more complex, the Excel files became large and cumbersome.  The files also did not document my thought process, which made it difficult to revisit analysis I had started several months earlier.  I asked my fellow analysts for advice and one introduced me to R and <a href="http://www.amazon.com/gp/product/1441930086?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1441930086">Modern Applied Statistics with S</a>.  Thus began my auto-didactic journey with R.</p>
+<p>Why should you use R?</p>
+<p>R is the leading tool for statistics, data analysis, and machine learning.  It is more than a statistical package; it’s a programming language, so you can create your own objects, functions, and packages.</p>
+<p>Speaking of packages, there are over 2,000 cutting-edge, user-contributed packages available on <a href="http://cran.r-project.org/">CRAN</a> (not to mention <a href="http://www.bioconductor.org/">Bioconductor</a> and <a href="http://www.omegahat.net/">Omegahat</a>).  To get an idea of what packages are out there, just take a look at these <a href="http://cran.r-project.org/web/views/">Task Views</a>.  Many packages are submitted by prominent members of their respective fields.</p>
+<p>Like all programs, R programs explicitly document the steps of your analysis and make it easy to reproduce and/or update analysis, which means you can quickly try many ideas and/or correct issues.</p>
+<p>You can easily use it anywhere.  It&rsquo;s <a href="http://en.wikipedia.org/wiki/Platform-independent">platform-independent</a>, so you can use it on any operating system.  And it&rsquo;s free, so you can use it at any employer without having to persuade your boss to purchase a license.</p>
+<p>Not only is R free, but it&rsquo;s also <a href="http://en.wikipedia.org/wiki/Open_source">open-source</a>.  That means anyone can examine the source code to see exactly what it’s doing.  This also means that you, or anyone, can fix bugs and/or add features, rather than waiting for the vendor to find/fix the bug and/or add the feature&ndash;at their discretion&ndash;in a future release.</p>
+<p>R allows you to integrate with other languages (C/C++, <a href="http://java.sun.com/">Java</a>, <a href="http://www.python.org/">Python</a>) and enables you to interact with many data sources: <a href="http://en.wikipedia.org/wiki/Odbc">ODBC</a>-compliant databases (Excel, Access) and other statistical packages (<a href="http://www.sas.com/">SAS</a>, <a href="http://www.stata.com/">Stata</a>, <a href="http://www.spss.com/">SPSS</a>, <a href="http://www.minitab.com/">Minitab</a>).</p>
+<p>Explicit parallelism is straightforward in R (see the <a href="http://cran.r-project.org/web/views/HighPerformanceComputing.html">High Performance Computing Task View</a>): several packages allow you to take advantage of multiple cores, either on a single machine or across a network.  You can also build R with <a href="http://cran.r-project.org/doc/manuals/R-admin.html#Linear-algebra">custom BLAS</a>.</p>
+<p>R has a large, active, and growing community of users.  The <a href="http://www.r-project.org/mail.html">mailing lists</a> provide access to many users and package authors who are experts in their respective fields.  Additionally, there are several R conferences every year.  The most prominent and general is <a href="http://user2010.org/">useR</a>.  Finance-related conferences include <a href="https://www.rmetrics.org/meielisalp2011">Rmetrics Workshop on Computational Finance and Financial Engineering</a> in Meielisalp, Switzerland and <a href="http://www.rinfinance.com/">R/Finance: Applied Finance with R</a> in Chicago, USA.</p>
+<p>I hope that&rsquo;s a helpful overview of some benefits of using R.  I&rsquo;m sure I have forgotten some things, so please add them in the comments.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2010/12/build-rquantlib-on-32-bit-windows-comments.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Build RQuantLib on 32-bit Windows</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2010/12/why-use-r-comments.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">Why Use R?</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

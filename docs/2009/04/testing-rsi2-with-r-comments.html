@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Testing RSI(2) with R, First Steps - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Testing RSI(2) with R, First Steps" />
+<meta property="og:description" content="Really cool. A lot of questions: &ldquo;# Calcula&hellip; Damian - Apr 3, 2009Really cool. A lot of questions:
+&ldquo;# Calculate the RSI indicator
+rsi &lt;- RSI(Cl(GSPC),2)&rdquo;
+When you reference the symbol for getting the data, you referenced it via &ldquo;^GSPC&rdquo; - how did it get assigned to GSPC?
+Secondly, if I have the data stored locally, how would I reference it?
+&ldquo;# Lag signals to align with days in market," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments.html" />
+<meta property="article:published_time" content="2009-04-13T22:35:00-05:00" />
+<meta property="article:modified_time" content="2009-04-13T22:35:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Testing RSI(2) with R, First Steps</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-13T22:35:00-05:00">April 13, 2009</time></div></div>
+		</header><div class="content post__content clearfix">
+			<h4 id="really-cool-a-lot-of-questions--calcula">Really cool. A lot of questions: &ldquo;# Calcula&hellip;</h4>
+<p><a href="https://www.blogger.com/profile/16016686632386396090" title="noreply@blogger.com">Damian</a> - <!-- raw HTML omitted -->Apr 3, 2009<!-- raw HTML omitted --></p>
+<p>Really cool. A lot of questions:</p>
+<p>&ldquo;# Calculate the RSI indicator<br>
+rsi &lt;- RSI(Cl(GSPC),2)&rdquo;</p>
+<p>When you reference the symbol for getting the data, you referenced it via &ldquo;^GSPC&rdquo; - how did it get assigned to GSPC?</p>
+<p>Secondly, if I have the data stored locally, how would I reference it?</p>
+<p>&ldquo;# Lag signals to align with days in market,<br>
+# not days signals were generated<br>
+sigup &lt;- Lag(sigup)<br>
+sigdn &lt;- Lag(sigdn)&rdquo;</p>
+<p>Why did you do this? Is this to buy/sell on the next day rather than current day the signal is generated?</p>
+<p>How do you know if you buying/selling on the open or close?</p>
+<p>&ldquo;# Replace missing signals with no position<br>
+# (generally just at beginning of series)<br>
+sigup[is.na(sigup)] &lt;- 0<br>
+sigdn[is.na(sigdn)] &lt;- 0&rdquo;</p>
+<p>This I don&rsquo;t understand at all&hellip;.</p>
+<p>&ldquo;# Calculate Close-to-Close returns<br>
+ret &lt;- ROC(Cl(GSPC))<br>
+ret[1] &lt;- 0&rdquo;</p>
+<p>I&rsquo;m guessing this is for the S&amp;P comparison?</p>
+<p>&ldquo;# Create a chart showing the S&amp;P500<br>
+chartSeries(GSPC, type=&quot;line&rdquo;)&rdquo;</p>
+<p>Did you not show this chart?</p>
+<p>If you were working with a group of stocks:</p>
+<p>- How would you work across a basket of stocks?<br>
+- Is it possible to produce a scan of those stock to show which ones meet the buy criteria when they are not backtested (meaning, as you go forward in time)?</p>
+<p>Very cool stuff - sorry for all the questions.</p>
+<!-- raw HTML omitted -->
+<p>Thanks for this great post. It was helpful to see how to pull the tools together.</p>
+<!-- raw HTML omitted -->
+<p>Damian,</p>
+<p>Awesome questions! They really highlight how much I take for granted as a long-time R user&hellip;</p>
+<p>&ldquo;^GSPC&rdquo; is the Yahoo Finance ticker symbol, but R objects can only start with a letter (or a &ldquo;.&rdquo; followed by a non-number), so getSymbols() converts &ldquo;^GSPC&rdquo; to &ldquo;GSPC&rdquo;.</p>
+<p>If the data are in a CSV file, you can still use the getSymbols() function, but it would look something like:<br>
+getSymbols(&ldquo;GSPC&rdquo;, src=&quot;csv&rdquo;)<br>
+This assumes there&rsquo;s a file named &ldquo;GSPC.csv&rdquo; in your current working directory (see functions getwd() and setwd()). getSymbols() has ways to deal with other file types as well&hellip;</p>
+<p>Since I&rsquo;m using close-to-close returns, I&rsquo;m assuming you transact on the close price. This is why I align the signals generated with today&rsquo;s data with tomorrow&rsquo;s returns. E.g. if today&rsquo;s data gives me a long signal, I&rsquo;ll buy at the close and hold until tomorrow&rsquo;s close. Great questions!</p>
+<p>There are missing values in my signals because the first two RSI(2) values are missing, and the lag creates another missing value. If I did not replace the missing values with zero, it would cause the result of the cumprod() function to be a vector of missing values (a missing value added, subtracted, multiplied, or divided by anything produces a missing value).</p>
+<p>I did not show the chart created by:<br>
+chartSeries(GSPC, type=&quot;line&rdquo;)<br>
+I was hoping you would see it when you copy/paste the code into your own R session. :) And yes, it compares the strategy results with the S&amp;P.</p>
+<p>Future posts will show how to work with a basket of stocks and multiple strategies. It&rsquo;s good to know that I&rsquo;ve planned to address something of interest.</p>
+<p>I&rsquo;m not sure what you mean about producing a scan of stocks as you go forward in time. Could you clarify?</p>
+<!-- raw HTML omitted -->
+<p>Sure - when you&rsquo;re running a complex system, you need a way to scan the market on an ongoing basis to find opportunities. So, I want to scan EOD today for entries tomorrow. Make sense?</p>
+<!-- raw HTML omitted -->
+<p>A very interesting post and a great example of using R in the context of evaluating a trading strategy.</p>
+<p>When I first ran the code I got the error at the bottom of this post. However, if I lop of the first row of the signals vectors (e.g. with tail(sigup, -1)) I get the results you posted.</p>
+<p>I am very new to R; does this make sense to you?</p>
+<p><em>Error in addTA(eq_all) :<br>
+non-xtsible data must match the length of the underlying series<br>
+In addition: Warning messages:<br>
+1: In ret * sigup :<br>
+longer object length is not a multiple of shorter object length<br>
+2: In ret * sigdn :<br>
+longer object length is not a multiple of shorter object length<br>
+3: In ret * sig :<br>
+longer object length is not a multiple of shorter object length</em></p>
+<!-- raw HTML omitted -->
+<p>Damian,</p>
+<p>If I understand correctly, that should be as easy as running the code I posted each day&hellip; but removing the &ldquo;from=&rdquo; argument from getSymbols() and looking at today&rsquo;s &ldquo;sig&rdquo; value. Does that answer your question?</p>
+<p>Toby,</p>
+<p>Thanks for the comment. My guess is that the error is caused by the Lag() function. I intended to use quantmod:::Lag(), but if you attached - via library() - another package with a Lag() function before you attached quantmod, the first package&rsquo;s Lag() function would be used. I will edit the code in the post to be more robust. Thank you!</p>
+<!-- raw HTML omitted -->
+<p>Josh, thanks for that - clears things up for me! Again, a very useful example code. Thanks for posting.</p>
+<!-- raw HTML omitted -->
+<p>Josh,</p>
+<p>Thanks for your blog, and especially this post. I eagerly await your followup.</p>
+<p>I&rsquo;ve also been having some similar problems as Toby. Going back and working through it line by line, my first observation is that the length of rsi, and therefore sigup, sigdn and sig is 1 element longer than Cl(GSPC). This is partially what causes the warnings in the calculation of eq_up, eq_dn, and eq_all. It&rsquo;s also what causes the failure of the addTA(eq_all) line. At least, that&rsquo;s the best I can figure.</p>
+<p>I was wondering about the calculation of eq_all, what is it supposed to represent? If it&rsquo;s supposed to represent the cumulative return from both the long and short strategy, should you be taking the absolute value of sig?</p>
+<p>Again, thanks so much for the post. It really helps to be able to learn from real examples.</p>
+<!-- raw HTML omitted -->
+<p>jt,</p>
+<p>You&rsquo;re welcome. I hope to post the follow-up in a few days. I just got back from the R/Finance 2009 conference in Chicago (I will be posting about that as well).</p>
+<p>Please ensure you&rsquo;re using the latest versions of TTR and quantmod from CRAN and the code I updated to fix Toby&rsquo;s issue. Also, please double-check your results - because &lsquo;rsi&rsquo; (with the arguments I used) and &lsquo;GSPC&rsquo; should never have different lengths.</p>
+<p>You&rsquo;re correct, &lsquo;eq_all&rsquo; represents the strategy&rsquo;s total cumulative return. Taking the absolute value of &lsquo;sig&rsquo; before calculating &lsquo;eq_all&rsquo; would convert all the short signals to long signals. Note that I multiplied by -1 when calculating &lsquo;eq_dn&rsquo; in order to make the equity curve trend downward like Michael&rsquo;s graph.</p>
+<!-- raw HTML omitted -->
+<p>Hello and thanks for sharing your work. I was looking over this issue with flipping the short sales upsidown. It seems to me that using your methodology, shows that the short sales were net positive, in which case the total short return would be net pos. Have you contacted the original author to ask why his short return curve was net negative (It seems he intended that as his average short daily results shows a negative value)? It is very important to decide one way or the other as the results will be completely backwards and obviously only one method is the correct one.</p>
+<p>The following would seem to adjust all the values back to the way you intended.</p>
+<p>sigdn[is.na(sigdn)] &lt;- -1<br>
+eq_dn &lt;- cumprod(1+ret*sigdn)</p>
+<p>plot.zoo( cbind(eq_up, eq_dn,eq_all),<br>
+ylab=c(&ldquo;Long&rdquo;,&ldquo;Short&rdquo;,&ldquo;Combined&rdquo;), col=c(&ldquo;green&rdquo;,&ldquo;red&rdquo;,&ldquo;blue&rdquo;),<br>
+main=&quot;Simple RSI(2) Strategy: 2000-01-02 through 2008-12-07&rdquo; )</p>
+<p>Also, the plot would be useful to show all three curves.</p>
+<p>Look forward to going through more of your blog.<br>
+-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-<br>
+<a href="http://intelligenttradingtech.blogspot.com/">http://intelligenttradingtech.blogspot.com/</a></p>
+<!-- raw HTML omitted -->
+<p>Intelligent Trading,</p>
+<p>The short sales were flipped only to replicate the chart. Notice the eq_all object does not use the flipped short sales. Thanks for the code to plot all thee series.</p>
+<!-- raw HTML omitted -->
+<p>Hi Josh,</p>
+<p>I am getting the following errors when running the code.<br>
+I have uploaded the data from a CSV file, and when I plot the chart &ldquo;Michael&rsquo;s nice chart&rdquo; the dates do not show in the chart, instead I get a series running from 0 to 3000.<br>
+Also if I try to add the total equity line, I get the following error message</p>
+<p>&ldquo;Error en addTA(eq_all) :<br>
+non-xtsible data must match the length of the underlying series&rdquo;</p>
+<p>Do you know where the error comes from and how I could fix it?</p>
+<p>Thank you very much</p>
+<!-- raw HTML omitted -->
+<p>Hi Javier,</p>
+<p>Since I don&rsquo;t have access to your data, I can only guess what the problem(s) may be. My guess is that you didn&rsquo;t read your CSV into R as an xts object. read.csv() creates a data.frame. From there, you need to create an xts object, or at least ensure that the rownames of your data.frame contain the dates/times so as.xts can create an xts object.</p>
+<p>HTH,<br>
+Josh</p>
+<!-- raw HTML omitted -->
+<p>Thanks, now its working fine.</p>
+<!-- raw HTML omitted -->
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Examples/" rel="tag">Examples</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Code/" rel="tag">Code</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2009/04/testing-rsi2-with-r.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Testing RSI(2) with R, First Steps</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2009/04/opentick-is-no-more.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">opentick is no more</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

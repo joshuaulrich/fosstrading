@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/tags/</link>
+    <link>https://blog.fosstrading.com/tags.html</link>
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -13,190 +13,190 @@
     
     <item>
       <title>quantmod</title>
-      <link>https://blog.fosstrading.com/search/label/quantmod/</link>
+      <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/quantmod/</guid>
+      <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://blog.fosstrading.com/search/label/R/</link>
+      <link>https://blog.fosstrading.com/search/label/R.html</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/R/</guid>
+      <guid>https://blog.fosstrading.com/search/label/R.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Releases</title>
-      <link>https://blog.fosstrading.com/search/label/Releases/</link>
+      <link>https://blog.fosstrading.com/search/label/Releases.html</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Releases/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Releases.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>xts</title>
-      <link>https://blog.fosstrading.com/search/label/xts/</link>
+      <link>https://blog.fosstrading.com/search/label/xts.html</link>
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/xts/</guid>
+      <guid>https://blog.fosstrading.com/search/label/xts.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reviews</title>
-      <link>https://blog.fosstrading.com/search/label/Reviews/</link>
+      <link>https://blog.fosstrading.com/search/label/Reviews.html</link>
       <pubDate>Fri, 24 Aug 2018 13:03:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Reviews/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Reviews.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Events</title>
-      <link>https://blog.fosstrading.com/search/label/Events/</link>
+      <link>https://blog.fosstrading.com/search/label/Events.html</link>
       <pubDate>Fri, 20 Apr 2018 13:26:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Events/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Events.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>HIstorical Data</title>
-      <link>https://blog.fosstrading.com/search/label/HIstorical-Data/</link>
+      <link>https://blog.fosstrading.com/search/label/HIstorical-Data.html</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/HIstorical-Data/</guid>
+      <guid>https://blog.fosstrading.com/search/label/HIstorical-Data.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>TTR</title>
-      <link>https://blog.fosstrading.com/search/label/TTR/</link>
+      <link>https://blog.fosstrading.com/search/label/TTR.html</link>
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/TTR/</guid>
+      <guid>https://blog.fosstrading.com/search/label/TTR.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>https://blog.fosstrading.com/search/label/Code/</link>
+      <link>https://blog.fosstrading.com/search/label/Code.html</link>
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Code/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Code.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Examples</title>
-      <link>https://blog.fosstrading.com/search/label/Examples/</link>
+      <link>https://blog.fosstrading.com/search/label/Examples.html</link>
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Examples/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Examples.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>PortfolioAnalytics</title>
-      <link>https://blog.fosstrading.com/search/label/PortfolioAnalytics/</link>
+      <link>https://blog.fosstrading.com/search/label/PortfolioAnalytics.html</link>
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/PortfolioAnalytics/</guid>
+      <guid>https://blog.fosstrading.com/search/label/PortfolioAnalytics.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>quantstrat</title>
-      <link>https://blog.fosstrading.com/search/label/quantstrat/</link>
+      <link>https://blog.fosstrading.com/search/label/quantstrat.html</link>
       <pubDate>Mon, 04 Nov 2013 06:37:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/quantstrat/</guid>
+      <guid>https://blog.fosstrading.com/search/label/quantstrat.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>DEoptim</title>
-      <link>https://blog.fosstrading.com/search/label/DEoptim/</link>
+      <link>https://blog.fosstrading.com/search/label/DEoptim.html</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/DEoptim/</guid>
+      <guid>https://blog.fosstrading.com/search/label/DEoptim.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>https://blog.fosstrading.com/search/label/Data/</link>
+      <link>https://blog.fosstrading.com/search/label/Data.html</link>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Data/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Data.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>LSPM</title>
-      <link>https://blog.fosstrading.com/search/label/LSPM/</link>
+      <link>https://blog.fosstrading.com/search/label/LSPM.html</link>
       <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/LSPM/</guid>
+      <guid>https://blog.fosstrading.com/search/label/LSPM.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Excel</title>
-      <link>https://blog.fosstrading.com/search/label/Excel/</link>
+      <link>https://blog.fosstrading.com/search/label/Excel.html</link>
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Excel/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Excel.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>IBrokers</title>
-      <link>https://blog.fosstrading.com/search/label/IBrokers/</link>
+      <link>https://blog.fosstrading.com/search/label/IBrokers.html</link>
       <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/IBrokers/</guid>
+      <guid>https://blog.fosstrading.com/search/label/IBrokers.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Drawdown</title>
-      <link>https://blog.fosstrading.com/search/label/Drawdown/</link>
+      <link>https://blog.fosstrading.com/search/label/Drawdown.html</link>
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Drawdown/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Drawdown.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>API</title>
-      <link>https://blog.fosstrading.com/search/label/API/</link>
+      <link>https://blog.fosstrading.com/search/label/API.html</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/API/</guid>
+      <guid>https://blog.fosstrading.com/search/label/API.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>Interactive Brokers</title>
-      <link>https://blog.fosstrading.com/search/label/Interactive-Brokers/</link>
+      <link>https://blog.fosstrading.com/search/label/Interactive-Brokers.html</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/Interactive-Brokers/</guid>
+      <guid>https://blog.fosstrading.com/search/label/Interactive-Brokers.html</guid>
       <description></description>
     </item>
     
     <item>
       <title>blotter</title>
-      <link>https://blog.fosstrading.com/search/label/blotter/</link>
+      <link>https://blog.fosstrading.com/search/label/blotter.html</link>
       <pubDate>Sat, 06 Feb 2010 22:35:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/search/label/blotter/</guid>
+      <guid>https://blog.fosstrading.com/search/label/blotter.html</guid>
       <description></description>
     </item>
     

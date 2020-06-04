@@ -1,1 +1,304 @@
-<!DOCTYPE html><html><head><title>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/</title><link rel="canonical" href="https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/" /></head></html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DataCamp course: Importing and managing financial data - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="DataCamp course: Importing and managing financial data" />
+<meta property="og:description" content="The team at DataCamp announced a new R/Finance course series in a recent email:
+ Subject: Data Mining Tutorial, R/Finance course series, and more!
+R/Finance - A new course series in the works
+We are working on a whole new course series on applied finance using R. This new series will cover topics such as time series (David S. Matteson), portfolio analysis (Kris Boudt), the xts and zoo packages (Jeffrey Ryan), and much more." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data.html" />
+<meta property="article:published_time" content="2016-06-17T11:32:00-05:00" />
+<meta property="article:modified_time" content="2016-06-17T11:32:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">DataCamp course: Importing and managing financial data</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-06-17T11:32:00-05:00">June 17, 2016</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>The team at <a href="https://www.datacamp.com/">DataCamp</a> announced a new R/Finance course series in a recent email:</p>
+<blockquote>
+<p>Subject: Data Mining Tutorial, R/Finance course series, and more!</p>
+<p><strong>R/Finance - A new course series in the works</strong><br>
+We are working on a whole new course series on applied finance using R. This new series will cover topics such as time series (David S. Matteson), portfolio analysis (Kris Boudt), the xts and zoo packages (Jeffrey Ryan), and much more. Start our first course <a href="https://www.datacamp.com/courses/introduction-to-credit-risk-modeling-in-r">Intro to Credit Risk Modeling in R</a> today.</p>
+</blockquote>
+<p>I&rsquo;m excited to announce that I&rsquo;m working on a course for this new series! It will provide an introduction to importing and managing financial data.</p>
+<p>If you&rsquo;ve ever done anything with financial or economic time series, you know the data come in various shapes, sizes, and periodicities. Getting the data into R can be stressful and time-consuming, especially when you need to merge data from several different sources into one data set. This course will cover importing data from local files as well as from internet sources.</p>
+<p>The tentative course outline is below. I&rsquo;d really appreciate your feedback on what should be included in this introductory course! So let me know if I&rsquo;ve omitted something, or if you think any of the topics are too advanced.</p>
+<p>Introduction to importing and managing financial data</p>
+<ol>
+<li>
+<p>Introduction and downloading data</p>
+</li>
+<li>
+<p>getSymbols design overview, Quandl</p>
+</li>
+<li>
+<p>Finding and downloading data from internet sources</p>
+</li>
+<li>
+<p>E.g. getSymbols.yahoo, getSymbols.FRED, Quandl</p>
+</li>
+<li>
+<p>Loading and transforming multiple instruments</p>
+</li>
+<li>
+<p>Checking for errors (i.e. summary stats, visualizing)</p>
+</li>
+<li>
+<p>Managing data from multiple sources</p>
+</li>
+<li>
+<p>Setting per-instrument sources and default arguments</p>
+</li>
+<li>
+<p>setSymbolLookup, saveSymbolLookup, loadSymbolLookup, setDefaults</p>
+</li>
+<li>
+<p>Handling instruments names that clash or are not valid R object names</p>
+</li>
+<li>
+<p>Aligning data with different periodicities</p>
+</li>
+<li>
+<p>Making irregular data regular</p>
+</li>
+<li>
+<p>Aggregating to lowest frequency</p>
+</li>
+<li>
+<p>Combining monthly with daily</p>
+</li>
+<li>
+<p>Combining daily with intraday</p>
+</li>
+<li>
+<p>Storing and updating data</p>
+</li>
+<li>
+<p>Creating an initial RData-backed storage</p>
+</li>
+<li>
+<p>Adjusting financial time-series</p>
+</li>
+<li>
+<p>Handling errors during update process</p>
+</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/quantmod/" rel="tag">quantmod</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2016/04/registration-for-rfinance-2016-is-open.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Registration for R/Finance 2016 is open!</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2016/08/quantmod-0-4-6-on-cran.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">quantmod 0.4-6 on CRAN</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

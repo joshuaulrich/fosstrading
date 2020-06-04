@@ -1,1 +1,262 @@
-<!DOCTYPE html><html><head><title>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</title><link rel="canonical" href="https://blog.fosstrading.com/2014/06/rfinance-2014-review/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.fosstrading.com/2014/06/rfinance-2014-review/" /></head></html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>R/Finance 2014 Review - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="R/Finance 2014 Review" />
+<meta property="og:description" content="It&rsquo;s been more than a month since R/Finance 2014, and my job has finally slowed down enough to allow me to write down my thoughts (though I&rsquo;m writing this over two days during my train to and from Chicago).
+The comments below are based on my personal experience. If I don&rsquo;t comment on a seminar or presentation, it doesn&rsquo;t mean I didn&rsquo;t like it or it wasn&rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2014/06/rfinance-2014-review.html" />
+<meta property="article:published_time" content="2014-06-30T07:40:00-05:00" />
+<meta property="article:modified_time" content="2014-06-30T07:40:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">R/Finance 2014 Review</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-06-30T07:40:00-05:00">June 30, 2014</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>It&rsquo;s been more than a month since <a href="http://www.rinfinance.com/">R/Finance 2014</a>, and my job has finally slowed down enough to allow me to write down my thoughts (though I&rsquo;m writing this over two days during my train to and from Chicago).</p>
+<p>The comments below are based on my personal experience. If I don&rsquo;t comment on a seminar or presentation, it doesn&rsquo;t mean I didn&rsquo;t like it or it wasn&rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member. All the currently available conference slides are available <a href="http://www.rinfinance.com/agenda/">on the website</a>.</p>
+<p>Friday morning seminar:<br>
+I went to <a href="http://www.rinfinance.com/agenda/2014/workshop/DirkEddelbuettel.pdf">Dirk Eddelbuettel&rsquo;s</a> seminar because I may be writing a R package to query <a href="http://www.deltixlab.com/">Deltix&rsquo;s</a> <a href="https://www.blogger.com/null"></a> <a href="http://www.deltixlab.com/solutions/timebase.html">TimeBase</a> database. Deltix provides a C++ API, so this is a perfect opportunity to use Rcpp.</p>
+<p>Friday talks:<br>
+The first presentation was given by keynote <a href="http://www.rinfinance.com/agenda/2014/talk/LukeTierney.pdf">Luke Tierney</a>, who discussed recent and upcoming performance improvements to R, and introduced some new profiling tools in his <a href="https://github.com/ltierney/Rpkg-proftools">proftools</a> package (and a new <a href="https://github.com/ltierney/Rpkg-proftools-GUI">proftools-GUI</a> package).</p>
+<p><a href="http://www.rinfinance.com/agenda/2014/talk/YangLu.pdf">Yang Lu</a> explored the low-risk anomaly on high/low volatility portfolios with similar industry, size, and volume. <a href="http://www.rinfinance.com/agenda/2014/talk/AveryMoon.pdf">Avery Moon</a> discussed how they use R at <a href="http://www.wealthfront.com/">Wealthfront</a> to run cashflow simulations for their tax-loss harvesting strategy. <a href="http://www.rinfinance.com/agenda/2014/talk/StevenPav.pdf">Steven Pav</a> used math and memes to discuss portfolio inference. <a href="http://www.rinfinance.com/agenda/2014/talk/TobiasSetz.pdf">Tobias Setz</a> used the Bayesian Change Point method to analyze time series stability.</p>
+<p><a href="http://www.rinfinance.com/agenda/2014/talk/PaulTeetor.pdf">Paul Teetor</a> and <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewClegg.pdf">Matthew Clegg</a> discussed different aspects of pairs trading. <a href="http://www.rinfinance.com/agenda/2014/talk/KentHoxsey.pdf">Kent Hoxsey</a> demonstrated a simple way to explore trading signal expectation. <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewBarry.pdf">Matthew Barry</a> introduced the <a href="https://github.com/mrbcuda/pbo">pbo</a> package, which implements some of the ideas in the paper, <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">The Probability of Backtest Overfitting</a>.</p>
+<p><a href="http://www.rinfinance.com/agenda/2014/talk/AlexiosGhalanos.pdf">Alexios Ghalanos</a> was the day&rsquo;s second keynote, and he discussed smooth transition autoregressive models and his new package, <a href="https://bitbucket.org/alexiosg/twinkle">twinkle</a>. Alexios <a href="http://unstarched.net/2014/05/27/twinkletwinkle-little-star/">wrote a post</a> discussing his presentation, which you should definitely read.</p>
+<p>Friday food/networking:<br>
+During the two-hour conference reception at UIC, I had some drinks and hors d&rsquo;ouvres, talked with speakers, and meet people I encouraged to attend and/or present. Next was the (optional) dinner at <a href="http://www.trumphotelcollection.com/chicago/rooftop-restaurants-chicago.php">The Terrace at Trump</a>. It was cold and windy again this year, so we were inside the entire night. Same as last year, the food was fantastic, but the conversations were even better.</p>
+<p>Saturday talks:<br>
+The first presentation was a lightning talk by <a href="http://www.rinfinance.com/agenda/2014/talk/ChiragAnand.pdf">Chirag Anand</a>, where he introduced the <a href="http://cran.r-project.org/web/packages/eventstudies/">eventstudies</a> package, which is very well done. <a href="http://www.rinfinance.com/agenda/2014/talk/CaseyKing.pptx">Casey King</a> gave an incredibly informative and entertaining presentation on anti-money laundering and suspicious activity reporting in penny stocks using message board posts. <a href="http://www.rinfinance.com/agenda/2014/talk/BryanLewis.pdf">Bryan Lewis</a> introduced his <a href="https://github.com/bwlewis/IRL">IRL</a> package and ran a 16 million node network analysis in &lt; 2 minutes on his Chromebook, during his talk. <a href="http://www.rinfinance.com/agenda/2014/talk/StephenRush.pdf">Stephen Rush</a> discussed his work on <a href="http://en.wikipedia.org/wiki/VPIN">VPIN</a> (volume synchronized probability of informed trading), while competing with Steven Pav for the &ldquo;presentation with the most memes&rdquo;.</p>
+<p><a href="http://www.rinfinance.com/agenda/2014/talk/BobMcDonald.pdf">Bob McDonald</a> gave the third keynote presentation, where he discussed using R to teach derivatives in MBA classes. He also explained his decision to adopt R in terms of valuing an option. <a href="http://www.rinfinance.com/agenda/2014/talk/EricZivot.pdf">Eric Zivot</a> discussed his upcoming book, &ldquo;Modeling Financial Time Series with S-Plus R&rdquo;. <a href="http://www.rinfinance.com/agenda/2014/talk/RohiniGrover.pdf">Rohini Grover</a> measured the imprecision of implied volatility estimates in volatility indexes using the <a href="https://r-forge.r-project.org/projects/ifrogs/">ifrogs</a> package.</p>
+<p><a href="http://www.rinfinance.com/agenda/2014/talk/BillCleveland.pdf">Bill Cleveland</a> gave the final keynote and talked about the &ldquo;divide-and-recombine&rdquo; method for large, complex data, using R and Hadoop. <a href="http://www.rinfinance.com/agenda/2014/talk/GregorKastner.pdf">Gregor Kastner</a> introduced his <a href="http://cran.r-project.org/web/packages/stochvol/">stochvol</a> package, and <a href="http://www.rinfinance.com/agenda/2014/talk/MatthewDixon.pdf">Matthew Dixon</a> showed how to calibrate stochastic volatility models using his &ldquo;alpha&rdquo; <a href="https://github.com/mfrdixon/gpusvcalibration">gpusvcalibration</a> package. <a href="http://www.rinfinance.com/agenda/2014/talk/DirkEddelbuettel.pdf">Dirk Eddelbuettel</a> closed the conference with a lightning talk on his recently-released <a href="http://cran.r-project.org/web/packages/RcppRedis/">RcppRedis</a> package.</p>
+<p>The committee also presented the awards for best papers. The winners were:</p>
+<ul>
+<li><em>Portfolio inference with this one weird trick</em>, Steven E. Pav</li>
+<li><em>Dealing with Stochastic Volatility in Time Series Using the R Package stochvol</em>, Gregor Kastner</li>
+<li><em>Re-Evaluation of the Low-Risk Anomaly in Finance via Matching</em>, Yang Lu, Daniel Wu, Kwok Yu</li>
+<li><em>All words are not equal: Sentiment dynamics and information content within CEO letters</em>, Kris Boudt, James Thewissen</li>
+</ul>
+<p>Saturday food/networking:<br>
+As always, the conference ended with one more trip to <a href="http://jakstap.com/">Jaks Tap</a>. I spent some time giving college students some advice about starting their careers, and discussed the presentation I gave earlier in the week at the <a href="http://www.meetup.com/ChicagoRUG/">Chicago R User Group</a> on <a href="http://files.meetup.com/1625815/ProfilingForSpeed_Ulrich_05-14.pdf">Profiling for Speed</a>.</p>
+<p>Last, but not least: none of this would be possible without the support of fantastic sponsors:<br>
+<a href="http://business.uic.edu/academic-centers-and-research/cba-research-centers/international-center-for-futures-and-derivatives">International Center for Futures and Derivatives at UIC</a>, <a href="http://www.revolutionanalytics.com/">Revolution Analytics</a>, <a href="http://depts.washington.edu/compfin/">MS-Computational Finance at University of Washington</a>, <a href="http://www.onetick.com/">OneMarketData</a>, <a href="http://www.rstudio.org/">RStudio</a>, <a href="http://spotfire.tibco.com/">TIBCO</a>, <a href="http://www.symmys.com/arpm-bootcamp">SYMMS</a>, and <a href="http://www.paradigm4.com/">paradigm4</a>.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Reviews/" rel="tag">Reviews</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Events/" rel="tag">Events</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2014/03/intro-to-portfolioanalytics.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Introduction to PortfolioAnalytics</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2014/11/rfinance-2015-call-for-papers.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">R/Finance 2015 Call for Papers</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>TTR_0.20-2 on CRAN - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="TTR_0.20-2 on CRAN" />
+<meta property="og:description" content="Can you describe how the various trading packages &hellip; Milk Trader - Apr 4, 2010Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&rsquo;m interested in.
+xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&rsquo;m missing?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments.html" />
+<meta property="article:published_time" content="2010-03-30T14:48:00-05:00" />
+<meta property="article:modified_time" content="2010-03-30T14:48:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">TTR_0.20-2 on CRAN</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-03-30T14:48:00-05:00">March 30, 2010</time></div></div>
+		</header><div class="content post__content clearfix">
+			<h4 id="can-you-describe-how-the-various-trading-packages-">Can you describe how the various trading packages &hellip;</h4>
+<p><a href="https://www.blogger.com/profile/15008769973064875700" title="noreply@blogger.com">Milk Trader</a> - <!-- raw HTML omitted -->Apr 4, 2010<!-- raw HTML omitted --></p>
+<p>Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&rsquo;m interested in.</p>
+<p>xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&rsquo;m missing?</p>
+<!-- raw HTML omitted -->
+<p>You&rsquo;re correct that they&rsquo;re complementary, but I would think of them as a toolkit rather than a workflow.</p>
+<p><em>xts</em> is a time series class; use it to store and manipulate data (e.g. convert it to/from other time series classes).</p>
+<p><em>quantmod</em> is probably best explained by the <a href="http://www.quantmod.com/examples/">examples</a> page on quantmod.com.</p>
+<p><em>blotter</em> keeps track instruments, transactions, portfolios and accounts for trading systems.</p>
+<p><em>TTR</em> contains technical indicators and other functions commonly used in creating trading algorithms.</p>
+<p><em>LSPM</em> contains functions to determine position size according to Ralph Vince&rsquo;s Leverage Space Portfolio Model.</p>
+<p>You should look at:<br>
+<em>quantstrat</em> allows you to specify, build, and back-test quantitative financial trading and portfolio strategies.</p>
+<p><em>PerformanceAnalytics</em> is a library of econometric functions for performance and risk analysis and aims to aid practitioners and researchers in utilizing the latest research in analysis of non-normal return streams.</p>
+<p><em>PortfolioAnalytics</em> is a library of portfolio optimization and analysis routines and graphics.</p>
+<!-- raw HTML omitted -->
+<p>Thanks for quantstrat and Performance Analytics. Do any of these packages excel at the walk-forward technique, or out-of-sample backtesting on set-aside data whose parameters are determined by an objective function applied to a preceding window?</p>
+<p>Let me explain that better. I&rsquo;d like to determine a parameter set to trade a system for a pre-determined period, say six months. The first parameter set I choose is based on the most recent two years of backtest data. I run this &ldquo;ideal&rdquo; parameter set on the first six months of out-of-sample data and determine the results, which I set aside for later analysis. Then, I treat the six month out-of-sample data as in-sample data and choose my parameters based on a backtest of two years again. But this time, the oldest six months of original backtest data is replaced with the first walk-forward data (which was 6 months in our example). This technique is widely known and commonly used.</p>
+<p>There is a matter of how one chooses the best parameters to walk-forward. Maximum net profit is the most intuitive, but not the ideal objective function. Other objective functions can get fairly complicated so the ability to program it is important.</p>
+<!-- raw HTML omitted -->
+<p>PerformanceAnalytics has Return.portfolio and Return.rebalancing which can construct return series for portfolios based on a time series of weighting vectors.</p>
+<p>PortfolioAnalytics has optimize.portfolio.rebalancing which conducts &lsquo;walk-forward&rsquo; rebalancing on a periodic basis. All of the portfolio objectives in PortfolioAnalytics are layered and based on arbitrary R functions, not limited to simple single-objective or fixed approaches.</p>
+<p>quantstrat does not yet have rebalancing or parameter optimization, though those functions will likely be added as parameterization is stabilized over the next couple months.</p>
+<!-- raw HTML omitted -->
+<p>It may be there is no R package for what I have in mind specifically, in which case maybe I can develop it.</p>
+<p>Here is the basic idea.</p>
+<p>Moving average crossover system that calculates the following results for each parameter set over 400 trading days.</p>
+<p>Permutation #: 1<br>
+Parameter One: 10<br>
+Parameter Two: 30<br>
+Net Profit: 2,000<br>
+Max Drawdown: 3,000<br>
+Profit/Max DD: .6667<br>
+Perfect Profit: 100,000<br>
+Percent Perfect: .02<br>
+Correlation PP: .3211</p>
+<p>And so on with data generation. But this is the start. Then, populate this array with results from each permutation.</p>
+<p>Then, one would need to select a reasonable range of permutations and choose between brute force (for reasonable amount of permutations) or genetic algorithm, particle swarm (for unreasonable number of permutations).</p>
+<p>Once this array is populated through permutation n, R would choose the one parameter set that exhibited the max or min of one of the elements of the array (eg, Maximum Net Profit). Once that parameter set is chosen, it is applied to the next 100 days of out-of-sample data and a new set of arrays would be populated. This process continues until you run out of data.</p>
+<p>The results are then compiled into a new data frame that can be parsed for statistical analysis. ie, periodAverage &lt;- mean(Results$NetProfit)</p>
+<p>Many commercial off the shelf programs like TradersStudio, Amibroker and TradeStation (I believe) already do this, but doing this in R yields many advantages including the ability to script a set of statistical analysis, graph them and the like without being confined to a vendor-specific windowing interface. Extracting custom information from vectors is much easier than trying to generate custom views from the other programs as well.</p>
+<!-- raw HTML omitted -->
+<p>Please consider adding any development effort to <em>quantstrat</em>. This is what quantstrat is designed for, and the next major area of development is parameterization of signals and indicators, followed closely by parameter optimization.</p>
+<!-- raw HTML omitted -->
+<p>Can you explain how far along quantstrat is in the development cycle? R Forge shows version 0.2. Does it become functional at 1.0? And where is the best place to find the package&rsquo;s author and how could I input some ideas on walk-forward.</p>
+<p>Thanks!</p>
+<!-- raw HTML omitted -->
+<p><em>quantstrat</em> is functional, but still in alpha status (meaning it may undergo some design changes).</p>
+<p>You&rsquo;ve been corresponding with two of <em>quantstrat</em>&lsquo;s authors. ;-) The best way to make contributions is to checkout the <a href="http://r-forge.r-project.org/R/?group_id=316"><em>quantstrat</em> source</a> (part of the TradeAnalytics project) from <a href="http://r-forge.r-project.org">r-forge</a> and email your patches to the package maintainer.</p>
+<!-- raw HTML omitted -->
+<p>Thanks Joshua. I also look forward to presentations at R/Finance 2010 in Chicago.</p>
+<!-- raw HTML omitted -->
+<p>I suppose there isn&rsquo;t any further documentation yet, other than the index html page?</p>
+<!-- raw HTML omitted -->
+<p>G$,</p>
+<p>TTR has complete documentation. What are you referring to?</p>
+<!-- raw HTML omitted -->
+<p>sorry, i was following the thread. I was referring to blotter and quantstrat</p>
+<!-- raw HTML omitted -->
+<p>The documentation for blotter and quantstrat is not complete, but there is a lot more documentation than just the index page.</p>
+<!-- raw HTML omitted -->
+<p>Is there any presentations from R/Finance 2010 published to the general public?</p>
+<!-- raw HTML omitted -->
+<p>steffi,</p>
+<p>The presenters have recently been contacted to ask their permission, so (most of) the presentations should be available in the next few weeks. I will post once they&rsquo;re online.</p>
+<!-- raw HTML omitted -->
+<p>Joshua, the R-forge TradeAnalytics page seems to be down. Is there anywhere else we can obtain a copy of these packages? Thanks.</p>
+<!-- raw HTML omitted -->
+<p>Jack,</p>
+<p>All the servers at the Vienna University of Economics and Business were affected by an electrical system failure earlier this week.</p>
+<p>It appears r-forge is still experiencing issues. I would expect it to be resolved in a day or two. Send me an email if you would like me to send you the <em>source code</em> (<strong>not</strong> Windows binaries).</p>
+<!-- raw HTML omitted -->
+<p>This comment has been removed by the author.</p>
+<!-- raw HTML omitted -->
+<p>I have just run the demo files (e.g. macross) in quantstrat and played a bit with it. I am trying to complete the scripts to perform trade performance analysis and was wondering if anyone knows a function in quantstrat/quantmod to extract P&amp;L by trade.</p>
+<p>My intent is to have a trade table from which i can use to apply performance criteria by strategy and then develop an optimising routine for the strategy parameters.</p>
+<p>Since this is an important part of an algo trading module I thought it may be part of the package and I may not know where to find it.</p>
+<!-- raw HTML omitted -->
+<p>In reply to phil:</p>
+<p>the function getPortfolio will return the portfolio object, which includes all the realized and unrealized P&amp;L by transaction and in the portfolio based on how you mark the book.</p>
+<p>There are no summary reports yet. They just haven&rsquo;t been more important than creating the framework itself.</p>
+<p>If you have suggestions for what should be in a summary report, we&rsquo;d love to hear it. Even better, of course, would be to provide code to the community, which we could include in the approporiate package (with attribution, of course)</p>
+<!-- raw HTML omitted -->
+<p>Many thank Brian. I got this working and will write the code over the coming weeks. One question though. When I run the demo(macross) and extract the results using getPosition(), this is what comes out.</p>
+<p>$AAPL$txn<br>
+Txn.Qty Txn.Price &hellip;<br>
+1999-12-31 0 0.00 &hellip;<br>
+2001-06-26 100 23.75 &hellip;</p>
+<p>&hellip;</p>
+<p>what is the command to extract specific info from the transaction results part of getPosition() into a proper data frame. It doesn&rsquo;t work when I type APPL$Txn.Qty</p>
+<p>Phil</p>
+<!-- raw HTML omitted -->
+<p>phil,</p>
+<p>Try &lsquo;getPortfolio&rsquo; instead. This is a list which should contain everything you should need. None of these are data.frame, because all of this data is time series data. data.frames have some useful properties for tabular data, but these are time series, and need to be indexed and subset as time series, which is why we use xts for all of it. Basically, each list element is a time series, and should be able to be manipulated as such. Hope this helps&hellip;</p>
+<!-- raw HTML omitted -->
+<p>Brian,</p>
+<p>See below for more info. I may not have been specific enough in my query and I am still learning my way through the blotter/xts. The analysis uses JJG as the stock</p>
+<p>&gt;is.xts(JJG)<br>
+[1] TRUE</p>
+<p>&gt;getTxns(s$name) # gives a subset of getPortfolio() results<br>
+$JJG$txn<br>
+Txn.Qty Txn.Price Txn.Value<br>
+2000-12-31 0 0.00 0<br>
+2009-05-31 1000 45.67 45670<br>
+2009-05-31 1000 45.67 45670<br>
+2009-05-31 1000 45.67 45670</p>
+<p>My intent is to extract those results in a format which I can manipulate to calculate performance measures on which I will write an optimisation routine on the strategy parameters. Where I am struggling is to find the syntax to extract those.</p>
+<p>it appears that the results are not xts<br>
+&gt;is.xts(JJG$txn)<br>
+NULL</p>
+<p>it&rsquo;s neither a data frame<br>
+&gt;JJG$txn[]<br>
+NULL</p>
+<p>i apologize if this may sound basic to some of you but I really want to learn it and spent a considerable amount of time in trial and errors. Help appreciate</p>
+<p>Phil</p>
+<!-- raw HTML omitted -->
+<p>Phil,</p>
+<p>You haven&rsquo;t actually extracted anything using the syntax you&rsquo;ve shown here. All you did was display the information to your screen.</p>
+<p>You&rsquo;d have to assign it to a variable to manipulate it.</p>
+<p>The data for blotter is stored in a &lsquo;list&rsquo;, in &lsquo;slots&rsquo; (any introductory R text should cover this)</p>
+<p>getTxns() extracts these from the environment they&rsquo;re stored in, and makes them available to you to assign to a variable.</p>
+<p>So, let&rsquo;s use a reproducible example:</p>
+<p>require(&lsquo;blotter&rsquo;)</p>
+<p>demo(&lsquo;amzn_test&rsquo;)</p>
+<p>getTxns(Portfolio='amzn_port&rsquo;,Symbol='amzn&rsquo;)</p>
+<p># the above command will print stuff to your screen</p>
+<p>#let&rsquo;s assign the returned data to a variable instead<br>
+amzn_txns&lt;-getTxns(Portfolio='amzn_port&rsquo;,Symbol='amzn&rsquo;)</p>
+<p># now we&rsquo;ll check it<br>
+class(amzn_txns)</p>
+<p># gives:<br>
+# [1] &ldquo;transactions&rdquo; &ldquo;xts&rdquo; &ldquo;zoo&rdquo;</p>
+<p>#and the test phil tried before<br>
+is.xts(amzn_txns)</p>
+<p># gives:<br>
+#[1] TRUE</p>
+<!-- raw HTML omitted -->
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/TTR/" rel="tag">TTR</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2010/03/ttr020-2-on-cran.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">TTR_0.20-2 on CRAN</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2010/04/maximum-probability-of-profit.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">Maximum Probability of Profit</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

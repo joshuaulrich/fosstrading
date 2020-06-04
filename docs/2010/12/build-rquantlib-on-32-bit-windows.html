@@ -1,1 +1,273 @@
-<!DOCTYPE html><html><head><title>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/</title><link rel="canonical" href="https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows/" /></head></html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Build RQuantLib on 32-bit Windows - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Build RQuantLib on 32-bit Windows" />
+<meta property="og:description" content="Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
+ Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
+Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows.html" />
+<meta property="article:published_time" content="2010-12-07T17:20:00-06:00" />
+<meta property="article:modified_time" content="2010-12-07T17:20:00-06:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Build RQuantLib on 32-bit Windows</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-12-07T17:20:00-06:00">December 07, 2010</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>Before you start, note that there is now a <a href="http://blog.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran.html">Windows binary of RQuantLib is available on CRAN</a>.</p>
+<hr>
+<p>Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.<br>
+Instructions for <a href="http://www.nativact.com/taugust/quantlib.html">Getting Started with QuantLib and MinGW from Scratch</a> by Terry August (found in <a href="http://quantlib.org/faq.shtml#Building%20QuantLib1">QuantLib FAQ 3.2</a>) were incredibly valuable.  Thanks to <a href="http://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a> for helpful guidance and pointers while I was working through this exercise, and for useful comments on this blog post.</p>
+<p>Here are the steps I took.  You will need to modify the paths to suit your particular setup.</p>
+<ol>
+<li>Download and install <a href="http://www.murdoch-sutherland.com/Rtools/">Rtools</a>.</li>
+<li><a href="http://sourceforge.net/projects/mingw/files/">Download</a> and <a href="http://www.mingw.org/wiki/Getting_Started">install</a> <a href="http://www.mingw.org/">MinGW</a>.</li>
+<li>Download <a href="http://sourceforge.net/projects/boost/files/boost/">boost</a> (I used boost_1_42_0.tar.gz)<br>
+unzip to c:/R/cpp/boost_1_42_0<br>
+We only need the headers, so there&rsquo;s nothing to install.</li>
+<li>Download <a href="http://sourceforge.net/projects/quantlib/files/">QuantLib</a> (I used QuantLib-1.0.1.zip)<br>
+unzip to c:/R/cpp/QuantLib-1.0.1</li>
+<li>Install Quantlib. The make and make install commands are going to take quite some time. I think they took about 2 hours on my 3.4Ghz system. Let&rsquo;s get started. Open a msys command line and run:<br>
+set PATH=c:/MinGW/bin:$PATH<br>
+cd c:/R/cpp<br>
+mkdir lib include<br>
+cd QuantLib-1.0.1<br>
+configure &ndash;with-boost-include=c:/R/cpp/boost_1_42_0 &ndash;prefix=c:/R/cpp<br>
+make<br>
+make install<br>
+cd c:/R/cpp/lib<br>
+cp libQuantLib.a libQuantLib.a.bak<br>
+strip &ndash;strip-unneeded libQuantLib.a</li>
+<li>Download the <a href="http://cran.r-project.org/web/packages/RQuantLib/">RQuantlib source</a> (I used RQuantLib_0.3.4.tar.gz)<br>
+unzip it to c:/R/cpp/RQuantLib</li>
+<li>Open c:/R/cpp/RQuantLib/src/Makevars.win and ensure<br>
+PKG_LIBS=$(RCPP_LDFLAGS) -L$(QUANTLIB_ROOT)/lib -lQuantLib</li>
+<li>Make the following directories:<br>
+c:/R/cpp/QuantLibBuild/boost<br>
+c:/R/cpp/QuantLibBuild/ql<br>
+c:/R/cpp/QuantLibBuild/lib<br>
+then copy:<br>
+c:/R/cpp/boost_1_42_0/boost to c:/R/cpp/QuantLibBuild/boost<br>
+c:/R/cpp/include/ql to c:/R/cpp/QuantLibBuild/ql<br>
+c:/R/cpp/lib/libQuantLib.a to c:/R/cpp/QuantLibBuild/lib/libQuantLib.a</li>
+<li>Now you should be able to build RQuantLib via:<br>
+set QUANTLIB_ROOT=c:/R/cpp/QuantLibBuild<br>
+R CMD INSTALL RQuantLib_0.3.4.tar.gz</li>
+</ol>
+<p>I cannot guarantee these instructions will work on a 64-bit system because I do not have access to a 64-bit Windows machine, but the steps should be fairly similar.  If you run into any issues, feel free to leave a comment and I will do my best to help.</p>
+<p>If you just want to use my build, you can install this <a href="https://docs.google.com/leaf?id=0B8wl4QBejPGiYmY4NGQ5MTYtOWJlMS00NTBhLThhZmItMWI4YjQ2Mjg2MWU2&amp;hl=en&amp;authkey=CLDLlPAN">RQuantLib_0.3.4 Windows binary</a>.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2010/11/risk-opportunity-analysis.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">Risk-Opportunity Analysis</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2010/12/build-rquantlib-on-32-bit-windows-comments.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">Build RQuantLib on 32-bit Windows</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,1 +1,253 @@
-<!DOCTYPE html><html><head><title>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/</title><link rel="canonical" href="https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel/" /></head></html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>How to backtest a strategy in Excel - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="How to backtest a strategy in Excel" />
+<meta property="og:description" content="(This is a guest post by Damian from Skill Analytics and ETF Prophet)
+Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html" />
+<meta property="article:published_time" content="2011-03-14T20:57:00-05:00" />
+<meta property="article:modified_time" content="2011-03-14T20:57:00-05:00" />
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+				<div class="logo__title">FOSS Trading</div>
+				<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">How to backtest a strategy in Excel</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-14T20:57:00-05:00">March 14, 2011</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>(This is a guest post by Damian from <a href="http://skillanalytics.wordpress.com/">Skill Analytics</a> and <a href="http://www.etfprophet.com/">ETF Prophet</a>)</p>
+<p>Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at <a href="http://blog.marketsci.com/">marketsci.com</a>, Jeff Pietch over at <a href="http://www.etfprophet.com/">etfprophet.com</a> and the folks (David and Corey) over at <a href="http://cssanalytics.wordpress.com/">cssanalytics.wordpress.com</a>. All of these guys have been gracious enough, over the years, to share with me how to do backtests – so I am indebted to them. And I want to thank Josh here at FOSS Trading as well – because he’s been kind enough to help me in learning how to use R for testing.</p>
+<p>With all that in mind, I thought I’d walk through what I consider the four basic steps in producing a backtest in Excel. Note that the <a href="http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx">core Excel file</a> wasn&rsquo;t created by me - it was created by Jared over at <a href="http://www.condoroptions.com/">CondorOptions</a> (another must read if you&rsquo;re not following him).</p>
+<p><strong>Step 1: Get the data</strong></p>
+<p>The first step is to get your market data into Excel. There are two basic approaches to this – the first involves going to Yahoo Finance and downloading historical data directly as CSV and then loading it into Excel. This is nice, but does require a manual update of that data as you go forward – meaning, you’ll need to re-download that historical data and then copy and paste either the entire dataset or a subset to update your strategy.</p>
+<p>The second approach is to use code to go grab data automatically from Yahoo Finance. Plenty of people have written VBA for doing just this – I have not written it myself so I don’t feel comfortable republishing the code. A quick search on Google will provide some examples to work with. There are also 3rd party tools that make the job simple – I’d recommend <a href="http://www.analyzerxl.com/">AnalyzerXL</a> as it provides the most flexibility and options.</p>
+<p>How you store this data in Excel is up to you – most people I know have a single sheet where they keep all the data, and then have a separate worksheet for the rest of system. For systems with a single instrument (such as the SPY), it’s not a problem to integrate the data and the system, but as the number of instruments goes up, you’ll want to have them on a separate worksheet to minimize scrolling and make it easy to update.</p>
+<p><strong>Step 2: Create your indicator</strong></p>
+<p>Now that we’ve got the data, we can use that data to construct an indicator or indicators. In this example, Jared constructed the DVI indicator (originally created by David over as CSS Analytics). You’ll see that we used 5 different columns to create the indicator – each one taking part of the calculation. One nice thing about working with Excel is that it really makes you think about how an indicator is constructed. It can be far too simple, these days, to throw down and indicator without understanding how it actually works.</p>
+<p>The final indicator column, DVI, is a weighted sum of the DVI magnitude and DVI stretch columns. I’d also note that AnalyzerXL also contains a large number of indicators predefined to make backtesting easier, and there are other add-ons for Excel that provide similar functionality.</p>
+<p><strong>Step 3: Construct your trading rule</strong></p>
+<p>Now that you have an indicator, you need to construct your trading rules. In this example (calculation is in the “Signal” column), our trading rule is simple – we’re long if DVI is below 0.5 and short if above. Obviously you could have more complex rules – a neutral state where you’re not long or short, or variable position sizing as opposed to just all-in long or short.</p>
+<p><strong>Step 4: The trading rules/equity curve</strong></p>
+<p>There are many different approaches here, but what you can see in this example is a simple way to do it. Assume a starting cash value of $10,000 and then increment or decrement that by whether or not we are long or short on the close of the prior day, and whether we were correct or not. In function form, we represent this by saying: if long, then multiple the prior day’s equity by the ratio of today’s close to yesterday’s close, otherwise multiple the prior day’s equity by ratio of yesterday’s close to today’s close. We can then, obviously, graph the results. Note also that we’re using cash here, but you could easily do raw percentages in place of a cash value.</p>
+<p>What’s missing here can be important for deciding whether to trade or not trade a system. First of all, the results here are frictionless – they assume there is no cost/commission for the trade. In high frequency swing systems like this one, the commissions could have a major impact on the viability of a given strategy.</p>
+<p>Second, we don’t have any statistics on the performance of the strategy – just a graph. Generally we want to know stats like CAGR and the Sharpe ratio to compare it with other strategies. We also don’t have monthly or yearly reporting. All of these things can be constructed in Excel with a bit of work – and again, AnalyzerXL provides a large number of reporting options as part of the package.</p>
+<p>That&rsquo;s a basic overview of backtesting in Excel - hope that you all find it useful!</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Examples/" rel="tag">Examples</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Excel/" rel="tag">Excel</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2011/03/rfinance-2011-registration-open-comments.html" rel="prev">
+			<span class="post-nav__caption">«&thinsp;Previous</span>
+			<p class="post-nav__post-title">R/Finance 2011 Registration Open</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2011/03/how-to-backtest-strategy-in-excel-comments.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">How to backtest a strategy in Excel</p>
+		</a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
+	</form>
+</div><div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/11/xts-011-2-on-cran.html">xts 0.11-2 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/09/xts-011-1-on-cran.html">xts 0.11-1 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API.html" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code.html" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim.html" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data.html" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown.html" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events.html" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples.html" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel.html" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data.html" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers.html" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers.html" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM.html" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics.html" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R.html" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts.html" title="xts">xts</a>
+	</div>
+</div>
+<div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
