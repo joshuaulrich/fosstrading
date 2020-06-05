@@ -210,21 +210,6 @@ There are some exciting new features, including a rolling single-factor model fu
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/2012/03/deoptim-in-parallel-comments.html" rel="bookmark">
-			DEoptim in Parallel
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-03-04T20:33:00-06:00">March 04, 2012</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This is great work by Josh. If anyone would like &hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &lsquo;sandbox&rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
 			<a href="/2012/03/deoptim-in-parallel.html" rel="bookmark">
 			DEoptim in Parallel
 			</a>
@@ -236,6 +221,25 @@ If you want to just see it working (though this won&rsquo;t show any speed impro
 	<div class="content list__excerpt post__content clearfix">
 		Running DEoptim in parallel has been on the development team&rsquo;s wishlist for awhile. It had not been a priority though, because none of us have personally needed it. An opportunity arose when Kris Boudt approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.
 We were able to add and test the functionality within a week. The latest revision of DEoptim on R-Forge has the capability to evaluate the objective function on multiple cores using foreach.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2011/09/ttr021-0-on-cran.html" rel="bookmark">
+			TTR_0.21-0 on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-09-01T13:10:00-05:00">September 01, 2011</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
+Here are the full contents of the CHANGES file:
+TTR version 0.21-0
+Changes from version 0.20-2
+NEW FEATURES:
+ Added variable moving average function, VMA. Added Brian Peterson&rsquo;s price bands function, PBands.
 	</div>
 </article>
 </main>

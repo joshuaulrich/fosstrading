@@ -315,7 +315,8 @@ The comments below are based on my personal experience. If I don&amp;rsquo;t com
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html</guid>
-      <description>PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &amp;lsquo;DejaVu Sans Mono&amp;rsquo;, &amp;lsquo;Droid Sans Mono&amp;rsquo;, &amp;lsquo;Lucida Console&amp;rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0.</description>
+      <description>This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp;amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.
+His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives.</description>
     </item>
     
     <item>
@@ -364,18 +365,6 @@ The comments below are based on my personal experience. If I don&amp;rsquo;t com
     
     <item>
       <title>R/Finance 2013 Registration Open</title>
-      <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open-comments.html</link>
-      <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open-comments.html</guid>
-      <description>HI, Do each of the topics in the agenda come with &amp;hellip; vic - May 1, 2013HI,
-Do each of the topics in the agenda come with notes/code that is distributed on site? Thanks!
-Hi Vic,
-The slides and code examples for most of the presentations will be available on the conference website within a couple weeks after the conference. We can&amp;rsquo;t make all the slides available because some presenter&amp;rsquo;s employers will not allow us to distribute their slides.</description>
-    </item>
-    
-    <item>
-      <title>R/Finance 2013 Registration Open</title>
       <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open.html</link>
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
@@ -387,33 +376,12 @@ We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan 
     
     <item>
       <title>Computational Finance with R on Coursera</title>
-      <link>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments.html</link>
-      <pubDate>Wed, 12 Sep 2012 10:33:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments.html</guid>
-      <description>I&amp;rsquo;ve been trying to sign up since you posted t&amp;hellip; moumouche - Sep 5, 2012I&amp;rsquo;ve been trying to sign up since you posted this, to no avail! Do you know if the class is still accepting student?
-Sorry, I don&amp;rsquo;t know if the class is still accepting students.
-I just signed up&amp;hellip; and I am 4 weeks late.. Thanks for the link Josh. I&amp;rsquo;m loving it :)
-This comment has been removed by a blog administrator.</description>
-    </item>
-    
-    <item>
-      <title>Computational Finance with R on Coursera</title>
       <link>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera.html</link>
       <pubDate>Wed, 12 Sep 2012 10:33:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera.html</guid>
       <description>If you haven&amp;rsquo;t signed up for the Introduction to Computational Finance and Financial Econometrics course taught by Eric Zivot on Coursera, it&amp;rsquo;s not too late. The second week just started and the first assignments aren&amp;rsquo;t due until September 18th.
 Join me in getting a good refresher on basic statistics, simulation and bootstrapping, linear algebra, and learning more about portfolio optimization, efficient portfolios, and risk budgeting.</description>
-    </item>
-    
-    <item>
-      <title>A New plot.xts</title>
-      <link>https://blog.fosstrading.com/2012/08/a-new-plot-xts-comments.html</link>
-      <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts-comments.html</guid>
-      <description>Wow!!!! Great work RMW. jryan - Aug 3, 2012Wow!!!! Great work RMW.</description>
     </item>
     
     <item>
@@ -461,16 +429,6 @@ Building on the success of the three previous conferences in 2009, 2010, and 201
     
     <item>
       <title>DEoptim in Parallel</title>
-      <link>https://blog.fosstrading.com/2012/03/deoptim-in-parallel-comments.html</link>
-      <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2012/03/deoptim-in-parallel-comments.html</guid>
-      <description>This is great work by Josh. If anyone would like &amp;hellip; Unknown - Mar 2, 2012This is great work by Josh. If anyone would like to test this out before we send it to CRAN, see example code in the &amp;lsquo;sandbox&amp;rsquo; directory in the package source, also provided by Josh.
-If you want to just see it working (though this won&amp;rsquo;t show any speed improvements), here is some minimal code. You will need the following packages installed: doSNOW, foreach, DEoptim (the version from R-forge, not CRAN).</description>
-    </item>
-    
-    <item>
-      <title>DEoptim in Parallel</title>
       <link>https://blog.fosstrading.com/2012/03/deoptim-in-parallel.html</link>
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
@@ -491,16 +449,6 @@ R/Finance 2012: Applied Finance with R
 May 11 and 12, 2012
 University of Illinois, Chicago, IL, USA
 The fourth annual R/Finance conference for applied finance using R will be held on May 11 and 12, 2012 in Chicago, IL, USA on the campus of the University of Illinois at Chicago.</description>
-    </item>
-    
-    <item>
-      <title>Creating Financial Instrument metadata in R</title>
-      <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments.html</link>
-      <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments.html</guid>
-      <description>Should we consider it good that rules are independ&amp;hellip; Anonymous - Aug 1, 2011Should we consider it good that rules are independent of model building? I don&amp;rsquo;t think so. My goal in backtesting is to assign a PROBABILITY that a trade will move my favour &amp;ndash; and then size according to modified Kelly.
-@crasshopper: I think it would be more appropriate to say that rules are ipart of the model, and that models are independent of the instruments that they will be applied to.</description>
     </item>
     
     <item>
@@ -546,18 +494,6 @@ This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unne
     
     <item>
       <title>How to backtest a strategy in R</title>
-      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments.html</link>
-      <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments.html</guid>
-      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
-However, when I ran it, I got this error:
-Error: could not find function &amp;ldquo;DVI&amp;rdquo;
-I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.packages(&amp;lsquo;TTR&amp;rsquo;,dependencies=TRUE) and from r-forge, using install.packages(&amp;ldquo;TTR&amp;rdquo;,repos=&amp;quot;http://r-forge.r-project.org&amp;rdquo;). In both cases it installs fine, and other indicators work, but there&amp;rsquo;s no DVI indicator.</description>
-    </item>
-    
-    <item>
-      <title>How to backtest a strategy in R</title>
       <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html</link>
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
@@ -569,36 +505,12 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
     
     <item>
       <title>How to backtest a strategy in Excel</title>
-      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments.html</link>
-      <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments.html</guid>
-      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
-This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
-Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
-I use the Sharpe Ratio to judge the effectivness of my investments.</description>
-    </item>
-    
-    <item>
-      <title>How to backtest a strategy in Excel</title>
       <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</link>
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</guid>
       <description>(This is a guest post by Damian from Skill Analytics and ETF Prophet)
 Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics.</description>
-    </item>
-    
-    <item>
-      <title>R/Finance 2011 Registration Open</title>
-      <link>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open-comments.html</link>
-      <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open-comments.html</guid>
-      <description>Hi! Will there be a video of it posted online? Luka Gubo - Mar 1, 2011Hi!
-Will there be a video of it posted online?
-Hi Luka,
-There will not be videos of the presentations, but the presentation slides will be available online after the conference.</description>
     </item>
     
     <item>
@@ -614,34 +526,12 @@ This year we are excited to have longer tutorial sessions and an optional full-d
     
     <item>
       <title>Moving from Excel to R</title>
-      <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments.html</link>
-      <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments.html</guid>
-      <description>Hi Joshua, Thanks for excellent advice. &amp;lsquo;Keep&amp;hellip; Ravi Aranke - Mar 0, 2011Hi Joshua,
-Thanks for excellent advice. &amp;lsquo;Keep at it till you figure it out&amp;rsquo;. Indeed.
-It would be great if you could offer your thoughts on how to move to next stage of R viz. building packages. How and when did you make that transition? What are the good resources, sites, tools toward that?
-Thanks a lot,
-Ravi</description>
-    </item>
-    
-    <item>
-      <title>Moving from Excel to R</title>
       <link>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html</link>
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html</guid>
       <description>This first post of the Backtesting in Excel and R series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of R.
 I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals). Most people don&amp;rsquo;t prefer my approach of &amp;ldquo;keep at it until you figure it out&amp;rdquo;, so I don&amp;rsquo;t have a lot of personal advice to share.</description>
-    </item>
-    
-    <item>
-      <title>Backtesting in Excel and R</title>
-      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments.html</link>
-      <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments.html</guid>
-      <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
     </item>
     
     <item>
@@ -669,16 +559,6 @@ The preparations for R/Finance 2011 are progressing, and due to favourable respo
     
     <item>
       <title>Why Use R?</title>
-      <link>https://blog.fosstrading.com/2010/12/why-use-r-comments.html</link>
-      <pubDate>Tue, 14 Dec 2010 22:35:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/12/why-use-r-comments.html</guid>
-      <description>I really like this post because you show a progres&amp;hellip; Phil Rack - Dec 3, 2010I really like this post because you show a progression of stat tools you have used. I think that&amp;rsquo;s important for those who are considering using a new product. Everyone wants to see some common ground and how they&amp;rsquo;ve evolved their analytics stack over time.
-One thing I can&amp;rsquo;t seem to figure out in R is how you would use multiple timeframes.</description>
-    </item>
-    
-    <item>
-      <title>Why Use R?</title>
       <link>https://blog.fosstrading.com/2010/12/why-use-r.html</link>
       <pubDate>Tue, 14 Dec 2010 22:35:00 -0600</pubDate>
       
@@ -690,15 +570,6 @@ I was introduced to R while I was working as a Research Analyst at the Federal R
     
     <item>
       <title>Build RQuantLib on 32-bit Windows</title>
-      <link>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments.html</link>
-      <pubDate>Tue, 07 Dec 2010 17:20:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments.html</guid>
-      <description>Hi Thanks for posting your guidelines, I have trie&amp;hellip; Unknown - Mar 0, 2011Hi Thanks for posting your guidelines, I have tried it on a 64bit machine, it seems to be working upto step 11. I&amp;rsquo;m not sure where I am supposed to be entering these last commands. I entered &amp;ldquo;set QUANTLIB_ROOT=c:/R/cpp/QuantLibBuild&amp;rdquo; via a dos prompt and created the environment varable QUANTLIB_ROOT. The last command &amp;ldquo;R CMD INSTALL RQuantLib_0.3.4.tar.gz&amp;rdquo; doesn&amp;rsquo;t seem to be recognised anywhere.</description>
-    </item>
-    
-    <item>
-      <title>Build RQuantLib on 32-bit Windows</title>
       <link>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows.html</link>
       <pubDate>Tue, 07 Dec 2010 17:20:00 -0600</pubDate>
       
@@ -706,18 +577,6 @@ I was introduced to R while I was working as a Research Analyst at the Federal R
       <description>Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
  Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
 Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3.</description>
-    </item>
-    
-    <item>
-      <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments.html</link>
-      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments.html</guid>
-      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
-Jeff: Awesome work! Hope that you become a regular contributor!
-Jeff,
-Great article. I used it to set up and test my IB link.</description>
     </item>
     
     <item>

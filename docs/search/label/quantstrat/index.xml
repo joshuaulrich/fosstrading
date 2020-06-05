@@ -23,20 +23,6 @@ If your strategy is not path-dependent, you can get a fairly substantial perform
     
     <item>
       <title>Tactical asset allocation using quantstrat</title>
-      <link>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments.html</link>
-      <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments.html</guid>
-      <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011I am trying to run this script in R-Studio on OSX but I am getting the following error:
-&amp;gt; currency(&amp;ldquo;USD&amp;rdquo;)
-Error in assign(primary_id, currency_temp, envir = as.environment(.instrument)) :
-object &amp;lsquo;.instrument&amp;rsquo; not found
-I have installed the dependencies: zoo, xts, TTR, RTAQ, quantstrat, quantmod, Performanceanalytics, FInancialInstrument, Defaults and blotter.
-Any ideas of what is going wrong here?</description>
-    </item>
-    
-    <item>
-      <title>Tactical asset allocation using quantstrat</title>
       <link>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</link>
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
@@ -44,22 +30,6 @@ Any ideas of what is going wrong here?</description>
       <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate. There are two major differences:
   The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
-    </item>
-    
-    <item>
-      <title>Introduction to quantstrat</title>
-      <link>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat-comments.html</link>
-      <pubDate>Fri, 12 Aug 2011 06:48:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat-comments.html</guid>
-      <description>Great idea, Josh. I&amp;rsquo;m looking forward to seein&amp;hellip; Alexis Petit - Aug 5, 2011Great idea, Josh. I&amp;rsquo;m looking forward to seeing the next posts! I think this will help many of us make a better use of Quantstrat. Many thanks!
-package quantstrat is not available (for R version 2.13.1)
-need manual compilation?
-Thank you for your work, really helpful!
-From windows:
-install.packages(&amp;ldquo;quantstrat&amp;rdquo;, repos=&amp;quot;http://R-Forge.R-project.org&amp;rdquo;)
-Installing package(s) into ‘C:/Users/Res1/Documents/R/win-library/2.13’
-(as ‘lib’ is unspecified)</description>
     </item>
     
     <item>

@@ -17,21 +17,8 @@
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html</guid>
-      <description>PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &amp;lsquo;DejaVu Sans Mono&amp;rsquo;, &amp;lsquo;Droid Sans Mono&amp;rsquo;, &amp;lsquo;Lucida Console&amp;rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0.</description>
-    </item>
-    
-    <item>
-      <title>Tactical asset allocation using quantstrat</title>
-      <link>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments.html</link>
-      <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments.html</guid>
-      <description>I am trying to run this script in R-Studio on OSX &amp;hellip; Lemao - Aug 2, 2011I am trying to run this script in R-Studio on OSX but I am getting the following error:
-&amp;gt; currency(&amp;ldquo;USD&amp;rdquo;)
-Error in assign(primary_id, currency_temp, envir = as.environment(.instrument)) :
-object &amp;lsquo;.instrument&amp;rsquo; not found
-I have installed the dependencies: zoo, xts, TTR, RTAQ, quantstrat, quantmod, Performanceanalytics, FInancialInstrument, Defaults and blotter.
-Any ideas of what is going wrong here?</description>
+      <description>This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp;amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.
+His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives.</description>
     </item>
     
     <item>
@@ -47,34 +34,12 @@ The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA str
     
     <item>
       <title>Timely Portfolio: LSPM Examples</title>
-      <link>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments.html</link>
-      <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments.html</guid>
-      <description>Josh I have sennt a mail to your gmail address. P&amp;hellip; Chris - May 5, 2011Josh
-I have sennt a mail to your gmail address. Please confirm that you have received it.</description>
-    </item>
-    
-    <item>
-      <title>Timely Portfolio: LSPM Examples</title>
       <link>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples.html</link>
       <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples.html</guid>
       <description>Timely Portfolio has been doing some interesting work with Ralph Vince&amp;rsquo;s Leverage Space Model via the LSPM R package. Here&amp;rsquo;s a short list of his most recent LSPM-related posts:
  The Leverage Space Trading Model Bond Market as a Casino Game Part 1 Bond Market as a Casino Game Part 2 Slightly Different Use of Ralph Vince’s Leverage Space Trading Model Another Use of LSPM in Tactical Portfolio Allocation  I encourage those of you who are interested in LSPM and/or R to check out his blog.</description>
-    </item>
-    
-    <item>
-      <title>How to backtest a strategy in R</title>
-      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments.html</link>
-      <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments.html</guid>
-      <description>Thanks for the tutorial. However, when I ran it, &amp;hellip; Leo - Mar 6, 2011Thanks for the tutorial.
-However, when I ran it, I got this error:
-Error: could not find function &amp;ldquo;DVI&amp;rdquo;
-I can&amp;rsquo;t seem to get the DVI indicator out of TTR. I&amp;rsquo;ve tried installing the package from CRAN, using install.packages(&amp;lsquo;TTR&amp;rsquo;,dependencies=TRUE) and from r-forge, using install.packages(&amp;ldquo;TTR&amp;rdquo;,repos=&amp;quot;http://r-forge.r-project.org&amp;rdquo;). In both cases it installs fine, and other indicators work, but there&amp;rsquo;s no DVI indicator.</description>
     </item>
     
     <item>
@@ -90,33 +55,12 @@ The getSymbols function in quantmod makes this step easy if you can use daily da
     
     <item>
       <title>How to backtest a strategy in Excel</title>
-      <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments.html</link>
-      <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments.html</guid>
-      <description>Good summary. This is much more efficient than c&amp;hellip; Rocko Chen - Mar 3, 2011Good summary.
-This is much more efficient than coding + debugging + testing stuff in programming languages e.g. JAVA, Matlab, C++.
-Thanks for the comment Rocko - I think what you&amp;rsquo;ll find is that as the complexity of a model goes up, you may want to look at other approaches as well!
-I use the Sharpe Ratio to judge the effectivness of my investments.</description>
-    </item>
-    
-    <item>
-      <title>How to backtest a strategy in Excel</title>
       <link>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</link>
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</guid>
       <description>(This is a guest post by Damian from Skill Analytics and ETF Prophet)
 Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics.</description>
-    </item>
-    
-    <item>
-      <title>Backtesting in Excel and R</title>
-      <link>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments.html</link>
-      <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments.html</guid>
-      <description>Looking forward to the posts! Kristianson - Feb 5, 2011Looking forward to the posts!</description>
     </item>
     
     <item>
@@ -132,33 +76,11 @@ The three-post series will show you:
     
     <item>
       <title>Margin Constraints with LSPM</title>
-      <link>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm-comments.html</link>
-      <pubDate>Sun, 01 Aug 2010 23:31:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm-comments.html</guid>
-      <description>Josh Thank you for providing the LSPM package - I&amp;hellip; Chris - Apr 2, 2011Josh
-Thank you for providing the LSPM package - I would not have been able to experiment with using LSPM if I could not use the package. I would like to confirm two things:
- the maxUnits function has not been built in to the LSPM package - correct? what should one do if using leverage is not an option.</description>
-    </item>
-    
-    <item>
-      <title>Margin Constraints with LSPM</title>
       <link>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html</link>
       <pubDate>Sun, 01 Aug 2010 23:31:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html</guid>
       <description>When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument. For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity. The optimal amount to trade is 1,000 shares ($100,000/$100). However, that would require $500,000 in equity, while you only have $100,000. What do you do?</description>
-    </item>
-    
-    <item>
-      <title>LSPM Joint Probability Tables</title>
-      <link>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables-comments.html</link>
-      <pubDate>Tue, 18 May 2010 22:30:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables-comments.html</guid>
-      <description>Josh, If I may comment: The joint probabilities ta&amp;hellip; Ralph Vince - May 3, 2010Josh, If I may comment:
-The joint probabilities table (&amp;ldquo;jpt&amp;rdquo;) ultimately should encompass and be a proxy for all potential risk for the next period.
-In other words, frequently, in attempting to articulate &amp;ldquo;risk,&amp;rdquo; we see the argument that it is more than mere variance. That there is liquidity risk, there is counter-party risk, this risk and that risk, and there is a notion that risk posses many facets.</description>
     </item>
     
     <item>
@@ -175,37 +97,12 @@ I&amp;rsquo;m certain there are more robust ways to estimate this table, but the
     
     <item>
       <title>Maximum Probability of Profit</title>
-      <link>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit-comments.html</link>
-      <pubDate>Fri, 09 Apr 2010 10:04:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit-comments.html</guid>
-      <description>Josh, Thanks for another great explanation. I migh&amp;hellip; Ralph Vince - Apr 5, 2010Josh, Thanks for another great explanation. I might point out to that it is not just the optimization algorithms used, but in the case of mazimizing for greatest probability of profit, there are many posssible optimal sets (f1,..,fn,z+,z-). There are multiple sets which will result in an equivalent (and highest) probability of profit.
--Ralph Vince
-If I understand the optimization problem correctly, I think it may be possible to achieve similar results in just minutes of computation with a different optimization approach.</description>
-    </item>
-    
-    <item>
-      <title>Maximum Probability of Profit</title>
       <link>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</link>
       <pubDate>Fri, 09 Apr 2010 10:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</guid>
       <description>To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
 These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
-    </item>
-    
-    <item>
-      <title>LSPM with snow</title>
-      <link>https://blog.fosstrading.com/2010/01/lspm-with-snow-comments.html</link>
-      <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow-comments.html</guid>
-      <description>Hi Joshua! Could you tell me how to calculate prob&amp;hellip; senyai - Apr 5, 2010Hi Joshua! Could you tell me how to calculate probability of drawdown using martingale exponents? I do not want to optimize anything, just calculate dd like Vince did at 173 page. My code:
--&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
-port &amp;lt;- lsp(trades,probs, f=c(0.085,0.015,0.129), z = c(-0.76, -0.992, 0.0))
-probDrawdown(port,0.8,12,13)
--&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
-This code shows me value 0.0001982222, but Vince says his dd is 0.</description>
     </item>
     
     <item>
@@ -220,23 +117,6 @@ This post will illustrate how the snow package can increase the speed of the pro
     
     <item>
       <title>LSPM Examples</title>
-      <link>https://blog.fosstrading.com/2010/01/lspm-examples-comments.html</link>
-      <pubDate>Sat, 02 Jan 2010 15:35:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/01/lspm-examples-comments.html</guid>
-      <description>Hi Josh I am trying to replicate the results on p&amp;hellip; Chris - Nov 2, 2011Hi Josh
-I am trying to replicate the results on page 87 (as mentioned in your post above) of the LSPM book. I do the following:
-&amp;gt; data(port)
-&amp;gt; DEctrl &amp;lt;- list(NP=30, itermax=100)
-&amp;gt; res &amp;lt;- optimalf(port, control=DEctrl)
-The result is :
-Iteration: 100 bestvalit: -1.293917 bestmemit: 1.000000 0.000000 0.857813
-Page 87 reads:
-MktSysA 0.307</description>
-    </item>
-    
-    <item>
-      <title>LSPM Examples</title>
       <link>https://blog.fosstrading.com/2010/01/lspm-examples.html</link>
       <pubDate>Sat, 02 Jan 2010 15:35:00 -0600</pubDate>
       
@@ -245,18 +125,6 @@ MktSysA 0.307</description>
 In this long-overdue post, I will show how to optimize a Leverage Space Portfolio with the LSPM package. Please use the comments to let me know what you would like to see next.
 Some copious notes before we get to the code:
 These examples are based on revision 26 31 from r-forge and will not work under earlier revisions (and may not work with later revisions).</description>
-    </item>
-    
-    <item>
-      <title>RSI(2) Evaluation</title>
-      <link>https://blog.fosstrading.com/2009/06/rsi2-evaluation-comments.html</link>
-      <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2009/06/rsi2-evaluation-comments.html</guid>
-      <description>I have run this script to see how RIS2 with scalin&amp;hellip; White Cube - Apr 6, 2012I have run this script to see how RIS2 with scaling has performed since 2009.
-On the long side the performance has not been as good as before (with some sharp drawdowns).
-On the short side the equity curve went down for 2 years and seems picking up again since 2011.
-Has the magic RSI gone ?</description>
     </item>
     
     <item>
@@ -283,18 +151,6 @@ I appreciate how they&amp;rsquo;re making R more accessible to a general audienc
     
     <item>
       <title>RSI(2) with Position Sizing</title>
-      <link>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing-comments.html</link>
-      <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing-comments.html</guid>
-      <description>i look forward to it &amp;ndash; never could get my head ar&amp;hellip; Autore del blog - May 0, 2009i look forward to it &amp;ndash; never could get my head around performance metrics..
-This is awesome - very cool. I also was curious if you could put together a simple example of the following:
-- Take four ETFs (SPY,IWM,QQQQ,TLT) and rank them by their 12m ROC.
-- Buy the top one on the first day of the month.</description>
-    </item>
-    
-    <item>
-      <title>RSI(2) with Position Sizing</title>
       <link>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html</link>
       <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
       
@@ -302,20 +158,6 @@ This is awesome - very cool. I also was curious if you could put together a simp
       <description>Though it&amp;rsquo;s more than two weeks later, here&amp;rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with R. You can find the first post here.
 The first post replicated this simple RSI(2) strategy from the MarketSci Blog. This second post will demonstrate how to replicate this strategy that scales in/out of RSI(2).
 A couple notes before moving to the code:</description>
-    </item>
-    
-    <item>
-      <title>Testing RSI(2) with R, First Steps</title>
-      <link>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments.html</link>
-      <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments.html</guid>
-      <description>Really cool. A lot of questions: &amp;ldquo;# Calcula&amp;hellip; Damian - Apr 3, 2009Really cool. A lot of questions:
-&amp;ldquo;# Calculate the RSI indicator
-rsi &amp;lt;- RSI(Cl(GSPC),2)&amp;rdquo;
-When you reference the symbol for getting the data, you referenced it via &amp;ldquo;^GSPC&amp;rdquo; - how did it get assigned to GSPC?
-Secondly, if I have the data stored locally, how would I reference it?
-&amp;ldquo;# Lag signals to align with days in market,</description>
     </item>
     
     <item>

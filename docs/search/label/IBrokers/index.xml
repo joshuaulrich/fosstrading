@@ -13,34 +13,11 @@
     
     <item>
       <title>Algorithmic Trading with IBrokers</title>
-      <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments.html</link>
-      <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments.html</guid>
-      <description>As the speaker says, R isn&amp;rsquo;t fast enough to do&amp;hellip; Anonymous - Oct 0, 2010As the speaker says, R isn&amp;rsquo;t fast enough to do HFT.
-You really think anybody can beat the market using the same statistics packages as everybody else and being charged $1/trade?!
-If by HFT, you mean is R fast enough to compete with Getco or Goldman, then the answer is clearly NO. That world is dominated by embedded computing, wire speed, and things like FPGA.</description>
-    </item>
-    
-    <item>
-      <title>Algorithmic Trading with IBrokers</title>
       <link>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers.html</link>
       <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers.html</guid>
       <description>Kyle Matoba is a Finance PhD student at the UCLA Anderson School of Management. He gave a presentation on Algorithmic Trading with R and IBrokers at a recent meeting of the Los Angeles R User Group. The discussion of IBrokers begins near the 12-minute mark.</description>
-    </item>
-    
-    <item>
-      <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments.html</link>
-      <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments.html</guid>
-      <description>Thanks for the mention of the trading-shim, Jeff -&amp;hellip; R P Herrold - May 6, 2010Thanks for the mention of the trading-shim, Jeff &amp;ndash; For those who do not know Jeff from the &amp;lsquo;R&amp;rsquo; SIG for finance, I would also commend his fine work there. See: https://stat.ethz.ch/mailman/listinfo/r-sig-finance
-Jeff: Awesome work! Hope that you become a regular contributor!
-Jeff,
-Great article. I used it to set up and test my IB link.</description>
     </item>
     
     <item>

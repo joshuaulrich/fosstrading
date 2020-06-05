@@ -8,7 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Introduction to PortfolioAnalytics" />
-<meta property="og:description" content="PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &lsquo;DejaVu Sans Mono&rsquo;, &lsquo;Droid Sans Mono&rsquo;, &lsquo;Lucida Console&rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0." />
+<meta property="og:description" content="This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.
+His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html" />
 <meta property="article:published_time" content="2014-03-29T12:25:00-05:00" />
@@ -88,7 +89,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-03-29T12:25:00-05:00">March 29, 2014</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>PortfolioAnalytics Basics body, td { font-family: sans-serif; background-color: white; font-size: 12px; margin: 8px; } tt, code, pre { font-family: &lsquo;DejaVu Sans Mono&rsquo;, &lsquo;Droid Sans Mono&rsquo;, &lsquo;Lucida Console&rsquo;, Consolas, Monaco, monospace; } h1 { font-size:2.2em; } h2 { font-size:1.8em; } h3 { font-size:1.4em; } h4 { font-size:1.0em; } h5 { font-size:0.9em; } h6 { font-size:0.8em; } a:visited { color: rgb(50%, 0%, 50%); } pre { margin-top: 0; max-width: 95%; border: 1px solid #ccc; white-space: pre-wrap; } pre code { display: block; padding: 0.5em; } code.r, code.cpp { background-color: #F8F8F8; } table, td, th { border: none; } blockquote { color:#666666; margin:0; padding-left: 1em; border-left: 0.5em #EEE solid; } hr { height: 0px; border-bottom: none; border-top-width: thin; border-top-style: dotted; border-top-color: #999999; } @media print { * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; } body { font-size:12pt; max-width:100%; } a, a:visited { text-decoration: underline; } hr { visibility: hidden; page-break-before: always; } pre, blockquote { padding-right: 1em; page-break-inside: avoid; } tr, img { page-break-inside: avoid; } img { max-width: 100% !important; } @page :left { margin: 15mm 20mm 15mm 10mm; } @page :right { margin: 15mm 10mm 15mm 20mm; } p, h2, h3 { orphans: 3; widows: 3; } h2, h3 { page-break-after: avoid; } } pre .operator, pre .paren { color: rgb(104, 118, 135) } pre .literal { color: rgb(88, 72, 246) } pre .number { color: rgb(0, 0, 205); } pre .comment { color: rgb(76, 136, 107); } pre .keyword { color: rgb(0, 0, 255); } pre .identifier { color: rgb(0, 0, 0); } pre .string { color: rgb(3, 106, 7); } var hljs=new function(){function m(p){return p.replace(/&amp;/gm,&quot;&amp;&quot;).replace(/&lt;/gm,&quot;&lt;&quot;)}function f(r,q,p){return RegExp(q,&ldquo;m&quot;+(r.cI?&ldquo;i&rdquo;:&quot;&quot;)+(p?&ldquo;g&rdquo;:&quot;&quot;))}function b(r){for(var p=0;p&lt;r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName==&quot;CODE&rdquo;){return q}if(!(q.nodeType==3&amp;&amp;q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p=&rdquo;&quot;;for(var r=0;r&lt;t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,&quot;&quot;)}p+=q}else{if(t.childNodes[r].nodeName==&quot;BR&rdquo;){p+=&rdquo;\n&rdquo;}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,&quot;\n&rdquo;)}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q&lt;r.length;q++){var p=r[q].replace(/^language-/,&quot;&quot;);if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r&lt;s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName==&quot;BR&rdquo;){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:&ldquo;start&rdquo;,offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:&ldquo;stop&rdquo;,offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z=&rdquo;&quot;;var s=[];function u(){if(y.length&amp;&amp;w.length){if(y[0].offset!=w[0].offset){return(y[0].offset&lt;w[0].offset)?y:w}else{return w[0].event==&quot;start&rdquo;?y:w}}else{return y.length?y:w}}function t(D){var A=&quot;&lt;&quot;+D.nodeName.toLowerCase();for(var B=0;B&lt;D.attributes.length;B++){var C=D.attributes[B];A+=&rdquo; &ldquo;+C.nodeName.toLowerCase();if(C.value!==undefined&amp;&amp;C.value!==false&amp;&amp;C.value!==null){A+='=&rdquo;&lsquo;+m(C.value)+&rsquo;&quot;'}}return A+&quot;&gt;&rdquo;}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event==&quot;start&rdquo;){z+=t(v.node);s.push(v.node)}else{if(v.event==&quot;stop&rdquo;){var p,r=s.length;do{r&ndash;;p=s[r];z+=(&ldquo;&lt;/&ldquo;+p.nodeName.toLowerCase()+&quot;&gt;&rdquo;)}while(p!=v.node);s.splice(r,1);while(r&lt;s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w=&quot;keyword&rdquo;}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b=&rdquo;\\b(&ldquo;+s.join(&ldquo;|&rdquo;)+&rdquo;)\\s&rdquo;}x.bR=f(y,x.b?x.b:&quot;\\B|\\b&rdquo;);if(!x.e&amp;&amp;!x.eW){x.e=&rdquo;\\B|\\b&rdquo;}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t&lt;x.c.length;t++){if(x.c[t]==&quot;self&rdquo;){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L&lt;M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&amp;&amp;D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&amp;&amp;L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L&lt;N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r&ndash;}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join(&ldquo;|&rdquo;),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),&quot;&quot;,true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&amp;&amp;M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r=&rdquo;&quot;;var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<!-- raw HTML omitted -->'+M[0]+&quot;<!-- raw HTML omitted -->&rdquo;}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&amp;&amp;e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?&lsquo;<!-- raw HTML omitted -->&rsquo;:&quot;&quot;;if(M.rB){y+=L;M.buffer=&rdquo;&quot;}else{if(M.eB){y+=m(r)+L;M.buffer=&rdquo;&quot;}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?&ldquo;<!-- raw HTML omitted -->&rdquo;:&quot;&quot;;if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L&gt;1){O=D[D.length-2].cN?&ldquo;<!-- raw HTML omitted -->&rdquo;:&quot;&quot;;y+=O;L&ndash;;D.length&ndash;}var r=D[D.length-1];D.length&ndash;;D[D.length-1].buffer=&rdquo;&quot;;if(r.starts){I(r.starts,&quot;&quot;)}return R.rE}if(w(M,R)){throw&quot;Illegal&rdquo;}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y=&rdquo;&quot;;try{var s,u=0;E.dM.buffer=&rdquo;&quot;;do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length&gt;1){throw&quot;Illegal&rdquo;}return{r:A,keyword_count:x,value:y}}catch(H){if(H==&quot;Illegal&rdquo;){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r&gt;r.keyword_count+r.r){r=s}if(s.keyword_count+s.r&gt;p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((&lt;[^&gt;]+&gt;|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,&ldquo;<!-- raw HTML omitted -->&rdquo;)}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement(&ldquo;pre&rdquo;);s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match(&quot;(\\s|^)(language-)?&ldquo;+v+&rdquo;(\\s|$)&quot;)){u=u?(u+&rdquo; &ldquo;+v):v}if(/MSIE [678]/.test(navigator.userAgent)&amp;&amp;t.tagName==&quot;CODE&rdquo;&amp;&amp;t.parentNode.tagName==&quot;PRE&rdquo;){s=t.parentNode;var p=document.createElement(&ldquo;div&rdquo;);p.innerHTML=&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->&quot;+y.value+&quot;<!-- raw HTML omitted --><!-- raw HTML omitted -->&rdquo;;t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName(&ldquo;pre&rdquo;);for(var p=0;p&lt;r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener(&ldquo;DOMContentLoaded&rdquo;,o,false);window.addEventListener(&ldquo;load&rdquo;,o,false)}else{if(window.attachEvent){window.attachEvent(&ldquo;onload&rdquo;,o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR=&rdquo;[a-zA-Z][a-zA-Z0-9_]*&quot;;this.UIR=&rdquo;[a-zA-Z_][a-zA-Z0-9_]*&quot;;this.NR=&rdquo;\\b\\d+(\\.\\d+)?&quot;;this.CNR=&rdquo;\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)&quot;;this.BNR=&rdquo;\\b(0b[01]+)&quot;;this.RSR=&rdquo;!|!=|!==|%|%=|&amp;|&amp;&amp;|&amp;=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|&lt;|&laquo;|&laquo;=|&lt;=|=|==|===|&gt;|&gt;=|&raquo;|&raquo;=|&raquo;&gt;|&raquo;&gt;=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~&rdquo;;this.ER=&rdquo;(?![\\s\\S])&quot;;this.BE={b:&quot;\\\\.&quot;,r:0};this.ASM={cN:&ldquo;string&rdquo;,b:&quot;'&quot;,e:&quot;'&quot;,i:&quot;\\n&rdquo;,c:[this.BE],r:0};this.QSM={cN:&ldquo;string&rdquo;,b:'&quot;',e:'&quot;',i:&quot;\\n&rdquo;,c:[this.BE],r:0};this.CLCM={cN:&ldquo;comment&rdquo;,b:&quot;//&quot;,e:&ldquo;$&rdquo;};this.CBLCLM={cN:&ldquo;comment&rdquo;,b:&quot;/\\*&quot;,e:&quot;\\*/&quot;};this.HCM={cN:&ldquo;comment&rdquo;,b:&quot;#&quot;,e:&ldquo;$&rdquo;};this.NM={cN:&ldquo;number&rdquo;,b:this.NR,r:0};this.CNM={cN:&ldquo;number&rdquo;,b:this.CNR,r:0};this.BNM={cN:&ldquo;number&rdquo;,b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{&ldquo;false&rdquo;:1,&ldquo;int&rdquo;:1,&ldquo;float&rdquo;:1,&ldquo;while&rdquo;:1,&ldquo;private&rdquo;:1,&ldquo;char&rdquo;:1,&ldquo;catch&rdquo;:1,&ldquo;export&rdquo;:1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,&ldquo;const&rdquo;:1,struct:1,&ldquo;for&rdquo;:1,static_cast:2,union:1,namespace:1,unsigned:1,&ldquo;long&rdquo;:1,&ldquo;throw&rdquo;:1,&ldquo;volatile&rdquo;:2,&ldquo;static&rdquo;:1,&ldquo;protected&rdquo;:1,bool:1,template:1,mutable:1,&ldquo;if&rdquo;:1,&ldquo;public&rdquo;:1,friend:2,&ldquo;do&rdquo;:1,&ldquo;return&rdquo;:1,&ldquo;goto&rdquo;:1,auto:1,&ldquo;void&rdquo;:2,&ldquo;enum&rdquo;:1,&ldquo;else&rdquo;:1,&ldquo;break&rdquo;:1,&ldquo;new&rdquo;:1,extern:1,using:1,&ldquo;true&rdquo;:1,&ldquo;class&rdquo;:1,asm:1,&ldquo;case&rdquo;:1,typeid:1,&ldquo;short&rdquo;:1,reinterpret_cast:2,&ldquo;default&rdquo;:1,&ldquo;double&rdquo;:1,register:1,explicit:1,signed:1,typename:1,&ldquo;try&rdquo;:1,&ldquo;this&rdquo;:1,&ldquo;switch&rdquo;:1,&ldquo;continue&rdquo;:1,wchar_t:1,inline:1,&ldquo;delete&rdquo;:1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:&ldquo;&lt;/&quot;,c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:&ldquo;string&rdquo;,b:&quot;'\\\\?.&quot;,e:&quot;'&quot;,i:&quot;.&quot;},{cN:&ldquo;number&rdquo;,b:&quot;\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)&quot;},hljs.CNM,{cN:&ldquo;preprocessor&rdquo;,b:&quot;#&quot;,e:&ldquo;$&rdquo;},{cN:&ldquo;stl_container&rdquo;,b:&quot;\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*&lt;&rdquo;,e:&ldquo;&gt;&rdquo;,k:a,r:10,c:[&ldquo;self&rdquo;]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:&ldquo;number&rdquo;,b:&quot;\\b0[xX][0-9a-fA-F]+[Li]?\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:0},{cN:&ldquo;number&rdquo;,b:&quot;\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:0},{cN:&ldquo;number&rdquo;,b:&quot;\\b\\d+\\.(?!\\d)(?:i\\b)?&quot;,e:hljs.IMMEDIATE_RE,r:1},{cN:&ldquo;number&rdquo;,b:&quot;\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:0},{cN:&ldquo;number&rdquo;,b:&quot;\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:1},{cN:&ldquo;keyword&rdquo;,b:&quot;(?:tryCatch|library|setGeneric|setGroupGeneric)\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:10},{cN:&ldquo;keyword&rdquo;,b:&quot;\\.\\.\\.&quot;,e:hljs.IMMEDIATE_RE,r:10},{cN:&ldquo;keyword&rdquo;,b:&quot;\\.\\.\\d+(?![\\w.])&quot;,e:hljs.IMMEDIATE_RE,r:10},{cN:&ldquo;keyword&rdquo;,b:&quot;\\b(?:function)&quot;,e:hljs.IMMEDIATE_RE,r:2},{cN:&ldquo;keyword&rdquo;,b:&quot;(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:1},{cN:&ldquo;literal&rdquo;,b:&quot;(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:10},{cN:&ldquo;literal&rdquo;,b:&quot;(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:1},{cN:&ldquo;identifier&rdquo;,b:&quot;[a-zA-Z.][a-zA-Z0-9._]*\\b&rdquo;,e:hljs.IMMEDIATE_RE,r:0},{cN:&ldquo;operator&rdquo;,b:&ldquo;&lt;\\-(?!\\s*\\d)&quot;,e:hljs.IMMEDIATE_RE,r:2},{cN:&ldquo;operator&rdquo;,b:&quot;\\-&gt;|&lt;\\-&quot;,e:hljs.IMMEDIATE_RE,r:1},{cN:&ldquo;operator&rdquo;,b:&quot;%%|~&rdquo;,e:hljs.IMMEDIATE_RE},{cN:&ldquo;operator&rdquo;,b:&ldquo;&gt;=|&lt;=|==|!=|\\|\\||&amp;&amp;|=|\\+|\\-|\\*|/|\\^|&gt;|&lt;|!|&amp;|\\||\\$|:&quot;,e:hljs.IMMEDIATE_RE,r:0},{cN:&ldquo;operator&rdquo;,b:&quot;%&quot;,e:&quot;%&quot;,i:&quot;\\n&rdquo;,r:1},{cN:&ldquo;identifier&rdquo;,b:&quot;`&rdquo;,e:&quot;`&rdquo;,r:0},{cN:&ldquo;string&rdquo;,b:'&quot;',e:'&quot;',c:[hljs.BE],r:0},{cN:&ldquo;string&rdquo;,b:&quot;'&quot;,e:&quot;'&quot;,c:[hljs.BE],r:0},{cN:&ldquo;paren&rdquo;,b:&quot;[[({\\])}]&quot;,e:hljs.IMMEDIATE_RE,r:0}]}}; hljs.initHighlightingOnLoad(); This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.</p>
+			<p>This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.</p>
 <p>His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives. Support for additional constraints including group, diversification, and factor exposure constraints was also added. The random portfolio solver was expanded to include two additional methods of generating random portfolios. The optimization backends were further standardized for sets of constraints and objectives that can be solved via linear and quadratic programming solvers using the ROI package. Charts including risk budget and efficient frontiers were added as well as standardizing the charting across all optimization engines.</p>
 <p>This post is meant to provide a very basic introduction to the PortfolioAnalytics package. PortfolioAnalytics is an R package designed to provide numerical solutions and visualizations for portfolio problems with complex constraints and objectives. A key feature of PortfolioAnalytics is the ability to specify a portfolio with assets, constraints, and objectives that is solver agnostic, where the objective can be comprised of any valid R function. PortfolioAnalytics utilizes multiple solvers as backends for the optimization; linear programming, quadratic programming, differential evolution, random portfolios, particle swarm, and generalized simulated annealing. For optimization problems that can be formulated as linear or quadratic problems, these can be solved very fast and efficiently using the appropriate linear or quadratic solver supported by PortfolioAnalytics. For optimization problems with more complex constraints and objectives, a global solver such as differential evolution or random portfolios can be used to find a solution.</p>
 <p>Ross will be giving a tutorial on PortfolioAnalytics at the <a href="http://www.rinfinance.com">R/Finance 2014 Conference</a>. The tutorial will cover the key features of PortfolioAnalytics along with several comprehensive examples. Those who want to learn more about how R is used in finance are encouraged to attend.</p>
@@ -97,70 +98,68 @@ if (!doNotTrack) {
 data(edhec)  
 returns &lt;- edhec[, 1:6]  
 funds &lt;- colnames(returns)  
-
-```Here we create a portfolio object with `portfolio.spec`. The `assets` argument is a required argument to the `portfolio.spec` function. `assets` can be a character vector with the names of the assets, a named numeric vector, or a scalar value specifying the number of assets. If a character vector or scalar value is passed in for `assets`, equal weights will be created for the initial portfolio weights.
-
-</code></pre><p>init.portfolio &lt;- portfolio.spec(assets = funds)</p>
-<p>```The <code>portfolio</code> object is an S3 class that contains portfolio level data as well as the constraints and objectives for the optimization problem. You can see that the constraints and objectives lists are currently empty, but we will add sets of constraints and objectives with <code>add.constraint</code> and <code>add.objective</code>.</p>
+</code></pre><p>Here we create a portfolio object with <code>portfolio.spec</code>. The <code>assets</code> argument is a required argument to the <code>portfolio.spec</code> function. <code>assets</code> can be a character vector with the names of the assets, a named numeric vector, or a scalar value specifying the number of assets. If a character vector or scalar value is passed in for <code>assets</code>, equal weights will be created for the initial portfolio weights.</p>
+<pre><code>init.portfolio &lt;- portfolio.spec(assets = funds)  
+</code></pre><p>The <code>portfolio</code> object is an S3 class that contains portfolio level data as well as the constraints and objectives for the optimization problem. You can see that the constraints and objectives lists are currently empty, but we will add sets of constraints and objectives with <code>add.constraint</code> and <code>add.objective</code>.</p>
 <pre><code>print.default(init.portfolio)  
-
-</code></pre><h2 id="assets">$assets</h2>
-<h2 id="convertible-arbitrage------------cta-global-distressed-securities">Convertible Arbitrage            CTA Global Distressed Securities</h2>
-<h2 id="01667----------------01667----------------01667">0.1667                0.1667                0.1667</h2>
-<h2 id="emerging-markets-equity-market-neutral----------event-driven">Emerging Markets Equity Market Neutral          Event Driven</h2>
-<h2 id="01667----------------01667----------------01667-1">0.1667                0.1667                0.1667</h2>
-<h2 id="heading"></h2>
-<h2 id="category_labels">$category_labels</h2>
-<h2 id="null">NULL</h2>
-<h2 id="heading-1"></h2>
-<h2 id="weight_seq">$weight_seq</h2>
-<h2 id="null-1">NULL</h2>
-<h2 id="heading-2"></h2>
-<h2 id="constraints">$constraints</h2>
-<h2 id="list">list()</h2>
-<h2 id="heading-3"></h2>
-<h2 id="objectives">$objectives</h2>
-<h2 id="list-1">list()</h2>
-<h2 id="heading-4"></h2>
-<h2 id="call">$call</h2>
-<h2 id="portfoliospecassets--funds">portfolio.spec(assets = funds)</h2>
-<h2 id="heading-5"></h2>
-<h2 id="attrclass">attr(,&ldquo;class&rdquo;)</h2>
-<h2 id="1-portfoliospec-portfolio">[1] &ldquo;portfolio.spec&rdquo; &ldquo;portfolio&rdquo;</h2>
-<p>```Here we add the full investment constraint. The full investment constraint is a special case of the leverage constraint that specifies the weights must sum to 1 and is specified with the alias <code>type=&quot;full_investment&quot;</code> as shown below.</p>
+</code></pre><pre><code>## $assets  
+## Convertible Arbitrage            CTA Global Distressed Securities   
+##                0.1667                0.1667                0.1667   
+##      Emerging Markets Equity Market Neutral          Event Driven   
+##                0.1667                0.1667                0.1667   
+##   
+## $category_labels  
+## NULL  
+##   
+## $weight_seq  
+## NULL  
+##   
+## $constraints  
+## list()  
+##   
+## $objectives  
+## list()  
+##   
+## $call  
+## portfolio.spec(assets = funds)  
+##   
+## attr(,&quot;class&quot;)  
+## [1] &quot;portfolio.spec&quot; &quot;portfolio&quot;  
+</code></pre><p>Here we add the full investment constraint. The full investment constraint is a special case of the leverage constraint that specifies the weights must sum to 1 and is specified with the alias <code>type=&quot;full_investment&quot;</code> as shown below.</p>
 <pre><code>init.portfolio &lt;- add.constraint(portfolio = init.portfolio, type = &quot;full_investment&quot;)  
-
-```Now we add box constraint to specify a long only portfolio. The long only constraint is a special case of a box constraint where the lower bound of the weights of each asset is equal to 0 and the upper bound of the weights of each asset is equal to 1. This is specified with `type=&quot;long_only&quot;` as shown below. The box constraint also allows for per asset weights to be specified.
-
-</code></pre><p>init.portfolio &lt;- add.constraint(portfolio = init.portfolio, type = &ldquo;long_only&rdquo;)</p>
-<pre><code class="language-The" data-lang="The">
-*   leverage
-*   box
-*   group
-*   position\_limit1
-*   turnover2
-*   diversification
-*   return
-*   factor\_exposure
-*   transaction\_cost2
-
-1.  Not supported for problems formulated as quadratic programming problems solved with `optimize_method=&quot;ROI&quot;`.
-2.  Not supported for problems formulated as linear programming problems solved with `optimize_method=&quot;ROI&quot;`.
-
-Below we create two new portfolio objects. Note that we areassigning new names for the portfolios. This re-uses the constraints from `init.portfolio` and adds the objectives specified below to `minSD.portfolio` and `meanES.portfolio` while leaving `init.portfolio` unchanged. This is useful for testing multiple portfolios with different objectives using the same constraints because the constraints only need to be specified once and several new portfolios can be created using an initial portfolio object.
-
-</code></pre><h1 id="add-objective-for-portfolio-to-minimize-portfolio-standard-deviation">Add objective for portfolio to minimize portfolio standard deviation</h1>
-<p>minSD.portfolio &lt;- add.objective(portfolio=init.portfolio,<br>
-type=&quot;risk&rdquo;,<br>
-name=&quot;StdDev&rdquo;)</p>
-<h1 id="add-objectives-for-portfolio-to-maximize-mean-per-unit-es">Add objectives for portfolio to maximize mean per unit ES</h1>
-<p>meanES.portfolio &lt;- add.objective(portfolio=init.portfolio,<br>
-type=&quot;return&rdquo;,<br>
-name=&quot;mean&rdquo;)</p>
-<p>meanES.portfolio &lt;- add.objective(portfolio=meanES.portfolio,<br>
-type=&quot;risk&rdquo;,<br>
-name=&quot;ES&rdquo;)</p>
-<p>```Note that the <code>name</code> argument in <code>add.objective</code> can be any valid R function. Several functions are provided in the PerformanceAnalytics package that can be specified as the <code>name</code> argument such as ES/ETL/CVaR, StdDev, etc.</p>
+</code></pre><p>Now we add box constraint to specify a long only portfolio. The long only constraint is a special case of a box constraint where the lower bound of the weights of each asset is equal to 0 and the upper bound of the weights of each asset is equal to 1. This is specified with <code>type=&quot;long_only&quot;</code> as shown below. The box constraint also allows for per asset weights to be specified.</p>
+<pre><code>init.portfolio &lt;- add.constraint(portfolio = init.portfolio, type = &quot;long_only&quot;)  
+</code></pre><p>The following constraint types are supported:</p>
+<ul>
+<li>leverage</li>
+<li>box</li>
+<li>group</li>
+<li>position_limit1</li>
+<li>turnover2</li>
+<li>diversification</li>
+<li>return</li>
+<li>factor_exposure</li>
+<li>transaction_cost2</li>
+</ul>
+<ol>
+<li>Not supported for problems formulated as quadratic programming problems solved with <code>optimize_method=&quot;ROI&quot;</code>.</li>
+<li>Not supported for problems formulated as linear programming problems solved with <code>optimize_method=&quot;ROI&quot;</code>.</li>
+</ol>
+<p>Below we create two new portfolio objects. Note that we areassigning new names for the portfolios. This re-uses the constraints from <code>init.portfolio</code> and adds the objectives specified below to <code>minSD.portfolio</code> and <code>meanES.portfolio</code> while leaving <code>init.portfolio</code> unchanged. This is useful for testing multiple portfolios with different objectives using the same constraints because the constraints only need to be specified once and several new portfolios can be created using an initial portfolio object.</p>
+<pre><code># Add objective for portfolio to minimize portfolio standard deviation  
+minSD.portfolio &lt;- add.objective(portfolio=init.portfolio,   
+                                 type=&quot;risk&quot;,   
+                                 name=&quot;StdDev&quot;)  
+  
+# Add objectives for portfolio to maximize mean per unit ES  
+meanES.portfolio &lt;- add.objective(portfolio=init.portfolio,   
+                                  type=&quot;return&quot;,   
+                                  name=&quot;mean&quot;)  
+  
+meanES.portfolio &lt;- add.objective(portfolio=meanES.portfolio,   
+                                  type=&quot;risk&quot;,   
+                                  name=&quot;ES&quot;)  
+</code></pre><p>Note that the <code>name</code> argument in <code>add.objective</code> can be any valid R function. Several functions are provided in the PerformanceAnalytics package that can be specified as the <code>name</code> argument such as ES/ETL/CVaR, StdDev, etc.</p>
 <p>The following objective types are supported:</p>
 <ul>
 <li>return</li>
@@ -171,67 +170,65 @@ name=&quot;ES&rdquo;)</p>
 <p>As demonstrated above, the <code>add.constraint</code> and <code>add.objective</code> functions were designed to be very flexible and modular so that constraints and objectives can easily be specified and added to <code>portfolio</code> objects.</p>
 <p>PortfolioAnalytics provides a <code>print</code> method so that we can easily view the assets, constraints, and objectives that we have specified for the portfolio.</p>
 <pre><code>print(minSD.portfolio)  
-
-</code></pre><h2 id="heading-6">**************************************************</h2>
-<h2 id="portfolioanalytics-portfolio-specification">PortfolioAnalytics Portfolio Specification</h2>
-<h2 id="heading-7">**************************************************</h2>
-<h2 id="heading-8"></h2>
-<h2 id="call-1">Call:</h2>
-<h2 id="portfoliospecassets--funds-1">portfolio.spec(assets = funds)</h2>
-<h2 id="heading-9"></h2>
-<h2 id="assets-1">Assets</h2>
-<h2 id="number-of-assets-6">Number of assets: 6</h2>
-<h2 id="heading-10"></h2>
-<h2 id="asset-names">Asset Names</h2>
-<h2 id="1-convertible-arbitrage-cta-global------------distressed-securities">[1] &ldquo;Convertible Arbitrage&rdquo; &ldquo;CTA Global&rdquo;            &ldquo;Distressed Securities&rdquo;</h2>
-<h2 id="4-emerging-markets------equity-market-neutral-event-driven">[4] &ldquo;Emerging Markets&rdquo;      &ldquo;Equity Market Neutral&rdquo; &ldquo;Event Driven&rdquo;</h2>
-<h2 id="heading-11"></h2>
-<h2 id="constraints-1">Constraints</h2>
-<h2 id="number-of-constraints-2">Number of constraints: 2</h2>
-<h2 id="number-of-enabled-constraints-2">Number of enabled constraints: 2</h2>
-<h2 id="enabled-constraint-types">Enabled constraint types</h2>
-<h2 id="--full_investment">- full_investment</h2>
-<h2 id="--long_only">- long_only</h2>
-<h2 id="number-of-disabled-constraints-0">Number of disabled constraints: 0</h2>
-<h2 id="heading-12"></h2>
-<h2 id="objectives-1">Objectives</h2>
-<h2 id="number-of-objectives-1">Number of objectives: 1</h2>
-<h2 id="number-of-enabled-objectives-1">Number of enabled objectives: 1</h2>
-<h2 id="enabled-objective-names">Enabled objective names</h2>
-<h2 id="--stddev">- StdDev</h2>
-<h2 id="number-of-disabled-objectives-0">Number of disabled objectives: 0</h2>
-<pre><code>print(meanES.portfolio)  
-
-</code></pre><h2 id="heading-13">**************************************************</h2>
-<h2 id="portfolioanalytics-portfolio-specification-1">PortfolioAnalytics Portfolio Specification</h2>
-<h2 id="heading-14">**************************************************</h2>
-<h2 id="heading-15"></h2>
-<h2 id="call-2">Call:</h2>
-<h2 id="portfoliospecassets--funds-2">portfolio.spec(assets = funds)</h2>
-<h2 id="heading-16"></h2>
-<h2 id="assets-2">Assets</h2>
-<h2 id="number-of-assets-6-1">Number of assets: 6</h2>
-<h2 id="heading-17"></h2>
-<h2 id="asset-names-1">Asset Names</h2>
-<h2 id="1-convertible-arbitrage-cta-global------------distressed-securities-1">[1] &ldquo;Convertible Arbitrage&rdquo; &ldquo;CTA Global&rdquo;            &ldquo;Distressed Securities&rdquo;</h2>
-<h2 id="4-emerging-markets------equity-market-neutral-event-driven-1">[4] &ldquo;Emerging Markets&rdquo;      &ldquo;Equity Market Neutral&rdquo; &ldquo;Event Driven&rdquo;</h2>
-<h2 id="heading-18"></h2>
-<h2 id="constraints-2">Constraints</h2>
-<h2 id="number-of-constraints-2-1">Number of constraints: 2</h2>
-<h2 id="number-of-enabled-constraints-2-1">Number of enabled constraints: 2</h2>
-<h2 id="enabled-constraint-types-1">Enabled constraint types</h2>
-<h2 id="--full_investment-1">- full_investment</h2>
-<h2 id="--long_only-1">- long_only</h2>
-<h2 id="number-of-disabled-constraints-0-1">Number of disabled constraints: 0</h2>
-<h2 id="heading-19"></h2>
-<h2 id="objectives-2">Objectives</h2>
-<h2 id="number-of-objectives-2">Number of objectives: 2</h2>
-<h2 id="number-of-enabled-objectives-2">Number of enabled objectives: 2</h2>
-<h2 id="enabled-objective-names-1">Enabled objective names</h2>
-<h2 id="--mean">- mean</h2>
-<h2 id="--es">- ES</h2>
-<h2 id="number-of-disabled-objectives-0-1">Number of disabled objectives: 0</h2>
-<p>```Now that we have portfolios set up with the desired constraints and objectives, we use <code>optimize.portfolio</code> to run the optimizations. The examples below use <code>optimize_method=&quot;ROI&quot;</code>, but several other solvers are supported including the following:</p>
+</code></pre><pre><code>## **************************************************  
+## PortfolioAnalytics Portfolio Specification   
+## **************************************************  
+##   
+## Call:  
+## portfolio.spec(assets = funds)  
+##   
+## Assets  
+## Number of assets: 6   
+##   
+## Asset Names  
+## [1] &quot;Convertible Arbitrage&quot; &quot;CTA Global&quot;            &quot;Distressed Securities&quot;  
+## [4] &quot;Emerging Markets&quot;      &quot;Equity Market Neutral&quot; &quot;Event Driven&quot;           
+##   
+## Constraints  
+## Number of constraints: 2   
+## Number of enabled constraints: 2   
+## Enabled constraint types  
+##      - full_investment   
+##      - long_only   
+## Number of disabled constraints: 0   
+##   
+## Objectives  
+## Number of objectives: 1   
+## Number of enabled objectives: 1   
+## Enabled objective names  
+##      - StdDev   
+## Number of disabled objectives: 0  
+</code></pre><pre><code>print(meanES.portfolio)  
+</code></pre><pre><code>## **************************************************  
+## PortfolioAnalytics Portfolio Specification   
+## **************************************************  
+##   
+## Call:  
+## portfolio.spec(assets = funds)  
+##   
+## Assets  
+## Number of assets: 6   
+##   
+## Asset Names  
+## [1] &quot;Convertible Arbitrage&quot; &quot;CTA Global&quot;            &quot;Distressed Securities&quot;  
+## [4] &quot;Emerging Markets&quot;      &quot;Equity Market Neutral&quot; &quot;Event Driven&quot;           
+##   
+## Constraints  
+## Number of constraints: 2   
+## Number of enabled constraints: 2   
+## Enabled constraint types  
+##      - full_investment   
+##      - long_only   
+## Number of disabled constraints: 0   
+##   
+## Objectives  
+## Number of objectives: 2   
+## Number of enabled objectives: 2   
+## Enabled objective names  
+##      - mean   
+##      - ES   
+## Number of disabled objectives: 0  
+</code></pre><p>Now that we have portfolios set up with the desired constraints and objectives, we use <code>optimize.portfolio</code> to run the optimizations. The examples below use <code>optimize_method=&quot;ROI&quot;</code>, but several other solvers are supported including the following:</p>
 <ul>
 <li>DEoptim (differential evolution)</li>
 <li>random portfolios
@@ -256,62 +253,58 @@ minSD.opt &lt;- optimize.portfolio(R = returns, portfolio = minSD.portfolio,
     optimize_method = &quot;ROI&quot;, trace = TRUE)  
   
 print(minSD.opt)  
-
-</code></pre><h2 id="heading-20">***********************************</h2>
-<h2 id="portfolioanalytics-optimization">PortfolioAnalytics Optimization</h2>
-<h2 id="heading-21">***********************************</h2>
-<h2 id="heading-22"></h2>
-<h2 id="call-3">Call:</h2>
-<h2 id="optimizeportfolior--returns-portfolio--minsdportfolio">optimize.portfolio(R = returns, portfolio = minSD.portfolio,</h2>
-<h2 id="optimize_method--roi-trace--true">optimize_method = &ldquo;ROI&rdquo;, trace = TRUE)</h2>
-<h2 id="heading-23"></h2>
-<h2 id="optimal-weights">Optimal Weights:</h2>
-<h2 id="convertible-arbitrage------------cta-global-distressed-securities-1">Convertible Arbitrage            CTA Global Distressed Securities</h2>
-<h2 id="00000----------------00652----------------00000">0.0000                0.0652                0.0000</h2>
-<h2 id="emerging-markets-equity-market-neutral----------event-driven-1">Emerging Markets Equity Market Neutral          Event Driven</h2>
-<h2 id="00000----------------09348----------------00000">0.0000                0.9348                0.0000</h2>
-<h2 id="heading-24"></h2>
-<h2 id="objective-measure">Objective Measure:</h2>
-<h2 id="stddev">StdDev</h2>
-<h2 id="0008855">0.008855</h2>
-<p>```The objective to maximize mean return per ES can be formulated as a linear programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
+</code></pre><pre><code>## ***********************************  
+## PortfolioAnalytics Optimization  
+## ***********************************  
+##   
+## Call:  
+## optimize.portfolio(R = returns, portfolio = minSD.portfolio,   
+##     optimize_method = &quot;ROI&quot;, trace = TRUE)  
+##   
+## Optimal Weights:  
+## Convertible Arbitrage            CTA Global Distressed Securities   
+##                0.0000                0.0652                0.0000   
+##      Emerging Markets Equity Market Neutral          Event Driven   
+##                0.0000                0.9348                0.0000   
+##   
+## Objective Measure:  
+##   StdDev   
+## 0.008855  
+</code></pre><p>The objective to maximize mean return per ES can be formulated as a linear programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
 <pre><code># Run the optimization for the maximize mean per unit ES  
 meanES.opt &lt;- optimize.portfolio(R = returns, portfolio = meanES.portfolio,   
     optimize_method = &quot;ROI&quot;, trace = TRUE)  
   
 print(meanES.opt)  
-
-</code></pre><h2 id="heading-25">***********************************</h2>
-<h2 id="portfolioanalytics-optimization-1">PortfolioAnalytics Optimization</h2>
-<h2 id="heading-26">***********************************</h2>
-<h2 id="heading-27"></h2>
-<h2 id="call-4">Call:</h2>
-<h2 id="optimizeportfolior--returns-portfolio--meanesportfolio">optimize.portfolio(R = returns, portfolio = meanES.portfolio,</h2>
-<h2 id="optimize_method--roi-trace--true-1">optimize_method = &ldquo;ROI&rdquo;, trace = TRUE)</h2>
-<h2 id="heading-28"></h2>
-<h2 id="optimal-weights-1">Optimal Weights:</h2>
-<h2 id="convertible-arbitrage------------cta-global-distressed-securities-2">Convertible Arbitrage            CTA Global Distressed Securities</h2>
-<h2 id="00000----------------02940----------------02509">0.0000                0.2940                0.2509</h2>
-<h2 id="emerging-markets-equity-market-neutral----------event-driven-2">Emerging Markets Equity Market Neutral          Event Driven</h2>
-<h2 id="00000----------------04552----------------00000">0.0000                0.4552                0.0000</h2>
-<h2 id="heading-29"></h2>
-<h2 id="objective-measure-1">Objective Measure:</h2>
-<h2 id="mean">mean</h2>
-<h2 id="0006635">0.006635</h2>
-<h2 id="heading-30"></h2>
-<h2 id="heading-31"></h2>
-<h2 id="es">ES</h2>
-<h2 id="001837">0.01837</h2>
-<p>```The PortfolioAnalytics package provides functions for charting to better understand the optimization problem through visualization. The <code>plot</code> function produces a plot of of the optimal weights and the optimal portfolio in risk-return space. The optimal weights and chart in risk-return space can be plotted separately with <code>chart.Weights</code> and <code>chart.RiskReward</code>.</p>
+</code></pre><pre><code>## ***********************************  
+## PortfolioAnalytics Optimization  
+## ***********************************  
+##   
+## Call:  
+## optimize.portfolio(R = returns, portfolio = meanES.portfolio,   
+##     optimize_method = &quot;ROI&quot;, trace = TRUE)  
+##   
+## Optimal Weights:  
+## Convertible Arbitrage            CTA Global Distressed Securities   
+##                0.0000                0.2940                0.2509   
+##      Emerging Markets Equity Market Neutral          Event Driven   
+##                0.0000                0.4552                0.0000   
+##   
+## Objective Measure:  
+##     mean   
+## 0.006635   
+##   
+##   
+##      ES   
+## 0.01837  
+</code></pre><p>The PortfolioAnalytics package provides functions for charting to better understand the optimization problem through visualization. The <code>plot</code> function produces a plot of of the optimal weights and the optimal portfolio in risk-return space. The optimal weights and chart in risk-return space can be plotted separately with <code>chart.Weights</code> and <code>chart.RiskReward</code>.</p>
 <pre><code>plot(minSD.opt, risk.col=&quot;StdDev&quot;, chart.assets=TRUE,   
      main=&quot;Min SD Optimization&quot;,  
      ylim=c(0, 0.0083), xlim=c(0, 0.06))  
-
 </code></pre><p><a href="http://4.bp.blogspot.com/-bLrvc7w1wJ8/Uy99ONrSmeI/AAAAAAAAANU/08dJ2PN9-eY/s1600/unnamed-chunk-102.png"><img src="http://4.bp.blogspot.com/-bLrvc7w1wJ8/Uy99ONrSmeI/AAAAAAAAANU/08dJ2PN9-eY/s400/unnamed-chunk-102.png" alt=""></a></p>
 <pre><code>plot(meanES.opt, chart.assets=TRUE,   
      main=&quot;Mean ES Optimization&quot;,  
      ylim=c(0, 0.0083), xlim=c(0, 0.16))  
-
 </code></pre><p><a href="http://3.bp.blogspot.com/-2RRkbXaQy0s/Uy99i2-Q2LI/AAAAAAAAANc/6eRenUhx-X8/s1600/unnamed-chunk-101.png"><img src="http://3.bp.blogspot.com/-2RRkbXaQy0s/Uy99i2-Q2LI/AAAAAAAAANc/6eRenUhx-X8/s400/unnamed-chunk-101.png" alt=""></a></p>
 <p>This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard devation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.</p>
 <p>The PortfolioAnalytics package is part of the <a href="http://r-forge.r-project.org/projects/returnanalytics/">ReturnAnalytics</a> project on R-Forge. For additional examples and information, refer to the several vignettes and demos are provided in the package.</p>

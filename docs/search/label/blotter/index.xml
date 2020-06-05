@@ -22,22 +22,6 @@
     
     <item>
       <title>Tactical asset allocation using blotter</title>
-      <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments.html</link>
-      <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments.html</guid>
-      <description>Hi, If I change to.monthly() to to.weekly() it se&amp;hellip; Unknown - Nov 4, 2009Hi,
-If I change to.monthly() to to.weekly() it seems to die strangely. Any ideas?
-Cheers,
--&amp;mdash;&amp;mdash;-
-Error in if (!all(i &amp;lt;= 0)) stop(&amp;ldquo;only zeros may be mixed with negative subscripts&amp;rdquo;) :
-missing value where TRUE/FALSE needed
-Calls: updateAcct -&amp;gt; calcPortfSummary -&amp;gt; time -&amp;gt; [ -&amp;gt; [.xts
-Thanks Josh for providing this nice example of the use of blotter.</description>
-    </item>
-    
-    <item>
-      <title>Tactical asset allocation using blotter</title>
       <link>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html</link>
       <pubDate>Wed, 18 Nov 2009 21:18:00 -0600</pubDate>
       

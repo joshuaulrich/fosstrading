@@ -47,31 +47,12 @@ NEW FEATURES:
     
     <item>
       <title>Historical / Future Volatility Correlation Stability</title>
-      <link>https://blog.fosstrading.com/2010/04/historical-future-volatility-comments.html</link>
-      <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility-comments.html</guid>
-      <description>I&amp;rsquo;ve noticed odd behaviour like this before in&amp;hellip; Unknown - May 0, 2010I&amp;rsquo;ve noticed odd behaviour like this before in correlations (the swings in the 252 day vols from -1/+1); in this case the effect probably due to the lack of independence of the variables in use. that is, your bottom plot for 1 year historical/future really only has 40 independent points, the rest are (auto)correlated. likewise, when computing the correlation of two rolling series with high degrees of autocorrelation, the correlations get screwy.</description>
-    </item>
-    
-    <item>
-      <title>Historical / Future Volatility Correlation Stability</title>
       <link>https://blog.fosstrading.com/2010/04/historical-future-volatility.html</link>
       <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility.html</guid>
       <description>Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.
 He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table.</description>
-    </item>
-    
-    <item>
-      <title>TTR_0.20-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments.html</link>
-      <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments.html</guid>
-      <description>Can you describe how the various trading packages &amp;hellip; Milk Trader - Apr 4, 2010Can you describe how the various trading packages in R relate to one another. Specifically, xts, quantmod, blotter, lspm and ttr are the ones I&amp;rsquo;m interested in.
-xts creates objects that are then passed into quantmod, I think. Is that right? How are the others related? It appears they are not competing packages, but rather complementary. Are there others I&amp;rsquo;m missing?</description>
     </item>
     
     <item>

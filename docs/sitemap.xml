@@ -263,11 +263,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open-comments.html</loc>
-    <lastmod>2013-03-29T17:22:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open.html</loc>
     <lastmod>2013-03-29T17:22:00-05:00</lastmod>
   </url>
@@ -278,18 +273,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera-comments.html</loc>
-    <lastmod>2012-09-12T10:33:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera.html</loc>
     <lastmod>2012-09-12T10:33:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2012/08/a-new-plot-xts-comments.html</loc>
-    <lastmod>2012-08-15T13:52:00-05:00</lastmod>
   </url>
   
   <url>
@@ -328,11 +313,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2012/03/deoptim-in-parallel-comments.html</loc>
-    <lastmod>2012-03-04T20:33:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2012/03/deoptim-in-parallel.html</loc>
     <lastmod>2012-03-04T20:33:00-06:00</lastmod>
   </url>
@@ -353,28 +333,13 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using-comments.html</loc>
-    <lastmod>2011-08-23T20:55:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</loc>
     <lastmod>2011-08-23T20:55:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat-comments.html</loc>
-    <lastmod>2011-08-12T06:48:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html</loc>
     <lastmod>2011-08-12T06:48:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata-comments.html</loc>
-    <lastmod>2011-07-27T22:16:00-05:00</lastmod>
   </url>
   
   <url>
@@ -403,18 +368,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples-comments.html</loc>
-    <lastmod>2011-05-01T13:38:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples.html</loc>
     <lastmod>2011-05-01T13:38:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2011/04/leverage-space-etfs-announced-comments.html</loc>
-    <lastmod>2011-04-26T08:39:00-05:00</lastmod>
   </url>
   
   <url>
@@ -433,11 +388,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r-comments.html</loc>
-    <lastmod>2011-03-26T09:54:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html</loc>
     <lastmod>2011-03-26T09:54:00-05:00</lastmod>
   </url>
@@ -448,18 +398,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel-comments.html</loc>
-    <lastmod>2011-03-14T20:57:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</loc>
     <lastmod>2011-03-14T20:57:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open-comments.html</loc>
-    <lastmod>2011-03-14T16:17:00-05:00</lastmod>
   </url>
   
   <url>
@@ -468,18 +408,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r-comments.html</loc>
-    <lastmod>2011-03-05T15:09:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html</loc>
     <lastmod>2011-03-05T15:09:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r-comments.html</loc>
-    <lastmod>2011-02-17T18:53:00-06:00</lastmod>
   </url>
   
   <url>
@@ -498,18 +428,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/12/why-use-r-comments.html</loc>
-    <lastmod>2010-12-14T22:35:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/12/why-use-r.html</loc>
     <lastmod>2010-12-14T22:35:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows-comments.html</loc>
-    <lastmod>2010-12-07T17:20:00-06:00</lastmod>
   </url>
   
   <url>
@@ -520,11 +440,6 @@
   <url>
     <loc>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis.html</loc>
     <lastmod>2010-11-12T09:05:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers-comments.html</loc>
-    <lastmod>2010-10-25T22:01:00-05:00</lastmod>
   </url>
   
   <url>
@@ -543,11 +458,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm-comments.html</loc>
-    <lastmod>2010-08-01T23:31:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html</loc>
     <lastmod>2010-08-01T23:31:00-05:00</lastmod>
   </url>
@@ -558,18 +468,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown-comments.html</loc>
-    <lastmod>2010-06-19T20:13:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html</loc>
     <lastmod>2010-06-19T20:13:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables-comments.html</loc>
-    <lastmod>2010-05-18T22:30:00-05:00</lastmod>
   </url>
   
   <url>
@@ -588,11 +488,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan-comments.html</loc>
-    <lastmod>2010-05-13T14:23:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</loc>
     <lastmod>2010-05-13T14:23:00-05:00</lastmod>
   </url>
@@ -603,28 +498,13 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/04/historical-future-volatility-comments.html</loc>
-    <lastmod>2010-04-11T12:53:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/04/historical-future-volatility.html</loc>
     <lastmod>2010-04-11T12:53:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit-comments.html</loc>
-    <lastmod>2010-04-09T10:04:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</loc>
     <lastmod>2010-04-09T10:04:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran-comments.html</loc>
-    <lastmod>2010-03-30T14:48:00-05:00</lastmod>
   </url>
   
   <url>
@@ -648,18 +528,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2010/01/lspm-with-snow-comments.html</loc>
-    <lastmod>2010-01-10T17:01:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2010/01/lspm-with-snow.html</loc>
     <lastmod>2010-01-10T17:01:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2010/01/lspm-examples-comments.html</loc>
-    <lastmod>2010-01-02T15:35:00-06:00</lastmod>
   </url>
   
   <url>
@@ -668,18 +538,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter-comments.html</loc>
-    <lastmod>2009-11-18T21:18:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html</loc>
     <lastmod>2009-11-18T21:18:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2009/11/opentick-alternatives-comments.html</loc>
-    <lastmod>2009-11-05T18:54:00-06:00</lastmod>
   </url>
   
   <url>
@@ -688,18 +548,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2009/10/xasax-closes-shop-comments.html</loc>
-    <lastmod>2009-10-18T11:21:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2009/10/xasax-closes-shop.html</loc>
     <lastmod>2009-10-18T11:21:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2009/09/update-comments.html</loc>
-    <lastmod>2009-09-22T22:37:00-05:00</lastmod>
   </url>
   
   <url>
@@ -708,18 +558,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative-comments.html</loc>
-    <lastmod>2009-07-19T08:38:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative.html</loc>
     <lastmod>2009-07-19T08:38:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2009/06/rsi2-evaluation-comments.html</loc>
-    <lastmod>2009-06-28T22:02:00-05:00</lastmod>
   </url>
   
   <url>
@@ -738,11 +578,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing-comments.html</loc>
-    <lastmod>2009-05-01T20:58:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html</loc>
     <lastmod>2009-05-01T20:58:00-05:00</lastmod>
   </url>
@@ -753,18 +588,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2009/04/opentick-is-no-more-comments.html</loc>
-    <lastmod>2009-04-17T14:46:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2009/04/opentick-is-no-more.html</loc>
     <lastmod>2009-04-17T14:46:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r-comments.html</loc>
-    <lastmod>2009-04-13T22:35:00-05:00</lastmod>
   </url>
   
   <url>
@@ -788,18 +613,8 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r-comments.html</loc>
-    <lastmod>2008-12-30T23:54:00-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r.html</loc>
     <lastmod>2008-12-30T23:54:00-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/2008/12/computational-finance-with-r-comments.html</loc>
-    <lastmod>2008-12-05T20:39:00-06:00</lastmod>
   </url>
   
   <url>
