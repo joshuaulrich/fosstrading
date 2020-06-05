@@ -21,7 +21,9 @@ The [IBrokers](http://cran.r-project.org/web/packages/IBrokers/index.html) packa
 
 You can get a TWS client from IB at the link above, and installing IBrokers is easy enough from R:
 
-> \> install.packages("IBrokers")
+```
+install.packages("IBrokers")
+```
 
 Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a "trusted IP".
 
@@ -51,27 +53,24 @@ To add a "Trusted IP" click on "All API Settings..."
 
 Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.
 
-> \> library(IBrokers)
-> 
-> Loading required package: xts
-> 
-> Loading required package: zoo
-> 
-> IBrokers version 0.2-7: (alpha)
-> 
-> Implementing API Version 9.62
-> 
-> This software comes with NO WARRANTY. Not intended for production use!
-> 
-> See ?IBrokers for details
-> 
-> \> tws <- twsConnect()
-> 
-> \> tws
-> 
-> <twsConnection,1 @ 20100513 15:11:40 CST, nextId=1288>
-> 
-> \>
+```
+library(IBrokers)
+
+## Loading required package: xts
+## Loading required package: zoo
+## IBrokers version 0.2-7: (alpha)
+## 
+## Implementing API Version 9.62
+## 
+## This software comes with NO WARRANTY. Not intended for production use!
+## 
+## See ?IBrokers for details
+
+tws <- twsConnect()
+tws
+
+## <twsConnection,1 @ 20100513 15:11:40 CST, nextId=1288>
+```
 
 As you can see there isn't too much to talk about in the code above. We make the standard R library() call to get IBrokers into our session, and the use the twsConnect function to make a connection to the TWS. There are parameters that can be passed in (such as host, and connection ID), but we needn't do that here.  
 
@@ -83,75 +82,56 @@ The result of our call is a _twsConnection_ object. This contains a few importan
 
 To wrap up this post we'll use our new connection to fetch some historical data from IB.
 
-> \> aapl <- reqHistoricalData(tws, twsSTK("AAPL"))
-> 
-> TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture
-> 
-> TWS Message: 2 -1 2104 Market data farm connection is OK:usfarm
-> 
-> waiting for TWS reply ....... done.
+```
+aapl <- reqHistoricalData(tws, twsSTK("AAPL"))
+
+## TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture
+## 
+## TWS Message: 2 -1 2104 Market data farm connection is OK:usfarm
+## 
+## waiting for TWS reply ....... done.
+```
 
 Some notes about the above. The first argument to most any IBrokers call is the connection object created with twsConnect. The second argument to the above request is a twsContract object. There are a variety of ways to construct this, and twsSTK is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:
 
-> \> twsSTK("AAPL")
-> 
-> List of 14
-> 
-> $ conId : num 0
-> 
-> $ symbol : chr "AAPL"
-> 
-> $ sectype : chr "STK"
-> 
-> $ exch : chr "SMART"
-> 
-> $ primary : chr ""
-> 
-> $ expiry : chr ""
-> 
-> $ strike : chr "0.0"
-> 
-> $ currency : chr "USD"
-> 
-> $ right : chr ""
-> 
-> $ local : chr ""
-> 
-> $ multiplier : chr ""
-> 
-> $ combo\_legs\_desc: NULL
-> 
-> $ comboleg : NULL
-> 
-> $ include\_expired: chr "0"
+```
+twsSTK("AAPL")
+
+## List of 14
+## $ conId : num 0
+## $ symbol : chr "AAPL"
+## $ sectype : chr "STK"
+## $ exch : chr "SMART"
+## $ primary : chr ""
+## $ expiry : chr ""
+## $ strike : chr "0.0"
+## $ currency : chr "USD"
+## $ right : chr ""
+## $ local : chr ""
+## $ multiplier : chr ""
+## $ combo_legs_desc: NULL
+## $ comboleg : NULL
+## $ include_expired: chr "0"
+```
 
 As you may have noticed, we assigned the output of our request to a variable **appl** in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.
 
-> \> str(aapl)
-> 
-> An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:
-> 
-> Data: num \[1:22, 1:8\] 245 246 249 247 248 ...
-> 
-> \- attr(\*, "dimnames")=List of 2
-> 
-> ..$ : NULL
-> 
-> ..$ : chr \[1:8\] "AAPL.Open" "AAPL.High" "AAPL.Low" "AAPL.Close" ...
-> 
-> Indexed by objects of class: \[POSIXt,POSIXct\] TZ: America/Chicago
-> 
-> xts Attributes:
-> 
-> List of 4
-> 
-> $ from : chr "20100413 21:35:34"
-> 
-> $ to : chr "20100513 21:35:34"
-> 
-> $ src : chr "IB"
-> 
-> $ updated: POSIXct\[1:1\], format: "2010-05-13 15:35:36.396084"
+```
+str(aapl)
+
+## An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:
+##   Data: num [1:22, 1:8] 245 246 249 247 248 ...
+##  - attr(*, "dimnames")=List of 2
+##   ..$ : NULL
+##   ..$ : chr [1:8] "AAPL.Open" "AAPL.High" "AAPL.Low" "AAPL.Close" ...
+##   Indexed by objects of class: [POSIXt,POSIXct] TZ: America/Chicago
+##   xts Attributes:
+## List of 4
+##  $ from : chr "20100413 21:35:34"
+##  $ to : chr "20100513 21:35:34"
+##  $ src : chr "IB"
+##  $ updated: POSIXct[1:1], format: "2010-05-13 15:35:36.396084"
+```
 
 The _reqHistoricalData_ call takes a few arguments that can specify the **barSize** and **duration** of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the [IBrokers documentation,](http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf) as well as the more authoritative [reference](http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm) from IB.  
   
