@@ -58,7 +58,7 @@ Students participating in the program receive US$5,000 for successful completion
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</guid>
-      <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactial asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
+      <description>As promised in the introduction to quantstrat, here is an example strategy. I thought I&amp;rsquo;d start with the obligatory tactical asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate. There are two major differences:
   The blotter TAA code initiates a position at the first observation where the close is above the SMA.</description>
     </item>

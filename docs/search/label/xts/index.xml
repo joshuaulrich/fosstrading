@@ -58,7 +58,7 @@ Do note that the new plot.xts() includes breaking changes to the original (and r
       
       <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>

@@ -243,7 +243,7 @@ James Toll provided a patch to the volatility function that uses a zero mean (in
       
       <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
     </item>
     
     <item>
@@ -263,7 +263,7 @@ The conference will take place on May 29 and 30, at UIC in Chicago. Building on
       
       <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html</guid>
       <description>I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
-Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn’t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you’ve written.</description>
+Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&amp;rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&amp;rsquo;ve written.</description>
     </item>
     
     <item>

@@ -93,28 +93,26 @@ if (!doNotTrack) {
 <p>If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off.  If your strategy truly is path-dependent, keep reading&hellip;</p>
 <p>I started working with Brian Peterson in late August of this year, and we&rsquo;ve been working on a series of very large backtests over the last several weeks.  Each backtest consisted of ~7 months of 5-second data on 72 instruments with 15-20 different configurations for each.</p>
 <p>These backtests really pushed quantstrat to its limits.  The longest-running job took 32 hours.  I had some time while they were running, so I decided to profile quantstrat.  I was able to make some substantial improvements, so I thought I&rsquo;d write a post to tell you what&rsquo;s changed and highlight some of the performance gains we&rsquo;re seeing.</p>
-<p>The biggest issue was how the internal function <strong>ruleProc</strong> was constructing and evaluating the rule function call for each signal.  Basically, the code that constructed the call was evaluating the <strong>mktdata</strong> object before calling the rule function.  This meant that the rule function call looked like this:</p>
-<blockquote>
-<p><strong>ruleFunction(c(50.04, 50.23, 50.42, 50.37, 50.24, 50.13, 50.12, 50.42, 50.42, 50.37, 50.24, 50.22, 49.95, 50.23, 50.26, 50.22, 50.11, 49.99, 50.12, 50.4, 50.33, 50.33, 50.18, 49.99), &hellip;)</strong></p>
-</blockquote>
-<p>instead of this:</p>
-<blockquote>
-<p><strong>ruleFunction(mktdata, &hellip;)</strong></p>
-</blockquote>
-<p>You can only imagine how large that first call would be for a 10-million-row <strong>mktdata</strong> object.  Changing the rule function call to use the name (symbol) of the <strong>mktdata</strong> object instead of the <strong>mktdata</strong> object itself helped the 32-hour job finish in just over 2 hours.</p>
+<p>The biggest issue was how the internal function <code>ruleProc</code> was constructing and evaluating the rule function call for each signal.  Basically, the code that constructed the call was evaluating the <code>mktdata</code> object before calling the rule function.  This meant that the rule function call looked like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">ruleFunction</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">50.04</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.13</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span>
+  <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">49.95</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.26</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">50.11</span><span class="p">,</span> <span class="m">49.99</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.4</span><span class="p">,</span>
+  <span class="m">50.33</span><span class="p">,</span> <span class="m">50.33</span><span class="p">,</span> <span class="m">50.18</span><span class="p">,</span> <span class="m">49.99</span><span class="p">),</span> <span class="kc">...</span><span class="p">)</span>
+</code></pre></div><p>instead of this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">ruleFunction</span><span class="p">(</span><span class="n">mktdata</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</code></pre></div><p>You can only imagine how large that first call would be for a 10-million-row <code>mktdata</code> object.  Changing the rule function call to use the name (symbol) of the <code>mktdata</code> object instead of the <code>mktdata</code> object itself helped the 32-hour job finish in just over 2 hours.</p>
 <p>If you think I would be happy enough with that, you don&rsquo;t know me.  Several other changes helped get that 2-hour run down to under 30 minutes.</p>
 <ul>
 <li>
-<p>We now calculate <strong>periodicity(mktdata)</strong> in <strong>applyRules</strong> and pass that value to <strong>ruleOrderProc</strong>.  This avoids re-calculating that value for every order, since <strong>mktdata</strong> doesn&rsquo;t change inside <strong>applyRules</strong>.</p>
+<p>We now calculate <code>periodicity(mktdata)</code> in <code>applyRules</code> and pass that value to <code>ruleOrderProc</code>  This avoids re-calculating that value for every order, since <code>mktdata</code> doesn&rsquo;t change inside <code>applyRules</code></p>
 </li>
 <li>
-<p>We also pass current row index value to <strong>ruleOrderProc</strong> and <strong>ruleSignal</strong> because xts subsetting via an integer is much faster than via a POSIXct object.</p>
+<p>We also pass current row index value to <code>ruleOrderProc</code> and <code>ruleSignal</code> because xts subsetting via an integer is much faster than via a POSIXct object.</p>
 </li>
 <li>
-<p><strong>applyStrategy</strong> only accumulates values returned from <strong>applyIndicators</strong>, <strong>applySignals</strong>, and <strong>applyRules</strong> if <strong>debug=TRUE</strong>.  This saves a little time, but can save a lot of memory for large <strong>mktdata</strong> objects.</p>
+<p><code>applyStrategy</code> only accumulates values returned from <code>applyIndicators</code>, <code>applySignals</code>, and <code>applyRules</code> if <code>debug=TRUE</code>.  This saves a little time, but can save a lot of memory for large <code>mktdata</code> objects.</p>
 </li>
 <li>
-<p>The dimension reduction algorithm has to look for the first time the price crosses the limit order price.  We were doing that with a call to <strong>which(sigThreshold(&hellip;))[1]</strong>.  The relational operators (<strong>&lt;</strong>, <strong>&lt;=</strong>, <strong>&gt;</strong>, <strong><strong>&gt;</strong>=</strong>, and <strong>==</strong>) and <strong>which</strong> operate on the entire vector, but we only need the first value, so I replaced that code with a with C-based <strong>.firstThreshold</strong> function that stops as soon as it finds the first cross.</p>
+<p>The dimension reduction algorithm has to look for the first time the price crosses the limit order price.  We were doing that with a call to <code>which(sigThreshold(...))[1]</code>.  The relational operators (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, and <code>==</code>) and <code>which</code> operate on the entire vector, but we only need the first value, so I replaced that code with a with C-based <code>.firstThreshold</code> function that stops as soon as it finds the first cross.</p>
 </li>
 </ul>
 <p>All these changes are most significant for large data sets.  The small demo strategies included with quantstrat are also faster, but the net performance gains increase as the size of the data, the number of signals (and therefore the number of rule evaluations), and number of instruments increases.</p>

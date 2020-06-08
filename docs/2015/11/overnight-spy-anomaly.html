@@ -97,21 +97,21 @@ if (!doNotTrack) {
 <li>The profit factor result in R does not reconcile with results from other platforms or even from excel. PF in R is shown as 1.23 but the correct value is 1.17. Actually, the profit factor is calculated on a per share basis in R, although returns are geometric.</li>
 </ol>
 </blockquote>
-<p>I completely agree with the first point.  I&rsquo;m not sure Mike considers the output of  SharpeRatio.annualized with geometric=TRUE to be suspect (he doesn&rsquo;t elaborate).  The overnightRets are calculated as arithmetic returns, so it&rsquo;s proper to aggregate them using geometric chaining (i.e. multiplication).</p>
+<p>I completely agree with the first point.  I&rsquo;m not sure Mike considers the output of  <code>SharpeRatio.annualized</code> with <code>geometric=TRUE</code> to be suspect (he doesn&rsquo;t elaborate).  The <code>overnightRets</code> are calculated as arithmetic returns, so it&rsquo;s proper to aggregate them using geometric chaining (i.e. multiplication).</p>
 <p>I also agree with the third point, because the R code used to calculate profit factor is wrong.  My main impetus to write this post was to provide a corrected profit factor calculation.  The calculation (with slightly modified syntax) in Mike&rsquo;s post is:</p>
-<p>require(quantmod)<br>
-getSymbols(&lsquo;SPY&rsquo;, from = &lsquo;1900-01-01&rsquo;)<br>
-SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)<br>
-overnightRets &lt;- na.omit(Op(SPY)/lag(Cl(SPY)) - 1)<br>
-posRet &lt;- overnightRets &gt; 0<br>
-profitFactor &lt;- -sum(overnightRets[posRet])/sum(overnightRets[!posRet])</p>
-<p>Note that profit factor in the code above is calculated by summing positive and negative <em>returns</em>, when it should be calculated using positive and negative <em>P&amp;L</em>.  In order to do that, we need to calculate the equity curve and then take its first difference to get P&amp;L.  The corrected calculation is below, and it provides the correct result Mike expected.</p>
-<p>grossEquity &lt;- cumprod(overnightRets+1)<br>
-grossPnL &lt;- diff(grossEquity)<br>
-grossProfit &lt;- sum(grossPnL[grossPnL &gt; 0])<br>
-grossLoss &lt;- sum(grossPnL[grossPnL &lt; 0])<br>
-profitFactor &lt;- grossProfit / abs(grossLoss)</p>
-<p>I&rsquo;d also like to respond to Mike&rsquo;s comment:</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#39;SPY&#39;</span><span class="p">,</span> <span class="n">from</span> <span class="o">=</span> <span class="s">&#39;1900-01-01&#39;</span><span class="p">)</span>
+<span class="n">SPY</span> <span class="o">&lt;-</span> <span class="nf">adjustOHLC</span><span class="p">(</span><span class="n">SPY</span><span class="p">,</span> <span class="n">use.Adjusted</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">overnightRets</span> <span class="o">&lt;-</span> <span class="nf">na.omit</span><span class="p">(</span><span class="nf">Op</span><span class="p">(</span><span class="n">SPY</span><span class="p">)</span><span class="o">/</span><span class="nf">lag</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">SPY</span><span class="p">))</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span>
+<span class="n">posRet</span> <span class="o">&lt;-</span> <span class="n">overnightRets</span> <span class="o">&gt;</span> <span class="m">0</span>
+<span class="n">profitFactor</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="n">overnightRets[posRet]</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">overnightRets[</span><span class="o">!</span><span class="n">posRet]</span><span class="p">)</span>
+</code></pre></div><p>Note that profit factor in the code above is calculated by summing positive and negative <em>returns</em>, when it should be calculated using positive and negative <em>P&amp;L</em>.  In order to do that, we need to calculate the equity curve and then take its first difference to get P&amp;L.  The corrected calculation is below, and it provides the correct result Mike expected.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">grossEquity</span> <span class="o">&lt;-</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">overnightRets</span><span class="m">+1</span><span class="p">)</span>
+<span class="n">grossPnL</span> <span class="o">&lt;-</span> <span class="nf">diff</span><span class="p">(</span><span class="n">grossEquity</span><span class="p">)</span>
+<span class="n">grossProfit</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">grossPnL[grossPnL</span> <span class="o">&gt;</span> <span class="m">0</span><span class="n">]</span><span class="p">)</span>
+<span class="n">grossLoss</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">grossPnL[grossPnL</span> <span class="o">&lt;</span> <span class="m">0</span><span class="n">]</span><span class="p">)</span>
+<span class="n">profitFactor</span> <span class="o">&lt;-</span> <span class="n">grossProfit</span> <span class="o">/</span> <span class="nf">abs</span><span class="p">(</span><span class="n">grossLoss</span><span class="p">)</span>
+</code></pre></div><p>I&rsquo;d also like to respond to Mike&rsquo;s comment:</p>
 <blockquote>
 <p>Since in the past I have identified serious flaws in commercially available backtesting platforms, I would not be surprised if some of the R libraries have some flaws.</p>
 </blockquote>

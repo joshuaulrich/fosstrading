@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="plot.xts RFC" />
 <meta property="og:description" content="We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xtsby building off the framework Jeff Ryan began with q****uantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object)." />
+This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2015/04/plotxts-rfc.html" />
 <meta property="article:published_time" content="2015-04-20T12:45:00-05:00" />
@@ -89,20 +89,20 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-04-20T12:45:00-05:00">April 20, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>We have been working on a new charting engine for <strong>xts::plot.xts</strong> for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.</p>
-<p>This new engine improves the functionality, modularity, and flexibility of <strong>plot.xts</strong>by building off the framework Jeff Ryan began with <strong>q****uantmod::chart_Series</strong>.  The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</p>
-<p>The main objective was to provide functionality similar to <strong>chartSeries</strong> and <strong>addTA</strong> for xts objects. The current code includes support for:</p>
+			<p>We have been working on a new charting engine for <code>xts::plot.xts</code> for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.</p>
+<p>This new engine improves the functionality, modularity, and flexibility of <code>plot.xts</code> by building off the framework Jeff Ryan began with <code>quantmod::chart_Series</code>.  The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</p>
+<p>The main objective was to provide functionality similar to <code>chartSeries</code> and <code>addTA</code> for xts objects. The current code includes support for:</p>
 <ul>
 <li>Basic time series plots with sensible defaults</li>
 <li>Plotting xts objects by column &ldquo;automagically&rdquo; as separate panels</li>
 <li>Small multiples with multiple pages</li>
 <li>&ldquo;Layout-safe&rdquo; so multiple specifications/panels can be charted in a single device</li>
-<li>Easily add data to an existing plot or add panels similar to <strong>quantmod::add*</strong></li>
+<li>Easily add data to an existing plot or add panels similar to <code>quantmod::add*</code></li>
 <li>Event lines</li>
 </ul>
 <p>The xts team would greatly appreciate any comments, feedback, and bug reports before the upcoming CRAN release at the end of April.</p>
-<p>The new version of <strong>plot.xts</strong> is in the main xts development code base, which is available on GitHub in the <a href="https://github.com/joshuaulrich/xts">develop branch</a>.  GitHub is also the place to submit <a href="https://github.com/joshuaulrich/xts/issues">b</a><a href="https://github.com/joshuaulrich/xts/issues">ug reports and feature requests</a>.</p>
-<p>Note that the new <strong>plot.xts</strong> includes breaking changes to the original (and rather limited) <strong>plot.xts</strong>.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.</p>
+<p>The new version of <code>plot.xts</code> is in the main xts development code base, which is available on GitHub in the <a href="https://github.com/joshuaulrich/xts">develop branch</a>.  GitHub is also the place to submit <a href="https://github.com/joshuaulrich/xts/issues">b</a><a href="https://github.com/joshuaulrich/xts/issues">ug reports and feature requests</a>.</p>
+<p>Note that the new <code>plot.xts</code> includes breaking changes to the original (and rather limited) <code>plot.xts</code>.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.</p>
 
 		</div>
 		<footer class="post__footer">

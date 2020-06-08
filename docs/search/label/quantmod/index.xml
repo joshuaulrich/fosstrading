@@ -125,7 +125,7 @@ James Toll provided a patch to the volatility function that uses a zero mean (in
       
       <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html</guid>
       <description>I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
-Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn’t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you’ve written.</description>
+Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&amp;rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&amp;rsquo;ve written.</description>
     </item>
     
     <item>
