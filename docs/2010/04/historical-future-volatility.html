@@ -91,42 +91,49 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Michael Stokes, author of the <a href="http://marketsci.wordpress.com/">MarketSci blog</a> recently published <a href="http://marketsci.wordpress.com/2010/04/09/correlation-between-historical-and-future-volatility/">a thought-provoking post</a> about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &ldquo;unfinished thought&rdquo;, not a critique.</p>
 <p>He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table. His table&rsquo;s values are calculated using daily data from 1970-present&hellip; but what if you were to calculate correlations using only one year of data, rather than thirty? The chart below shows the results.</p>
-<p><a href="http://2.bp.blogspot.com/_8iehP8a8rkE/S8IML9B4cYI/AAAAAAAAAHA/AEx51C9SM0w/s1600/rolling_volatility_correlations.png"><img src="http://2.bp.blogspot.com/_8iehP8a8rkE/S8IML9B4cYI/AAAAAAAAAHA/AEx51C9SM0w/s400/rolling_volatility_correlations.png" alt=""></a></p>
+<p><a href="/post/images/rolling_volatility_correlations.png"><img src="/post/images/rolling_volatility_correlations.png" alt=""></a></p>
 <p>The chart shows the rolling one-year (252-day) correlations for the diagonal in Michael&rsquo;s table (e.g. historical and future 2-day volatility, &hellip;, historical and future 252-day volatility). You can see the shorter periods are generally more stable, but are also closer to zero. The rolling one-year correlation between historical and future one-year volatility swings wildly from +/-1 over time.</p>
 <p>This isn&rsquo;t to argue that Michael&rsquo;s back-of-the-envelope approach is incorrect, rather it is an attempt to make the approach more robust by weighing long-term market characteristics against recent market behavior.</p>
-<p>For those interested, here is the <a href="http://www.r-project.org/">R</a> code I used to replicate Michael&rsquo;s table and create the graph above. An interesting extension of this analysis would be to calculate volatility using <a href="http://cran.r-project.org/web/packages/TTR/">TTR&rsquo;s</a> volatility() function instead of standard deviation. I&rsquo;ll leave that exercise to the interested reader.</p>
-<p>require(quantmod)</p>
-<p># pull SPX data from Yahoo Finance</p>
-<p>getSymbols(&ldquo;^GSPC&rdquo;,from=&quot;1970-01-01&rdquo;)</p>
-<p># volatility horizons</p>
-<p>GSPC$v2 &lt;- runSD(ROC(Cl(GSPC)),2)</p>
-<p>GSPC$v5 &lt;- runSD(ROC(Cl(GSPC)),5)</p>
-<p>GSPC$v10 &lt;- runSD(ROC(Cl(GSPC)),10)</p>
-<p>GSPC$v21 &lt;- runSD(ROC(Cl(GSPC)),21)</p>
-<p>GSPC$v63 &lt;- runSD(ROC(Cl(GSPC)),63)</p>
-<p>GSPC$v252 &lt;- runSD(ROC(Cl(GSPC)),252)</p>
-<p># volatility horizon lags</p>
-<p>GSPC$l2 &lt;- lag(GSPC$v2,-2)</p>
-<p>GSPC$l5 &lt;- lag(GSPC$v5,-5)</p>
-<p>GSPC$l10 &lt;- lag(GSPC$v10,-10)</p>
-<p>GSPC$l21 &lt;- lag(GSPC$v21,-21)</p>
-<p>GSPC$l63 &lt;- lag(GSPC$v63,-63)</p>
-<p>GSPC$l252 &lt;- lag(GSPC$v252,-252)</p>
-<p># volatility correlation table</p>
-<p>cor(GSPC[,7:18],use=&quot;pair&rdquo;)[1:6,7:12]</p>
-<p># remove missing observations</p>
-<p>GSPC &lt;- na.omit(GSPC)</p>
-<p># rolling 1-year volatility correlations</p>
-<p>GSPC$c2 &lt;- runCor(GSPC$v2,GSPC$l2,252)</p>
-<p>GSPC$c5 &lt;- runCor(GSPC$v5,GSPC$l5,252)</p>
-<p>GSPC$c10 &lt;- runCor(GSPC$v10,GSPC$l10,252)</p>
-<p>GSPC$c21 &lt;- runCor(GSPC$v21,GSPC$l21,252)</p>
-<p>GSPC$c63 &lt;- runCor(GSPC$v63,GSPC$l63,252)</p>
-<p>GSPC$c252 &lt;- runCor(GSPC$v252,GSPC$l252,252)</p>
-<p># plot rolling 1-year volatility correlations</p>
-<p>plot.zoo(GSPC[,grep(&ldquo;c&rdquo;,colnames(GSPC))],n=1,</p>
-<p> main=&quot;Rolling 252-Day Volitility Correlations&rdquo;)</p>
+<p>For those interested, here is the <a href="http://www.r-project.org/">R</a> code I used to replicate Michael&rsquo;s table and create the graph above. An interesting extension of this analysis would be to calculate volatility using <a href="http://cran.r-project.org/web/packages/TTR/">TTR&rsquo;s</a> <code>volatility()</code> function instead of standard deviation. I&rsquo;ll leave that exercise to the interested reader.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 
+<span class="c1"># pull SPX data from Yahoo Finance</span>
+<span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;^GSPC&#34;</span><span class="p">,</span><span class="n">from</span><span class="o">=</span><span class="s">&#34;1970-01-01&#34;</span><span class="p">)</span>
+
+<span class="c1"># volatility horizons</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v2</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">2</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v5</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">5</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v10</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">10</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v21</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">21</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v63</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">63</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">v252</span> <span class="o">&lt;-</span> <span class="nf">runSD</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)),</span><span class="m">252</span><span class="p">)</span>
+
+<span class="c1"># volatility horizon lags</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l2</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v2</span><span class="p">,</span><span class="m">-2</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l5</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v5</span><span class="p">,</span><span class="m">-5</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l10</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v10</span><span class="p">,</span><span class="m">-10</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l21</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v21</span><span class="p">,</span><span class="m">-21</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l63</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v63</span><span class="p">,</span><span class="m">-63</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">l252</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v252</span><span class="p">,</span><span class="m">-252</span><span class="p">)</span>
+
+<span class="c1"># volatility correlation table</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">GSPC[</span><span class="p">,</span><span class="m">7</span><span class="o">:</span><span class="m">18</span><span class="n">]</span><span class="p">,</span><span class="n">use</span><span class="o">=</span><span class="s">&#34;pair&#34;</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="o">:</span><span class="m">12</span><span class="n">]</span>
+
+<span class="c1"># remove missing observations</span>
+<span class="n">GSPC</span> <span class="o">&lt;-</span> <span class="nf">na.omit</span><span class="p">(</span><span class="n">GSPC</span><span class="p">)</span>
+
+<span class="c1"># rolling 1-year volatility correlations</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c2</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v2</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l2</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c5</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v5</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l5</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c10</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v10</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l10</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c21</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v21</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l21</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c63</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v63</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l63</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+<span class="n">GSPC</span><span class="o">$</span><span class="n">c252</span> <span class="o">&lt;-</span> <span class="nf">runCor</span><span class="p">(</span><span class="n">GSPC</span><span class="o">$</span><span class="n">v252</span><span class="p">,</span><span class="n">GSPC</span><span class="o">$</span><span class="n">l252</span><span class="p">,</span><span class="m">252</span><span class="p">)</span>
+
+<span class="c1"># plot rolling 1-year volatility correlations</span>
+<span class="nf">plot.zoo</span><span class="p">(</span><span class="n">GSPC[</span><span class="p">,</span><span class="nf">grep</span><span class="p">(</span><span class="s">&#34;c&#34;</span><span class="p">,</span><span class="nf">colnames</span><span class="p">(</span><span class="n">GSPC</span><span class="p">))</span><span class="n">]</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="m">1</span><span class="p">,</span>
+  <span class="n">main</span><span class="o">=</span><span class="s">&#34;Rolling 252-Day Volitility Correlations&#34;</span><span class="p">)</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

@@ -65,7 +65,7 @@ The indexes, scheduled to be launched in the second half of 2011, can serve as t
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html</guid>
-      <description>I&amp;rsquo;ve shown several examples of how to use LSPM&amp;rsquo;s probDrawdown function as a constraint when optimizing a leverage space portfolio. Those posts implicitly assume the probDrawdown function produces an accurate estimate of actual drawdown. This post will investigate the function&amp;rsquo;s accuracy.
+      <description>I&amp;rsquo;ve shown several examples of how to use LSPM&amp;rsquo;s probDrawdown() function as a constraint when optimizing a leverage space portfolio. Those posts implicitly assume the probDrawdown() function produces an accurate estimate of actual drawdown. This post will investigate the function&amp;rsquo;s accuracy.
 Calculation Notes:
 To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.</description>
     </item>

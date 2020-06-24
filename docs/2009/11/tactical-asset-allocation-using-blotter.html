@@ -94,108 +94,132 @@ if (!doNotTrack) {
 <p><a href="https://r-forge.r-project.org/projects/blotter">blotter</a> is an <a href="http://www.r-project.org/">R</a> package that tracks the P&amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.</p>
 <p>The contents of this post borrow heavily from code and comments in the &ldquo;longtrend&rdquo; demo script in the blotter package. Many thanks to <a href="http://www.braverock.com/%7Epeter/">Peter Carl</a> and <a href="http://www.braverock.com/%7Ebrian/">Brian Peterson</a> for their hard work.</p>
 <p>The first chart shows the result of holding an equal-weight portfolio of <a href="http://finance.yahoo.com/q?s=SPY">SPY</a> and <a href="http://finance.yahoo.com/q?s=IEF">IEF</a> from 2002-07-31 to 2009-10-31. The 2008 bear market led to a 30% drawdown in this portfolio.</p>
-<p><a href="http://3.bp.blogspot.com/_8iehP8a8rkE/SwS1neN40tI/AAAAAAAAAGo/W-lzFP5B2XM/s1600/20091118_blotter_buyhold.png"><img src="http://3.bp.blogspot.com/_8iehP8a8rkE/SwS1neN40tI/AAAAAAAAAGo/W-lzFP5B2XM/s400/20091118_blotter_buyhold.png" alt=""></a></p>
+<p><a href="/post/images/20091118_blotter_buyhold.png"><img src="/post/images/20091118_blotter_buyhold.png" alt=""></a></p>
 <p>The second chart shows the result of following <a href="http://www.mebanefaber.com/">Mebane Faber&rsquo;s</a> tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in <a href="http://ssrn.com/abstract=962461">Faber&rsquo;s article</a>.</p>
-<p><a href="http://1.bp.blogspot.com/_8iehP8a8rkE/SwS1nZjIZ8I/AAAAAAAAAGs/zZauBNcllvg/s1600/20091118_blotter_strategy.png"><img src="http://1.bp.blogspot.com/_8iehP8a8rkE/SwS1nZjIZ8I/AAAAAAAAAGs/zZauBNcllvg/s400/20091118_blotter_strategy.png" alt=""></a></p>
+<p><a href="/post/images/20091118_blotter_strategy.png"><img src="/post/images/20091118_blotter_strategy.png" alt=""></a></p>
 <p>Without further ado, here&rsquo;s the code:</p>
-<p># This code implements the strategy found in:<br>
-# Faber, Mebane T., &ldquo;A Quantitative Approach to Tactical Asset Allocation.&rdquo;<br>
-# Journal of Risk Management (Spring 2007).</p>
-<p># The article implements a simpler version of the 200-day SMA, opting for a<br>
-# 10-month SMA because monthly data are more easily available in earlier<br>
-# periods and lower granularity should translate to lower transaction costs.</p>
-<p># The rules of the system are relatively simple:<br>
-# - Buy when monthly price &gt; 10-month SMA<br>
-# - Sell and move to cash when monthly price &lt; 10-month SMA</p>
-<p># 1. All entry and exit prices are on the day of the signal at the close.<br>
-# 2. All data series are total return series including dividends, updated monthly.<br>
-# NOTE: For the purposes of this demo, we only use price returns.<br>
-# 3. Cash returns are estimated with 90-day commercial paper. Margin rates for<br>
-# leveraged models are estimated with the broker call rate.<br>
-# NOTE: For the purposes of this demo, we ignore interest and leverage.<br>
-# 4. Taxes, commissions, and slippage are excluded.</p>
-<p># Data:<br>
-# This demo uses monthly data downloaded from Yahoo Finance for two ETFs: SPY and<br>
-# IEF. These were chosen to illustrate the classic stock/bond asset portfolio.<br>
-# Though longer serires would be preferred, data for IEF begin in mid-2002.</p>
-<p># Load required libraries<br>
-library(quantmod)<br>
-library(TTR)<br>
-library(blotter) # r-forge revision 193<br>
-library(PerformanceAnalytics)</p>
-<p># Set initial values<br>
-initDate='2002-07-31&rsquo;<br>
-endDate='2009-10-31&rsquo;<br>
-initEq=100000</p>
-<p># Set currency and instruments<br>
-currency(&ldquo;USD&rdquo;)<br>
-stock(&ldquo;IEF&rdquo;,currency=&quot;USD&rdquo;,multiplier=1)<br>
-stock(&ldquo;SPY&rdquo;,currency=&quot;USD&rdquo;,multiplier=1)</p>
-<p># Load data with quantmod<br>
-print(&ldquo;Loading data&rdquo;)<br>
-symbols = c(&ldquo;IEF&rdquo;, &ldquo;SPY&rdquo;)<br>
-getSymbols(symbols, from=initDate, to=endDate, index.class=c(&ldquo;POSIXt&rdquo;,&ldquo;POSIXct&rdquo;))</p>
-<p># Adjust prices for splits/dividends (thanks pg)<br>
-#IEF = adjustOHLC(IEF)<br>
-#SPY = adjustOHLC(SPY)</p>
-<p># Convert data to monthly frequency (to.weekly() needs drop.time=FALSE)<br>
-IEF = to.monthly(IEF, indexAt='endof&rsquo;)<br>
-SPY = to.monthly(SPY, indexAt='endof&rsquo;)</p>
-<p># Set up indicators with TTR<br>
-print(&ldquo;Setting up indicators&rdquo;)<br>
-IEF$SMA = SMA(Cl(IEF), 10)<br>
-SPY$SMA = SMA(Cl(SPY), 10)</p>
-<p># Set up a portfolio object and an account object in blotter<br>
-initPortf(name='default&rsquo;, symbols=symbols, initDate=initDate)<br>
-initAcct(name='default&rsquo;, portfolios='default&rsquo;, initDate=initDate, initEq=initEq)<br>
-verbose = TRUE</p>
-<p># Create trades<br>
-for( i in 10:NROW(SPY) ) {<br>
-  CurrentDate=time(SPY)[i]<br>
-  equity = getEndEq(Account='default&rsquo;, CurrentDate)</p>
-<p>  for( symbol in symbols ) {<br>
-    sym = get(symbol)<br>
-    ClosePrice = as.numeric(Cl(sym[i,]))<br>
-    Posn = getPosQty(Portfolio='default&rsquo;, Symbol=symbol, Date=CurrentDate)<br>
-    UnitSize = as.numeric(trunc((equity/NROW(symbols))/ClosePrice))</p>
-<p>    # Position Entry (assume fill at close)<br>
-    if( Posn == 0 ) {<br>
-    # No position, so test to initiate Long position<br>
-      if( Cl(sym[i,]) &gt; sym[i,&lsquo;SMA&rsquo;] ) {<br>
-        # Store trade with blotter<br>
-        addTxn(&lsquo;default&rsquo;, Symbol=symbol, TxnDate=CurrentDate,<br>
-          TxnPrice=ClosePrice, TxnQty=UnitSize, TxnFees=0, verbose=verbose)<br>
-      }<br>
-    } else {<br>
-      # Have a position, so check exit<br>
-      if( Cl(sym[i,]) &lt; sym[i,&lsquo;SMA&rsquo;] ) {<br>
-        # Store trade with blotter<br>
-        addTxn(Portfolio='default&rsquo;, Symbol=symbol, TxnDate=CurrentDate,<br>
-          TxnPrice=ClosePrice, TxnQty=-Posn, TxnFees=0, verbose=verbose)<br>
-      }<br>
-    }<br>
-  } # End symbols loop</p>
-<p>  # Calculate P&amp;L and resulting equity with blotter<br>
-  updatePortf(Portfolio='default&rsquo;, Dates=CurrentDate)<br>
-  updateAcct(name='default&rsquo;, Dates=CurrentDate)<br>
-  updateEndEq(Account='default&rsquo;, Dates=CurrentDate)</p>
-<p>} # End dates loop<br>
- </p>
-<p># Buy and Hold cumulative equity<br>
-buyhold = exp(cumsum( ( 0.5*ROC(Cl(IEF)) + 0.5*ROC(Cl(SPY)) )[-1] ))</p>
-<p># Final values<br>
-cat(&lsquo;Tactical Asset Allocation Return: &lsquo;,(getEndEq(Account='default&rsquo;, Date=CurrentDate)-initEq)/initEq,'\n&rsquo;)<br>
-cat(&lsquo;Buy and Hold Return: &lsquo;,tail(buyhold,1)-1,'\n&rsquo;)</p>
-<p># Plot Strategy Summary<br>
-png(filename=&quot;20091118_blotter_strategy.png&rdquo;, 720, 720)</p>
-<p>#charts.PerformanceSummary(ROC(getAccount(&lsquo;default&rsquo;)$TOTAL$End.Eq)[-1],main=&quot;Tactical Asset Allocation&rdquo;)</p>
-<p>charts.PerformanceSummary(ROC(getAccount(&lsquo;default&rsquo;)$summary$End.Eq)[-1],main=&quot;Tactical Asset Allocation&rdquo;)</p>
-<p>dev.off()</p>
-<p># Plot Buy and Hold Summary<br>
-png(filename=&quot;20091118_blotter_buyhold.png&rdquo;, 720, 720)<br>
-charts.PerformanceSummary(ROC(buyhold)[-1],main=&quot;Buy &amp; Hold&rdquo;)<br>
-dev.off()</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code implements the strategy found in:</span>
+<span class="c1"># Faber, Mebane T., &#34;A Quantitative Approach to Tactical Asset Allocation.&#34;</span>
+<span class="c1"># Journal of Risk Management (Spring 2007).</span>
 
+<span class="c1"># The article implements a simpler version of the 200-day SMA, opting for a</span>
+<span class="c1"># 10-month SMA because monthly data are more easily available in earlier</span>
+<span class="c1"># periods and lower granularity should translate to lower transaction costs.</span>
+
+<span class="c1"># The rules of the system are relatively simple:</span>
+<span class="c1"># - Buy when monthly price &gt; 10-month SMA</span>
+<span class="c1"># - Sell and move to cash when monthly price &lt; 10-month SMA</span>
+
+<span class="c1"># 1. All entry and exit prices are on the day of the signal at the close.</span>
+<span class="c1"># 2. All data series are total return series including dividends, updated monthly.</span>
+<span class="c1"># NOTE: For the purposes of this demo, we only use price returns.</span>
+<span class="c1"># 3. Cash returns are estimated with 90-day commercial paper. Margin rates for</span>
+<span class="c1"># leveraged models are estimated with the broker call rate.</span>
+<span class="c1"># NOTE: For the purposes of this demo, we ignore interest and leverage.</span>
+<span class="c1"># 4. Taxes, commissions, and slippage are excluded.</span>
+
+<span class="c1"># Data:</span>
+<span class="c1"># This demo uses monthly data downloaded from Yahoo Finance for two ETFs: SPY and</span>
+<span class="c1"># IEF. These were chosen to illustrate the classic stock/bond asset portfolio.</span>
+<span class="c1"># Though longer serires would be preferred, data for IEF begin in mid-2002.</span>
+
+<span class="c1"># Load required libraries</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">TTR</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">blotter</span><span class="p">)</span> <span class="c1"># r-forge revision 193</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
+
+<span class="c1"># Set initial values</span>
+<span class="n">initDate</span><span class="o">=</span><span class="s">&#39;2002-07-31&#39;</span>
+<span class="n">endDate</span><span class="o">=</span><span class="s">&#39;2009-10-31&#39;</span>
+<span class="n">initEq</span><span class="o">=</span><span class="m">100000</span>
+
+<span class="c1"># Set currency and instruments</span>
+<span class="nf">currency</span><span class="p">(</span><span class="s">&#34;USD&#34;</span><span class="p">)</span>
+<span class="nf">stock</span><span class="p">(</span><span class="s">&#34;IEF&#34;</span><span class="p">,</span><span class="n">currency</span><span class="o">=</span><span class="s">&#34;USD&#34;</span><span class="p">,</span><span class="n">multiplier</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="nf">stock</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">,</span><span class="n">currency</span><span class="o">=</span><span class="s">&#34;USD&#34;</span><span class="p">,</span><span class="n">multiplier</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># Load data with quantmod</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#34;Loading data&#34;</span><span class="p">)</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">)</span>
+<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">index.class</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;POSIXt&#34;</span><span class="p">,</span><span class="s">&#34;POSIXct&#34;</span><span class="p">))</span>
+
+<span class="c1"># Adjust prices for splits/dividends (thanks pg)</span>
+<span class="c1">#IEF = adjustOHLC(IEF)</span>
+<span class="c1">#SPY = adjustOHLC(SPY)</span>
+
+<span class="c1"># Convert data to monthly frequency (to.weekly() needs drop.time=FALSE)</span>
+<span class="n">IEF</span> <span class="o">=</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">IEF</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#39;endof&#39;</span><span class="p">)</span>
+<span class="n">SPY</span> <span class="o">=</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">SPY</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#39;endof&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set up indicators with TTR</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#34;Setting up indicators&#34;</span><span class="p">)</span>
+<span class="n">IEF</span><span class="o">$</span><span class="n">SMA</span> <span class="o">=</span> <span class="nf">SMA</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">IEF</span><span class="p">),</span> <span class="m">10</span><span class="p">)</span>
+<span class="n">SPY</span><span class="o">$</span><span class="n">SMA</span> <span class="o">=</span> <span class="nf">SMA</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">SPY</span><span class="p">),</span> <span class="m">10</span><span class="p">)</span>
+
+<span class="c1"># Set up a portfolio object and an account object in blotter</span>
+<span class="nf">initPortf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
+<span class="nf">initAcct</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">initEq</span><span class="o">=</span><span class="n">initEq</span><span class="p">)</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">TRUE</span>
+
+<span class="c1"># Create trades</span>
+<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="n">in</span> <span class="m">10</span><span class="o">:</span><span class="nf">NROW</span><span class="p">(</span><span class="n">SPY</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="n">CurrentDate</span><span class="o">=</span><span class="nf">time</span><span class="p">(</span><span class="n">SPY</span><span class="p">)</span><span class="n">[i]</span>
+  <span class="n">equity</span> <span class="o">=</span> <span class="nf">getEndEq</span><span class="p">(</span><span class="n">Account</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">CurrentDate</span><span class="p">)</span>
+
+  <span class="nf">for</span><span class="p">(</span> <span class="n">symbol</span> <span class="n">in</span> <span class="n">symbols</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">sym</span> <span class="o">=</span> <span class="nf">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+    <span class="n">ClosePrice</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">sym[i</span><span class="p">,</span><span class="n">]</span><span class="p">))</span>
+    <span class="n">Posn</span> <span class="o">=</span> <span class="nf">getPosQty</span><span class="p">(</span><span class="n">Portfolio</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span> <span class="n">Date</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">)</span>
+    <span class="n">UnitSize</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">trunc</span><span class="p">((</span><span class="n">equity</span><span class="o">/</span><span class="nf">NROW</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span><span class="o">/</span><span class="n">ClosePrice</span><span class="p">))</span>
+
+    <span class="c1"># Position Entry (assume fill at close)</span>
+    <span class="nf">if</span><span class="p">(</span> <span class="n">Posn</span> <span class="o">==</span> <span class="m">0</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># No position, so test to initiate Long position</span>
+      <span class="nf">if</span><span class="p">(</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">sym[i</span><span class="p">,</span><span class="n">]</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">sym[i</span><span class="p">,</span><span class="s">&#39;SMA&#39;</span><span class="n">]</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Store trade with blotter</span>
+        <span class="nf">addTxn</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span> <span class="n">TxnDate</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">,</span>
+          <span class="n">TxnPrice</span><span class="o">=</span><span class="n">ClosePrice</span><span class="p">,</span> <span class="n">TxnQty</span><span class="o">=</span><span class="n">UnitSize</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+      <span class="c1"># Have a position, so check exit</span>
+      <span class="nf">if</span><span class="p">(</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">sym[i</span><span class="p">,</span><span class="n">]</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">sym[i</span><span class="p">,</span><span class="s">&#39;SMA&#39;</span><span class="n">]</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Store trade with blotter</span>
+        <span class="nf">addTxn</span><span class="p">(</span><span class="n">Portfolio</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span> <span class="n">TxnDate</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">,</span>
+          <span class="n">TxnPrice</span><span class="o">=</span><span class="n">ClosePrice</span><span class="p">,</span> <span class="n">TxnQty</span><span class="o">=-</span><span class="n">Posn</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="c1"># End symbols loop</span>
+
+  <span class="c1"># Calculate P&amp;L and resulting equity with blotter</span>
+  <span class="nf">updatePortf</span><span class="p">(</span><span class="n">Portfolio</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Dates</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">)</span>
+  <span class="nf">updateAcct</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Dates</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">)</span>
+  <span class="nf">updateEndEq</span><span class="p">(</span><span class="n">Account</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Dates</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">)</span>
+
+<span class="p">}</span> <span class="c1"># End dates loop</span>
+
+
+<span class="c1"># Buy and Hold cumulative equity</span>
+<span class="n">buyhold</span> <span class="o">=</span> <span class="nf">exp</span><span class="p">(</span><span class="nf">cumsum</span><span class="p">(</span> <span class="p">(</span> <span class="m">0.5</span><span class="o">*</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">IEF</span><span class="p">))</span> <span class="o">+</span> <span class="m">0.5</span><span class="o">*</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">SPY</span><span class="p">))</span> <span class="p">)</span><span class="n">[</span><span class="m">-1</span><span class="n">]</span> <span class="p">))</span>
+
+<span class="c1"># Final values</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;Tactical Asset Allocation Return: &#39;</span><span class="p">,(</span><span class="nf">getEndEq</span><span class="p">(</span><span class="n">Account</span><span class="o">=</span><span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">Date</span><span class="o">=</span><span class="n">CurrentDate</span><span class="p">)</span><span class="o">-</span><span class="n">initEq</span><span class="p">)</span><span class="o">/</span><span class="n">initEq</span><span class="p">,</span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;Buy and Hold Return: &#39;</span><span class="p">,</span><span class="nf">tail</span><span class="p">(</span><span class="n">buyhold</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="m">-1</span><span class="p">,</span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot Strategy Summary</span>
+<span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20091118_blotter_strategy.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
+
+<span class="c1">#charts.PerformanceSummary(ROC(getAccount(&#39;default&#39;)$TOTAL$End.Eq)[-1],main=&#34;Tactical Asset Allocation&#34;)</span>
+
+<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="nf">getAccount</span><span class="p">(</span><span class="s">&#39;default&#39;</span><span class="p">)</span><span class="o">$</span><span class="n">summary</span><span class="o">$</span><span class="n">End.Eq</span><span class="p">)</span><span class="n">[</span><span class="m">-1</span><span class="n">]</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&#34;Tactical Asset Allocation&#34;</span><span class="p">)</span>
+
+<span class="nf">dev.off</span><span class="p">()</span>
+
+<span class="c1"># Plot Buy and Hold Summary</span>
+<span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20091118_blotter_buyhold.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
+<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">ROC</span><span class="p">(</span><span class="n">buyhold</span><span class="p">)</span><span class="n">[</span><span class="m">-1</span><span class="n">]</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&#34;Buy &amp; Hold&#34;</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
