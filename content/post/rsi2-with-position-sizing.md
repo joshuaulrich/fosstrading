@@ -92,7 +92,7 @@ On to the code!
 > dev.off()
 
   
-[![](https://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s400/20090501_rsi2_replication.png)](http://3.bp.blogspot.com/_8iehP8a8rkE/Sfu9TdIwbsI/AAAAAAAAAFw/XWZ3pQGHdlQ/s1600-h/20090501_rsi2_replication.png)  
+[![](/post/images/20090501_rsi2_replication.png)](/post/images/20090501_rsi2_replication.png)  
 
 > \# Calculate signals using the 'rsi2pos()' function  
 > \# with new values  
@@ -115,7 +115,7 @@ On to the code!
 > dev.off()
 
   
-[![](https://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s400/20090501_rsi2_updated.png)](http://4.bp.blogspot.com/_8iehP8a8rkE/Sfu-I3e_0SI/AAAAAAAAAGI/c4XOAzKk56g/s1600-h/20090501_rsi2_updated.png)  
+[![](/post/images/20090501_rsi2_updated.png)](/post/images/20090501_rsi2_updated.png)  
 Visual inspection of the charts seems to indicate the updated RSI(2) strategy has slightly higher returns, but more volatility and larger drawdowns.  
   
 The [PerformanceAnalytics](http://cran.r-project.org/web/packages/PerformanceAnalytics/index.html) package can evaluate the volatility, drawdowns, and related metrics for investing and trading strategies.  We'll use it in the next post to [evaluate RSI(2)](http://blog.fosstrading.com/2009/06/rsi2-evaluation.html).

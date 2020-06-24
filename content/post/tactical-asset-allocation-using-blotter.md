@@ -15,13 +15,13 @@ The contents of this post borrow heavily from code and comments in the "longtren
 The first chart shows the result of holding an equal-weight portfolio of [SPY](http://finance.yahoo.com/q?s=SPY) and [IEF](http://finance.yahoo.com/q?s=IEF) from 2002-07-31 to 2009-10-31. The 2008 bear market led to a 30% drawdown in this portfolio.  
   
 
-[![](http://3.bp.blogspot.com/_8iehP8a8rkE/SwS1neN40tI/AAAAAAAAAGo/W-lzFP5B2XM/s400/20091118_blotter_buyhold.png)](http://3.bp.blogspot.com/_8iehP8a8rkE/SwS1neN40tI/AAAAAAAAAGo/W-lzFP5B2XM/s1600/20091118_blotter_buyhold.png)
+[![](/post/images/20091118_blotter_buyhold.png)](/post/images/20091118_blotter_buyhold.png)
 
   
 The second chart shows the result of following [Mebane Faber's](http://www.mebanefaber.com/) tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in [Faber's article](http://ssrn.com/abstract=962461).  
   
 
-[![](http://1.bp.blogspot.com/_8iehP8a8rkE/SwS1nZjIZ8I/AAAAAAAAAGs/zZauBNcllvg/s400/20091118_blotter_strategy.png)](http://1.bp.blogspot.com/_8iehP8a8rkE/SwS1nZjIZ8I/AAAAAAAAAGs/zZauBNcllvg/s1600/20091118_blotter_strategy.png)
+[![](/post/images/20091118_blotter_strategy.png)](/post/images/20091118_blotter_strategy.png)
 
   
 Without further ado, here's the code:  

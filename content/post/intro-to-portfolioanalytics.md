@@ -275,7 +275,7 @@ plot(minSD.opt, risk.col="StdDev", chart.assets=TRUE,
      ylim=c(0, 0.0083), xlim=c(0, 0.06))  
 ```
 
-[![](http://4.bp.blogspot.com/-bLrvc7w1wJ8/Uy99ONrSmeI/AAAAAAAAANU/08dJ2PN9-eY/s400/unnamed-chunk-102.png)](http://4.bp.blogspot.com/-bLrvc7w1wJ8/Uy99ONrSmeI/AAAAAAAAANU/08dJ2PN9-eY/s1600/unnamed-chunk-102.png)
+[![](/post/images/unnamed-chunk-102.png)](/post/images/unnamed-chunk-102.png)
 
 ```
 plot(meanES.opt, chart.assets=TRUE,   
@@ -283,7 +283,7 @@ plot(meanES.opt, chart.assets=TRUE,
      ylim=c(0, 0.0083), xlim=c(0, 0.16))  
 ```
 
-[![](http://3.bp.blogspot.com/-2RRkbXaQy0s/Uy99i2-Q2LI/AAAAAAAAANc/6eRenUhx-X8/s400/unnamed-chunk-101.png)](http://3.bp.blogspot.com/-2RRkbXaQy0s/Uy99i2-Q2LI/AAAAAAAAANc/6eRenUhx-X8/s1600/unnamed-chunk-101.png)
+[![](/post/images/unnamed-chunk-101.png)](/post/images/unnamed-chunk-101.png)
 
 This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard devation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.
 

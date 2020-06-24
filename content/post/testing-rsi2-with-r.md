@@ -69,5 +69,5 @@ Without further ado, let's get to some code...
 
 My version of Michael's chart is below. Up next, scaling in/out of positions with RSI(2).  
   
-[![](https://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s400/20090413_rsi2_long_short.png)](http://3.bp.blogspot.com/_8iehP8a8rkE/SeQUBhHOk3I/AAAAAAAAAFo/nGn5pkD_8Lg/s1600-h/20090413_rsi2_long_short.png)  
+[![](/post/images//20090413_rsi2_long_short.png)](/post/images/20090413_rsi2_long_short.png)  
 Now, let's look at [RSI(2) with position sizing](http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html).

@@ -33,7 +33,7 @@ First find the "Configure" menu in the TWS
 
   
 
-![](http://3.bp.blogspot.com/_MAIcNo33u88/S-xdZJVwruI/AAAAAAAAAGA/DrkSdoz7xUs/s320/Screen+shot+2010-05-13+at+3.10.05+195PM.png)
+![](/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png)
 
   
 
@@ -41,13 +41,13 @@ Next we check for "Enable ActiveX and Socket Clients"
 
   
 
-[![](http://1.bp.blogspot.com/_MAIcNo33u88/S-xd-5mLPqI/AAAAAAAAAGI/KZBj-FGko6s/s320/Screen+shot+2010-05-13+at+3.10.30+142PM.png)](http://1.bp.blogspot.com/_MAIcNo33u88/S-xd-5mLPqI/AAAAAAAAAGI/KZBj-FGko6s/s1600/Screen+shot+2010-05-13+at+3.10.30+142PM.png)  
+[![](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)  
 
 To add a "Trusted IP" click on "All API Settings..."
 
   
 
-[![](http://1.bp.blogspot.com/_MAIcNo33u88/S-xfHKb6TQI/AAAAAAAAAGQ/7k0aAxN_Wzo/s320/Screen+shot+2010-05-13+at+3.10.43+749PM.png)](http://1.bp.blogspot.com/_MAIcNo33u88/S-xfHKb6TQI/AAAAAAAAAGQ/7k0aAxN_Wzo/s1600/Screen+shot+2010-05-13+at+3.10.43+749PM.png)
+[![](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)
 
   
 

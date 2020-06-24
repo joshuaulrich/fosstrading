@@ -12,4 +12,4 @@ The [Google Summer of Code (2012)](http://google-melange.appspot.com/gsoc/homepa
 Please try `xtsExtra::plot.xts` and let us know what you think.  A sample of the eye-candy produced by the code in [Michael's email](https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html) is below.  Granted, this isn't a one-liner, but it's certainly impressive!  Great work Michael!  
   
 
-[![](http://2.bp.blogspot.com/-WNkHj6f_k_Q/UCvtm0zs8rI/AAAAAAAAAQk/jDRQ9o6DifA/s640/edhec.jpeg)](http://2.bp.blogspot.com/-WNkHj6f_k_Q/UCvtm0zs8rI/AAAAAAAAAQk/jDRQ9o6DifA/s1600/edhec.jpeg)
+[![](/post/images/edhec.jpeg)](/post/images/edhec.jpeg)

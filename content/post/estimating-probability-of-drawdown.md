@@ -27,7 +27,7 @@ The chart below shows that probDrawdown nearly always over estimates actual draw
 
   
 
-![](https://2.bp.blogspot.com/_8iehP8a8rkE/TB0ktswwUmI/AAAAAAAAAHE/hpUbAzc4Fmo/s400/20100619_probDrawdown.png)
+![](/post/images/20100619_probDrawdown.png)
 
   
 Notice that the above calculation assumes each event is independently distributed.  [Brian Peterson](http://braverock.com/brian/) suggested a [block bootstrap](http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap) to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.  
