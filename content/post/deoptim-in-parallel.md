@@ -19,7 +19,7 @@ There are a few things to keep in mind when using the parallel functionality.  
 *   Be careful with non-varying objects
 *   Exclude them from formal function arguments
 
-*   Copy them to nodes before optimization (clusterExport)
-*   If mu and sigma were formal function arguments, they would be copied to each node for all 2037 function evaluations!
+*   Copy them to nodes before optimization (`clusterExport()`)
+*   If `mu` and `sigma` were formal function arguments, they would be copied to each node for all 2037 function evaluations!
 
 Please try it and give us feedback.  R-Forge has been undergoing major updates, so please anonymously checkout the source and build it yourself if you're unable to download the pre-built source / binaries.

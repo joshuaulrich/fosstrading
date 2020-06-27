@@ -14,7 +14,7 @@ The book describes 6 approaches to distributed computing.  Thoughts on each app
 
 > The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss [MPI](http://www.open-mpi.org/) clusters, and socket clusters of several machines).Then a section describes how to initialize workers, with a later section giving a slightly advanced discussion on how functions are serialized to workers.  
 >   
-> There's a great demonstration (including graphs) of why/when you should use clusterApplyLB instead of clusterApply.  There's also a fantastic discussion on potential I/O issues (probably one of the most surprising/confusing issues to people new to distributed computing) and how parApply handles them.  Then the authors provide a very useful parApplyLB function.  
+> There's a great demonstration (including graphs) of why/when you should use `clusterApplyLB()` instead of `clusterApply()`.  There's also a fantastic discussion on potential I/O issues (probably one of the most surprising/confusing issues to people new to distributed computing) and how `parApply()` handles them.  Then the authors provide a very useful `parApplyLB()` function.  
 >   
 > There are a few (but very important!) paragraphs on random number generation using the [rsprng](http://cran.r-project.org/web/packages/rsprng/index.html) and [rlecuyer](http://cran.r-project.org/web/packages/rlecuyer/index.html) packages.
 
@@ -22,7 +22,7 @@ The book describes 6 approaches to distributed computing.  Thoughts on each app
 
 > The chapter starts by noting that the multicore package only works on a single computer running a POSIX compliant operating system (i.e. most anything _except_ Windows).  
 >   
-> The next section describes the mclapply function, and also explains how mclapply creates a cluster each time it's called, why this isn't a speed issue, and how it is actually beneficial.  The next few sections describe some of the optional mclapply arguments, and how you can achieve load balancing with mclapply.  A good discussion of pvec, parallel, and collect functions follow.  
+> The next section describes the `mclapply()` function, and also explains how `mclapply()` creates a cluster each time it's called, why this isn't a speed issue, and how it is actually beneficial.  The next few sections describe some of the optional `mclapply()` arguments, and how you can achieve load balancing with `mclapply()`.  A good discussion of `pvec()`, parallel, and collect functions follow.  
 >   
 > There are some great tips on how to use the [rsprng](http://cran.r-project.org/web/packages/rsprng/index.html) and [rlecuyer](http://cran.r-project.org/web/packages/rlecuyer/index.html) packages for random number generation, even though they aren't directly supported by the multicore package.  The chapter concludes with a short, but effective, description of multicore's low-level API.
 
