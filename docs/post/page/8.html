@@ -113,8 +113,7 @@ To calculate the probability of drawdown, the function traverses all permutation
 	<div class="content list__excerpt post__content clearfix">
 		I&rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
 I&rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&hellip;
-&lsquo;x&rsquo; is a matrix of market system returns
-&lsquo;n&rsquo; is the number of bins to create for each system
+# `x` is a matrix of market system returns # `n` is the number of bins to create for each system # `FUN` is the function to use to calculate the value for each bin # `.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -174,7 +173,7 @@ He suggests using his table of volatility correlations as a back-of-the-envelope
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
-These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.
+These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -192,8 +191,8 @@ These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC
 TTR version 0.20-2
 Changes from version 0.20-1
 NEW FEATURES:
- Added VWAP and VWMA (thanks to Brian Peterson) Added v-factor generalization to DEMA (thanks to John Gavin)  CHANGES:
- Updated volatility() to handle univariate case of calc='close&rsquo; (thanks to Cedrick Johnson) Moved EMA, SAR, and wilderSum from .
+ Added VWAP() and VWMA() (thanks to Brian Peterson) Added v-factor generalization to DEMA() (thanks to John Gavin)  CHANGES:
+ Updated volatility() to handle univariate case of calc='close' (thanks to Cedrick Johnson) Moved EMA(), SAR(), and wilderSum() from .
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -239,8 +238,8 @@ Building on the success of the inaugural R / Finance 2009 event, this two-day co
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizons &gt; 6 have long run-times (when calc.max &gt;= horizon).
-This post will illustrate how the snow package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.
+		My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &gt; 6 have long run-times (when calc.max &gt;= horizon).
+This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.
 	</div>
 </article>
 </main>

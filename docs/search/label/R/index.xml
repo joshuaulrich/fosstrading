@@ -232,8 +232,8 @@ The conference will take place on May 20 and 21, at UIC in Chicago. Building on 
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
-      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA (Hull MA), ALMA, and ultimateOscillator functions.
-James Toll provided a patch to the volatility function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
+      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA() (Hull MA), ALMA(), and ultimateOscillator() functions.
+James Toll provided a patch to the volatility() function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
     </item>
     
     <item>
@@ -457,7 +457,7 @@ The fourth annual R/Finance conference for applied finance using R will be held 
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</guid>
-      <description>(This is a guest post by Ilya Kipnis)
+      <description>This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
     </item>
     

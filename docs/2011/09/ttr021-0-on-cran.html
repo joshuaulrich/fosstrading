@@ -8,12 +8,12 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="TTR_0.21-0 on CRAN" />
-<meta property="og:description" content="An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
+<meta property="og:description" content="An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols()), some small changes, and a few new functions. Note that the change to wilderSum() will affect functions that use it (e.g. ADX()).
 Here are the full contents of the CHANGES file:
-TTR version 0.21-0
+ TTR version 0.21-0
 Changes from version 0.20-2
 NEW FEATURES:
- Added variable moving average function, VMA. Added Brian Peterson&rsquo;s price bands function, PBands." />
+ Added variable moving average function, VMA(). Added Brian Peterson&rsquo;s price bands function, PBands()." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html" />
 <meta property="article:published_time" content="2011-09-01T13:10:00-05:00" />
@@ -93,29 +93,31 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-09-01T13:10:00-05:00">September 01, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>An updated version of <a href="http://cran.r-project.org/web/packages/TTR/">TTR</a> is now on <a href="http://cran.r-project.org/">CRAN</a>.  It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions.  Note that the change to wilderSum will affect functions that use it (e.g. ADX).</p>
+			<p>An updated version of <a href="http://cran.r-project.org/web/packages/TTR/">TTR</a> is now on <a href="http://cran.r-project.org/">CRAN</a>.  It contains some much-needed bug fixes (most notably to <code>stockSymbols()</code>), some small changes, and a few new functions.  Note that the change to <code>wilderSum()</code> will affect functions that use it (e.g. <code>ADX()</code>).</p>
 <p>Here are the full contents of the CHANGES file:</p>
+<blockquote>
 <p>TTR version 0.21-0<br>
   Changes from version 0.20-2</p>
 <p>NEW FEATURES:</p>
 <ul>
-<li>Added variable moving average function, VMA.</li>
-<li>Added <a href="http://braverock.com/brian/">Brian Peterson&rsquo;s</a> price bands function, PBands.</li>
-<li>Added <a href="http://cssanalytics.wordpress.com/">David Varadi&rsquo;s</a> DVI indicator, DVI.</li>
+<li>Added variable moving average function, <code>VMA()</code>.</li>
+<li>Added <a href="http://braverock.com/brian/">Brian Peterson&rsquo;s</a> price bands function, <code>PBands()</code>.</li>
+<li>Added <a href="http://cssanalytics.wordpress.com/">David Varadi&rsquo;s</a> <code>DVI()</code> indicator, <code>DVI()</code>.</li>
 </ul>
 <p>CHANGES:</p>
 <ul>
-<li>Added wilder and ratio arguments to DEMA. Thanks to Matthew Fornari for the suggestion.</li>
-<li>Changed wilderSum to seed initial value with raw sum. This matches Wilder&rsquo;s original calculations. Thanks to Mahesh Bp for the report.</li>
-<li>The BBands sd calculation now uses the population instead of sample statistic. This is consistent with Bollinger Band literature. Thanks to <a href="http://www.lemnica.com/">Jeff Ryan</a> for the patch.</li>
+<li>Added <code>wilder</code> and <code>ratio</code> arguments to <code>DEMA()</code>. Thanks to Matthew Fornari for the suggestion.</li>
+<li>Changed <code>wilderSum()</code> to seed initial value with raw sum. This matches Wilder&rsquo;s original calculations. Thanks to Mahesh Bp for the report.</li>
+<li>The <code>BBands()</code> <code>sd</code> calculation now uses the population instead of sample statistic. This is consistent with Bollinger Band literature. Thanks to <a href="http://www.lemnica.com/">Jeff Ryan</a> for the patch.</li>
 </ul>
 <p>BUG FIXES:</p>
 <ul>
-<li>Fixed stockSymbols for <a href="http://nasdaq.com/">nasdaq.com</a> changes.</li>
-<li>Fixed ZLEMA default ratio by changing it from 2/(n-1) to 2/(n+1). This makes it consistent with EMA. Thanks to <a href="http://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a>.</li>
+<li>Fixed <code>stockSymbols()</code> for <a href="http://nasdaq.com/">nasdaq.com</a> changes.</li>
+<li>Fixed <code>ZLEMA()</code> default ratio by changing it from <code>2/(n-1)</code> to <code>2/(n+1)</code>. This makes it consistent with <code>EMA()</code>. Thanks to <a href="http://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a>.</li>
 <li>Corrected close-to-close volatility. Thanks to James Toll for the report.</li>
-<li>adjRatios failed (spectacularly) if there were missing close prices. Thanks to Garrett See for the report.</li>
+<li><code>adjRatios()</code> failed (spectacularly) if there were missing close prices. Thanks to Garrett See for the report.</li>
 </ul>
+</blockquote>
 
 		</div>
 		<footer class="post__footer">

@@ -11,10 +11,7 @@
 <meta property="og:description" content="I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
 This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
 NEW FEATURES:
-- Added the zig zag indicator: ZigZag()
-- Added volatility estimators/indicators: volatility(), with the following calculations
-- Close-to-Close
-- Garman Klass" />
+ Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2009/02/ttr02-on-cran.html" />
 <meta property="article:published_time" content="2009-02-15T18:51:00-06:00" />
@@ -95,38 +92,47 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-15T18:51:00-06:00">February 15, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.</p>
-<p>This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.</p>
+<p>This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses <a href="https://cran.r-project.org/package=xts">xts</a> internally, so all major time series classes are now supported.</p>
 <p>NEW FEATURES:</p>
-<p>- Added the zig zag indicator: ZigZag()</p>
-<p>- Added volatility estimators/indicators: volatility(), with the following calculations<br>
-- Close-to-Close<br>
-- Garman Klass<br>
-- Parkinson<br>
-- Rogers Satchell</p>
-<p>- Added Money Flow Index: MFI()</p>
-<p>- Added Donchian channel: DonchianChannel()</p>
+<ul>
+<li>Added the zig zag indicator: <code>ZigZag()</code></li>
+<li>Added volatility estimators/indicators: <code>volatility()</code>, with the following calculations
+<ul>
+<li>Close-to-Close</li>
+<li>Garman Klass</li>
+<li>Parkinson</li>
+<li>Rogers Satchell</li>
+</ul>
+</li>
+<li>Added Money Flow Index: <code>MFI()</code></li>
+<li>Added Donchian channel: <code>DonchianChannel()</code></li>
+</ul>
 <p>CHANGES:</p>
-<p>- All functions now use xts internally, adding support for all major time series classes. If try.xts() fails on the input object(s), they will be converted to a matrix and a matrix object will be returned.</p>
-<p>- Added &lsquo;bounded&rsquo; arg to stoch() and SMI(), which includes the current period in the calculation.</p>
-<p>- Added naCheck() and implemented it in the moving average functions.</p>
-<p>- Moved maType argument default values from function formals to function body for the following functions:<br>
-ADX, ATR, CCI, DPO, EMV, KST, MACD, RSI, TRIX, BBands, chaikinVolatility, stoch, SMI</p>
-<p>- momentum() in CMO() no longer sets na=100</p>
-<p>- Replaced &lsquo;na&rsquo; argument in momentum() and ROC() with &lsquo;na.pad&rsquo;</p>
-<p>- Added &lsquo;multiple&rsquo; argument to TDI(), allowing more user control</p>
-<p>- getYahooData() now returns an xts object</p>
-<p>- Added colnames to output for ADX, EMV, and CLV (for xts)</p>
-<p>- Added unit tests using the RUnit package<br>
-- Used checkEquals on object attributes as well as values</p>
-<p>- Removed .First.lib function and added .onLoad with package version.</p>
+<ul>
+<li>All functions now use xts internally, adding support for all major time series classes. If <code>try.xts()</code> fails on the input object(s), they will be converted to a matrix and a matrix object will be returned.</li>
+<li>Added <code>bounded</code> arg to <code>stoch()</code> and <code>SMI()</code>, which includes the current period in the calculation.</li>
+<li>Added <code>naCheck()</code> and implemented it in the moving average functions.</li>
+<li>Moved <code>maType</code> argument default values from function formals to function body for the following functions:<br>
+<code>ADX()</code>, <code>ATR()</code>, <code>CCI()</code>, <code>DPO()</code>, <code>EMV()</code>, <code>KST()</code>, <code>MACD()</code>, <code>RSI()</code>, <code>TRIX()</code>, <code>BBands()</code>, <code>chaikinVolatility()</code>, <code>stoch()</code>, <code>SMI()</code></li>
+<li><code>momentum()</code> in <code>CMO()</code> no longer sets <code>na=100</code></li>
+<li>Replaced <code>na</code> argument in <code>momentum()</code> and <code>ROC()</code> with <code>na.pad</code></li>
+<li>Added <code>multiple</code> argument to <code>TDI()</code>, allowing more user control</li>
+<li><code>getYahooData()</code> now returns an xts object</li>
+<li>Added colnames to output for <code>ADX()</code>, <code>EMV()</code>, and <code>CLV()</code> (for xts)</li>
+<li>Added unit tests using the <a href="https://cran.r-project.org/package=RUnit">RUnit</a> package</li>
+<li>Used <code>checkEquals()</code> on object attributes as well as values</li>
+<li>Removed <code>.First.lib</code> function and added <code>.onLoad()</code> with package version.</li>
+</ul>
 <p>BUG FIXES:</p>
-<p>- Corrected NaN replacement in CLV()</p>
-<p>- Corrected williamsAD(): AD=0 if C(t)=C(t-1)</p>
-<p>- Corrected runMedian() and runMAD(). The argument controlling which type of median to calculate for even-numbered samples wasn&rsquo;t being passed to the Fortran routine.</p>
-<p>- aroon() calculation starts at period n+1, instead of n</p>
-<p>- Added NA to first element of closeLag of ATR()</p>
-<p>- Corrected BBands() and CCI() for rowMeans use on xts objects</p>
-<p>- Made changes to Rd files to pass R CMD check on R-devel (2.9.0)</p>
+<ul>
+<li>Corrected NaN replacement in <code>CLV()</code></li>
+<li>Corrected <code>williamsAD()</code>: AD=0 if C(t)=C(t-1)</li>
+<li>Corrected <code>runMedian()</code> and <code>runMAD()</code>. The argument controlling which type of median to calculate for even-numbered samples wasn&rsquo;t being passed to the Fortran routine.</li>
+<li><code>aroon()</code> calculation starts at period <code>n+1</code>, instead of <code>n</code></li>
+<li>Added <code>NA</code> to first element of <code>closeLag</code> of <code>ATR()</code></li>
+<li>Corrected <code>BBands()</code> and <code>CCI()</code> for <code>rowMeans()</code> use on xts objects</li>
+<li>Made changes to Rd files to pass <code>R CMD check</code> on R-devel (2.9.0)</li>
+</ul>
 <p>Please do contact me with any questions, concerns, bug reports, etc.</p>
 
 		</div>

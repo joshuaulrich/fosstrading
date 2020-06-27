@@ -93,43 +93,43 @@ if (!doNotTrack) {
 <p>His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives. Support for additional constraints including group, diversification, and factor exposure constraints was also added. The random portfolio solver was expanded to include two additional methods of generating random portfolios. The optimization backends were further standardized for sets of constraints and objectives that can be solved via linear and quadratic programming solvers using the ROI package. Charts including risk budget and efficient frontiers were added as well as standardizing the charting across all optimization engines.</p>
 <p>This post is meant to provide a very basic introduction to the PortfolioAnalytics package. PortfolioAnalytics is an R package designed to provide numerical solutions and visualizations for portfolio problems with complex constraints and objectives. A key feature of PortfolioAnalytics is the ability to specify a portfolio with assets, constraints, and objectives that is solver agnostic, where the objective can be comprised of any valid R function. PortfolioAnalytics utilizes multiple solvers as backends for the optimization; linear programming, quadratic programming, differential evolution, random portfolios, particle swarm, and generalized simulated annealing. For optimization problems that can be formulated as linear or quadratic problems, these can be solved very fast and efficiently using the appropriate linear or quadratic solver supported by PortfolioAnalytics. For optimization problems with more complex constraints and objectives, a global solver such as differential evolution or random portfolios can be used to find a solution.</p>
 <p>Ross will be giving a tutorial on PortfolioAnalytics at the <a href="http://www.rinfinance.com">R/Finance 2014 Conference</a>. The tutorial will cover the key features of PortfolioAnalytics along with several comprehensive examples. Those who want to learn more about how R is used in finance are encouraged to attend.</p>
-<p>The primary functions in PortfolioAnalytics to specify a portfolio with constraints and objectives are <code>portfolio.spec</code>, <code>add.constraint</code>, and <code>add.objective</code>.</p>
-<pre><code>library(PortfolioAnalytics)  
-data(edhec)  
-returns &lt;- edhec[, 1:6]  
-funds &lt;- colnames(returns)  
-</code></pre><p>Here we create a portfolio object with <code>portfolio.spec</code>. The <code>assets</code> argument is a required argument to the <code>portfolio.spec</code> function. <code>assets</code> can be a character vector with the names of the assets, a named numeric vector, or a scalar value specifying the number of assets. If a character vector or scalar value is passed in for <code>assets</code>, equal weights will be created for the initial portfolio weights.</p>
-<pre><code>init.portfolio &lt;- portfolio.spec(assets = funds)  
-</code></pre><p>The <code>portfolio</code> object is an S3 class that contains portfolio level data as well as the constraints and objectives for the optimization problem. You can see that the constraints and objectives lists are currently empty, but we will add sets of constraints and objectives with <code>add.constraint</code> and <code>add.objective</code>.</p>
-<pre><code>print.default(init.portfolio)  
-</code></pre><pre><code>## $assets  
-## Convertible Arbitrage            CTA Global Distressed Securities   
-##                0.1667                0.1667                0.1667   
-##      Emerging Markets Equity Market Neutral          Event Driven   
-##                0.1667                0.1667                0.1667   
-##   
-## $category_labels  
-## NULL  
-##   
-## $weight_seq  
-## NULL  
-##   
-## $constraints  
-## list()  
-##   
-## $objectives  
-## list()  
-##   
-## $call  
-## portfolio.spec(assets = funds)  
-##   
-## attr(,&quot;class&quot;)  
-## [1] &quot;portfolio.spec&quot; &quot;portfolio&quot;  
-</code></pre><p>Here we add the full investment constraint. The full investment constraint is a special case of the leverage constraint that specifies the weights must sum to 1 and is specified with the alias <code>type=&quot;full_investment&quot;</code> as shown below.</p>
-<pre><code>init.portfolio &lt;- add.constraint(portfolio = init.portfolio, type = &quot;full_investment&quot;)  
-</code></pre><p>Now we add box constraint to specify a long only portfolio. The long only constraint is a special case of a box constraint where the lower bound of the weights of each asset is equal to 0 and the upper bound of the weights of each asset is equal to 1. This is specified with <code>type=&quot;long_only&quot;</code> as shown below. The box constraint also allows for per asset weights to be specified.</p>
-<pre><code>init.portfolio &lt;- add.constraint(portfolio = init.portfolio, type = &quot;long_only&quot;)  
-</code></pre><p>The following constraint types are supported:</p>
+<p>The primary functions in PortfolioAnalytics to specify a portfolio with constraints and objectives are <code>portfolio.spec()</code>, <code>add.constraint()</code>, and <code>add.objective()</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">PortfolioAnalytics</span><span class="p">)</span>  
+<span class="nf">data</span><span class="p">(</span><span class="n">edhec</span><span class="p">)</span>  
+<span class="n">returns</span> <span class="o">&lt;-</span> <span class="n">edhec[</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="n">]</span>  
+<span class="n">funds</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>  
+</code></pre></div><p>Here we create a portfolio object with <code>portfolio.spec()</code>. The <code>assets</code> argument is a required argument to the <code>portfolio.spec()</code> function. <code>assets</code> can be a character vector with the names of the assets, a named numeric vector, or a scalar value specifying the number of assets. If a character vector or scalar value is passed in for <code>assets</code>, equal weights will be created for the initial portfolio weights.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">portfolio.spec</span><span class="p">(</span><span class="n">assets</span> <span class="o">=</span> <span class="n">funds</span><span class="p">)</span>  
+</code></pre></div><p>The <code>portfolio</code> object is an S3 class that contains portfolio level data as well as the constraints and objectives for the optimization problem. You can see that the constraints and objectives lists are currently empty, but we will add sets of constraints and objectives with <code>add.constraint()</code> and <code>add.objective()</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print.default</span><span class="p">(</span><span class="n">init.portfolio</span><span class="p">)</span>  
+<span class="c1">## $assets  </span>
+<span class="c1">## Convertible Arbitrage            CTA Global Distressed Securities   </span>
+<span class="c1">##                0.1667                0.1667                0.1667   </span>
+<span class="c1">##      Emerging Markets Equity Market Neutral          Event Driven   </span>
+<span class="c1">##                0.1667                0.1667                0.1667   </span>
+<span class="c1">##   </span>
+<span class="c1">## $category_labels  </span>
+<span class="c1">## NULL  </span>
+<span class="c1">##   </span>
+<span class="c1">## $weight_seq  </span>
+<span class="c1">## NULL  </span>
+<span class="c1">##   </span>
+<span class="c1">## $constraints  </span>
+<span class="c1">## list()  </span>
+<span class="c1">##   </span>
+<span class="c1">## $objectives  </span>
+<span class="c1">## list()  </span>
+<span class="c1">##   </span>
+<span class="c1">## $call  </span>
+<span class="c1">## portfolio.spec(assets = funds)  </span>
+<span class="c1">##   </span>
+<span class="c1">## attr(,&#34;class&#34;)  </span>
+<span class="c1">## [1] &#34;portfolio.spec&#34; &#34;portfolio&#34;  </span>
+</code></pre></div><p>Here we add the full investment constraint. The full investment constraint is a special case of the leverage constraint that specifies the weights must sum to 1 and is specified with the alias <code>type=&quot;full_investment&quot;</code> as shown below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;full_investment&#34;</span><span class="p">)</span>  
+</code></pre></div><p>Now we add box constraint to specify a long only portfolio. The long only constraint is a special case of a box constraint where the lower bound of the weights of each asset is equal to 0 and the upper bound of the weights of each asset is equal to 1. This is specified with <code>type=&quot;long_only&quot;</code> as shown below. The box constraint also allows for per asset weights to be specified.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;long_only&#34;</span><span class="p">)</span>  
+</code></pre></div><p>The following constraint types are supported:</p>
 <ul>
 <li>leverage</li>
 <li>box</li>
@@ -145,21 +145,21 @@ funds &lt;- colnames(returns)
 <li>Not supported for problems formulated as quadratic programming problems solved with <code>optimize_method=&quot;ROI&quot;</code>.</li>
 <li>Not supported for problems formulated as linear programming problems solved with <code>optimize_method=&quot;ROI&quot;</code>.</li>
 </ol>
-<p>Below we create two new portfolio objects. Note that we areassigning new names for the portfolios. This re-uses the constraints from <code>init.portfolio</code> and adds the objectives specified below to <code>minSD.portfolio</code> and <code>meanES.portfolio</code> while leaving <code>init.portfolio</code> unchanged. This is useful for testing multiple portfolios with different objectives using the same constraints because the constraints only need to be specified once and several new portfolios can be created using an initial portfolio object.</p>
-<pre><code># Add objective for portfolio to minimize portfolio standard deviation  
-minSD.portfolio &lt;- add.objective(portfolio=init.portfolio,   
-                                 type=&quot;risk&quot;,   
-                                 name=&quot;StdDev&quot;)  
+<p>Below we create two new portfolio objects. Note that we areassigning new names for the portfolios. This re-uses the constraints from <code>init.portfolio()</code> and adds the objectives specified below to <code>minSD.portfolio</code> and <code>meanES.portfolio</code> while leaving <code>init.portfolio</code> unchanged. This is useful for testing multiple portfolios with different objectives using the same constraints because the constraints only need to be specified once and several new portfolios can be created using an initial portfolio object.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Add objective for portfolio to minimize portfolio standard deviation  </span>
+<span class="n">minSD.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.objective</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="n">init.portfolio</span><span class="p">,</span>   
+                                 <span class="n">type</span><span class="o">=</span><span class="s">&#34;risk&#34;</span><span class="p">,</span>   
+                                 <span class="n">name</span><span class="o">=</span><span class="s">&#34;StdDev&#34;</span><span class="p">)</span>  
   
-# Add objectives for portfolio to maximize mean per unit ES  
-meanES.portfolio &lt;- add.objective(portfolio=init.portfolio,   
-                                  type=&quot;return&quot;,   
-                                  name=&quot;mean&quot;)  
+<span class="c1"># Add objectives for portfolio to maximize mean per unit ES  </span>
+<span class="n">meanES.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.objective</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="n">init.portfolio</span><span class="p">,</span>   
+                                  <span class="n">type</span><span class="o">=</span><span class="s">&#34;return&#34;</span><span class="p">,</span>   
+                                  <span class="n">name</span><span class="o">=</span><span class="s">&#34;mean&#34;</span><span class="p">)</span>  
   
-meanES.portfolio &lt;- add.objective(portfolio=meanES.portfolio,   
-                                  type=&quot;risk&quot;,   
-                                  name=&quot;ES&quot;)  
-</code></pre><p>Note that the <code>name</code> argument in <code>add.objective</code> can be any valid R function. Several functions are provided in the PerformanceAnalytics package that can be specified as the <code>name</code> argument such as ES/ETL/CVaR, StdDev, etc.</p>
+<span class="n">meanES.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.objective</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="n">meanES.portfolio</span><span class="p">,</span>   
+                                  <span class="n">type</span><span class="o">=</span><span class="s">&#34;risk&#34;</span><span class="p">,</span>   
+                                  <span class="n">name</span><span class="o">=</span><span class="s">&#34;ES&#34;</span><span class="p">)</span>  
+</code></pre></div><p>Note that the <code>name</code> argument in <code>add.objective()</code> can be any valid R function. Several functions are provided in the PerformanceAnalytics package that can be specified as the <code>name</code> argument such as ES/ETL/CVaR, StdDev, etc.</p>
 <p>The following objective types are supported:</p>
 <ul>
 <li>return</li>
@@ -167,68 +167,68 @@ meanES.portfolio &lt;- add.objective(portfolio=meanES.portfolio,
 <li>risk_budget</li>
 <li>weight_concentration</li>
 </ul>
-<p>As demonstrated above, the <code>add.constraint</code> and <code>add.objective</code> functions were designed to be very flexible and modular so that constraints and objectives can easily be specified and added to <code>portfolio</code> objects.</p>
-<p>PortfolioAnalytics provides a <code>print</code> method so that we can easily view the assets, constraints, and objectives that we have specified for the portfolio.</p>
-<pre><code>print(minSD.portfolio)  
-</code></pre><pre><code>## **************************************************  
-## PortfolioAnalytics Portfolio Specification   
-## **************************************************  
-##   
-## Call:  
-## portfolio.spec(assets = funds)  
-##   
-## Assets  
-## Number of assets: 6   
-##   
-## Asset Names  
-## [1] &quot;Convertible Arbitrage&quot; &quot;CTA Global&quot;            &quot;Distressed Securities&quot;  
-## [4] &quot;Emerging Markets&quot;      &quot;Equity Market Neutral&quot; &quot;Event Driven&quot;           
-##   
-## Constraints  
-## Number of constraints: 2   
-## Number of enabled constraints: 2   
-## Enabled constraint types  
-##      - full_investment   
-##      - long_only   
-## Number of disabled constraints: 0   
-##   
-## Objectives  
-## Number of objectives: 1   
-## Number of enabled objectives: 1   
-## Enabled objective names  
-##      - StdDev   
-## Number of disabled objectives: 0  
-</code></pre><pre><code>print(meanES.portfolio)  
-</code></pre><pre><code>## **************************************************  
-## PortfolioAnalytics Portfolio Specification   
-## **************************************************  
-##   
-## Call:  
-## portfolio.spec(assets = funds)  
-##   
-## Assets  
-## Number of assets: 6   
-##   
-## Asset Names  
-## [1] &quot;Convertible Arbitrage&quot; &quot;CTA Global&quot;            &quot;Distressed Securities&quot;  
-## [4] &quot;Emerging Markets&quot;      &quot;Equity Market Neutral&quot; &quot;Event Driven&quot;           
-##   
-## Constraints  
-## Number of constraints: 2   
-## Number of enabled constraints: 2   
-## Enabled constraint types  
-##      - full_investment   
-##      - long_only   
-## Number of disabled constraints: 0   
-##   
-## Objectives  
-## Number of objectives: 2   
-## Number of enabled objectives: 2   
-## Enabled objective names  
-##      - mean   
-##      - ES   
-## Number of disabled objectives: 0  
-</code></pre><p>Now that we have portfolios set up with the desired constraints and objectives, we use <code>optimize.portfolio</code> to run the optimizations. The examples below use <code>optimize_method=&quot;ROI&quot;</code>, but several other solvers are supported including the following:</p>
+<p>As demonstrated above, the <code>add.constraint()</code> and <code>add.objective()</code> functions were designed to be very flexible and modular so that constraints and objectives can easily be specified and added to <code>portfolio</code> objects.</p>
+<p>PortfolioAnalytics provides a <code>print()</code> method so that we can easily view the assets, constraints, and objectives that we have specified for the portfolio.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">minSD.portfolio</span><span class="p">)</span>  
+<span class="c1">## **************************************************  </span>
+<span class="c1">## PortfolioAnalytics Portfolio Specification   </span>
+<span class="c1">## **************************************************  </span>
+<span class="c1">##   </span>
+<span class="c1">## Call:  </span>
+<span class="c1">## portfolio.spec(assets = funds)  </span>
+<span class="c1">##   </span>
+<span class="c1">## Assets  </span>
+<span class="c1">## Number of assets: 6   </span>
+<span class="c1">##   </span>
+<span class="c1">## Asset Names  </span>
+<span class="c1">## [1] &#34;Convertible Arbitrage&#34; &#34;CTA Global&#34;            &#34;Distressed Securities&#34;  </span>
+<span class="c1">## [4] &#34;Emerging Markets&#34;      &#34;Equity Market Neutral&#34; &#34;Event Driven&#34;           </span>
+<span class="c1">##   </span>
+<span class="c1">## Constraints  </span>
+<span class="c1">## Number of constraints: 2   </span>
+<span class="c1">## Number of enabled constraints: 2   </span>
+<span class="c1">## Enabled constraint types  </span>
+<span class="c1">##      - full_investment   </span>
+<span class="c1">##      - long_only   </span>
+<span class="c1">## Number of disabled constraints: 0   </span>
+<span class="c1">##   </span>
+<span class="c1">## Objectives  </span>
+<span class="c1">## Number of objectives: 1   </span>
+<span class="c1">## Number of enabled objectives: 1   </span>
+<span class="c1">## Enabled objective names  </span>
+<span class="c1">##      - StdDev   </span>
+<span class="c1">## Number of disabled objectives: 0  </span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">meanES.portfolio</span><span class="p">)</span>  
+<span class="c1">## **************************************************  </span>
+<span class="c1">## PortfolioAnalytics Portfolio Specification   </span>
+<span class="c1">## **************************************************  </span>
+<span class="c1">##   </span>
+<span class="c1">## Call:  </span>
+<span class="c1">## portfolio.spec(assets = funds)  </span>
+<span class="c1">##   </span>
+<span class="c1">## Assets  </span>
+<span class="c1">## Number of assets: 6   </span>
+<span class="c1">##   </span>
+<span class="c1">## Asset Names  </span>
+<span class="c1">## [1] &#34;Convertible Arbitrage&#34; &#34;CTA Global&#34;            &#34;Distressed Securities&#34;  </span>
+<span class="c1">## [4] &#34;Emerging Markets&#34;      &#34;Equity Market Neutral&#34; &#34;Event Driven&#34;           </span>
+<span class="c1">##   </span>
+<span class="c1">## Constraints  </span>
+<span class="c1">## Number of constraints: 2   </span>
+<span class="c1">## Number of enabled constraints: 2   </span>
+<span class="c1">## Enabled constraint types  </span>
+<span class="c1">##      - full_investment   </span>
+<span class="c1">##      - long_only   </span>
+<span class="c1">## Number of disabled constraints: 0   </span>
+<span class="c1">##   </span>
+<span class="c1">## Objectives  </span>
+<span class="c1">## Number of objectives: 2   </span>
+<span class="c1">## Number of enabled objectives: 2   </span>
+<span class="c1">## Enabled objective names  </span>
+<span class="c1">##      - mean   </span>
+<span class="c1">##      - ES   </span>
+<span class="c1">## Number of disabled objectives: 0  </span>
+</code></pre></div><p>Now that we have portfolios set up with the desired constraints and objectives, we use <code>optimize.portfolio()</code> to run the optimizations. The examples below use <code>optimize_method=&quot;ROI&quot;</code>, but several other solvers are supported including the following:</p>
 <ul>
 <li>DEoptim (differential evolution)</li>
 <li>random portfolios
@@ -248,65 +248,65 @@ meanES.portfolio &lt;- add.objective(portfolio=meanES.portfolio,
 </li>
 </ul>
 <p>The objective to minimize standard deviation can be formulated as a quadratic programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
-<pre><code># Run the optimization for the minimum standard deviation portfolio  
-minSD.opt &lt;- optimize.portfolio(R = returns, portfolio = minSD.portfolio,   
-    optimize_method = &quot;ROI&quot;, trace = TRUE)  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the minimum standard deviation portfolio  </span>
+<span class="n">minSD.opt</span> <span class="o">&lt;-</span> <span class="nf">optimize.portfolio</span><span class="p">(</span><span class="n">R</span> <span class="o">=</span> <span class="n">returns</span><span class="p">,</span> <span class="n">portfolio</span> <span class="o">=</span> <span class="n">minSD.portfolio</span><span class="p">,</span>   
+    <span class="n">optimize_method</span> <span class="o">=</span> <span class="s">&#34;ROI&#34;</span><span class="p">,</span> <span class="n">trace</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
   
-print(minSD.opt)  
-</code></pre><pre><code>## ***********************************  
-## PortfolioAnalytics Optimization  
-## ***********************************  
-##   
-## Call:  
-## optimize.portfolio(R = returns, portfolio = minSD.portfolio,   
-##     optimize_method = &quot;ROI&quot;, trace = TRUE)  
-##   
-## Optimal Weights:  
-## Convertible Arbitrage            CTA Global Distressed Securities   
-##                0.0000                0.0652                0.0000   
-##      Emerging Markets Equity Market Neutral          Event Driven   
-##                0.0000                0.9348                0.0000   
-##   
-## Objective Measure:  
-##   StdDev   
-## 0.008855  
-</code></pre><p>The objective to maximize mean return per ES can be formulated as a linear programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
-<pre><code># Run the optimization for the maximize mean per unit ES  
-meanES.opt &lt;- optimize.portfolio(R = returns, portfolio = meanES.portfolio,   
-    optimize_method = &quot;ROI&quot;, trace = TRUE)  
+<span class="nf">print</span><span class="p">(</span><span class="n">minSD.opt</span><span class="p">)</span>  
+<span class="c1">## ***********************************  </span>
+<span class="c1">## PortfolioAnalytics Optimization  </span>
+<span class="c1">## ***********************************  </span>
+<span class="c1">##   </span>
+<span class="c1">## Call:  </span>
+<span class="c1">## optimize.portfolio(R = returns, portfolio = minSD.portfolio,   </span>
+<span class="c1">##     optimize_method = &#34;ROI&#34;, trace = TRUE)  </span>
+<span class="c1">##   </span>
+<span class="c1">## Optimal Weights:  </span>
+<span class="c1">## Convertible Arbitrage            CTA Global Distressed Securities   </span>
+<span class="c1">##                0.0000                0.0652                0.0000   </span>
+<span class="c1">##      Emerging Markets Equity Market Neutral          Event Driven   </span>
+<span class="c1">##                0.0000                0.9348                0.0000   </span>
+<span class="c1">##   </span>
+<span class="c1">## Objective Measure:  </span>
+<span class="c1">##   StdDev   </span>
+<span class="c1">## 0.008855  </span>
+</code></pre></div><p>The objective to maximize mean return per ES can be formulated as a linear programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the maximize mean per unit ES  </span>
+<span class="n">meanES.opt</span> <span class="o">&lt;-</span> <span class="nf">optimize.portfolio</span><span class="p">(</span><span class="n">R</span> <span class="o">=</span> <span class="n">returns</span><span class="p">,</span> <span class="n">portfolio</span> <span class="o">=</span> <span class="n">meanES.portfolio</span><span class="p">,</span>   
+    <span class="n">optimize_method</span> <span class="o">=</span> <span class="s">&#34;ROI&#34;</span><span class="p">,</span> <span class="n">trace</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
   
-print(meanES.opt)  
-</code></pre><pre><code>## ***********************************  
-## PortfolioAnalytics Optimization  
-## ***********************************  
-##   
-## Call:  
-## optimize.portfolio(R = returns, portfolio = meanES.portfolio,   
-##     optimize_method = &quot;ROI&quot;, trace = TRUE)  
-##   
-## Optimal Weights:  
-## Convertible Arbitrage            CTA Global Distressed Securities   
-##                0.0000                0.2940                0.2509   
-##      Emerging Markets Equity Market Neutral          Event Driven   
-##                0.0000                0.4552                0.0000   
-##   
-## Objective Measure:  
-##     mean   
-## 0.006635   
-##   
-##   
-##      ES   
-## 0.01837  
-</code></pre><p>The PortfolioAnalytics package provides functions for charting to better understand the optimization problem through visualization. The <code>plot</code> function produces a plot of of the optimal weights and the optimal portfolio in risk-return space. The optimal weights and chart in risk-return space can be plotted separately with <code>chart.Weights</code> and <code>chart.RiskReward</code>.</p>
-<pre><code>plot(minSD.opt, risk.col=&quot;StdDev&quot;, chart.assets=TRUE,   
-     main=&quot;Min SD Optimization&quot;,  
-     ylim=c(0, 0.0083), xlim=c(0, 0.06))  
-</code></pre><p><a href="/post/images/unnamed-chunk-102.png"><img src="/post/images/unnamed-chunk-102.png" alt=""></a></p>
-<pre><code>plot(meanES.opt, chart.assets=TRUE,   
-     main=&quot;Mean ES Optimization&quot;,  
-     ylim=c(0, 0.0083), xlim=c(0, 0.16))  
-</code></pre><p><a href="/post/images/unnamed-chunk-101.png"><img src="/post/images/unnamed-chunk-101.png" alt=""></a></p>
-<p>This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard devation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.</p>
+<span class="nf">print</span><span class="p">(</span><span class="n">meanES.opt</span><span class="p">)</span>  
+<span class="c1">## ***********************************  </span>
+<span class="c1">## PortfolioAnalytics Optimization  </span>
+<span class="c1">## ***********************************  </span>
+<span class="c1">##   </span>
+<span class="c1">## Call:  </span>
+<span class="c1">## optimize.portfolio(R = returns, portfolio = meanES.portfolio,   </span>
+<span class="c1">##     optimize_method = &#34;ROI&#34;, trace = TRUE)  </span>
+<span class="c1">##   </span>
+<span class="c1">## Optimal Weights:  </span>
+<span class="c1">## Convertible Arbitrage            CTA Global Distressed Securities   </span>
+<span class="c1">##                0.0000                0.2940                0.2509   </span>
+<span class="c1">##      Emerging Markets Equity Market Neutral          Event Driven   </span>
+<span class="c1">##                0.0000                0.4552                0.0000   </span>
+<span class="c1">##   </span>
+<span class="c1">## Objective Measure:  </span>
+<span class="c1">##     mean   </span>
+<span class="c1">## 0.006635   </span>
+<span class="c1">##   </span>
+<span class="c1">##   </span>
+<span class="c1">##      ES   </span>
+<span class="c1">## 0.01837  </span>
+</code></pre></div><p>The PortfolioAnalytics package provides functions for charting to better understand the optimization problem through visualization. The <code>plot()</code> function produces a plot of of the optimal weights and the optimal portfolio in risk-return space. The optimal weights and chart in risk-return space can be plotted separately with <code>chart.Weights()</code> and <code>chart.RiskReward()</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">minSD.opt</span><span class="p">,</span> <span class="n">risk.col</span><span class="o">=</span><span class="s">&#34;StdDev&#34;</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
+     <span class="n">main</span><span class="o">=</span><span class="s">&#34;Min SD Optimization&#34;</span><span class="p">,</span>  
+     <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.0083</span><span class="p">),</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.06</span><span class="p">))</span>  
+</code></pre></div><p><a href="/post/images/unnamed-chunk-102.png"><img src="/post/images/unnamed-chunk-102.png" alt=""></a></p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">meanES.opt</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
+     <span class="n">main</span><span class="o">=</span><span class="s">&#34;Mean ES Optimization&#34;</span><span class="p">,</span>  
+     <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.0083</span><span class="p">),</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.16</span><span class="p">))</span>  
+</code></pre></div><p><a href="/post/images/unnamed-chunk-101.png"><img src="/post/images/unnamed-chunk-101.png" alt=""></a></p>
+<p>This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard deviation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.</p>
 <p>The PortfolioAnalytics package is part of the <a href="http://r-forge.r-project.org/projects/returnanalytics/">ReturnAnalytics</a> project on R-Forge. For additional examples and information, refer to the several vignettes and demos are provided in the package.</p>
 
 		</div>

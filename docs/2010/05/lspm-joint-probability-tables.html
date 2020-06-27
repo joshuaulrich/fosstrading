@@ -10,8 +10,7 @@
 	<meta property="og:title" content="LSPM Joint Probability Tables" />
 <meta property="og:description" content="I&rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
 I&rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&hellip;
-&lsquo;x&rsquo; is a matrix of market system returns
-&lsquo;n&rsquo; is the number of bins to create for each system" />
+# `x` is a matrix of market system returns # `n` is the number of bins to create for each system # `FUN` is the function to use to calculate the value for each bin # `." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html" />
 <meta property="article:published_time" content="2010-05-18T22:30:00-05:00" />
@@ -93,40 +92,70 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>I&rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&rsquo;s portfolio optimization functions.  Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)</p>
 <p>I&rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&hellip;</p>
-<p>&lsquo;x&rsquo; is a matrix of market system returns<br>
-&lsquo;n&rsquo; is the number of bins to create for each system<br>
-&lsquo;FUN&rsquo; is the function to use to calculate the value for each bin<br>
-&lsquo;&hellip;&rsquo; are args to be passed to &lsquo;FUN&rsquo;</p>
-<p>jointProbTable &lt;- function(x, n=3, FUN=median, &hellip;) {</p>
-<p>  # Load LSPM</p>
-<p>  if(!require(LSPM,quietly=TRUE)) stop(warnings())</p>
-<p>  # Function to bin data</p>
-<p>  quantize &lt;- function(x, n, FUN=median, &hellip;) {</p>
-<p>    if(is.character(FUN)) FUN &lt;- get(FUN)</p>
-<p>    bins &lt;- cut(x, n, labels=FALSE)</p>
-<p>    res &lt;- sapply(1:NROW(x), function(i) FUN(x[bins==bins[i]], &hellip;))</p>
-<p>  }</p>
-<p>  # Allow for different values of &lsquo;n&rsquo; for each system in &lsquo;x&rsquo;</p>
-<p>  if(NROW(n)==1) {</p>
-<p>    n &lt;- rep(n,NCOL(x))</p>
-<p>  } else</p>
-<p>  if(NROW(n)!=NCOL(x)) stop(&ldquo;invalid &lsquo;n&rsquo;&quot;)</p>
-<p>  # Bin data in &lsquo;x&rsquo;</p>
-<p>  qd &lt;- sapply(1:NCOL(x), function(i) quantize(x[,i],n=n[i],FUN=FUN,&hellip;))</p>
-<p>  # Aggregate probabilities</p>
-<p>  probs &lt;- rep(1/NROW(x),NROW(x))</p>
-<p>  res &lt;- aggregate(probs, by=lapply(1:NCOL(qd), function(i) qd[,i]), sum)</p>
-<p>  # Clean up output, return lsp object</p>
-<p>  colnames(res) &lt;- colnames(x)</p>
-<p>  res &lt;- lsp(res[,1:NCOL(x)],res[,NCOL(res)])</p>
-<p>  return(res)</p>
-<p>}</p>
-<p># Example</p>
-<p>N &lt;- 30</p>
-<p>x &lt;- rnorm(N)/100; y &lt;- rnorm(N)/100; z &lt;- rnorm(N)/100</p>
-<p>zz &lt;- cbind(x,y,z)</p>
-<p>(jpt &lt;- jointProbTable(zz,n=c(4,3,3)))</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># `x` is a matrix of market system returns</span>
+<span class="c1"># `n` is the number of bins to create for each system</span>
+<span class="c1"># `FUN` is the function to use to calculate the value for each bin</span>
+<span class="c1"># `...` are args to be passed to `FUN`</span>
 
+<span class="n">jointProbTable</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">FUN</span><span class="o">=</span><span class="n">median</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1"># Load LSPM</span>
+  <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">LSPM</span><span class="p">,</span><span class="n">quietly</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span> <span class="nf">stop</span><span class="p">(</span><span class="nf">warnings</span><span class="p">())</span>
+
+  <span class="c1"># Function to bin data</span>
+  <span class="n">quantize</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">FUN</span><span class="o">=</span><span class="n">median</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">is.character</span><span class="p">(</span><span class="n">FUN</span><span class="p">))</span> <span class="n">FUN</span> <span class="o">&lt;-</span> <span class="nf">get</span><span class="p">(</span><span class="n">FUN</span><span class="p">)</span>
+    <span class="n">bins</span> <span class="o">&lt;-</span> <span class="nf">cut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">NROW</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="nf">FUN</span><span class="p">(</span><span class="n">x[bins</span><span class="o">==</span><span class="n">bins[i]]</span><span class="p">,</span> <span class="kc">...</span><span class="p">))</span>
+  <span class="p">}</span>
+
+  <span class="c1"># Allow for different values of &#39;n&#39; for each system in &#39;x&#39;</span>
+  <span class="nf">if</span><span class="p">(</span><span class="nf">NROW</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">==</span><span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+  <span class="p">}</span> <span class="n">else</span>
+  <span class="nf">if</span><span class="p">(</span><span class="nf">NROW</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="nf">stop</span><span class="p">(</span><span class="s">&#34;invalid &#39;n&#39;&#34;</span><span class="p">)</span>
+
+  <span class="c1"># Bin data in &#39;x&#39;</span>
+  <span class="n">qd</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="nf">quantize</span><span class="p">(</span><span class="n">x[</span><span class="p">,</span><span class="n">i]</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n[i]</span><span class="p">,</span><span class="n">FUN</span><span class="o">=</span><span class="n">FUN</span><span class="p">,</span><span class="kc">...</span><span class="p">))</span>
+
+  <span class="c1"># Aggregate probabilities</span>
+  <span class="n">probs</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="nf">NROW</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="nf">NROW</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">qd</span><span class="p">),</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="n">qd[</span><span class="p">,</span><span class="n">i]</span><span class="p">),</span> <span class="n">sum</span><span class="p">)</span>
+
+  <span class="c1"># Clean up output, return lsp object</span>
+  <span class="nf">colnames</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">res[</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="n">]</span><span class="p">,</span><span class="n">res[</span><span class="p">,</span><span class="nf">NCOL</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+
+  <span class="nf">return</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Example</span>
+<span class="n">N</span> <span class="o">&lt;-</span> <span class="m">30</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="m">100</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="m">100</span><span class="p">;</span> <span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">/</span><span class="m">100</span>
+<span class="n">zz</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">jpt</span> <span class="o">&lt;-</span> <span class="nf">jointProbTable</span><span class="p">(</span><span class="n">zz</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+<span class="n">jpt</span>
+<span class="c1">##                     x           y            z</span>
+<span class="c1">## f         0.100000000  0.10000000  0.100000000</span>
+<span class="c1">## Max Loss -0.009192644 -0.03090575 -0.006942066</span>
+<span class="c1">##            probs            x            y            z</span>
+<span class="c1">##  [1,] 0.06666667 -0.002152201 -0.030905750 -0.006942066</span>
+<span class="c1">##  [2,] 0.06666667 -0.002152201 -0.006480683 -0.006942066</span>
+<span class="c1">##  [3,] 0.03333333  0.024304901 -0.006480683 -0.006942066</span>
+<span class="c1">##  [4,] 0.03333333 -0.009192644  0.001963339 -0.006942066</span>
+<span class="c1">##  [5,] 0.06666667  0.008308007  0.001963339 -0.006942066</span>
+<span class="c1">##  [6,] 0.03333333  0.024304901  0.001963339 -0.006942066</span>
+<span class="c1">##  [7,] 0.03333333 -0.009192644 -0.006480683  0.001678969</span>
+<span class="c1">##  [8,] 0.03333333  0.008308007 -0.006480683  0.001678969</span>
+<span class="c1">##  [9,] 0.20000000 -0.009192644  0.001963339  0.001678969</span>
+<span class="c1">## [10,] 0.06666667 -0.002152201  0.001963339  0.001678969</span>
+<span class="c1">## [11,] 0.13333333  0.008308007  0.001963339  0.001678969</span>
+<span class="c1">## [12,] 0.03333333  0.008308007 -0.006480683  0.013314122</span>
+<span class="c1">## [13,] 0.03333333 -0.009192644  0.001963339  0.013314122</span>
+<span class="c1">## [14,] 0.10000000 -0.002152201  0.001963339  0.013314122</span>
+<span class="c1">## [15,] 0.06666667  0.008308007  0.001963339  0.013314122</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

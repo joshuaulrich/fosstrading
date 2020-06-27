@@ -78,8 +78,7 @@ To calculate the probability of drawdown, the function traverses all permutation
       <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html</guid>
       <description>I&amp;rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&amp;rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
 I&amp;rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&amp;hellip;
-&amp;lsquo;x&amp;rsquo; is a matrix of market system returns
-&amp;lsquo;n&amp;rsquo; is the number of bins to create for each system</description>
+# `x` is a matrix of market system returns # `n` is the number of bins to create for each system # `FUN` is the function to use to calculate the value for each bin # `.</description>
     </item>
     
     <item>
@@ -99,7 +98,7 @@ I&amp;rsquo;m certain there are more robust ways to estimate this table, but the
       
       <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</guid>
       <description>To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
-These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
+These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
     </item>
     
     <item>
@@ -108,8 +107,8 @@ These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC
       <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow.html</guid>
-      <description>My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizons &amp;gt; 6 have long run-times (when calc.max &amp;gt;= horizon).
-This post will illustrate how the snow package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.</description>
+      <description>My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &amp;gt; 6 have long run-times (when calc.max &amp;gt;= horizon).
+This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.</description>
     </item>
     
     <item>

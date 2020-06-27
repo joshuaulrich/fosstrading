@@ -8,8 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="LSPM with snow" />
-<meta property="og:description" content="My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizons &gt; 6 have long run-times (when calc.max &gt;= horizon).
-This post will illustrate how the snow package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores." />
+<meta property="og:description" content="My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &gt; 6 have long run-times (when calc.max &gt;= horizon).
+This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-with-snow.html" />
 <meta property="article:published_time" content="2010-01-10T17:01:00-06:00" />
@@ -89,32 +89,37 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>My <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">last post</a> provided examples of how to use the <a href="http://r-forge.r-project.org/projects/lspm">LSPM package</a>. Those who experimented with the code have probably found that constrained optimizations with horizons &gt; 6 have long run-times (when calc.max &gt;= horizon).</p>
-<p>This post will illustrate how the <a href="http://cran.r-project.org/web/packages/snow/">snow</a> package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores. (Improvements are nearly linear because there is overhead in setting up the cluster and communication between the nodes.)</p>
+			<p>My <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">last post</a> provided examples of how to use the <a href="http://r-forge.r-project.org/projects/lspm">LSPM package</a>. Those who experimented with the code have probably found that constrained optimizations with <code>horizon</code> &gt; 6 have long run-times (when <code>calc.max &gt;= horizon</code>).</p>
+<p>This post will illustrate how the <a href="http://cran.r-project.org/web/packages/snow/">snow</a> package can increase the speed of the <code>probDrawdown()</code> and <code>probRuin()</code> functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores. (Improvements are nearly linear because there is overhead in setting up the cluster and communication between the nodes.)</p>
 <p>The first optimization takes 346 seconds on my 2.2Ghz Centrino, while the second optimization (with snow) takes 193 seconds&hellip; nearly a 45% improvement.</p>
-<p># Load the libraries<br>
-library(LSPM)<br>
-library(snow)</p>
-<p># Create a Leverage Space Portfolio object<br>
-trades &lt;- cbind(<br>
-c(-150,-45.33,-45.33,rep(13,5),rep(79.67,3),136),<br>
-c(253,-1000,rep(-64.43,3),253,253,448,rep(-64.43,3),253),<br>
-c(533,220.14,220.14,-500,533,220.14,799,220.14,-325,220.14,533,220.14) )<br>
-probs &lt;- c(rep(0.076923077,2),0.153846154,rep(0.076923077,9))<br>
-port &lt;- lsp(trades,probs)</p>
-<p># Optimization using one CPU core<br>
-system.time({<br>
-res1 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,control=list(NP=30,itermax=100))<br>
-})</p>
-<p># Create snow socket cluster for both cores<br>
-clust &lt;- makeSOCKcluster(2)</p>
-<p># Optimization using both CPU cores<br>
-system.time({<br>
-res2 &lt;- optimalf(port,probDrawdown,0.1,DD=0.2,horizon=5,snow=clust,control=list(NP=30,itermax=100))<br>
-})</p>
-<p># Stop snow cluster<br>
-stopCluster(clust)</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the libraries  </span>
+<span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>  
+<span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>  
+  
+<span class="c1"># Create a Leverage Space Portfolio object  </span>
+<span class="n">trades</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span>  
+<span class="nf">c</span><span class="p">(</span><span class="m">-150</span><span class="p">,</span><span class="m">-45.33</span><span class="p">,</span><span class="m">-45.33</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="m">13</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="m">79.67</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="m">136</span><span class="p">),</span>  
+<span class="nf">c</span><span class="p">(</span><span class="m">253</span><span class="p">,</span><span class="m">-1000</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="m">-64.43</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="m">253</span><span class="p">,</span><span class="m">253</span><span class="p">,</span><span class="m">448</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="m">-64.43</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="m">253</span><span class="p">),</span>  
+<span class="nf">c</span><span class="p">(</span><span class="m">533</span><span class="p">,</span><span class="m">220.14</span><span class="p">,</span><span class="m">220.14</span><span class="p">,</span><span class="m">-500</span><span class="p">,</span><span class="m">533</span><span class="p">,</span><span class="m">220.14</span><span class="p">,</span><span class="m">799</span><span class="p">,</span><span class="m">220.14</span><span class="p">,</span><span class="m">-325</span><span class="p">,</span><span class="m">220.14</span><span class="p">,</span><span class="m">533</span><span class="p">,</span><span class="m">220.14</span><span class="p">)</span> <span class="p">)</span>  
+<span class="n">probs</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0.076923077</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="m">0.153846154</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="m">0.076923077</span><span class="p">,</span><span class="m">9</span><span class="p">))</span>  
+<span class="n">port</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">trades</span><span class="p">,</span><span class="n">probs</span><span class="p">)</span>  
+  
+<span class="c1"># Optimization using one CPU core  </span>
+<span class="nf">system.time</span><span class="p">({</span>  
+  <span class="n">res1</span> <span class="o">&lt;-</span> <span class="nf">optimalf</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="n">probDrawdown</span><span class="p">,</span><span class="m">0.1</span><span class="p">,</span><span class="n">DD</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">control</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">NP</span><span class="o">=</span><span class="m">30</span><span class="p">,</span><span class="n">itermax</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>  
+<span class="p">})</span>  
+  
+<span class="c1"># Create snow socket cluster for both cores  </span>
+<span class="n">clust</span> <span class="o">&lt;-</span> <span class="nf">makeSOCKcluster</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>  
+  
+<span class="c1"># Optimization using both CPU cores  </span>
+<span class="nf">system.time</span><span class="p">({</span>  
+  <span class="n">res2</span> <span class="o">&lt;-</span> <span class="nf">optimalf</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="n">probDrawdown</span><span class="p">,</span><span class="m">0.1</span><span class="p">,</span><span class="n">DD</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">snow</span><span class="o">=</span><span class="n">clust</span><span class="p">,</span><span class="n">control</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">NP</span><span class="o">=</span><span class="m">30</span><span class="p">,</span><span class="n">itermax</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>  
+<span class="p">})</span>  
+  
+<span class="c1"># Stop snow cluster  </span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">clust</span><span class="p">)</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

@@ -9,8 +9,8 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="David Varadi&#39;s RSI(2) alternative" />
 <meta property="og:description" content="Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &ldquo;Permanent Link to &ldquo;Varadi’s RSI(2) Alternative: The DV(2)&quot;&quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &ldquo;Permanent Link to &ldquo;RSI(2) vs. DV(2)&quot;&quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &ldquo;Permanent Link to &ldquo;Last Couple of Notes on DV(2)&quot;&quot;)  Here&rsquo;s the R code:
-  DV &lt;- function(HLC, n=2, bounded=FALSE) {" />
+ Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&rsquo;s the R code:
+DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34;  # columns, in that order.  # This is David Varadi&#39;s alternative to the RSI(2)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative.html" />
 <meta property="article:published_time" content="2009-07-19T08:38:00-05:00" />
@@ -92,42 +92,49 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Here&rsquo;s a quick R implementation of <a href="http://cssanalytics.wordpress.com/">David Varadi&rsquo;s</a> alternative to the RSI(2).  Michael Stokes over at the <a href="http://marketsci.wordpress.com/">MarketSci</a> blog has three great posts exploring this indicator:</p>
 <ol>
-<li>[Varadi’s RSI(2) Alternative: The DV(2)](<a href="http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/">http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/</a> &ldquo;Permanent Link to &ldquo;Varadi’s RSI(2) Alternative: The DV(2)&quot;&quot;)</li>
-<li>[RSI(2) vs. DV(2)](<a href="http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/">http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/</a> &ldquo;Permanent Link to &ldquo;RSI(2) vs. DV(2)&quot;&quot;)</li>
-<li>[Last Couple of Notes on DV(2)](<a href="http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/">http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/</a> &ldquo;Permanent Link to &ldquo;Last Couple of Notes on DV(2)&quot;&quot;)</li>
+<li><a href="http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/">Varadi&rsquo;s RSI(2) Alternative: The DV(2)</a></li>
+<li><a href="http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/">RSI(2) vs. DV(2)</a></li>
+<li><a href="http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/">Last Couple of Notes on DV(2)</a></li>
 </ol>
 <p>Here&rsquo;s the R code:</p>
-<blockquote>
-<p> DV &lt;- function(HLC, n=2, bounded=FALSE) {<br>
-  # &ldquo;HLC&rdquo; is an _xts_ object with &ldquo;High&rdquo;, &ldquo;Low&rdquo;, and &ldquo;Close&rdquo;<br>
-  # columns, in that order.</p>
-<p>  # This is David Varadi&rsquo;s alternative to the RSI(2).  Calculations<br>
-  # taken from the marketsci blog &ndash; <a href="http://marketsci.wordpress.com">http://marketsci.wordpress.com</a><br>
-  # Author of this implementation: Joshua Ulrich</p>
-<p>  # Calculate each day&rsquo;s high/low mean<br>
-  hlMean &lt;- rowMeans( HLC[,-3] )</p>
-<p>  # Calculate the running Mean of the Close divided by the<br>
-  # high/low mean, then subtract 1.<br>
-  res &lt;- runMean( HLC[,3] / hlMean, n ) - 1</p>
-<p>  # If we want the bounded DV&hellip;<br>
-  if(bounded) {<br>
-    # Set the range to calculated the bounded DV<br>
-    rng &lt;- 252:NROW(res)</p>
-<p>    # Grab the index of the unbounded results, so we can convert<br>
-    # the bounded results back to an xts object.<br>
-    indx &lt;- index(res)</p>
-<p>    # A simple percent rank function hack<br>
-    pctRank &lt;- function(x,i) match(x[i], sort(coredata(x[(i-251):i])))</p>
-<p>    # Apply the percent rank function to the coredata of our results<br>
-    res &lt;- sapply(rng, function(i) pctRank(res, i) / 252)</p>
-<p>    # Convert the bounded results to xts<br>
-    res &lt;- xts(c(rep(NA,251),res), indx)<br>
-  }</p>
-<p>  # Return results<br>
-  return(res)<br>
-}</p>
-</blockquote>
-
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">DV</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">HLC</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">bounded</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="c1"># &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34;  </span>
+  <span class="c1"># columns, in that order.  </span>
+  
+  <span class="c1"># This is David Varadi&#39;s alternative to the RSI(2).  Calculations  </span>
+  <span class="c1"># taken from the marketsci blog -- http://marketsci.wordpress.com  </span>
+  <span class="c1"># Author of this implementation: Joshua Ulrich  </span>
+  
+  <span class="c1"># Calculate each day&#39;s high/low mean  </span>
+  <span class="n">hlMean</span> <span class="o">&lt;-</span> <span class="nf">rowMeans</span><span class="p">(</span> <span class="n">HLC[</span><span class="p">,</span><span class="m">-3</span><span class="n">]</span> <span class="p">)</span>  
+  
+  <span class="c1"># Calculate the running Mean of the Close divided by the  </span>
+  <span class="c1"># high/low mean, then subtract 1.  </span>
+  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">runMean</span><span class="p">(</span> <span class="n">HLC[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span> <span class="o">/</span> <span class="n">hlMean</span><span class="p">,</span> <span class="n">n</span> <span class="p">)</span> <span class="o">-</span> <span class="m">1</span>  
+  
+  <span class="c1"># If we want the bounded DV...  </span>
+  <span class="nf">if</span><span class="p">(</span><span class="n">bounded</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="c1"># Set the range to calculated the bounded DV  </span>
+    <span class="n">rng</span> <span class="o">&lt;-</span> <span class="m">252</span><span class="o">:</span><span class="nf">NROW</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>  
+  
+    <span class="c1"># Grab the index of the unbounded results, so we can convert  </span>
+    <span class="c1"># the bounded results back to an xts object.  </span>
+    <span class="n">indx</span> <span class="o">&lt;-</span> <span class="nf">index</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>  
+  
+    <span class="c1"># A simple percent rank function hack  </span>
+    <span class="n">pctRank</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="nf">match</span><span class="p">(</span><span class="n">x[i]</span><span class="p">,</span> <span class="nf">sort</span><span class="p">(</span><span class="nf">coredata</span><span class="p">(</span><span class="n">x</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="m">-251</span><span class="p">)</span><span class="o">:</span><span class="n">i]</span><span class="p">)))</span>  
+  
+    <span class="c1"># Apply the percent rank function to the coredata of our results  </span>
+    <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="nf">pctRank</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="m">252</span><span class="p">)</span>  
+  
+    <span class="c1"># Convert the bounded results to xts  </span>
+    <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">251</span><span class="p">),</span><span class="n">res</span><span class="p">),</span> <span class="n">indx</span><span class="p">)</span>  
+  <span class="p">}</span>  
+  
+  <span class="c1"># Return results  </span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>  
+<span class="p">}</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

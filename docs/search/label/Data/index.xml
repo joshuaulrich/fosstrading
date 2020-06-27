@@ -17,7 +17,7 @@
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</guid>
-      <description>(This is a guest post by Ilya Kipnis)
+      <description>This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
     </item>
     

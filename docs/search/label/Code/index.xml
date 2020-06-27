@@ -91,8 +91,8 @@ The contents of this post borrow heavily from code and comments in the &amp;ldqu
       
       <guid>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative.html</guid>
       <description>Here&amp;rsquo;s a quick R implementation of David Varadi&amp;rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Varadi’s RSI(2) Alternative: The DV(2)&amp;quot;&amp;quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;RSI(2) vs. DV(2)&amp;quot;&amp;quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Last Couple of Notes on DV(2)&amp;quot;&amp;quot;)  Here&amp;rsquo;s the R code:
-  DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {</description>
+ Varadi&amp;rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&amp;rsquo;s the R code:
+DV &amp;lt;- function(HLC, n=2, bounded=FALSE) { # &amp;#34;HLC&amp;#34; is an _xts_ object with &amp;#34;High&amp;#34;, &amp;#34;Low&amp;#34;, and &amp;#34;Close&amp;#34;  # columns, in that order.  # This is David Varadi&amp;#39;s alternative to the RSI(2).</description>
     </item>
     
     <item>

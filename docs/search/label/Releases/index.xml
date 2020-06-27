@@ -154,8 +154,8 @@ Oanda changed their URL format from http to https, and getSymbols.oanda did no
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
-      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA (Hull MA), ALMA, and ultimateOscillator functions.
-James Toll provided a patch to the volatility function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
+      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA() (Hull MA), ALMA(), and ultimateOscillator() functions.
+James Toll provided a patch to the volatility() function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
     </item>
     
     <item>
@@ -195,8 +195,8 @@ There are also several bug fixes. A few worth noting are:
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI retuns an object with colnames, and the initial gap for SAR is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD, SAR, EMA/EVWMA, and adjRatios.
-There are some exciting new features, including a rolling single-factor model function (rollSFM, based on a prototype from James Toll), a runPercentRank function from Charlie Friedemann, stoch and WPR return 0.</description>
+      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI() returns an object with colnames, and the initial gap for SAR() is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD(), SAR(), EMA()/EVWMA(), and adjRatios().
+There are some exciting new features, including a rolling single-factor model function (rollSFM(), based on a prototype from James Toll), a runPercentRank() function from Charlie Friedemann, stoch() and WPR() return 0.</description>
     </item>
     
     <item>
@@ -215,12 +215,12 @@ We were able to add and test the functionality within a week. The latest revisi
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
+      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols()), some small changes, and a few new functions. Note that the change to wilderSum() will affect functions that use it (e.g. ADX()).
 Here are the full contents of the CHANGES file:
-TTR version 0.21-0
+ TTR version 0.21-0
 Changes from version 0.20-2
 NEW FEATURES:
- Added variable moving average function, VMA. Added Brian Peterson&amp;rsquo;s price bands function, PBands.</description>
+ Added variable moving average function, VMA(). Added Brian Peterson&amp;rsquo;s price bands function, PBands().</description>
     </item>
     
     <item>
@@ -242,10 +242,7 @@ This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unne
       <description>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
 This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
 NEW FEATURES:
-- Added the zig zag indicator: ZigZag()
-- Added volatility estimators/indicators: volatility(), with the following calculations
-- Close-to-Close
-- Garman Klass</description>
+ Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:</description>
     </item>
     
   </channel>

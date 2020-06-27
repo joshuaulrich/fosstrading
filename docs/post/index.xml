@@ -252,8 +252,8 @@ The conference will take place on May 20 and 21, at UIC in Chicago. Building on 
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
-      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA (Hull MA), ALMA, and ultimateOscillator functions.
-James Toll provided a patch to the volatility function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
+      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA() (Hull MA), ALMA(), and ultimateOscillator() functions.
+James Toll provided a patch to the volatility() function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
     </item>
     
     <item>
@@ -400,8 +400,8 @@ We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan 
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI retuns an object with colnames, and the initial gap for SAR is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD, SAR, EMA/EVWMA, and adjRatios.
-There are some exciting new features, including a rolling single-factor model function (rollSFM, based on a prototype from James Toll), a runPercentRank function from Charlie Friedemann, stoch and WPR return 0.</description>
+      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI() returns an object with colnames, and the initial gap for SAR() is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD(), SAR(), EMA()/EVWMA(), and adjRatios().
+There are some exciting new features, including a rolling single-factor model function (rollSFM(), based on a prototype from James Toll), a runPercentRank() function from Charlie Friedemann, stoch() and WPR() return 0.</description>
     </item>
     
     <item>
@@ -521,12 +521,12 @@ The fourth annual R/Finance conference for applied finance using R will be held 
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols), some small changes, and a few new functions. Note that the change to wilderSum will affect functions that use it (e.g. ADX).
+      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols()), some small changes, and a few new functions. Note that the change to wilderSum() will affect functions that use it (e.g. ADX()).
 Here are the full contents of the CHANGES file:
-TTR version 0.21-0
+ TTR version 0.21-0
 Changes from version 0.20-2
 NEW FEATURES:
- Added variable moving average function, VMA. Added Brian Peterson&amp;rsquo;s price bands function, PBands.</description>
+ Added variable moving average function, VMA(). Added Brian Peterson&amp;rsquo;s price bands function, PBands().</description>
     </item>
     
     <item>
@@ -556,7 +556,7 @@ This post is a joint effort between me and Brian Peterson.</description>
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</guid>
-      <description>(This is a guest post by Ilya Kipnis)
+      <description>This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
     </item>
     
@@ -776,8 +776,7 @@ To calculate the probability of drawdown, the function traverses all permutation
       <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html</guid>
       <description>I&amp;rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&amp;rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
 I&amp;rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&amp;hellip;
-&amp;lsquo;x&amp;rsquo; is a matrix of market system returns
-&amp;lsquo;n&amp;rsquo; is the number of bins to create for each system</description>
+# `x` is a matrix of market system returns # `n` is the number of bins to create for each system # `FUN` is the function to use to calculate the value for each bin # `.</description>
     </item>
     
     <item>
@@ -817,7 +816,7 @@ He suggests using his table of volatility correlations as a back-of-the-envelope
       
       <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</guid>
       <description>To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
-These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
+These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.</description>
     </item>
     
     <item>
@@ -830,8 +829,8 @@ These optimizaitons take a very long time. 100 iterations on a 10-core Amazon EC
 TTR version 0.20-2
 Changes from version 0.20-1
 NEW FEATURES:
- Added VWAP and VWMA (thanks to Brian Peterson) Added v-factor generalization to DEMA (thanks to John Gavin)  CHANGES:
- Updated volatility() to handle univariate case of calc=&#39;close&amp;rsquo; (thanks to Cedrick Johnson) Moved EMA, SAR, and wilderSum from .</description>
+ Added VWAP() and VWMA() (thanks to Brian Peterson) Added v-factor generalization to DEMA() (thanks to John Gavin)  CHANGES:
+ Updated volatility() to handle univariate case of calc=&#39;close&#39; (thanks to Cedrick Johnson) Moved EMA(), SAR(), and wilderSum() from .</description>
     </item>
     
     <item>
@@ -862,8 +861,8 @@ Building on the success of the inaugural R / Finance 2009 event, this two-day co
       <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow.html</guid>
-      <description>My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizons &amp;gt; 6 have long run-times (when calc.max &amp;gt;= horizon).
-This post will illustrate how the snow package can increase the speed of the probDrawdown and probRuin functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.</description>
+      <description>My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &amp;gt; 6 have long run-times (when calc.max &amp;gt;= horizon).
+This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.</description>
     </item>
     
     <item>
@@ -933,8 +932,8 @@ It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Dat
       
       <guid>https://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative.html</guid>
       <description>Here&amp;rsquo;s a quick R implementation of David Varadi&amp;rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- [Varadi’s RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Varadi’s RSI(2) Alternative: The DV(2)&amp;quot;&amp;quot;) [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;RSI(2) vs. DV(2)&amp;quot;&amp;quot;) [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/ &amp;ldquo;Permanent Link to &amp;ldquo;Last Couple of Notes on DV(2)&amp;quot;&amp;quot;)  Here&amp;rsquo;s the R code:
-  DV &amp;lt;- function(HLC, n=2, bounded=FALSE) {</description>
+ Varadi&amp;rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&amp;rsquo;s the R code:
+DV &amp;lt;- function(HLC, n=2, bounded=FALSE) { # &amp;#34;HLC&amp;#34; is an _xts_ object with &amp;#34;High&amp;#34;, &amp;#34;Low&amp;#34;, and &amp;#34;Close&amp;#34;  # columns, in that order.  # This is David Varadi&amp;#39;s alternative to the RSI(2).</description>
     </item>
     
     <item>
@@ -1039,10 +1038,7 @@ In particular, I will be replicating and extending some of the results from Mich
       <description>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
 This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
 NEW FEATURES:
-- Added the zig zag indicator: ZigZag()
-- Added volatility estimators/indicators: volatility(), with the following calculations
-- Close-to-Close
-- Garman Klass</description>
+ Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:</description>
     </item>
     
     <item>
@@ -1097,9 +1093,7 @@ Some great things are happening in this community, and we are certainly glad to 
       <description>This blog will highlight the development and use of free open-source software to research, test, and trade financial markets.
 Meet the authors:
 Joshua Ulrich is currently the author and maintainer of four R packages:
-  TTR - Technical Trading Rules - a suite of technical analysis functions
-  opentick - an R API to the opentick databases
-  xts - eXtensible Time Series - a time-based data class that integrates all of the current time-series classes (co-authored with Jeff Ryan)</description>
+ TTR - Technical Trading Rules - a suite of technical analysis functions opentick - an R API to the opentick databases xts - eXtensible Time Series - a time-based data class that integrates all of the current time-series classes (co-authored with Jeff Ryan) pack - convert binary to and from formats other programs and machines can understand  Jeff Ryan is currently the author and maintainer of four R packages:</description>
     </item>
     
   </channel>

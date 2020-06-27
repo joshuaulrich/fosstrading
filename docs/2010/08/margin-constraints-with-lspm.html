@@ -95,58 +95,49 @@ L = max(f$) / sum( ( max(f$) / f$[i] ) * margin[i] )</p>
 <p>Where:<br>
 L = percentage of &ldquo;active equity&rdquo; to use when dividing by each f$<br>
 margin = initial margin for each market system</p>
-<p>The maxUnits function included in this post uses the formula above to return the maximum number of tradable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the maxUnits function after optimization.</p>
-<blockquote>
-<p># Load the LSPM package<br>
-library(LSPM)</p>
-<p>maxUnits &lt;- function(lsp, margin, equity) {</p>
-<p>  # Make sure margin and f are same length<br>
-  NRf &lt;- NROW(lsp$f)<br>
-  if(NROW(margin)!=NRf)<br>
-    stop(paste(&quot;&lsquo;margin&rsquo; must have length =&rdquo;,NRf))</p>
-<p>  # Calculate maximum equity percentage<br>
-  fDollar &lt;- -lsp$maxLoss / lsp$f<br>
-  maxfDollar &lt;- max( fDollar[is.finite(fDollar)] )</p>
-<p>  den &lt;- maxfDollar / fDollar * margin<br>
-  den[!is.finite(den)]  &lt;- 0</p>
-<p>  eqPct &lt;- min(1, maxfDollar/sum(den))</p>
-<p>  max.units &lt;- eqPct * equity / fDollar<br>
-  return(max.units)<br>
-}</p>
-<p>data(port)               # Multiple strategy data<br>
-initEq &lt;- 100000         # Initial equity<br>
-margin &lt;- -port$maxLoss  # Margin amounts</p>
-<p>opt &lt;- optimalf(port)    # Optimize portfolio<br>
-port$f &lt;- opt$f          # Assign optimal f values to lsp object</p>
-<p># Units to trade<br>
-fUnits &lt;- initEq/(-port$maxLoss/port$f)  # unconstrained<br>
-mUnits &lt;- maxUnits(port, margin, initEq) # margin-constrained</p>
-<p># Equity needed to trade at f values<br>
-sum(fUnits*margin)  # unconstrained<br>
-sum(mUnits*margin)  # margin-constrained</p>
-<p># Implied f values based on maximum units<br>
-port$f &lt;- mUnits*-port$maxLoss/initEq<br>
-GHPR(port)  # 1.209931</p>
-</blockquote>
-<p>Note that the effect of the maxUnits function is to lower the optimal f values to a level within the margin constraints.  The GHPR for the portfolio falls from 1.2939 without margin constraints to 1.20991 when post-optimization margin constrains are imposed.</p>
-<p>As I investigated this method, I wondered if optimal f values would be the same if the margin constraints were included in the objective function.  I was concerned that the post-optimization decrease in f values would be sub-optimal because a different mix of f values&ndash;that also meet the margin constraints&ndash;may have a higher GHPR.</p>
-<p>The next block of code optimizes the portfolio with margin constraints included in the objective function (this functionality is available starting in revision 43).</p>
-<blockquote>
-<p># Optimize portfolio with margin constraints<br>
-opt &lt;- optimalf(port, equity=initEq, margin=margin)<br>
-port$f &lt;- opt$f          # Assign optimal f values to lsp object</p>
-<p># Units to trade<br>
-fUnits &lt;- initEq/(-port$maxLoss/port$f)  # unconstrained<br>
-mUnits &lt;- maxUnits(port, margin, initEq) # margin-constrained</p>
-<p># Equity needed to trade at f values<br>
-sum(fUnits*margin)  # unconstrained<br>
-sum(mUnits*margin)  # margin-onstrained</p>
-<p># Implied f values based on maximum units<br>
-fImp &lt;- mUnits*-port$maxLoss/initEq</p>
-</blockquote>
-<p>When the margin contraints are included in the objective function, fUnits and mUnits are the same, which means the implied f values are the same as the optimal f values and required equity is less than or equal to available equity.</p>
-<p>In addition, we see that the post-optimzation method arrives at sub-optimal f values, since it arrived at a GHPR of 1.209931 while including margin constraints in the objective function achived a GHPR of 1.2486.</p>
+<p>The <code>maxUnits()</code> function included in this post uses the formula above to return the maximum number of tradeable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the <code>maxUnits()</code> function after optimization.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
 
+<span class="n">maxUnits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lsp</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1"># Make sure margin and f are same length</span>
+  <span class="n">NRf</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">lsp</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>
+  <span class="nf">if</span><span class="p">(</span><span class="nf">NROW</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span><span class="o">!=</span><span class="n">NRf</span><span class="p">)</span>
+    <span class="nf">stop</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#34;&#39;margin&#39; must have length =&#34;</span><span class="p">,</span><span class="n">NRf</span><span class="p">))</span>
+
+  <span class="c1"># Calculate maximum equity percentage</span>
+  <span class="n">fDollar</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">lsp</span><span class="o">$</span><span class="n">maxLoss</span> <span class="o">/</span> <span class="n">lsp</span><span class="o">$</span><span class="n">f</span>
+  <span class="n">maxfDollar</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span> <span class="n">fDollar</span><span class="nf">[is.finite</span><span class="p">(</span><span class="n">fDollar</span><span class="p">)</span><span class="n">]</span> <span class="p">)</span>
+
+  <span class="n">den</span> <span class="o">&lt;-</span> <span class="n">maxfDollar</span> <span class="o">/</span> <span class="n">fDollar</span> <span class="o">*</span> <span class="n">margin</span>
+  <span class="n">den[</span><span class="o">!</span><span class="nf">is.finite</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="n">]</span>  <span class="o">&lt;-</span> <span class="m">0</span>
+
+  <span class="n">eqPct</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">maxfDollar</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">den</span><span class="p">))</span>
+
+  <span class="n">max.units</span> <span class="o">&lt;-</span> <span class="n">eqPct</span> <span class="o">*</span> <span class="n">equity</span> <span class="o">/</span> <span class="n">fDollar</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">max.units</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">data</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>               <span class="c1"># Multiple strategy data</span>
+<span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>         <span class="c1"># Initial equity</span>
+<span class="n">margin</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span>  <span class="c1"># Margin amounts</span>
+
+<span class="n">opt</span> <span class="o">&lt;-</span> <span class="nf">optimalf</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>    <span class="c1"># Optimize portfolio</span>
+<span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">opt</span><span class="o">$</span><span class="n">f</span>          <span class="c1"># Assign optimal f values to lsp object</span>
+
+<span class="c1"># Units to trade</span>
+<span class="n">fUnits</span> <span class="o">&lt;-</span> <span class="n">initEq</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">port</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
+<span class="n">mUnits</span> <span class="o">&lt;-</span> <span class="nf">maxUnits</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">initEq</span><span class="p">)</span> <span class="c1"># margin-constrained</span>
+
+<span class="c1"># Equity needed to trade at f values</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">fUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">mUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># margin-constrained</span>
+
+<span class="c1"># Implied f values based on maximum units</span>
+<span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">mUnits</span><span class="o">*-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">initEq</span>
+<span class="nf">GHPR</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>  <span class="c1"># 1.209931</span>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
