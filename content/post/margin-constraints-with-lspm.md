@@ -17,75 +17,48 @@ Where:
 L = percentage of "active equity" to use when dividing by each f$  
 margin = initial margin for each market system  
   
-The maxUnits function included in this post uses the formula above to return the maximum number of tradable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the maxUnits function after optimization.  
+The `maxUnits()` function included in this post uses the formula above to return the maximum number of tradeable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the `maxUnits()` function after optimization.  
   
+```r
+# Load the LSPM package
+library(LSPM)
 
-> \# Load the LSPM package  
-> library(LSPM)  
->   
-> maxUnits <- function(lsp, margin, equity) {  
->   
->   # Make sure margin and f are same length  
->   NRf <- NROW(lsp$f)  
->   if(NROW(margin)!=NRf)  
->     stop(paste("'margin' must have length =",NRf))  
->   
->   # Calculate maximum equity percentage  
->   fDollar <- -lsp$maxLoss / lsp$f  
->   maxfDollar <- max( fDollar\[is.finite(fDollar)\] )  
->   
->   den <- maxfDollar / fDollar \* margin  
->   den\[!is.finite(den)\]  <- 0  
->   
->   eqPct <- min(1, maxfDollar/sum(den))  
->   
->   max.units <- eqPct \* equity / fDollar  
->   return(max.units)  
-> }  
->   
-> data(port)               # Multiple strategy data  
-> initEq <- 100000         # Initial equity  
-> margin <- -port$maxLoss  # Margin amounts  
->   
-> opt <- optimalf(port)    # Optimize portfolio  
-> port$f <- opt$f          # Assign optimal f values to lsp object  
->   
-> \# Units to trade  
-> fUnits <- initEq/(-port$maxLoss/port$f)  # unconstrained  
-> mUnits <- maxUnits(port, margin, initEq) # margin-constrained  
->   
-> \# Equity needed to trade at f values  
-> sum(fUnits\*margin)  # unconstrained  
-> sum(mUnits\*margin)  # margin-constrained  
->   
-> \# Implied f values based on maximum units  
-> port$f <- mUnits\*-port$maxLoss/initEq  
-> GHPR(port)  # 1.209931
+maxUnits <- function(lsp, margin, equity) {
 
-  
-Note that the effect of the maxUnits function is to lower the optimal f values to a level within the margin constraints.  The GHPR for the portfolio falls from 1.2939 without margin constraints to 1.20991 when post-optimization margin constrains are imposed.  
-  
-As I investigated this method, I wondered if optimal f values would be the same if the margin constraints were included in the objective function.  I was concerned that the post-optimization decrease in f values would be sub-optimal because a different mix of f values--that also meet the margin constraints--may have a higher GHPR.  
-  
-The next block of code optimizes the portfolio with margin constraints included in the objective function (this functionality is available starting in revision 43).  
-  
+  # Make sure margin and f are same length
+  NRf <- NROW(lsp$f)
+  if(NROW(margin)!=NRf)
+    stop(paste("'margin' must have length =",NRf))
 
-> \# Optimize portfolio with margin constraints  
-> opt <- optimalf(port, equity=initEq, margin=margin)  
-> port$f <- opt$f          # Assign optimal f values to lsp object  
->   
-> \# Units to trade  
-> fUnits <- initEq/(-port$maxLoss/port$f)  # unconstrained  
-> mUnits <- maxUnits(port, margin, initEq) # margin-constrained  
->   
-> \# Equity needed to trade at f values  
-> sum(fUnits\*margin)  # unconstrained  
-> sum(mUnits\*margin)  # margin-onstrained  
->   
-> \# Implied f values based on maximum units  
-> fImp <- mUnits\*-port$maxLoss/initEq
+  # Calculate maximum equity percentage
+  fDollar <- -lsp$maxLoss / lsp$f
+  maxfDollar <- max( fDollar[is.finite(fDollar)] )
 
-  
-When the margin contraints are included in the objective function, fUnits and mUnits are the same, which means the implied f values are the same as the optimal f values and required equity is less than or equal to available equity.  
-  
-In addition, we see that the post-optimzation method arrives at sub-optimal f values, since it arrived at a GHPR of 1.209931 while including margin constraints in the objective function achived a GHPR of 1.2486.
+  den <- maxfDollar / fDollar * margin
+  den[!is.finite(den)]  <- 0
+
+  eqPct <- min(1, maxfDollar/sum(den))
+
+  max.units <- eqPct * equity / fDollar
+  return(max.units)
+}
+
+data(port)               # Multiple strategy data
+initEq <- 100000         # Initial equity
+margin <- -port$maxLoss  # Margin amounts
+
+opt <- optimalf(port)    # Optimize portfolio
+port$f <- opt$f          # Assign optimal f values to lsp object
+
+# Units to trade
+fUnits <- initEq/(-port$maxLoss/port$f)  # unconstrained
+mUnits <- maxUnits(port, margin, initEq) # margin-constrained
+
+# Equity needed to trade at f values
+sum(fUnits*margin)  # unconstrained
+sum(mUnits*margin)  # margin-constrained
+
+# Implied f values based on maximum units
+port$f <- mUnits*-port$maxLoss/initEq
+GHPR(port)  # 1.209931
+```
