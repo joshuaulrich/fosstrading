@@ -17,43 +17,29 @@ Many of you may know I am a rather large proponent of R. I have authored or coau
   
 The [IBrokers](http://cran.r-project.org/web/packages/IBrokers/index.html) package on CRAN is my contribution to the landscape. A pure R implementation of most of the API, using nothing but R and some magic. It is now possible to connect to a running TWS (aka Trader Workstation) and retrieve historical data, request market data feeds, and even place orders -- _all from R_.
 
-  
-
 You can get a TWS client from IB at the link above, and installing IBrokers is easy enough from R:
 
-```
+```r
 install.packages("IBrokers")
 ```
 
 Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a "trusted IP".
 
-  
-
 First find the "Configure" menu in the TWS
-
-  
 
 ![](/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png)
 
-  
-
 Next we check for "Enable ActiveX and Socket Clients"
-
-  
 
 [![](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)  
 
 To add a "Trusted IP" click on "All API Settings..."
 
-  
-
 [![](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)
-
-  
 
 Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.
 
-```
+```r
 library(IBrokers)
 
 ## Loading required package: xts
@@ -72,17 +58,13 @@ tws
 ## <twsConnection,1 @ 20100513 15:11:40 CST, nextId=1288>
 ```
 
-As you can see there isn't too much to talk about in the code above. We make the standard R library() call to get IBrokers into our session, and the use the twsConnect function to make a connection to the TWS. There are parameters that can be passed in (such as host, and connection ID), but we needn't do that here.  
+As you can see there isn't too much to talk about in the code above. We make the standard R `library()` call to get IBrokers into our session, and the use the `twsConnect()` function to make a connection to the TWS. There are parameters that can be passed in (such as `host`, and `connection ID`), but we needn't do that here.  
 
-  
-
-The result of our call is a _twsConnection_ object. This contains a few important bits of information that are used throughout the lifetime of the object.  
-
-  
+The result of our call is a `twsConnection` object. This contains a few important bits of information that are used throughout the lifetime of the object.  
 
 To wrap up this post we'll use our new connection to fetch some historical data from IB.
 
-```
+```r
 aapl <- reqHistoricalData(tws, twsSTK("AAPL"))
 
 ## TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture
@@ -92,9 +74,9 @@ aapl <- reqHistoricalData(tws, twsSTK("AAPL"))
 ## waiting for TWS reply ....... done.
 ```
 
-Some notes about the above. The first argument to most any IBrokers call is the connection object created with twsConnect. The second argument to the above request is a twsContract object. There are a variety of ways to construct this, and twsSTK is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:
+Some notes about the above. The first argument to most any IBrokers call is the connection object created with `twsConnect()`. The second argument to the above request is a `twsContract` object. There are a variety of ways to construct this, and `twsSTK()` is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:
 
-```
+```r
 twsSTK("AAPL")
 
 ## List of 14
@@ -114,9 +96,9 @@ twsSTK("AAPL")
 ## $ include_expired: chr "0"
 ```
 
-As you may have noticed, we assigned the output of our request to a variable **appl** in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.
+As you may have noticed, we assigned the output of our request to a variable `appl` in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.
 
-```
+```r
 str(aapl)
 
 ## An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:
@@ -133,6 +115,6 @@ str(aapl)
 ##  $ updated: POSIXct[1:1], format: "2010-05-13 15:35:36.396084"
 ```
 
-The _reqHistoricalData_ call takes a few arguments that can specify the **barSize** and **duration** of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the [IBrokers documentation,](http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf) as well as the more authoritative [reference](http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm) from IB.  
+The `reqHistoricalData()` call takes a few arguments that can specify the `barSize` and `duration` of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the [IBrokers documentation,](http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf) as well as the more authoritative [reference](http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm) from IB.  
   
 Next time we'll explore the real-time data features of IBrokers, including live market data, real-time bars, and order-book data capabilities.
