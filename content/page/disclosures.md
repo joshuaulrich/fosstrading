@@ -5,7 +5,7 @@ comments: false
 authorbox: false
 toc: false
 mathjax: false
-aliases: [ "/p/disclosures.html" ]
+aliases: [ "/p/disclosures.html", "/page/disclosures" ]
 ---
 
 ## Amazon
