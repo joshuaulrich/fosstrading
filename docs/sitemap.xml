@@ -4,12 +4,47 @@
   
   <url>
     <loc>https://blog.fosstrading.com/</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.fosstrading.com/post.html</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/search/label/R.html</loc>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/tags.html</loc>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/search/label/xts.html</loc>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</loc>
+    <lastmod>2020-09-13T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/search/label/TTR.html</loc>
+    <lastmod>2020-09-13T08:41:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</loc>
+    <lastmod>2020-09-13T08:41:00-05:00</lastmod>
   </url>
   
   <url>
@@ -23,21 +58,6 @@
   </url>
   
   <url>
-    <loc>https://blog.fosstrading.com/search/label/R.html</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/tags.html</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran.html</loc>
     <lastmod>2019-10-10T06:21:00-05:00</lastmod>
   </url>
@@ -45,11 +65,6 @@
   <url>
     <loc>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran.html</loc>
     <lastmod>2019-03-25T06:53:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/search/label/xts.html</loc>
-    <lastmod>2018-11-06T06:35:00-06:00</lastmod>
   </url>
   
   <url>
@@ -174,11 +189,6 @@
   
   <url>
     <loc>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</loc>
-    <lastmod>2015-07-24T16:04:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fosstrading.com/search/label/TTR.html</loc>
     <lastmod>2015-07-24T16:04:00-05:00</lastmod>
   </url>
   

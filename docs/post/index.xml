@@ -6,10 +6,31 @@
     <description>Recent content in Posts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Mar 2020 07:23:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate>
     
 	<atom:link href="https://blog.fosstrading.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>xts_0.12.1 on CRAN</title>
+      <link>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</link>
+      <pubDate>Sun, 13 Sep 2020 10:49:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</guid>
+      <description>This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
+I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&amp;rsquo;t post about that. It has some nifty changes in it too.</description>
+    </item>
+    
+    <item>
+      <title>TTR_0.24.2 on CRAN</title>
+      <link>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</link>
+      <pubDate>Sun, 13 Sep 2020 08:41:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</guid>
+      <description>This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
+I released an updated version of TTR to CRAN on 2020-09-01.
+This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues.</description>
+    </item>
     
     <item>
       <title>quantmod_0.4-16 on CRAN</title>
