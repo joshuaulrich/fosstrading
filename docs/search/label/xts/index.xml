@@ -6,11 +6,7 @@
     <description>Recent content in xts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate>
-    
-	<atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>xts_0.12.1 on CRAN</title>
       <link>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</link>
@@ -19,6 +15,56 @@
       <guid>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</guid>
       <description>This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
 I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&amp;rsquo;t post about that. It has some nifty changes in it too.</description>
+      <content>&lt;p&gt;This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.&lt;/p&gt;
+&lt;p&gt;I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-09. I&amp;rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&amp;rsquo;t post about that. It has some nifty changes in it too.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m going to highlight a handful of the changes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;moving index class and index timezone from the xts object itself to the index,&lt;/li&gt;
+&lt;li&gt;improvements to time-of-day subsetting (&lt;code&gt;x[&amp;quot;T10:00/T13:00&amp;quot;]&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;user contributions, and&lt;/li&gt;
+&lt;li&gt;several bug fixes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;changes-to-index-attributes&#34;&gt;Changes to index attributes&lt;/h3&gt;
+&lt;p&gt;The most significant user-facing change in this release is a bug-fix for the functions that would change the &lt;code&gt;tclass&lt;/code&gt; of the xts index. This would happen in calls to &lt;code&gt;reclass()&lt;/code&gt;, &lt;code&gt;period.apply()&lt;/code&gt;, and logical operations on &lt;code&gt;POSIXct&lt;/code&gt; indexes. Thanks to &lt;a href=&#34;https://github.com/TomAndrews&#34;&gt;Tom Andrews&lt;/a&gt; for the report and testing, and to &lt;a href=&#34;https://github.com/philaris&#34;&gt;Panagiotis Cheilaris&lt;/a&gt; for contributing test cases (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/322&#34;&gt;#322&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/323&#34;&gt;#323&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This was a regression due to the main change in version 0.12-0. All the index-attributes were removed from the xts object and are now only attached to the index itself (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/245&#34;&gt;#245&lt;/a&gt;). We took great care to maintain backward compatibility, and throw warnings when deprecated functions are called and when index-attributes are found on the xts object. I apologize for taking this long to get the fix on CRAN.&lt;/p&gt;
+&lt;h3 id=&#34;time-of-day-subsetting&#34;&gt;Time-of-day subsetting&lt;/h3&gt;
+&lt;p&gt;Another change in 0.12-0 is a significant (~200x!) performance improvement to time-of-day subsetting, thanks to &lt;a href=&#34;https://stackoverflow.com/users/3226167/user3226167&#34;&gt;StackOverflow user3226167&lt;/a&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/193&#34;&gt;#193&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Then &lt;a href=&#34;https://github.com/claymoremarshall&#34;&gt;Claymore Marshall&lt;/a&gt; added many examples of time-of-day subsetting to &lt;code&gt;?subset.xts&lt;/code&gt;. He also fixed a bug in time-of-day subsetting where subsetting by hour only returned wrong results (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/304&#34;&gt;#304&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/326&#34;&gt;#326&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/328&#34;&gt;#328&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 id=&#34;user-contributions&#34;&gt;User contributions&lt;/h3&gt;
+&lt;p&gt;There were also several more user-contributed changes. I love when the community that uses open source software contributes to the project! It&amp;rsquo;s so much more fun than working on it by myself. :)&lt;/p&gt;
+&lt;p&gt;These are in a bulleted list in order to highlight each user&amp;rsquo;s contribution.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/jaymon0703&#34;&gt;Jasen Macike&lt;/a&gt; updated &lt;code&gt;plot.xts()&lt;/code&gt; to support y-axis labels via the &lt;code&gt;ylab&lt;/code&gt; argument (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/333&#34;&gt;#333&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/334&#34;&gt;#334&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/MichaelChirico&#34;&gt;Michael Chirico&lt;/a&gt; added an internal &lt;code&gt;isUTC()&lt;/code&gt; function that recognizes many UTC-equivalent time zones (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/319&#34;&gt;#319&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://dirk.eddelbuettel.com/&#34;&gt;Dirk Eddelbuettel&lt;/a&gt; updated the C API header to fix the signatures of &lt;code&gt;do_merge_xts()&lt;/code&gt; and &lt;code&gt;is_xts&lt;/code&gt;, which did not return the required type to be called via &lt;code&gt;.Call()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/kalibera&#34;&gt;Tomas Kalibera&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/317&#34;&gt;#317&lt;/a&gt;), and to Dirk for the PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/337&#34;&gt;#337&lt;/a&gt;).&lt;br&gt;
+This is a breaking change, but it&amp;rsquo;s only in the C API, and is required to avoid the potential to crash your R session.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/harvey131&#34;&gt;Harvey Smith&lt;/a&gt; fixed the possible values for the &lt;code&gt;major.ticks&lt;/code&gt;, &lt;code&gt;minor.ticks&lt;/code&gt;, and &lt;code&gt;grid.ticks.on&lt;/code&gt; arguments to &lt;code&gt;plot.xts()&lt;/code&gt; in the Details section of the documentation (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/291&#34;&gt;#291&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Performance for the &lt;code&gt;period.XYZ()&lt;/code&gt; functions (sum, prod, min, max) is much faster (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/278&#34;&gt;#278&lt;/a&gt;). Thanks to &lt;a href=&#34;https://github.com/ckatsulis&#34;&gt;Chris Katsulis&lt;/a&gt; for the report, and &lt;a href=&#34;https://github.com/harvey131&#34;&gt;Harvey Smith&lt;/a&gt; for several examples.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;first()&lt;/code&gt; now operates correctly on non-xts objects when &lt;code&gt;n = -1&lt;/code&gt;. Previously it would always return the last two values. Thanks to &lt;a href=&#34;https://github.com/vxg20&#34;&gt;GitHub user vxg20&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/325&#34;&gt;#325&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;.xts()&lt;/code&gt; constructor would create an xts object with row names if &lt;code&gt;x&lt;/code&gt; had row names. This shouldn&amp;rsquo;t happen, because xts objects do not have or support row names (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/298&#34;&gt;#298&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Several binary operations (e.g. +, -, !=, &amp;lt;, etc.) on variations of uncommon xts objects with other xts, matrix, or vector objects, could result in malformed xts objects (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/295&#34;&gt;#295&lt;/a&gt;). Some examples of the types of uncommon xts objects: no dim attribute, zero-width, zero-length.&lt;/p&gt;
+&lt;p&gt;Calling &lt;code&gt;as.matrix()&lt;/code&gt; on an xts object without a dim attribute no longer throws an error (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/294&#34;&gt;#294&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;merge.xts()&lt;/code&gt; now honors &lt;code&gt;check.names = FALSE&lt;/code&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/293&#34;&gt;#293&lt;/a&gt;). It also creates shorter column names when passed unnamed objects, consistent with zoo (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/248&#34;&gt;#248&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;as.zoo.xts()&lt;/code&gt; is now only registered for zoo versions prior to 1.8-5.  Methods to convert an object to another class should reside in the package that implements the target class. Thanks to Kurt Hornik for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/287&#34;&gt;#287&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.parseISO8601()&lt;/code&gt; no longer has a potential length-1 logical error. Thanks to Kurt Hornik for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/280&#34;&gt;#280&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;endpoints()&lt;/code&gt; now honors &lt;code&gt;k &amp;gt; 0&lt;/code&gt; when &lt;code&gt;on = &amp;quot;quarters&amp;quot;&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/alkment&#34;&gt;@alkment&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/279&#34;&gt;#279&lt;/a&gt;).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -29,6 +75,16 @@ I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also g
       <guid>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html</guid>
       <description>xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
  The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &amp;gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.</description>
+      <content>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-2 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; yesterday. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This is a bug-fix release, with notable changes below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The xts method for &lt;code&gt;shift.time()&lt;/code&gt; is now registered. Thanks to Philippe Verspeelt for the report and PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/268&#34;&gt;#268&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/273&#34;&gt;#273&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;An if-statement in the &lt;code&gt;xts&lt;/code&gt; constructor will no longer try to use a logical vector with length &amp;gt; 1. Code like &lt;code&gt;if (c(TRUE, TRUE))&lt;/code&gt; will throw a warning in an upcoming R release, and this patch will prevent that warning. Thanks to Hugh Parsonage for the report and PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/270&#34;&gt;#270&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/272&#34;&gt;#272&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fix subset when &lt;code&gt;index(i)&lt;/code&gt; and &lt;code&gt;i&lt;/code&gt; contain duplicates. Observations were being incorrectly dropped, and behavior is now consistent with zoo. Thanks to Stack Overflow user &lt;a href=&#34;https://stackoverflow.com/users/4024268/scs&#34;&gt;scs&lt;/a&gt; for the report, and Philippe Verspeelt for the help debugging (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/275&#34;&gt;#275&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Make column names for &lt;code&gt;merge()&lt;/code&gt; results with unnamed objects shorter and more like zoo (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/248&#34;&gt;#248&lt;/a&gt;). Previously, column names could be hundreds, even thousands, of characters. This change has the added benefit of making &lt;code&gt;na.fill()&lt;/code&gt; much faster (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/259&#34;&gt;#259&lt;/a&gt;). NOTE: This may BREAK existing code for integer unnamed objects.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;to.period()&lt;/code&gt; family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/53&#34;&gt;#53&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/277&#34;&gt;#277&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;https://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/tagged/xts&#34;&gt;[xts]&lt;/a&gt; tags. Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance mailing list&lt;/a&gt; (you must subscribe to post). Open an issue &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please read the &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;contributing guide&lt;/a&gt; first!&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -39,6 +95,23 @@ I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also g
       <guid>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran.html</guid>
       <description>xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
  There&amp;rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).</description>
+      <content>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-1 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; this morning. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; code even faster!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s a new &lt;code&gt;window.xts()&lt;/code&gt; method, thanks to Corwin Joy (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/100&#34;&gt;#100&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/240&#34;&gt;#240&lt;/a&gt;). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/251&#34;&gt;#251&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/263&#34;&gt;#263&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/264&#34;&gt;#264&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;na.locf.xts()&lt;/code&gt; method loops over columns of multivariate objects in C code, for improved speed and memory performance. Thanks to Chris Katsulis and Tom Andrews for their reports and patches (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/232&#34;&gt;#232&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/233&#34;&gt;#233&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/234&#34;&gt;#234&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/235&#34;&gt;#235&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/237&#34;&gt;#237&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;After many years, &lt;code&gt;merge.xts()&lt;/code&gt; can finally handle multiple character or complex xts objects. Thanks to Ken Williams for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/44&#34;&gt;#44&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;You can use &amp;ldquo;quarters&amp;rdquo; to specify tick/grid mark locations on plots. Thanks to Marc Weibel for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/256&#34;&gt;#256&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are also a few notable bug fixes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;make.index.unique()&lt;/code&gt; always returns a unique and sorted index. Thanks to Chris Katsulis for the report and example (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/241&#34;&gt;#241&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Plots have better axis tick mark locations, thanks to Dirk Eddelbuettel (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/246&#34;&gt;#246&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;periodicity()&lt;/code&gt; now warns instead of errors if the xts object contains less than 2 observations (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/230&#34;&gt;#230&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;first()&lt;/code&gt; and &lt;code&gt;last()&lt;/code&gt; now keep dims when they would otherwise be dropped by a regular row subset. This is consistent with &lt;code&gt;head()&lt;/code&gt; and &lt;code&gt;tail()&lt;/code&gt;. Thanks to Davis Vaughan for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/226&#34;&gt;#226&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;An invalid ISO8601 range subset now returns no data instead of all rows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/96&#34;&gt;#96&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;https://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/tagged/xts&#34;&gt;[xts]&lt;/a&gt; tags. Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance mailing list&lt;/a&gt; (you must subscribe to post). Open an issue &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please read the &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;contributing guide&lt;/a&gt; first!&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -49,6 +122,15 @@ I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also g
       <guid>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran.html</guid>
       <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
  endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
+      <content>&lt;p&gt;This &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;endpoints()&lt;/code&gt; gained sub-second accuracy on Windows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/202&#34;&gt;#202&lt;/a&gt;)!&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;na.locf.xts()&lt;/code&gt; now honors &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;xout&lt;/code&gt; arguments by dispatching to the next method (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/215&#34;&gt;#215&lt;/a&gt;). Thanks to Morten Grum for the report.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;na.locf.xts()&lt;/code&gt; and &lt;code&gt;na.omit.xts()&lt;/code&gt; now support character xts objects. Thanks to Ken Williams and Samo Pahor for the reports (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/42&#34;&gt;#42&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Many of the bug fixes were related to the new plot.xts() introduced in 0.10-0. And a handful of bugfixes were to make xts more consistent with zoo in some edge cases.&lt;/p&gt;
+&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback!  If you have a question, please ask on Stack Overflow and use the [r] and [xts] tags.  Or you can send an email to the R-SIG-Finance mailing list (you must subscribe to post).  Open an issue on GitHub if you find a bug or want to request a feature, but please read the contributing guide first!&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -59,6 +141,12 @@ I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also g
       <guid>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran.html</guid>
       <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
 Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
+      <content>&lt;p&gt;A new, and long overdue, release of &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;CRAN&lt;/a&gt;!  The major change is the completely new &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_basics.html&#34;&gt;plot.xts()&lt;/a&gt; written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s &lt;code&gt;quantmod::chart_Series()&lt;/code&gt; code.&lt;/p&gt;
+&lt;p&gt;Do note that the new &lt;code&gt;plot.xts()&lt;/code&gt; includes breaking changes to the original (and rather limited) &lt;code&gt;plot.xts()&lt;/code&gt;.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.  And I will no longer have to tell people that I use &lt;code&gt;plot.zoo()&lt;/code&gt; on xts objects!&lt;/p&gt;
+&lt;p&gt;This release also includes more bug fixes than you can shake a stick at.  We squashed several bugs that could have crashed your R session.  We also fixed some (always pesky and tricky) timezone issues.  We&amp;rsquo;ve also done more sanity checking (e.g. for NA in the index), and provide more informative errors when things aren&amp;rsquo;t right.  And last, but not least, unit tests are running again!&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m sure you were hoping to see some examples of the new &lt;code&gt;plot.xts()&lt;/code&gt; functionality.  Rather than clutter up this blog post with code, check out the &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_basics.html&#34;&gt;basic examples&lt;/a&gt;, and the &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_panels.html&#34;&gt;panel functionality examples&lt;/a&gt; that Ross Bennett created.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback!  If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack  Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt;  mailing list (you must subscribe to post).  Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -69,6 +157,21 @@ Do note that the new plot.xts() includes breaking changes to the original (and r
       <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</guid>
       <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
 This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+      <content>&lt;p&gt;We have been working on a new charting engine for &lt;code&gt;xts::plot.xts&lt;/code&gt; for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.&lt;/p&gt;
+&lt;p&gt;This new engine improves the functionality, modularity, and flexibility of &lt;code&gt;plot.xts&lt;/code&gt; by building off the framework Jeff Ryan began with &lt;code&gt;quantmod::chart_Series&lt;/code&gt;.  The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).&lt;/p&gt;
+&lt;p&gt;The main objective was to provide functionality similar to &lt;code&gt;chartSeries&lt;/code&gt; and &lt;code&gt;addTA&lt;/code&gt; for xts objects. The current code includes support for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic time series plots with sensible defaults&lt;/li&gt;
+&lt;li&gt;Plotting xts objects by column &amp;ldquo;automagically&amp;rdquo; as separate panels&lt;/li&gt;
+&lt;li&gt;Small multiples with multiple pages&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Layout-safe&amp;rdquo; so multiple specifications/panels can be charted in a single device&lt;/li&gt;
+&lt;li&gt;Easily add data to an existing plot or add panels similar to &lt;code&gt;quantmod::add*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Event lines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The xts team would greatly appreciate any comments, feedback, and bug reports before the upcoming CRAN release at the end of April.&lt;/p&gt;
+&lt;p&gt;The new version of &lt;code&gt;plot.xts&lt;/code&gt; is in the main xts development code base, which is available on GitHub in the &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;develop branch&lt;/a&gt;.  GitHub is also the place to submit &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;b&lt;/a&gt;&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;ug reports and feature requests&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that the new &lt;code&gt;plot.xts&lt;/code&gt; includes breaking changes to the original (and rather limited) &lt;code&gt;plot.xts&lt;/code&gt;.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -79,6 +182,10 @@ This new engine improves the functionality, modularity, and flexibility of plot
       <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts.html</guid>
       <description>The Google Summer of Code (2012) project to extend xts has produced a very promising new plot.xts function. Michael Weylandt, the project&amp;rsquo;s student, wrote R-SIG-Finance to request impressions, feedback, and bug reports. The function is housed in the xtsExtra package of the xts project on R-Forge.
 Please try xtsExtra::plot.xts and let us know what you think. A sample of the eye-candy produced by the code in Michael&amp;rsquo;s email is below. Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!</description>
+      <content>&lt;p&gt;The &lt;a href=&#34;http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012&#34;&gt;Google Summer of Code (2012)&lt;/a&gt; project to &lt;a href=&#34;http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts&#34;&gt;extend xts&lt;/a&gt; has produced a very promising new plot.xts function.  Michael Weylandt, the project&amp;rsquo;s student, wrote &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; to &lt;a href=&#34;http://draft.blogger.com/%20https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;request impressions, feedback, and bug reports&lt;/a&gt;.  The function is housed in the &lt;a href=&#34;https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/?root=xts&#34;&gt;xtsExtra&lt;/a&gt; package of the &lt;a href=&#34;https://r-forge.r-project.org/projects/xts&#34;&gt;xts project on R-Forge&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Please try &lt;code&gt;xtsExtra::plot.xts&lt;/code&gt; and let us know what you think.  A sample of the eye-candy produced by the code in &lt;a href=&#34;https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;Michael&amp;rsquo;s email&lt;/a&gt; is below.  Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!  Great work Michael!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -90,6 +197,10 @@ Please try xtsExtra::plot.xts and let us know what you think. A sample of the e
       <description>quantmod, TTR, and xts were (not so) recently featured on the Inference for R Blog. Inference for R is a Integrated Development Environment (IDE) designed specifically for R.
 The post gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.
 I appreciate how they&amp;rsquo;re making R more accessible to a general audience, even though I like a command line interface and my preferred development environment is vim.</description>
+      <content>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://inferenceforr.com/blog/Lists/Posts/Post.aspx?ID=17&#34;&gt;The post&lt;/a&gt; gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.&lt;/p&gt;
+&lt;p&gt;I appreciate how they&amp;rsquo;re making &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; more accessible to a general audience, even though I like a command line interface and my preferred development environment is &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;. :-)&lt;/p&gt;
+</content>
     </item>
     
   </channel>

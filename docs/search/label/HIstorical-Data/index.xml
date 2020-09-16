@@ -6,11 +6,7 @@
     <description>Recent content in HIstorical Data on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Jun 2017 12:25:00 -0500</lastBuildDate>
-    
-	<atom:link href="https://blog.fosstrading.com/search/label/HIstorical-Data/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Jun 2017 12:25:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/HIstorical-Data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>quantmod 0.4-9 on CRAN</title>
       <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</link>
@@ -20,6 +16,13 @@
       <description>A new release of quantmod is now on CRAN! The only change was to address changes to Yahoo! Finance and their effects on getSymbols.yahoo(). GitHub issue #157 contains some details about the fix implementation.
 Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed. The actual data available for download changed as well.
 The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted). Also, only the close price is unadjusted; the open, high, and low are split-adjusted.</description>
+      <content>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed.  The actual data available for download changed as well.&lt;/p&gt;
+&lt;p&gt;The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.&lt;/p&gt;
+&lt;p&gt;There also appear to be issues with the adjusted prices in some instruments.  For example, users reported issues with split data for XLF and SPXL in GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/160&#34;&gt;#160&lt;/a&gt;.  For XLF, there a split &lt;em&gt;and&lt;/em&gt; a dividend on 2016-09-16, even on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLF/history?period1=1473138000&amp;amp;period2=1474866000&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLF&lt;/a&gt;. As far as I can tell, there was only a special dividend.  The problem with SPXL is that the adjusted close price isn&amp;rsquo;t adjusted for the 4/1 split on 2017-05-01, which is also reflected on the &lt;a href=&#34;https://finance.yahoo.com/quote/SPXL/history?period1=1488088800&amp;amp;period2=1495774800&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical prices page for SPXL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Another change is that the downloaded data may contain rows where all the values are &amp;ldquo;null&amp;rdquo;.  These appear on the website as &amp;ldquo;0&amp;rdquo;.  This is a major issue for some instruments.  Take XLU for example; 188 of the 624 days of data are missing between 2014-12-04 and 2017-05-26 (ouch!).  You can see this is even true on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;amp;period2=1422079200&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLU&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If these changes have made you look for a new data provider, see my post: &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;Yahoo! Finance Alternatives&lt;/a&gt;.&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -30,6 +33,53 @@ The most noticeable difference is that the adjusted close column is no longer di
       <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html</guid>
       <description>I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017). Not only did the URL change, but the actual data changed as well!
 The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted. Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).</description>
+      <content>&lt;p&gt;I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!&lt;/p&gt;
+&lt;p&gt;The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted.  Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).&lt;/p&gt;
+&lt;p&gt;All these issues can be dealt with using tools that are currently available.  For example, you can unadjust the open, high, and low prices using the ratio of close to adjusted close prices.  And you can adjust for both splits and dividends using &lt;code&gt;quantmod::adjustOHLC()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, there also appear to be issues with data quality.  Some instruments have rows where all the prices and volume are zeros (e.g. &lt;a href=&#34;https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;amp;period2=1422079200&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;XLU&lt;/a&gt;).  The adjusted close in some instruments is incorrect because of missing split events, or double-counting splits and special dividends.&lt;/p&gt;
+&lt;p&gt;So, what are your alternatives?  If you&amp;rsquo;re just tinkering, you can try other free data sources like &lt;a href=&#34;https://www.google.com/finance&#34;&gt;Google Finance&lt;/a&gt; or &lt;a href=&#34;https://www.quandl.com/&#34;&gt;Quandl&lt;/a&gt;.  Note that Google Finance data is already split-adjusted, so you might need to adjust for dividends, or un-adjust for splits, depending on your needs.  Quandl has a &lt;a href=&#34;https://www.quandl.com/data/WIKI-Wiki-EOD-Stock-Prices&#34;&gt;wiki of end-of-day stock prices&lt;/a&gt; curated by the community.  You only need a free account to access the data.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re using the data to make actual investment decisions, you should really be using a professional data provider.  At the very least, you get someone to yell at when the data have errors. :)  First, you should check if your broker provides the historical data you need (e.g. &lt;a href=&#34;https://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; provides historical and real-time data to account-holders).&lt;/p&gt;
+&lt;p&gt;If your broker doesn&amp;rsquo;t provide historical data, here are a few providers you may want to consider:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://api.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Free historical end-of-day data (registration and API key required)&lt;/li&gt;
+&lt;li&gt;Up to 50+ years of daily data (split and dividend adjusted) for over 65,000 equities, mutual funds, and ETFs&lt;/li&gt;
+&lt;li&gt;Free historical and real-time crypto data (4+ year of daily prices, 2+ years of intraday data)&lt;/li&gt;
+&lt;li&gt;Free historical and real-time intraday data from IEX, beginning in August 2017&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html&#34;&gt;Available via &lt;code&gt;getSymbols()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.alphavantage.co/&#34;&gt;Alpha Vantage&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Free historical and intraday equity data (registration and API key required)&lt;/li&gt;
+&lt;li&gt;Up to 20 years of daily data (split and dividend adjusted available)&lt;/li&gt;
+&lt;li&gt;Up to 10 days of intraday data (1min, 5min, 15min, 30min, 60min)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html&#34;&gt;Available via &lt;code&gt;getSymbols()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.eoddata.com/download.aspx&#34;&gt;eoddata&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide limited historical data for free&lt;/li&gt;
+&lt;li&gt;For a one-time fee:
+&lt;ul&gt;
+&lt;li&gt;$20-$50 for 10 years of daily data&lt;/li&gt;
+&lt;li&gt;$40-$100 for 20 years of daily data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU&#34;&gt;CSI Data&lt;/a&gt; &lt;strong&gt;*&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Massive historical equity database&lt;/li&gt;
+&lt;li&gt;$600 annually for 30 years of daily data&lt;/li&gt;
+&lt;li&gt;Ability to adjust for splits and dividends&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.iqfeed.net/&#34;&gt;IQFeed&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mainly a real-time data provider, but also has historical data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.iqfeed.net/index.cfm?displayaction=data&amp;amp;section=services&#34;&gt;Features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.iqfeed.net/index.cfm?displayaction=data&amp;amp;section=fees&#34;&gt;Pricing&lt;/a&gt;, starts at $78/month&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Leave a comment if you know of another end-of-day data provider that I didn&amp;rsquo;t list!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;* FULL DISCLOSURE&lt;/strong&gt;: I receive a referral fee for annual subscriptions to CSI products if you use the FOSS coupon code.&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -40,6 +90,83 @@ The most noticeable difference is that the adjusted close column is now only spl
       <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</guid>
       <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
 I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
+      <content>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed &lt;em&gt;free (true to FOSS)&lt;/em&gt;, an account with &lt;a href=&#34;http://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically. IB makes available a rather comprehensive API that makes data access and trade execution entirely possible programmatically via a handful of &amp;ldquo;supported&amp;rdquo; languages. These include Java (the language of the platform), C#, VBA and even Excel. The also have a POSIX compliant C++ version for those who enjoy C++ but dislike Windows.&lt;/p&gt;
+&lt;p&gt;For those who dislike Windows &lt;em&gt;and&lt;/em&gt; C++, the community of IB users have a few &amp;ldquo;non-official&amp;rdquo; options. They include some nice implementations in C, Python (2), Matlab, and something even more abstracted in the &lt;a href=&#34;http://www.trading-shim.org/&#34;&gt;trading-shim&lt;/a&gt;. While all well and good, there was one missing: R.&lt;/p&gt;
+&lt;p&gt;Many of you may know I am a rather large proponent of R. I have authored or coauthored quite a few packages and help to organize the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance conference&lt;/a&gt; in Chicago each Spring. I am also a huge single-language solution kind of guy. If I could order food and surf the internet from R, all the world would be mine. But I digress&amp;hellip;&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;http://cran.r-project.org/web/packages/IBrokers/index.html&#34;&gt;IBrokers&lt;/a&gt; package on CRAN is my contribution to the landscape. A pure R implementation of most of the API, using nothing but R and some magic. It is now possible to connect to a running TWS (aka Trader Workstation) and retrieve historical data, request market data feeds, and even place orders &amp;ndash; &lt;em&gt;all from R&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You can get a TWS client from IB at the link above, and installing IBrokers is easy enough from R:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IBrokers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a &amp;ldquo;trusted IP&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;First find the &amp;ldquo;Configure&amp;rdquo; menu in the TWS&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Next we check for &amp;ldquo;Enable ActiveX and Socket Clients&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To add a &amp;ldquo;Trusted IP&amp;rdquo; click on &amp;ldquo;All API Settings&amp;hellip;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IBrokers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;## Loading required package: xts&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## Loading required package: zoo&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## IBrokers version 0.2-7: (alpha)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## Implementing API Version 9.62&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## This software comes with NO WARRANTY. Not intended for production use!&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## See ?IBrokers for details&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;tws&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;twsConnect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;tws&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;## &amp;lt;twsConnection,1 @ 20100513 15:11:40 CST, nextId=1288&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you can see there isn&amp;rsquo;t too much to talk about in the code above. We make the standard R &lt;code&gt;library()&lt;/code&gt; call to get IBrokers into our session, and the use the &lt;code&gt;twsConnect()&lt;/code&gt; function to make a connection to the TWS. There are parameters that can be passed in (such as &lt;code&gt;host&lt;/code&gt;, and &lt;code&gt;connection ID&lt;/code&gt;), but we needn&amp;rsquo;t do that here.&lt;/p&gt;
+&lt;p&gt;The result of our call is a &lt;code&gt;twsConnection&lt;/code&gt; object. This contains a few important bits of information that are used throughout the lifetime of the object.&lt;/p&gt;
+&lt;p&gt;To wrap up this post we&amp;rsquo;ll use our new connection to fetch some historical data from IB.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reqHistoricalData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tws&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;## TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## TWS Message: 2 -1 2104 Market data farm connection is OK:usfarm&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## waiting for TWS reply ....... done.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Some notes about the above. The first argument to most any IBrokers call is the connection object created with &lt;code&gt;twsConnect()&lt;/code&gt;. The second argument to the above request is a &lt;code&gt;twsContract&lt;/code&gt; object. There are a variety of ways to construct this, and &lt;code&gt;twsSTK()&lt;/code&gt; is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;## List of 14&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ conId : num 0&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ symbol : chr &amp;#34;AAPL&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ sectype : chr &amp;#34;STK&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ exch : chr &amp;#34;SMART&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ primary : chr &amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ expiry : chr &amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ strike : chr &amp;#34;0.0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ currency : chr &amp;#34;USD&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ right : chr &amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ local : chr &amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ multiplier : chr &amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ combo_legs_desc: NULL&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ comboleg : NULL&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $ include_expired: chr &amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you may have noticed, we assigned the output of our request to a variable &lt;code&gt;appl&lt;/code&gt; in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;## An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Data: num [1:22, 1:8] 245 246 249 247 248 ...&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  - attr(*, &amp;#34;dimnames&amp;#34;)=List of 2&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   ..$ : NULL&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   ..$ : chr [1:8] &amp;#34;AAPL.Open&amp;#34; &amp;#34;AAPL.High&amp;#34; &amp;#34;AAPL.Low&amp;#34; &amp;#34;AAPL.Close&amp;#34; ...&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Indexed by objects of class: [POSIXt,POSIXct] TZ: America/Chicago&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   xts Attributes:&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## List of 4&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  $ from : chr &amp;#34;20100413 21:35:34&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  $ to : chr &amp;#34;20100513 21:35:34&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  $ src : chr &amp;#34;IB&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##  $ updated: POSIXct[1:1], format: &amp;#34;2010-05-13 15:35:36.396084&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;reqHistoricalData()&lt;/code&gt; call takes a few arguments that can specify the &lt;code&gt;barSize&lt;/code&gt; and &lt;code&gt;duration&lt;/code&gt; of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the &lt;a href=&#34;http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf&#34;&gt;IBrokers documentation,&lt;/a&gt; as well as the more authoritative &lt;a href=&#34;http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm&#34;&gt;reference&lt;/a&gt; from IB.&lt;/p&gt;
+&lt;p&gt;Next time we&amp;rsquo;ll explore the real-time data features of IBrokers, including live market data, real-time bars, and order-book data capabilities.&lt;/p&gt;
+</content>
     </item>
     
   </channel>

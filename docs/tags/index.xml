@@ -6,11 +6,7 @@
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate>
-    
-	<atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
       <link>https://blog.fosstrading.com/search/label/R.html</link>
@@ -18,6 +14,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/R.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -27,6 +24,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Releases.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -36,6 +34,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/xts.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -45,6 +44,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/TTR.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -54,6 +54,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -63,6 +64,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Reviews.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -72,6 +74,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Events.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -81,6 +84,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/HIstorical-Data.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -90,6 +94,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Code.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -99,6 +104,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Examples.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -108,6 +114,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/PortfolioAnalytics.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -117,6 +124,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/quantstrat.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -126,6 +134,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/DEoptim.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -135,6 +144,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Data.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -144,6 +154,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/LSPM.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -153,6 +164,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Excel.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -162,6 +174,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/IBrokers.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -171,6 +184,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Drawdown.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -180,6 +194,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/API.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -189,6 +204,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/Interactive-Brokers.html</guid>
       <description></description>
+      <content></content>
     </item>
     
     <item>
@@ -198,6 +214,7 @@
       
       <guid>https://blog.fosstrading.com/search/label/blotter.html</guid>
       <description></description>
+      <content></content>
     </item>
     
   </channel>
