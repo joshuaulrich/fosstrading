@@ -419,6 +419,33 @@ Users can set preferences for how Google advertises to you using the Google Ad S
     </item>
     
     <item>
+      <title>Importing and managing financial data</title>
+      <link>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</link>
+      <pubDate>Wed, 21 Jun 2017 07:07:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</guid>
+      <description>I&amp;rsquo;m excited to announce my DataCamp course on importing and managing financial data in R! I&amp;rsquo;m also honored that it is included in DataCamp&amp;rsquo;s Quantitative Analyst with R Career Track!
+You can explore the first chapter for free, so be sure to check it out!
+Course Description Financial and economic time series data come in various shapes, sizes, and periodicities. Getting the data into R can be stressful and time-consuming, especially when you need to merge data from several different sources into one data set.</description>
+      <content>&lt;p&gt;I&amp;rsquo;m excited to announce my &lt;a href=&#34;https://www.datacamp.com&#34;&gt;DataCamp&lt;/a&gt; course on &lt;a href=&#34;https://www.datacamp.com/courses/importing-and-managing-financial-data-in-r&#34;&gt;importing and managing financial data in R&lt;/a&gt;! I&amp;rsquo;m also honored that it is included in DataCamp&amp;rsquo;s &lt;a href=&#34;https://www.datacamp.com/tracks/quantitative-analyst-with-r&#34;&gt;Quantitative Analyst with R Career Track&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;You can explore the first chapter for free, so be sure to check it out!&lt;/p&gt;
+&lt;h3 id=&#34;course-description&#34;&gt;Course Description&lt;/h3&gt;
+&lt;p&gt;Financial and economic time series data come in various shapes, sizes, and periodicities. Getting the data into R can be stressful and time-consuming, especially when you need to merge data from several different sources into one data set. This course covers importing data from local files as well as from internet sources.&lt;/p&gt;
+&lt;h3 id=&#34;course-outline&#34;&gt;Course Outline&lt;/h3&gt;
+&lt;h5 id=&#34;chapter-1-introduction-and-downloading-data&#34;&gt;Chapter 1: Introduction and downloading data&lt;/h5&gt;
+&lt;p&gt;A wealth of financial and economic data are available online. Learn how &lt;code&gt;getSymbols()&lt;/code&gt; and &lt;code&gt;Quandl()&lt;/code&gt; make it easy to access data from a variety of sources.&lt;/p&gt;
+&lt;h5 id=&#34;chapter-2-extracting-and-transforming-data&#34;&gt;Chapter 2: Extracting and transforming data&lt;/h5&gt;
+&lt;p&gt;You&amp;rsquo;ve learned how to import data from online sources, now it&amp;rsquo;s time to see how to extract columns from the imported data. After you&amp;rsquo;ve learned how to extract columns from a single object, you will explore how to import, transform, and extract data from multiple instruments.&lt;/p&gt;
+&lt;h5 id=&#34;chapter-3-managing-data-from-multiple-sources&#34;&gt;Chapter 3: Managing data from multiple sources&lt;/h5&gt;
+&lt;p&gt;Learn how to simplify and streamline your workflow by taking advantage of the ability to customize default arguments to &lt;code&gt;getSymbols()&lt;/code&gt;. You will see how to customize defaults by data source, and then how to customize defaults by symbol. You will also learn how to handle problematic instrument symbols&lt;/p&gt;
+&lt;h6 id=&#34;chapter-4-aligning-data-with-different-periodicities&#34;&gt;Chapter 4: Aligning data with different periodicities&lt;/h6&gt;
+&lt;p&gt;You&amp;rsquo;ve learned how to import, extract, and transform data from multiple data sources. You often have to manipulate data from different sources in order to combine them into a single data set. First, you will learn how to convert sparse, irregular data into a regular series. Then you will review how to aggregate dense data to a lower frequency. Finally, you will learn how to handle issues with intra-day data.&lt;/p&gt;
+&lt;h5 id=&#34;chapter-5-importing-text-data-and-adjusting-for-corporate-actions&#34;&gt;Chapter 5: Importing text data, and adjusting for corporate actions&lt;/h5&gt;
+&lt;p&gt;You&amp;rsquo;ve learned the core workflow of importing and manipulating financial data. Now you will see how to import data from text files of various formats. Then you will learn how to check data for weirdness and handle missing values. Finally, you will learn how to adjust stock prices for splits and dividends.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
       <title>quantmod 0.4-9 on CRAN</title>
       <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
