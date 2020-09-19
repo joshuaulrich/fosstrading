@@ -11,7 +11,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/search/label/R.html" />
-<meta property="og:updated_time" content="2020-09-13T10:49:00-05:00" />
+<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -84,6 +84,22 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">R</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2012/06/book-review-parallel-r.html" rel="bookmark">
+			Book Review: Parallel R
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-06-05T10:31:00-05:00">June 05, 2012</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		You have a problem: R is single-threaded, but your code would be faster if it could simultaneously run on more than one core. You have access to a cluster and/or your computer has multiple cores. Parallel R, by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.
+The book describes 6 approaches to distributed computing. Thoughts on each approach follow:
+ snow   The chapter starts by showing you how to create a socket cluster on a single machine (later sections discuss MPI clusters, and socket clusters of several machines).
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2012/03/r-in-google-summer-of-code-2012.html" rel="bookmark">
@@ -226,21 +242,6 @@ This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unne
 Step 1: Get the data
 The getSymbols function in quantmod makes this step easy if you can use daily data from Yahoo Finance. There are also &ldquo;methods&rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2011/03/how-to-backtest-strategy-in-excel.html" rel="bookmark">
-			How to backtest a strategy in Excel
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-14T20:57:00-05:00">March 14, 2011</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		(This is a guest post by Damian from Skill Analytics and ETF Prophet)
-Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at marketsci.com, Jeff Pietch over at etfprophet.com and the folks (David and Corey) over at cssanalytics.
-	</div>
 </article>
 </main>
 
@@ -271,11 +272,11 @@ Let me start by saying that I’m not an expert in backtesting in Excel – ther
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

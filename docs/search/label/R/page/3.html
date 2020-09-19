@@ -11,7 +11,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/search/label/R.html" />
-<meta property="og:updated_time" content="2020-09-13T10:49:00-05:00" />
+<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -84,6 +84,21 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">R</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2016/08/quantmod-0-4-6-on-cran.html" rel="bookmark">
+			quantmod 0.4-6 on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-08-29T11:38:00-05:00">August 29, 2016</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		CRAN just accepted a bugfix release of quantmod. The most pertinent changes were to fix getSymbols.oanda (#36) and getOptionChain.yahoo (#92). It also includes a fix to addTRIX (#72).
+Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect. Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo. The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2016/06/importing-and-managing-financial-data.html" rel="bookmark">
@@ -221,24 +236,6 @@ Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo a
 There are also several bug fixes. A few worth noting are:
  getSplits adjustOHLC getSymbols (when adjust=TRUE) saveSymbols newTA findValleys  
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2014/11/rfinance-2015-call-for-papers.html" rel="bookmark">
-			R/Finance 2015 Call for Papers
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-18T13:52:00-06:00">November 18, 2014</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Call for Papers:
-R/Finance 2015: Applied Finance with R
-May 29 and 30, 2015
-University of Illinois at Chicago
-The seventh annual R/Finance conference for applied finance using R will be held on May 29 and 30, 2015 in Chicago, IL, USA at the University of Illinois at Chicago. The conference will cover topics including portfolio management, time series analysis, advanced risk tools, high-performance computing, market microstructure, and econometrics. All will be discussed within the context of using R as a primary tool for financial risk management, portfolio construction, and trading.
-	</div>
 </article>
 </main>
 
@@ -269,11 +266,11 @@ The seventh annual R/Finance conference for applied finance using R will be held
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

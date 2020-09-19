@@ -11,7 +11,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/post.html" />
-<meta property="og:updated_time" content="2020-09-13T10:49:00-05:00" />
+<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -84,6 +84,25 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2010/03/ttr020-2-on-cran.html" rel="bookmark">
+			TTR_0.20-2 on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-03-30T14:48:00-05:00">March 30, 2010</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		An updated version of TTR is now on CRAN. It fixes a couple bugs and includes a couple handy tweaks. Here&rsquo;s the full contents of the CHANGES file:
+TTR version 0.20-2
+Changes from version 0.20-1
+NEW FEATURES:
+ Added VWAP() and VWMA() (thanks to Brian Peterson) Added v-factor generalization to DEMA() (thanks to John Gavin)  CHANGES:
+ Updated volatility() to handle univariate case of calc='close' (thanks to Cedrick Johnson) Moved EMA(), SAR(), and wilderSum() from .
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2010/02/updated-tactical-asset-allocation.html" rel="bookmark">
@@ -231,22 +250,6 @@ It looks like Xasax hit funding problems in August&hellip; Inside Market Data me
  Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&rsquo;s the R code:
 DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34;  # columns, in that order.  # This is David Varadi&#39;s alternative to the RSI(2).
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2009/06/rsi2-evaluation.html" rel="bookmark">
-			RSI(2) Evaluation
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-28T22:02:00-05:00">June 28, 2009</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This post continues the series of investigating the RSI(2) strategy. The first post replicated this simple RSI(2) strategy from the MarketSci Blog using R. The second post showed how to replicate the strategy that scales in/out of RSI(2).
-If you like the RSI(2), be sure to check out David Varadi&rsquo;s RSI(2) alternative!
-This post will use the PerformanceAnalytics package to evaluate the rules that scale in/out of positions. I&rsquo;ve also provided a simple function that provides some summary statistics.
-	</div>
 </article>
 </main>
 
@@ -277,11 +280,11 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

@@ -11,7 +11,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/search/label/R.html" />
-<meta property="og:updated_time" content="2020-09-13T10:49:00-05:00" />
+<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -84,6 +84,21 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">R</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2020/09/xlf-rolling-mean-correlation.html" rel="bookmark">
+			Mean rolling correlation of XLF constituents
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-19T07:23:00-05:00">September 19, 2020</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		I follow Quantocracy on Twitter, and I found Rolling mean correlation in the tidyverse by Robot Wealth. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: xts and TTR.
+The xts package is an extension of the very excellent zoo package. zoo objects are for ordered observations. Underneath, they are a matrix that can be ordered by anything: numbers, letters, dates, times, and more.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2020/09/xts-0-12-1-on-cran.html" rel="bookmark">
@@ -222,21 +237,6 @@ Google Finance no longer provides data for historical prices or financial statem
 Now, the good news:
 Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220) This feature is part of quantmod 0.4-13, which is now on CRAN. Windows and Mac binaries should be built in a day or two.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2018/03/xts-010-2-on-cran.html" rel="bookmark">
-			xts 0.10-2 on CRAN
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T05:30:00-05:00">March 19, 2018</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.
-	</div>
 </article>
 </main>
 
@@ -266,11 +266,11 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/03/quantmod04-14-on-cran.html">quantmod_0.4-14 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
