@@ -13,7 +13,7 @@
       <pubDate>Mon, 25 Oct 2010 22:01:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/10/algorithmic-trading-with-ibrokers.html</guid>
-      <description>Kyle Matoba is a Finance PhD student at the UCLA Anderson School of Management. He gave a presentation on Algorithmic Trading with R and IBrokers at a recent meeting of the Los Angeles R User Group. The discussion of IBrokers begins near the 12-minute mark.</description>
+        
       <content>&lt;p&gt;&lt;a href=&#34;http://personal.anderson.ucla.edu/kyle.matoba.2014/&#34;&gt;Kyle Matoba&lt;/a&gt; is a Finance PhD student at the UCLA Anderson School of Management.  He gave a presentation on Algorithmic Trading with R and IBrokers at a recent meeting of the &lt;a href=&#34;http://www.meetup.com/LAarea-R-usergroup/&#34;&gt;Los Angeles R User Group&lt;/a&gt;.  The discussion of IBrokers begins near the 12-minute mark.&lt;/p&gt;
 </content>
     </item>
@@ -24,8 +24,7 @@
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</guid>
-      <description>Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
-I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically.</description>
+        
       <content>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed &lt;em&gt;free (true to FOSS)&lt;/em&gt;, an account with &lt;a href=&#34;http://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically. IB makes available a rather comprehensive API that makes data access and trade execution entirely possible programmatically via a handful of &amp;ldquo;supported&amp;rdquo; languages. These include Java (the language of the platform), C#, VBA and even Excel. The also have a POSIX compliant C++ version for those who enjoy C++ but dislike Windows.&lt;/p&gt;
 &lt;p&gt;For those who dislike Windows &lt;em&gt;and&lt;/em&gt; C++, the community of IB users have a few &amp;ldquo;non-official&amp;rdquo; options. They include some nice implementations in C, Python (2), Matlab, and something even more abstracted in the &lt;a href=&#34;http://www.trading-shim.org/&#34;&gt;trading-shim&lt;/a&gt;. While all well and good, there was one missing: R.&lt;/p&gt;
@@ -111,11 +110,7 @@ I&amp;rsquo;ll start by highlighting that while all the software in this post is
       <pubDate>Sat, 17 Jan 2009 09:01:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative.html</guid>
-      <description>Jeff Ryan&amp;rsquo;s IBrokers package was mentioned on Ernie Chan&amp;rsquo;s blog, Quantitative Trading. Though the package is still in pre-alpha stage, it is generating quite a bit of interest.
-Source:
-Ernie Chan
-Friday, January 16, 2009
-Quantitative Trading: Algorithmic Trading Technology Update</description>
+        
       <content>&lt;p&gt;Jeff Ryan&amp;rsquo;s IBrokers package was mentioned on Ernie Chan&amp;rsquo;s blog, &lt;a href=&#34;http://epchan.blogspot.com/&#34;&gt;Quantitative Trading&lt;/a&gt;. Though the package is still in pre-alpha stage, it is generating quite a bit of interest.&lt;/p&gt;
 &lt;p&gt;Source:&lt;br&gt;
 Ernie Chan&lt;br&gt;

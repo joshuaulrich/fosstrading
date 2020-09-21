@@ -13,8 +13,7 @@
       <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</guid>
-      <description>This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
-When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument.</description>
+        
       <content>&lt;p&gt;This is a guest post by &lt;a href=&#34;https://quantstrattrader.wordpress.com/about/&#34;&gt;Ilya Kipnis&lt;/a&gt;. He blogs at &lt;a href=&#34;https://quantstrattrader.wordpress.com&#34;&gt;QuantStrat TradeR&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;When trading stocks in a single currency, instrument &lt;a href=&#34;http://en.wikipedia.org/wiki/Metadata&#34;&gt;metadata&lt;/a&gt; can be safely ignored because the multiplier is 1 and the currencies are all the same.  When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument. The &lt;a href=&#34;http://r-forge.r-project.org/R/?group_id=316&#34;&gt;FinancialInstrument&lt;/a&gt; package provides a construct for storing metadata for tradeable contracts (referred to as instruments, e.g. stocks, futures, options, etc.) and their root representations.  It can be used to create any asset class and complex derivatives, across multiple currencies. &lt;/p&gt;
 &lt;p&gt;In &lt;a href=&#34;http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html&#34;&gt;tactical asset allocation using blotter&lt;/a&gt;, Joshua Ulrich used FinancialInstrument (blotter depends on it) to create a stock portfolio.  FinancialInstrument is also a required dependency of the quantstrat quantitative strategy framework in R (quantstrat will be covered in a later post).&lt;/p&gt;
@@ -60,15 +59,7 @@ When trading stocks in a single currency, instrument metadata can be safely igno
       <pubDate>Thu, 05 Nov 2009 18:54:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/11/opentick-alternatives.html</guid>
-      <description>I&amp;rsquo;ve been getting a bit of traffic from people searching for opentick (the defunct company), so I&amp;rsquo;ve started a list of similar (but non-free) data providers.
-I&amp;rsquo;m not affiliated with any of these vendors, and the list is in no particular order. I&amp;rsquo;ll update this post as more information becomes available.
-IQFeed
-- features, fees, API**
-- starts at $60/month*
-- OS: Windows
-- Same API as DTN.IQ
-eSignal
-- features, fees, API**</description>
+        
       <content>&lt;p&gt;I&amp;rsquo;ve been getting a bit of traffic from people searching for opentick &lt;a href=&#34;http://blog.fosstrading.com/2009/04/opentick-is-no-more.html&#34;&gt;(the defunct company)&lt;/a&gt;, so I&amp;rsquo;ve started a list of similar (but non-free) data providers.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m not affiliated with any of these vendors, and the list is in no particular order. I&amp;rsquo;ll update this post as more information becomes available.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.iqfeed.net/&#34;&gt;IQFeed&lt;/a&gt;&lt;br&gt;
@@ -100,8 +91,7 @@ eSignal
       <pubDate>Sun, 18 Oct 2009 11:21:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/10/xasax-closes-shop.html</guid>
-      <description>Six months after shutting down opentick completely Xasax (opentick&amp;rsquo;s parent company) has followed suit.
-It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Data mentions the above in this story. Here is the full story (subscription required).</description>
+        
       <content>&lt;p&gt;Six months after &lt;a href=&#34;http://blog.fosstrading.com/2009/04/opentick-is-no-more.html&#34;&gt;shutting down opentick completely&lt;/a&gt; Xasax (opentick&amp;rsquo;s parent company) has followed suit.&lt;/p&gt;
 &lt;p&gt;It looks like Xasax hit funding problems in August&amp;hellip; &lt;a href=&#34;http://www.watersonline.com/public/showPage.html?page=imd_index&#34;&gt;Inside Market Data&lt;/a&gt; mentions the above in &lt;a href=&#34;http://www.watersonline.com/public/showPage.html?page=868403&#34;&gt;this story&lt;/a&gt;. Here is the &lt;a href=&#34;http://www.watersonline.com/public/showPage.html?page=868401&#34;&gt;full story&lt;/a&gt; (subscription required).&lt;/p&gt;
 </content>
@@ -113,11 +103,7 @@ It looks like Xasax hit funding problems in August&amp;hellip; Inside Market Dat
       <pubDate>Fri, 17 Apr 2009 14:46:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/04/opentick-is-no-more.html</guid>
-      <description>After a year of &amp;ldquo;we plan to accept new subscribers shortly&amp;rdquo;, opentick has shut its doors completely. As of March 20th, the opentick service is no longer available.
-From opentick.com:
- 3/16/2009
-To opentick subscribers, friends, supporters, contributors and the rest of the community&amp;hellip;
-It has been quite a journey for opentick, and for those of you who have been with us for the ride we cannot thank you enough for the support, contributions and guidance you have given us over the course of the last 5 years.</description>
+        
       <content>&lt;p&gt;After a year of &amp;ldquo;we plan to accept new subscribers shortly&amp;rdquo;, &lt;a href=&#34;http://www.opentick.com/&#34;&gt;opentick&lt;/a&gt; has shut its doors completely. As of March 20th, the opentick service is no longer available.&lt;/p&gt;
 &lt;p&gt;From &lt;a href=&#34;http://www.opentick.com/&#34;&gt;opentick.com&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;

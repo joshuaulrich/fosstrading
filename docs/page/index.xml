@@ -13,9 +13,7 @@
       <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.fosstrading.com/page/disclosures.html</guid>
-      <description>Amazon We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.
-CSI Data We receive an affiliate commission when a reader signs up for a CSI data package via a referring link from this site and/or using the &amp;ldquo;FOSS&amp;rdquo; coupon code.
-Privacy Policy This privacy policy has been compiled to better serve those who are concerned with how this site uses their &amp;lsquo;Personally Identifiable Information&amp;rsquo; (information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context).</description>
+        
       <content>&lt;h2 id=&#34;amazon&#34;&gt;Amazon&lt;/h2&gt;
 &lt;p&gt;We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.&lt;/p&gt;
 &lt;h2 id=&#34;csi-data&#34;&gt;CSI Data&lt;/h2&gt;
@@ -56,8 +54,7 @@ Users can set preferences for how Google advertises to you using the Google Ad S
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.fosstrading.com/page/enterprise.html</guid>
-      <description>Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.
-Enterprise-ready open source software—managed for you The Tidelift Subscription is a managed open source subscription for application dependencies covering millions of open source projects across JavaScript, Python, Java, PHP, Ruby, .</description>
+        
       <content>&lt;p&gt;Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.&lt;/p&gt;
 &lt;h3 id=&#34;enterprise-ready-open-source-softwaremanaged-for-you&#34;&gt;Enterprise-ready open source software—managed for you&lt;/h3&gt;
 &lt;p&gt;The Tidelift Subscription is a managed open source subscription for application dependencies covering millions of open source projects across JavaScript, Python, Java, PHP, Ruby, .NET, and more.&lt;/p&gt;

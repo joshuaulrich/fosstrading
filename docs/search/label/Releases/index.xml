@@ -13,8 +13,7 @@
       <pubDate>Sun, 13 Sep 2020 10:49:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</guid>
-      <description>This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of xts to CRAN on 2020-09-09. I&amp;rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&amp;rsquo;t post about that. It has some nifty changes in it too.</description>
+        
       <content>&lt;p&gt;This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.&lt;/p&gt;
 &lt;p&gt;I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-09. I&amp;rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&amp;rsquo;t post about that. It has some nifty changes in it too.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m going to highlight a handful of the changes:&lt;/p&gt;
@@ -73,9 +72,7 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
       <pubDate>Sun, 13 Sep 2020 08:41:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</guid>
-      <description>This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of TTR to CRAN on 2020-09-01.
-This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues.</description>
+        
       <content>&lt;p&gt;This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.&lt;/p&gt;
 &lt;p&gt;I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-01.&lt;/p&gt;
 &lt;p&gt;This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&amp;rsquo;ll spare you the gory details. If you&amp;rsquo;re really interested, you can find them in the &lt;a href=&#34;https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES&#34;&gt;CHANGES&lt;/a&gt; file. There are links to the relevant issues in there too, if you&amp;rsquo;re really curious.&lt;/p&gt;
@@ -107,8 +104,7 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran.html</guid>
-      <description>A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&amp;quot;SPY;AAPL&amp;quot;).</description>
+        
       <content>&lt;p&gt;A new version of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! One really cool thing about this release is that almost all the changes are contributions from the community.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; made more excellent contributions to &lt;code&gt;getQuote()&lt;/code&gt; in this release. It no longer throws an error if one or more symbols are missing.  And it handles multiple symbols in a semicolon-delimted string, just like &lt;code&gt;getSymbols()&lt;/code&gt;. For example, you can get quotes for multiple symbols by calling &lt;code&gt;getQuote(&amp;quot;SPY;AAPL&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/jrburl&#34;&gt;@jrburl&lt;/a&gt; made a great enhancement to &lt;code&gt;getOptionChain()&lt;/code&gt;. Now, instead of throwing an error, it sets volume and open interest to &lt;code&gt;NA&lt;/code&gt; if those columns are missing from the Yahoo Finance data. They also submitted a pull request to handle cases where Bid and/or Ask data are missing too. Unfortunately, that pull request came after I had already pushed to CRAN.&lt;/p&gt;
@@ -125,9 +121,7 @@ Ethan Smith made more excellent contributions to getQuote() in this release. It 
       <pubDate>Thu, 10 Oct 2019 06:21:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran.html</guid>
-      <description>I pushed an updated microbenchmark to CRAN a couple weeks ago. There were two noteworthy changes, thanks to great contributions from @MichaelChirico and @harvey131.
-Michael fixed a bug in the check for whether the unit argument was a character string (#9, #10). The prior behavior was an uninformative error.
-Harvey added a feature to allow you to use a string for common checks: &amp;ldquo;equal&amp;rdquo;, &amp;ldquo;identical&amp;rdquo;, and &amp;ldquo;equivalent&amp;rdquo; (#16). So you don&amp;rsquo;t need to create a custom function to use all.</description>
+        
       <content>&lt;p&gt;I pushed an updated &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark to CRAN&lt;/a&gt; a couple weeks ago. There were two noteworthy changes, thanks to great contributions from &lt;a href=&#34;https://github.com/MichaelChirico&#34;&gt;@MichaelChirico&lt;/a&gt; and &lt;a href=&#34;https://github.com/harvey131&#34;&gt;@harvey131&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Michael fixed a bug in the check for whether the unit argument was a character string (&lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/issues/9&#34;&gt;#9&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/pull/10&#34;&gt;#10&lt;/a&gt;). The prior behavior was an uninformative error.&lt;/p&gt;
 &lt;p&gt;Harvey added a feature to allow you to use a string for common checks: &amp;ldquo;equal&amp;rdquo;, &amp;ldquo;identical&amp;rdquo;, and &amp;ldquo;equivalent&amp;rdquo; (&lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/pull/16&#34;&gt;#16&lt;/a&gt;). So you don&amp;rsquo;t need to create a custom function to use &lt;code&gt;all.equal()&lt;/code&gt;, &lt;code&gt;all.equal(..., check.attributes = FALSE)&lt;/code&gt;, and identical, respectively.&lt;/p&gt;
@@ -141,8 +135,7 @@ Harvey added a feature to allow you to use a string for common checks: &amp;ldqu
       <pubDate>Mon, 25 Mar 2019 06:53:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran.html</guid>
-      <description>I just pushed a new release of quantmod to CRAN! I&amp;rsquo;m most excited about the update to getSymbols() so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now getSymbols() will import all the data it can, and provide an informative error message for any ticker symbols it could not import.
-Another cool feature is that getQuote() can now import quotes from Tiingo. But don&amp;rsquo;t thank me; thank Ethan Smith for the feature request [#247] and pull request [#250].</description>
+        
       <content>&lt;p&gt;I just pushed a new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! I&amp;rsquo;m most excited about the update to &lt;code&gt;getSymbols()&lt;/code&gt; so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now &lt;code&gt;getSymbols()&lt;/code&gt; will import all the data it can, and provide an informative error message for any ticker symbols it could not import.&lt;/p&gt;
 &lt;p&gt;Another cool feature is that &lt;code&gt;getQuote()&lt;/code&gt; can now import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt;. But don&amp;rsquo;t thank me; thank &lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; for the feature request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/247&#34;&gt;#247&lt;/a&gt;] and pull request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/250&#34;&gt;#250&lt;/a&gt;].&lt;/p&gt;
 &lt;p&gt;There are also several bug fixes in this release.  The most noticeable are fixes to &lt;code&gt;getDividends()&lt;/code&gt;  and &lt;code&gt;getSplits()&lt;/code&gt;. &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; continues to have stability issues. Now it returns raw dividends instead of split-adjusted dividends (thanks to Douglas Barnard for the report [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/253&#34;&gt;#253&lt;/a&gt;]), and the actual split adjustment ratio instead of the inverse (e.g. now 1/2 instead of 2/1).  I suggest using a different data provider. See my post: &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;Yahoo! Finance Alternatives&lt;/a&gt; for some suggestions.&lt;/p&gt;
@@ -156,8 +149,7 @@ Another cool feature is that getQuote() can now import quotes from Tiingo. But
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html</guid>
-      <description>xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
- The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &amp;gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.</description>
+        
       <content>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-2 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; yesterday. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This is a bug-fix release, with notable changes below:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The xts method for &lt;code&gt;shift.time()&lt;/code&gt; is now registered. Thanks to Philippe Verspeelt for the report and PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/268&#34;&gt;#268&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/273&#34;&gt;#273&lt;/a&gt;).&lt;/li&gt;
@@ -176,8 +168,7 @@ Another cool feature is that getQuote() can now import quotes from Tiingo. But
       <pubDate>Wed, 12 Sep 2018 13:36:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran.html</guid>
-      <description>xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
- There&amp;rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).</description>
+        
       <content>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-1 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; this morning. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; code even faster!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;There&amp;rsquo;s a new &lt;code&gt;window.xts()&lt;/code&gt; method, thanks to Corwin Joy (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/100&#34;&gt;#100&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/240&#34;&gt;#240&lt;/a&gt;). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/251&#34;&gt;#251&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/263&#34;&gt;#263&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/264&#34;&gt;#264&lt;/a&gt;).&lt;/li&gt;
@@ -203,10 +194,7 @@ Another cool feature is that getQuote() can now import quotes from Tiingo. But
       <pubDate>Fri, 13 Apr 2018 11:14:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html</guid>
-      <description>First, the bad news:
-Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to getSymbols.google() and getFinancials.google(). (#221) They are now defunct as of quantmod 0.4-13.
-Now, the good news:
-Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220) This feature is part of quantmod 0.4-13, which is now on CRAN. Windows and Mac binaries should be built in a day or two.</description>
+        
       <content>&lt;p&gt;First, the bad news:&lt;/p&gt;
 &lt;p&gt;Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to &lt;code&gt;getSymbols.google()&lt;/code&gt; and &lt;code&gt;getFinancials.google()&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/221&#34;&gt;#221&lt;/a&gt;)  They are now defunct as of quantmod 0.4-13.&lt;/p&gt;
 &lt;p&gt;Now, the good news:&lt;/p&gt;
@@ -234,8 +222,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
       <pubDate>Mon, 19 Mar 2018 05:30:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran.html</guid>
-      <description>This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects.</description>
+        
       <content>&lt;p&gt;This &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;endpoints()&lt;/code&gt; gained sub-second accuracy on Windows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/202&#34;&gt;#202&lt;/a&gt;)!&lt;/li&gt;
@@ -253,9 +240,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
       <pubDate>Fri, 05 Jan 2018 14:02:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2018/01/rquantlib-044-for-windows.html</guid>
-      <description>I&amp;rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&amp;rsquo;s ghrr drat repo.
-Installation is as simple as:
-drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp;#34;drat&amp;#34;)&amp;#39; first  install.packages(&amp;#34;RQuantLib&amp;#34;, type=&amp;#34;binary&amp;#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.</description>
+        
       <content>&lt;p&gt;I&amp;rsquo;m pleased to announce that the &lt;a href=&#34;https://cran.r-project.org/package=RQuantLib&#34;&gt;RQuantLib&lt;/a&gt; Windows binaries are now up to 0.4.4!  The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on &lt;a href=&#34;http://dirk.eddelbuettel.com/&#34;&gt;Dirk&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;https://ghrr.github.io/drat/&#34;&gt;ghrr drat repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Installation is as simple as:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;drat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;addRepo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ghrr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# maybe use &amp;#39;install.packages(&amp;#34;drat&amp;#34;)&amp;#39; first &lt;/span&gt;
@@ -271,8 +256,7 @@ drat::addRepo(&amp;#34;ghrr&amp;#34;) # maybe use &amp;#39;install.packages(&amp
       <pubDate>Fri, 06 Oct 2017 16:12:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html</guid>
-      <description>Thanks to Paul Teetor, getSymbols() can now import data from Alpha Vantage! This feature is part of the quantmod 0.4-11 release, and provides another another data source to avoid any Yahoo Finance API changes*.
-Alpha Vantage is a free web service that provides real-time and historical equity data. They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data.</description>
+        
       <content>&lt;p&gt;Thanks to &lt;a href=&#34;http://quantdevel.com/public/&#34;&gt;Paul Teetor&lt;/a&gt;, &lt;code&gt;getSymbols()&lt;/code&gt; can now import data from &lt;a href=&#34;https://www.alphavantage.co/&#34;&gt;Alpha Vantage&lt;/a&gt;!  This feature is part of the &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; 0.4-11 release, and provides another &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;another data source&lt;/a&gt; to avoid any &lt;a href=&#34;http://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html&#34;&gt;Yahoo Finance API changes&lt;/a&gt;*.&lt;/p&gt;
 &lt;p&gt;Alpha Vantage is a free web service that provides real-time and historical equity data.  They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data. They also provide near real-time price bars at a resolution of 1 minute or more, for up to 10 recent days.&lt;/p&gt;
 &lt;p&gt;All you need to get started is a &lt;a href=&#34;https://www.alphavantage.co/support/#api-key&#34;&gt;one-time registration for an API key&lt;/a&gt;.  Alpha Vantage has &lt;a href=&#34;https://www.alphavantage.co/documentation/&#34;&gt;clean, documented, public API&lt;/a&gt; that returns either JSON-encoded data or a CSV file.  The arguments to &lt;code&gt;getSymbols.av()&lt;/code&gt; closely follow the native API, so be sure to use their documentation!&lt;/p&gt;
@@ -290,8 +274,7 @@ Alpha Vantage is a free web service that provides real-time and historical equit
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran.html</guid>
-      <description>A new, and long overdue, release of xts is now on CRAN! The major change is the completely new plot.xts() written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s quantmod::chart_Series() code.
-Do note that the new plot.xts() includes breaking changes to the original (and rather limited) plot.xts(). However, we believe the new functionality more than compensates for the potential one-time inconvenience. And I will no longer have to tell people that I use plot.</description>
+        
       <content>&lt;p&gt;A new, and long overdue, release of &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;CRAN&lt;/a&gt;!  The major change is the completely new &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_basics.html&#34;&gt;plot.xts()&lt;/a&gt; written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s &lt;code&gt;quantmod::chart_Series()&lt;/code&gt; code.&lt;/p&gt;
 &lt;p&gt;Do note that the new &lt;code&gt;plot.xts()&lt;/code&gt; includes breaking changes to the original (and rather limited) &lt;code&gt;plot.xts()&lt;/code&gt;.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.  And I will no longer have to tell people that I use &lt;code&gt;plot.zoo()&lt;/code&gt; on xts objects!&lt;/p&gt;
 &lt;p&gt;This release also includes more bug fixes than you can shake a stick at.  We squashed several bugs that could have crashed your R session.  We also fixed some (always pesky and tricky) timezone issues.  We&amp;rsquo;ve also done more sanity checking (e.g. for NA in the index), and provide more informative errors when things aren&amp;rsquo;t right.  And last, but not least, unit tests are running again!&lt;/p&gt;
@@ -306,9 +289,7 @@ Do note that the new plot.xts() includes breaking changes to the original (and r
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</guid>
-      <description>A new release of quantmod is now on CRAN! The only change was to address changes to Yahoo! Finance and their effects on getSymbols.yahoo(). GitHub issue #157 contains some details about the fix implementation.
-Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed. The actual data available for download changed as well.
-The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted). Also, only the close price is unadjusted; the open, high, and low are split-adjusted.</description>
+        
       <content>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed.  The actual data available for download changed as well.&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.&lt;/p&gt;
@@ -324,10 +305,7 @@ The most noticeable difference is that the adjusted close column is no longer di
       <pubDate>Wed, 19 Apr 2017 10:45:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran.html</guid>
-      <description>I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
-getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
-There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).</description>
+        
       <content>&lt;p&gt;I pushed a bug-fix release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; last night. The major changes were to&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;getSymbols.FRED()&lt;/code&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/141&#34;&gt;#141&lt;/a&gt;)&lt;/li&gt;
@@ -348,8 +326,7 @@ There&amp;rsquo;s a handy new argument to getDividends(): split.adjust. It allow
       <pubDate>Mon, 29 Aug 2016 11:38:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran.html</guid>
-      <description>CRAN just accepted a bugfix release of quantmod. The most pertinent changes were to fix getSymbols.oanda (#36) and getOptionChain.yahoo (#92). It also includes a fix to addTRIX (#72).
-Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect. Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo. The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.</description>
+        
       <content>&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; just accepted a bugfix release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt;.  The most pertinent changes were to fix getSymbols.oanda (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/36&#34;&gt;#36&lt;/a&gt;) and getOptionChain.yahoo (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/92&#34;&gt;#92&lt;/a&gt;).  It also includes a fix to addTRIX (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/72&#34;&gt;#72&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect.  Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo.  The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.  For more information, see the links to the GitHub issues above.&lt;/p&gt;
 &lt;p&gt;I added documentation for getPrice (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/77&#34;&gt;#77&lt;/a&gt;), and removed the unused unsetSymbolLookup function and corresponding documentation (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/115&#34;&gt;#115&lt;/a&gt;).&lt;/p&gt;
@@ -362,8 +339,7 @@ Oanda changed their URL format from http to https, and getSymbols.oanda did no
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
-      <description>I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&amp;rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA() (Hull MA), ALMA(), and ultimateOscillator() functions.
-James Toll provided a patch to the volatility() function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.</description>
+        
       <content>&lt;p&gt;I just sent &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod_0.4-5&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;, and &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR_0.23-0&lt;/a&gt; has been there for a couple weeks. I&amp;rsquo;d like to thank &lt;a href=&#34;http://www.quintuitive.com/&#34;&gt;Ivan Popivanov&lt;/a&gt; for many useful reports and patches to TTR. He provided patches to add &lt;code&gt;HMA()&lt;/code&gt; (Hull MA), &lt;code&gt;ALMA()&lt;/code&gt;, and &lt;code&gt;ultimateOscillator()&lt;/code&gt; functions.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://jtoll.com/&#34;&gt;James Toll&lt;/a&gt; provided a patch to the &lt;code&gt;volatility()&lt;/code&gt; function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names. There are many other bug fixes (see the CHANGES file in the package).&lt;/p&gt;
 &lt;p&gt;The biggest changes in quantmod were to fix &lt;code&gt;getSymbols.MySQL()&lt;/code&gt; to use the correct &lt;code&gt;dbConnect()&lt;/code&gt; call based on changes made in RMySQL_0.10 and to fix &lt;code&gt;getSymbols.FRED()&lt;/code&gt; to use https:// instead of http:// when downloading FRED data. &lt;code&gt;getSymbols.csv()&lt;/code&gt; also got some much-needed love.&lt;/p&gt;
@@ -377,8 +353,7 @@ James Toll provided a patch to the volatility() function that uses a zero mean (
       <pubDate>Mon, 20 Apr 2015 12:45:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</guid>
-      <description>We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
-This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).</description>
+        
       <content>&lt;p&gt;We have been working on a new charting engine for &lt;code&gt;xts::plot.xts&lt;/code&gt; for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.&lt;/p&gt;
 &lt;p&gt;This new engine improves the functionality, modularity, and flexibility of &lt;code&gt;plot.xts&lt;/code&gt; by building off the framework Jeff Ryan began with &lt;code&gt;quantmod::chart_Series&lt;/code&gt;.  The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).&lt;/p&gt;
 &lt;p&gt;The main objective was to provide functionality similar to &lt;code&gt;chartSeries&lt;/code&gt; and &lt;code&gt;addTA&lt;/code&gt; for xts objects. The current code includes support for:&lt;/p&gt;
@@ -402,8 +377,7 @@ This new engine improves the functionality, modularity, and flexibility of plot
       <pubDate>Tue, 10 Mar 2015 12:09:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html</guid>
-      <description>I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
-Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&amp;rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&amp;rsquo;ve written.</description>
+        
       <content>&lt;p&gt;I pushed &lt;a href=&#34;http://cran.r-project.org/web/packages/quantmod/&#34;&gt;quantmod 0.4-4 to CRAN&lt;/a&gt; this weekend.  It adds a &lt;code&gt;getSymbols.yahooj&lt;/code&gt; function to pull stock data from Yahoo Finance Japan, and fixes issues in &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; and &lt;code&gt;getSymbols.oanda&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Changes to the Yahoo Finance and Oanda websites broke the &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; and &lt;code&gt;getSymbols.oanda&lt;/code&gt; functions, respectively.  I didn&amp;rsquo;t use &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; much, so I’m not certain I restored all the prior functionality.  Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&amp;rsquo;ve written.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;getSymbols.yahooj&lt;/code&gt; function is a major enhancement provided by &lt;a href=&#34;http://morannon.org/&#34;&gt;Wouter Thielen&lt;/a&gt;.  It allows quantmod users to pull stock data from Yahoo Finance Japan. &lt;/p&gt;
@@ -423,9 +397,7 @@ Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo a
       <pubDate>Mon, 15 Dec 2014 09:43:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran.html</guid>
-      <description>An updated version of quantmod has just been released on CRAN. This is my first submission as the new maintainer. The major change was removing the dependency on the now-archived Defaults package. End-users shouldn&amp;rsquo;t notice a difference, since I basically copied the necessary functionality from Defaults and added it to quantmod.
-There are also several bug fixes. A few worth noting are:
- getSplits adjustOHLC getSymbols (when adjust=TRUE) saveSymbols newTA findValleys  </description>
+        
       <content>&lt;p&gt;An updated version of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; has just been released on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  This is my first submission as the new maintainer.  The major change was removing the dependency on the &lt;a href=&#34;http://cran.r-project.org/web/packages/Defaults/&#34;&gt;now-archived Defaults&lt;/a&gt; package.  End-users shouldn&amp;rsquo;t notice a difference, since I basically copied the necessary functionality from Defaults and added it to quantmod.&lt;/p&gt;
 &lt;p&gt;There are also several bug fixes. A few worth noting are:&lt;/p&gt;
 &lt;ul&gt;
@@ -445,8 +417,7 @@ There are also several bug fixes. A few worth noting are:
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI() returns an object with colnames, and the initial gap for SAR() is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD(), SAR(), EMA()/EVWMA(), and adjRatios().
-There are some exciting new features, including a rolling single-factor model function (rollSFM(), based on a prototype from James Toll), a runPercentRank() function from Charlie Friedemann, stoch() and WPR() return 0.</description>
+        
       <content>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/index.html&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  The biggest changes to be aware of are that all moving averages attempt to set colnames, &lt;code&gt;CCI()&lt;/code&gt; returns an object with colnames, and the initial gap for &lt;code&gt;SAR()&lt;/code&gt; is not hard-coded at 0.01.  There are also some much-needed bug fixes - most notably to Yang Zhang volatility, &lt;code&gt;MACD()&lt;/code&gt;, &lt;code&gt;SAR()&lt;/code&gt;, &lt;code&gt;EMA()&lt;/code&gt;/&lt;code&gt;EVWMA()&lt;/code&gt;, and &lt;code&gt;adjRatios()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;There are some exciting new features, including a rolling single-factor model function (&lt;code&gt;rollSFM()&lt;/code&gt;, based on a prototype from James Toll), a &lt;code&gt;runPercentRank()&lt;/code&gt; function from Charlie Friedemann, &lt;code&gt;stoch()&lt;/code&gt; and &lt;code&gt;WPR()&lt;/code&gt; return 0.5 instead of NaN when there&amp;rsquo;s insufficient price movement, and a faster &lt;code&gt;aroon()&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;Here are all of the updates (from the CHANGES file):&lt;/p&gt;
@@ -487,8 +458,7 @@ There are some exciting new features, including a rolling single-factor model fu
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2012/03/deoptim-in-parallel.html</guid>
-      <description>Running DEoptim in parallel has been on the development team&amp;rsquo;s wishlist for awhile. It had not been a priority though, because none of us have personally needed it. An opportunity arose when Kris Boudt approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.
-We were able to add and test the functionality within a week. The latest revision of DEoptim on R-Forge has the capability to evaluate the objective function on multiple cores using foreach.</description>
+        
       <content>&lt;p&gt;Running &lt;a href=&#34;http://cran.r-project.org/package=DEoptim&#34;&gt;DEoptim&lt;/a&gt; in parallel has been on the development team&amp;rsquo;s wishlist for awhile.  It had not been a priority though, because none of us have personally needed it.  An opportunity arose when &lt;a href=&#34;http://www.econ.kuleuven.be/public/n06054/&#34;&gt;Kris Boudt&lt;/a&gt; approached me about collaborating to add this functionality as part of a consultancy project for a financial services firm.&lt;/p&gt;
 &lt;p&gt;We were able to add and test the functionality within a week.  The latest revision of &lt;a href=&#34;https://r-forge.r-project.org/projects/deoptim/&#34;&gt;DEoptim on R-Forge&lt;/a&gt; has the capability to evaluate the objective function on multiple cores using &lt;a href=&#34;http://cran.r-project.org/web/packages/foreach/index.html&#34;&gt;foreach&lt;/a&gt;.  Very CPU-intensive problems will see speed increases in approximately linear time (less communication overhead).&lt;/p&gt;
 &lt;p&gt;I gave a &lt;a href=&#34;http://files.meetup.com/1772780/20120201_Ulrich_Parallel_DEoptim.pdf&#34;&gt;short presentation&lt;/a&gt; (PDF) on the parallel functionality at the &lt;a href=&#34;http://www.meetup.com/Saint-Louis-RUG/&#34;&gt;Saint Louis R User Group&lt;/a&gt; meetup in February.  A longer-running version of the code used in the presentation is on R-Forge, in the file &lt;a href=&#34;https://r-forge.r-project.org/scm/viewvc.php/pkg/DEoptim/sandbox/largeN_doSNOW.R?view=markup&amp;amp;revision=86&amp;amp;root=deoptim&#34;&gt;DEoptim/sandbox/largeN_doSNOW.R&lt;/a&gt; (revision 86).&lt;/p&gt;
@@ -520,12 +490,7 @@ We were able to add and test the functionality within a week. The latest revisi
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</guid>
-      <description>An updated version of TTR is now on CRAN. It contains some much-needed bug fixes (most notably to stockSymbols()), some small changes, and a few new functions. Note that the change to wilderSum() will affect functions that use it (e.g. ADX()).
-Here are the full contents of the CHANGES file:
- TTR version 0.21-0
-Changes from version 0.20-2
-NEW FEATURES:
- Added variable moving average function, VMA(). Added Brian Peterson&amp;rsquo;s price bands function, PBands().</description>
+        
       <content>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  It contains some much-needed bug fixes (most notably to &lt;code&gt;stockSymbols()&lt;/code&gt;), some small changes, and a few new functions.  Note that the change to &lt;code&gt;wilderSum()&lt;/code&gt; will affect functions that use it (e.g. &lt;code&gt;ADX()&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Here are the full contents of the CHANGES file:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -560,8 +525,7 @@ NEW FEATURES:
       <pubDate>Mon, 04 Apr 2011 11:47:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/04/rquantlib-windows-binary-on-cran.html</guid>
-      <description>Dirk Eddelbuettel has recently released RQuantLib-0.3.7, which contains the necessary QuantLib builds to allow the CRAN servers to build the Windows binary.
-This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unnecessary for casual users, but may be useful for those who want to develop RQuantLib on Windows.</description>
+        
       <content>&lt;p&gt;&lt;a href=&#34;http://dirk.eddelbuettel.com/&#34;&gt;Dirk Eddelbuettel&lt;/a&gt; has recently released &lt;a href=&#34;http://dirk.eddelbuettel.com/blog/2011/04/04/#rquantlib_0.3.7&#34;&gt;RQuantLib-0.3.7&lt;/a&gt;, which contains the necessary QuantLib builds to allow the CRAN servers to build the Windows binary.&lt;/p&gt;
 &lt;p&gt;This (thankfully) makes my post on &lt;a href=&#34;http://blog.fosstrading.com/2010/12/build-rquantlib-on-32-bit-windows.html&#34;&gt;how to build RQuantLib on 32-bit Windows&lt;/a&gt; unnecessary for casual users, but may be useful for those who want to develop RQuantLib on Windows.&lt;/p&gt;
 </content>
@@ -573,10 +537,7 @@ This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unne
       <pubDate>Sun, 15 Feb 2009 18:51:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/02/ttr02-on-cran.html</guid>
-      <description>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
-This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
-NEW FEATURES:
- Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:</description>
+        
       <content>&lt;p&gt;I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.&lt;/p&gt;
 &lt;p&gt;This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; internally, so all major time series classes are now supported.&lt;/p&gt;
 &lt;p&gt;NEW FEATURES:&lt;/p&gt;
