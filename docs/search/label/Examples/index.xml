@@ -13,8 +13,7 @@
       <pubDate>Sat, 29 Mar 2014 12:25:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html</guid>
-        
-      <content>&lt;p&gt;This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp;amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.&lt;/p&gt;
+      <description>&lt;p&gt;This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp;amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.&lt;/p&gt;
 &lt;p&gt;His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives. Support for additional constraints including group, diversification, and factor exposure constraints was also added. The random portfolio solver was expanded to include two additional methods of generating random portfolios. The optimization backends were further standardized for sets of constraints and objectives that can be solved via linear and quadratic programming solvers using the ROI package. Charts including risk budget and efficient frontiers were added as well as standardizing the charting across all optimization engines.&lt;/p&gt;
 &lt;p&gt;This post is meant to provide a very basic introduction to the PortfolioAnalytics package. PortfolioAnalytics is an R package designed to provide numerical solutions and visualizations for portfolio problems with complex constraints and objectives. A key feature of PortfolioAnalytics is the ability to specify a portfolio with assets, constraints, and objectives that is solver agnostic, where the objective can be comprised of any valid R function. PortfolioAnalytics utilizes multiple solvers as backends for the optimization; linear programming, quadratic programming, differential evolution, random portfolios, particle swarm, and generalized simulated annealing. For optimization problems that can be formulated as linear or quadratic problems, these can be solved very fast and efficiently using the appropriate linear or quadratic solver supported by PortfolioAnalytics. For optimization problems with more complex constraints and objectives, a global solver such as differential evolution or random portfolios can be used to find a solution.&lt;/p&gt;
 &lt;p&gt;Ross will be giving a tutorial on PortfolioAnalytics at the &lt;a href=&#34;http://www.rinfinance.com&#34;&gt;R/Finance 2014 Conference&lt;/a&gt;. The tutorial will cover the key features of PortfolioAnalytics along with several comprehensive examples. Those who want to learn more about how R is used in finance are encouraged to attend.&lt;/p&gt;
@@ -233,7 +232,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-101.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-101.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard deviation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.&lt;/p&gt;
 &lt;p&gt;The PortfolioAnalytics package is part of the &lt;a href=&#34;http://r-forge.r-project.org/projects/returnanalytics/&#34;&gt;ReturnAnalytics&lt;/a&gt; project on R-Forge. For additional examples and information, refer to the several vignettes and demos are provided in the package.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -242,8 +241,7 @@
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</guid>
-        
-      <content>&lt;p&gt;As promised in the &lt;a href=&#34;http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html&#34;&gt;introduction to quantstrat&lt;/a&gt;, here is an example strategy.  I thought I&amp;rsquo;d start with the obligatory tactical asset allocation (TAA) strategy.  This post will replicate the strategy in the post, &lt;a href=&#34;http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html&#34;&gt;tactical asset allocation using blotter&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;As promised in the &lt;a href=&#34;http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html&#34;&gt;introduction to quantstrat&lt;/a&gt;, here is an example strategy.  I thought I&amp;rsquo;d start with the obligatory tactical asset allocation (TAA) strategy.  This post will replicate the strategy in the post, &lt;a href=&#34;http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html&#34;&gt;tactical asset allocation using blotter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate.  There are two major differences:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -339,7 +337,7 @@
 &lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Total&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;rowSums&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;na.rm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;charts.PerformanceSummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Total&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;tradeStats&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;faber&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Symbol&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Num.Trades&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Net.Trading.PL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Max.Drawdown&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -348,8 +346,7 @@
       <pubDate>Sun, 01 May 2011 13:38:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/05/timely-portfolio-lspm-examples.html</guid>
-        
-      <content>&lt;p&gt;&lt;a href=&#34;http://timelyportfolio.blogspot.com/&#34;&gt;Timely Portfolio&lt;/a&gt; has been doing some interesting work with &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0470455950&#34;&gt;Leverage Space Model&lt;/a&gt; via the &lt;a href=&#34;http://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM&lt;/a&gt; &lt;a href=&#34;https://www.r-project.org/&#34;&gt;R&lt;/a&gt; package. Here&amp;rsquo;s a short list of his most recent LSPM-related posts:&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://timelyportfolio.blogspot.com/&#34;&gt;Timely Portfolio&lt;/a&gt; has been doing some interesting work with &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0470455950&#34;&gt;Leverage Space Model&lt;/a&gt; via the &lt;a href=&#34;http://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM&lt;/a&gt; &lt;a href=&#34;https://www.r-project.org/&#34;&gt;R&lt;/a&gt; package. Here&amp;rsquo;s a short list of his most recent LSPM-related posts:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://timelyportfolio.blogspot.com/2011/03/leverage-space-trading-model.html&#34;&gt;The Leverage Space Trading Model&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://timelyportfolio.blogspot.com/2011/04/bond-market-as-casino-game-part-1.html&#34;&gt;Bond Market as a Casino Game Part 1&lt;/a&gt;&lt;/li&gt;
@@ -358,7 +355,7 @@
 &lt;li&gt;&lt;a href=&#34;http://timelyportfolio.blogspot.com/2011/04/another-use-of-lspm-in-tactical.html&#34;&gt;Another Use of LSPM in Tactical Portfolio Allocation&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;I encourage those of you who are interested in LSPM and/or R to check out his blog.  I personally love how much code he shares!&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -367,8 +364,7 @@
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html</guid>
-        
-      <content>&lt;p&gt;This is the third post in the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on &lt;a href=&#34;http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html&#34;&gt;how to backtest a simple strategy in Excel&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;This is the third post in the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on &lt;a href=&#34;http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html&#34;&gt;how to backtest a simple strategy in Excel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1: Get the data&lt;/strong&gt;&lt;br&gt;
 The &lt;code&gt;getSymbols&lt;/code&gt; function in &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; makes this step easy if you can use daily data from &lt;a href=&#34;http://finance.yahoo.com/&#34;&gt;Yahoo Finance&lt;/a&gt;.  There are also &amp;ldquo;methods&amp;rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.).  You could also use them as a template to write a custom function for a particular vendor you use.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# run the command below if quantmod isn&amp;#39;t already installed&lt;/span&gt;
@@ -432,7 +428,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;span class=&#34;nf&#34;&gt;table.Drawdowns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;top&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;table.DownsideRisk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;charts.PerformanceSummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -441,8 +437,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</guid>
-        
-      <content>&lt;p&gt;(This is a guest post by Damian from &lt;a href=&#34;http://skillanalytics.wordpress.com/&#34;&gt;Skill Analytics&lt;/a&gt; and &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;ETF Prophet&lt;/a&gt;)&lt;/p&gt;
+      <description>&lt;p&gt;(This is a guest post by Damian from &lt;a href=&#34;http://skillanalytics.wordpress.com/&#34;&gt;Skill Analytics&lt;/a&gt; and &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;ETF Prophet&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at &lt;a href=&#34;http://blog.marketsci.com/&#34;&gt;marketsci.com&lt;/a&gt;, Jeff Pietch over at &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;etfprophet.com&lt;/a&gt; and the folks (David and Corey) over at &lt;a href=&#34;http://cssanalytics.wordpress.com/&#34;&gt;cssanalytics.wordpress.com&lt;/a&gt;. All of these guys have been gracious enough, over the years, to share with me how to do backtests – so I am indebted to them. And I want to thank Josh here at FOSS Trading as well – because he’s been kind enough to help me in learning how to use R for testing.&lt;/p&gt;
 &lt;p&gt;With all that in mind, I thought I’d walk through what I consider the four basic steps in producing a backtest in Excel. Note that the &lt;a href=&#34;http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx&#34;&gt;core Excel file&lt;/a&gt; wasn&amp;rsquo;t created by me - it was created by Jared over at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;CondorOptions&lt;/a&gt; (another must read if you&amp;rsquo;re not following him).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1: Get the data&lt;/strong&gt;&lt;/p&gt;
@@ -459,7 +454,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;p&gt;What’s missing here can be important for deciding whether to trade or not trade a system. First of all, the results here are frictionless – they assume there is no cost/commission for the trade. In high frequency swing systems like this one, the commissions could have a major impact on the viability of a given strategy.&lt;/p&gt;
 &lt;p&gt;Second, we don’t have any statistics on the performance of the strategy – just a graph. Generally we want to know stats like CAGR and the Sharpe ratio to compare it with other strategies. We also don’t have monthly or yearly reporting. All of these things can be constructed in Excel with a bit of work – and again, AnalyzerXL provides a large number of reporting options as part of the package.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s a basic overview of backtesting in Excel - hope that you all find it useful!&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -468,8 +463,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html</guid>
-        
-      <content>&lt;p&gt;This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R.  The impetus for this series started with &lt;a href=&#34;http://twitter.com/#%21/CondorOptions/status/27254925279&#34;&gt;this tweet&lt;/a&gt; by &lt;a href=&#34;http://twitter.com/#%21/CondorOptions&#34;&gt;Jared Woodard&lt;/a&gt; at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;Condor Options&lt;/a&gt;.  After &lt;a href=&#34;http://about.me/soren/bio&#34;&gt;Soren Macbeth&lt;/a&gt; introduced us, Jared suggested  backtesting a simple &lt;a href=&#34;http://cssanalytics.wordpress.com/2010/07/29/dvi-and-spy-performance/&#34;&gt;DVI&lt;/a&gt; strategy in Excel and R.&lt;/p&gt;
+      <description>&lt;p&gt;This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R.  The impetus for this series started with &lt;a href=&#34;http://twitter.com/#%21/CondorOptions/status/27254925279&#34;&gt;this tweet&lt;/a&gt; by &lt;a href=&#34;http://twitter.com/#%21/CondorOptions&#34;&gt;Jared Woodard&lt;/a&gt; at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;Condor Options&lt;/a&gt;.  After &lt;a href=&#34;http://about.me/soren/bio&#34;&gt;Soren Macbeth&lt;/a&gt; introduced us, Jared suggested  backtesting a simple &lt;a href=&#34;http://cssanalytics.wordpress.com/2010/07/29/dvi-and-spy-performance/&#34;&gt;DVI&lt;/a&gt; strategy in Excel and R.&lt;/p&gt;
 &lt;p&gt;The three-post series will show you:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html&#34;&gt;Resources that make it easier to move from Excel to R&lt;/a&gt;&lt;/li&gt;
@@ -478,7 +472,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;/ol&gt;
 &lt;p&gt;Since I know next to nothing about testing strategies in Excel, I will be writing posts 1 and 3.  Jared was kind enough to create the Excel framework for post 2, but did not have time to devote to a full post.  Thankfully, &lt;a href=&#34;http://etfprophet.com/author/skill-analytics/&#34;&gt;Damian Roskill&lt;/a&gt; has agreed to write post 2 using Jared&amp;rsquo;s Excel file.&lt;/p&gt;
 &lt;p&gt;Hopefully this will be a useful example for those of you who currently use Excel but would like to explore how to use R.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -487,8 +481,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Sun, 01 Aug 2010 23:31:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html</guid>
-        
-      <content>&lt;p&gt;When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument.  For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity.  The optimal amount to trade is 1,000 shares ($100,000/$100).  However, that would require $500,000 in equity, while you only have $100,000.  What do you do?&lt;/p&gt;
+      <description>&lt;p&gt;When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument.  For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity.  The optimal amount to trade is 1,000 shares ($100,000/$100).  However, that would require $500,000 in equity, while you only have $100,000.  What do you do?&lt;/p&gt;
 &lt;p&gt;Page 341 of &lt;a href=&#34;http://www.amazon.com/gp/product/0471757683?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0471757683&#34;&gt;The Handbook of Portfolio Mathematics&lt;/a&gt; outlines how to determine how many units to trade, given margin constraints.  The methodology therein suggests finding optimal f values first, then calculating the portfolio that satisfies the margin constraints but keeps the ratio of each market system to one another the same.&lt;/p&gt;
 &lt;p&gt;For those without the book, the calculation is:&lt;br&gt;
 L = max(f$) / sum( ( max(f$) / f$[i] ) * margin[i] )&lt;/p&gt;
@@ -537,7 +530,7 @@ margin = initial margin for each market system&lt;/p&gt;
 &lt;span class=&#34;c1&#34;&gt;# Implied f values based on maximum units&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mUnits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxLoss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;initEq&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;GHPR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 1.209931&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -546,8 +539,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Tue, 18 May 2010 22:30:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/05/lspm-joint-probability-tables.html</guid>
-        
-      <content>&lt;p&gt;I&amp;rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&amp;rsquo;s portfolio optimization functions.  Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)&lt;/p&gt;
+      <description>&lt;p&gt;I&amp;rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&amp;rsquo;s portfolio optimization functions.  Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# `x` is a matrix of market system returns&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# `n` is the number of bins to create for each system&lt;/span&gt;
@@ -612,7 +604,7 @@ margin = initial margin for each market system&lt;/p&gt;
 &lt;span class=&#34;c1&#34;&gt;## [13,] 0.03333333 -0.009192644  0.001963339  0.013314122&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## [14,] 0.10000000 -0.002152201  0.001963339  0.013314122&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## [15,] 0.06666667  0.008308007  0.001963339  0.013314122&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -621,8 +613,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Fri, 09 Apr 2010 10:04:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</guid>
-        
-      <content>&lt;p&gt;To continue with the &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-examples.html&#34;&gt;LSPM examples&lt;/a&gt;, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from &lt;a href=&#34;http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0470455950&#34;&gt;The Leverage Space Trading Model&lt;/a&gt; by &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;To continue with the &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-examples.html&#34;&gt;LSPM examples&lt;/a&gt;, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from &lt;a href=&#34;http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=0470455950&#34;&gt;The Leverage Space Trading Model&lt;/a&gt; by &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between &lt;a href=&#34;https://cran.r-project.org/package=DEoptim&#34;&gt;DEoptim&lt;/a&gt; and Ralph&amp;rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.&lt;/p&gt;
 &lt;p&gt;The results from the EC2 run were:&lt;/p&gt;
 &lt;p&gt;iteration: 100 best member: 0.0275 0 0.0315 -0.928 -1 best value: -0.9999&lt;/p&gt;
@@ -663,7 +654,7 @@ margin = initial margin for each market system&lt;/p&gt;
 &lt;span class=&#34;c1&#34;&gt;# Drawdown-constrained maximum probability of profit (results on p. 173)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;maxProbProfit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1e-6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;probDrawdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
   &lt;span class=&#34;n&#34;&gt;DD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;calc.max&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;snow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;control&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -672,8 +663,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Sun, 10 Jan 2010 17:01:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/01/lspm-with-snow.html</guid>
-        
-      <content>&lt;p&gt;My &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-examples.html&#34;&gt;last post&lt;/a&gt; provided examples of how to use the &lt;a href=&#34;http://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM package&lt;/a&gt;. Those who experimented with the code have probably found that constrained optimizations with &lt;code&gt;horizon&lt;/code&gt; &amp;gt; 6 have long run-times (when &lt;code&gt;calc.max &amp;gt;= horizon&lt;/code&gt;).&lt;/p&gt;
+      <description>&lt;p&gt;My &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-examples.html&#34;&gt;last post&lt;/a&gt; provided examples of how to use the &lt;a href=&#34;http://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM package&lt;/a&gt;. Those who experimented with the code have probably found that constrained optimizations with &lt;code&gt;horizon&lt;/code&gt; &amp;gt; 6 have long run-times (when &lt;code&gt;calc.max &amp;gt;= horizon&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;This post will illustrate how the &lt;a href=&#34;http://cran.r-project.org/web/packages/snow/&#34;&gt;snow&lt;/a&gt; package can increase the speed of the &lt;code&gt;probDrawdown()&lt;/code&gt; and &lt;code&gt;probRuin()&lt;/code&gt; functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores. (Improvements are nearly linear because there is overhead in setting up the cluster and communication between the nodes.)&lt;/p&gt;
 &lt;p&gt;The first optimization takes 346 seconds on my 2.2Ghz Centrino, while the second optimization (with snow) takes 193 seconds&amp;hellip; nearly a 45% improvement.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load the libraries  &lt;/span&gt;
@@ -703,7 +693,7 @@ margin = initial margin for each market system&lt;/p&gt;
   
 &lt;span class=&#34;c1&#34;&gt;# Stop snow cluster  &lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;stopCluster&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -712,8 +702,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Sat, 02 Jan 2010 15:35:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/01/lspm-examples.html</guid>
-        
-      <content>&lt;p&gt;I have received several requests for additional &lt;a href=&#34;https://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM&lt;/a&gt; documentation over the past couple days and a couple months ago &lt;a href=&#34;http://blog.fosstrading.com/2009/09/update.html&#34;&gt;I promised an introduction&lt;/a&gt; to LSPM.&lt;/p&gt;
+      <description>&lt;p&gt;I have received several requests for additional &lt;a href=&#34;https://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM&lt;/a&gt; documentation over the past couple days and a couple months ago &lt;a href=&#34;http://blog.fosstrading.com/2009/09/update.html&#34;&gt;I promised an introduction&lt;/a&gt; to LSPM.&lt;/p&gt;
 &lt;p&gt;In this long-overdue post, I will show how to optimize a Leverage Space Portfolio with the LSPM package.  Please use the comments to let me know what you would like to see next.&lt;/p&gt;
 &lt;p&gt;Some copious notes before we get to the code:&lt;/p&gt;
 &lt;p&gt;These examples are based on revision &lt;del&gt;26&lt;/del&gt; 31 from r-forge and will not work under earlier revisions (and may not work with later revisions). LSPM is still in &lt;strong&gt;very&lt;/strong&gt; alpha status.  Expect things to change, perhaps significantly.&lt;/p&gt;
@@ -749,7 +738,7 @@ margin = initial margin for each market system&lt;/p&gt;
   
 &lt;span class=&#34;c1&#34;&gt;# Drawdown-constrained Optimal f  &lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;optimalf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;probDrawdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;horizon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;control&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -758,8 +747,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Sun, 28 Jun 2009 22:02:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/06/rsi2-evaluation.html</guid>
-        
-      <content>&lt;p&gt;This post continues the series of investigating the RSI(2) strategy. The &lt;a href=&#34;http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html&#34;&gt;first post&lt;/a&gt; replicated this &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/&#34;&gt;simple RSI(2) strategy&lt;/a&gt; from the &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci Blog&lt;/a&gt; using &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. The &lt;a href=&#34;http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html&#34;&gt;second post&lt;/a&gt; showed how to replicate &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/14/trading-strategy-scaling-inout-of-rsi2/&#34;&gt;the strategy&lt;/a&gt; that scales in/out of RSI(2).&lt;/p&gt;
+      <description>&lt;p&gt;This post continues the series of investigating the RSI(2) strategy. The &lt;a href=&#34;http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html&#34;&gt;first post&lt;/a&gt; replicated this &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/&#34;&gt;simple RSI(2) strategy&lt;/a&gt; from the &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci Blog&lt;/a&gt; using &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. The &lt;a href=&#34;http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html&#34;&gt;second post&lt;/a&gt; showed how to replicate &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/14/trading-strategy-scaling-inout-of-rsi2/&#34;&gt;the strategy&lt;/a&gt; that scales in/out of RSI(2).&lt;/p&gt;
 &lt;p&gt;If you like the RSI(2), be sure to check out &lt;a href=&#34;http://blog.fosstrading.com/2009/07/david-varadis-rsi2-alternative.html&#34;&gt;David Varadi&amp;rsquo;s RSI(2) alternative&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;This post will use the &lt;a href=&#34;http://cran.r-project.org/web/packages/PerformanceAnalytics/&#34;&gt;PerformanceAnalytics&lt;/a&gt; package to evaluate the rules that scale in/out of positions. I&amp;rsquo;ve also provided a simple function that provides some summary statistics. There is a lot of code, so I put it at the end of the post.&lt;/p&gt;
 &lt;p&gt;Table 1 contains output from my simple trade summary function (the wins and losses are in percentages, i.e. 0.69 is 69 basis points). The short side of the rule traded more often and had a lower win rate. The short side overcame its lower win rate via much higher mean and median win/loss ratios.&lt;/p&gt;
@@ -1198,7 +1186,7 @@ margin = initial margin for each market system&lt;/p&gt;
 &lt;span class=&#34;c1&#34;&gt;# Print downside risk table&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;cat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;\nRSI(2) Downside Risk - RSI steps = 10, Size steps = 0.30\n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;table.DownsideRisk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret_all&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -1207,11 +1195,10 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</guid>
-        
-      <content>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://inferenceforr.com/blog/Lists/Posts/Post.aspx?ID=17&#34;&gt;The post&lt;/a&gt; gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.&lt;/p&gt;
 &lt;p&gt;I appreciate how they&amp;rsquo;re making &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; more accessible to a general audience, even though I like a command line interface and my preferred development environment is &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;. :-)&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -1220,8 +1207,7 @@ margin = initial margin for each market system&lt;/p&gt;
       <pubDate>Fri, 01 May 2009 20:58:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html</guid>
-        
-      <content>&lt;p&gt;Though it&amp;rsquo;s more than two weeks later, here&amp;rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. You can find the first post &lt;a href=&#34;http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;Though it&amp;rsquo;s more than two weeks later, here&amp;rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. You can find the first post &lt;a href=&#34;http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&#34;http://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html&#34;&gt;first post&lt;/a&gt; replicated this &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/&#34;&gt;simple RSI(2) strategy&lt;/a&gt; from the &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci Blog&lt;/a&gt;. This second post will demonstrate how to replicate &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/14/trading-strategy-scaling-inout-of-rsi2/&#34;&gt;this strategy&lt;/a&gt; that scales in/out of RSI(2).&lt;/p&gt;
 &lt;p&gt;A couple notes before moving to the code:&lt;/p&gt;
 &lt;ol&gt;
@@ -1307,7 +1293,7 @@ margin = initial margin for each market system&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20090501_rsi2_updated.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20090501_rsi2_updated.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
 Visual inspection of the charts seems to indicate the updated RSI(2) strategy has slightly higher returns, but more volatility and larger drawdowns.&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&#34;http://cran.r-project.org/web/packages/PerformanceAnalytics/index.html&#34;&gt;PerformanceAnalytics&lt;/a&gt; package can evaluate the volatility, drawdowns, and related metrics for investing and trading strategies.  We&amp;rsquo;ll use it in the next post to &lt;a href=&#34;http://blog.fosstrading.com/2009/06/rsi2-evaluation.html&#34;&gt;evaluate RSI(2)&lt;/a&gt;.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -1316,8 +1302,7 @@ Visual inspection of the charts seems to indicate the updated RSI(2) strategy ha
       <pubDate>Mon, 13 Apr 2009 22:35:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html</guid>
-        
-      <content>&lt;p&gt;This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.&lt;/p&gt;
+      <description>&lt;p&gt;This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.&lt;/p&gt;
 &lt;p&gt;In particular, I will be replicating and extending some of the results from Michael Stokes&amp;rsquo; excellent &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci Blog&lt;/a&gt;. This post will focus on replicating &lt;a href=&#34;http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/&#34;&gt;this simple RSI(2) strategy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Without further ado, let&amp;rsquo;s get to some code&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# We will need the quantmod package for charting and pulling&lt;/span&gt;
@@ -1377,7 +1362,7 @@ Visual inspection of the charts seems to indicate the updated RSI(2) strategy ha
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;My version of Michael&amp;rsquo;s chart is below. Up next, scaling in/out of positions with RSI(2).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20090413_rsi2_long_short.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images//20090413_rsi2_long_short.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
 Now, let&amp;rsquo;s look at &lt;a href=&#34;http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html&#34;&gt;RSI(2) with position sizing&lt;/a&gt;.&lt;/p&gt;
-</content>
+</description>
     </item>
     
   </channel>

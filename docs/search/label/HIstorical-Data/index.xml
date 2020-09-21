@@ -13,14 +13,13 @@
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</guid>
-        
-      <content>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
+      <description>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed.  The actual data available for download changed as well.&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.&lt;/p&gt;
 &lt;p&gt;There also appear to be issues with the adjusted prices in some instruments.  For example, users reported issues with split data for XLF and SPXL in GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/160&#34;&gt;#160&lt;/a&gt;.  For XLF, there a split &lt;em&gt;and&lt;/em&gt; a dividend on 2016-09-16, even on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLF/history?period1=1473138000&amp;amp;period2=1474866000&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLF&lt;/a&gt;. As far as I can tell, there was only a special dividend.  The problem with SPXL is that the adjusted close price isn&amp;rsquo;t adjusted for the 4/1 split on 2017-05-01, which is also reflected on the &lt;a href=&#34;https://finance.yahoo.com/quote/SPXL/history?period1=1488088800&amp;amp;period2=1495774800&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical prices page for SPXL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Another change is that the downloaded data may contain rows where all the values are &amp;ldquo;null&amp;rdquo;.  These appear on the website as &amp;ldquo;0&amp;rdquo;.  This is a major issue for some instruments.  Take XLU for example; 188 of the 624 days of data are missing between 2014-12-04 and 2017-05-26 (ouch!).  You can see this is even true on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;amp;period2=1422079200&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLU&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If these changes have made you look for a new data provider, see my post: &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;Yahoo! Finance Alternatives&lt;/a&gt;.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -29,8 +28,7 @@
       <pubDate>Wed, 07 Jun 2017 12:20:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html</guid>
-        
-      <content>&lt;p&gt;I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!&lt;/p&gt;
+      <description>&lt;p&gt;I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted.  Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).&lt;/p&gt;
 &lt;p&gt;All these issues can be dealt with using tools that are currently available.  For example, you can unadjust the open, high, and low prices using the ratio of close to adjusted close prices.  And you can adjust for both splits and dividends using &lt;code&gt;quantmod::adjustOHLC()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Unfortunately, there also appear to be issues with data quality.  Some instruments have rows where all the prices and volume are zeros (e.g. &lt;a href=&#34;https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;amp;period2=1422079200&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;XLU&lt;/a&gt;).  The adjusted close in some instruments is incorrect because of missing split events, or double-counting splits and special dividends.&lt;/p&gt;
@@ -76,7 +74,7 @@
 &lt;/ul&gt;
 &lt;p&gt;Leave a comment if you know of another end-of-day data provider that I didn&amp;rsquo;t list!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;* FULL DISCLOSURE&lt;/strong&gt;: I receive a referral fee for annual subscriptions to CSI products if you use the FOSS coupon code.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -85,8 +83,7 @@
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</guid>
-        
-      <content>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
+      <description>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed &lt;em&gt;free (true to FOSS)&lt;/em&gt;, an account with &lt;a href=&#34;http://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically. IB makes available a rather comprehensive API that makes data access and trade execution entirely possible programmatically via a handful of &amp;ldquo;supported&amp;rdquo; languages. These include Java (the language of the platform), C#, VBA and even Excel. The also have a POSIX compliant C++ version for those who enjoy C++ but dislike Windows.&lt;/p&gt;
 &lt;p&gt;For those who dislike Windows &lt;em&gt;and&lt;/em&gt; C++, the community of IB users have a few &amp;ldquo;non-official&amp;rdquo; options. They include some nice implementations in C, Python (2), Matlab, and something even more abstracted in the &lt;a href=&#34;http://www.trading-shim.org/&#34;&gt;trading-shim&lt;/a&gt;. While all well and good, there was one missing: R.&lt;/p&gt;
 &lt;p&gt;Many of you may know I am a rather large proponent of R. I have authored or coauthored quite a few packages and help to organize the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance conference&lt;/a&gt; in Chicago each Spring. I am also a huge single-language solution kind of guy. If I could order food and surf the internet from R, all the world would be mine. But I digress&amp;hellip;&lt;/p&gt;
@@ -162,7 +159,7 @@
 &lt;span class=&#34;c1&#34;&gt;##  $ updated: POSIXct[1:1], format: &amp;#34;2010-05-13 15:35:36.396084&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;reqHistoricalData()&lt;/code&gt; call takes a few arguments that can specify the &lt;code&gt;barSize&lt;/code&gt; and &lt;code&gt;duration&lt;/code&gt; of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the &lt;a href=&#34;http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf&#34;&gt;IBrokers documentation,&lt;/a&gt; as well as the more authoritative &lt;a href=&#34;http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm&#34;&gt;reference&lt;/a&gt; from IB.&lt;/p&gt;
 &lt;p&gt;Next time we&amp;rsquo;ll explore the real-time data features of IBrokers, including live market data, real-time bars, and order-book data capabilities.&lt;/p&gt;
-</content>
+</description>
     </item>
     
   </channel>

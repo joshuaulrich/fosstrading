@@ -13,8 +13,7 @@
       <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.fosstrading.com/page/disclosures.html</guid>
-        
-      <content>&lt;h2 id=&#34;amazon&#34;&gt;Amazon&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;amazon&#34;&gt;Amazon&lt;/h2&gt;
 &lt;p&gt;We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.&lt;/p&gt;
 &lt;h2 id=&#34;csi-data&#34;&gt;CSI Data&lt;/h2&gt;
 &lt;p&gt;We receive an affiliate commission when a reader signs up for a CSI data package via a referring link from this site and/or using the &amp;ldquo;FOSS&amp;rdquo; coupon code.&lt;/p&gt;
@@ -45,7 +44,7 @@ Users can set preferences for how Google advertises to you using the Google Ad S
 &lt;p&gt;We do not collect your email address. If you choose to share a post via email, Google&amp;rsquo;s Blogger service will ask your and the recipient&amp;rsquo;s email addresses, but we do not collect that information.&lt;/p&gt;
 &lt;h4 id=&#34;contacting-us&#34;&gt;Contacting Us&lt;/h4&gt;
 &lt;p&gt;Please &lt;a href=&#34;mailto:josh.m.ulrich@gmail.com&#34;&gt;contact us&lt;/a&gt; if you have any questions regarding this privacy policy.&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -54,8 +53,7 @@ Users can set preferences for how Google advertises to you using the Google Ad S
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.fosstrading.com/page/enterprise.html</guid>
-        
-      <content>&lt;p&gt;Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.&lt;/p&gt;
+      <description>&lt;p&gt;Tidelift is working with the maintainers of quantmod and thousands of other open source projects to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use.&lt;/p&gt;
 &lt;h3 id=&#34;enterprise-ready-open-source-softwaremanaged-for-you&#34;&gt;Enterprise-ready open source software—managed for you&lt;/h3&gt;
 &lt;p&gt;The Tidelift Subscription is a managed open source subscription for application dependencies covering millions of open source projects across JavaScript, Python, Java, PHP, Ruby, .NET, and more.&lt;/p&gt;
 &lt;p&gt;Your subscription includes:&lt;/p&gt;
@@ -98,7 +96,7 @@ Users can set preferences for how Google advertises to you using the Google Ad S
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The end result? All of the capabilities you expect from commercial-grade software, for the full breadth of open source you use. That means less time grappling with esoteric open source trivia, and more time building your own applications—and your business.&lt;/p&gt;
-</content>
+</description>
     </item>
     
   </channel>

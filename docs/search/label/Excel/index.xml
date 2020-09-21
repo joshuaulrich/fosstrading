@@ -13,8 +13,7 @@
       <pubDate>Sat, 26 Mar 2011 09:54:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html</guid>
-        
-      <content>&lt;p&gt;This is the third post in the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on &lt;a href=&#34;http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html&#34;&gt;how to backtest a simple strategy in Excel&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;This is the third post in the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on &lt;a href=&#34;http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html&#34;&gt;how to backtest a simple strategy in Excel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1: Get the data&lt;/strong&gt;&lt;br&gt;
 The &lt;code&gt;getSymbols&lt;/code&gt; function in &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; makes this step easy if you can use daily data from &lt;a href=&#34;http://finance.yahoo.com/&#34;&gt;Yahoo Finance&lt;/a&gt;.  There are also &amp;ldquo;methods&amp;rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.).  You could also use them as a template to write a custom function for a particular vendor you use.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# run the command below if quantmod isn&amp;#39;t already installed&lt;/span&gt;
@@ -78,7 +77,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;span class=&#34;nf&#34;&gt;table.Drawdowns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;top&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;table.DownsideRisk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;charts.PerformanceSummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -87,8 +86,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Mon, 14 Mar 2011 20:57:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html</guid>
-        
-      <content>&lt;p&gt;(This is a guest post by Damian from &lt;a href=&#34;http://skillanalytics.wordpress.com/&#34;&gt;Skill Analytics&lt;/a&gt; and &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;ETF Prophet&lt;/a&gt;)&lt;/p&gt;
+      <description>&lt;p&gt;(This is a guest post by Damian from &lt;a href=&#34;http://skillanalytics.wordpress.com/&#34;&gt;Skill Analytics&lt;/a&gt; and &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;ETF Prophet&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Let me start by saying that I’m not an expert in backtesting in Excel – there are a load of very smart bloggers out there that have, as I would say, “mad skillz” at working with Excel including (but not limited to) Michael Stokes over at &lt;a href=&#34;http://blog.marketsci.com/&#34;&gt;marketsci.com&lt;/a&gt;, Jeff Pietch over at &lt;a href=&#34;http://www.etfprophet.com/&#34;&gt;etfprophet.com&lt;/a&gt; and the folks (David and Corey) over at &lt;a href=&#34;http://cssanalytics.wordpress.com/&#34;&gt;cssanalytics.wordpress.com&lt;/a&gt;. All of these guys have been gracious enough, over the years, to share with me how to do backtests – so I am indebted to them. And I want to thank Josh here at FOSS Trading as well – because he’s been kind enough to help me in learning how to use R for testing.&lt;/p&gt;
 &lt;p&gt;With all that in mind, I thought I’d walk through what I consider the four basic steps in producing a backtest in Excel. Note that the &lt;a href=&#34;http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx&#34;&gt;core Excel file&lt;/a&gt; wasn&amp;rsquo;t created by me - it was created by Jared over at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;CondorOptions&lt;/a&gt; (another must read if you&amp;rsquo;re not following him).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1: Get the data&lt;/strong&gt;&lt;/p&gt;
@@ -105,7 +103,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;p&gt;What’s missing here can be important for deciding whether to trade or not trade a system. First of all, the results here are frictionless – they assume there is no cost/commission for the trade. In high frequency swing systems like this one, the commissions could have a major impact on the viability of a given strategy.&lt;/p&gt;
 &lt;p&gt;Second, we don’t have any statistics on the performance of the strategy – just a graph. Generally we want to know stats like CAGR and the Sharpe ratio to compare it with other strategies. We also don’t have monthly or yearly reporting. All of these things can be constructed in Excel with a bit of work – and again, AnalyzerXL provides a large number of reporting options as part of the package.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s a basic overview of backtesting in Excel - hope that you all find it useful!&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -114,8 +112,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Sat, 05 Mar 2011 15:09:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html</guid>
-        
-      <content>&lt;p&gt;This first post of the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;This first post of the &lt;a href=&#34;http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html&#34;&gt;Backtesting in Excel and R&lt;/a&gt; series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals).  Most people don&amp;rsquo;t prefer my approach of &amp;ldquo;keep at it until you figure it out&amp;rdquo;, so I don&amp;rsquo;t have a lot of personal advice to share.  My main piece of advice is that the best way to learn R is to use it, so most of the resources below focus on &amp;ldquo;how-to&amp;rdquo; do certain things in R.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;GUIs&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;While R for Windows comes with a very basic GUI (I&amp;rsquo;m not familiar with the R for Mac OS X GUIs), most people will want and benefit from something more elaborate.  The GUIs below were taken from the &lt;a href=&#34;http://www.sciviews.org/_rgui/&#34;&gt;R GUI Projects page&lt;/a&gt; (visit the page for more information / alternatives) and I added the newcomer, RStudio:&lt;/p&gt;
@@ -140,7 +137,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;li&gt;&lt;a href=&#34;http://www.amazon.com/gp/product/059680170X?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=059680170X&#34;&gt;R in a Nutshell: A Desktop Quick Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I hope this is helpful.  As always, please add suggestions in the comments!&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -149,8 +146,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
       <pubDate>Thu, 17 Feb 2011 18:53:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html</guid>
-        
-      <content>&lt;p&gt;This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R.  The impetus for this series started with &lt;a href=&#34;http://twitter.com/#%21/CondorOptions/status/27254925279&#34;&gt;this tweet&lt;/a&gt; by &lt;a href=&#34;http://twitter.com/#%21/CondorOptions&#34;&gt;Jared Woodard&lt;/a&gt; at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;Condor Options&lt;/a&gt;.  After &lt;a href=&#34;http://about.me/soren/bio&#34;&gt;Soren Macbeth&lt;/a&gt; introduced us, Jared suggested  backtesting a simple &lt;a href=&#34;http://cssanalytics.wordpress.com/2010/07/29/dvi-and-spy-performance/&#34;&gt;DVI&lt;/a&gt; strategy in Excel and R.&lt;/p&gt;
+      <description>&lt;p&gt;This post is the introduction to a series that will illustrate how to backtest the same strategy in Excel and R.  The impetus for this series started with &lt;a href=&#34;http://twitter.com/#%21/CondorOptions/status/27254925279&#34;&gt;this tweet&lt;/a&gt; by &lt;a href=&#34;http://twitter.com/#%21/CondorOptions&#34;&gt;Jared Woodard&lt;/a&gt; at &lt;a href=&#34;http://www.condoroptions.com/&#34;&gt;Condor Options&lt;/a&gt;.  After &lt;a href=&#34;http://about.me/soren/bio&#34;&gt;Soren Macbeth&lt;/a&gt; introduced us, Jared suggested  backtesting a simple &lt;a href=&#34;http://cssanalytics.wordpress.com/2010/07/29/dvi-and-spy-performance/&#34;&gt;DVI&lt;/a&gt; strategy in Excel and R.&lt;/p&gt;
 &lt;p&gt;The three-post series will show you:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html&#34;&gt;Resources that make it easier to move from Excel to R&lt;/a&gt;&lt;/li&gt;
@@ -159,7 +155,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 &lt;/ol&gt;
 &lt;p&gt;Since I know next to nothing about testing strategies in Excel, I will be writing posts 1 and 3.  Jared was kind enough to create the Excel framework for post 2, but did not have time to devote to a full post.  Thankfully, &lt;a href=&#34;http://etfprophet.com/author/skill-analytics/&#34;&gt;Damian Roskill&lt;/a&gt; has agreed to write post 2 using Jared&amp;rsquo;s Excel file.&lt;/p&gt;
 &lt;p&gt;Hopefully this will be a useful example for those of you who currently use Excel but would like to explore how to use R.&lt;/p&gt;
-</content>
+</description>
     </item>
     
   </channel>

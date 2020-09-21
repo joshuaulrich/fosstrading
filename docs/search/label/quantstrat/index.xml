@@ -13,8 +13,7 @@
       <pubDate>Mon, 04 Nov 2013 06:37:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/2013/11/quantstrat-is-slow.html</guid>
-        
-      <content>&lt;p&gt;The complaint I hear most frequently about quantstrat is that it&amp;rsquo;s slow, especially for large data.  Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default.  Path dependence requires rules to be re-evaluated for each timestamp with a signal.  More signals equates to longer run-times.&lt;/p&gt;
+      <description>&lt;p&gt;The complaint I hear most frequently about quantstrat is that it&amp;rsquo;s slow, especially for large data.  Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default.  Path dependence requires rules to be re-evaluated for each timestamp with a signal.  More signals equates to longer run-times.&lt;/p&gt;
 &lt;p&gt;If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off.  If your strategy truly is path-dependent, keep reading&amp;hellip;&lt;/p&gt;
 &lt;p&gt;I started working with Brian Peterson in late August of this year, and we&amp;rsquo;ve been working on a series of very large backtests over the last several weeks.  Each backtest consisted of ~7 months of 5-second data on 72 instruments with 15-20 different configurations for each.&lt;/p&gt;
 &lt;p&gt;These backtests really pushed quantstrat to its limits.  The longest-running job took 32 hours.  I had some time while they were running, so I decided to profile quantstrat.  I was able to make some substantial improvements, so I thought I&amp;rsquo;d write a post to tell you what&amp;rsquo;s changed and highlight some of the performance gains we&amp;rsquo;re seeing.&lt;/p&gt;
@@ -42,7 +41,7 @@
 &lt;/ul&gt;
 &lt;p&gt;All these changes are most significant for large data sets.  The small demo strategies included with quantstrat are also faster, but the net performance gains increase as the size of the data, the number of signals (and therefore the number of rule evaluations), and number of instruments increases.&lt;/p&gt;
 &lt;p&gt;You&amp;rsquo;re still reading?  What are you waiting for?  Go &lt;a href=&#34;https://r-forge.r-project.org/R/?group_id=316&#34;&gt;install the latest from R-Forge&lt;/a&gt; and try it for yourself!&lt;/p&gt;
-</content>
+</description>
     </item>
     
     <item>
@@ -51,8 +50,7 @@
       <pubDate>Tue, 23 Aug 2011 20:55:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</guid>
-        
-      <content>&lt;p&gt;As promised in the &lt;a href=&#34;http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html&#34;&gt;introduction to quantstrat&lt;/a&gt;, here is an example strategy.  I thought I&amp;rsquo;d start with the obligatory tactical asset allocation (TAA) strategy.  This post will replicate the strategy in the post, &lt;a href=&#34;http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html&#34;&gt;tactical asset allocation using blotter&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;As promised in the &lt;a href=&#34;http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html&#34;&gt;introduction to quantstrat&lt;/a&gt;, here is an example strategy.  I thought I&amp;rsquo;d start with the obligatory tactical asset allocation (TAA) strategy.  This post will replicate the strategy in the post, &lt;a href=&#34;http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html&#34;&gt;tactical asset allocation using blotter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The &amp;ldquo;faber&amp;rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&amp;rsquo;re trying to replicate.  There are two major differences:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -148,7 +146,7 @@
 &lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Total&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;rowSums&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;na.rm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;charts.PerformanceSummary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;portRet&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Total&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;tradeStats&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;faber&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Symbol&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Num.Trades&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Net.Trading.PL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Max.Drawdown&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -157,8 +155,7 @@
       <pubDate>Fri, 12 Aug 2011 06:48:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html</guid>
-        
-      <content>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/blotter/&#34;&gt;quantstrat&lt;/a&gt; provides a generic infrastructure to model and backtest signal-based quantitative strategies.  It is a high-level abstraction layer (built on xts, FinancialInstrument, blotter, etc.) that allows you to build and test strategies in very few lines of code.  quantstrat is still under heavy development but is being used every day on real portfolios.  We encourage you to send contributions and test cases to the &lt;a href=&#34;http://r-forge.r-project.org/forum/?group_id=316&#34;&gt;project forums&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/blotter/&#34;&gt;quantstrat&lt;/a&gt; provides a generic infrastructure to model and backtest signal-based quantitative strategies.  It is a high-level abstraction layer (built on xts, FinancialInstrument, blotter, etc.) that allows you to build and test strategies in very few lines of code.  quantstrat is still under heavy development but is being used every day on real portfolios.  We encourage you to send contributions and test cases to the &lt;a href=&#34;http://r-forge.r-project.org/forum/?group_id=316&#34;&gt;project forums&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This post is a joint effort between me and &lt;a href=&#34;http://braverock.com/brian/&#34;&gt;Brian Peterson&lt;/a&gt;.  It will describe the underlying philosophy of quantstrat and how quantstrat implements that philosophy.  You may have seen some of this in Brian&amp;rsquo;s &lt;a href=&#34;http://www.rinfinance.com/agenda/2011/BrianPeterson.pdf&#34;&gt;Quantitative Strategy Development in R&lt;/a&gt; lightning talk at &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance 2011&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;generic-signal-based-strategy-modeling&#34;&gt;Generic Signal-Based Strategy Modeling&lt;/h3&gt;
 &lt;p&gt;A signal-based strategy model first generates indicators.  Indicators are quantitative values derived from market data (e.g. moving averages, RSI, volatility bands, channels, momentum, etc.).  Indicators should be applied to market data in a vectorized (for fast backtesting) or streaming (for live execution) fashion, and are assumed to be path-independent (i.e. they do not depend on account / portfolio characteristics, current positions, or trades).&lt;/p&gt;
@@ -178,7 +175,7 @@
 &lt;li&gt;Strategy Evaluation&lt;/li&gt;
 &lt;li&gt;Parameter Evaluation&lt;/li&gt;
 &lt;/ul&gt;
-</content>
+</description>
     </item>
     
   </channel>
