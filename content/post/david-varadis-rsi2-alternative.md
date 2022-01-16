@@ -8,9 +8,9 @@ tags : [Code]
 
 Here's a quick R implementation of [David Varadi's](http://cssanalytics.wordpress.com/) alternative to the RSI(2).  Michael Stokes over at the [MarketSci](http://marketsci.wordpress.com/) blog has three great posts exploring this indicator:  
 
-1.  [Varadi's RSI(2) Alternative: The DV(2)](http://marketsci.wordpress.com/2009/07/15/varadi%e2%80%99s-rsi2-alternative-the-dv2/)
-2.  [RSI(2) vs. DV(2)](http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/)
-3.  [Last Couple of Notes on DV(2)](http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/)
+1.  [Varadi's RSI(2) Alternative: The DV(2)](https://web.archive.org/web/20131217014112/https://marketsci.wordpress.com/2009/07/15/varadi%E2%80%99s-rsi2-alternative-the-dv2/)
+2.  [RSI(2) vs. DV(2)](https://web.archive.org/web/20130910080328/http://marketsci.wordpress.com/2009/07/16/rsi2-vs-dv2/)
+3.  [Last Couple of Notes on DV(2)](https://web.archive.org/web/20131017073837/http://marketsci.wordpress.com/2009/07/17/last-couple-of-notes-on-dv2/)
 
 Here's the R code:  
 
