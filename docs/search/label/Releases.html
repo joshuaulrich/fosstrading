@@ -95,9 +95,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-10-15T10:21:00-05:00">October 15, 2022</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		An updated version of xts is now on CRAN. Plotting functionality got a lot of attention in this release. Another notable change is that merge.xts() now supports suffixes.
-Plotting functionality enhancements and bug fixes   You can now omit the data time range from the upper-right portion of a plot by setting main.timespan = FALSE. (#247)
-  plot.xts() gained a yaxis.ticks argument to control the number of y-axis grid lines, instead of always drawing 5 y-axes grid lines.
+		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that <code>merge.xts()</code> now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -111,8 +109,7 @@ Plotting functionality enhancements and bug fixes   You can now omit the data ti
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-13T10:49:00-05:00">September 13, 2020</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		This is a long-overdue post. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&rsquo;t post about that. It has some nifty changes in it too.
+		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> reached <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-09. Time-of-day subsetting (e.g. <code>x[&quot;T10:00/T13:00&quot;]</code>) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&rsquo;t post about 0.12.0 when it was released.)</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -126,9 +123,7 @@ I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-13T08:41:00-05:00">September 13, 2020</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		This is another one of my long-overdue posts. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of TTR to CRAN on 2020-09-01.
-This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues.
+		<p>An updated version of <a href="http://cran.r-project.org/package=TTR">TTR</a> is on <a href="http://cran.r-project.org/">CRAN</a> now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&rsquo;ll spare you the gory details. If you&rsquo;re really interested, you can find them in the <a href="https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES">CHANGES</a> file.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -142,8 +137,7 @@ This is mainly a bug-fix release. There were several issues in the underlying C 
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-10T07:23:00-05:00">March 10, 2020</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&quot;SPY;AAPL&quot;).
+		<p>A new version of <a href="http://www.quantmod.com/">quantmod</a> is on <a href="https://cran.r-project.org/package=quantmod">CRAN</a>! One really cool thing about this release is that almost all the changes are contributions from the community.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -157,9 +151,7 @@ Ethan Smith made more excellent contributions to getQuote() in this release. It 
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-10T06:21:00-05:00">October 10, 2019</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		I pushed an updated microbenchmark to CRAN a couple weeks ago. There were two noteworthy changes, thanks to great contributions from @MichaelChirico and @harvey131.
-Michael fixed a bug in the check for whether the unit argument was a character string (#9, #10). The prior behavior was an uninformative error.
-Harvey added a feature to allow you to use a string for common checks: &ldquo;equal&rdquo;, &ldquo;identical&rdquo;, and &ldquo;equivalent&rdquo; (#16). So you don&rsquo;t need to create a custom function to use all.
+		<p>I pushed an updated <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark to CRAN</a> a couple weeks ago. There were two noteworthy changes, thanks to great contributions from <a href="https://github.com/MichaelChirico">@MichaelChirico</a> and <a href="https://github.com/harvey131">@harvey131</a>.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -173,8 +165,7 @@ Harvey added a feature to allow you to use a string for common checks: &ldquo;eq
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-03-25T06:53:00-05:00">March 25, 2019</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		I just pushed a new release of quantmod to CRAN! I&rsquo;m most excited about the update to getSymbols() so it doesn&rsquo;t throw an error and stop processing if there&rsquo;s a problem with one ticker symbol. Now getSymbols() will import all the data it can, and provide an informative error message for any ticker symbols it could not import.
-Another cool feature is that getQuote() can now import quotes from Tiingo. But don&rsquo;t thank me; thank Ethan Smith for the feature request [#247] and pull request [#250].
+		<p>I just pushed a new release of <a href="http://www.quantmod.com/">quantmod</a> to <a href="https://cran.r-project.org/package=quantmod">CRAN</a>! <code>getSymbols()</code> no longer stops if there&rsquo;s a problem with a ticker symbol. And <code>getQuote()</code> can now import quotes from <a href="https://www.tiingo.com/">Tiingo</a>.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -188,8 +179,7 @@ Another cool feature is that getQuote() can now import quotes from Tiingo. But
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-06T06:35:00-06:00">November 06, 2018</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
- The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.
+		<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-2 was published to <a href="https://cloud.r-project.org/">CRAN</a> yesterday. This is quick a bug-fix release.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -203,8 +193,7 @@ Another cool feature is that getQuote() can now import quotes from Tiingo. But
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-12T13:36:00-05:00">September 12, 2018</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
- There&rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).
+		<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-1 was published to <a href="https://cloud.r-project.org/">CRAN</a> this morning. <a href="https://cloud.r-project.org/package=xts">xts</a> provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your <a href="https://cloud.r-project.org/package=xts">xts</a> code even faster!</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

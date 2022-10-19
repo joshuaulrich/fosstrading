@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="quantmod_0.4-16 on CRAN" />
-<meta property="og:description" content="A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community.
-Ethan Smith made more excellent contributions to getQuote() in this release. It no longer throws an error if one or more symbols are missing. And it handles multiple symbols in a semicolon-delimted string, just like getSymbols(). For example, you can get quotes for multiple symbols by calling getQuote(&quot;SPY;AAPL&quot;)." />
+<meta property="og:description" content="A new version of quantmod is on CRAN! One really cool thing about this release is that almost all the changes are contributions from the community." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-03-10T07:23:00-05:00" />
@@ -97,7 +96,6 @@ if (!doNotTrack) {
 <p><a href="https://github.com/helgasoft/">@helgasoft</a> also noticed that <a href="https://www.alphavantage.co/">Alpha Vantage</a> discontinued their &ldquo;batch quote&rdquo; functionality, which broke <code>getQuote()</code>. Thankfully, they provided a patch that used the single-quote request, so <code>getQuote()</code> works with Alpha Vantage again!</p>
 <p><a href="https://github.com/matiasandina">@matiasandina</a> noticed that I had incorrectly labelled the dividend pay date as the ex-dividend date in the data <code>getQuote()</code> returned from Yahoo Finance. Whoops!</p>
 <p>See the <a href="https://cran.r-project.org/web/packages/quantmod/news/news.html">news</a> file for the other bug fixes. Thanks for using quantmod!</p>
-
 		</div>
 		<footer class="post__footer">
 			

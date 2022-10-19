@@ -95,9 +95,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-10-15T10:21:00-05:00">October 15, 2022</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		An updated version of xts is now on CRAN. Plotting functionality got a lot of attention in this release. Another notable change is that merge.xts() now supports suffixes.
-Plotting functionality enhancements and bug fixes   You can now omit the data time range from the upper-right portion of a plot by setting main.timespan = FALSE. (#247)
-  plot.xts() gained a yaxis.ticks argument to control the number of y-axis grid lines, instead of always drawing 5 y-axes grid lines.
+		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that <code>merge.xts()</code> now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -111,8 +109,7 @@ Plotting functionality enhancements and bug fixes   You can now omit the data ti
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-13T10:49:00-05:00">September 13, 2020</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		This is a long-overdue post. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&rsquo;t post about that. It has some nifty changes in it too.
+		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> reached <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-09. Time-of-day subsetting (e.g. <code>x[&quot;T10:00/T13:00&quot;]</code>) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&rsquo;t post about 0.12.0 when it was released.)</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -126,8 +123,7 @@ I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-06T06:35:00-06:00">November 06, 2018</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
- The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning.
+		<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-2 was published to <a href="https://cloud.r-project.org/">CRAN</a> yesterday. This is quick a bug-fix release.</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -141,8 +137,7 @@ I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-12T13:36:00-05:00">September 12, 2018</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		xts version 0.11-1 was published to CRAN this morning. xts provides data structure and functions to work with time-indexed data. This release contains some awesome features that will transparently make your xts code even faster!
- There&rsquo;s a new window.xts() method, thanks to Corwin Joy (#100, #240). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (#251, #263, #264).
+		<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-1 was published to <a href="https://cloud.r-project.org/">CRAN</a> this morning. <a href="https://cloud.r-project.org/package=xts">xts</a> provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your <a href="https://cloud.r-project.org/package=xts">xts</a> code even faster!</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

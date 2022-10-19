@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Mean rolling correlation of XLF constituents" />
-<meta property="og:description" content="I follow Quantocracy on Twitter, and I found Rolling mean correlation in the tidyverse by Robot Wealth. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: xts and TTR.
-The xts package is an extension of the very excellent zoo package. zoo objects are for ordered observations. Underneath, they are a matrix that can be ordered by anything: numbers, letters, dates, times, and more." />
+<meta property="og:description" content="I follow Quantocracy on Twitter, and I found Rolling mean correlation in the tidyverse by Robot Wealth. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: xts and TTR." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-19T07:23:00-05:00" />
@@ -179,7 +178,6 @@ if (!doNotTrack) {
 <p>One difference is that the data in their version is just under 3 million (!) rows, and 6 columns (~18 million data points). This version is 1346 rows and 65 columns (less than 100,000 data points). So you could quickly do the analysis in memory this way on ETFs or indexes with many more constituents (e.g. the Russell 3000). I&rsquo;ve worked on xts data sets with ~1 <em>billion</em> rows of tick data on my machine with 32GB of RAM.</p>
 <hr>
 <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a> etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
 		</div>
 		<footer class="post__footer">
 			

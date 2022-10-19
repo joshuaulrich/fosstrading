@@ -13,10 +13,10 @@
       <pubDate>Sun, 13 Sep 2020 08:41:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</guid>
-      <description>&lt;p&gt;This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.&lt;/p&gt;
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt; is on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&amp;rsquo;ll spare you the gory details. If you&amp;rsquo;re really interested, you can find them in the &lt;a href=&#34;https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES&#34;&gt;CHANGES&lt;/a&gt; file.&lt;/p&gt;
+&lt;p&gt;[This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.]&lt;/p&gt;
 &lt;p&gt;I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-01.&lt;/p&gt;
-&lt;p&gt;This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&amp;rsquo;ll spare you the gory details. If you&amp;rsquo;re really interested, you can find them in the &lt;a href=&#34;https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES&#34;&gt;CHANGES&lt;/a&gt; file. There are links to the relevant issues in there too, if you&amp;rsquo;re really curious.&lt;/p&gt;
-&lt;p&gt;Now for the bug-fixes you might actually notice.&lt;/p&gt;
+&lt;p&gt;Now for the bug fixes you might actually notice.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;ALMA()&lt;/code&gt; could return an object whose length didn&amp;rsquo;t match the length of the input when the input was not an xts object. This bug has been around for years. I&amp;rsquo;m sorry I just now got to it.
@@ -34,8 +34,7 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;hr&gt;
 &lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-</description>
+&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
     </item>
     
     <item>

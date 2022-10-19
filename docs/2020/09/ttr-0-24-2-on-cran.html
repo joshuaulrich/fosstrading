@@ -8,9 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="TTR_0.24.2 on CRAN" />
-<meta property="og:description" content="This is another one of my long-overdue posts. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of TTR to CRAN on 2020-09-01.
-This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues." />
+<meta property="og:description" content="An updated version of TTR is on CRAN now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&rsquo;ll spare you the gory details. If you&rsquo;re really interested, you can find them in the CHANGES file." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-13T08:41:00-05:00" />
@@ -91,10 +89,10 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-13T08:41:00-05:00">September 13, 2020</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>This is another one of my long-overdue posts. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.</p>
+			<p>An updated version of <a href="http://cran.r-project.org/package=TTR">TTR</a> is on <a href="http://cran.r-project.org/">CRAN</a> now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&rsquo;ll spare you the gory details. If you&rsquo;re really interested, you can find them in the <a href="https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES">CHANGES</a> file.</p>
+<p>[This is another one of my long-overdue posts. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.]</p>
 <p>I released an updated version of <a href="http://cran.r-project.org/package=TTR">TTR</a> to <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-01.</p>
-<p>This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&rsquo;ll spare you the gory details. If you&rsquo;re really interested, you can find them in the <a href="https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES">CHANGES</a> file. There are links to the relevant issues in there too, if you&rsquo;re really curious.</p>
-<p>Now for the bug-fixes you might actually notice.</p>
+<p>Now for the bug fixes you might actually notice.</p>
 <ul>
 <li>
 <p><code>ALMA()</code> could return an object whose length didn&rsquo;t match the length of the input when the input was not an xts object. This bug has been around for years. I&rsquo;m sorry I just now got to it.
@@ -113,7 +111,6 @@ Also, the money ratio will be <code>NaN</code> if there&rsquo;s no money flow fo
 <p>I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a> and use the [r] and [xts] tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature, but please <a href="https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md">read the contributing guide</a> first!</p>
 <hr>
 <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a> etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
 		</div>
 		<footer class="post__footer">
 			

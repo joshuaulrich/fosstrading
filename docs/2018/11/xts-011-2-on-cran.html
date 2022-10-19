@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="xts 0.11-2 on CRAN" />
-<meta property="og:description" content="xts version 0.11-2 was published to CRAN yesterday. xts provides data structure and functions to work with time-indexed data. This is a bug-fix release, with notable changes below:
- The xts method for shift.time() is now registered. Thanks to Philippe Verspeelt for the report and PR (#268, #273). An if-statement in the xts constructor will no longer try to use a logical vector with length &gt; 1. Code like if (c(TRUE, TRUE)) will throw a warning in an upcoming R release, and this patch will prevent that warning." />
+<meta property="og:description" content="xts version 0.11-2 was published to CRAN yesterday. This is quick a bug-fix release." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-11-06T06:35:00-06:00" />
@@ -90,7 +89,8 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-06T06:35:00-06:00">November 06, 2018</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-2 was published to <a href="https://cloud.r-project.org/">CRAN</a> yesterday. <a href="https://cloud.r-project.org/package=xts">xts</a> provides data structure and functions to work with time-indexed data.  This is a bug-fix release, with notable changes below:</p>
+			<p><a href="https://cloud.r-project.org/package=xts">xts</a> version 0.11-2 was published to <a href="https://cloud.r-project.org/">CRAN</a> yesterday. This is quick a bug-fix release.</p>
+<p>Notable changes are below:</p>
 <ul>
 <li>The xts method for <code>shift.time()</code> is now registered. Thanks to Philippe Verspeelt for the report and PR (<a href="https://github.com/joshuaulrich/xts/issues/268">#268</a>, <a href="https://github.com/joshuaulrich/xts/issues/273">#273</a>).</li>
 <li>An if-statement in the <code>xts</code> constructor will no longer try to use a logical vector with length &gt; 1. Code like <code>if (c(TRUE, TRUE))</code> will throw a warning in an upcoming R release, and this patch will prevent that warning. Thanks to Hugh Parsonage for the report and PR (<a href="https://github.com/joshuaulrich/xts/issues/270">#270</a>, <a href="https://github.com/joshuaulrich/xts/issues/272">#272</a>).</li>
@@ -99,7 +99,6 @@ if (!doNotTrack) {
 <li>The <code>to.period()</code> family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports (<a href="https://github.com/joshuaulrich/xts/issues/53">#53</a>, <a href="https://github.com/joshuaulrich/xts/issues/277">#277</a>).</li>
 </ul>
 <p>As always, I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="https://stackoverflow.com/">Stack Overflow</a> and use the <a href="https://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="https://stackoverflow.com/questions/tagged/xts">[xts]</a> tags. Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance mailing list</a> (you must subscribe to post). Open an issue <a href="https://github.com/joshuaulrich/xts">on GitHub</a> if you find a bug or want to request a feature, but please read the <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">contributing guide</a> first!</p>
-
 		</div>
 		<footer class="post__footer">
 			

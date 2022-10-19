@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="xts_0.12.1 on CRAN" />
-<meta property="og:description" content="This is a long-overdue post. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.
-I released an updated version of xts to CRAN on 2020-09-09. I&rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&rsquo;t post about that. It has some nifty changes in it too." />
+<meta property="og:description" content="An updated version of xts reached CRAN on 2020-09-09. Time-of-day subsetting (e.g. x[&quot;T10:00/T13:00&quot;]) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&rsquo;t post about 0.12.0 when it was released.)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-13T10:49:00-05:00" />
@@ -90,9 +89,9 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-13T10:49:00-05:00">September 13, 2020</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>This is a long-overdue post. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.</p>
-<p>I released an updated version of <a href="http://cran.r-project.org/package=xts">xts</a> to <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-09. I&rsquo;m also going to include some notes from the prior release (0.12-0), since I didn&rsquo;t post about that. It has some nifty changes in it too.</p>
-<p>I&rsquo;m going to highlight a handful of the changes:</p>
+			<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> reached <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-09. Time-of-day subsetting (e.g. <code>x[&quot;T10:00/T13:00&quot;]</code>) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&rsquo;t post about 0.12.0 when it was released.)</p>
+<p>This is a long-overdue post. I&rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain. I released an updated version of <a href="http://cran.r-project.org/package=xts">xts</a> to <a href="http://cran.r-project.org/">CRAN</a> on 2020-09-09.</p>
+<p>I&rsquo;m going to highlight a handful of the changes that involve:</p>
 <ol>
 <li>moving index class and index timezone from the xts object itself to the index,</li>
 <li>improvements to time-of-day subsetting (<code>x[&quot;T10:00/T13:00&quot;]</code>)</li>
@@ -139,7 +138,6 @@ This is a breaking change, but it&rsquo;s only in the C API, and is required to 
 <p>I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a> and use the [r] and [xts] tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature, but please <a href="https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md">read the contributing guide</a> first!</p>
 <hr>
 <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a> etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
 		</div>
 		<footer class="post__footer">
 			

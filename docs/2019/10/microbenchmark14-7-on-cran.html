@@ -8,9 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="microbenchmark_1.4-7 on CRAN" />
-<meta property="og:description" content="I pushed an updated microbenchmark to CRAN a couple weeks ago. There were two noteworthy changes, thanks to great contributions from @MichaelChirico and @harvey131.
-Michael fixed a bug in the check for whether the unit argument was a character string (#9, #10). The prior behavior was an uninformative error.
-Harvey added a feature to allow you to use a string for common checks: &ldquo;equal&rdquo;, &ldquo;identical&rdquo;, and &ldquo;equivalent&rdquo; (#16). So you don&rsquo;t need to create a custom function to use all." />
+<meta property="og:description" content="I pushed an updated microbenchmark to CRAN a couple weeks ago. There were two noteworthy changes, thanks to great contributions from @MichaelChirico and @harvey131." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-10-10T06:21:00-05:00" />
@@ -95,7 +93,6 @@ if (!doNotTrack) {
 <p>Michael fixed a bug in the check for whether the unit argument was a character string (<a href="https://github.com/joshuaulrich/microbenchmark/issues/9">#9</a>, <a href="https://github.com/joshuaulrich/microbenchmark/pull/10">#10</a>). The prior behavior was an uninformative error.</p>
 <p>Harvey added a feature to allow you to use a string for common checks: &ldquo;equal&rdquo;, &ldquo;identical&rdquo;, and &ldquo;equivalent&rdquo; (<a href="https://github.com/joshuaulrich/microbenchmark/pull/16">#16</a>). So you don&rsquo;t need to create a custom function to use <code>all.equal()</code>, <code>all.equal(..., check.attributes = FALSE)</code>, and identical, respectively.</p>
 <p>I also converted the unit tests to use <a href="https://cran.r-project.org/package=RUnit">RUnit</a>. I also made some changes to the repo, including adding a contributing guide and issue/pull-request templates.</p>
-
 		</div>
 		<footer class="post__footer">
 			
