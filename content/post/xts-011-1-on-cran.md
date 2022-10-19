@@ -8,6 +8,8 @@ tags : [xts, Releases, R]
 
 [xts](https://cloud.r-project.org/package=xts) version 0.11-1 was published to [CRAN](https://cloud.r-project.org/) this morning. [xts](https://cloud.r-project.org/package=xts) provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your [xts](https://cloud.r-project.org/package=xts) code even faster!  
 
+<!--more-->
+
 *   There's a new `window.xts()` method, thanks to Corwin Joy ([#100](https://github.com/joshuaulrich/xts/issues/100), [#240](https://github.com/joshuaulrich/xts/issues/240)). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions ([#251](https://github.com/joshuaulrich/xts/issues/251), [#263](https://github.com/joshuaulrich/xts/issues/263), [#264](https://github.com/joshuaulrich/xts/issues/264)).
 *   The `na.locf.xts()` method loops over columns of multivariate objects in C code, for improved speed and memory performance. Thanks to Chris Katsulis and Tom Andrews for their reports and patches ([#232](https://github.com/joshuaulrich/xts/issues/232), [#233](https://github.com/joshuaulrich/xts/issues/233), [#234](https://github.com/joshuaulrich/xts/issues/234), [#235](https://github.com/joshuaulrich/xts/issues/235), [#237](https://github.com/joshuaulrich/xts/issues/237)).
 *   After many years, `merge.xts()` can finally handle multiple character or complex xts objects. Thanks to Ken Williams for the report ([#44](https://github.com/joshuaulrich/xts/issues/44)).

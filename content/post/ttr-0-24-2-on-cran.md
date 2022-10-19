@@ -5,13 +5,15 @@ draft: false
 tags : [Releases, TTR, R]
 ---
   
-This is another one of my long-overdue posts. I'm trying to get int the habit of posting and announcing each of my package releases. So I'm writing posts this morning for the most recent release of the most popular packages I maintain.
+An updated version of [TTR](http://cran.r-project.org/package=TTR) is on [CRAN](http://cran.r-project.org/) now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I'll spare you the gory details. If you're really interested, you can find them in the [CHANGES](https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES) file. 
+
+<!--more-->
+
+[This is another one of my long-overdue posts. I'm trying to get int the habit of posting and announcing each of my package releases. So I'm writing posts this morning for the most recent release of the most popular packages I maintain.]
 
 I released an updated version of [TTR](http://cran.r-project.org/package=TTR) to [CRAN](http://cran.r-project.org/) on 2020-09-01.
 
-This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I'll spare you the gory details. If you're really interested, you can find them in the [CHANGES](https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES) file. There are links to the relevant issues in there too, if you're really curious.
-
-Now for the bug-fixes you might actually notice.
+Now for the bug fixes you might actually notice.
 
 - `ALMA()` could return an object whose length didn't match the length of the input when the input was not an xts object. This bug has been around for years. I'm sorry I just now got to it.
 \

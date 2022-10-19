@@ -5,7 +5,9 @@ draft: false
 tags : [Releases, xts, R]
 ---
 
-An updated version of [xts](http://cran.r-project.org/package=xts) is now on [CRAN](http://cran.r-project.org/). Plotting functionality got a lot of attention in this release. Another notable change is that `merge.xts()` now supports suffixes.
+An updated version of [xts](http://cran.r-project.org/package=xts) is now on [CRAN](http://cran.r-project.org/). This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that `merge.xts()` now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust.
+
+<!--more-->
 
 ### Plotting functionality enhancements and bug fixes
 

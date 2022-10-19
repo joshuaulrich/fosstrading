@@ -8,6 +8,8 @@ tags : [Releases, quantmod, R]
 
 A new version of [quantmod](http://www.quantmod.com/) is on [CRAN](https://cran.r-project.org/package=quantmod)! One really cool thing about this release is that almost all the changes are contributions from the community.  
   
+<!--more-->
+
 [Ethan Smith](https://github.com/ethanbsmith) made more excellent contributions to `getQuote()` in this release. It no longer throws an error if one or more symbols are missing.  And it handles multiple symbols in a semicolon-delimted string, just like `getSymbols()`. For example, you can get quotes for multiple symbols by calling `getQuote("SPY;AAPL")`.  
 
 [@jrburl](https://github.com/jrburl) made a great enhancement to `getOptionChain()`. Now, instead of throwing an error, it sets volume and open interest to `NA` if those columns are missing from the Yahoo Finance data. They also submitted a pull request to handle cases where Bid and/or Ask data are missing too. Unfortunately, that pull request came after I had already pushed to CRAN.  

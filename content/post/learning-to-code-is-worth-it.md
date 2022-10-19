@@ -8,7 +8,7 @@ tags : [Reviews]
 
 Someone recently shared this great talk by [Chris Allen](http://bitemyapp.com/) from [lambda conf](http://lambdaconf.us/) 2017.  The title of the talk is "Why Johnny Can't Code Good," but the content is more about how to grow as a programmer.  His points are true whether you're just starting out, or have been coding for years.  
   
-  
+<!--more-->  
 
   
 My notes from Chris' talk are below, in the order they appear in the presentation.  My thoughts are in parentheses.  

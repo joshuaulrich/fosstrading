@@ -5,11 +5,13 @@ draft: false
 tags : [Releases, xts, R]
 ---
   
-This is a long-overdue post. I'm trying to get int the habit of posting and announcing each of my package releases. So I'm writing posts this morning for the most recent release of the most popular packages I maintain.
+An updated version of [xts](http://cran.r-project.org/package=xts) reached [CRAN](http://cran.r-project.org/) on 2020-09-09. Time-of-day subsetting (e.g. `x["T10:00/T13:00"]`) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn't post about 0.12.0 when it was released.)
 
-I released an updated version of [xts](http://cran.r-project.org/package=xts) to [CRAN](http://cran.r-project.org/) on 2020-09-09. I'm also going to include some notes from the prior release (0.12-0), since I didn't post about that. It has some nifty changes in it too.
+<!--more-->
 
-I'm going to highlight a handful of the changes:
+This is a long-overdue post. I'm trying to get int the habit of posting and announcing each of my package releases. So I'm writing posts this morning for the most recent release of the most popular packages I maintain. I released an updated version of [xts](http://cran.r-project.org/package=xts) to [CRAN](http://cran.r-project.org/) on 2020-09-09.
+
+I'm going to highlight a handful of the changes that involve:
 
 1. moving index class and index timezone from the xts object itself to the index,
 1. improvements to time-of-day subsetting (`x["T10:00/T13:00"]`)

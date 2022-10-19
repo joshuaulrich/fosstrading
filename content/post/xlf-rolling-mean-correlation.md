@@ -6,8 +6,9 @@ tags: [R]
 ---
 
 
-
 I follow [Quantocracy on Twitter](https://twitter.com/Quantocracy), and I found [Rolling mean correlation in the tidyverse](https://robotwealth.com/rolling-mean-correlations-in-the-tidyverse/) by [Robot Wealth](https://robotwealth.com). They say to let them know if you'd approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I'm familiar with: [xts](https://cran.r-project.org/package=xts) and [TTR](https://cran.r-project.org/package=TTR).
+
+<!--more-->
 
 The xts package is an extension of the very excellent [zoo](https://cran.r-project.org/package=zoo) package. zoo objects are for ordered observations. Underneath, they are a matrix that can be ordered by anything: numbers, letters, dates, times, and more. xts objects are a special type of zoo object that can only be ordered by a date-time. They are the most common data structure used for working with financial time series, and are used in many of the major time series packages. You can find more details about xts objects in the [xts vignette](https://cran.r-project.org/web/packages/xts/vignettes/xts.pdf).
 

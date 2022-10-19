@@ -6,7 +6,11 @@ aliases: [ "/2018/11/xts-011-2-on-cran.html" ]
 tags : [xts, Releases, R]
 ---
 
-[xts](https://cloud.r-project.org/package=xts) version 0.11-2 was published to [CRAN](https://cloud.r-project.org/) yesterday. [xts](https://cloud.r-project.org/package=xts) provides data structure and functions to work with time-indexed data.  This is a bug-fix release, with notable changes below:  
+[xts](https://cloud.r-project.org/package=xts) version 0.11-2 was published to [CRAN](https://cloud.r-project.org/) yesterday. This is quick a bug-fix release.
+
+<!--more-->
+
+Notable changes are below:  
 
 *   The xts method for `shift.time()` is now registered. Thanks to Philippe Verspeelt for the report and PR ([#268](https://github.com/joshuaulrich/xts/issues/268), [#273](https://github.com/joshuaulrich/xts/issues/273)).
 *   An if-statement in the `xts` constructor will no longer try to use a logical vector with length > 1. Code like `if (c(TRUE, TRUE))` will throw a warning in an upcoming R release, and this patch will prevent that warning. Thanks to Hugh Parsonage for the report and PR ([#270](https://github.com/joshuaulrich/xts/issues/270), [#272](https://github.com/joshuaulrich/xts/issues/272)).
