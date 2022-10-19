@@ -1,0 +1,260 @@
+---
+title: 'LSTM to Predict Dow Jones Industrial Average'
+date: 2020-09-13T10:49:00.000-05:00
+draft: true
+tags: [R]
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse=TRUE,
+  fig.path="images/",
+  fig.width=10
+)
+library <- function(package) {
+  package <- deparse(substitute(package))
+  suppressPackageStartupMessages({
+    base::library(package, character.only = TRUE)
+  })
+}
+
+#keras::install_keras(method = "virtualenv", envname = "r-tensorflow")
+
+###Sys.setenv(RETICULATE_PYTHON = "/usr/bin/python3.8")
+##tensorflow::install_tensorflow()
+##reticulate::use_python("/usr/bin/python3", required = TRUE)
+##
+##reticulate::virtualenv_remove("r-tensorflow")
+##reticulate::virtualenv_create("r-tensorflow")
+##keras::install_keras(envname = "r-tensorflow")
+```
+
+This post started as a replication of an article I stumbled on. But I found a lot of problems with the analysis as I worked through the replication. I don't want to publicly tear down another person's work, so this post will generally focus on common errors I see when people do analysis--specifically machine learning--on time series.
+
+<a href="https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X/ref=as_li_ss_il?dchild=1&keywords=deep+learning+with+r+keras&qid=1602336565&s=books&sr=1-3&linkCode=li2&tag=fosstrading-20&linkId=fe44d9472c1d76c1c61ed6e198751f56&language=en_US" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=161729554X&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=fosstrading-20&language=en_US" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=fosstrading-20&language=en_US&l=li2&o=1&a=161729554X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
+
+This post replicates a medium article on [predicting the Dow Jones using a LSTM neural network](https://medium.com/analytics-vidhya/lstm-to-predict-dow-jones-industrial-average-time-series-647b0115f28c). I'm interested in time-series models that use LSTM because they often do not do as well as simpler models, and you have to be very careful to avoid look-ahead bias. The post uses [keras in python](https://keras.io), and I'm going to replicate in R using the [keras](https://cran.r-project.org/package=keras) package.
+
+I thought it would be fun to replicate in R.
+
+I'm not going to describe how neural networks and LSTM models work in this post. The medium article gives a high-level overview of neural networks, and touches on how LSTM models work.
+
+I'm going to use the [quantmod](https://cran.r-project.org/package=quantmod) package to pull the data from [Yahoo Finance](https://finance.yahoo.com), and the [xts](https://cran.r-project.org/package=xts) package for data manipulation.
+
+### Concerns
+
+(not sure if I should lead with this...)
+
+Before we get started, I have few concerns with this analysis. First, it uses _prices_. This is often a problem because the series is not [*stationary*](https://en.wikipedia.org/wiki/Stationary_process). Basically, that means it has a trend, which means the distribution changes over time. Statistical analysis almost always requires a constant distribution, otherwise your estimates will be biased. This is also true for neural networks.
+
+Now, the original analysis does [*standardize*](https://en.wikipedia.org/wiki/Standard_score).the features. That's standard practice to make the distribution roughly the same over time. But they use the entire training data set to standardize each observation. This introduces look-ahead bias. At time (t), you do not know the values for observations at time (t+1, t+2, ..., t+n). Using those future values to standardize the observation at time (t) means you're using data you don't have at time (t) to calculate the standardized value at time (t).
+
+Also doesn't standardize for changes in volatility, which is very common in financial time series.
+
+
+We will try to correct these issues in the next post.
+
+
+### Replication
+
+Now on to the code!
+
+First, we need to download the data set. We can do this with the quantmod function `getSymbols()`. It pulls the data from Yahoo Finance and returns an xts object by default. Then we'll look at the first few observations, and plot the data.
+
+TODO: Should I use tiingo data here? Yahoo Finance data isn't that good, and it would be a nice plug for tiingo.
+
+```{r, import-data}
+library(quantmod)
+
+dji <- getSymbols("^DJI", from = "2000-01-01", to = "2020-05-28", auto.assign = FALSE)
+## Bug in getSymbols() 5/27 returns 5/26
+head(dji)
+str(dji)
+chart_Series(dji)
+```
+
+We set `from = "2000-01-01"` and `to = "2020-05-27"` to match the time frame in the original article. And we set `auto.assign = FALSE` in the `getSymbols()` call to make `getSymbols()` return the data like most functions do. By default, `getSymbols()` creates automatically an object in your workspace, like the `load()` function does.
+
+The `head()` function returns the first 6 observations, and the `str()` function shows you the structure of the data object. Then we use the `chart_Series()` function to plot the data.
+
+### Creating features
+
+Next, the original article creates 2 new features (independent variables in statistics-speak). I'll use the same variable names, to keep this analysis the same as the original.
+
+what is the deal?
+
+```{r, create-features}
+A <- dji
+A$h_o <- (Hi(A) - Cl(A)) / Cl(A) * 100
+A$pct_chng <- (Cl(A) - Op(A)) / Op(A) * 100
+df <- A[, c("DJI.Close", "h_o", "pct_chng", "DJI.Volume")]
+```
+
+### Train / test split
+
+```{r, train-test-split}
+tr_data <- ceiling(nrow(df) * 0.8)
+
+# the first tr_data observations are the training set
+train <- df[seq_len(tr_data),]
+
+# remove the first tr_data observations to get the test set
+test <- df[-seq_len(tr_data),]
+
+str(train)
+str(test)
+```
+
+### Standardization
+
+Observations must be in the range of the activation function.
+In this case, the activation function is XYZ and the values need to be between 0 and 1.
+
+
+```{r, standarize}
+min_max_scaler <- function(x, min. = NULL, max. = NULL)
+{
+  # based on https://stackoverflow.com/a/47051133/271616
+  # calculate min
+  if (is.null(min.)) {
+    min. <- min(x)
+  }
+  if (is.null(max.)) {
+    max. <- max(x)
+  }
+  return((x - min.) / (max. - min.))
+}
+
+training_data <- apply(train, 2, min_max_scaler)
+training_data <- xts(training_data, index(train))
+head(training_data)
+
+```
+
+### Data preparation
+
+```{r, data-prep}
+n_lag <- 60
+x_train <- array(0.0, dim = c(nrow(training_data)-n_lag+1, n_lag, ncol(training_data)))
+for (i in seq(n_lag, nrow(training_data))) {
+  x_train[(i-n_lag+1),,] <- training_data[(i-60+1):i,]
+}
+
+y_train <- training_data[n_lag:nrow(training_data),1]
+```
+
+Mention pre-allocation for `x_train`. Also mention that R uses 1-based indexing while python uses 0-based indexing.
+
+
+<!--
+```{r, build-model}
+library(keras)
+
+model <- keras_model_sequential()
+model <- layer_lstm(model,
+                    units = 10,
+                    activation = 'relu',
+                    return_sequences = TRUE,
+                    input_shape = c(60, 4))
+model <- layer_dropout(model, 0.1)
+
+model <- layer_lstm(model,
+                    units = 20,
+                    activation = 'relu',
+                    return_sequences = TRUE)
+model <- layer_dropout(model, 0.2)
+
+model <- layer_lstm(model,
+                    units = 30,
+                    activation = 'relu')
+model <- layer_dropout(model, 0.3)
+
+model <- layer_dense(model, units = 1)
+```
+
+A thing.
+
+```{r, training}
+model <- compile(model, optimizer = "adam", loss = "mean_squared_error")
+
+num_epochs <- 10
+batch_size <- 32
+
+h1 <- fit(model,
+          x = x_train,
+          y = y_train,
+          epochs = num_epochs,
+          batch_size = batch_size,
+          verbose = 1)
+
+last_60_days <- tail(train, 60)
+df <- rbind(last_60_days, test)
+
+input <- df
+for (j in seq_len(ncol(input))) {
+  min. <- min(train[,j])
+  max. <- max(train[,j])
+  input[,j] <- min_max_scaler(df[,j], min. = min., max. = max.)
+}
+head(input, 3)
+tail(input, 3)
+```
+
+Blah, blah, blah.
+
+{enter Latin here}
+
+```{r, rolling-correlation}
+x_test <- array(0.0, dim = c(nrow(input)-n_lag, n_lag, ncol(input)))
+for (i in seq(n_lag+1, nrow(input))) {
+  x_test[(i-n_lag),,] <- input[(i-60+1):i,]
+}
+
+y_test <- input[(n_lag+1):nrow(input),1]
+y_pred <- predict(model, x_test, verbose = 1)
+
+y_pred_scaled <- y_pred * (max(train[,1])-min(train[,1])) + min(train[,1])
+y_pred_scaled <- xts(y_pred_scaled, index(y_test))
+
+y_test_scaled <- y_test * (max(train[,1])-min(train[,1])) + min(train[,1])
+y_test_scaled <- xts(y_test_scaled, index(y_test))
+
+foo <- merge(y_pred_scaled, y_test_scaled)
+p1 <- plot(foo)
+p1 <- addLegend("topleft", lty = 1)
+plot(p1)
+
+y_test_xts <- xts(y_test, index(input)[-(1:60)])
+y_pred_xts <- xts(y_pred, index(input)[-(1:60)])
+
+bar <- merge(y_pred_xts, y_test_xts)
+p2 <- plot(bar)
+p2 <- addLegend("topleft", lty = 1)
+plot(p2)
+
+
+rmse <- function(actual, predicted)
+{
+  mu <- mean((predicted - actual)^2, na.rm = TRUE)
+  sqrt(mu)
+}
+
+## So smart! "S. M. R. T."
+# R> rmse(y_test_scaled, y_pred_scaled)
+# [1] 1978.659
+# R> rmse(y_test_scaled, SMA(y_test_scaled, 60))
+# [1] 1185.24
+# R> rmse(y_test_scaled, lag(y_test_scaled))
+# [1] 300.5368
+
+
+```
+-->
+This is so bad. It does nearly everything wrong. It also appears to include today's data when predicting today's closing price.
+
+I don't want to write something so negative about this post. Instead, I could turn this into a post about best practices in ML, or common mistakes when doing ML on time series.
+
+----
+
+If you love using my open-source work (e.g. [quantmod](https://cran.r-project.org/package=quantmod), [TTR](https://cran.r-project.org/package=TTR), [IBrokers](https://cran.r-project.org/package=IBrokers), [microbenchmark](https://cran.r-project.org/package=microbenchmark) etc.), you can give back by [sponsoring me on GitHub](https://github.com/sponsors/joshuaulrich/). I truly appreciate anything you're willing and able to give!

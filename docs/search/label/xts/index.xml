@@ -6,7 +6,100 @@
     <description>Recent content in xts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 10:49:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Oct 2022 10:21:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>xts_0.12.2 on CRAN</title>
+      <link>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html</link>
+      <pubDate>Sat, 15 Oct 2022 10:21:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html</guid>
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. Plotting functionality got a lot of attention in this release. Another notable change is that &lt;code&gt;merge.xts()&lt;/code&gt; now supports suffixes.&lt;/p&gt;
+&lt;h3 id=&#34;plotting-functionality-enhancements-and-bug-fixes&#34;&gt;Plotting functionality enhancements and bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can now omit the data time range from the upper-right portion of a plot by setting &lt;code&gt;main.timespan = FALSE&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/247&#34;&gt;#247&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;plot.xts()&lt;/code&gt; gained a &lt;code&gt;yaxis.ticks&lt;/code&gt; argument to control the number of y-axis grid lines, instead of always drawing 5 y-axes grid lines. Thanks to &lt;a href=&#34;https://github.com/FredrikWartenberg&#34;&gt;Fredrik Wartenberg&lt;/a&gt; for the feature request and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/374&#34;&gt;#374&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;addEventLines()&lt;/code&gt; when plotted objects have a &amp;lsquo;yearmon&amp;rsquo; index. The ISO-8601 range string was not created correctly. Thanks to &lt;a href=&#34;https://github.com/paessens&#34;&gt;@paessens&lt;/a&gt; for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/353&#34;&gt;#353&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &amp;lsquo;ylim&amp;rsquo; argument is now robust against numerical precision issues. Thanks to &lt;a href=&#34;https://github.com/bollard&#34;&gt;@bollard&lt;/a&gt; for the report, PR, and a ton of help debugging intermediate solutions! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/368&#34;&gt;#368&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Series added to a panel now extend the panel&amp;rsquo;s y-axis. Previously the y-axis limits were based on the first series&#39; values and not updated when new series were added. So values of the new series did not appear on the plot if they were outside of the original series&#39; min/max. Thanks to &lt;a href=&#34;https://github.com/vspinu&#34;&gt;Vitalie Spinu&lt;/a&gt; for the report and help debugging and testing! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/360&#34;&gt;#360&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All series added to any panel of a plot now update the x-axis of all panels. So the entire plot&amp;rsquo;s x-axis will include every series&#39; time index values within the original plot&amp;rsquo;s time range. This behavior is consistent with &lt;code&gt;chart_Series()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/vspinu&#34;&gt;Vitalie Spinu&lt;/a&gt; for the report and help debugging and testing! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/360&#34;&gt;#360&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/216&#34;&gt;#216&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All y-values are now plotted for series that have duplicate index values, but different data values. Thanks to &lt;a href=&#34;https://github.com/vspinu&#34;&gt;Vitalie Spinu&lt;/a&gt; for the report and help debugging and testing! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/360&#34;&gt;#360&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adding a series can now extend the x-axis before/after the plot&amp;rsquo;s existing time index range by setting &lt;code&gt;extend.xaxis = TRUE&lt;/code&gt;. That ensures all of the new series&#39; time index values are included in the plot. &lt;code&gt;extend.xaxis = FALSE&lt;/code&gt; by default to maintain backward compatibility. Thanks to &lt;a href=&#34;https://github.com/vspinu&#34;&gt;Vitalie Spinu&lt;/a&gt; for the report and help debugging and testing! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/360&#34;&gt;#360&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-enhancements-and-bug-fixes&#34;&gt;Other enhancements and bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ops.xts()&lt;/code&gt; no longer changes column names (via &lt;code&gt;make.names()&lt;/code&gt;) when the two objects do not have identical indexes. This makes it consistent with &lt;code&gt;Ops.zoo()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/tonytonov&#34;&gt;Anton Antonov&lt;/a&gt; for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/114&#34;&gt;#114&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Subsetting a zero-length xts object now returns an object with the same storage type as the input. It previously always returned a &amp;lsquo;logical&amp;rsquo; xts object. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/376&#34;&gt;#376&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;tclass()&lt;/code&gt; and &lt;code&gt;tzone()&lt;/code&gt; now return the correct values for zero-length xts objects, instead of the defaults from the &lt;code&gt;.xts()&lt;/code&gt; constructor. Thanks to &lt;a href=&#34;https://github.com/AndreMikulec&#34;&gt;Andre Mikulec&lt;/a&gt; for the report and suggested patch! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/255&#34;&gt;#255&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;first()&lt;/code&gt; and &lt;code&gt;last()&lt;/code&gt; now return a zero-length xts object when &lt;code&gt;n = 0&lt;/code&gt;. They previously returned the entire object. This is consistent with the default &lt;code&gt;head()&lt;/code&gt; and &lt;code&gt;tail()&lt;/code&gt; functions, and data.table&amp;rsquo;s &lt;code&gt;first()&lt;/code&gt; and &lt;code&gt;last()&lt;/code&gt; functions. Thanks to &lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan B. Smith&lt;/a&gt; for the report and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/350&#34;&gt;#350&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Subsetting a zero-width xts now returns an object with the same class, tclass, tzone, and xtsAttributes as the input. Thanks to &lt;a href=&#34;https://github.com/shikokuchuo&#34;&gt;@shikokuchuo&lt;/a&gt; for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/359&#34;&gt;#359&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now &lt;code&gt;endpoints()&lt;/code&gt; always returns last observation. Thanks to GitHub user &lt;a href=&#34;https://github.com/Eluvias&#34;&gt;Eluvias&lt;/a&gt; for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/300&#34;&gt;#300&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now &lt;code&gt;endpoints()&lt;/code&gt; errors for every &lt;code&gt;on&lt;/code&gt; value when &lt;code&gt;k &amp;lt; 1&lt;/code&gt;. It was not throwing an error for &lt;code&gt;k &amp;lt; 1&lt;/code&gt; for &lt;code&gt;on&lt;/code&gt; of &amp;ldquo;years&amp;rdquo;, &amp;ldquo;quarters&amp;rdquo;, or &amp;ldquo;months&amp;rdquo;. Thanks to &lt;a href=&#34;https://github.com/Eluvias&#34;&gt;Eluvias&lt;/a&gt;for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/301&#34;&gt;#301&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed a breaking change (introduced in 0.11.0) in &lt;code&gt;window()&lt;/code&gt; for yearmon and yearqtr indexes. In xts &amp;lt; 0.11.0, &lt;code&gt;window.zoo()&lt;/code&gt; was dispatched when &lt;code&gt;window()&lt;/code&gt; was called on a xts object because there was no &lt;code&gt;window.xts()&lt;/code&gt; method. &lt;code&gt;window.zoo()&lt;/code&gt; supports additional types of values for the &lt;code&gt;start&lt;/code&gt; argument, and possibly other features. Thanks to &lt;a href=&#34;https://github.com/annaymj&#34;&gt;@annaymj&lt;/a&gt; for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/312&#34;&gt;#312&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clarified documentation for &lt;code&gt;axTicksByTime()&lt;/code&gt; to say that returns index locations (e.g. 1, 2, 3) and not timestamps. Thanks to &lt;a href=&#34;https://github.com/ggrothendieck&#34;&gt;Gabor Grothendieck&lt;/a&gt; for the suggestion and feedback. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/354&#34;&gt;#354&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;merge.xts()&lt;/code&gt; on xts objects containing complex types when &lt;code&gt;fill&lt;/code&gt; is provided. It previously threw an error because it treated &lt;code&gt;fill&lt;/code&gt; as double instead of complex. Thanks to &lt;a href=&#34;https://github.com/ggrothendieck&#34;&gt;Gabor Grothendieck&lt;/a&gt; for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/346&#34;&gt;#346&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added a message to tell the user how to disable the &amp;ldquo;object timezone is different from the system timezone&amp;rdquo; warning (set &lt;code&gt;options(xts_check_TZ = FALSE)&lt;/code&gt;). Thanks to &lt;a href=&#34;https://github.com/algoquant&#34;&gt;Jerzy Pawlowski&lt;/a&gt; for the nudge. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/113&#34;&gt;#113&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rbind()&lt;/code&gt; now handles xts objects without dim attribute. It previously threw an obscure error if one of the xts objects did not have a dim attribute. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/361&#34;&gt;#361&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;split.xts()&lt;/code&gt; now always return a named list, making it consistent with &lt;code&gt;split.zoo()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/ggrothendieck&#34;&gt;Gabor Grothendieck&lt;/a&gt; for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/357&#34;&gt;#357&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xts objects with a zero-length POSIXct index now have a zero-length POSIXct vector instead of a zero-length integer vector for the index. Thanks to &lt;a href=&#34;https://github.com/JasperSch&#34;&gt;Jasper Schelfhout&lt;/a&gt; for the report and PR! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/363&#34;&gt;#363&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/pulls/364&#34;&gt;#364&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add supported for suffixes in &lt;code&gt;merge.xts()&lt;/code&gt; results. The suffixes are consistent with &lt;code&gt;merge.default()&lt;/code&gt; and not &lt;code&gt;merge.zoo()&lt;/code&gt;, because &lt;code&gt;merge.zoo()&lt;/code&gt; automatically uses &amp;ldquo;.&amp;rdquo; as a separator between column names, but the default method doesn&amp;rsquo;t. Thanks to Alex Chernyakov for the initial report, &lt;a href=&#34;https://github.com/stucash&#34;&gt;QiuxiaoMu&lt;/a&gt; for testing, and &lt;a href=&#34;https://github.com/pierre-lamarche&#34;&gt;Pierre Lamarche&lt;/a&gt; for the nudge. Better late than never? (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/38&#34;&gt;#38&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/371&#34;&gt;#371&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;You may have noticed that several of these issues have been open a long time. I&amp;rsquo;ve been revisiting historical issues and deciding whether to implement them or close them. I&amp;rsquo;ve already implemented some cool ones in the development version of xts.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m most excited about open-ended time-of-day subsetting. Now you can do things like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/T1700&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# start of the day until 5pm&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;T0500/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 5am until the end of the day&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>xts_0.12.1 on CRAN</title>
       <link>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</link>
@@ -39,7 +132,7 @@
 &lt;p&gt;&lt;a href=&#34;https://github.com/MichaelChirico&#34;&gt;Michael Chirico&lt;/a&gt; added an internal &lt;code&gt;isUTC()&lt;/code&gt; function that recognizes many UTC-equivalent time zones (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/319&#34;&gt;#319&lt;/a&gt;).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://dirk.eddelbuettel.com/&#34;&gt;Dirk Eddelbuettel&lt;/a&gt; updated the C API header to fix the signatures of &lt;code&gt;do_merge_xts()&lt;/code&gt; and &lt;code&gt;is_xts&lt;/code&gt;, which did not return the required type to be called via &lt;code&gt;.Call()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/kalibera&#34;&gt;Tomas Kalibera&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/317&#34;&gt;#317&lt;/a&gt;), and to Dirk for the PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/337&#34;&gt;#337&lt;/a&gt;).&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://dirk.eddelbuettel.com/&#34;&gt;Dirk Eddelbuettel&lt;/a&gt; updated the C API header to fix the signatures of &lt;code&gt;do_merge_xts()&lt;/code&gt; and &lt;code&gt;is_xts&lt;/code&gt;, which did not return the required type to be called via &lt;code&gt;.Call()&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/kalibera&#34;&gt;Tomas Kalibera&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/317&#34;&gt;#317&lt;/a&gt;), and to Dirk for the PR (&lt;a href=&#34;https://github.com/joshuaulrich/xts/pull/337&#34;&gt;#337&lt;/a&gt;). &lt;br&gt;
 This is a breaking change, but it&amp;rsquo;s only in the C API, and is required to avoid the potential to crash your R session.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;

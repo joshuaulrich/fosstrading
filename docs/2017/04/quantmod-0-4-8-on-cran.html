@@ -13,9 +13,10 @@
 getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
 There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-04-19T10:45:00-05:00" />
 <meta property="article:modified_time" content="2017-04-19T10:45:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -100,7 +101,7 @@ if (!doNotTrack) {
 <p>All three providers made breaking changes to their URLs/interfaces.</p>
 <p><code>getSymbols.google()</code> also got some love. It now honors all arguments set via <code>setSymbolLookup()</code> (<a href="https://github.com/joshuaulrich/quantmod/issues/138">#138</a>), and it correctly parses the date column in non-English locales (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#140</a>).</p>
 <p>There&rsquo;s a handy new argument to <code>getDividends()</code>: <code>split.adjust</code>. It allows you to request dividends unadjusted for splits (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#128</a>). Yahoo provides split-adjusted dividends, so you previously had to manually unadjust them for splits if you wanted the original raw values. To import the raw unadjusted dividends, just call:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rawDiv</span> <span class="o">&lt;-</span> <span class="nf">getDividends</span><span class="p">(</span><span class="s">&#34;IBM&#34;</span><span class="p">,</span> <span class="n">split.adjust</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>  
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">rawDiv</span> <span class="o">&lt;-</span> <span class="nf">getDividends</span><span class="p">(</span><span class="s">&#34;IBM&#34;</span><span class="p">,</span> <span class="n">split.adjust</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>  
 </code></pre></div><p>Note that the default is <code>split.adjust = TRUE</code> to maintain backward-compatibility.</p>
 
 		</div>
@@ -184,11 +185,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -237,7 +238,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

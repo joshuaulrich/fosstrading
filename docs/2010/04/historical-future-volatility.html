@@ -11,9 +11,10 @@
 <meta property="og:description" content="Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &ldquo;unfinished thought&rdquo;, not a critique.
 He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/04/historical-future-volatility.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/04/historical-future-volatility.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-04-11T12:53:00-05:00" />
 <meta property="article:modified_time" content="2010-04-11T12:53:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -95,7 +96,7 @@ if (!doNotTrack) {
 <p>The chart shows the rolling one-year (252-day) correlations for the diagonal in Michael&rsquo;s table (e.g. historical and future 2-day volatility, &hellip;, historical and future 252-day volatility). You can see the shorter periods are generally more stable, but are also closer to zero. The rolling one-year correlation between historical and future one-year volatility swings wildly from +/-1 over time.</p>
 <p>This isn&rsquo;t to argue that Michael&rsquo;s back-of-the-envelope approach is incorrect, rather it is an attempt to make the approach more robust by weighing long-term market characteristics against recent market behavior.</p>
 <p>For those interested, here is the <a href="http://www.r-project.org/">R</a> code I used to replicate Michael&rsquo;s table and create the graph above. An interesting extension of this analysis would be to calculate volatility using <a href="http://cran.r-project.org/web/packages/TTR/">TTR&rsquo;s</a> <code>volatility()</code> function instead of standard deviation. I&rsquo;ll leave that exercise to the interested reader.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 
 <span class="c1"># pull SPX data from Yahoo Finance</span>
 <span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;^GSPC&#34;</span><span class="p">,</span><span class="n">from</span><span class="o">=</span><span class="s">&#34;1970-01-01&#34;</span><span class="p">)</span>
@@ -212,11 +213,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -265,7 +266,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

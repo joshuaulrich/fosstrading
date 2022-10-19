@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.68.3" />
+	<meta name="generator" content="Hugo 0.92.2" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/" />
-<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -52,7 +52,7 @@ if (!doNotTrack) {
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/">
 				
 				<span class="menu__text">Blog</span>
@@ -83,6 +83,22 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2009/07/david-varadis-rsi2-alternative.html" rel="bookmark">
+			David Varadi&#39;s RSI(2) alternative
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-19T08:38:00-05:00">July 19, 2009</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
+ Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&rsquo;s the R code:
+DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34;  # columns, in that order.  # This is David Varadi&#39;s alternative to the RSI(2).
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2009/06/rsi2-evaluation.html" rel="bookmark">
@@ -194,7 +210,7 @@ It has been quite a journey for opentick, and for those of you who have been wit
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, R. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.
-In particular, I will be replicating and extending some of the results from Michael Stokes&rsquo; excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy.
+In particular, I will be replicating and extending some of the results from Michael Stokes' excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -232,24 +248,6 @@ This update represents a major milestone, as TTR useRs are no longer restricted 
 NEW FEATURES:
  Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2009/01/ibrokers-featured-on-quantitative.html" rel="bookmark">
-			IBrokers Featured on Quantitative Trading
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-01-17T09:01:00-06:00">January 17, 2009</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Jeff Ryan&rsquo;s IBrokers package was mentioned on Ernie Chan&rsquo;s blog, Quantitative Trading. Though the package is still in pre-alpha stage, it is generating quite a bit of interest.
-Source:
-Ernie Chan
-Friday, January 16, 2009
-Quantitative Trading: Algorithmic Trading Technology Update
-	</div>
 </article>
 </main>
 
@@ -279,11 +277,11 @@ Quantitative Trading: Algorithmic Trading Technology Update
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -332,7 +330,7 @@ Quantitative Trading: Algorithmic Trading Technology Update
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

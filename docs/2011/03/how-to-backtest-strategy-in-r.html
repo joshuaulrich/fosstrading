@@ -12,9 +12,10 @@
 Step 1: Get the data
 The getSymbols function in quantmod makes this step easy if you can use daily data from Yahoo Finance. There are also &ldquo;methods&rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-r.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2011-03-26T09:54:00-05:00" />
 <meta property="article:modified_time" content="2011-03-26T09:54:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -93,7 +94,7 @@ if (!doNotTrack) {
 			<p>This is the third post in the <a href="http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html">Backtesting in Excel and R</a> series and it will show how to backtest a simple strategy in R.  It will follow the 4 steps Damian outlined in his post on <a href="http://blog.fosstrading.com/2011/03/how-to-backtest-strategy-in-excel.html">how to backtest a simple strategy in Excel</a>.</p>
 <p><strong>Step 1: Get the data</strong><br>
 The <code>getSymbols</code> function in <a href="http://www.quantmod.com/">quantmod</a> makes this step easy if you can use daily data from <a href="http://finance.yahoo.com/">Yahoo Finance</a>.  There are also &ldquo;methods&rdquo; (not in the strict sense) to pull data from other sources (FRED, Google, Oanda, R save files, databases, etc.).  You could also use them as a template to write a custom function for a particular vendor you use.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># run the command below if quantmod isn&#39;t already installed</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># run the command below if quantmod isn&#39;t already installed</span>
 <span class="c1"># install.packages(&#34;quantmod&#34;)</span>
 <span class="c1"># use the quantmod package (loads TTR, xts, and zoo)</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
@@ -102,23 +103,23 @@ The <code>getSymbols</code> function in <a href="http://www.quantmod.com/">quant
 <span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;^GSPC&#34;</span><span class="p">)</span>
 </code></pre></div><p><strong>Step 2: Create your indicator</strong><br>
 The <a href="http://cran.r-project.org/web/packages/TTR/">TTR package</a> contains a multitude of indicators.  The indicators are written to make it easy to <a href="http://www.rinfinance.com/agenda/2010/JoshUlrich.pdf">combine them in creative and unconventional ways</a>.  Starting with revision 106 on R-forge, TTR has a <a href="http://marketsci.wordpress.com/2010/07/27/css-analytics%E2%80%99-dvi-indicator-revealed/">DVI indicator</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate DVI indicator</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate DVI indicator</span>
 <span class="n">dvi</span> <span class="o">&lt;-</span> <span class="nf">DVI</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">))</span>  <span class="c1"># Cl() extracts the close price column</span>
 </code></pre></div><p><strong>Step 3: Construct your trading rule</strong><br>
 Since this trading rule is simple&ndash;we&rsquo;re long 100% if the DVI is below 0.5 and short 100% otherwise&ndash;it can be written in a single line.  More elaborate rules and/or position sizings can be done as well, but require more code (<a href="http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html">RSI(2) with Position Sizing</a> is an example of more complex position sizing rules).  Also notice that the signal vector is lagged, which avoids look-ahead bias.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># create signal: (long (short) if DVI is below (above) 0.5)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># create signal: (long (short) if DVI is below (above) 0.5)</span>
 <span class="c1"># lag so yesterday&#39;s signal is applied to today&#39;s returns</span>
 <span class="n">sig</span> <span class="o">&lt;-</span> <span class="nf">Lag</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">dvi</span><span class="o">$</span><span class="n">dvi</span> <span class="o">&lt;</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">-1</span><span class="p">))</span>
 </code></pre></div><p><strong>Step 4: The trading rules/equity curve</strong><br>
 As in Damian&rsquo;s example, the code below is a simplified approach that is frictionless and does not account for slippage.  The code below takes today&rsquo;s percentage return and multiplies it by yesterday&rsquo;s signal / position size (always +/- 100% in this example).  I also subset the system returns to match the results in the <a href="http://dl.dropbox.com/u/17693/DVI%20long-short.xlsx">Excel file</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate signal-based returns</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate signal-based returns</span>
 <span class="n">ret</span> <span class="o">&lt;-</span> <span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">))</span><span class="o">*</span><span class="n">sig</span>
 
 <span class="c1"># subset returns to match data in Excel file</span>
 <span class="n">ret</span> <span class="o">&lt;-</span> <span class="n">ret[</span><span class="s">&#34;2009-06-02/2010-09-07&#34;</span><span class="n">]</span>
 </code></pre></div><p><strong>Step 5: Evaluate strategy performance</strong><br>
 Damian mentioned the importance of evaluating your strategy.  Fortunately for R users, the <a href="http://cran.r-project.org/web/packages/PerformanceAnalytics/">PerformanceAnalytics package</a> makes this easy.  With a few lines of code we can view the drawdowns, downside risks, and a performance summary.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># use the PerformanceAnalytics package</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># use the PerformanceAnalytics package</span>
 <span class="c1"># install.packages(&#34;PerformanceAnalytics&#34;)</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
 
@@ -132,7 +133,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 <span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 </code></pre></div><p>That&rsquo;s all there is to backtesting a simple strategy in R.  It wasn&rsquo;t that intimidating, was it?  Please leave feedback if you&rsquo;re moving your backtesting from Excel to R and there&rsquo;s something you&rsquo;re hung up on or you have an awesome tip you&rsquo;d like to share.</p>
 <p>Here&rsquo;s a succinct version of the code in the above post if you want to be able to copy / paste it all in one block:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
 
 <span class="c1"># Step 1: Get the data</span>
@@ -236,11 +237,11 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -289,7 +290,7 @@ Damian mentioned the importance of evaluating your strategy.  Fortunately for R
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

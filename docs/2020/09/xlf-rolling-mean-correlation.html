@@ -11,9 +11,10 @@
 <meta property="og:description" content="I follow Quantocracy on Twitter, and I found Rolling mean correlation in the tidyverse by Robot Wealth. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: xts and TTR.
 The xts package is an extension of the very excellent zoo package. zoo objects are for ordered observations. Underneath, they are a matrix that can be ordered by anything: numbers, letters, dates, times, and more." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-19T07:23:00-05:00" />
 <meta property="article:modified_time" content="2020-09-19T07:23:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -97,7 +98,7 @@ if (!doNotTrack) {
 <p>First, you need to download the data set. I&rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can <a href="/xlfprices.RData">download it here</a>. The Robot Wealth post used the <a href="https://www.tidyverse.org/">tidyverse</a>, so data is saved in the preferred tidyverse data structure, a <a href="https://cran.r-project.org/package=tibble">tibble</a> (it&rsquo;s like a data frame).</p>
 <p>Then we need to <code>load()</code> the data into our R session. This creates an object named <code>prices_xlf</code>. The data has 10 columns: ticker, date, open, high, low,close, volume, dividends, closeunadj, inSPX. We&rsquo;re only going to use the date, ticker, and close columns.</p>
 <p>Now we need to convert the <code>prices_xlf</code> tibble into an xts object. There&rsquo;s no standard way to do this, because tibbles don&rsquo;t have a pre-defined structure for financial time series. We can &lsquo;read&rsquo; and convert the data from a tibble into a zoo object using <code>read.zoo()</code>. We&rsquo;re using <code>read.zoo()</code> because there isn&rsquo;t a <code>read.xts()</code> function, and we can easily convert from zoo to xts using <code>as.xts()</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">load</span><span class="p">(</span><span class="s">&#34;xlfprices.RData&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">load</span><span class="p">(</span><span class="s">&#34;xlfprices.RData&#34;</span><span class="p">)</span>
 
 <span class="nf">library</span><span class="p">(</span><span class="n">xts</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">read.zoo</span><span class="p">(</span><span class="n">prices_xlf[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;ticker&#34;</span><span class="p">,</span> <span class="s">&#34;close&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span>
@@ -110,7 +111,7 @@ if (!doNotTrack) {
 </code></pre></div><p>We pass <code>prices_xlf</code> to <code>read.zoo()</code>, but only with the columns we need for our analysis. The <code>index.column</code> argument tells <code>read.zoo()</code> which column in the data has the ordered index. The <code>split</code> argument allows us to reshape the data from a long format into a wide format, where each ticker is in its own column. This is the standard format for xts objects, because it makes working with financial time series a lot easier.</p>
 <p>Now to run the code. Hmm&hellip; it throws an error. The error means there are duplicate dates for at least one of the tickers in the <code>prices_xlf</code> object. Depending on how many duplicates there are, this may or may not bias the results, but we should remove them anyway so the analysis is correct. This is another benefit of xts/zoo objects.</p>
 <p>Let&rsquo;s take a look at the duplicates, and then remove them.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># find the duplicates</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># find the duplicates</span>
 <span class="n">duplicate_rows</span> <span class="o">&lt;-</span> <span class="nf">duplicated</span><span class="p">(</span><span class="n">prices_xlf</span><span class="p">)</span>
 
 <span class="c1"># view the duplicates</span>
@@ -134,12 +135,12 @@ if (!doNotTrack) {
 <span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="n">prices_xlf</span><span class="p">)</span>
 </code></pre></div><p>The <code>duplicated()</code> function returns a logical (true/false) vector as long as the number of rows in your data. Any row it finds that matches a previous row in the data will be <code>TRUE</code> in the vector. Note that <em>only</em> the duplicated rows are <code>TRUE</code>. The first rows found will be <code>FALSE</code>. Subsetting <code>prices_xlf</code> by the <code>duplicated()</code> result will return the rows that exist somewhere in previous rows in the data.</p>
 <p>You can probably guess what the <code>unique()</code> function does. It removes all the duplicated rows. Now that we removed the duplicates, we can try the <code>read.zoo()</code> call again.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># reshape data into wide format</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># reshape data into wide format</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">read.zoo</span><span class="p">(</span><span class="n">prices[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;ticker&#34;</span><span class="p">,</span> <span class="s">&#34;close&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span>
               <span class="n">index.column</span> <span class="o">=</span> <span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="s">&#34;ticker&#34;</span><span class="p">)</span>
 </code></pre></div><p>Great, that worked! Now we will convert from zoo to xts, because xts gives us a handful of fancy features in addition to all the awesomeness that comes with zoo. We&rsquo;re not going to use those fancy features in this post, but I promise, they&rsquo;re <em>fancy</em>.</p>
 <p>Next we will calculate returns using the <code>ROC()</code> (rate-of-change) function from the TTR package.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># convert from zoo to xts</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># convert from zoo to xts</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># calculate returns</span>
@@ -149,7 +150,7 @@ if (!doNotTrack) {
 </code></pre></div><p>The single call to <code>as.xts()</code> is all you need to convert from zoo to xts. <code>ROC()</code> calculates log returns by default, but it will calculate discrete (or arithmetic) returns if you set <code>type = &quot;discrete&quot;</code>. We&rsquo;re going to use discrete returns to keep things consistent with the Robot Wealth post.</p>
 <p>Next we will create a function to calculate the mean pairwise correlation for each pair of columns in our xts object. We can get all the pairwise correlations from the correlation matrix.</p>
 <p>Once we calculate the correlation matrix, we can calculate the mean correlation by taking the mean of the entire matrix. You may be thinking that this will take the mean of each correlation value two times (once for the upper triangle of the matrix, and another time for the lower triangle). But the values in both triangles are the same, because the matrix is symmetric about the diagonal. So this will not affect the mean calculation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">mean_cor</span> <span class="o">&lt;-</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">mean_cor</span> <span class="o">&lt;-</span>
   <span class="nf">function</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="c1"># calculate the correlation matrix</span>
@@ -165,12 +166,12 @@ if (!doNotTrack) {
 <p>Then we set the diagonal of the matrix to <code>NA</code> because they are all equal to 1. That may not be necessary, but it could bias the results, and I&rsquo;m not ready to spend time thinking about it. :)</p>
 <p>Finally, we take the mean of the entire correlation matrix.</p>
 <p>Now that we have a handy-dandy <code>mean_cor()</code> function to calculate the mean pairwise correlations, we can call the function on a rolling, 60-day period. We can do this with the <code>rollapply()</code> function from the zoo package.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate the rolling mean correlation over 60 periods</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate the rolling mean correlation over 60 periods</span>
 <span class="n">cors</span> <span class="o">&lt;-</span> <span class="nf">rollapply</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="n">mean_cor</span><span class="p">,</span> <span class="n">by.column</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&#34;right&#34;</span><span class="p">)</span>
 </code></pre></div><p>We set <code>align = &quot;right&quot;</code> in order &lsquo;right-align&rsquo; the result. That means the timestamp for each rolling window will be the right-most (or last/largest) value in the window. This is important because we do not know the value for the rolling period until the end of the window. We would severely bias our results if we used the &lsquo;left&rsquo; (first) or &lsquo;center&rsquo; (middle) timestamp for our window calculation.</p>
 <p>We also need to set <code>by.column = FALSE</code>. Otherwise, the <code>rollapply()</code> function will run the function on each column of the xts object individually. And it doesn&rsquo;t make sense to try and calculation the correlation matrix of a single series.</p>
 <p>Now, let&rsquo;s plot our rolling 60-day correlations. We only need to call the <code>plot()</code> function to get a quick look.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">cors</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Rolling mean XLF correlations&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">cors</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Rolling mean XLF correlations&#34;</span><span class="p">)</span>
 </code></pre></div><p><img src="/post/images/plot-rolling-mean-xlf-correlations-1.png" alt="plot of chunk plot-rolling-mean-xlf-correlations"></p>
 <p>The main thing I like about my approach is how few lines of code it takes. The most complicated piece is the <code>mean_cor()</code> function, but even that is fairly straightforward.</p>
 <p>You can do similar analysis using this same pattern. You need to create another function to calculate the metric, but everything else will be the same.</p>
@@ -200,6 +201,12 @@ if (!doNotTrack) {
 		<a class="post-nav__link" href="/2020/09/xts-0-12-1-on-cran.html" rel="prev">
 			<span class="post-nav__caption">«&thinsp;Previous</span>
 			<p class="post-nav__post-title">xts_0.12.1 on CRAN</p>
+		</a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2022/10/xts-0-12-2-on-cran.html" rel="next">
+			<span class="post-nav__caption">Next&thinsp;»</span>
+			<p class="post-nav__post-title">xts_0.12.2 on CRAN</p>
 		</a>
 	</div>
 </nav>
@@ -248,11 +255,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -301,7 +308,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

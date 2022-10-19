@@ -11,7 +11,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/post.html" />
-<meta property="og:updated_time" content="2020-09-19T07:23:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -84,6 +84,21 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2011/04/rquantlib-windows-binary-on-cran.html" rel="bookmark">
+			RQuantLib Windows binary on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-04-04T11:47:00-05:00">April 04, 2011</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Dirk Eddelbuettel has recently released RQuantLib-0.3.7, which contains the necessary QuantLib builds to allow the CRAN servers to build the Windows binary.
+This (thankfully) makes my post on how to build RQuantLib on 32-bit Windows unnecessary for casual users, but may be useful for those who want to develop RQuantLib on Windows.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2011/03/how-to-backtest-strategy-in-r.html" rel="bookmark">
@@ -225,22 +240,6 @@ The preparations for R/Finance 2011 are progressing, and due to favourable respo
 How I got started with R
 I was introduced to R while I was working as a Research Analyst at the Federal Reserve Bank of St.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2010/12/build-rquantlib-on-32-bit-windows.html" rel="bookmark">
-			Build RQuantLib on 32-bit Windows
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-12-07T17:20:00-06:00">December 07, 2010</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
- Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
-Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3.
-	</div>
 </article>
 </main>
 
@@ -271,11 +270,11 @@ Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry A
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/quantmod04-16-on-cran.html">quantmod_0.4-16 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/10/microbenchmark14-7-on-cran.html">microbenchmark_1.4-7 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -324,7 +323,7 @@ Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry A
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 FOSS Trading.
+			&copy; 2022 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
