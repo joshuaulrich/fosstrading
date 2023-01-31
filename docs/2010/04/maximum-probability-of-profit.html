@@ -11,10 +11,9 @@
 <meta property="og:description" content="To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
 These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html" />
 <meta property="article:published_time" content="2010-04-09T10:04:00-05:00" />
 <meta property="article:modified_time" content="2010-04-09T10:04:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -97,7 +96,7 @@ if (!doNotTrack) {
 <p>The book results (on p. 173) were:</p>
 <p>iteration: 100 best member: 0.085 0.015 0.129 -0.76 -0.992 best value: -0.9999</p>
 <p>Specifying an initial population can give DEoptim an initial set of parameters that are within the constraint. This guarantees a starting point but it can slow optimization if the f (and/or z) values are too low. Therefore, experiment with the initial population to find a set of f (and/or z) values that produce a result within, but not far from, the constraint.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM and snow packages</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM and snow packages</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>
 
@@ -199,7 +198,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -263,7 +318,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

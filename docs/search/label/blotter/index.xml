@@ -31,7 +31,7 @@
 &lt;p&gt;The second chart shows the result of following &lt;a href=&#34;http://www.mebanefaber.com/&#34;&gt;Mebane Faber&amp;rsquo;s&lt;/a&gt; tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in &lt;a href=&#34;http://ssrn.com/abstract=962461&#34;&gt;Faber&amp;rsquo;s article&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Without further ado, here&amp;rsquo;s the code:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# This code implements the strategy found in:&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# This code implements the strategy found in:&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# Faber, Mebane T., &amp;#34;A Quantitative Approach to Tactical Asset Allocation.&amp;#34;&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# Journal of Risk Management (Spring 2007).&lt;/span&gt;
 

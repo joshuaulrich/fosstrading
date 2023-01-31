@@ -11,10 +11,9 @@
 <meta property="og:description" content="This is a guest post by Ross Bennett. Ross is currently enrolled in the University of Washington Master of Science in Computational Finance &amp; Risk Management program with an expected graduation date of December 2014. He worked on the PortfolioAnalytics package as part of the Google Summer of Code 2013 project and continues to work on the package as a Research Assistant at the University of Washington.
 His work on the package focused on implementing a portfolio specification to separate and modularize assets, constraints, and objectives." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics.html" />
 <meta property="article:published_time" content="2014-03-29T12:25:00-05:00" />
 <meta property="article:modified_time" content="2014-03-29T12:25:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -95,14 +94,14 @@ if (!doNotTrack) {
 <p>This post is meant to provide a very basic introduction to the PortfolioAnalytics package. PortfolioAnalytics is an R package designed to provide numerical solutions and visualizations for portfolio problems with complex constraints and objectives. A key feature of PortfolioAnalytics is the ability to specify a portfolio with assets, constraints, and objectives that is solver agnostic, where the objective can be comprised of any valid R function. PortfolioAnalytics utilizes multiple solvers as backends for the optimization; linear programming, quadratic programming, differential evolution, random portfolios, particle swarm, and generalized simulated annealing. For optimization problems that can be formulated as linear or quadratic problems, these can be solved very fast and efficiently using the appropriate linear or quadratic solver supported by PortfolioAnalytics. For optimization problems with more complex constraints and objectives, a global solver such as differential evolution or random portfolios can be used to find a solution.</p>
 <p>Ross will be giving a tutorial on PortfolioAnalytics at the <a href="http://www.rinfinance.com">R/Finance 2014 Conference</a>. The tutorial will cover the key features of PortfolioAnalytics along with several comprehensive examples. Those who want to learn more about how R is used in finance are encouraged to attend.</p>
 <p>The primary functions in PortfolioAnalytics to specify a portfolio with constraints and objectives are <code>portfolio.spec()</code>, <code>add.constraint()</code>, and <code>add.objective()</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">PortfolioAnalytics</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">PortfolioAnalytics</span><span class="p">)</span>  
 <span class="nf">data</span><span class="p">(</span><span class="n">edhec</span><span class="p">)</span>  
 <span class="n">returns</span> <span class="o">&lt;-</span> <span class="n">edhec[</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="n">]</span>  
 <span class="n">funds</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>  
 </code></pre></div><p>Here we create a portfolio object with <code>portfolio.spec()</code>. The <code>assets</code> argument is a required argument to the <code>portfolio.spec()</code> function. <code>assets</code> can be a character vector with the names of the assets, a named numeric vector, or a scalar value specifying the number of assets. If a character vector or scalar value is passed in for <code>assets</code>, equal weights will be created for the initial portfolio weights.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">portfolio.spec</span><span class="p">(</span><span class="n">assets</span> <span class="o">=</span> <span class="n">funds</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">portfolio.spec</span><span class="p">(</span><span class="n">assets</span> <span class="o">=</span> <span class="n">funds</span><span class="p">)</span>  
 </code></pre></div><p>The <code>portfolio</code> object is an S3 class that contains portfolio level data as well as the constraints and objectives for the optimization problem. You can see that the constraints and objectives lists are currently empty, but we will add sets of constraints and objectives with <code>add.constraint()</code> and <code>add.objective()</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">print.default</span><span class="p">(</span><span class="n">init.portfolio</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print.default</span><span class="p">(</span><span class="n">init.portfolio</span><span class="p">)</span>  
 <span class="c1">## $assets  </span>
 <span class="c1">## Convertible Arbitrage            CTA Global Distressed Securities   </span>
 <span class="c1">##                0.1667                0.1667                0.1667   </span>
@@ -127,9 +126,9 @@ if (!doNotTrack) {
 <span class="c1">## attr(,&#34;class&#34;)  </span>
 <span class="c1">## [1] &#34;portfolio.spec&#34; &#34;portfolio&#34;  </span>
 </code></pre></div><p>Here we add the full investment constraint. The full investment constraint is a special case of the leverage constraint that specifies the weights must sum to 1 and is specified with the alias <code>type=&quot;full_investment&quot;</code> as shown below.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;full_investment&#34;</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;full_investment&#34;</span><span class="p">)</span>  
 </code></pre></div><p>Now we add box constraint to specify a long only portfolio. The long only constraint is a special case of a box constraint where the lower bound of the weights of each asset is equal to 0 and the upper bound of the weights of each asset is equal to 1. This is specified with <code>type=&quot;long_only&quot;</code> as shown below. The box constraint also allows for per asset weights to be specified.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;long_only&#34;</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">init.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.constraint</span><span class="p">(</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">init.portfolio</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;long_only&#34;</span><span class="p">)</span>  
 </code></pre></div><p>The following constraint types are supported:</p>
 <ul>
 <li>leverage</li>
@@ -147,7 +146,7 @@ if (!doNotTrack) {
 <li>Not supported for problems formulated as linear programming problems solved with <code>optimize_method=&quot;ROI&quot;</code>.</li>
 </ol>
 <p>Below we create two new portfolio objects. Note that we areassigning new names for the portfolios. This re-uses the constraints from <code>init.portfolio()</code> and adds the objectives specified below to <code>minSD.portfolio</code> and <code>meanES.portfolio</code> while leaving <code>init.portfolio</code> unchanged. This is useful for testing multiple portfolios with different objectives using the same constraints because the constraints only need to be specified once and several new portfolios can be created using an initial portfolio object.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Add objective for portfolio to minimize portfolio standard deviation  </span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Add objective for portfolio to minimize portfolio standard deviation  </span>
 <span class="n">minSD.portfolio</span> <span class="o">&lt;-</span> <span class="nf">add.objective</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="n">init.portfolio</span><span class="p">,</span>   
                                  <span class="n">type</span><span class="o">=</span><span class="s">&#34;risk&#34;</span><span class="p">,</span>   
                                  <span class="n">name</span><span class="o">=</span><span class="s">&#34;StdDev&#34;</span><span class="p">)</span>  
@@ -170,7 +169,7 @@ if (!doNotTrack) {
 </ul>
 <p>As demonstrated above, the <code>add.constraint()</code> and <code>add.objective()</code> functions were designed to be very flexible and modular so that constraints and objectives can easily be specified and added to <code>portfolio</code> objects.</p>
 <p>PortfolioAnalytics provides a <code>print()</code> method so that we can easily view the assets, constraints, and objectives that we have specified for the portfolio.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">minSD.portfolio</span><span class="p">)</span>  
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">minSD.portfolio</span><span class="p">)</span>  
 <span class="c1">## **************************************************  </span>
 <span class="c1">## PortfolioAnalytics Portfolio Specification   </span>
 <span class="c1">## **************************************************  </span>
@@ -199,7 +198,7 @@ if (!doNotTrack) {
 <span class="c1">## Enabled objective names  </span>
 <span class="c1">##      - StdDev   </span>
 <span class="c1">## Number of disabled objectives: 0  </span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">meanES.portfolio</span><span class="p">)</span>  
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">print</span><span class="p">(</span><span class="n">meanES.portfolio</span><span class="p">)</span>  
 <span class="c1">## **************************************************  </span>
 <span class="c1">## PortfolioAnalytics Portfolio Specification   </span>
 <span class="c1">## **************************************************  </span>
@@ -249,7 +248,7 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>The objective to minimize standard deviation can be formulated as a quadratic programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the minimum standard deviation portfolio  </span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the minimum standard deviation portfolio  </span>
 <span class="n">minSD.opt</span> <span class="o">&lt;-</span> <span class="nf">optimize.portfolio</span><span class="p">(</span><span class="n">R</span> <span class="o">=</span> <span class="n">returns</span><span class="p">,</span> <span class="n">portfolio</span> <span class="o">=</span> <span class="n">minSD.portfolio</span><span class="p">,</span>   
     <span class="n">optimize_method</span> <span class="o">=</span> <span class="s">&#34;ROI&#34;</span><span class="p">,</span> <span class="n">trace</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
   
@@ -272,7 +271,7 @@ if (!doNotTrack) {
 <span class="c1">##   StdDev   </span>
 <span class="c1">## 0.008855  </span>
 </code></pre></div><p>The objective to maximize mean return per ES can be formulated as a linear programming problem and can be solved quickly with <code>optimize_method=&quot;ROI&quot;</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the maximize mean per unit ES  </span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Run the optimization for the maximize mean per unit ES  </span>
 <span class="n">meanES.opt</span> <span class="o">&lt;-</span> <span class="nf">optimize.portfolio</span><span class="p">(</span><span class="n">R</span> <span class="o">=</span> <span class="n">returns</span><span class="p">,</span> <span class="n">portfolio</span> <span class="o">=</span> <span class="n">meanES.portfolio</span><span class="p">,</span>   
     <span class="n">optimize_method</span> <span class="o">=</span> <span class="s">&#34;ROI&#34;</span><span class="p">,</span> <span class="n">trace</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  
   
@@ -299,11 +298,11 @@ if (!doNotTrack) {
 <span class="c1">##      ES   </span>
 <span class="c1">## 0.01837  </span>
 </code></pre></div><p>The PortfolioAnalytics package provides functions for charting to better understand the optimization problem through visualization. The <code>plot()</code> function produces a plot of of the optimal weights and the optimal portfolio in risk-return space. The optimal weights and chart in risk-return space can be plotted separately with <code>chart.Weights()</code> and <code>chart.RiskReward()</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">minSD.opt</span><span class="p">,</span> <span class="n">risk.col</span><span class="o">=</span><span class="s">&#34;StdDev&#34;</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">minSD.opt</span><span class="p">,</span> <span class="n">risk.col</span><span class="o">=</span><span class="s">&#34;StdDev&#34;</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
      <span class="n">main</span><span class="o">=</span><span class="s">&#34;Min SD Optimization&#34;</span><span class="p">,</span>  
      <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.0083</span><span class="p">),</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.06</span><span class="p">))</span>  
 </code></pre></div><p><a href="/post/images/unnamed-chunk-102.png"><img src="/post/images/unnamed-chunk-102.png" alt=""></a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">meanES.opt</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">meanES.opt</span><span class="p">,</span> <span class="n">chart.assets</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span>   
      <span class="n">main</span><span class="o">=</span><span class="s">&#34;Mean ES Optimization&#34;</span><span class="p">,</span>  
      <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.0083</span><span class="p">),</span> <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.16</span><span class="p">))</span>  
 </code></pre></div><p><a href="/post/images/unnamed-chunk-101.png"><img src="/post/images/unnamed-chunk-101.png" alt=""></a></p>
@@ -383,7 +382,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -447,7 +502,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -89,7 +89,7 @@
 &lt;p&gt;Many of you may know I am a rather large proponent of R. I have authored or coauthored quite a few packages and help to organize the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance conference&lt;/a&gt; in Chicago each Spring. I am also a huge single-language solution kind of guy. If I could order food and surf the internet from R, all the world would be mine. But I digress&amp;hellip;&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&#34;http://cran.r-project.org/web/packages/IBrokers/index.html&#34;&gt;IBrokers&lt;/a&gt; package on CRAN is my contribution to the landscape. A pure R implementation of most of the API, using nothing but R and some magic. It is now possible to connect to a running TWS (aka Trader Workstation) and retrieve historical data, request market data feeds, and even place orders &amp;ndash; &lt;em&gt;all from R&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;You can get a TWS client from IB at the link above, and installing IBrokers is easy enough from R:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IBrokers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IBrokers&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a &amp;ldquo;trusted IP&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;First find the &amp;ldquo;Configure&amp;rdquo; menu in the TWS&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -98,7 +98,7 @@
 &lt;p&gt;To add a &amp;ldquo;Trusted IP&amp;rdquo; click on &amp;ldquo;All API Settings&amp;hellip;&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IBrokers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IBrokers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;## Loading required package: xts&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## Loading required package: zoo&lt;/span&gt;
@@ -117,7 +117,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you can see there isn&amp;rsquo;t too much to talk about in the code above. We make the standard R &lt;code&gt;library()&lt;/code&gt; call to get IBrokers into our session, and the use the &lt;code&gt;twsConnect()&lt;/code&gt; function to make a connection to the TWS. There are parameters that can be passed in (such as &lt;code&gt;host&lt;/code&gt;, and &lt;code&gt;connection ID&lt;/code&gt;), but we needn&amp;rsquo;t do that here.&lt;/p&gt;
 &lt;p&gt;The result of our call is a &lt;code&gt;twsConnection&lt;/code&gt; object. This contains a few important bits of information that are used throughout the lifetime of the object.&lt;/p&gt;
 &lt;p&gt;To wrap up this post we&amp;rsquo;ll use our new connection to fetch some historical data from IB.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reqHistoricalData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tws&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reqHistoricalData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tws&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;## TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
@@ -125,7 +125,7 @@
 &lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## waiting for TWS reply ....... done.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Some notes about the above. The first argument to most any IBrokers call is the connection object created with &lt;code&gt;twsConnect()&lt;/code&gt;. The second argument to the above request is a &lt;code&gt;twsContract&lt;/code&gt; object. There are a variety of ways to construct this, and &lt;code&gt;twsSTK()&lt;/code&gt; is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;twsSTK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AAPL&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;## List of 14&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## $ conId : num 0&lt;/span&gt;
@@ -143,7 +143,7 @@
 &lt;span class=&#34;c1&#34;&gt;## $ comboleg : NULL&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;## $ include_expired: chr &amp;#34;0&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you may have noticed, we assigned the output of our request to a variable &lt;code&gt;appl&lt;/code&gt; in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aapl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;## An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;##   Data: num [1:22, 1:8] 245 246 249 247 248 ...&lt;/span&gt;

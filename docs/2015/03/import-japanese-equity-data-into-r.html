@@ -11,10 +11,9 @@
 <meta property="og:description" content="I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
 Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&rsquo;ve written." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html" />
 <meta property="article:published_time" content="2015-03-10T12:09:00-05:00" />
 <meta property="article:modified_time" content="2015-03-10T12:09:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -95,7 +94,7 @@ if (!doNotTrack) {
 <p>The <code>getSymbols.yahooj</code> function is a major enhancement provided by <a href="http://morannon.org/">Wouter Thielen</a>.  It allows quantmod users to pull stock data from Yahoo Finance Japan. </p>
 <p>Japanese ticker symbols usually start with a number and it is cumbersome to use variable names that start with a number in the R environment, so the string &ldquo;YJ&rdquo; will be prepended to each of the Symbols.  I recommend using <code>setSymbolLookup</code> to prepend the ticker symbols with &ldquo;YJ&rdquo; yourself, so you can just use the main <code>getSymbols</code> function.</p>
 <p>For example, if you want to pull Sony data, you would run:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="nf">setSymbolLookup</span><span class="p">(</span><span class="n">YJ6758.T</span><span class="o">=</span><span class="s">&#39;yahooj&#39;</span><span class="p">)</span>
 <span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#39;YJ6758.T&#39;</span><span class="p">)</span>  
 </code></pre></div><p>The full list of supported data sources for quantmod is now: Yahoo Finance-US, Yahoo Finance-Japan, Google Finance, csv, RData (including rds and rda), FRED, SQLite, MySQL, and Oanda. </p>
@@ -171,7 +170,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -235,7 +290,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

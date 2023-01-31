@@ -13,10 +13,9 @@ In this long-overdue post, I will show how to optimize a Leverage Space Portfoli
 Some copious notes before we get to the code:
 These examples are based on revision 26 31 from r-forge and will not work under earlier revisions (and may not work with later revisions)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-examples.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-examples.html" />
 <meta property="article:published_time" content="2010-01-02T15:35:00-06:00" />
 <meta property="article:modified_time" content="2010-01-02T15:35:00-06:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -98,7 +97,7 @@ if (!doNotTrack) {
 <p>These examples are based on revision <del>26</del> 31 from r-forge and will not work under earlier revisions (and may not work with later revisions). LSPM is still in <strong>very</strong> alpha status.  Expect things to change, perhaps significantly.</p>
 <p>These examples were run using <a href="http://cran.r-project.org/src/contrib/Archive/DEoptim/DEoptim_1.3-3.tar.gz">DEoptim_1.3-3</a> (and LSPM revision 26 depends on that version) code from DEoptim_1.3-3 that has been bundled inside LSPM.  We are working with the DEoptim authors to address issues with more recent versions of DEoptim.  LSPM will un-bundle and use the most recent version of DEoptim as soon as the issues are resolved.</p>
 <p>The first two examples are taken from <a href="http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;tag=fotr09-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0470455950">Vince, Ralph (2009). The Leverage Space Trading Model. New York: John Wiley &amp; Sons, Inc.</a><img src="http://www.assoc-amazon.com/e/ir?t=fotr09-20&amp;l=as2&amp;o=1&amp;a=0470455950" alt=""> The results will not match the book because of differences between optimization via DEoptim and Ralph&rsquo;s genetic algorithm implementation.  Ralph believes his genetic algorithm is getting hung up on a local maximum, whereas DEoptim is closer to the global solution.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package  </span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package  </span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>  
   
 <span class="c1"># Multiple strategy example (data found on pp. 84-87)  </span>
@@ -196,7 +195,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -260,7 +315,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

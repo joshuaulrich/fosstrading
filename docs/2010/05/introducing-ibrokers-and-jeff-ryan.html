@@ -11,10 +11,9 @@
 <meta property="og:description" content="Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.
 I&rsquo;ll start by highlighting that while all the software in this post is indeed free (true to FOSS), an account with Interactive Brokers is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html" />
 <meta property="article:published_time" content="2010-05-13T14:23:00-05:00" />
 <meta property="article:modified_time" content="2010-05-13T14:23:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -96,7 +95,7 @@ if (!doNotTrack) {
 <p>Many of you may know I am a rather large proponent of R. I have authored or coauthored quite a few packages and help to organize the <a href="http://www.rinfinance.com/">R/Finance conference</a> in Chicago each Spring. I am also a huge single-language solution kind of guy. If I could order food and surf the internet from R, all the world would be mine. But I digress&hellip;</p>
 <p>The <a href="http://cran.r-project.org/web/packages/IBrokers/index.html">IBrokers</a> package on CRAN is my contribution to the landscape. A pure R implementation of most of the API, using nothing but R and some magic. It is now possible to connect to a running TWS (aka Trader Workstation) and retrieve historical data, request market data feeds, and even place orders &ndash; <em>all from R</em>.</p>
 <p>You can get a TWS client from IB at the link above, and installing IBrokers is easy enough from R:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;IBrokers&#34;</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;IBrokers&#34;</span><span class="p">)</span>
 </code></pre></div><p>Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a &ldquo;trusted IP&rdquo;.</p>
 <p>First find the &ldquo;Configure&rdquo; menu in the TWS</p>
 <p><img src="/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png" alt=""></p>
@@ -105,7 +104,7 @@ if (!doNotTrack) {
 <p>To add a &ldquo;Trusted IP&rdquo; click on &ldquo;All API Settings&hellip;&rdquo;</p>
 <p><a href="/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png"><img src="/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png" alt=""></a></p>
 <p>Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">IBrokers</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">IBrokers</span><span class="p">)</span>
 
 <span class="c1">## Loading required package: xts</span>
 <span class="c1">## Loading required package: zoo</span>
@@ -124,7 +123,7 @@ if (!doNotTrack) {
 </code></pre></div><p>As you can see there isn&rsquo;t too much to talk about in the code above. We make the standard R <code>library()</code> call to get IBrokers into our session, and the use the <code>twsConnect()</code> function to make a connection to the TWS. There are parameters that can be passed in (such as <code>host</code>, and <code>connection ID</code>), but we needn&rsquo;t do that here.</p>
 <p>The result of our call is a <code>twsConnection</code> object. This contains a few important bits of information that are used throughout the lifetime of the object.</p>
 <p>To wrap up this post we&rsquo;ll use our new connection to fetch some historical data from IB.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">aapl</span> <span class="o">&lt;-</span> <span class="nf">reqHistoricalData</span><span class="p">(</span><span class="n">tws</span><span class="p">,</span> <span class="nf">twsSTK</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">))</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">aapl</span> <span class="o">&lt;-</span> <span class="nf">reqHistoricalData</span><span class="p">(</span><span class="n">tws</span><span class="p">,</span> <span class="nf">twsSTK</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">))</span>
 
 <span class="c1">## TWS Message: 2 -1 2104 Market data farm connection is OK:usfuture</span>
 <span class="c1">## </span>
@@ -132,7 +131,7 @@ if (!doNotTrack) {
 <span class="c1">## </span>
 <span class="c1">## waiting for TWS reply ....... done.</span>
 </code></pre></div><p>Some notes about the above. The first argument to most any IBrokers call is the connection object created with <code>twsConnect()</code>. The second argument to the above request is a <code>twsContract</code> object. There are a variety of ways to construct this, and <code>twsSTK()</code> is just a shortcut from IBrokers that allows for equity instruments to be specified. The object is just a list of fields that contain data IB needs to process your requests:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">twsSTK</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">twsSTK</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">)</span>
 
 <span class="c1">## List of 14</span>
 <span class="c1">## $ conId : num 0</span>
@@ -150,7 +149,7 @@ if (!doNotTrack) {
 <span class="c1">## $ comboleg : NULL</span>
 <span class="c1">## $ include_expired: chr &#34;0&#34;</span>
 </code></pre></div><p>As you may have noticed, we assigned the output of our request to a variable <code>appl</code> in our workspace. Taking a look at it reveals it is an xts object of our daily bars for the last 30 calendar days.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">str</span><span class="p">(</span><span class="n">aapl</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">str</span><span class="p">(</span><span class="n">aapl</span><span class="p">)</span>
 
 <span class="c1">## An ‘xts’ object from 2010-04-14 to 2010-05-13 containing:</span>
 <span class="c1">##   Data: num [1:22, 1:8] 245 246 249 247 248 ...</span>
@@ -243,7 +242,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -307,7 +362,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -12,10 +12,9 @@
 If you like the RSI(2), be sure to check out David Varadi&rsquo;s RSI(2) alternative!
 This post will use the PerformanceAnalytics package to evaluate the rules that scale in/out of positions. I&rsquo;ve also provided a simple function that provides some summary statistics." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2009/06/rsi2-evaluation.html" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/06/rsi2-evaluation.html" />
 <meta property="article:published_time" content="2009-06-28T22:02:00-05:00" />
 <meta property="article:modified_time" content="2009-06-28T22:02:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -99,116 +98,116 @@ if (!doNotTrack) {
 <table>
 <thead>
 <tr>
-<th style="text-align:right">Signal</th>
-<th style="text-align:right"># Trades</th>
-<th style="text-align:right">% Win</th>
-<th style="text-align:right">Mean Win</th>
-<th style="text-align:right">Mean Loss</th>
-<th style="text-align:right">Median Win</th>
-<th style="text-align:right">Median Loss</th>
-<th style="text-align:right">Mean W/L</th>
-<th style="text-align:right">Median W/L</th>
+<th align="right">Signal</th>
+<th align="right"># Trades</th>
+<th align="right">% Win</th>
+<th align="right">Mean Win</th>
+<th align="right">Mean Loss</th>
+<th align="right">Median Win</th>
+<th align="right">Median Loss</th>
+<th align="right">Mean W/L</th>
+<th align="right">Median W/L</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right">-1.00</td>
-<td style="text-align:right">133</td>
-<td style="text-align:right">58</td>
-<td style="text-align:right">0.69</td>
-<td style="text-align:right">-0.44</td>
-<td style="text-align:right">0.53</td>
-<td style="text-align:right">-0.25</td>
-<td style="text-align:right">1.55</td>
-<td style="text-align:right">2.12</td>
+<td align="right">-1.00</td>
+<td align="right">133</td>
+<td align="right">58</td>
+<td align="right">0.69</td>
+<td align="right">-0.44</td>
+<td align="right">0.53</td>
+<td align="right">-0.25</td>
+<td align="right">1.55</td>
+<td align="right">2.12</td>
 </tr>
 <tr>
-<td style="text-align:right">-0.75</td>
-<td style="text-align:right">173</td>
-<td style="text-align:right">49</td>
-<td style="text-align:right">0.62</td>
-<td style="text-align:right">-0.39</td>
-<td style="text-align:right">0.37</td>
-<td style="text-align:right">-0.25</td>
-<td style="text-align:right">1.60</td>
-<td style="text-align:right">1.48</td>
+<td align="right">-0.75</td>
+<td align="right">173</td>
+<td align="right">49</td>
+<td align="right">0.62</td>
+<td align="right">-0.39</td>
+<td align="right">0.37</td>
+<td align="right">-0.25</td>
+<td align="right">1.60</td>
+<td align="right">1.48</td>
 </tr>
 <tr>
-<td style="text-align:right">-0.50</td>
-<td style="text-align:right">143</td>
-<td style="text-align:right">54</td>
-<td style="text-align:right">0.43</td>
-<td style="text-align:right">-0.36</td>
-<td style="text-align:right">0.28</td>
-<td style="text-align:right">-0.19</td>
-<td style="text-align:right">1.19</td>
-<td style="text-align:right">1.51</td>
+<td align="right">-0.50</td>
+<td align="right">143</td>
+<td align="right">54</td>
+<td align="right">0.43</td>
+<td align="right">-0.36</td>
+<td align="right">0.28</td>
+<td align="right">-0.19</td>
+<td align="right">1.19</td>
+<td align="right">1.51</td>
 </tr>
 <tr>
-<td style="text-align:right">-0.25</td>
-<td style="text-align:right">158</td>
-<td style="text-align:right">56</td>
-<td style="text-align:right">0.21</td>
-<td style="text-align:right">-0.19</td>
-<td style="text-align:right">0.14</td>
-<td style="text-align:right">-0.13</td>
-<td style="text-align:right">1.15</td>
-<td style="text-align:right">1.08</td>
+<td align="right">-0.25</td>
+<td align="right">158</td>
+<td align="right">56</td>
+<td align="right">0.21</td>
+<td align="right">-0.19</td>
+<td align="right">0.14</td>
+<td align="right">-0.13</td>
+<td align="right">1.15</td>
+<td align="right">1.08</td>
 </tr>
 <tr>
-<td style="text-align:right">0.00</td>
-<td style="text-align:right">1262</td>
-<td style="text-align:right">0</td>
-<td style="text-align:right">NaN</td>
-<td style="text-align:right">NaN</td>
-<td style="text-align:right">NA</td>
-<td style="text-align:right">NA</td>
-<td style="text-align:right">NaN</td>
-<td style="text-align:right">NA</td>
+<td align="right">0.00</td>
+<td align="right">1262</td>
+<td align="right">0</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NaN</td>
+<td align="right">NA</td>
 </tr>
 <tr>
-<td style="text-align:right">0.25</td>
-<td style="text-align:right">117</td>
-<td style="text-align:right">53</td>
-<td style="text-align:right">0.26</td>
-<td style="text-align:right">-0.31</td>
-<td style="text-align:right">0.18</td>
-<td style="text-align:right">-0.21</td>
-<td style="text-align:right">0.83</td>
-<td style="text-align:right">0.86</td>
+<td align="right">0.25</td>
+<td align="right">117</td>
+<td align="right">53</td>
+<td align="right">0.26</td>
+<td align="right">-0.31</td>
+<td align="right">0.18</td>
+<td align="right">-0.21</td>
+<td align="right">0.83</td>
+<td align="right">0.86</td>
 </tr>
 <tr>
-<td style="text-align:right">0.50</td>
-<td style="text-align:right">137</td>
-<td style="text-align:right">58</td>
-<td style="text-align:right">0.51</td>
-<td style="text-align:right">-0.58</td>
-<td style="text-align:right">0.31</td>
-<td style="text-align:right">-0.35</td>
-<td style="text-align:right">0.87</td>
-<td style="text-align:right">0.89</td>
+<td align="right">0.50</td>
+<td align="right">137</td>
+<td align="right">58</td>
+<td align="right">0.51</td>
+<td align="right">-0.58</td>
+<td align="right">0.31</td>
+<td align="right">-0.35</td>
+<td align="right">0.87</td>
+<td align="right">0.89</td>
 </tr>
 <tr>
-<td style="text-align:right">0.75</td>
-<td style="text-align:right">143</td>
-<td style="text-align:right">62</td>
-<td style="text-align:right">0.88</td>
-<td style="text-align:right">-0.89</td>
-<td style="text-align:right">0.50</td>
-<td style="text-align:right">-0.71</td>
-<td style="text-align:right">0.99</td>
-<td style="text-align:right">0.70</td>
+<td align="right">0.75</td>
+<td align="right">143</td>
+<td align="right">62</td>
+<td align="right">0.88</td>
+<td align="right">-0.89</td>
+<td align="right">0.50</td>
+<td align="right">-0.71</td>
+<td align="right">0.99</td>
+<td align="right">0.70</td>
 </tr>
 <tr>
-<td style="text-align:right">1.00</td>
-<td style="text-align:right">119</td>
-<td style="text-align:right">63</td>
-<td style="text-align:right">1.34</td>
-<td style="text-align:right">-1.41</td>
-<td style="text-align:right">0.80</td>
-<td style="text-align:right">-1.11</td>
-<td style="text-align:right">0.95</td>
-<td style="text-align:right">0.71</td>
+<td align="right">1.00</td>
+<td align="right">119</td>
+<td align="right">63</td>
+<td align="right">1.34</td>
+<td align="right">-1.41</td>
+<td align="right">0.80</td>
+<td align="right">-1.11</td>
+<td align="right">0.95</td>
+<td align="right">0.71</td>
 </tr>
 </tbody>
 </table>
@@ -218,105 +217,105 @@ if (!doNotTrack) {
 <table>
 <thead>
 <tr>
-<th style="text-align:right">From</th>
-<th style="text-align:right">Trough</th>
-<th style="text-align:right">To</th>
-<th style="text-align:right">Depth</th>
-<th style="text-align:right">Length</th>
-<th style="text-align:right">To Trough</th>
-<th style="text-align:right">Recovery</th>
+<th align="right">From</th>
+<th align="right">Trough</th>
+<th align="right">To</th>
+<th align="right">Depth</th>
+<th align="right">Length</th>
+<th align="right">To Trough</th>
+<th align="right">Recovery</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:right">2008-10-06</td>
-<td style="text-align:right">2008-10-10</td>
-<td style="text-align:right">2008-10-28</td>
-<td style="text-align:right">-0.157</td>
-<td style="text-align:right">17</td>
-<td style="text-align:right">5</td>
-<td style="text-align:right">12</td>
+<td align="right">2008-10-06</td>
+<td align="right">2008-10-10</td>
+<td align="right">2008-10-28</td>
+<td align="right">-0.157</td>
+<td align="right">17</td>
+<td align="right">5</td>
+<td align="right">12</td>
 </tr>
 <tr>
-<td style="text-align:right">2001-08-30</td>
-<td style="text-align:right">2001-09-21</td>
-<td style="text-align:right">2002-01-23</td>
-<td style="text-align:right">-0.091</td>
-<td style="text-align:right">96</td>
-<td style="text-align:right">12</td>
-<td style="text-align:right">84</td>
+<td align="right">2001-08-30</td>
+<td align="right">2001-09-21</td>
+<td align="right">2002-01-23</td>
+<td align="right">-0.091</td>
+<td align="right">96</td>
+<td align="right">12</td>
+<td align="right">84</td>
 </tr>
 <tr>
-<td style="text-align:right">2002-07-19</td>
-<td style="text-align:right">2002-07-23</td>
-<td style="text-align:right">2002-08-20</td>
-<td style="text-align:right">-0.088</td>
-<td style="text-align:right">23</td>
-<td style="text-align:right">3</td>
-<td style="text-align:right">20</td>
+<td align="right">2002-07-19</td>
+<td align="right">2002-07-23</td>
+<td align="right">2002-08-20</td>
+<td align="right">-0.088</td>
+<td align="right">23</td>
+<td align="right">3</td>
+<td align="right">20</td>
 </tr>
 <tr>
-<td style="text-align:right">2000-03-22</td>
-<td style="text-align:right">2000-04-14</td>
-<td style="text-align:right">2000-07-05</td>
-<td style="text-align:right">-0.076</td>
-<td style="text-align:right">73</td>
-<td style="text-align:right">18</td>
-<td style="text-align:right">55</td>
+<td align="right">2000-03-22</td>
+<td align="right">2000-04-14</td>
+<td align="right">2000-07-05</td>
+<td align="right">-0.076</td>
+<td align="right">73</td>
+<td align="right">18</td>
+<td align="right">55</td>
 </tr>
 <tr>
-<td style="text-align:right">2009-02-17</td>
-<td style="text-align:right">2009-02-23</td>
-<td style="text-align:right">2009-04-27</td>
-<td style="text-align:right">-0.070</td>
-<td style="text-align:right">49</td>
-<td style="text-align:right">5</td>
-<td style="text-align:right">44</td>
+<td align="right">2009-02-17</td>
+<td align="right">2009-02-23</td>
+<td align="right">2009-04-27</td>
+<td align="right">-0.070</td>
+<td align="right">49</td>
+<td align="right">5</td>
+<td align="right">44</td>
 </tr>
 <tr>
-<td style="text-align:right">2003-03-14</td>
-<td style="text-align:right">2003-03-21</td>
-<td style="text-align:right">2003-05-09</td>
-<td style="text-align:right">-0.055</td>
-<td style="text-align:right">40</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">34</td>
+<td align="right">2003-03-14</td>
+<td align="right">2003-03-21</td>
+<td align="right">2003-05-09</td>
+<td align="right">-0.055</td>
+<td align="right">40</td>
+<td align="right">6</td>
+<td align="right">34</td>
 </tr>
 <tr>
-<td style="text-align:right">2000-10-09</td>
-<td style="text-align:right">2000-10-12</td>
-<td style="text-align:right">2000-12-06</td>
-<td style="text-align:right">-0.052</td>
-<td style="text-align:right">42</td>
-<td style="text-align:right">4</td>
-<td style="text-align:right">38</td>
+<td align="right">2000-10-09</td>
+<td align="right">2000-10-12</td>
+<td align="right">2000-12-06</td>
+<td align="right">-0.052</td>
+<td align="right">42</td>
+<td align="right">4</td>
+<td align="right">38</td>
 </tr>
 <tr>
-<td style="text-align:right">2002-08-29</td>
-<td style="text-align:right">2002-09-24</td>
-<td style="text-align:right">2002-10-10</td>
-<td style="text-align:right">-0.051</td>
-<td style="text-align:right">30</td>
-<td style="text-align:right">18</td>
-<td style="text-align:right">12</td>
+<td align="right">2002-08-29</td>
+<td align="right">2002-09-24</td>
+<td align="right">2002-10-10</td>
+<td align="right">-0.051</td>
+<td align="right">30</td>
+<td align="right">18</td>
+<td align="right">12</td>
 </tr>
 <tr>
-<td style="text-align:right">2008-01-02</td>
-<td style="text-align:right">2008-01-22</td>
-<td style="text-align:right">2008-03-11</td>
-<td style="text-align:right">-0.045</td>
-<td style="text-align:right">48</td>
-<td style="text-align:right">14</td>
-<td style="text-align:right">34</td>
+<td align="right">2008-01-02</td>
+<td align="right">2008-01-22</td>
+<td align="right">2008-03-11</td>
+<td align="right">-0.045</td>
+<td align="right">48</td>
+<td align="right">14</td>
+<td align="right">34</td>
 </tr>
 <tr>
-<td style="text-align:right">2001-04-18</td>
-<td style="text-align:right">2001-06-18</td>
-<td style="text-align:right">2001-08-10</td>
-<td style="text-align:right">-0.045</td>
-<td style="text-align:right">81</td>
-<td style="text-align:right">43</td>
-<td style="text-align:right">38</td>
+<td align="right">2001-04-18</td>
+<td align="right">2001-06-18</td>
+<td align="right">2001-08-10</td>
+<td align="right">-0.045</td>
+<td align="right">81</td>
+<td align="right">43</td>
+<td align="right">38</td>
 </tr>
 </tbody>
 </table>
@@ -326,56 +325,56 @@ if (!doNotTrack) {
 <thead>
 <tr>
 <th>Statistic</th>
-<th style="text-align:right">Return</th>
+<th align="right">Return</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Semi Deviation</td>
-<td style="text-align:right">0.0050</td>
+<td align="right">0.0050</td>
 </tr>
 <tr>
 <td>Gain Deviation</td>
-<td style="text-align:right">0.0094</td>
+<td align="right">0.0094</td>
 </tr>
 <tr>
 <td>Loss Deviation</td>
-<td style="text-align:right">0.0076</td>
+<td align="right">0.0076</td>
 </tr>
 <tr>
 <td>Downside Deviation (MAR=10%)</td>
-<td style="text-align:right">0.0099</td>
+<td align="right">0.0099</td>
 </tr>
 <tr>
 <td>Downside Deviation (rf=0%)</td>
-<td style="text-align:right">0.0092</td>
+<td align="right">0.0092</td>
 </tr>
 <tr>
 <td>Downside Deviation (0%)</td>
-<td style="text-align:right">0.0092</td>
+<td align="right">0.0092</td>
 </tr>
 <tr>
 <td>Maximum Drawdown</td>
-<td style="text-align:right">-0.1572</td>
+<td align="right">-0.1572</td>
 </tr>
 <tr>
 <td>VaR (99%)</td>
-<td style="text-align:right">0.0160</td>
+<td align="right">0.0160</td>
 </tr>
 <tr>
 <td>Beyond VaR</td>
-<td style="text-align:right">0.0160</td>
+<td align="right">0.0160</td>
 </tr>
 <tr>
 <td>Modified VaR (99%)</td>
-<td style="text-align:right">0.0705</td>
+<td align="right">0.0705</td>
 </tr>
 </tbody>
 </table>
 <p>The chart below shows the output from the PerformanceAnalytics <code>charts.PerformanceSummary()</code> function. It shows the equity curves and drawdown from peak for the long and short sides of the strategy. The middle graph shows the <em>daily</em> returns for the combined strategy.</p>
 <p><a href="/post/images/20090606_rsi2_performance.png"><img src="/post/images/20090606_rsi2_performance.png" alt=""></a></p>
 <p>The code below has everything that created the results above. It also contains the same results for a modified RSI(2) strategy. The modified strategy uses RSI steps of 10 and sizing steps of 0.3 (i.e. RSI&lt;10 -&gt; size=1, 10&lt;20 -&gt; size=0.7, etc.).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Attach packages. You can install packages via:</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Attach packages. You can install packages via:</span>
 <span class="c1"># install.packages(c(&#34;quantmod&#34;,&#34;TTR&#34;,&#34;PerformanceAnalytics&#34;))</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">TTR</span><span class="p">)</span>
@@ -598,7 +597,63 @@ if (!doNotTrack) {
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/" />
 	</form>
-</div><div>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
     <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
       <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
     </a>
@@ -662,7 +717,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 FOSS Trading.
+			&copy; 2023 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
