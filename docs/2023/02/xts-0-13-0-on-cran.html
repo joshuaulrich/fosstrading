@@ -90,7 +90,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-21T14:58:00-05:00">February 21, 2023</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; <code>to.period()</code> handles custom endpoint values, <code>print()</code> truncates rows like data.table, and <code>str()</code> provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes.</p>
-<p>For some reason, I decided it was a good idea to go through the oldest GitHub issues and decide whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)</p>
+<p>For some reason, I decided it was a good idea to go through the oldest GitHub issues and determine whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)</p>
 <h3 id="new-features">New Features</h3>
 <p>The coolest new feature is the ability to use open-ended ranges for time-of-day subsetting. So you can subset by time of day from the start/end of the day without providing the start/end times (i.e. 00:00:00.000/23:59:59.999). Thanks to Chris Katsulis for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/243">#243</a>)</p>
 <p>Here&rsquo;s an example:</p>
@@ -226,7 +226,7 @@ if (!doNotTrack) {
 <span class="c1">##   Index:   Date [1] (TZ: &#34;UTC&#34;)</span>
 </code></pre></div><hr>
 <p>There&rsquo;s a nice improvement to <code>as.xts()</code> for data.frame and similar objects (e.g. data.table, tibble). It will look for a time-based column in the data.frame if it cannot create an index from the row names. (<a href="https://github.com/joshuaulrich/xts/issues/381">#381</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2023-02-21&#34;</span><span class="p">),</span> <span class="n">A</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="m">42</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2023-02-21&#34;</span><span class="p">),</span> <span class="n">A</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="m">42</span><span class="p">)</span>
 <span class="nf">as.xts</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="c1">##             A  B</span>
 <span class="c1">## 2023-02-21 21 42</span>
@@ -260,7 +260,7 @@ if (!doNotTrack) {
 <h3 id="other">Other</h3>
 <ul>
 <li>
-<p>Migrated unit tests from <a href="https://github.com/romanzenka/RUnit">RUnit</a> (which is no longer actively developed) to <a href="https://github.com/markvanderloo/tinytest">tinytest</a>. Thanks <a href="https://github.com/markvanderloo">Mark van der Loo</a>!</p>
+<p>Migrated unit tests from <a href="https://github.com/romanzenka/RUnit">RUnit</a> (which is actively maintained, but no longer actively developed) to <a href="https://github.com/markvanderloo/tinytest">tinytest</a>. Thanks <a href="https://github.com/markvanderloo">Mark van der Loo</a>!</p>
 </li>
 <li>
 <p>Added to the <code>endpoints()</code> documentation to make it clearer that the result is based on the UNIX epoch (midnight 1970, UTC) and not the first observation in the xts index. Thanks to GitHub user Eluvias for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/299">#299</a>)</p>

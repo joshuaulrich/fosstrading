@@ -9,7 +9,7 @@ An updated version of [xts](http://cran.r-project.org/package=xts) is now on [CR
 
 <!--more-->
 
-For some reason, I decided it was a good idea to go through the oldest GitHub issues and decide whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)
+For some reason, I decided it was a good idea to go through the oldest GitHub issues and determine whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)
 
 ### New Features
 
@@ -170,7 +170,7 @@ str(xts(NULL, Sys.Date()))
 There's a nice improvement to `as.xts()` for data.frame and similar objects (e.g. data.table, tibble). It will look for a time-based column in the data.frame if it cannot create an index from the row names. ([#381](https://github.com/joshuaulrich/xts/issues/381))
 
 ```r
-d <- data.frame(as.Date("2023-02-21"), A = 21, B = 42
+d <- data.frame(as.Date("2023-02-21"), A = 21, B = 42)
 as.xts(d)
 ##             A  B
 ## 2023-02-21 21 42
@@ -198,7 +198,7 @@ This release also includes a new xts method for `na.fill()` that significantly i
 
 ### Other
 
-* Migrated unit tests from [RUnit](https://github.com/romanzenka/RUnit) (which is no longer actively developed) to [tinytest](https://github.com/markvanderloo/tinytest). Thanks [Mark van der Loo](https://github.com/markvanderloo)!
+* Migrated unit tests from [RUnit](https://github.com/romanzenka/RUnit) (which is actively maintained, but no longer actively developed) to [tinytest](https://github.com/markvanderloo/tinytest). Thanks [Mark van der Loo](https://github.com/markvanderloo)!
 
 * Added to the `endpoints()` documentation to make it clearer that the result is based on the UNIX epoch (midnight 1970, UTC) and not the first observation in the xts index. Thanks to GitHub user Eluvias for the suggestion! ([#299](https://github.com/joshuaulrich/xts/issues/299))
 
