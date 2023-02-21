@@ -1,6 +1,6 @@
 ---
 title: 'xts_0.13.0 on CRAN'
-date: 2023-02-23T14:58:00.000-05:00
+date: 2023-02-21T14:58:00.000-05:00
 draft: false
 tags : [Releases, xts, R]
 ---

@@ -4,21 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Moving from Excel to R - FOSS Trading</title>
+	<title>xts - FOSS Trading</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Moving from Excel to R" />
-<meta property="og:description" content="This first post of the Backtesting in Excel and R series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of R.
-I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals). Most people don&rsquo;t prefer my approach of &ldquo;keep at it until you figure it out&rdquo;, so I don&rsquo;t have a lot of personal advice to share." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2011/03/moving-from-excel-to-r.html" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2011-03-05T15:09:00-06:00" />
-<meta property="article:modified_time" content="2011-03-05T15:09:00-06:00" />
+	<meta property="og:title" content="xts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blog.fosstrading.com/search/label/xts.html" />
 
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="/search/label/xts/index.xml" title="FOSS Trading">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
@@ -82,100 +80,36 @@ if (!doNotTrack) {
 		<div class="wrapper flex">
 			<div class="primary">
 			
-<main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title">Moving from Excel to R</h1>
-			<div class="post__meta meta">
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">xts</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2009/05/packages-featured-with-inference-for-r.html" rel="bookmark">
+			Packages featured with Inference for R
+			</a>
+		</h3>
+		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-05T15:09:00-06:00">March 05, 2011</time></div></div>
-		</header><div class="content post__content clearfix">
-			<p>This first post of the <a href="http://blog.fosstrading.com/2011/02/backtesting-in-excel-and-r.html">Backtesting in Excel and R</a> series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of <a href="http://www.r-project.org/">R</a>.</p>
-<p>I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals).  Most people don&rsquo;t prefer my approach of &ldquo;keep at it until you figure it out&rdquo;, so I don&rsquo;t have a lot of personal advice to share.  My main piece of advice is that the best way to learn R is to use it, so most of the resources below focus on &ldquo;how-to&rdquo; do certain things in R.</p>
-<p><strong>GUIs</strong></p>
-<p>While R for Windows comes with a very basic GUI (I&rsquo;m not familiar with the R for Mac OS X GUIs), most people will want and benefit from something more elaborate.  The GUIs below were taken from the <a href="http://www.sciviews.org/_rgui/">R GUI Projects page</a> (visit the page for more information / alternatives) and I added the newcomer, RStudio:</p>
-<ul>
-<li><a href="http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/">R Commander</a></li>
-<li><a href="http://www.sciviews.org/SciViews-R/index.html%3ESciViews-R%3C/a%3E%3C/li%3E%0A%3Cli%3E%3Ca%20href=">Tinn-R</a></li>
-<li><a href="http://jgr.markushelbig.org/">JGR</a></li>
-<li><a href="http://www.walware.de/goto/statet">StatET</a></li>
-<li><a href="http://www.red-r.org/">Red-R</a></li>
-<li><a href="http://www.rstudio.org/">RStudio</a></li>
-</ul>
-<p><strong>Blogs / Videos</strong></p>
-<ul>
-<li>The <a href="http://chartsgraphs.wordpress.com/">Climate Charts &amp; Graphs blog</a> has a <a href="http://chartsgraphs.wordpress.com/2009/02/27/video-to-help-excel-users-get-familiar-with-r/">video</a> to help help Excel users get familiar with R, a <a href="http://chartsgraphs.wordpress.com/r-resources/">list of R resources</a>, and&ndash;most impressive of all&ndash;a <a href="http://chartsgraphs.wordpress.com/learnr-toolkit/">toolkit to help Excel users move up to R</a>.</li>
-<li>The <a href="http://www.decisionsciencenews.com/">Decision Science News</a> blog has two video tutorials (<a href="http://www.decisionsciencenews.com/2007/09/26/r-video-tutorial-number-1/">part 1</a>, <a href="http://www.decisionsciencenews.com/2007/10/02/r-video-tutorial-number-2/">part 2</a>) to help people get started using R.</li>
-<li>J.D. Long, a fellow economist, has compiled a <a href="http://www.cerebralmastication.com/r-resources/">list of R resources</a> on his blog, <a href="http://www.cerebralmastication.com/">Cerebral Mastication</a>.</li>
-</ul>
-<p><strong>Books</strong></p>
-<p>I haven&rsquo;t read these two books personally, but I&rsquo;ve heard very good things about both of them.  Both focus on how to accomplish specific tasks with R.</p>
-<ul>
-<li><a href="http://www.amazon.com/gp/product/0596809158?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596809158">R Cookbook</a></li>
-<li><a href="http://www.amazon.com/gp/product/059680170X?ie=UTF8&amp;tag=fosstrading-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=059680170X">R in a Nutshell: A Desktop Quick Reference</a></li>
-</ul>
-<p>I hope this is helpful.  As always, please add suggestions in the comments!</p>
-
-		</div>
-		<footer class="post__footer">
-			
-<div class="post__tags tags clearfix">
-	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/Excel/" rel="tag">Excel</a>
-		</li>
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
-		</li>
-	</ul>
-</div>
-		</footer>
-	</article>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-05-12T09:22:00-05:00">May 12, 2009</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		quantmod, TTR, and xts were (not so) recently featured on the Inference for R Blog. Inference for R is a Integrated Development Environment (IDE) designed specifically for R.
+The post gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.
+I appreciate how they&rsquo;re making R more accessible to a general audience, even though I like a command line interface and my preferred development environment is vim.
+	</div>
+</article>
 </main>
 
-
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2011/02/backtesting-in-excel-and-r.html" rel="prev">
-			<span class="post-nav__caption">«&thinsp;Previous</span>
-			<p class="post-nav__post-title">Backtesting in Excel and R</p>
-		</a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2011/03/rfinance-2011-registration-open.html" rel="next">
-			<span class="post-nav__caption">Next&thinsp;»</span>
-			<p class="post-nav__post-title">R/Finance 2011 Registration Open</p>
-		</a>
-	</div>
-</nav>
-
-<section class="comments">
-	<div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</section>
-
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/search/label/xts.html">«</a>
+	<span class="pagination__item pagination__item--current">2/2</span>
+</div>
 
 			</div>
-			<aside class="sidebar"><div class="widget-search widget">
+			
+<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">

@@ -6,7 +6,201 @@
     <description>Recent content in xts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Oct 2022 10:21:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Feb 2023 14:58:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>xts_0.13.0 on CRAN</title>
+      <link>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran.html</link>
+      <pubDate>Tue, 21 Feb 2023 14:58:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran.html</guid>
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; &lt;code&gt;to.period()&lt;/code&gt; handles custom endpoint values, &lt;code&gt;print()&lt;/code&gt; truncates rows like data.table, and &lt;code&gt;str()&lt;/code&gt; provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes.&lt;/p&gt;
+&lt;p&gt;For some reason, I decided it was a good idea to go through the oldest GitHub issues and decide whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)&lt;/p&gt;
+&lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;/h3&gt;
+&lt;p&gt;The coolest new feature is the ability to use open-ended ranges for time-of-day subsetting. So you can subset by time of day from the start/end of the day without providing the start/end times (i.e. 00:00:00.000/23:59:59.999). Thanks to Chris Katsulis for the suggestion! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/243&#34;&gt;#243&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# an hourly sequence of times, and an xts object using them&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;timeBasedSeq&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2023-02-01/2023-02-05/H&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;seq_along&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;times&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;times&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# function to show the first and last index values for each day&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;index_range_by_day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;by_day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;days&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nf&#34;&gt;paste&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sep&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; / &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;lapply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;by_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# between the start of the day and 5pm&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;index_range_by_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/T1800&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-01`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-01 / 2023-02-01 18:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-02`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-02 / 2023-02-02 18:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-03`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-03 / 2023-02-03 18:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-04`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-04 / 2023-02-04 18:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-05`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-05 / 2023-02-05 18:00:00&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# between 5am and the end of the day&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;index_range_by_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;T0500/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-01`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-01 05:00:00 / 2023-02-01 23:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-02`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-02 05:00:00 / 2023-02-02 23:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-03`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-03 05:00:00 / 2023-02-03 23:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-04`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-04 05:00:00 / 2023-02-04 23:00:00&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## $`2023-02-05`&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## [1] &amp;#34;2023-02-05 05:00:00 / 2023-02-05 23:00:00&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;You can now pass custom endpoints to &lt;code&gt;to.period()&lt;/code&gt; using the &amp;lsquo;period&amp;rsquo; argument. So you can aggregate on something other than the times that &lt;code&gt;endpoints()&lt;/code&gt; supports. Thanks to Ethan B. Smith for the suggestion! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/302&#34;&gt;#302&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_matrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_matrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# aggregate to OHLC by week ending on Friday&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;week_fri&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to.period&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;endpoints&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;weeks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;week_fri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##              x.Open   x.High    x.Low  x.Close&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-07 50.03978 50.42188 49.95041 49.99185&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-14 50.03555 50.62395 49.80454 50.60145&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-21 50.61724 50.77336 50.02142 50.42090&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-28 50.36008 50.43875 49.87468 49.88096&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-02-04 49.85624 50.55509 49.76308 50.55509&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-02-11 50.52389 50.91776 50.45977 50.91160&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# aggregate to OHLC by week ending on Wednesday&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;wednesdays&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;which&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;.indexwday&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;week_wed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to.period&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wednesdays&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;week_wed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##              x.Open   x.High    x.Low  x.Close&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-03 50.03978 50.42188 49.95041 50.39767&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-10 50.42096 50.42096 49.80454 49.97246&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-17 49.88529 50.77336 49.88529 50.48644&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-24 50.48051 50.60712 50.02142 50.23145&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-31 50.20738 50.28268 49.76308 50.22578&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-02-07 50.22448 50.71661 50.19101 50.60611&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;enhancements&#34;&gt;Enhancements&lt;/h3&gt;
+&lt;p&gt;The release also contains some quality of life changes to &lt;code&gt;print()&lt;/code&gt; and &lt;code&gt;str()&lt;/code&gt;. Now &lt;code&gt;print()&lt;/code&gt; only shows the first and last &amp;lsquo;show.rows&amp;rsquo; rows (default 10) if number of rows is &amp;gt; &amp;lsquo;max.rows&amp;rsquo; (default 100), similar to &lt;a href=&#34;https://cran.r-project.org/package=data.table&#34;&gt;data.table&lt;/a&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/321&#34;&gt;#321&lt;/a&gt;).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_matrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_matrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##                Open     High      Low    Close&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-02 50.03978 50.11778 49.95041 50.11778&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-03 50.23050 50.42188 50.23050 50.39767&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-04 50.42096 50.42096 50.26414 50.33236&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-05 50.37347 50.37347 50.22103 50.33459&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-06 50.24433 50.24433 50.11121 50.18112&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-07 50.13211 50.21561 49.99185 49.99185&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-08 50.03555 50.10363 49.96971 49.98806&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-09 49.99489 49.99489 49.80454 49.91333&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-10 49.91228 50.13053 49.91228 49.97246&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-01-11 49.88529 50.23910 49.88529 50.23910&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##        ...                                    &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-21 47.71012 47.71012 47.61106 47.62921&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-22 47.56849 47.59266 47.32549 47.32549&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-23 47.22873 47.24771 47.09144 47.24771&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-24 47.23996 47.30287 47.20932 47.22764&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-25 47.20471 47.42772 47.13405 47.42772&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-26 47.44300 47.61611 47.44300 47.61611&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-27 47.62323 47.71673 47.60015 47.62769&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-28 47.67604 47.70460 47.57241 47.60716&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-29 47.63629 47.77563 47.61733 47.66471&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2007-06-30 47.67468 47.94127 47.67468 47.76719&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;Now &lt;code&gt;str()&lt;/code&gt; outputs more descriptive information for xts objects. It differentiates between xts objects that are empty (no data and zero-length index), zero-width (no data and has index values), or zero-length (no data&amp;ndash;but has a column dimension and may have column names&amp;ndash;and zero-length index). It also adds column names to the output. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/168&#34;&gt;#168&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/378&#34;&gt;#378&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;numeric&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# empty -- no data and zero-length index&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## An empty xts object &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Data:    double [0, 0]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Index:   POSIXct,POSIXt [0] (TZ: &amp;#34;&amp;#34;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# zero length -- no rows of data and a zero-length index,&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#     but has a column dimension and may have column names&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## A zero-length xts object &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Data:    double [0, 1]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Index:   POSIXct,POSIXt [0] (TZ: &amp;#34;&amp;#34;)&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;zero_length_with_colnames&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+    &lt;span class=&#34;nf&#34;&gt;.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;matrix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dimnames&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;zero&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zero_length_with_colnames&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## A zero-length xts object &lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Data:    double [0, 1]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Columns: zero&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Index:   POSIXct,POSIXt [0] (TZ: &amp;#34;&amp;#34;)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# zero width -- no data and has index values&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Sys.Date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()))&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## A zero-width xts object on 2023-02-21 / 2023-02-21 containing:&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Data:    double [0, 0]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##   Index:   Date [1] (TZ: &amp;#34;UTC&amp;#34;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;There&amp;rsquo;s a nice improvement to &lt;code&gt;as.xts()&lt;/code&gt; for data.frame and similar objects (e.g. data.table, tibble). It will look for a time-based column in the data.frame if it cannot create an index from the row names. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/381&#34;&gt;#381&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;data.frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;as.Date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2023-02-21&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;42&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;##             A  B&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;## 2023-02-21 21 42&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;This release also includes a new xts method for &lt;code&gt;na.fill()&lt;/code&gt; that significantly increases performance when &amp;lsquo;fill&amp;rsquo; is a scalar. And it adds a startup warning that &lt;code&gt;dplyr::lag()&lt;/code&gt; breaks method dispatch, which means calls to &lt;code&gt;lag(my_xts)&lt;/code&gt; won&amp;rsquo;t work any more, and suggests a couple ways to work around that breakage.&lt;/p&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed a typo in the Description section of the documentation for &lt;code&gt;period.apply()&lt;/code&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/205&#34;&gt;#205&lt;/a&gt;), and added detail to the argument definitions. The original Description has:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the data from &lt;code&gt;INDEX[k]&lt;/code&gt; to &lt;code&gt;INDEX[k+1]&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;But that&amp;rsquo;s not consistent with the code. It should be:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the data from &lt;code&gt;INDEX[k]+1&lt;/code&gt; to &lt;code&gt;INDEX[k+1]&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Made &lt;code&gt;merge.xts()&lt;/code&gt; results consistent with &lt;code&gt;merge.zoo()&lt;/code&gt; for zero-width objects. Previously, &lt;code&gt;merge.xts()&lt;/code&gt; returned an empty xts object if called on two or more zero-width xts objects. &lt;code&gt;merge.zoo()&lt;/code&gt; would return a zero-width object with the correct index. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/227&#34;&gt;#227&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/379&#34;&gt;#379&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also made &lt;code&gt;merge.xts()&lt;/code&gt; results consistent with &lt;code&gt;merge.zoo()&lt;/code&gt; for zero-length xts objects that have columns. The result of &lt;code&gt;merge.xts()&lt;/code&gt; did not include the columns of any objects that had one or more columns, but zero rows. A join should include all the columns of the joined objects, regardless of the number of rows in the object. This is consistent with &lt;code&gt;merge.zoo()&lt;/code&gt;. Thanks to Ethan B. Smith for the report and testing! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/222&#34;&gt;#222&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed a long-standing issue with &lt;code&gt;Ops.xts()&lt;/code&gt;.  Now it always returns an object with the same class as the first (left-hand side) argument. It previously returned an xts object even if the first argument was a subclass of xts. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/49&#34;&gt;#49&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Squashed a bug in &lt;code&gt;reclass()&lt;/code&gt; that did not copy the &lt;code&gt;tclass&lt;/code&gt;, &lt;code&gt;tzone&lt;/code&gt;, or &lt;code&gt;tformat&lt;/code&gt; from &amp;lsquo;match.to&amp;rsquo; to the result object. Now it always copies those index attributes. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/43&#34;&gt;#43&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other&#34;&gt;Other&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Migrated unit tests from &lt;a href=&#34;https://github.com/romanzenka/RUnit&#34;&gt;RUnit&lt;/a&gt; (which is no longer actively developed) to &lt;a href=&#34;https://github.com/markvanderloo/tinytest&#34;&gt;tinytest&lt;/a&gt;. Thanks &lt;a href=&#34;https://github.com/markvanderloo&#34;&gt;Mark van der Loo&lt;/a&gt;!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added to the &lt;code&gt;endpoints()&lt;/code&gt; documentation to make it clearer that the result is based on the UNIX epoch (midnight 1970, UTC) and not the first observation in the xts index. Thanks to GitHub user Eluvias for the suggestion! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/299&#34;&gt;#299&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Removed an unnecessary check in &lt;code&gt;na.locf()&lt;/code&gt; (which is not user-facing). Thanks to GitHub user @cgiachalis for the suggestion! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/307&#34;&gt;#307&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated C entry points so they&amp;rsquo;re not able to accidentally be found via dynamic lookup (i.e. &lt;code&gt;.Call(&amp;quot;foo&amp;quot;, ...)&lt;/code&gt;). This makes each call to the C code a few microseconds faster, which is nice. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/260&#34;&gt;#260&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;postscript&#34;&gt;Postscript&lt;/h3&gt;
+&lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>xts_0.12.2 on CRAN</title>
       <link>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html</link>
