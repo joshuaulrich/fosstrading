@@ -11,9 +11,10 @@
 <meta property="og:description" content="I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
 Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&rsquo;ve written." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2015-03-10T12:09:00-05:00" />
 <meta property="article:modified_time" content="2015-03-10T12:09:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -94,7 +95,7 @@ if (!doNotTrack) {
 <p>The <code>getSymbols.yahooj</code> function is a major enhancement provided by <a href="http://morannon.org/">Wouter Thielen</a>.  It allows quantmod users to pull stock data from Yahoo Finance Japan. </p>
 <p>Japanese ticker symbols usually start with a number and it is cumbersome to use variable names that start with a number in the R environment, so the string &ldquo;YJ&rdquo; will be prepended to each of the Symbols.  I recommend using <code>setSymbolLookup</code> to prepend the ticker symbols with &ldquo;YJ&rdquo; yourself, so you can just use the main <code>getSymbols</code> function.</p>
 <p>For example, if you want to pull Sony data, you would run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">require</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="nf">setSymbolLookup</span><span class="p">(</span><span class="n">YJ6758.T</span><span class="o">=</span><span class="s">&#39;yahooj&#39;</span><span class="p">)</span>
 <span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#39;YJ6758.T&#39;</span><span class="p">)</span>  
 </code></pre></div><p>The full list of supported data sources for quantmod is now: Yahoo Finance-US, Yahoo Finance-Japan, Google Finance, csv, RData (including rds and rda), FRED, SQLite, MySQL, and Oanda. </p>

@@ -10,9 +10,10 @@
 	<meta property="og:title" content="Margin Constraints with LSPM" />
 <meta property="og:description" content="When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument. For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity. The optimal amount to trade is 1,000 shares ($100,000/$100). However, that would require $500,000 in equity, while you only have $100,000. What do you do?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/08/margin-constraints-with-lspm.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-08-01T23:31:00-05:00" />
 <meta property="article:modified_time" content="2010-08-01T23:31:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -96,7 +97,7 @@ L = max(f$) / sum( ( max(f$) / f$[i] ) * margin[i] )</p>
 L = percentage of &ldquo;active equity&rdquo; to use when dividing by each f$<br>
 margin = initial margin for each market system</p>
 <p>The <code>maxUnits()</code> function included in this post uses the formula above to return the maximum number of tradeable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the <code>maxUnits()</code> function after optimization.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
 
 <span class="n">maxUnits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lsp</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="p">{</span>

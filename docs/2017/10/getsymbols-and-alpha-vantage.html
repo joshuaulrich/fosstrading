@@ -11,9 +11,10 @@
 <meta property="og:description" content="Thanks to Paul Teetor, getSymbols() can now import data from Alpha Vantage! This feature is part of the quantmod 0.4-11 release, and provides another another data source to avoid any Yahoo Finance API changes*.
 Alpha Vantage is a free web service that provides real-time and historical equity data. They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-10-06T16:12:00-05:00" />
 <meta property="article:modified_time" content="2017-10-06T16:12:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -93,9 +94,9 @@ if (!doNotTrack) {
 <p>Alpha Vantage is a free web service that provides real-time and historical equity data.  They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data. They also provide near real-time price bars at a resolution of 1 minute or more, for up to 10 recent days.</p>
 <p>All you need to get started is a <a href="https://www.alphavantage.co/support/#api-key">one-time registration for an API key</a>.  Alpha Vantage has <a href="https://www.alphavantage.co/documentation/">clean, documented, public API</a> that returns either JSON-encoded data or a CSV file.  The arguments to <code>getSymbols.av()</code> closely follow the native API, so be sure to use their documentation!</p>
 <p>To get started, install the latest <a href="https://cran.r-project.org/package=quantmod">quantmod from CRAN</a>.  Then you call:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span> 
 </code></pre></div><p>Where you replace <code>&quot;\[your key&quot;\]</code> with the API key you receive after registration.  You can use <code>setDefaults()</code> to set your API key one time, and use it for all <code>getSymbols.av()</code> calls.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.av&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>
 </code></pre></div><p>* Speaking of API changes, this release also includes a fix for a Yahoo Finance change (<a href="https://github.com/joshuaulrich/quantmod/issues/174">#174</a>).</p>
 
 		</div>

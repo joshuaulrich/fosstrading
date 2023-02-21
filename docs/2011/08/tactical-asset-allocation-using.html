@@ -12,9 +12,10 @@
 The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate. There are two major differences:
   The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2011-08-23T20:55:00-05:00" />
 <meta property="article:modified_time" content="2011-08-23T20:55:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -106,7 +107,7 @@ if (!doNotTrack) {
 <p>Finally, we need to set the position limits for each instrument.  We do this via two calls to <code>addPosLimit()</code> (one for each symbol) and we set the maximum position to 1000 shares and the minimum position to 0 shares.</p>
 <p>The modified code is below and even includes some simple evaluation of the results at no extra charge.  The <code>tradeStats()</code> function has a ton more columns; I&rsquo;ve only selected a few to make the output more readable.  Feel free to tinker.</p>
 <p>NOTE: I wrote this code using the latest quantmod, xts, and zoo from CRAN; and the latest blotter, FinancialInstrument, and quantstrat from R-Forge.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code is a slight modification of the quantstrat &#34;faber&#34; demo, intended to replicate   </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code is a slight modification of the quantstrat &#34;faber&#34; demo, intended to replicate   </span>
 <span class="c1"># http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html   </span>
 <span class="c1"># Uncomment the line below to install the latest packages on R-Forge:  </span>
 <span class="c1">#install.packages(c(&#34;quantstrat&#34;,&#34;blotter&#34;,&#34;FinancialInstrument&#34;), repos=&#34;http://r-forge.r-project.org&#34;)</span>

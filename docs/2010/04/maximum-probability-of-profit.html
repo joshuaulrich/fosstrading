@@ -11,9 +11,10 @@
 <meta property="og:description" content="To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
 These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-04-09T10:04:00-05:00" />
 <meta property="article:modified_time" content="2010-04-09T10:04:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -96,7 +97,7 @@ if (!doNotTrack) {
 <p>The book results (on p. 173) were:</p>
 <p>iteration: 100 best member: 0.085 0.015 0.129 -0.76 -0.992 best value: -0.9999</p>
 <p>Specifying an initial population can give DEoptim an initial set of parameters that are within the constraint. This guarantees a starting point but it can slow optimization if the f (and/or z) values are too low. Therefore, experiment with the initial population to find a set of f (and/or z) values that produce a result within, but not far from, the constraint.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM and snow packages</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM and snow packages</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>
 

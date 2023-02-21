@@ -28,7 +28,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 &lt;p&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20100619_probDrawdown.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Notice that the above calculation assumes each event is independently distributed.  &lt;a href=&#34;http://braverock.com/brian/&#34;&gt;Brian Peterson&lt;/a&gt; suggested a &lt;a href=&#34;http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap&#34;&gt;block bootstrap&lt;/a&gt; to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Code:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;quantmod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;quantmod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LSPM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;snow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 

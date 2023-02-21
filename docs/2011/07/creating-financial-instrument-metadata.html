@@ -11,9 +11,10 @@
 <meta property="og:description" content="This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
 When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2011-07-27T22:16:00-05:00" />
 <meta property="article:modified_time" content="2011-07-27T22:16:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -94,7 +95,7 @@ if (!doNotTrack) {
 <p>In <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>, Joshua Ulrich used FinancialInstrument (blotter depends on it) to create a stock portfolio.  FinancialInstrument is also a required dependency of the quantstrat quantitative strategy framework in R (quantstrat will be covered in a later post).</p>
 <p>Creating a list of historical symbols is a recurring challenge with historical data on derivative instruments.  These symbols tend to follow a deterministic pattern and FinancialInstrument provides utility functions to create the symbols traded over specific periods of time. These symbols could then be used to request historical data from a data vendor or to construct instrument objects in R.</p>
 <p>The simplest function for generating a series of symbols is <code>build_series_symbols()</code>.  Let&rsquo;s look at it with a small example using crude oil (CL) and STOXX (STXE) futures:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># install.packages(&#34;FinancialInstrument&#34;, repos=&#34;http://R-Forge.R-project.org&#34;)  </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># install.packages(&#34;FinancialInstrument&#34;, repos=&#34;http://R-Forge.R-project.org&#34;)  </span>
 <span class="nf">require</span><span class="p">(</span><span class="n">FinancialInstrument</span><span class="p">)</span>  
 <span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">primary_id</span><span class="o">=</span><span class="s">&#34;CL&#34;</span><span class="p">,</span> <span class="n">month_cycle</span><span class="o">=</span><span class="s">&#34;F,G,H,J,K,M,N,Q,U,V,X,Z&#34;</span><span class="p">)</span>  
 <span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">primary_id</span><span class="o">=</span><span class="s">&#34;STXE&#34;</span><span class="p">,</span> <span class="n">month_cycle</span><span class="o">=</span><span class="s">&#34;H,M,U,Z&#34;</span><span class="p">))</span>  
@@ -104,7 +105,7 @@ if (!doNotTrack) {
 <span class="c1">## 2       STXE                   H,M,U,Z  </span>
 </code></pre></div><p>The <code>Data</code> object contains two columns.  The <code>primary_id</code> is the root contract that identifies the instrument, and the <code>month_cycle</code> defines the months the contracts trade in (e.g. &ldquo;H,M,U,Z&rdquo; for Mar/Jun/Sep/Dec).</p>
 <p><code>build_series_symbols()</code> only needs <code>Data</code> and <code>yearlist</code>. <code>yearlist</code> is the suffix for expiration years and 0, 1, 2 represent 2010, 2011, 2012 in this example.  <code>build_series_symbols()</code> returns a vector of series symbols that we could use to request data or create <code>future_series</code> instruments.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">build_series_symbols</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">yearlist</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>  
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">build_series_symbols</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">yearlist</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>  
 <span class="c1">## [1] &#34;CLF0&#34;   &#34;CLG0&#34;   &#34;CLH0&#34;   &#34;CLJ0&#34;   &#34;CLK0&#34;   &#34;CLM0&#34;   &#34;CLN0&#34;   &#34;CLQ0&#34;   </span>
 <span class="c1">## [9] &#34;CLU0&#34;   &#34;CLV0&#34;   &#34;CLX0&#34;   &#34;CLZ0&#34;   &#34;STXEH0&#34; &#34;STXEM0&#34; &#34;STXEU0&#34; &#34;STXEZ0&#34;  </span>
 <span class="c1">## [17] &#34;CLF1&#34;   &#34;CLG1&#34;   &#34;CLH1&#34;   &#34;CLJ1&#34;   &#34;CLK1&#34;   &#34;CLM1&#34;   &#34;CLN1&#34;   &#34;CLQ1&#34;   </span>
@@ -113,7 +114,7 @@ if (!doNotTrack) {
 <span class="c1">## [41] &#34;CLU2&#34;   &#34;CLV2&#34;   &#34;CLX2&#34;   &#34;CLZ2&#34;   &#34;STXEH2&#34; &#34;STXEM2&#34; &#34;STXEU2&#34; &#34;STXEZ2&#34;  </span>
 </code></pre></div><p>A more complicated task is to create symbols for exchange guaranteed calendar spreads.  The <code>build_spread_symbols()</code> function creates a vector of symbols for spreads of securities (currently coded for futures calendar spreads but can be extended and generalized) in a very shorthand notation.</p>
 <p><code>build_spread_symbols()</code> accepts instrument specifications via either a file path or (preferably) a data frame (using the file or data arguments, respectively). Output can be assigned to an object or written to a file using the optional <code>outputfile</code> argument.  The default starting date is the current date, but the user can manually set a starting date (e.g. historical dates for backtesting, and future dates to create lists of instruments to be traded in the future).</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># read in data that would be suitable for load.instruments on root contracts  </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># read in data that would be suitable for load.instruments on root contracts  </span>
 <span class="c1"># series_data.csv can be downloaded here:</span>
 <span class="c1"># https://docs.google.com/leaf?id=0B8wl4QBejPGiMjI2NTQzZjEtZDRkNC00MDRjLWI2ZDgtMzhjOTM5ZGFkYmFk&amp;hl=en_US)&#34;</span>
 <span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#34;series_data.csv&#34;</span><span class="p">,</span> <span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>  

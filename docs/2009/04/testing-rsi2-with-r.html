@@ -9,11 +9,12 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="Testing RSI(2) with R, First Steps" />
 <meta property="og:description" content="This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, R. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.
-In particular, I will be replicating and extending some of the results from Michael Stokes&rsquo; excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy." />
+In particular, I will be replicating and extending some of the results from Michael Stokes&#39; excellent MarketSci Blog. This post will focus on replicating this simple RSI(2) strategy." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/04/testing-rsi2-with-r.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2009-04-13T22:35:00-05:00" />
 <meta property="article:modified_time" content="2009-04-13T22:35:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -90,9 +91,9 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-13T22:35:00-05:00">April 13, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>This is the first of a series of posts that will demonstrate how to build, test, and implement a trading strategy using my favorite FOSS, <a href="http://www.r-project.org/">R</a>. I chose the RSI(2) strategy because it has gotten considerable attention on trading blogs over the past 6 months.</p>
-<p>In particular, I will be replicating and extending some of the results from Michael Stokes&rsquo; excellent <a href="http://marketsci.wordpress.com/">MarketSci Blog</a>. This post will focus on replicating <a href="http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/">this simple RSI(2) strategy</a>.</p>
+<p>In particular, I will be replicating and extending some of the results from Michael Stokes' excellent <a href="http://marketsci.wordpress.com/">MarketSci Blog</a>. This post will focus on replicating <a href="http://marketsci.wordpress.com/2008/12/09/trading-with-rsi2/">this simple RSI(2) strategy</a>.</p>
 <p>Without further ado, let&rsquo;s get to some code&hellip;</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># We will need the quantmod package for charting and pulling</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># We will need the quantmod package for charting and pulling</span>
 <span class="c1"># data and the TTR package to calculate RSI(2).</span>
 <span class="c1"># You can install packages via: install.packages(&#34;packageName&#34;)</span>
 <span class="c1"># install.packages(c(&#34;quantmod&#34;,&#34;TTR&#34;))</span>

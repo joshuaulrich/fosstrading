@@ -10,9 +10,10 @@
 	<meta property="og:title" content="xts_0.12.2 on CRAN" />
 <meta property="og:description" content="An updated version of xts is now on CRAN. This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that merge.xts() now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-10-15T10:21:00-05:00" />
 <meta property="article:modified_time" content="2022-10-15T10:21:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -104,16 +105,16 @@ if (!doNotTrack) {
 <p>The &lsquo;ylim&rsquo; argument is now robust against numerical precision issues. Thanks to <a href="https://github.com/bollard">@bollard</a> for the report, PR, and a ton of help debugging intermediate solutions! (<a href="https://github.com/joshuaulrich/xts/issues/368">#368</a>)</p>
 </li>
 <li>
-<p>Series added to a panel now extend the panel&rsquo;s y-axis. Previously the y-axis limits were based on the first series&rsquo; values and not updated when new series were added. So values of the new series did not appear on the plot if they were outside of the original series&rsquo; min/max. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
+<p>Series added to a panel now extend the panel&rsquo;s y-axis. Previously the y-axis limits were based on the first series' values and not updated when new series were added. So values of the new series did not appear on the plot if they were outside of the original series' min/max. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 <li>
-<p>All series added to any panel of a plot now update the x-axis of all panels. So the entire plot&rsquo;s x-axis will include every series&rsquo; time index values within the original plot&rsquo;s time range. This behavior is consistent with <code>chart_Series()</code>. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>, <a href="https://github.com/joshuaulrich/xts/issues/216">#216</a>)</p>
+<p>All series added to any panel of a plot now update the x-axis of all panels. So the entire plot&rsquo;s x-axis will include every series' time index values within the original plot&rsquo;s time range. This behavior is consistent with <code>chart_Series()</code>. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>, <a href="https://github.com/joshuaulrich/xts/issues/216">#216</a>)</p>
 </li>
 <li>
 <p>All y-values are now plotted for series that have duplicate index values, but different data values. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 <li>
-<p>Adding a series can now extend the x-axis before/after the plot&rsquo;s existing time index range by setting <code>extend.xaxis = TRUE</code>. That ensures all of the new series&rsquo; time index values are included in the plot. <code>extend.xaxis = FALSE</code> by default to maintain backward compatibility. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
+<p>Adding a series can now extend the x-axis before/after the plot&rsquo;s existing time index range by setting <code>extend.xaxis = TRUE</code>. That ensures all of the new series' time index values are included in the plot. <code>extend.xaxis = FALSE</code> by default to maintain backward compatibility. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 </ul>
 <h3 id="other-enhancements-and-bug-fixes">Other enhancements and bug fixes</h3>
@@ -167,7 +168,7 @@ if (!doNotTrack) {
 <hr>
 <p>You may have noticed that several of these issues have been open a long time. I&rsquo;ve been revisiting historical issues and deciding whether to implement them or close them. I&rsquo;ve already implemented some cool ones in the development version of xts.</p>
 <p>I&rsquo;m most excited about open-ended time-of-day subsetting. Now you can do things like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">x[</span><span class="s">&#34;/T1700&#34;</span><span class="n">]</span>  <span class="c1"># start of the day until 5pm</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">x[</span><span class="s">&#34;/T1700&#34;</span><span class="n">]</span>  <span class="c1"># start of the day until 5pm</span>
 <span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span>  <span class="c1"># 5am until the end of the day</span>
 </code></pre></div><p>I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a> and use the [r] and [xts] tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature, but please <a href="https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md">read the contributing guide</a> first!</p>
 <hr>

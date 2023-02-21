@@ -12,9 +12,10 @@
 blotter is an R package that tracks the P&amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.
 The contents of this post borrow heavily from code and comments in the &ldquo;longtrend&rdquo; demo script in the blotter package." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2009-11-18T21:18:00-06:00" />
 <meta property="article:modified_time" content="2009-11-18T21:18:00-06:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -98,7 +99,7 @@ if (!doNotTrack) {
 <p>The second chart shows the result of following <a href="http://www.mebanefaber.com/">Mebane Faber&rsquo;s</a> tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in <a href="http://ssrn.com/abstract=962461">Faber&rsquo;s article</a>.</p>
 <p><a href="/post/images/20091118_blotter_strategy.png"><img src="/post/images/20091118_blotter_strategy.png" alt=""></a></p>
 <p>Without further ado, here&rsquo;s the code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code implements the strategy found in:</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code implements the strategy found in:</span>
 <span class="c1"># Faber, Mebane T., &#34;A Quantitative Approach to Tactical Asset Allocation.&#34;</span>
 <span class="c1"># Journal of Risk Management (Spring 2007).</span>
 

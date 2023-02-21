@@ -13,9 +13,10 @@ In this long-overdue post, I will show how to optimize a Leverage Space Portfoli
 Some copious notes before we get to the code:
 These examples are based on revision 26 31 from r-forge and will not work under earlier revisions (and may not work with later revisions)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-examples.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-examples.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-01-02T15:35:00-06:00" />
 <meta property="article:modified_time" content="2010-01-02T15:35:00-06:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -97,7 +98,7 @@ if (!doNotTrack) {
 <p>These examples are based on revision <del>26</del> 31 from r-forge and will not work under earlier revisions (and may not work with later revisions). LSPM is still in <strong>very</strong> alpha status.  Expect things to change, perhaps significantly.</p>
 <p>These examples were run using <a href="http://cran.r-project.org/src/contrib/Archive/DEoptim/DEoptim_1.3-3.tar.gz">DEoptim_1.3-3</a> (and LSPM revision 26 depends on that version) code from DEoptim_1.3-3 that has been bundled inside LSPM.  We are working with the DEoptim authors to address issues with more recent versions of DEoptim.  LSPM will un-bundle and use the most recent version of DEoptim as soon as the issues are resolved.</p>
 <p>The first two examples are taken from <a href="http://www.amazon.com/gp/product/0470455950?ie=UTF8&amp;tag=fotr09-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0470455950">Vince, Ralph (2009). The Leverage Space Trading Model. New York: John Wiley &amp; Sons, Inc.</a><img src="http://www.assoc-amazon.com/e/ir?t=fotr09-20&amp;l=as2&amp;o=1&amp;a=0470455950" alt=""> The results will not match the book because of differences between optimization via DEoptim and Ralph&rsquo;s genetic algorithm implementation.  Ralph believes his genetic algorithm is getting hung up on a local maximum, whereas DEoptim is closer to the global solution.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package  </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package  </span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>  
   
 <span class="c1"># Multiple strategy example (data found on pp. 84-87)  </span>

@@ -12,9 +12,10 @@
 Calculation Notes:
 To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-06-19T20:13:00-05:00" />
 <meta property="article:modified_time" content="2010-06-19T20:13:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -105,7 +106,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 <p><img src="/post/images/20100619_probDrawdown.png" alt=""></p>
 <p>Notice that the above calculation assumes each event is independently distributed.  <a href="http://braverock.com/brian/">Brian Peterson</a> suggested a <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap">block bootstrap</a> to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.</p>
 <p><strong>Code:</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>
 

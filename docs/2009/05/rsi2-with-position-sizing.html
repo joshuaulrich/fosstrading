@@ -12,9 +12,10 @@
 The first post replicated this simple RSI(2) strategy from the MarketSci Blog. This second post will demonstrate how to replicate this strategy that scales in/out of RSI(2).
 A couple notes before moving to the code:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2009-05-01T20:58:00-05:00" />
 <meta property="article:modified_time" content="2009-05-01T20:58:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -102,7 +103,7 @@ if (!doNotTrack) {
 </li>
 </ol>
 <p>On to the code!</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Attach the quantmod and TTR packages.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Attach the quantmod and TTR packages.</span>
 <span class="c1"># You can install packages via:</span>
 <span class="c1"># install.packages(c(&#34;quantmod&#34;,&#34;TTR&#34;))</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>

@@ -11,9 +11,10 @@
 <meta property="og:description" content="My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &gt; 6 have long run-times (when calc.max &gt;= horizon).
 This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-with-snow.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2010/01/lspm-with-snow.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-01-10T17:01:00-06:00" />
 <meta property="article:modified_time" content="2010-01-10T17:01:00-06:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -92,7 +93,7 @@ if (!doNotTrack) {
 			<p>My <a href="http://blog.fosstrading.com/2010/01/lspm-examples.html">last post</a> provided examples of how to use the <a href="http://r-forge.r-project.org/projects/lspm">LSPM package</a>. Those who experimented with the code have probably found that constrained optimizations with <code>horizon</code> &gt; 6 have long run-times (when <code>calc.max &gt;= horizon</code>).</p>
 <p>This post will illustrate how the <a href="http://cran.r-project.org/web/packages/snow/">snow</a> package can increase the speed of the <code>probDrawdown()</code> and <code>probRuin()</code> functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores. (Improvements are nearly linear because there is overhead in setting up the cluster and communication between the nodes.)</p>
 <p>The first optimization takes 346 seconds on my 2.2Ghz Centrino, while the second optimization (with snow) takes 193 seconds&hellip; nearly a 45% improvement.</p>
-<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the libraries  </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the libraries  </span>
 <span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>  
 <span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>  
   

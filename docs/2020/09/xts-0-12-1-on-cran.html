@@ -10,9 +10,10 @@
 	<meta property="og:title" content="xts_0.12.1 on CRAN" />
 <meta property="og:description" content="An updated version of xts reached CRAN on 2020-09-09. Time-of-day subsetting (e.g. x[&quot;T10:00/T13:00&quot;]) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&rsquo;t post about 0.12.0 when it was released.)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html" />
+<meta property="og:url" content="https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-13T10:49:00-05:00" />
 <meta property="article:modified_time" content="2020-09-13T10:49:00-05:00" />
+
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -114,7 +115,7 @@ if (!doNotTrack) {
 <p><a href="https://github.com/MichaelChirico">Michael Chirico</a> added an internal <code>isUTC()</code> function that recognizes many UTC-equivalent time zones (<a href="https://github.com/joshuaulrich/xts/issues/319">#319</a>).</p>
 </li>
 <li>
-<p><a href="https://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a> updated the C API header to fix the signatures of <code>do_merge_xts()</code> and <code>is_xts</code>, which did not return the required type to be called via <code>.Call()</code>. Thanks to <a href="https://github.com/kalibera">Tomas Kalibera</a> for the report (<a href="https://github.com/joshuaulrich/xts/issues/317">#317</a>), and to Dirk for the PR (<a href="https://github.com/joshuaulrich/xts/pull/337">#337</a>).<br>
+<p><a href="https://dirk.eddelbuettel.com/">Dirk Eddelbuettel</a> updated the C API header to fix the signatures of <code>do_merge_xts()</code> and <code>is_xts</code>, which did not return the required type to be called via <code>.Call()</code>. Thanks to <a href="https://github.com/kalibera">Tomas Kalibera</a> for the report (<a href="https://github.com/joshuaulrich/xts/issues/317">#317</a>), and to Dirk for the PR (<a href="https://github.com/joshuaulrich/xts/pull/337">#337</a>). <br>
 This is a breaking change, but it&rsquo;s only in the C API, and is required to avoid the potential to crash your R session.</p>
 </li>
 <li>
