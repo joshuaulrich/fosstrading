@@ -352,10 +352,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.11-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran.html</link>
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-2 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; yesterday. This is quick a bug-fix release.&lt;/p&gt;
 &lt;p&gt;Notable changes are below:&lt;/p&gt;
 &lt;ul&gt;
@@ -370,10 +370,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.11-1 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran.html</link>
       <pubDate>Wed, 12 Sep 2018 13:36:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-1 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; this morning. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; code even faster!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;There&amp;rsquo;s a new &lt;code&gt;window.xts()&lt;/code&gt; method, thanks to Corwin Joy (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/100&#34;&gt;#100&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/240&#34;&gt;#240&lt;/a&gt;). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/251&#34;&gt;#251&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/263&#34;&gt;#263&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/264&#34;&gt;#264&lt;/a&gt;).&lt;/li&gt;
@@ -394,10 +394,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.10-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran.html</link>
       <pubDate>Mon, 19 Mar 2018 05:30:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran.html</guid>
       <description>&lt;p&gt;This &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;endpoints()&lt;/code&gt; gained sub-second accuracy on Windows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/202&#34;&gt;#202&lt;/a&gt;)!&lt;/li&gt;

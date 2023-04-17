@@ -86,7 +86,24 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/2018/03/xts-010-2-on-cran.html" rel="bookmark">
+			<a href="/2018/04/goodbye-google-hello-tiingo.html" rel="bookmark">
+			Goodbye Google, Hello Tiingo!
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-13T11:14:00-05:00">April 13, 2018</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		First, the bad news:
+Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to getSymbols.google() and getFinancials.google(). (#221) They are now defunct as of quantmod 0.4-13.
+Now, the good news:
+Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220) This feature is part of quantmod 0.4-13, which is now on CRAN. Windows and Mac binaries should be built in a day or two.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2018/03/xts-0-10-2-on-cran.html" rel="bookmark">
 			xts 0.10-2 on CRAN
 			</a>
 		</h3>
@@ -222,21 +239,6 @@ James Toll provided a patch to the volatility() function that uses a zero mean (
 		We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
 This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2015/03/import-japanese-equity-data-into-r.html" rel="bookmark">
-			Import Japanese equity data into R with quantmod 0.4-4
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-03-10T12:09:00-05:00">March 10, 2015</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		I pushed quantmod 0.4-4 to CRAN this weekend. It adds a getSymbols.yahooj function to pull stock data from Yahoo Finance Japan, and fixes issues in getOptionChain.yahoo and getSymbols.oanda.
-Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo and getSymbols.oanda functions, respectively. I didn&rsquo;t use getOptionChain.yahoo much, so I’m not certain I restored all the prior functionality. Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&rsquo;ve written.
-	</div>
 </article>
 </main>
 
@@ -323,11 +325,11 @@ Changes to the Yahoo Finance and Oanda websites broke the getOptionChain.yahoo a
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/ttr-0-24-2-on-cran.html">TTR_0.24.2 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

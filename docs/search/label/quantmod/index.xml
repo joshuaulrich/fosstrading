@@ -6,13 +6,139 @@
     <description>Recent content in quantmod on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Mar 2020 07:23:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/quantmod/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 03:41:57 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/quantmod/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>quantmod_0.4.22 on CRAN</title>
+      <link>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</link>
+      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</guid>
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. It adds functions &lt;code&gt;HL()&lt;/code&gt;, &lt;code&gt;is.HL()&lt;/code&gt;, and &lt;code&gt;has.HL()&lt;/code&gt; to check for &amp;lsquo;high&amp;rsquo; and &amp;lsquo;low&amp;rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. &lt;code&gt;getSymbols.FRED()&lt;/code&gt; got &lt;code&gt;to&lt;/code&gt; and &lt;code&gt;from&lt;/code&gt; arguments, like other &lt;code&gt;getSymbols()&lt;/code&gt; methods. The remaining changes are bug fixes and maintenace chores.&lt;/p&gt;
+&lt;p&gt;This was mainly a maintenance and bug fix release, but it does include a couple nice features. quantmod versions 0.4.17 through 0.4.21 included several relevant features that weren&amp;rsquo;t highlighted in any previous posts. They&amp;rsquo;re included in a separate section below.&lt;/p&gt;
+&lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Exported &lt;code&gt;HL()&lt;/code&gt;, &lt;code&gt;is.HL()&lt;/code&gt;, and &lt;code&gt;has.HL()&lt;/code&gt; functions and added documentation. These were added in 0.4.20 but not exported or included in the documentation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Switched to the Yahoo Finance v8 JSON endpoint and removed the v7 CSV endpoint. There seems to be a rate limit for the number of tickers you can request via the CSV endpoint. The &lt;a href=&#34;https://github.com/ranaroussi/yfinance&#34;&gt;yfinance python library&lt;/a&gt; uses the JSON endpoint and doesn&amp;rsquo;t seem to have rate limit issues. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/360&#34;&gt;#360&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/362&#34;&gt;#362&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/364&#34;&gt;#364&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;getSymbols.FRED()&lt;/code&gt; now supports &lt;code&gt;to&lt;/code&gt; and &lt;code&gt;from&lt;/code&gt; arguments. So users can set the &amp;lsquo;from&amp;rsquo; and &amp;lsquo;to&amp;rsquo; arguments for FRED data like they can for other data sources like Yahoo. Those values had been ignored and the entire series was always returned. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/368&#34;&gt;#368&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;getDividends()&lt;/code&gt; and &lt;code&gt;getSplits()&lt;/code&gt; for stocks that issue monthly dividends. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/372&#34;&gt;#372&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added error handling to &lt;code&gt;getSplits()&lt;/code&gt; and &lt;code&gt;getDividends()&lt;/code&gt;. &lt;code&gt;getDividends()&lt;/code&gt; didn&amp;rsquo;t handle cases where the download failed, or when dividends needed to be split-adjusted but there were no splits. It also tried to set colnames on the empty xts object that&amp;rsquo;s returned when there are no dividends. &lt;code&gt;getSplits()&lt;/code&gt; had the same colnames issue. Thanks to Chris Cheung for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/366&#34;&gt;#366&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove &amp;ldquo;^&amp;rdquo; prefix from &lt;code&gt;getSymbols()&lt;/code&gt; return value. The name of the object &lt;code&gt;getSymbols()&lt;/code&gt; created and the symbol value it returned were inconsistent when the &amp;lsquo;Symbols&amp;rsquo; argument has a &amp;ldquo;^&amp;rdquo; prefix and &lt;code&gt;auto.assign = TRUE&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getSymbols()&lt;/code&gt; removed the &amp;ldquo;^&amp;rdquo; from the object it creates, but&lt;/li&gt;
+&lt;li&gt;returned the &amp;lsquo;Symbols&amp;rsquo; argument unchanged, and&lt;/li&gt;
+&lt;li&gt;removed the &amp;ldquo;^&amp;rdquo; from the column names of the object it creates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The example below will create an object named &lt;code&gt;IXIC&lt;/code&gt; but the value of &lt;code&gt;sym&lt;/code&gt; will be &amp;ldquo;^IXIC&amp;rdquo;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  sym &amp;lt;- getSymbols(&amp;quot;^IXIC&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That means &lt;code&gt;x &amp;lt;- get(sym)&lt;/code&gt; will not work because an object named &lt;code&gt;^IXIC&lt;/code&gt; doesn&amp;rsquo;t exist. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/371&#34;&gt;#371&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;chores&#34;&gt;Chores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Moved &lt;a href=&#34;http://cran.r-project.org/package=jsonlite&#34;&gt;jsonlite&lt;/a&gt; from Suggests to Imports so it doesn&amp;rsquo;t cause a problem when a package that doesn&amp;rsquo;t also Suggest jsonlite but uses &lt;code&gt;getSymbols()&lt;/code&gt;. Thanks to Kurt Hornik for the report and fix! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/380&#34;&gt;#380&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed S3 method issues. R-devel (83995-ish) added a check that found methods that were not registered (&lt;code&gt;str.replot()&lt;/code&gt;, &lt;code&gt;seriesHi.timeSeries()&lt;/code&gt;, and &lt;code&gt;seriesLo.timeSeries()&lt;/code&gt;). It was also confused by &lt;code&gt;range.bars()&lt;/code&gt; and &lt;code&gt;unique.formula.names()&lt;/code&gt; because they are named like S3 methods. Neither were exported so they didn&amp;rsquo;t affect users. Thanks to Kurt Hornik for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/375&#34;&gt;#375&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;changes-in-prior-versions&#34;&gt;Changes in Prior Versions&lt;/h1&gt;
+&lt;h3 id=&#34;new-features-1&#34;&gt;New Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Added &lt;code&gt;HL()&lt;/code&gt; and supporting functions. These are analogues to &lt;code&gt;HLC()&lt;/code&gt;, &lt;code&gt;OHLC()&lt;/code&gt;, etc. Thanks for Karl Gauvin for the nudge to implement them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added adjusted close price to &lt;code&gt;getSymbols.tiingo()&lt;/code&gt; output. Thanks to Ethan Smith for the suggestion and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/289&#34;&gt;#289&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/345&#34;&gt;#345&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated &lt;code&gt;getSymbols.tiingo()&lt;/code&gt; to use a Date index for daily data. Thanks to Ethan Smith for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/350&#34;&gt;#350&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated &lt;code&gt;getOptionChain()&lt;/code&gt; to return all the fields that Yahoo Finance provides. Thanks to Adam Childers (@rhizomatican) for the patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/318&#34;&gt;#318&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/336&#34;&gt;#336&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added &lt;a href=&#34;https://docs.orats.io&#34;&gt;orats&lt;/a&gt; as a source for &lt;code&gt;getOptionChain()&lt;/code&gt;. Thanks to Steve Bronder (@SteveBronder) for the suggestion and implementation! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/325&#34;&gt;#325&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added &amp;ldquo;Defaults&amp;rdquo; handling to &lt;code&gt;getQuote()&lt;/code&gt; and &lt;code&gt;getQuote.yahoo()&lt;/code&gt;. Thanks to Ethan Smith for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/291&#34;&gt;#291&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added Bid and Ask fields to the output from &lt;code&gt;getQuote()&lt;/code&gt;. Thanks to @jrburl for the report and PR. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/302&#34;&gt;#302&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes-1&#34;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Removed check for Yahoo Finance cookies because the site no longer responds with a cookie, and that caused the connection attempt to fail. This affected &lt;code&gt;getSymbols()&lt;/code&gt;, &lt;code&gt;getDividends()&lt;/code&gt;, and &lt;code&gt;getSplits()&lt;/code&gt;. Thanks to several users for reporting, and especially to @pverspeelt and @alihru for investigating potential fixes! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/358&#34;&gt;#358&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated &lt;code&gt;getSymbols.yahooj()&lt;/code&gt; for changes to the web page. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/312&#34;&gt;#312&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Removed unneeded arguments to the &lt;code&gt;getSymbols.tiingo()&lt;/code&gt; implementation. Thanks to Ethan Smith for the suggestion and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/343&#34;&gt;#343&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/344&#34;&gt;#344&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Load dividends and splits data into the correct environment when the user provides a value for the &lt;code&gt;env&lt;/code&gt; argument. The previous behavior always loaded the data into the environment the function was called from. Thanks to Stewart Wright for the report and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/33&#34;&gt;#33&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved the error message when &lt;code&gt;getSymbols()&lt;/code&gt; cannot import data for a symbol because the symbol is not valid or does not have historical data. Thanks to Peter Carl for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/333&#34;&gt;#333&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed the &lt;code&gt;getMetals()&lt;/code&gt; example in the documentation. The example section previously had an example of &lt;code&gt;getFX()&lt;/code&gt;. Thanks to Gerhard Nachtmann (@nachti) for the report and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/330&#34;&gt;#330&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;getQuote()&lt;/code&gt; so it returns data when the ticker symbol contains an &amp;ldquo;&amp;amp;&amp;rdquo;. Thanks to @pankaj3009 for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/324&#34;&gt;#324&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;addMACD()&lt;/code&gt; when &lt;code&gt;col&lt;/code&gt; is specified. Thanks to @nvalueanalytics for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/321&#34;&gt;#321&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed issues handling https:// in &lt;code&gt;getSymbols.yahooj()&lt;/code&gt;. Thanks to @lobo1981 and @tchevri for the reports and Ethan Smith for the suggestion to move from XML to xml2. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/310&#34;&gt;#310&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/312&#34;&gt;#312&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;, &lt;code&gt;getDividends()&lt;/code&gt;, and &lt;code&gt;getSplits()&lt;/code&gt; so they all handle download errors and retry again. Thanks for @helgasoft for the report on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt; and @msfsalla for the report on &lt;code&gt;getDividends()&lt;/code&gt; and &lt;code&gt;getSplits()&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/307&#34;&gt;#307&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/314&#34;&gt;#314&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added implied volatility and last trade date to &lt;code&gt;getOptionChain()&lt;/code&gt; output. Thanks to @hd2581 and @romanlelek for the reports. And thanks to @rjvelasquezm for noticing the error when &lt;code&gt;lastTradeDate&lt;/code&gt; is &lt;code&gt;NULL&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/224&#34;&gt;#224&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/304&#34;&gt;#304&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &lt;code&gt;getOptionChain()&lt;/code&gt; to throw a warning and return &lt;code&gt;NULL&lt;/code&gt; for every expiry that doesn&amp;rsquo;t have data. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/299&#34;&gt;#299&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fixed &amp;ldquo;Defaults&amp;rdquo; to handle unexported function (e.g. &lt;code&gt;getQuote.av()&lt;/code&gt;. Thanks to @helgasoft for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/316&#34;&gt;#316&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;importDefaults()&lt;/code&gt; didn&amp;rsquo;t call &lt;code&gt;get()&lt;/code&gt; on vector with length &amp;gt; 1. Thanks to Kurt Hornik for the report. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/319&#34;&gt;#319&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;chartTheme()&lt;/code&gt; now works when quantmod is not attached. Thanks to Kurt Hornik for the report.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>quantmod_0.4-16 on CRAN</title>
-      <link>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran.html</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran.html</guid>
       <description>&lt;p&gt;A new version of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! One really cool thing about this release is that almost all the changes are contributions from the community.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; made more excellent contributions to &lt;code&gt;getQuote()&lt;/code&gt; in this release. It no longer throws an error if one or more symbols are missing.  And it handles multiple symbols in a semicolon-delimted string, just like &lt;code&gt;getSymbols()&lt;/code&gt;. For example, you can get quotes for multiple symbols by calling &lt;code&gt;getQuote(&amp;quot;SPY;AAPL&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/jrburl&#34;&gt;@jrburl&lt;/a&gt; made a great enhancement to &lt;code&gt;getOptionChain()&lt;/code&gt;. Now, instead of throwing an error, it sets volume and open interest to &lt;code&gt;NA&lt;/code&gt; if those columns are missing from the Yahoo Finance data. They also submitted a pull request to handle cases where Bid and/or Ask data are missing too. Unfortunately, that pull request came after I had already pushed to CRAN.&lt;/p&gt;
@@ -24,10 +150,10 @@
     
     <item>
       <title>quantmod_0.4-14 on CRAN</title>
-      <link>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran.html</link>
       <pubDate>Mon, 25 Mar 2019 06:53:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran.html</guid>
       <description>&lt;p&gt;I just pushed a new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! &lt;code&gt;getSymbols()&lt;/code&gt; no longer stops if there&amp;rsquo;s a problem with a ticker symbol. And &lt;code&gt;getQuote()&lt;/code&gt; can now import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m most excited about the update to &lt;code&gt;getSymbols()&lt;/code&gt; so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now &lt;code&gt;getSymbols()&lt;/code&gt; will import all the data it can, and provide an informative error message for any ticker symbols it could not import.&lt;/p&gt;
 &lt;p&gt;At a close second, I&amp;rsquo;m also excited about being able to import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt; using &lt;code&gt;getQuote()&lt;/code&gt;!. But don&amp;rsquo;t thank me; thank &lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; for the feature request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/247&#34;&gt;#247&lt;/a&gt;] and pull request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/250&#34;&gt;#250&lt;/a&gt;].&lt;/p&gt;

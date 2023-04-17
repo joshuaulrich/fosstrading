@@ -52,10 +52,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.22-0 on CRAN</title>
-      <link>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran.html</link>
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran.html</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/index.html&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  The biggest changes to be aware of are that all moving averages attempt to set colnames, &lt;code&gt;CCI()&lt;/code&gt; returns an object with colnames, and the initial gap for &lt;code&gt;SAR()&lt;/code&gt; is not hard-coded at 0.01.  There are also some much-needed bug fixes - most notably to Yang Zhang volatility, &lt;code&gt;MACD()&lt;/code&gt;, &lt;code&gt;SAR()&lt;/code&gt;, &lt;code&gt;EMA()&lt;/code&gt;/&lt;code&gt;EVWMA()&lt;/code&gt;, and &lt;code&gt;adjRatios()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;There are some exciting new features, including a rolling single-factor model function (&lt;code&gt;rollSFM()&lt;/code&gt;, based on a prototype from James Toll), a &lt;code&gt;runPercentRank()&lt;/code&gt; function from Charlie Friedemann, &lt;code&gt;stoch()&lt;/code&gt; and &lt;code&gt;WPR()&lt;/code&gt; return 0.5 instead of NaN when there&amp;rsquo;s insufficient price movement, and a faster &lt;code&gt;aroon()&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;Here are all of the updates (from the CHANGES file):&lt;/p&gt;
@@ -92,10 +92,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.21-0 on CRAN</title>
-      <link>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran.html</link>
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran.html</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  It contains some much-needed bug fixes (most notably to &lt;code&gt;stockSymbols()&lt;/code&gt;), some small changes, and a few new functions.  Note that the change to &lt;code&gt;wilderSum()&lt;/code&gt; will affect functions that use it (e.g. &lt;code&gt;ADX()&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Here are the full contents of the CHANGES file:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -179,10 +179,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.20-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran.html</link>
       <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran.html</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. It fixes a couple bugs and includes a couple handy tweaks. Here&amp;rsquo;s the full contents of the CHANGES file:&lt;/p&gt;
 &lt;p&gt;TTR version 0.20-2&lt;br&gt;
 Changes from version 0.20-1&lt;/p&gt;
@@ -222,10 +222,10 @@ Changes from version 0.20-1&lt;/p&gt;
     
     <item>
       <title>TTR_0.2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2009/02/ttr02-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran.html</link>
       <pubDate>Sun, 15 Feb 2009 18:51:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/02/ttr02-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran.html</guid>
       <description>&lt;p&gt;I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.&lt;/p&gt;
 &lt;p&gt;This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; internally, so all major time series classes are now supported.&lt;/p&gt;
 &lt;p&gt;NEW FEATURES:&lt;/p&gt;

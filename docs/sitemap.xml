@@ -3,19 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.fosstrading.com/</loc>
-    <lastmod>2023-02-21T14:58:00-05:00</lastmod>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/post.html</loc>
-    <lastmod>2023-02-21T14:58:00-05:00</lastmod>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/quantmod.html</loc>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</loc>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/R.html</loc>
-    <lastmod>2023-02-21T14:58:00-05:00</lastmod>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
-    <lastmod>2023-02-21T14:58:00-05:00</lastmod>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/tags.html</loc>
-    <lastmod>2023-02-21T14:58:00-05:00</lastmod>
+    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/xts.html</loc>
     <lastmod>2023-02-21T14:58:00-05:00</lastmod>
@@ -38,22 +44,19 @@
     <loc>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</loc>
     <lastmod>2020-09-13T08:41:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/search/label/quantmod.html</loc>
+    <loc>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran.html</loc>
     <lastmod>2020-03-10T07:23:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2020/03/quantmod04-16-on-cran.html</loc>
-    <lastmod>2020-03-10T07:23:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/2019/10/microbenchmark14-7-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2019/10/microbenchmark-1-4-7-on-cran.html</loc>
     <lastmod>2019-10-10T06:21:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2019/03/quantmod04-14-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran.html</loc>
     <lastmod>2019-03-25T06:53:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2018/11/xts-011-2-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran.html</loc>
     <lastmod>2018-11-06T06:35:00-06:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2018/09/xts-011-1-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran.html</loc>
     <lastmod>2018-09-12T13:36:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it.html</loc>
@@ -71,7 +74,7 @@
     <loc>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html</loc>
     <lastmod>2018-04-13T11:14:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2018/03/xts-010-2-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran.html</loc>
     <lastmod>2018-03-19T05:30:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers.html</loc>
@@ -179,7 +182,7 @@
     <loc>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open.html</loc>
     <lastmod>2013-03-29T17:22:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2013/03/ttr022-0-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran.html</loc>
     <lastmod>2013-03-18T20:49:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2012/09/computational-finance-with-r-on-coursera.html</loc>
@@ -215,7 +218,7 @@
     <loc>https://blog.fosstrading.com/2011/09/denver-101-105.html</loc>
     <lastmod>2011-09-27T01:26:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2011/09/ttr021-0-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran.html</loc>
     <lastmod>2011-09-01T13:10:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using.html</loc>
@@ -323,7 +326,7 @@
     <loc>https://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html</loc>
     <lastmod>2010-04-09T10:04:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2010/03/ttr020-2-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran.html</loc>
     <lastmod>2010-03-30T14:48:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/blotter.html</loc>
@@ -380,7 +383,7 @@
     <loc>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open.html</loc>
     <lastmod>2009-02-20T12:20:00-06:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2009/02/ttr02-on-cran.html</loc>
+    <loc>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran.html</loc>
     <lastmod>2009-02-15T18:51:00-06:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2009/01/ibrokers-featured-on-quantitative.html</loc>
