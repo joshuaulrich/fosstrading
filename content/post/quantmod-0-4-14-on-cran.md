@@ -17,3 +17,5 @@ At a close second, I'm also excited about being able to import quotes from [Tiin
 There are also several bug fixes in this release.  The most noticeable are fixes to `getDividends()`  and `getSplits()`. [Yahoo! Finance](https://finance.yahoo.com/) continues to have stability issues. Now it returns raw dividends instead of split-adjusted dividends (thanks to Douglas Barnard for the report \[[#253](https://github.com/joshuaulrich/quantmod/issues/253)\]), and the actual split adjustment ratio instead of the inverse (e.g. now 1/2 instead of 2/1).  I suggest using a different data provider. See my post: [Yahoo! Finance Alternatives](http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html) for some suggestions.  
   
 See the [news](https://cran.r-project.org/web/packages/quantmod/news/news.html) file for the other bug fixes. Please let me know what you think about these changes.  I need your feedback and input to make quantmod even better!
+
+{{< post-footer id="post-footer.html" >}}

@@ -24,3 +24,5 @@ There are also a few notable bug fixes:
 *   An invalid ISO8601 range subset now returns no data instead of all rows ([#96](https://github.com/joshuaulrich/xts/issues/96)).
 
 As always, I'm looking forward to your questions and feedback! If you have a question, please ask on [Stack Overflow](https://stackoverflow.com/) and use the [\[r\]](https://stackoverflow.com/questions/tagged/r) and [\[xts\]](https://stackoverflow.com/questions/tagged/xts) tags. Or you can send an email to the [R-SIG-Finance mailing list](https://stat.ethz.ch/mailman/listinfo/r-sig-finance) (you must subscribe to post). Open an issue [on GitHub](https://github.com/joshuaulrich/xts) if you find a bug or want to request a feature, but please read the [contributing guide](https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md) first!
+
+{{< post-footer id="post-footer.html" >}}

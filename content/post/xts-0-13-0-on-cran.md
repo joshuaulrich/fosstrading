@@ -206,8 +206,4 @@ This release also includes a new xts method for `na.fill()` that significantly i
 
 * Updated C entry points so they're not able to accidentally be found via dynamic lookup (i.e. `.Call("foo", ...)`). This makes each call to the C code a few microseconds faster, which is nice. ([#260](https://github.com/joshuaulrich/xts/issues/260))
 
-### Postscript
-
-I look forward to your questions and feedback! If you have a question, please ask on [Stack Overflow](http://stackoverflow.com/questions/tagged/r) and use the \[r\] and \[xts\] tags.  Or you can send an email to the [R-SIG-Finance](https://stat.ethz.ch/mailman/listinfo/r-sig-finance) mailing list (you must subscribe to post). Open an [issue on GitHub](https://github.com/joshuaulrich/xts/issues) if you find a bug or want to request a feature. Please [read the contributing guide](https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md) first! It will help save time for both of us. ;-)
-
-If you love using my open-source work (e.g. [quantmod](https://cran.r-project.org/package=quantmod), [TTR](https://cran.r-project.org/package=TTR), [xts](https://cran.r-project.org/package=xts), [IBrokers](https://cran.r-project.org/package=IBrokers), [microbenchmark](https://cran.r-project.org/package=microbenchmark), etc.), you can give back by [sponsoring me on GitHub](https://github.com/sponsors/joshuaulrich/). I truly appreciate anything you're willing and able to give!
+{{< post-footer id="post-footer.html" >}}

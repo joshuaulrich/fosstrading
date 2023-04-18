@@ -21,3 +21,5 @@ Unfortunately, [Yahoo! Finance](https://finance.yahoo.com/) continues to make c
 [@matiasandina](https://github.com/matiasandina) noticed that I had incorrectly labelled the dividend pay date as the ex-dividend date in the data `getQuote()` returned from Yahoo Finance. Whoops!  
   
 See the [news](https://cran.r-project.org/web/packages/quantmod/news/news.html) file for the other bug fixes. Thanks for using quantmod!
+
+{{< post-footer id="post-footer.html" >}}

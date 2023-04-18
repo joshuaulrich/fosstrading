@@ -70,8 +70,4 @@ x["/T1700"]  # start of the day until 5pm
 x["T0500/"]  # 5am until the end of the day
 ```
 
-I'm looking forward to your questions and feedback! If you have a question, please ask on [Stack Overflow](http://stackoverflow.com/questions/tagged/r) and use the \[r\] and \[xts\] tags.  Or you can send an email to the [R-SIG-Finance](https://stat.ethz.ch/mailman/listinfo/r-sig-finance) mailing list (you must subscribe to post). Open an [issue on GitHub](https://github.com/joshuaulrich/xts/issues) if you find a bug or want to request a feature, but please [read the contributing guide](https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md) first!
-
-----
-
-If you love using my open-source work (e.g. [quantmod](https://cran.r-project.org/package=quantmod), [TTR](https://cran.r-project.org/package=TTR), [xts](https://cran.r-project.org/package=xts), [IBrokers](https://cran.r-project.org/package=IBrokers), [microbenchmark](https://cran.r-project.org/package=microbenchmark), etc.), you can give back by [sponsoring me on GitHub](https://github.com/sponsors/joshuaulrich/). I truly appreciate anything you're willing and able to give!
+{{< post-footer id="post-footer.html" >}}

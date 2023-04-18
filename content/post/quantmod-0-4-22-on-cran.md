@@ -94,3 +94,5 @@ This was mainly a maintenance and bug fix release, but it does include a couple 
 * `importDefaults()` didn't call `get()` on vector with length > 1. Thanks to Kurt Hornik for the report. ([#319](https://github.com/joshuaulrich/quantmod/issues/319))
 
 * `chartTheme()` now works when quantmod is not attached. Thanks to Kurt Hornik for the report.
+
+{{< post-footer id="post-footer.html" >}}

@@ -65,10 +65,4 @@ Calling `as.matrix()` on an xts object without a dim attribute no longer throws 
 
 `endpoints()` now honors `k > 0` when `on = "quarters"`. Thanks to [@alkment](https://github.com/alkment) for the report ([#279](https://github.com/joshuaulrich/xts/issues/279)).
 
-----
-
-I'm looking forward to your questions and feedback! If you have a question, please ask on [Stack Overflow](http://stackoverflow.com/questions/tagged/r) and use the \[r\] and \[xts\] tags.  Or you can send an email to the [R-SIG-Finance](https://stat.ethz.ch/mailman/listinfo/r-sig-finance) mailing list (you must subscribe to post). Open an [issue on GitHub](https://github.com/joshuaulrich/xts/issues) if you find a bug or want to request a feature, but please [read the contributing guide](https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md) first!
-
-----
-
-If you love using my open-source work (e.g. [quantmod](https://cran.r-project.org/package=quantmod), [TTR](https://cran.r-project.org/package=TTR), [IBrokers](https://cran.r-project.org/package=IBrokers), [microbenchmark](https://cran.r-project.org/package=microbenchmark) etc.), you can give back by [sponsoring me on GitHub](https://github.com/sponsors/joshuaulrich/). I truly appreciate anything you're willing and able to give!
+{{< post-footer id="post-footer.html" >}}

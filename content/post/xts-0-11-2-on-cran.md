@@ -19,3 +19,5 @@ Notable changes are below:
 *   The `to.period()` family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports ([#53](https://github.com/joshuaulrich/xts/issues/53), [#277](https://github.com/joshuaulrich/xts/issues/277)).
 
 As always, I'm looking forward to your questions and feedback! If you have a question, please ask on [Stack Overflow](https://stackoverflow.com/) and use the [\[r\]](https://stackoverflow.com/questions/tagged/r) and [\[xts\]](https://stackoverflow.com/questions/tagged/xts) tags. Or you can send an email to the [R-SIG-Finance mailing list](https://stat.ethz.ch/mailman/listinfo/r-sig-finance) (you must subscribe to post). Open an issue [on GitHub](https://github.com/joshuaulrich/xts) if you find a bug or want to request a feature, but please read the [contributing guide](https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md) first!
+
+{{< post-footer id="post-footer.html" >}}
