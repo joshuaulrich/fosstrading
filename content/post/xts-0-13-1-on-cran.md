@@ -5,7 +5,7 @@ draft: false
 tags : [Releases, xts, R]
 ---
 
-An updated version of [xts](http://cran.r-project.org/package=xts) is now on [CRAN](http://cran.r-project.org/). This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenace issues that popped up recently.
+An updated version of [xts](http://cran.r-project.org/package=xts) is now on [CRAN](http://cran.r-project.org/). This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenance issues that popped up recently.
 
 <!--more-->
 

@@ -13,7 +13,7 @@
       <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</guid>
-      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenace issues that popped up recently.&lt;/p&gt;
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenance issues that popped up recently.&lt;/p&gt;
 &lt;h3 id=&#34;patches-for-features-added-in-0130&#34;&gt;Patches for features added in 0.13.0&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
