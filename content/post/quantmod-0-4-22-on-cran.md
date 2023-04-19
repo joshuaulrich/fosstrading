@@ -95,4 +95,4 @@ This was mainly a maintenance and bug fix release, but it does include a couple 
 
 * `chartTheme()` now works when quantmod is not attached. Thanks to Kurt Hornik for the report.
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

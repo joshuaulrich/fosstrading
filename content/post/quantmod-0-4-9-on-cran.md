@@ -17,3 +17,5 @@ There also appear to be issues with the adjusted prices in some instruments.  F
 Another change is that the downloaded data may contain rows where all the values are "null".  These appear on the website as "0".  This is a major issue for some instruments.  Take XLU for example; 188 of the 624 days of data are missing between 2014-12-04 and 2017-05-26 (ouch!).  You can see this is even true on the [Yahoo! Finance historical price page for XLU](https://finance.yahoo.com/quote/XLU/history?period1=1417672800&period2=1422079200&interval=1d&filter=history&frequency=1d).  
   
 If these changes have made you look for a new data provider, see my post: [Yahoo! Finance Alternatives](http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html).
+
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

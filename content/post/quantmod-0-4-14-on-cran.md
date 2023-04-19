@@ -18,4 +18,4 @@ There are also several bug fixes in this release.  The most noticeable are fixe
   
 See the [news](https://cran.r-project.org/web/packages/quantmod/news/news.html) file for the other bug fixes. Please let me know what you think about these changes.  I need your feedback and input to make quantmod even better!
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

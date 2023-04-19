@@ -31,3 +31,5 @@ Here are the full contents of the CHANGES file:
 > *   Fixed `ZLEMA()` default ratio by changing it from `2/(n-1)` to `2/(n+1)`. This makes it consistent with `EMA()`. Thanks to [Dirk Eddelbuettel](http://dirk.eddelbuettel.com/).
 > *   Corrected close-to-close volatility. Thanks to James Toll for the report.
 > *   `adjRatios()` failed (spectacularly) if there were missing close prices. Thanks to Garrett See for the report.
+
+{{< package-release-footer id="package-release-footer.html" package="ttr" >}}

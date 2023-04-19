@@ -32,3 +32,5 @@ BUG FIXES:
 *   Fixed `fastK` in `stoch()` when `smooth != 1`
 *   Fixed segfault caused by `EMA()` when `n < NROW(x)` (thanks to Douglas Hobbs)
 *   `test.EMA.wilder()` failed under R-devel (thanks to Prof Brian Ripley)
+
+{{< package-release-footer id="package-release-footer.html" package="ttr" >}}

@@ -14,6 +14,6 @@ This [xts](http://joshuaulrich.github.io/xts/) release contains mostly bugfixes
 *   `na.locf.xts()` and `na.omit.xts()` now support character xts objects. Thanks to Ken Williams and Samo Pahor for the reports ([#42](https://github.com/joshuaulrich/xts/issues/42)).
 
   
-Many of the bug fixes were related to the new plot.xts() introduced in 0.10-0. And a handful of bugfixes were to make xts more consistent with zoo in some edge cases.  
+Many of the bug fixes were related to the new plot.xts() introduced in 0.10-0. And a handful of bug fixes were to make xts more consistent with zoo in some edge cases.  
   
-As always, I'm looking forward to your questions and feedback!  If you have a question, please ask on Stack Overflow and use the \[r\] and \[xts\] tags.  Or you can send an email to the R-SIG-Finance mailing list (you must subscribe to post).  Open an issue on GitHub if you find a bug or want to request a feature, but please read the contributing guide first!
+{{< package-release-footer id="package-release-footer.html" package="xts" >}}

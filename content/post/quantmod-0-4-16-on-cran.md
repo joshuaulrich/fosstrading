@@ -22,4 +22,4 @@ Unfortunately, [Yahoo! Finance](https://finance.yahoo.com/) continues to make c
   
 See the [news](https://cran.r-project.org/web/packages/quantmod/news/news.html) file for the other bug fixes. Thanks for using quantmod!
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

@@ -65,4 +65,4 @@ Calling `as.matrix()` on an xts object without a dim attribute no longer throws 
 
 `endpoints()` now honors `k > 0` when `on = "quarters"`. Thanks to [@alkment](https://github.com/alkment) for the report ([#279](https://github.com/joshuaulrich/xts/issues/279)).
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="xts" >}}

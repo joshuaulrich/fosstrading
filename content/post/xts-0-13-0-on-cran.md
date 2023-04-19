@@ -206,4 +206,4 @@ This release also includes a new xts method for `na.fill()` that significantly i
 
 * Updated C entry points so they're not able to accidentally be found via dynamic lookup (i.e. `.Call("foo", ...)`). This makes each call to the C code a few microseconds faster, which is nice. ([#260](https://github.com/joshuaulrich/xts/issues/260))
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="xts" >}}

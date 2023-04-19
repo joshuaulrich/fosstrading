@@ -49,3 +49,5 @@ BUG FIXES:
 - Made changes to Rd files to pass `R CMD check` on R-devel (2.9.0)  
   
 Please do contact me with any questions, concerns, bug reports, etc.
+
+{{< package-release-footer id="package-release-footer.html" package="ttr" >}}

@@ -14,4 +14,4 @@ This release also includes more bug fixes than you can shake a stick at.  We sq
   
 I'm sure you were hoping to see some examples of the new `plot.xts()` functionality.  Rather than clutter up this blog post with code, check out the [basic examples](http://joshuaulrich.github.io/xts/plotting_basics.html), and the [panel functionality examples](http://joshuaulrich.github.io/xts/plotting_panels.html) that Ross Bennett created.  
   
-I'm looking forward to your questions and feedback!  If you have a question, please ask on [Stack  Overflow](http://stackoverflow.com/questions/tagged/r) and use the \[r\] and \[xts\] tags.  Or you can send an email to the [R-SIG-Finance](https://stat.ethz.ch/mailman/listinfo/r-sig-finance)  mailing list (you must subscribe to post).  Open an [issue on GitHub](https://github.com/joshuaulrich/xts/issues) if you find a bug or want to request a feature, but please [read the contributing guide](https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md) first!
+{{< package-release-footer id="package-release-footer.html" package="xts" >}}

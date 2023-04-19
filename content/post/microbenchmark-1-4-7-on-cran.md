@@ -16,4 +16,4 @@ Harvey added a feature to allow you to use a string for common checks: "equal", 
   
 I also converted the unit tests to use [RUnit](https://cran.r-project.org/package=RUnit). I also made some changes to the repo, including adding a contributing guide and issue/pull-request templates.
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="microbenchmark" >}}

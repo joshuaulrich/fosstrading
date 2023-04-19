@@ -25,4 +25,4 @@ The bug was caused by the differences in `rollapply.default()` in zoo and `rolla
 \
 Also, the money ratio will be `NaN` if there's no money flow for `n` consecutive observations (e.g. if there are no trades). This causes the money flow index to be `NaN`. Now the money flow index is to 50 in this case.  Thanks to GitHub user [jgehw](https://github.com/jgehw) for the report, reproducible example, and suggested patch! ([#81](https://github.com/joshuaulrich/TTR/issues/81))
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="ttr" >}}

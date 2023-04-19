@@ -11,3 +11,5 @@ tags : [Releases, quantmod, R]
 Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect.  Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo.  The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.  For more information, see the links to the GitHub issues above.  
   
 I added documentation for getPrice ([#77](https://github.com/joshuaulrich/quantmod/issues/77)), and removed the unused unsetSymbolLookup function and corresponding documentation ([#115](https://github.com/joshuaulrich/quantmod/issues/115)).
+
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

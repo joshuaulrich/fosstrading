@@ -41,3 +41,5 @@ BUG FIXES
 *   `adjRatios()` now ensures all inputs are univariate, thanks to Garrett See.
 *   `EMA()` and `EVWMA()` now ensure `n` is less than the number of non-NA values, thanks to Roger Bos.
 *   Fix to `BBands()` docs, thanks to Evelyn Mitchell.
+
+{{< package-release-footer id="package-release-footer.html" package="ttr" >}}

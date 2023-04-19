@@ -23,3 +23,5 @@ rawDiv <- getDividends("IBM", split.adjust = FALSE)
 ```
   
 Note that the default is `split.adjust = TRUE` to maintain backward-compatibility.
+
+{{< package-release-footer id="package-release-footer.html" package="quantmod" >}}

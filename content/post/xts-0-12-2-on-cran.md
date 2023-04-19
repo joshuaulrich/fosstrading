@@ -70,4 +70,4 @@ x["/T1700"]  # start of the day until 5pm
 x["T0500/"]  # 5am until the end of the day
 ```
 
-{{< post-footer id="post-footer.html" >}}
+{{< package-release-footer id="package-release-footer.html" package="xts" >}}
