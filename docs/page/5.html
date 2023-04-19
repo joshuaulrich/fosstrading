@@ -85,6 +85,21 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2013/11/quantstrat-is-slow.html" rel="bookmark">
+			quantstrat is slow
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-04T06:37:00-06:00">November 04, 2013</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The complaint I hear most frequently about quantstrat is that it&rsquo;s slow, especially for large data. Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default. Path dependence requires rules to be re-evaluated for each timestamp with a signal. More signals equates to longer run-times.
+If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off. If your strategy truly is path-dependent, keep reading&hellip;
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2013/10/rfinance-2014-call-for-papers.html" rel="bookmark">
 			R/Finance 2014 Call for Papers
 			</a>
@@ -229,22 +244,6 @@ Algorithm Zoo (by Milktrader)SEF-Blog: Signal Extraction and Forecasting
 Once again, R has been accepted as a mentoring organization for the Google Summer of Code (2012). We invite students interested in this program to learn more about it. A good starting point is the R GSoC wiki.
 Students participating in the program receive US$5,000 for successful completion of a GSoC project, a great resume item, and an opportunity to work with R package authors.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2012/03/rfinance-2012-registration-open.html" rel="bookmark">
-			R/Finance 2012 Registration Open
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-03-20T10:47:00-05:00">March 20, 2012</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		You can find more information on the R/Finance conference website. Hope to see you in Chicago in May!
-The registration for R/Finance 2012 &ndash; which will take place May 11 and 12 in Chicago &ndash; is NOW OPEN!
-Building on the success of the three previous conferences in 2009, 2010, and 2011, we expect more than 250 attendees from around the world. R users from industry, academia, and government will join 40+ presenters covering all areas of finance with R.
-	</div>
 </article>
 </main>
 
@@ -330,11 +329,11 @@ Building on the success of the three previous conferences in 2009, 2010, and 201
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

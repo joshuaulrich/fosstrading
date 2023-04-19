@@ -98,7 +98,14 @@ if (!doNotTrack) {
 <li>Make column names for <code>merge()</code> results with unnamed objects shorter and more like zoo (<a href="https://github.com/joshuaulrich/xts/issues/248">#248</a>). Previously, column names could be hundreds, even thousands, of characters. This change has the added benefit of making <code>na.fill()</code> much faster (<a href="https://github.com/joshuaulrich/xts/issues/259">#259</a>). NOTE: This may BREAK existing code for integer unnamed objects.</li>
 <li>The <code>to.period()</code> family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports (<a href="https://github.com/joshuaulrich/xts/issues/53">#53</a>, <a href="https://github.com/joshuaulrich/xts/issues/277">#277</a>).</li>
 </ul>
-<p>As always, I&rsquo;m looking forward to your questions and feedback! If you have a question, please ask on <a href="https://stackoverflow.com/">Stack Overflow</a> and use the <a href="https://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="https://stackoverflow.com/questions/tagged/xts">[xts]</a> tags. Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance mailing list</a> (you must subscribe to post). Open an issue <a href="https://github.com/joshuaulrich/xts">on GitHub</a> if you find a bug or want to request a feature, but please read the <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">contributing guide</a> first!</p>
+<div class="container" role="main">
+  <div class="row">
+    <hr>
+    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/xts">xts</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+  </div>
+</div>
 		</div>
 		<footer class="post__footer">
 			
@@ -236,11 +243,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

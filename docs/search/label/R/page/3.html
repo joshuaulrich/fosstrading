@@ -86,6 +86,22 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2017/06/quantmod-0-4-9-on-cran.html" rel="bookmark">
+			quantmod 0.4-9 on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-07T12:25:00-05:00">June 07, 2017</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		A new release of quantmod is now on CRAN! The only change was to address changes to Yahoo! Finance and their effects on getSymbols.yahoo(). GitHub issue #157 contains some details about the fix implementation.
+Unfortunately, the URL wasn&rsquo;t the only thing that changed. The actual data available for download changed as well.
+The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&rsquo;s only split-adjusted). Also, only the close price is unadjusted; the open, high, and low are split-adjusted.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2017/04/quantmod-0-4-8-on-cran.html" rel="bookmark">
 			quantmod 0.4-8 on CRAN
 			</a>
@@ -225,21 +241,6 @@ James Toll provided a patch to the volatility() function that uses a zero mean (
 		We have been working on a new charting engine for xts::plot.xts for the past couple years. It started with Michael Weylandt&rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.
 This new engine improves the functionality, modularity, and flexibility of plot.xts by building off the framework Jeff Ryan began with quantmod::chart_Series. The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2015/03/registration-open-for-rfinance-2015.html" rel="bookmark">
-			Registration Open for R/Finance 2015!
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-03-31T10:35:00-05:00">March 31, 2015</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		You can find registration information and agenda details (as they become available) on the conference website. Or you can go directly to the registration page. Note that there&rsquo;s an early-bird registration deadline of May 15.
-The conference will take place on May 29 and 30, at UIC in Chicago. Building on the success of the previous conferences in 2009-2014, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.
-	</div>
 </article>
 </main>
 
@@ -326,11 +327,11 @@ The conference will take place on May 29 and 30, at UIC in Chicago. Building on
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

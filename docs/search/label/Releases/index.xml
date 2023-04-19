@@ -6,7 +6,86 @@
     <description>Recent content in Releases on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Apr 2023 03:41:57 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Releases/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Apr 2023 11:28:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Releases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>xts_0.13.1 on CRAN</title>
+      <link>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</link>
+      <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</guid>
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenace issues that popped up recently.&lt;/p&gt;
+&lt;h3 id=&#34;patches-for-features-added-in-0130&#34;&gt;Patches for features added in 0.13.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Format each column individually before printing. The top/bottom rows could have a different number of decimal places and there are often multiple varying spaces between columns. For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;                          &lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;volume&lt;/span&gt;          &lt;span class=&#34;n&#34;&gt;ma&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2022-01-03&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;476.470&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;803961.000&lt;/span&gt;          &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2022-01-03&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;476.700&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;179476.000&lt;/span&gt;          &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2022-01-03&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;     &lt;span class=&#34;m&#34;&gt;476.540&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;197919.000&lt;/span&gt;          &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
+                &lt;span class=&#34;kc&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2023-03-16&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;52&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;394.6000&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;46728.0000&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;392.8636&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2023-03-16&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;53&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;394.6500&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;64648.0000&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;392.8755&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;2023-03-16&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;54&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;00&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;394.6500&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;69900.0000&lt;/span&gt;    &lt;span class=&#34;m&#34;&gt;392.8873&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are 4 spaces between the index and the &amp;lsquo;close&amp;rsquo; column, 2 between &amp;lsquo;close&amp;rsquo; and &amp;lsquo;volume&amp;rsquo;, and 4 between &amp;lsquo;volume&amp;rsquo; and &amp;lsquo;ma&amp;rsquo;. There should be a consistent number of spaces between the columns. Most other classes of objects print with 1 space between the columns. The top rows have 3 decimals and the bottom rows have 4. These should also be the same. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/321&#34;&gt;#321&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make column names based on number of columns. The original code was a lot more complicated because it tried to account for truncating the number of printed columns. That functionality was removed because of how complicated it was. So now we can simply create printed column names from the number of columns. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/395&#34;&gt;#395&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Only convert printed index values to character. Converting the entire index to character is time-consuming for xts objects with many observations. It can take more than a second to print an xts object with 1 million observations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reduce instances when &lt;code&gt;dplyr::lag()&lt;/code&gt; warning is shown. The warning was shown whenever it detected dplyr is installed, even if the user wasn&amp;rsquo;t actively using dplyr. That caused an excessive amount of noise when other packages attached xts (e.g. quantmod). Thanks to Duncan Murdoch for the report and suggested fix! (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/393&#34;&gt;#393&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Return &amp;lsquo;POSIXct&amp;rsquo; if object has no &amp;lsquo;tclass&amp;rsquo;. An empty string is not a valid &amp;lsquo;tclass&amp;rsquo;, so it can cause an error.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix &lt;code&gt;xts()&lt;/code&gt; for zero-row data.frames. The &lt;code&gt;xts()&lt;/code&gt; constructor would create an object with a list for coredata when &lt;code&gt;x&lt;/code&gt; is a data.frame with no rows. xts objects can&amp;rsquo;t have lists as coredata, so it should convert &lt;code&gt;x&lt;/code&gt; to a matrix and throw an error if &lt;code&gt;x&lt;/code&gt; is a list. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/394&#34;&gt;#394&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix &lt;code&gt;as.data.frame()&lt;/code&gt; when converting a data.frame with column names to xts when there&amp;rsquo;s only one non-time-based column. Previously the xts object would not have the data.frame column name. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/391&#34;&gt;#391&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Treat &lt;code&gt;NA&lt;/code&gt; the same as &lt;code&gt;NULL&lt;/code&gt; for &amp;lsquo;start&amp;rsquo; or &amp;lsquo;end&amp;rsquo; in &lt;code&gt;window.xts()&lt;/code&gt;. &lt;code&gt;NULL&lt;/code&gt; represents an undefined index value and &lt;code&gt;NA&lt;/code&gt; represents an unknown or missing index value. xts does not allow &lt;code&gt;NA&lt;/code&gt; as index values, so subsetting an xts or zoo object by &lt;code&gt;NA&lt;/code&gt; returns a zero-length object. Therefore a &lt;code&gt;NA&lt;/code&gt; (unknown) index value is essentially the same as an undefined index value. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/383&#34;&gt;#383&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/345&#34;&gt;#345&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Warn and remove &lt;code&gt;NA&lt;/code&gt; when &lt;code&gt;periodicity()&lt;/code&gt; called on date-time vector with any &lt;code&gt;NA&lt;/code&gt; values. Previously it threw the uninformative error below. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/289&#34;&gt;#289&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;Error&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;try.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;x&amp;#39; needs to be timeBased or xtsible&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+  &lt;span class=&#34;s&#34;&gt;&amp;#39;x&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;needs&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;be&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;timeBased&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xtsible&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Account for timezones when making names for the list &lt;code&gt;split.xts()&lt;/code&gt; creates. This was specifically a problem if the xts object&amp;rsquo;s index was &lt;code&gt;yearmon&lt;/code&gt; because &lt;code&gt;as.yearmon.POSIXct()&lt;/code&gt; always sets &lt;code&gt;tz = &amp;quot;GMT&amp;quot;&lt;/code&gt; when calling &lt;code&gt;as.POSIXlt()&lt;/code&gt;, regardless of the xts&#39; index &amp;lsquo;tzone&amp;rsquo; attribute.  That can cause the &lt;code&gt;as.yearmon()&lt;/code&gt; results to be different days for GMT and the index&amp;rsquo;s timezone. Use &lt;code&gt;format.POSIXct()&lt;/code&gt; for &amp;ldquo;months&amp;rdquo; because it checks for a &amp;lsquo;tzone&amp;rsquo; attribute before converting to POSIXlt and calling &lt;code&gt;format.POSIXlt()&lt;/code&gt;. The conversion to POSIXlt is important because it checks and uses the &amp;lsquo;tzone&amp;rsquo; attribute before considering the &amp;lsquo;tz&amp;rsquo; argument. So it effectively ignores the &lt;code&gt;tz = &amp;quot;GMT&amp;quot;&lt;/code&gt; setting in &lt;code&gt;as.yearmon()&lt;/code&gt;. This is also the reason for calling &lt;code&gt;as.POSIXlt()&lt;/code&gt; before calling &lt;code&gt;as.yearqtr()&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/392&#34;&gt;#392&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ignore attribute order in &lt;code&gt;all.equal()&lt;/code&gt;. Attribute order shouldn&amp;rsquo;t matter. That can be checked with &lt;code&gt;identical()&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;chores&#34;&gt;Chores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add notes on &lt;code&gt;plot.xts()&lt;/code&gt; nomenclature and structure. Also add ASCII art to illustrate definitions and layout. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/103&#34;&gt;#103&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Register missing S3 methods and update signatures. With R-devel (83995-ish), &lt;code&gt;R CMD check&lt;/code&gt; notes these S3 methods are not registered. It also notes that the signatures for &lt;code&gt;as.POSIXct.tis()&lt;/code&gt; and &lt;code&gt;str.replot_xts()&lt;/code&gt; do not match the respective generics. &lt;code&gt;R CMD check&lt;/code&gt; also thinks &lt;code&gt;time.frequency()&lt;/code&gt; is a S3 method because &lt;code&gt;time()&lt;/code&gt; is a generic. The function isn&amp;rsquo;t exported, so renaming won&amp;rsquo;t break any external code. Thanks to Kurt Hornik for the report. Issues with functionality for &amp;lsquo;tis&amp;rsquo; were also identified. I removed &amp;lsquo;tis&amp;rsquo; support entirely because the implementation was not even a bare minimum, and it&amp;rsquo;s not clear it even worked correctly. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/398&#34;&gt;#398&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add instructions to update old objects. Old xts objects do not have &amp;lsquo;tclass&amp;rsquo; and &amp;lsquo;tzone&amp;rsquo; attributes on the index. Add a function to update the object attributes and add a note to the warning to show how to use it. Also, only call &lt;code&gt;tzone()&lt;/code&gt; and &lt;code&gt;tclass()&lt;/code&gt; once in &lt;code&gt;check.TZ()&lt;/code&gt;. Calling these functions multiple times throws multiple warnings for xts objects created before the &amp;lsquo;tclass&amp;rsquo; and &amp;lsquo;tzone&amp;rsquo; were attached to the index instead of the xts object. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/306&#34;&gt;#306&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>quantmod_0.4.22 on CRAN</title>
       <link>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</link>
@@ -130,7 +209,15 @@
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;chartTheme()&lt;/code&gt; now works when quantmod is not attached. Thanks to Kurt Hornik for the report.&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -322,9 +409,14 @@
 &lt;p&gt;Updated C entry points so they&amp;rsquo;re not able to accidentally be found via dynamic lookup (i.e. &lt;code&gt;.Call(&amp;quot;foo&amp;quot;, ...)&lt;/code&gt;). This makes each call to the C code a few microseconds faster, which is nice. (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/260&#34;&gt;#260&lt;/a&gt;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;postscript&#34;&gt;Postscript&lt;/h3&gt;
-&lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
-&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -414,9 +506,14 @@
 &lt;p&gt;I&amp;rsquo;m most excited about open-ended time-of-day subsetting. Now you can do things like:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/T1700&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# start of the day until 5pm&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;x[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;T0500/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 5am until the end of the day&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -470,10 +567,14 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
 &lt;p&gt;&lt;code&gt;as.zoo.xts()&lt;/code&gt; is now only registered for zoo versions prior to 1.8-5.  Methods to convert an object to another class should reside in the package that implements the target class. Thanks to Kurt Hornik for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/287&#34;&gt;#287&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;.parseISO8601()&lt;/code&gt; no longer has a potential length-1 logical error. Thanks to Kurt Hornik for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/280&#34;&gt;#280&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;endpoints()&lt;/code&gt; now honors &lt;code&gt;k &amp;gt; 0&lt;/code&gt; when &lt;code&gt;on = &amp;quot;quarters&amp;quot;&lt;/code&gt;. Thanks to &lt;a href=&#34;https://github.com/alkment&#34;&gt;@alkment&lt;/a&gt; for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/279&#34;&gt;#279&lt;/a&gt;).&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -500,10 +601,14 @@ The bug was caused by the differences in &lt;code&gt;rollapply.default()&lt;/cod
 Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s no money flow for &lt;code&gt;n&lt;/code&gt; consecutive observations (e.g. if there are no trades). This causes the money flow index to be &lt;code&gt;NaN&lt;/code&gt;. Now the money flow index is to 50 in this case.  Thanks to GitHub user &lt;a href=&#34;https://github.com/jgehw&#34;&gt;jgehw&lt;/a&gt; for the report, reproducible example, and suggested patch! (&lt;a href=&#34;https://github.com/joshuaulrich/TTR/issues/81&#34;&gt;#81&lt;/a&gt;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;</description>
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;ttr&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -518,7 +623,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;p&gt;Unfortunately, &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; continues to make changes to how they return data. Thankfully, quantmod users are diligent and catch these changes. &lt;a href=&#34;https://github.com/helgasoft/&#34;&gt;@helgasoft&lt;/a&gt; noticed the split ratio delimiter changed from &lt;code&gt;/&lt;/code&gt; to &lt;code&gt;:&lt;/code&gt;. So, for example, a 2-for-1 split was &lt;code&gt;1/2&lt;/code&gt; but is now &lt;code&gt;2:1&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/helgasoft/&#34;&gt;@helgasoft&lt;/a&gt; also noticed that &lt;a href=&#34;https://www.alphavantage.co/&#34;&gt;Alpha Vantage&lt;/a&gt; discontinued their &amp;ldquo;batch quote&amp;rdquo; functionality, which broke &lt;code&gt;getQuote()&lt;/code&gt;. Thankfully, they provided a patch that used the single-quote request, so &lt;code&gt;getQuote()&lt;/code&gt; works with Alpha Vantage again!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/matiasandina&#34;&gt;@matiasandina&lt;/a&gt; noticed that I had incorrectly labelled the dividend pay date as the ex-dividend date in the data &lt;code&gt;getQuote()&lt;/code&gt; returned from Yahoo Finance. Whoops!&lt;/p&gt;
-&lt;p&gt;See the &lt;a href=&#34;https://cran.r-project.org/web/packages/quantmod/news/news.html&#34;&gt;news&lt;/a&gt; file for the other bug fixes. Thanks for using quantmod!&lt;/p&gt;</description>
+&lt;p&gt;See the &lt;a href=&#34;https://cran.r-project.org/web/packages/quantmod/news/news.html&#34;&gt;news&lt;/a&gt; file for the other bug fixes. Thanks for using quantmod!&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -530,7 +643,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
       <description>&lt;p&gt;I pushed an updated &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark to CRAN&lt;/a&gt; a couple weeks ago. There were two noteworthy changes, thanks to great contributions from &lt;a href=&#34;https://github.com/MichaelChirico&#34;&gt;@MichaelChirico&lt;/a&gt; and &lt;a href=&#34;https://github.com/harvey131&#34;&gt;@harvey131&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Michael fixed a bug in the check for whether the unit argument was a character string (&lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/issues/9&#34;&gt;#9&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/pull/10&#34;&gt;#10&lt;/a&gt;). The prior behavior was an uninformative error.&lt;/p&gt;
 &lt;p&gt;Harvey added a feature to allow you to use a string for common checks: &amp;ldquo;equal&amp;rdquo;, &amp;ldquo;identical&amp;rdquo;, and &amp;ldquo;equivalent&amp;rdquo; (&lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/pull/16&#34;&gt;#16&lt;/a&gt;). So you don&amp;rsquo;t need to create a custom function to use &lt;code&gt;all.equal()&lt;/code&gt;, &lt;code&gt;all.equal(..., check.attributes = FALSE)&lt;/code&gt;, and identical, respectively.&lt;/p&gt;
-&lt;p&gt;I also converted the unit tests to use &lt;a href=&#34;https://cran.r-project.org/package=RUnit&#34;&gt;RUnit&lt;/a&gt;. I also made some changes to the repo, including adding a contributing guide and issue/pull-request templates.&lt;/p&gt;</description>
+&lt;p&gt;I also converted the unit tests to use &lt;a href=&#34;https://cran.r-project.org/package=RUnit&#34;&gt;RUnit&lt;/a&gt;. I also made some changes to the repo, including adding a contributing guide and issue/pull-request templates.&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/microbenchmark&#34;&gt;microbenchmark&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/microbenchmark/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -543,7 +664,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;p&gt;I&amp;rsquo;m most excited about the update to &lt;code&gt;getSymbols()&lt;/code&gt; so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now &lt;code&gt;getSymbols()&lt;/code&gt; will import all the data it can, and provide an informative error message for any ticker symbols it could not import.&lt;/p&gt;
 &lt;p&gt;At a close second, I&amp;rsquo;m also excited about being able to import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt; using &lt;code&gt;getQuote()&lt;/code&gt;!. But don&amp;rsquo;t thank me; thank &lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; for the feature request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/247&#34;&gt;#247&lt;/a&gt;] and pull request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/250&#34;&gt;#250&lt;/a&gt;].&lt;/p&gt;
 &lt;p&gt;There are also several bug fixes in this release.  The most noticeable are fixes to &lt;code&gt;getDividends()&lt;/code&gt;  and &lt;code&gt;getSplits()&lt;/code&gt;. &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; continues to have stability issues. Now it returns raw dividends instead of split-adjusted dividends (thanks to Douglas Barnard for the report [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/253&#34;&gt;#253&lt;/a&gt;]), and the actual split adjustment ratio instead of the inverse (e.g. now 1/2 instead of 2/1).  I suggest using a different data provider. See my post: &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;Yahoo! Finance Alternatives&lt;/a&gt; for some suggestions.&lt;/p&gt;
-&lt;p&gt;See the &lt;a href=&#34;https://cran.r-project.org/web/packages/quantmod/news/news.html&#34;&gt;news&lt;/a&gt; file for the other bug fixes. Please let me know what you think about these changes.  I need your feedback and input to make quantmod even better!&lt;/p&gt;</description>
+&lt;p&gt;See the &lt;a href=&#34;https://cran.r-project.org/web/packages/quantmod/news/news.html&#34;&gt;news&lt;/a&gt; file for the other bug fixes. Please let me know what you think about these changes.  I need your feedback and input to make quantmod even better!&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -561,7 +690,14 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;Make column names for &lt;code&gt;merge()&lt;/code&gt; results with unnamed objects shorter and more like zoo (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/248&#34;&gt;#248&lt;/a&gt;). Previously, column names could be hundreds, even thousands, of characters. This change has the added benefit of making &lt;code&gt;na.fill()&lt;/code&gt; much faster (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/259&#34;&gt;#259&lt;/a&gt;). NOTE: This may BREAK existing code for integer unnamed objects.&lt;/li&gt;
 &lt;li&gt;The &lt;code&gt;to.period()&lt;/code&gt; family of functions now use the index timezone when converting intraday index values to daily values (or lower frequency). Previously, the dates would be calculated as UTC dates, instead of dates in the local timezone (as they are now). Thanks to Garrett See and Gabor Grothendieck for the reports (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/53&#34;&gt;#53&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/277&#34;&gt;#277&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;https://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/tagged/xts&#34;&gt;[xts]&lt;/a&gt; tags. Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance mailing list&lt;/a&gt; (you must subscribe to post). Open an issue &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please read the &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;contributing guide&lt;/a&gt; first!&lt;/p&gt;</description>
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -585,7 +721,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;first()&lt;/code&gt; and &lt;code&gt;last()&lt;/code&gt; now keep dims when they would otherwise be dropped by a regular row subset. This is consistent with &lt;code&gt;head()&lt;/code&gt; and &lt;code&gt;tail()&lt;/code&gt;. Thanks to Davis Vaughan for the report (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/226&#34;&gt;#226&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;An invalid ISO8601 range subset now returns no data instead of all rows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/96&#34;&gt;#96&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;https://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/tagged/xts&#34;&gt;[xts]&lt;/a&gt; tags. Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance mailing list&lt;/a&gt; (you must subscribe to post). Open an issue &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please read the &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;contributing guide&lt;/a&gt; first!&lt;/p&gt;</description>
+&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;https://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;https://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;https://stackoverflow.com/questions/tagged/xts&#34;&gt;[xts]&lt;/a&gt; tags. Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance mailing list&lt;/a&gt; (you must subscribe to post). Open an issue &lt;a href=&#34;https://github.com/joshuaulrich/xts&#34;&gt;on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please read the &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;contributing guide&lt;/a&gt; first!&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -627,8 +771,16 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;na.locf.xts()&lt;/code&gt; now honors &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;xout&lt;/code&gt; arguments by dispatching to the next method (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/215&#34;&gt;#215&lt;/a&gt;). Thanks to Morten Grum for the report.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;na.locf.xts()&lt;/code&gt; and &lt;code&gt;na.omit.xts()&lt;/code&gt; now support character xts objects. Thanks to Ken Williams and Samo Pahor for the reports (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/42&#34;&gt;#42&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Many of the bug fixes were related to the new plot.xts() introduced in 0.10-0. And a handful of bugfixes were to make xts more consistent with zoo in some edge cases.&lt;/p&gt;
-&lt;p&gt;As always, I&amp;rsquo;m looking forward to your questions and feedback!  If you have a question, please ask on Stack Overflow and use the [r] and [xts] tags.  Or you can send an email to the R-SIG-Finance mailing list (you must subscribe to post).  Open an issue on GitHub if you find a bug or want to request a feature, but please read the contributing guide first!&lt;/p&gt;
+&lt;p&gt;Many of the bug fixes were related to the new plot.xts() introduced in 0.10-0. And a handful of bug fixes were to make xts more consistent with zoo in some edge cases.&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -674,7 +826,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;p&gt;Do note that the new &lt;code&gt;plot.xts()&lt;/code&gt; includes breaking changes to the original (and rather limited) &lt;code&gt;plot.xts()&lt;/code&gt;.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.  And I will no longer have to tell people that I use &lt;code&gt;plot.zoo()&lt;/code&gt; on xts objects!&lt;/p&gt;
 &lt;p&gt;This release also includes more bug fixes than you can shake a stick at.  We squashed several bugs that could have crashed your R session.  We also fixed some (always pesky and tricky) timezone issues.  We&amp;rsquo;ve also done more sanity checking (e.g. for NA in the index), and provide more informative errors when things aren&amp;rsquo;t right.  And last, but not least, unit tests are running again!&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m sure you were hoping to see some examples of the new &lt;code&gt;plot.xts()&lt;/code&gt; functionality.  Rather than clutter up this blog post with code, check out the &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_basics.html&#34;&gt;basic examples&lt;/a&gt;, and the &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_panels.html&#34;&gt;panel functionality examples&lt;/a&gt; that Ross Bennett created.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m looking forward to your questions and feedback!  If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;Stack  Overflow&lt;/a&gt; and use the [r] and [xts] tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt;  mailing list (you must subscribe to post).  Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature, but please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first!&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/xts&#34;&gt;xts&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -690,6 +850,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;p&gt;There also appear to be issues with the adjusted prices in some instruments.  For example, users reported issues with split data for XLF and SPXL in GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/160&#34;&gt;#160&lt;/a&gt;.  For XLF, there a split &lt;em&gt;and&lt;/em&gt; a dividend on 2016-09-16, even on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLF/history?period1=1473138000&amp;amp;period2=1474866000&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLF&lt;/a&gt;. As far as I can tell, there was only a special dividend.  The problem with SPXL is that the adjusted close price isn&amp;rsquo;t adjusted for the 4/1 split on 2017-05-01, which is also reflected on the &lt;a href=&#34;https://finance.yahoo.com/quote/SPXL/history?period1=1488088800&amp;amp;period2=1495774800&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical prices page for SPXL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Another change is that the downloaded data may contain rows where all the values are &amp;ldquo;null&amp;rdquo;.  These appear on the website as &amp;ldquo;0&amp;rdquo;.  This is a major issue for some instruments.  Take XLU for example; 188 of the 624 days of data are missing between 2014-12-04 and 2017-05-26 (ouch!).  You can see this is even true on the &lt;a href=&#34;https://finance.yahoo.com/quote/XLU/history?period1=1417672800&amp;amp;period2=1422079200&amp;amp;interval=1d&amp;amp;filter=history&amp;amp;frequency=1d&#34;&gt;Yahoo! Finance historical price page for XLU&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If these changes have made you look for a new data provider, see my post: &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;Yahoo! Finance Alternatives&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -710,6 +879,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;p&gt;There&amp;rsquo;s a handy new argument to &lt;code&gt;getDividends()&lt;/code&gt;: &lt;code&gt;split.adjust&lt;/code&gt;. It allows you to request dividends unadjusted for splits (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/140&#34;&gt;#128&lt;/a&gt;). Yahoo provides split-adjusted dividends, so you previously had to manually unadjust them for splits if you wanted the original raw values. To import the raw unadjusted dividends, just call:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;rawDiv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getDividends&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IBM&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;split.adjust&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that the default is &lt;code&gt;split.adjust = TRUE&lt;/code&gt; to maintain backward-compatibility.&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -722,6 +900,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
       <description>&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; just accepted a bugfix release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt;.  The most pertinent changes were to fix getSymbols.oanda (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/36&#34;&gt;#36&lt;/a&gt;) and getOptionChain.yahoo (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/92&#34;&gt;#92&lt;/a&gt;).  It also includes a fix to addTRIX (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/72&#34;&gt;#72&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect.  Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo.  The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.  For more information, see the links to the GitHub issues above.&lt;/p&gt;
 &lt;p&gt;I added documentation for getPrice (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/77&#34;&gt;#77&lt;/a&gt;), and removed the unused unsetSymbolLookup function and corresponding documentation (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/115&#34;&gt;#115&lt;/a&gt;).&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;quantmod&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -836,6 +1023,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;EMA()&lt;/code&gt; and &lt;code&gt;EVWMA()&lt;/code&gt; now ensure &lt;code&gt;n&lt;/code&gt; is less than the number of non-NA values, thanks to Roger Bos.&lt;/li&gt;
 &lt;li&gt;Fix to &lt;code&gt;BBands()&lt;/code&gt; docs, thanks to Evelyn Mitchell.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;ttr&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -901,6 +1097,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;adjRatios()&lt;/code&gt; failed (spectacularly) if there were missing close prices. Thanks to Garrett See for the report.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;ttr&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -964,6 +1169,15 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;Made changes to Rd files to pass &lt;code&gt;R CMD check&lt;/code&gt; on R-devel (2.9.0)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Please do contact me with any questions, concerns, bug reports, etc.&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;ttr&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     

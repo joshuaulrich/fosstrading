@@ -6,20 +6,11 @@
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Apr 2023 03:41:57 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>quantmod</title>
-      <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
-      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 19 Apr 2023 11:28:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
       <link>https://blog.fosstrading.com/search/label/R.html</link>
-      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
+      <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/R.html</guid>
       <description></description>
@@ -28,7 +19,7 @@
     <item>
       <title>Releases</title>
       <link>https://blog.fosstrading.com/search/label/Releases.html</link>
-      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
+      <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/Releases.html</guid>
       <description></description>
@@ -37,9 +28,18 @@
     <item>
       <title>xts</title>
       <link>https://blog.fosstrading.com/search/label/xts.html</link>
-      <pubDate>Tue, 21 Feb 2023 14:58:00 -0500</pubDate>
+      <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/xts.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quantmod</title>
+      <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
+      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
       <description></description>
     </item>
     

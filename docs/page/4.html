@@ -85,6 +85,21 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2015/07/new-quantmod-and-ttr-on-cran.html" rel="bookmark">
+			New quantmod and TTR on CRAN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-24T16:04:00-05:00">July 24, 2015</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		I just sent quantmod_0.4-5 to CRAN, and TTR_0.23-0 has been there for a couple weeks. I&rsquo;d like to thank Ivan Popivanov for many useful reports and patches to TTR. He provided patches to add HMA() (Hull MA), ALMA(), and ultimateOscillator() functions.
+James Toll provided a patch to the volatility() function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2015/04/plotxts-rfc.html" rel="bookmark">
 			plot.xts RFC
 			</a>
@@ -221,21 +236,6 @@ His work on the package focused on implementing a portfolio specification to sep
 Building on the success of the previous conferences in 2009-2013, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.
 We are very excited about the four keynote presentations given by Bob McDonald, Bill Cleveland, Alexios Ghalanos, and Luke Tierney.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2013/11/quantstrat-is-slow.html" rel="bookmark">
-			quantstrat is slow
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-04T06:37:00-06:00">November 04, 2013</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		The complaint I hear most frequently about quantstrat is that it&rsquo;s slow, especially for large data. Some of this slow performance is due to quantstrat treating all strategies as path-dependent by default. Path dependence requires rules to be re-evaluated for each timestamp with a signal. More signals equates to longer run-times.
-If your strategy is not path-dependent, you can get a fairly substantial performance improvement by turning path-dependence off. If your strategy truly is path-dependent, keep reading&hellip;
-	</div>
 </article>
 </main>
 
@@ -321,11 +321,11 @@ If your strategy is not path-dependent, you can get a fairly substantial perform
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/xts-0-12-1-on-cran.html">xts_0.12.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
