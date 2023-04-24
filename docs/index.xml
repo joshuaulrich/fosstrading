@@ -6,11 +6,11 @@
     <description>Recent content on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Apr 2023 11:28:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Apr 2023 10:54:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>xts_0.13.1 on CRAN</title>
       <link>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</link>
-      <pubDate>Wed, 19 Apr 2023 11:28:00 -0500</pubDate>
+      <pubDate>Mon, 24 Apr 2023 10:54:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenance issues that popped up recently.&lt;/p&gt;
