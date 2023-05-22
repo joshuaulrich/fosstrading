@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.fosstrading.com/</loc>
-    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/2023/05/getsymbols-rebooted.html</loc>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/post.html</loc>
-    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/quantmod.html</loc>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/R.html</loc>
-    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
-    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/tags.html</loc>
+    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
     <lastmod>2023-04-24T10:54:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/xts.html</loc>
@@ -22,9 +28,6 @@
   </url><url>
     <loc>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</loc>
     <lastmod>2023-04-24T10:54:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/quantmod.html</loc>
-    <lastmod>2023-04-16T03:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</loc>
     <lastmod>2023-04-16T03:41:57-05:00</lastmod>

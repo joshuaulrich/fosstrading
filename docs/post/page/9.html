@@ -86,6 +86,22 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2010/05/lspm-joint-probability-tables.html" rel="bookmark">
+			LSPM Joint Probability Tables
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-05-18T22:30:00-05:00">May 18, 2010</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		I&rsquo;ve received several requests for methods to create joint probability tables for use in LSPM&rsquo;s portfolio optimization functions. Rather than continue to email this example to individuals who ask, I post it here in hopes they find it via a Google search. ;-)
+I&rsquo;m certain there are more robust ways to estimate this table, but the code below is a start&hellip;
+# `x` is a matrix of market system returns # `n` is the number of bins to create for each system # `FUN` is the function to use to calculate the value for each bin # `.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2010/05/introducing-ibrokers-and-jeff-ryan.html" rel="bookmark">
 			Introducing IBrokers (and Jeff Ryan)
 			</a>
@@ -226,22 +242,6 @@ In this long-overdue post, I will show how to optimize a Leverage Space Portfoli
 Some copious notes before we get to the code:
 These examples are based on revision 26 31 from r-forge and will not work under earlier revisions (and may not work with later revisions).
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2009/11/tactical-asset-allocation-using-blotter.html" rel="bookmark">
-			Tactical asset allocation using blotter
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-11-18T21:18:00-06:00">November 18, 2009</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		NOTE: If you simply want to test strategies in R, please see the post: Tactical Asset Allocation Using quantstrat. quantstrat uses blotter behind the scenes, but provides a higher level of abstraction.
-blotter is an R package that tracks the P&amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.
-The contents of this post borrow heavily from code and comments in the &ldquo;longtrend&rdquo; demo script in the blotter package.
-	</div>
 </article>
 </main>
 
@@ -328,11 +328,11 @@ The contents of this post borrow heavily from code and comments in the &ldquo;lo
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted.html">getSymbols Rebooted</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2020/09/xlf-rolling-mean-correlation.html">Mean rolling correlation of XLF constituents</a></li>
 		</ul>
 	</div>
 </div>

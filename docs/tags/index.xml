@@ -6,11 +6,20 @@
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Apr 2023 10:54:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 10:14:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>quantmod</title>
+      <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
+      <pubDate>Mon, 22 May 2023 10:14:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>R</title>
       <link>https://blog.fosstrading.com/search/label/R.html</link>
-      <pubDate>Mon, 24 Apr 2023 10:54:00 -0500</pubDate>
+      <pubDate>Mon, 22 May 2023 10:14:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/R.html</guid>
       <description></description>
@@ -31,15 +40,6 @@
       <pubDate>Mon, 24 Apr 2023 10:54:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/xts.html</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>quantmod</title>
-      <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
-      <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/search/label/quantmod.html</guid>
       <description></description>
     </item>
     
