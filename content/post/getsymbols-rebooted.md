@@ -150,7 +150,7 @@ conn <- DBI::dbConnect(driver)
 student_count <- DBI::dbGetQuery(conn, "select count(*) from students")
 ```
 
-The ['rfimport'](https://github.com/joshuaulrich/rfimport/) `sym_yahoo()` function corresponds to the `PostgreSQL()` function in the example above. And the `import()` function pulls the data like `DBI::dbGetQuery()`. For example:
+The ['rfimport'](https://github.com/joshuaulrich/rfimport/) `sym_yahoo()` function corresponds to the `PostgreSQL()` function in the example above. And the `import_ohlc()` function pulls the data like `DBI::dbGetQuery()`. For example:
 
 ```r
 library(rfimport)
@@ -160,7 +160,7 @@ library(rfimport)
 syms <- sym_yahoo("SPY")
 
 # Import some data from Yahoo Finance
-spy <- import(syms)
+spy <- import_ohlc(syms)
 ```
 
 ### Symbol specification
@@ -169,7 +169,7 @@ The package introduces a new virtual S3 class `"symbol_spec"` as the basis for c
 
 Each data source will have its own `symbol_spec` constructor. The constructor will have an argument for the vector of symbols and other arguments for all the other data source connection settings. It will return an object that inherits from the new virtual `symbol_spec` For example `sym_yahoo()` will return a `c("yahoo", "symbol_spec")` class vector.
 
-The help page for the symbol spec constructors can also document the import methods that the data source supports. So `help("sym_yahoo")` would also contain information about `import.yahoo()` and `import_collection.yahoo()`. That way, users don't need to know the name of the data source method in order to find its documentation.
+The help page for the symbol spec constructors can also document the import methods that the data source supports. So `help("sym_yahoo")` would also contain information about `import_ohlc.yahoo()` and `import_collection.yahoo()`. That way, users don't need to know the name of the data source method in order to find its documentation.
 
 ### Ticker symbology
 
@@ -185,7 +185,7 @@ An easier alternative would be creating a way to map source symbols to user-defi
 
 ### Generic import functions
 
-The package will have generic functions `import()` and `import_collection()` to dispatch on `symbol_spec` sub-classes. `import()` only handles a single symbol and returns one xts object. `import_collection()` will return a list of xts objects for one or more symbols.
+The package will have generic functions `import_ohlc()` and `import_collection()` to dispatch on `symbol_spec` sub-classes. `import_ohlc()` only handles a single symbol and returns one xts object. `import_collection()` will return a list of xts objects for one or more symbols.
 
 Other generic import functions may be added in the future. It may make sense to include generic `import` functions that return specific types of data. For example: `import_ohlc()` for open, high, low, close, (adjusted, volume), and `import_bbo()` for best bid and offer.
 
@@ -197,7 +197,7 @@ For example:
 
 ```r
 # one symbol returned as an xts object
-spy <- import(sym_yahoo("SPY"), dates = "2021/2022")
+spy <- import_ohlc(sym_yahoo("SPY"), dates = "2021/2022")
 
 # two symbols returned as a list of xts objects
 stocks <- sym_tiingo(c("AAPL", "NFLX")) |>
@@ -208,7 +208,7 @@ The `periodicity` argument specifies the interval between data points (e.g. dail
 
 ### Data source methods
 
-Each data source will have a S3 method for the relevant import generics, rather than a `src` argument like `getSymbols()`. Calling `import(sym_yahoo("SPY"))` will call the corresponding `import.yahoo()` method to import data from [Yahoo Finance](https://finance.yahoo.com). `import(sym_tiingo("DIA"))` will call `import.tiingo()` to import data from [Tiingo](https://api.tiingo.com/).
+Each data source will have a S3 method for the relevant import generics, rather than a `src` argument like `getSymbols()`. Calling `import_ohlc(sym_yahoo("SPY"))` will call the corresponding `import_ohlc.yahoo()` method to import data from [Yahoo Finance](https://finance.yahoo.com). `import_ohlc(sym_tiingo("DIA"))` will call `import_ohlc.tiingo()` to import data from [Tiingo](https://api.tiingo.com/).
 
 #### Returned data
 
@@ -220,7 +220,7 @@ The built-in data sources methods also will not include the series symbol in the
 
 Though we want to avoid side-effects, we probably want to provide a way to set credentials so they do not have to be provided for every import call.
 
-We could provide this functionality in a pure way by creating an `options` object that holds a list of values. Users would create this object once and pass it to the relevant ['rfimport'](https://github.com/joshuaulrich/rfimport/) function (either `sym_<source>()` or `import()`). The default options could be created by a function like `sym_<source>_options()`. This would be similar to the 'control' arguments to many optimization routines (e.g. `DEoptim.control()`).
+We could provide this functionality in a pure way by creating an `options` object that holds a list of values. Users would create this object once and pass it to the relevant ['rfimport'](https://github.com/joshuaulrich/rfimport/) function (either `sym_<source>()` or `import_ohlc()`). The default options could be created by a function like `sym_<source>_options()`. This would be similar to the 'control' arguments to many optimization routines (e.g. `DEoptim.control()`).
 
 # Open questions and considerations
 
