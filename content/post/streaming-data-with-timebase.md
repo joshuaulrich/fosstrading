@@ -89,5 +89,6 @@ Later posts in this series will cover at least the topics below. Please leave a 
 * Introduction to the Web Administrator (viewing/monitoring data, import/export)
 * Introduction to QQL, the quant query language
 
+Thanks to [TheRobotJames](https://robotjames.com/) for helpful feedback!
 
 {{< post-footer id="post-footer.html" >}}
