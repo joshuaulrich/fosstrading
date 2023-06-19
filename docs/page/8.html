@@ -85,6 +85,21 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2011/03/moving-from-excel-to-r.html" rel="bookmark">
+			Moving from Excel to R
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-05T15:09:00-06:00">March 05, 2011</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		This first post of the Backtesting in Excel and R series will provide some resources to help smooth the transition from the familiarity and comfort of Excel to the potentially strange and intimidating world of R.
+I made my voyage from Excel to R more than 5 years ago and learned mostly by trial and error (and reading the R manuals). Most people don&rsquo;t prefer my approach of &ldquo;keep at it until you figure it out&rdquo;, so I don&rsquo;t have a lot of personal advice to share.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2011/02/backtesting-in-excel-and-r.html" rel="bookmark">
 			Backtesting in Excel and R
 			</a>
@@ -221,22 +236,6 @@ His writing is witty, entertaining, and packed fully of useful bits of informati
 	<div class="content list__excerpt post__content clearfix">
 		When optimizing leverage space portfolios, I frequently run into the issue of one or more f$ ([Max Loss]/f) being less than the margin of its respective instrument. For example, assume the required margin for an instrument is $500, f$ is $100, and $100,000 in equity. The optimal amount to trade is 1,000 shares ($100,000/$100). However, that would require $500,000 in equity, while you only have $100,000. What do you do?
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2010/06/estimating-probability-of-drawdown.html" rel="bookmark">
-			Estimating Probability of Drawdown
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-06-19T20:13:00-05:00">June 19, 2010</time></div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		I&rsquo;ve shown several examples of how to use LSPM&rsquo;s probDrawdown() function as a constraint when optimizing a leverage space portfolio. Those posts implicitly assume the probDrawdown() function produces an accurate estimate of actual drawdown. This post will investigate the function&rsquo;s accuracy.
-Calculation Notes:
-To calculate the probability of drawdown, the function traverses all permutations of the events in your lsp object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.
-	</div>
 </article>
 </main>
 
@@ -322,11 +321,11 @@ To calculate the probability of drawdown, the function traverses all permutation
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase.html">Streaming Market Data with TimeBase</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted.html">getSymbols Rebooted</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran.html">xts_0.13.1 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran.html">quantmod_0.4.22 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/xts-0-13-0-on-cran.html">xts_0.13.0 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/10/xts-0-12-2-on-cran.html">xts_0.12.2 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
@@ -350,6 +349,7 @@ To calculate the probability of drawdown, the function traverses all permutation
 		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases.html" title="Releases">Releases</a>
 		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews.html" title="Reviews">Reviews</a>
 		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR.html" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase.html" title="TimeBase">TimeBase</a>
 		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter.html" title="blotter">blotter</a>
 		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod.html" title="quantmod">quantmod</a>
 		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat.html" title="quantstrat">quantstrat</a>

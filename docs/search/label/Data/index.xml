@@ -6,7 +6,87 @@
     <description>Recent content in Data on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Jul 2011 22:16:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Data/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jun 2023 12:14:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Streaming Market Data with TimeBase</title>
+      <link>https://blog.fosstrading.com/2023/06/streaming-data-with-timebase.html</link>
+      <pubDate>Mon, 19 Jun 2023 12:14:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2023/06/streaming-data-with-timebase.html</guid>
+      <description>&lt;p&gt;This is the first post of a series on using &lt;a href=&#34;https://timebase.info/&#34;&gt;TimeBase&lt;/a&gt; to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was &lt;a href=&#34;https://github.com/finos/TimeBase-CE/&#34;&gt;released as open-source&lt;/a&gt; in February 2021.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;whats-your-problem&#34;&gt;What&amp;rsquo;s Your Problem?&lt;/h3&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a href=&#34;https://timebase.info/&#34;&gt;TimeBase&lt;/a&gt; addresses several key needs in automated trading. You need to process large amounts of real-time market data. This includes trades, best bid/offer, and/or the entire limit order book. You use this data to calculate indicators/features, determine when and where to place orders, monitoring unrealized P&amp;amp;L, and monitoring/managing risk of your positions.&lt;/p&gt;
+&lt;p&gt;All data in the trading system needs to be processed quickly and absolutely must be processed in strict time order. This is not trivial when you need to interleave data from multiple sources (e.g. exchanges and the trading system itself).
+The &lt;a href=&#34;https://medium.com/prooftrading/proof-engineering-the-algorithmic-trading-platform-b9c2f195433d#d545&#34;&gt;System Architecture&lt;/a&gt; section of &amp;ldquo;The Algorithmic Trading Platform&amp;rdquo; by Prerak Sanghvi describes the benefits of using a strictly time-sequenced stream of events. To summarize:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Synchronized: every system component always receives the same data in the same order.&lt;/li&gt;
+&lt;li&gt;Observable: the system is deterministic and can be debugged offline by replaying the data.&lt;/li&gt;
+&lt;li&gt;Auditable: You can re-create the state of the system at any point in time.&lt;/li&gt;
+&lt;li&gt;Streamlined: Tasks like logging and persisting to disk can be delegated to components that are off the critical path.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The data also needs be stored for analysis and debugging. Analysis includes things like running backtests, post-trade evaluation, and investigating market behavior. &lt;a href=&#34;https://medium.com/prooftrading/selecting-a-database-for-an-algorithmic-trading-system-2d25f9648d02&#34;&gt;&amp;ldquo;Selecting a Database for an Algorithmic Trading System&amp;rdquo;
+&lt;/a&gt; by Prerak Sanghvi discusses the necessary components of a time-series database for algorithmic trading. To summarize:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fast data ingest: millions of records per second (quote data can be 100+ million records per day)&lt;/li&gt;
+&lt;li&gt;Ability to process large amounts of historical data for patterns and trends&lt;/li&gt;
+&lt;li&gt;Time series operations and real-time analytics (e.g. window functions, aggregations, as-of joins)&lt;/li&gt;
+&lt;li&gt;Expressive query language&lt;/li&gt;
+&lt;li&gt;Optimized on-disk layout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;timebase-vs-alternatives&#34;&gt;TimeBase vs Alternatives&lt;/h3&gt;
+&lt;p&gt;Why use TimeBase instead of other open-source projects like &lt;a href=&#34;https://www.rabbitmq.com/&#34;&gt;RabbitMQ&lt;/a&gt;, &lt;a href=&#34;https://kafka.apache.org/&#34;&gt;Kafka&lt;/a&gt;, &lt;a href=&#34;https://www.influxdata.com/&#34;&gt;InfluxDB&lt;/a&gt;, &lt;a href=&#34;https://www.timescale.com/&#34;&gt;TimeScaleDB&lt;/a&gt;, or &lt;a href=&#34;https://clickhouse.com/&#34;&gt;ClickHouse&lt;/a&gt;? The main reason is that TimeBase is both a &lt;a href=&#34;https://en.wikipedia.org/wiki/Message_broker&#34;&gt;message broker&lt;/a&gt; &lt;em&gt;and&lt;/em&gt; a &lt;a href=&#34;https://en.wikipedia.org/wiki/Time_series_database&#34;&gt;time-series database&lt;/a&gt;. The TimeBase website has its own &lt;a href=&#34;https://timebase.info/why-timebase/&#34;&gt;&amp;ldquo;Why TimeBase&amp;rdquo; page&lt;/a&gt; and pages that compare popular &lt;a href=&#34;https://timebase.info/why-timebase/tsdb-comparison.html&#34;&gt;time-series databases&lt;/a&gt; and &lt;a href=&#34;https://timebase.info/why-timebase/message-brokers-comparison.html&#34;&gt;message brokers&lt;/a&gt;. Here&amp;rsquo;s a summary of the benefits of TimeBase from those pages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Based on configuration, it supports microsecond latencies or the ability to handle millions of messages per second on commodity hardware.&lt;/li&gt;
+&lt;li&gt;Enforces stream schemas with heterogeneous and potentially complex &lt;a href=&#34;https://kb.timebase.info/community/overview/messages&#34;&gt;message structures&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The same &lt;a href=&#34;https://kb.timebase.info/community/development/libs&#34;&gt;APIs&lt;/a&gt; can be used to stream real-time data &lt;em&gt;and&lt;/em&gt; replay historical data.&lt;/li&gt;
+&lt;li&gt;Able to &lt;a href=&#34;https://kb.timebase.info/community/technology/replication/replication_intro&#34;&gt;replicate data&lt;/a&gt; to other TimeBase instances or applications.&lt;/li&gt;
+&lt;li&gt;The open-source community edition has multiple crypto exchange data connectors. The enterprise edition has 50+ built-in data connectors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;timebase-structure&#34;&gt;TimeBase Structure&lt;/h3&gt;
+&lt;p&gt;This is a high-level summary of the &lt;a href=&#34;https://timebase.info/architecture.html&#34;&gt;TimeBase architecture page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data connectors&lt;/strong&gt; handle connecting to external data sources and translating their data into the TimeBase format. There are many open source &lt;a href=&#34;https://github.com/epam/TimebaseCryptoConnectors&#34;&gt;crypto exchange data connectors&lt;/a&gt;. The enterprise edition has another 50+ data connectors to all major exchanges and many data vendors.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The message broker&lt;/strong&gt; provides a &lt;a href=&#34;https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern&#34;&gt;publish/subscribe&lt;/a&gt; pattern to write/read streaming data. The data is processed via readers and writers to &lt;a href=&#34;https://kb.timebase.info/community/overview/streams&#34;&gt;streams&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Writers can only write to one stream. Readers can consume multiple streams simultaneously and the messages from every stream are interleaved so that every message consumed is always in guaranteed time order regardless of which stream they come from. It is extremely important that ever consumer receives data strictly sequenced by time!&lt;/p&gt;
+&lt;p&gt;There are two types of streams, durable and transient. Durable streams are persisted to disk. Transient streams are only in memory and can be &lt;em&gt;lossy&lt;/em&gt; or &lt;em&gt;lossless&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Writers to &lt;em&gt;lossy&lt;/em&gt; streams are not blocked by slow readers, so slow readers may not receive every message but always receive the next available message once they finish processing a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Writers to &lt;em&gt;lossless&lt;/em&gt; streams are blocked by slow readers, so every reader always receives every message and every reader can only process data as fast as the slowest reader.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;The database&lt;/strong&gt; handles reading/writing data from/to disk, importing and exporting data, replicating data to other applications, and can aggregate data to regular bars. It has a query language (&lt;a href=&#34;https://kb.timebase.info/community/development/qql/QQL%205.5/qql-tut-intro&#34;&gt;QQL&lt;/a&gt;) you can use to extract, filter, aggregate, and transform data in streams.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s also an open-source &lt;a href=&#34;https://kb.timebase.info/community/development/tools/Web%20Admin/admin_config_ce&#34;&gt;Web Administrator&lt;/a&gt; you can use to manipulate streams (create, delete, edit, import/export). It also allows you to view data, including monitoring live data streaming in to the database.&lt;/p&gt;
+&lt;h3 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next?&lt;/h3&gt;
+&lt;p&gt;Later posts in this series will cover at least the topics below. Please leave a comment or contact me with any other things you would like to see!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Building and running TimeBase from source/Docker&lt;/li&gt;
+&lt;li&gt;Building and running the Web Administrator from source/Docker&lt;/li&gt;
+&lt;li&gt;Setting up a data connector&lt;/li&gt;
+&lt;li&gt;Introduction to the Web Administrator (viewing/monitoring data, import/export)&lt;/li&gt;
+&lt;li&gt;Introduction to QQL, the quant query language&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g.
+      &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;,
+      &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;,
+      &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;,
+      &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;,
+      &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;,
+      &lt;a href=&#34;https://github.com/braverock/blotter/&#34;&gt;blotter&lt;/a&gt;,
+      &lt;a href=&#34;https://github.com/braverock/quantstrat/&#34;&gt;quantstrat&lt;/a&gt;,
+      etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Creating Financial Instrument metadata in R</title>
       <link>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</link>

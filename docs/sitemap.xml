@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.fosstrading.com/</loc>
-    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+    <loc>https://blog.fosstrading.com/search/label/Data.html</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/2023/05/getsymbols-rebooted.html</loc>
-    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+    <loc>https://blog.fosstrading.com/</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/post.html</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/2023/06/streaming-data-with-timebase.html</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/tags.html</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/TimeBase.html</loc>
+    <lastmod>2023-06-19T12:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/2023/05/getsymbols-rebooted.html</loc>
     <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/quantmod.html</loc>
     <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/R.html</loc>
-    <lastmod>2023-05-22T10:14:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/tags.html</loc>
     <lastmod>2023-05-22T10:14:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/Releases.html</loc>
@@ -234,9 +243,6 @@
     <lastmod>2011-08-12T06:48:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata.html</loc>
-    <lastmod>2011-07-27T22:16:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/Data.html</loc>
     <lastmod>2011-07-27T22:16:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2011/06/r-journal-volume-31.html</loc>

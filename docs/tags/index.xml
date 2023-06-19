@@ -6,7 +6,25 @@
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 May 2023 10:14:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jun 2023 12:14:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data</title>
+      <link>https://blog.fosstrading.com/search/label/Data.html</link>
+      <pubDate>Mon, 19 Jun 2023 12:14:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/Data.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TimeBase</title>
+      <link>https://blog.fosstrading.com/search/label/TimeBase.html</link>
+      <pubDate>Mon, 19 Jun 2023 12:14:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/TimeBase.html</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>quantmod</title>
       <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
@@ -121,15 +139,6 @@
       <pubDate>Sun, 04 Mar 2012 20:33:00 -0600</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/DEoptim.html</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data</title>
-      <link>https://blog.fosstrading.com/search/label/Data.html</link>
-      <pubDate>Wed, 27 Jul 2011 22:16:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/search/label/Data.html</guid>
       <description></description>
     </item>
     
