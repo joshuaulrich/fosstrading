@@ -67,7 +67,7 @@ This is a high-level summary of the [TimeBase architecture page](https://timebas
 
 **The message broker** provides a [publish/subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) pattern to write/read streaming data. The data is processed via readers and writers to [streams](https://kb.timebase.info/community/overview/streams).
 
-Writers can only write to one stream. Readers can consume multiple streams simultaneously and the messages from every stream are interleaved so that every message consumed is always in guaranteed time order regardless of which stream they come from. It is extremely important that ever consumer receives data strictly sequenced by time!
+Writers can only write to one stream. Readers can consume multiple streams simultaneously and the messages from every stream are interleaved so that every message consumed is always in guaranteed time order regardless of which stream they come from. It is extremely important that every consumer receives data strictly sequenced by time!
 
 There are two types of streams, durable and transient. Durable streams are persisted to disk. Transient streams are only in memory and can be *lossy* or *lossless*.
   * Writers to *lossy* streams are not blocked by slow readers, so slow readers may not receive every message but always receive the next available message once they finish processing a message.

@@ -126,7 +126,7 @@ The <a href="https://medium.com/prooftrading/proof-engineering-the-algorithmic-t
 <p>This is a high-level summary of the <a href="https://timebase.info/architecture.html">TimeBase architecture page</a>.</p>
 <p><strong>Data connectors</strong> handle connecting to external data sources and translating their data into the TimeBase format. There are many open source <a href="https://github.com/epam/TimebaseCryptoConnectors">crypto exchange data connectors</a>. The enterprise edition has another 50+ data connectors to all major exchanges and many data vendors.</p>
 <p><strong>The message broker</strong> provides a <a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">publish/subscribe</a> pattern to write/read streaming data. The data is processed via readers and writers to <a href="https://kb.timebase.info/community/overview/streams">streams</a>.</p>
-<p>Writers can only write to one stream. Readers can consume multiple streams simultaneously and the messages from every stream are interleaved so that every message consumed is always in guaranteed time order regardless of which stream they come from. It is extremely important that ever consumer receives data strictly sequenced by time!</p>
+<p>Writers can only write to one stream. Readers can consume multiple streams simultaneously and the messages from every stream are interleaved so that every message consumed is always in guaranteed time order regardless of which stream they come from. It is extremely important that every consumer receives data strictly sequenced by time!</p>
 <p>There are two types of streams, durable and transient. Durable streams are persisted to disk. Transient streams are only in memory and can be <em>lossy</em> or <em>lossless</em>.</p>
 <ul>
 <li>
