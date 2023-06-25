@@ -8,7 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Streaming Market Data with TimeBase" />
-<meta property="og:description" content="This is the first post of a series on using TimeBase to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was released as open-source in February 2021." />
+<meta property="og:description" content="This is the first post of a series on using TimeBase to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was released as open-source in February 2021.
+Preface I am not affiliated with the company that created and maintains TimeBase (Deltix, now EPAM)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2023/06/streaming-data-with-timebase/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-06-19T12:14:00-05:00" />
@@ -94,11 +95,9 @@ if (!doNotTrack) {
 		</header>
 		<div class="content post__content clearfix">
 			<p>This is the first post of a series on using <a href="https://timebase.info/">TimeBase</a> to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was <a href="https://github.com/finos/TimeBase-CE/">released as open-source</a> in February 2021.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h3 id="preface">Preface</h3>
+<p>I am not affiliated with the company that created and maintains TimeBase (Deltix, now EPAM). I&rsquo;m not currently compensated by them in any way for promoting their product. I&rsquo;m merely a happy user who is excited that TimeBase is open source and I can show you how to do some cool stuff with it.</p>
 <h3 id="whats-your-problem">What&rsquo;s Your Problem?</h3>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <p><a href="https://timebase.info/">TimeBase</a> addresses several key needs in automated trading. You need to process large amounts of real-time market data. This includes trades, best bid/offer, and/or the entire limit order book. You use this data to calculate indicators/features, determine when and where to place orders, monitoring unrealized P&amp;L, and monitoring/managing risk of your positions.</p>
 <p>All data in the trading system needs to be processed quickly and absolutely must be processed in strict time order. This is not trivial when you need to interleave data from multiple sources (e.g. exchanges and the trading system itself).
 The <a href="https://medium.com/prooftrading/proof-engineering-the-algorithmic-trading-platform-b9c2f195433d#d545">System Architecture</a> section of &ldquo;The Algorithmic Trading Platform&rdquo; by Prerak Sanghvi describes the benefits of using a strictly time-sequenced stream of events. To summarize:</p>
@@ -151,7 +150,17 @@ The <a href="https://medium.com/prooftrading/proof-engineering-the-algorithmic-t
 <li>Introduction to the Web Administrator (viewing/monitoring data, import/export)</li>
 <li>Introduction to QQL, the quant query language</li>
 </ul>
-<p>Thanks to <a href="https://robotjames.com/">TheRobotJames</a> for helpful feedback!</p>
+<p>Thanks to <a href="https://robotjames.com/">TheRobotJames</a> for helpful feedback, and to <a href="https://twitter.com/gestaltu">Adam Butler</a> for encouraging me to write more!</p>
+<div class="container" role="main">
+  <div class="row">
+    <h3>Other Posts in this TimeBase Series</h3>
+    <ul>
+      <li><a href="../streaming-data-with-timebase">Streaming Market Data with TimeBase</a></li>
+      <li><a href="../running-timebase-in-docker">Running TimeBase in Docker</a></li>
+    </ul>
+  </div>
+</div>
+
 <div class="container" role="main">
   <div class="row">
     <hr>
@@ -166,6 +175,8 @@ The <a href="https://medium.com/prooftrading/proof-engineering-the-algorithmic-t
       etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
   </div>
 </div>
+
+
 		</div>
 		<footer class="post__footer">
 			

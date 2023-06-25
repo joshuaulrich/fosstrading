@@ -32,7 +32,7 @@ docker network create --driver bridge timebase-net
 
 &lt;span class=&#34;c1&#34;&gt;# make sure the network was created&lt;/span&gt;
 docker network ls
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By default, the docker containers will write data to a disk that&amp;rsquo;s only available to the container. You won&amp;rsquo;t be able to access the data from your computer or if the container isn&amp;rsquo;t running.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By default, the docker containers will write data to a disk that&amp;rsquo;s only available to the container. You won&amp;rsquo;t be able to access the data from your computer or if the container isn&amp;rsquo;t running. There&amp;rsquo;s a &lt;code&gt;--volume&lt;/code&gt; option to specify a mapping between a directory in the container and a directory on your local machine. I&amp;rsquo;m not going to use that here because you have to run the container as root in order for it to write to your local file system.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run --rm --detach &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    --publish 8011:8011 &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    --name timebase-server &lt;span class=&#34;se&#34;&gt;\
@@ -71,8 +71,8 @@ docker network ls
   &lt;div class=&#34;row&#34;&gt;
     &lt;h3&gt;Other Posts in this TimeBase Series&lt;/h3&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&#34;streaming-data-with-timebase.html&#34;&gt;Streaming Market Data with TimeBase&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&#34;running-timebase-in-docker.html&#34;&gt;Running TimeBase in Docker&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&#34;../streaming-data-with-timebase&#34;&gt;Streaming Market Data with TimeBase&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&#34;../running-timebase-in-docker&#34;&gt;Running TimeBase in Docker&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -100,11 +100,9 @@ docker network ls
       
       <guid>https://blog.fosstrading.com/2023/06/streaming-data-with-timebase/</guid>
       <description>&lt;p&gt;This is the first post of a series on using &lt;a href=&#34;https://timebase.info/&#34;&gt;TimeBase&lt;/a&gt; to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was &lt;a href=&#34;https://github.com/finos/TimeBase-CE/&#34;&gt;released as open-source&lt;/a&gt; in February 2021.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h3 id=&#34;preface&#34;&gt;Preface&lt;/h3&gt;
+&lt;p&gt;I am not affiliated with the company that created and maintains TimeBase (Deltix, now EPAM). I&amp;rsquo;m not currently compensated by them in any way for promoting their product. I&amp;rsquo;m merely a happy user who is excited that TimeBase is open source and I can show you how to do some cool stuff with it.&lt;/p&gt;
 &lt;h3 id=&#34;whats-your-problem&#34;&gt;What&amp;rsquo;s Your Problem?&lt;/h3&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a href=&#34;https://timebase.info/&#34;&gt;TimeBase&lt;/a&gt; addresses several key needs in automated trading. You need to process large amounts of real-time market data. This includes trades, best bid/offer, and/or the entire limit order book. You use this data to calculate indicators/features, determine when and where to place orders, monitoring unrealized P&amp;amp;L, and monitoring/managing risk of your positions.&lt;/p&gt;
 &lt;p&gt;All data in the trading system needs to be processed quickly and absolutely must be processed in strict time order. This is not trivial when you need to interleave data from multiple sources (e.g. exchanges and the trading system itself).
 The &lt;a href=&#34;https://medium.com/prooftrading/proof-engineering-the-algorithmic-trading-platform-b9c2f195433d#d545&#34;&gt;System Architecture&lt;/a&gt; section of &amp;ldquo;The Algorithmic Trading Platform&amp;rdquo; by Prerak Sanghvi describes the benefits of using a strictly time-sequenced stream of events. To summarize:&lt;/p&gt;
@@ -157,7 +155,17 @@ The &lt;a href=&#34;https://medium.com/prooftrading/proof-engineering-the-algori
 &lt;li&gt;Introduction to the Web Administrator (viewing/monitoring data, import/export)&lt;/li&gt;
 &lt;li&gt;Introduction to QQL, the quant query language&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Thanks to &lt;a href=&#34;https://robotjames.com/&#34;&gt;TheRobotJames&lt;/a&gt; for helpful feedback!&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&#34;https://robotjames.com/&#34;&gt;TheRobotJames&lt;/a&gt; for helpful feedback, and to &lt;a href=&#34;https://twitter.com/gestaltu&#34;&gt;Adam Butler&lt;/a&gt; for encouraging me to write more!&lt;/p&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;h3&gt;Other Posts in this TimeBase Series&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&#34;../streaming-data-with-timebase&#34;&gt;Streaming Market Data with TimeBase&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&#34;../running-timebase-in-docker&#34;&gt;Running TimeBase in Docker&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
     &lt;hr&gt;
@@ -171,7 +179,9 @@ The &lt;a href=&#34;https://medium.com/prooftrading/proof-engineering-the-algori
       &lt;a href=&#34;https://github.com/braverock/quantstrat/&#34;&gt;quantstrat&lt;/a&gt;,
       etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;
+
+</description>
     </item>
     
   </channel>
