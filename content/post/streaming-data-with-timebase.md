@@ -8,30 +8,11 @@ tags : [Data, TimeBase]
 
 This is the first post of a series on using [TimeBase](https://timebase.info/) to stream real-time market data. TimeBase is a high performance event-based time series database and message broker. I used it on a proprietary trading desk that made markets in futures, and currently use it to build and test equity trading strategies. It was [released as open-source](https://github.com/finos/TimeBase-CE/) in February 2021.
 
-<!--more-->
+### Preface
 
-<!--
-Posts:
-1. Intro
-2. Build and run TimeBase from source/Docker
-3. Build and run Web Admin from source/Docker
-4. Setting up a data connector
-5. Intro do the Web Admin
-
-* aggregate data to bars
-* export to CSV
--->
+I am not affiliated with the company that created and maintains TimeBase (Deltix, now EPAM). I'm not currently compensated by them in any way for promoting their product. I'm merely a happy user who is excited that TimeBase is open source and I can show you how to do some cool stuff with it.
 
 ### What's Your Problem?
-
-
-<!--
-I thought it might not be clear to everyone what you might be doing with the real-time and static data here
-
-i.e. real-time: aggregating tick data over some window to create time series features for trading decisions etc.
-stored-data: for quantitative analysis of market effects, or your own trading.
-
--->
 
 [TimeBase](https://timebase.info/) addresses several key needs in automated trading. You need to process large amounts of real-time market data. This includes trades, best bid/offer, and/or the entire limit order book. You use this data to calculate indicators/features, determine when and where to place orders, monitoring unrealized P&L, and monitoring/managing risk of your positions.
 
