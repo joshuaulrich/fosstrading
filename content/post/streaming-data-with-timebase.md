@@ -92,4 +92,6 @@ Later posts in this series will cover at least the topics below. Please leave a 
 
 Thanks to [TheRobotJames](https://robotjames.com/) for helpful feedback!
 
+{{< timebase-series-posts id="timebase-series-posts.html" >}}
+
 {{< post-footer id="post-footer.html" >}}
