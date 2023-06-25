@@ -2,6 +2,7 @@
 title: 'xts_0.12.1 on CRAN'
 date: 2020-09-13T10:49:00.000-05:00
 draft: false
+aliases: [ "/2020/09/xts-0-12-1-on-cran.html" ]
 tags : [Releases, xts, R]
 ---
   

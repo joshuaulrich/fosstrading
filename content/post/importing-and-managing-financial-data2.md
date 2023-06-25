@@ -2,7 +2,7 @@
 title: 'Importing and managing financial data'
 date: 2017-06-21T07:07:00.000-05:00
 draft: false
-url: "/2017/06/importing-and-managing-financial-data.html"
+aliases: [ "/2017/06/importing-and-managing-financial-data.html" ]
 tags : [quantmod, R, xts]
 ---
 

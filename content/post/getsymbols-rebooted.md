@@ -2,6 +2,7 @@
 title: 'getSymbols Rebooted'
 date: 2023-05-22T10:14:00.000-05:00
 draft: false
+aliases: [ "/2023/05/getsymbols-rebooted.html" ]
 tags : [quantmod, R]
 ---
 

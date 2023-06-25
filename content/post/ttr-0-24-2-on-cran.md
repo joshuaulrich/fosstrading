@@ -2,6 +2,7 @@
 title: 'TTR_0.24.2 on CRAN'
 date: 2020-09-13T08:41:00.000-05:00
 draft: false
+aliases: [ "/2020/09/ttr-0-24-2-on-cran.html" ]
 tags : [Releases, TTR, R]
 ---
   

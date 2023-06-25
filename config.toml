@@ -15,7 +15,6 @@ pygmentsCodeFences = true
 ## and make sure javascript highlighting is off
 useHLJS = false
 
-uglyURLs = true
 disablePathToLower = true
 
 [[menu.main]]

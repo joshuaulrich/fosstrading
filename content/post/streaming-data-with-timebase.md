@@ -2,6 +2,7 @@
 title: 'Streaming Market Data with TimeBase'
 date: 2023-06-19T12:14:00.000-05:00
 draft: false
+aliases: [ "/2023/06/streaming-data-with-timebase.html" ]
 tags : [Data, TimeBase]
 ---
 

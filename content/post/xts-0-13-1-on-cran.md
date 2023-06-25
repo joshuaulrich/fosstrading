@@ -2,6 +2,7 @@
 title: 'xts_0.13.1 on CRAN'
 date: 2023-04-24T10:54:00.000-05:00
 draft: false
+aliases: [ "/2023/04/xts-0-13-1-on-cran.html" ]
 tags : [Releases, xts, R]
 ---
 
