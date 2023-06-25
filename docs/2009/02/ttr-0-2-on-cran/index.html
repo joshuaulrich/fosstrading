@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>TTR_0.2 on CRAN - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="TTR_0.2 on CRAN" />
+<meta property="og:description" content="I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.
+This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses xts internally, so all major time series classes are now supported.
+NEW FEATURES:
+ Added the zig zag indicator: ZigZag() Added volatility estimators/indicators: volatility(), with the following calculations  Close-to-Close Garman Klass Parkinson Rogers Satchell   Added Money Flow Index: MFI() Added Donchian channel: DonchianChannel()  CHANGES:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2009-02-15T18:51:00-06:00" />
+<meta property="article:modified_time" content="2009-02-15T18:51:00-06:00" />
+
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">TTR_0.2 on CRAN</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-15T18:51:00-06:00">February 15, 2009</time></div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.</p>
+<p>This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses <a href="https://cran.r-project.org/package=xts">xts</a> internally, so all major time series classes are now supported.</p>
+<p>NEW FEATURES:</p>
+<ul>
+<li>Added the zig zag indicator: <code>ZigZag()</code></li>
+<li>Added volatility estimators/indicators: <code>volatility()</code>, with the following calculations
+<ul>
+<li>Close-to-Close</li>
+<li>Garman Klass</li>
+<li>Parkinson</li>
+<li>Rogers Satchell</li>
+</ul>
+</li>
+<li>Added Money Flow Index: <code>MFI()</code></li>
+<li>Added Donchian channel: <code>DonchianChannel()</code></li>
+</ul>
+<p>CHANGES:</p>
+<ul>
+<li>All functions now use xts internally, adding support for all major time series classes. If <code>try.xts()</code> fails on the input object(s), they will be converted to a matrix and a matrix object will be returned.</li>
+<li>Added <code>bounded</code> arg to <code>stoch()</code> and <code>SMI()</code>, which includes the current period in the calculation.</li>
+<li>Added <code>naCheck()</code> and implemented it in the moving average functions.</li>
+<li>Moved <code>maType</code> argument default values from function formals to function body for the following functions:<br>
+<code>ADX()</code>, <code>ATR()</code>, <code>CCI()</code>, <code>DPO()</code>, <code>EMV()</code>, <code>KST()</code>, <code>MACD()</code>, <code>RSI()</code>, <code>TRIX()</code>, <code>BBands()</code>, <code>chaikinVolatility()</code>, <code>stoch()</code>, <code>SMI()</code></li>
+<li><code>momentum()</code> in <code>CMO()</code> no longer sets <code>na=100</code></li>
+<li>Replaced <code>na</code> argument in <code>momentum()</code> and <code>ROC()</code> with <code>na.pad</code></li>
+<li>Added <code>multiple</code> argument to <code>TDI()</code>, allowing more user control</li>
+<li><code>getYahooData()</code> now returns an xts object</li>
+<li>Added colnames to output for <code>ADX()</code>, <code>EMV()</code>, and <code>CLV()</code> (for xts)</li>
+<li>Added unit tests using the <a href="https://cran.r-project.org/package=RUnit">RUnit</a> package</li>
+<li>Used <code>checkEquals()</code> on object attributes as well as values</li>
+<li>Removed <code>.First.lib</code> function and added <code>.onLoad()</code> with package version.</li>
+</ul>
+<p>BUG FIXES:</p>
+<ul>
+<li>Corrected NaN replacement in <code>CLV()</code></li>
+<li>Corrected <code>williamsAD()</code>: AD=0 if C(t)=C(t-1)</li>
+<li>Corrected <code>runMedian()</code> and <code>runMAD()</code>. The argument controlling which type of median to calculate for even-numbered samples wasn&rsquo;t being passed to the Fortran routine.</li>
+<li><code>aroon()</code> calculation starts at period <code>n+1</code>, instead of <code>n</code></li>
+<li>Added <code>NA</code> to first element of <code>closeLag</code> of <code>ATR()</code></li>
+<li>Corrected <code>BBands()</code> and <code>CCI()</code> for <code>rowMeans()</code> use on xts objects</li>
+<li>Made changes to Rd files to pass <code>R CMD check</code> on R-devel (2.9.0)</li>
+</ul>
+<p>Please do contact me with any questions, concerns, bug reports, etc.</p>
+<div class="container" role="main">
+  <div class="row">
+    <hr>
+    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/ttr">[ttr]</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/ttr/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+  </div>
+</div>
+
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Releases/" rel="tag">Releases</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/TTR/" rel="tag">TTR</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

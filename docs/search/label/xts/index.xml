@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xts on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/xts.html</link>
+    <link>https://blog.fosstrading.com/search/label/xts/</link>
     <description>Recent content in xts on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Apr 2023 10:54:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/xts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>xts_0.13.1 on CRAN</title>
-      <link>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran/</link>
       <pubDate>Mon, 24 Apr 2023 10:54:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release patches a few issues with the features added in version 0.13.0 and addresses a few maintenance issues that popped up recently.&lt;/p&gt;
 &lt;h3 id=&#34;patches-for-features-added-in-0130&#34;&gt;Patches for features added in 0.13.0&lt;/h3&gt;
 &lt;ul&gt;
@@ -88,10 +88,10 @@
     
     <item>
       <title>xts_0.13.0 on CRAN</title>
-      <link>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran/</link>
       <pubDate>Tue, 21 Feb 2023 14:58:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; &lt;code&gt;to.period()&lt;/code&gt; handles custom endpoint values, &lt;code&gt;print()&lt;/code&gt; truncates rows like data.table, and &lt;code&gt;str()&lt;/code&gt; provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes.&lt;/p&gt;
 &lt;p&gt;For some reason, I decided it was a good idea to go through the oldest GitHub issues and determine whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)&lt;/p&gt;
 &lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;/h3&gt;
@@ -287,10 +287,10 @@
     
     <item>
       <title>xts_0.12.2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran/</link>
       <pubDate>Sat, 15 Oct 2022 10:21:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2022/10/xts-0-12-2-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that &lt;code&gt;merge.xts()&lt;/code&gt; now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust.&lt;/p&gt;
 &lt;h3 id=&#34;plotting-functionality-enhancements-and-bug-fixes&#34;&gt;Plotting functionality enhancements and bug fixes&lt;/h3&gt;
 &lt;ul&gt;
@@ -384,10 +384,10 @@
     
     <item>
       <title>xts_0.12.1 on CRAN</title>
-      <link>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran/</link>
       <pubDate>Sun, 13 Sep 2020 10:49:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2020/09/xts-0-12-1-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; reached &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-09. Time-of-day subsetting (e.g. &lt;code&gt;x[&amp;quot;T10:00/T13:00&amp;quot;]&lt;/code&gt;) is 200x faster! (This post includes some notes on some nifty changes in 0.12.0 too, since I didn&amp;rsquo;t post about 0.12.0 when it was released.)&lt;/p&gt;
 &lt;p&gt;This is a long-overdue post. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain. I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-09.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m going to highlight a handful of the changes that involve:&lt;/p&gt;
@@ -445,10 +445,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.11-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran/</link>
       <pubDate>Tue, 06 Nov 2018 06:35:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/11/xts-0-11-2-on-cran/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-2 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; yesterday. This is quick a bug-fix release.&lt;/p&gt;
 &lt;p&gt;Notable changes are below:&lt;/p&gt;
 &lt;ul&gt;
@@ -470,10 +470,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.11-1 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran/</link>
       <pubDate>Wed, 12 Sep 2018 13:36:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/09/xts-0-11-1-on-cran/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; version 0.11-1 was published to &lt;a href=&#34;https://cloud.r-project.org/&#34;&gt;CRAN&lt;/a&gt; this morning. &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; provides data structure and functions to work with time-indexed data.  This release contains some awesome features that will transparently make your &lt;a href=&#34;https://cloud.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; code even faster!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;There&amp;rsquo;s a new &lt;code&gt;window.xts()&lt;/code&gt; method, thanks to Corwin Joy (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/100&#34;&gt;#100&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/240&#34;&gt;#240&lt;/a&gt;). Corwin also refactored and improved the performance of the binary search algorithm used to subset xts objects. Tom Andrews reported and fixed a few related regressions (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/251&#34;&gt;#251&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/263&#34;&gt;#263&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/264&#34;&gt;#264&lt;/a&gt;).&lt;/li&gt;
@@ -502,10 +502,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.10-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran/</link>
       <pubDate>Mon, 19 Mar 2018 05:30:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran/</guid>
       <description>&lt;p&gt;This &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;endpoints()&lt;/code&gt; gained sub-second accuracy on Windows (&lt;a href=&#34;https://github.com/joshuaulrich/xts/issues/202&#34;&gt;#202&lt;/a&gt;)!&lt;/li&gt;
@@ -527,10 +527,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>xts 0.10-0 on CRAN!</title>
-      <link>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran/</link>
       <pubDate>Fri, 07 Jul 2017 14:10:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2017/07/xts-0-10-0-on-cran/</guid>
       <description>&lt;p&gt;A new, and long overdue, release of &lt;a href=&#34;http://joshuaulrich.github.io/xts/&#34;&gt;xts&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;CRAN&lt;/a&gt;!  The major change is the completely new &lt;a href=&#34;http://joshuaulrich.github.io/xts/plotting_basics.html&#34;&gt;plot.xts()&lt;/a&gt; written by Michael Weylandt and Ross Bennett, and which is based on Jeff Ryan&amp;rsquo;s &lt;code&gt;quantmod::chart_Series()&lt;/code&gt; code.&lt;/p&gt;
 &lt;p&gt;Do note that the new &lt;code&gt;plot.xts()&lt;/code&gt; includes breaking changes to the original (and rather limited) &lt;code&gt;plot.xts()&lt;/code&gt;.  However, we believe the new functionality more than compensates for the potential one-time inconvenience.  And I will no longer have to tell people that I use &lt;code&gt;plot.zoo()&lt;/code&gt; on xts objects!&lt;/p&gt;
 &lt;p&gt;This release also includes more bug fixes than you can shake a stick at.  We squashed several bugs that could have crashed your R session.  We also fixed some (always pesky and tricky) timezone issues.  We&amp;rsquo;ve also done more sanity checking (e.g. for NA in the index), and provide more informative errors when things aren&amp;rsquo;t right.  And last, but not least, unit tests are running again!&lt;/p&gt;
@@ -549,10 +549,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>Importing and managing financial data</title>
-      <link>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</link>
+      <link>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data2/</link>
       <pubDate>Wed, 21 Jun 2017 07:07:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</guid>
+      <guid>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data2/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m excited to announce my &lt;a href=&#34;https://www.datacamp.com&#34;&gt;DataCamp&lt;/a&gt; course on &lt;a href=&#34;https://www.datacamp.com/courses/importing-and-managing-financial-data-in-r&#34;&gt;importing and managing financial data in R&lt;/a&gt;! I&amp;rsquo;m also honored that it is included in DataCamp&amp;rsquo;s &lt;a href=&#34;https://www.datacamp.com/tracks/quantitative-analyst-with-r&#34;&gt;Quantitative Analyst with R Career Track&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;You can explore the first chapter for free, so be sure to check it out!&lt;/p&gt;
 &lt;h3 id=&#34;course-description&#34;&gt;Course Description&lt;/h3&gt;
@@ -573,10 +573,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>plot.xts RFC</title>
-      <link>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</link>
+      <link>https://blog.fosstrading.com/2015/04/plotxts-rfc/</link>
       <pubDate>Mon, 20 Apr 2015 12:45:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc.html</guid>
+      <guid>https://blog.fosstrading.com/2015/04/plotxts-rfc/</guid>
       <description>&lt;p&gt;We have been working on a new charting engine for &lt;code&gt;xts::plot.xts&lt;/code&gt; for the past couple years. It started with Michael Weylandt&amp;rsquo;s work during the 2012 Google Summer of Code, and Ross Bennett took up the torch during the 2014 GSoC.&lt;/p&gt;
 &lt;p&gt;This new engine improves the functionality, modularity, and flexibility of &lt;code&gt;plot.xts&lt;/code&gt; by building off the framework Jeff Ryan began with &lt;code&gt;quantmod::chart_Series&lt;/code&gt;.  The modular framework allows users to plot an xts object and incrementally build custom charts by adding panels of new data (including transformations of the original xts object).&lt;/p&gt;
 &lt;p&gt;The main objective was to provide functionality similar to &lt;code&gt;chartSeries&lt;/code&gt; and &lt;code&gt;addTA&lt;/code&gt; for xts objects. The current code includes support for:&lt;/p&gt;
@@ -596,10 +596,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>A New plot.xts</title>
-      <link>https://blog.fosstrading.com/2012/08/a-new-plot-xts.html</link>
+      <link>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</link>
       <pubDate>Wed, 15 Aug 2012 13:52:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts.html</guid>
+      <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012&#34;&gt;Google Summer of Code (2012)&lt;/a&gt; project to &lt;a href=&#34;http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts&#34;&gt;extend xts&lt;/a&gt; has produced a very promising new plot.xts function.  Michael Weylandt, the project&amp;rsquo;s student, wrote &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; to &lt;a href=&#34;http://draft.blogger.com/%20https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;request impressions, feedback, and bug reports&lt;/a&gt;.  The function is housed in the &lt;a href=&#34;https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/?root=xts&#34;&gt;xtsExtra&lt;/a&gt; package of the &lt;a href=&#34;https://r-forge.r-project.org/projects/xts&#34;&gt;xts project on R-Forge&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please try &lt;code&gt;xtsExtra::plot.xts&lt;/code&gt; and let us know what you think.  A sample of the eye-candy produced by the code in &lt;a href=&#34;https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;Michael&amp;rsquo;s email&lt;/a&gt; is below.  Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!  Great work Michael!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -608,10 +608,10 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
     
     <item>
       <title>Packages featured with Inference for R</title>
-      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</link>
+      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</guid>
+      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://inferenceforr.com/blog/Lists/Posts/Post.aspx?ID=17&#34;&gt;The post&lt;/a&gt; gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.&lt;/p&gt;
 &lt;p&gt;I appreciate how they&amp;rsquo;re making &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; more accessible to a general audience, even though I like a command line interface and my preferred development environment is &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;. :-)&lt;/p&gt;

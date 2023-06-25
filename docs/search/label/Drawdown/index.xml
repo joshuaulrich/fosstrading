@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Drawdown on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/Drawdown.html</link>
+    <link>https://blog.fosstrading.com/search/label/Drawdown/</link>
     <description>Recent content in Drawdown on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Jun 2010 20:13:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Drawdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estimating Probability of Drawdown</title>
-      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html</link>
+      <link>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</link>
       <pubDate>Sat, 19 Jun 2010 20:13:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown.html</guid>
+      <guid>https://blog.fosstrading.com/2010/06/estimating-probability-of-drawdown/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-examples.html&#34;&gt;shown&lt;/a&gt; &lt;a href=&#34;http://blog.fosstrading.com/2010/01/lspm-with-snow.html&#34;&gt;several&lt;/a&gt; &lt;a href=&#34;http://blog.fosstrading.com/2010/04/maximum-probability-of-profit.html&#34;&gt;examples&lt;/a&gt; of how to use &lt;a href=&#34;http://r-forge.r-project.org/projects/lspm&#34;&gt;LSPM&amp;rsquo;s&lt;/a&gt; &lt;code&gt;probDrawdown()&lt;/code&gt; function as a constraint when optimizing a leverage space portfolio.  Those posts implicitly assume the &lt;code&gt;probDrawdown()&lt;/code&gt; function produces an accurate estimate of actual drawdown.  This post will investigate the function&amp;rsquo;s accuracy.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Calculation Notes:&lt;/strong&gt;&lt;br&gt;
 To calculate the probability of drawdown, the function traverses all permutations of the events in your &lt;code&gt;lsp&lt;/code&gt; object over the given horizon and sums the probability of each permutation that hits the drawdown constraint.  The probability of each permutation is the product of the probability of each event in the permutation.&lt;/p&gt;

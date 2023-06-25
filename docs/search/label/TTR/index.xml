@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TTR on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/TTR.html</link>
+    <link>https://blog.fosstrading.com/search/label/TTR/</link>
     <description>Recent content in TTR on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 13 Sep 2020 08:41:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/TTR/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TTR_0.24.2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran/</link>
       <pubDate>Sun, 13 Sep 2020 08:41:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2020/09/ttr-0-24-2-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt; is on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; now. This is mainly a bug-fix release. There were several issues in the underlying C code that caused various issues. I&amp;rsquo;ll spare you the gory details. If you&amp;rsquo;re really interested, you can find them in the &lt;a href=&#34;https://github.com/joshuaulrich/TTR/blob/27ea28698295f56447fcc87ad515140bdb35c8a5/CHANGES&#34;&gt;CHANGES&lt;/a&gt; file.&lt;/p&gt;
 &lt;p&gt;[This is another one of my long-overdue posts. I&amp;rsquo;m trying to get int the habit of posting and announcing each of my package releases. So I&amp;rsquo;m writing posts this morning for the most recent release of the most popular packages I maintain.]&lt;/p&gt;
 &lt;p&gt;I released an updated version of &lt;a href=&#34;http://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt; to &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; on 2020-09-01.&lt;/p&gt;
@@ -43,10 +43,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>New quantmod and TTR on CRAN</title>
-      <link>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</link>
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</guid>
       <description>&lt;p&gt;I just sent &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod_0.4-5&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;, and &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR_0.23-0&lt;/a&gt; has been there for a couple weeks. I&amp;rsquo;d like to thank &lt;a href=&#34;http://www.quintuitive.com/&#34;&gt;Ivan Popivanov&lt;/a&gt; for many useful reports and patches to TTR. He provided patches to add &lt;code&gt;HMA()&lt;/code&gt; (Hull MA), &lt;code&gt;ALMA()&lt;/code&gt;, and &lt;code&gt;ultimateOscillator()&lt;/code&gt; functions.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://jtoll.com/&#34;&gt;James Toll&lt;/a&gt; provided a patch to the &lt;code&gt;volatility()&lt;/code&gt; function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names. There are many other bug fixes (see the CHANGES file in the package).&lt;/p&gt;
 &lt;p&gt;The biggest changes in quantmod were to fix &lt;code&gt;getSymbols.MySQL()&lt;/code&gt; to use the correct &lt;code&gt;dbConnect()&lt;/code&gt; call based on changes made in RMySQL_0.10 and to fix &lt;code&gt;getSymbols.FRED()&lt;/code&gt; to use https:// instead of http:// when downloading FRED data. &lt;code&gt;getSymbols.csv()&lt;/code&gt; also got some much-needed love.&lt;/p&gt;
@@ -56,10 +56,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.22-0 on CRAN</title>
-      <link>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran/</link>
       <pubDate>Mon, 18 Mar 2013 20:49:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2013/03/ttr-0-22-0-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/index.html&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  The biggest changes to be aware of are that all moving averages attempt to set colnames, &lt;code&gt;CCI()&lt;/code&gt; returns an object with colnames, and the initial gap for &lt;code&gt;SAR()&lt;/code&gt; is not hard-coded at 0.01.  There are also some much-needed bug fixes - most notably to Yang Zhang volatility, &lt;code&gt;MACD()&lt;/code&gt;, &lt;code&gt;SAR()&lt;/code&gt;, &lt;code&gt;EMA()&lt;/code&gt;/&lt;code&gt;EVWMA()&lt;/code&gt;, and &lt;code&gt;adjRatios()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;There are some exciting new features, including a rolling single-factor model function (&lt;code&gt;rollSFM()&lt;/code&gt;, based on a prototype from James Toll), a &lt;code&gt;runPercentRank()&lt;/code&gt; function from Charlie Friedemann, &lt;code&gt;stoch()&lt;/code&gt; and &lt;code&gt;WPR()&lt;/code&gt; return 0.5 instead of NaN when there&amp;rsquo;s insufficient price movement, and a faster &lt;code&gt;aroon()&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;Here are all of the updates (from the CHANGES file):&lt;/p&gt;
@@ -105,10 +105,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.21-0 on CRAN</title>
-      <link>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran/</link>
       <pubDate>Thu, 01 Sep 2011 13:10:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2011/09/ttr-0-21-0-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  It contains some much-needed bug fixes (most notably to &lt;code&gt;stockSymbols()&lt;/code&gt;), some small changes, and a few new functions.  Note that the change to &lt;code&gt;wilderSum()&lt;/code&gt; will affect functions that use it (e.g. &lt;code&gt;ADX()&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Here are the full contents of the CHANGES file:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -148,10 +148,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>Historical / Future Volatility Correlation Stability</title>
-      <link>https://blog.fosstrading.com/2010/04/historical-future-volatility.html</link>
+      <link>https://blog.fosstrading.com/2010/04/historical-future-volatility/</link>
       <pubDate>Sun, 11 Apr 2010 12:53:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility.html</guid>
+      <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility/</guid>
       <description>&lt;p&gt;Michael Stokes, author of the &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci blog&lt;/a&gt; recently published &lt;a href=&#34;http://marketsci.wordpress.com/2010/04/09/correlation-between-historical-and-future-volatility/&#34;&gt;a thought-provoking post&lt;/a&gt; about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.&lt;/p&gt;
 &lt;p&gt;He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table. His table&amp;rsquo;s values are calculated using daily data from 1970-present&amp;hellip; but what if you were to calculate correlations using only one year of data, rather than thirty? The chart below shows the results.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/rolling_volatility_correlations.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/rolling_volatility_correlations.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -201,10 +201,10 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
     
     <item>
       <title>TTR_0.20-2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran/</link>
       <pubDate>Tue, 30 Mar 2010 14:48:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2010/03/ttr-0-20-2-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. It fixes a couple bugs and includes a couple handy tweaks. Here&amp;rsquo;s the full contents of the CHANGES file:&lt;/p&gt;
 &lt;p&gt;TTR version 0.20-2&lt;br&gt;
 Changes from version 0.20-1&lt;/p&gt;
@@ -241,10 +241,10 @@ Changes from version 0.20-1&lt;/p&gt;
     
     <item>
       <title>Packages featured with Inference for R</title>
-      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</link>
+      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</guid>
+      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://inferenceforr.com/blog/Lists/Posts/Post.aspx?ID=17&#34;&gt;The post&lt;/a&gt; gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.&lt;/p&gt;
 &lt;p&gt;I appreciate how they&amp;rsquo;re making &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; more accessible to a general audience, even though I like a command line interface and my preferred development environment is &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;. :-)&lt;/p&gt;
@@ -253,10 +253,10 @@ Changes from version 0.20-1&lt;/p&gt;
     
     <item>
       <title>TTR_0.2 on CRAN</title>
-      <link>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran/</link>
       <pubDate>Sun, 15 Feb 2009 18:51:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2009/02/ttr-0-2-on-cran/</guid>
       <description>&lt;p&gt;I am happy to announce a long-overdue update to the TTR package (version 0.2) is now on CRAN.&lt;/p&gt;
 &lt;p&gt;This update represents a major milestone, as TTR useRs are no longer restricted to using matrix objects. TTR 0.2 uses &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt; internally, so all major time series classes are now supported.&lt;/p&gt;
 &lt;p&gt;NEW FEATURES:&lt;/p&gt;

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Creating Financial Instrument metadata in R - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Creating Financial Instrument metadata in R" />
+<meta property="og:description" content="This is a guest post by Ilya Kipnis. He blogs at QuantStrat TradeR.
+When trading stocks in a single currency, instrument metadata can be safely ignored because the multiplier is 1 and the currencies are all the same. When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/07/creating-financial-instrument-metadata/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2011-07-27T22:16:00-05:00" />
+<meta property="article:modified_time" content="2011-07-27T22:16:00-05:00" />
+
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Creating Financial Instrument metadata in R</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-07-27T22:16:00-05:00">July 27, 2011</time></div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>This is a guest post by <a href="https://quantstrattrader.wordpress.com/about/">Ilya Kipnis</a>. He blogs at <a href="https://quantstrattrader.wordpress.com">QuantStrat TradeR</a>.</p>
+<p>When trading stocks in a single currency, instrument <a href="http://en.wikipedia.org/wiki/Metadata">metadata</a> can be safely ignored because the multiplier is 1 and the currencies are all the same.  When doing analysis on fixed income products, options, futures, or other complex derivative instruments, the data defining the properties of these instruments becomes critical to tasks like accounting for value of trades, or comparing notional value between more than one instrument. The <a href="http://r-forge.r-project.org/R/?group_id=316">FinancialInstrument</a> package provides a construct for storing metadata for tradeable contracts (referred to as instruments, e.g. stocks, futures, options, etc.) and their root representations.  It can be used to create any asset class and complex derivatives, across multiple currencies. </p>
+<p>In <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>, Joshua Ulrich used FinancialInstrument (blotter depends on it) to create a stock portfolio.  FinancialInstrument is also a required dependency of the quantstrat quantitative strategy framework in R (quantstrat will be covered in a later post).</p>
+<p>Creating a list of historical symbols is a recurring challenge with historical data on derivative instruments.  These symbols tend to follow a deterministic pattern and FinancialInstrument provides utility functions to create the symbols traded over specific periods of time. These symbols could then be used to request historical data from a data vendor or to construct instrument objects in R.</p>
+<p>The simplest function for generating a series of symbols is <code>build_series_symbols()</code>.  Let&rsquo;s look at it with a small example using crude oil (CL) and STOXX (STXE) futures:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># install.packages(&#34;FinancialInstrument&#34;, repos=&#34;http://R-Forge.R-project.org&#34;)  </span>
+<span class="nf">require</span><span class="p">(</span><span class="n">FinancialInstrument</span><span class="p">)</span>  
+<span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">primary_id</span><span class="o">=</span><span class="s">&#34;CL&#34;</span><span class="p">,</span> <span class="n">month_cycle</span><span class="o">=</span><span class="s">&#34;F,G,H,J,K,M,N,Q,U,V,X,Z&#34;</span><span class="p">)</span>  
+<span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">primary_id</span><span class="o">=</span><span class="s">&#34;STXE&#34;</span><span class="p">,</span> <span class="n">month_cycle</span><span class="o">=</span><span class="s">&#34;H,M,U,Z&#34;</span><span class="p">))</span>  
+<span class="n">Data</span>  
+<span class="c1">##   primary_id               month_cycle  </span>
+<span class="c1">## 1         CL   F,G,H,J,K,M,N,Q,U,V,X,Z  </span>
+<span class="c1">## 2       STXE                   H,M,U,Z  </span>
+</code></pre></div><p>The <code>Data</code> object contains two columns.  The <code>primary_id</code> is the root contract that identifies the instrument, and the <code>month_cycle</code> defines the months the contracts trade in (e.g. &ldquo;H,M,U,Z&rdquo; for Mar/Jun/Sep/Dec).</p>
+<p><code>build_series_symbols()</code> only needs <code>Data</code> and <code>yearlist</code>. <code>yearlist</code> is the suffix for expiration years and 0, 1, 2 represent 2010, 2011, 2012 in this example.  <code>build_series_symbols()</code> returns a vector of series symbols that we could use to request data or create <code>future_series</code> instruments.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">build_series_symbols</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">yearlist</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>  
+<span class="c1">## [1] &#34;CLF0&#34;   &#34;CLG0&#34;   &#34;CLH0&#34;   &#34;CLJ0&#34;   &#34;CLK0&#34;   &#34;CLM0&#34;   &#34;CLN0&#34;   &#34;CLQ0&#34;   </span>
+<span class="c1">## [9] &#34;CLU0&#34;   &#34;CLV0&#34;   &#34;CLX0&#34;   &#34;CLZ0&#34;   &#34;STXEH0&#34; &#34;STXEM0&#34; &#34;STXEU0&#34; &#34;STXEZ0&#34;  </span>
+<span class="c1">## [17] &#34;CLF1&#34;   &#34;CLG1&#34;   &#34;CLH1&#34;   &#34;CLJ1&#34;   &#34;CLK1&#34;   &#34;CLM1&#34;   &#34;CLN1&#34;   &#34;CLQ1&#34;   </span>
+<span class="c1">## [25] &#34;CLU1&#34;   &#34;CLV1&#34;   &#34;CLX1&#34;   &#34;CLZ1&#34;   &#34;STXEH1&#34; &#34;STXEM1&#34; &#34;STXEU1&#34; &#34;STXEZ1&#34;  </span>
+<span class="c1">## [33] &#34;CLF2&#34;   &#34;CLG2&#34;   &#34;CLH2&#34;   &#34;CLJ2&#34;   &#34;CLK2&#34;   &#34;CLM2&#34;   &#34;CLN2&#34;   &#34;CLQ2&#34;   </span>
+<span class="c1">## [41] &#34;CLU2&#34;   &#34;CLV2&#34;   &#34;CLX2&#34;   &#34;CLZ2&#34;   &#34;STXEH2&#34; &#34;STXEM2&#34; &#34;STXEU2&#34; &#34;STXEZ2&#34;  </span>
+</code></pre></div><p>A more complicated task is to create symbols for exchange guaranteed calendar spreads.  The <code>build_spread_symbols()</code> function creates a vector of symbols for spreads of securities (currently coded for futures calendar spreads but can be extended and generalized) in a very shorthand notation.</p>
+<p><code>build_spread_symbols()</code> accepts instrument specifications via either a file path or (preferably) a data frame (using the file or data arguments, respectively). Output can be assigned to an object or written to a file using the optional <code>outputfile</code> argument.  The default starting date is the current date, but the user can manually set a starting date (e.g. historical dates for backtesting, and future dates to create lists of instruments to be traded in the future).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># read in data that would be suitable for load.instruments on root contracts  </span>
+<span class="c1"># series_data.csv can be downloaded here:</span>
+<span class="c1"># https://docs.google.com/leaf?id=0B8wl4QBejPGiMjI2NTQzZjEtZDRkNC00MDRjLWI2ZDgtMzhjOTM5ZGFkYmFk&amp;hl=en_US)&#34;</span>
+<span class="n">Data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#34;series_data.csv&#34;</span><span class="p">,</span> <span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>  
+<span class="c1"># set the type to guaranteed_spread  </span>
+<span class="n">Data</span><span class="o">$</span><span class="n">type</span> <span class="o">&lt;-</span> <span class="s">&#34;guaranteed_spread&#34;</span>  
+<span class="c1"># call build_spread_symbols  </span>
+<span class="n">output</span> <span class="o">&lt;-</span> <span class="nf">build_spread_symbols</span><span class="p">(</span><span class="n">Data[6</span><span class="o">:</span><span class="m">7</span><span class="p">,</span><span class="n">]</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s">&#34;2010-01-01&#34;</span><span class="p">)</span>  
+</code></pre></div><p>The critical fields in the data (CSV or data frame) are the <code>primary_id</code>, the type (e.g. future, calendar spread, inter-commodity spread, etc.), the <code>month_cycle</code>, and the <code>active_months</code> (how many contracts to display).  For instance, an <code>active_months</code> value of 12 on a contract that trades quarterly (&ldquo;H,M,U,Z&rdquo;) would create front month contracts for the next 3 years.  An <code>active_months</code> value of 6 on this same quarterly contract would produce 1.5 years.  On a contract that trades 12 months a year (&ldquo;F,G,H,J,K,M,N,Q,U,V,X,Z&rdquo;), an <code>active_months</code> value of 12 would produce 1 year of contracts, and a value of 6 would only produce half a year.</p>
+<p>Lastly, the <code>contracts_ahead</code> field specifies the month spread on calendar spread type securities.  Note that these are <strong>contracts</strong> ahead and not months ahead.  For example, if you consider a contract trading &ldquo;H,M,U,Z&rdquo; vs. a contract trading &ldquo;F,G,H,J,K,M,N,Q,U,V,X,Z&rdquo;, a value of 1 for the &ldquo;H,M,U,Z&rdquo; contract would create an H1-M1 spread or the like, while a value of 1 with the 12-month traded contract would create an F1-G1 spread.</p>
+<p>The rest of the columns simply get carried over, for further use in other programs/scripts/procedures, such as the <code>load.instruments()</code> function.</p>
+<p><em>About the Author: Ilya Kipnis holds a Master&rsquo;s degree in Statistics from Rutgers, and uses and contributes to the R packages blotter, FinancialInstrument, and quantstrat. Ilya may be contacted for consulting and full-time opportunities in finance at <a href="mailto:ilya.kipnis@gmail.com">ilya.kipnis@gmail.com</a>.</em></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Data/" rel="tag">Data</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

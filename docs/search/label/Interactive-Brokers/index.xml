@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Interactive Brokers on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/Interactive-Brokers.html</link>
+    <link>https://blog.fosstrading.com/search/label/Interactive-Brokers/</link>
     <description>Recent content in Interactive Brokers on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 May 2010 14:23:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Interactive-Brokers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</link>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</guid>
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
       <description>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed &lt;em&gt;free (true to FOSS)&lt;/em&gt;, an account with &lt;a href=&#34;http://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically. IB makes available a rather comprehensive API that makes data access and trade execution entirely possible programmatically via a handful of &amp;ldquo;supported&amp;rdquo; languages. These include Java (the language of the platform), C#, VBA and even Excel. The also have a POSIX compliant C++ version for those who enjoy C++ but dislike Windows.&lt;/p&gt;
 &lt;p&gt;For those who dislike Windows &lt;em&gt;and&lt;/em&gt; C++, the community of IB users have a few &amp;ldquo;non-official&amp;rdquo; options. They include some nice implementations in C, Python (2), Matlab, and something even more abstracted in the &lt;a href=&#34;http://www.trading-shim.org/&#34;&gt;trading-shim&lt;/a&gt;. While all well and good, there was one missing: R.&lt;/p&gt;

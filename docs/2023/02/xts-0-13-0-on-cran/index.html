@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>xts_0.13.0 on CRAN - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="xts_0.13.0 on CRAN" />
+<meta property="og:description" content="An updated version of xts is now on CRAN. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; to.period() handles custom endpoint values, print() truncates rows like data.table, and str() provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2023/02/xts-0-13-0-on-cran/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-02-21T14:58:00-05:00" />
+<meta property="article:modified_time" content="2023-02-21T14:58:00-05:00" />
+
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">xts_0.13.0 on CRAN</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-21T14:58:00-05:00">February 21, 2023</time></div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; <code>to.period()</code> handles custom endpoint values, <code>print()</code> truncates rows like data.table, and <code>str()</code> provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes.</p>
+<p>For some reason, I decided it was a good idea to go through the oldest GitHub issues and determine whether they should be fixed or closed without being fixed. Some of the GitHub issues are open issues from when xts was still on R-Forge! The oldest issue fixed in this release was opened on 2013-09-15, and another one was opened on 2014-03-09! Better late than never I guess. ;-)</p>
+<h3 id="new-features">New Features</h3>
+<p>The coolest new feature is the ability to use open-ended ranges for time-of-day subsetting. So you can subset by time of day from the start/end of the day without providing the start/end times (i.e. 00:00:00.000/23:59:59.999). Thanks to Chris Katsulis for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/243">#243</a>)</p>
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># an hourly sequence of times, and an xts object using them</span>
+<span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">timeBasedSeq</span><span class="p">(</span><span class="s">&#34;2023-02-01/2023-02-05/H&#34;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">times</span><span class="p">)</span>
+
+<span class="c1"># function to show the first and last index values for each day</span>
+<span class="n">index_range_by_day</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">by_day</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;days&#34;</span><span class="p">)</span>
+    <span class="n">index_range</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">paste</span><span class="p">(</span><span class="nf">start</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nf">end</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34; / &#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nf">lapply</span><span class="p">(</span><span class="n">by_day</span><span class="p">,</span> <span class="n">index_range</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># between the start of the day and 5pm</span>
+<span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;/T1800&#34;</span><span class="n">]</span><span class="p">)</span>
+<span class="c1">## $`2023-02-01`</span>
+<span class="c1">## [1] &#34;2023-02-01 / 2023-02-01 18:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-02`</span>
+<span class="c1">## [1] &#34;2023-02-02 / 2023-02-02 18:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-03`</span>
+<span class="c1">## [1] &#34;2023-02-03 / 2023-02-03 18:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-04`</span>
+<span class="c1">## [1] &#34;2023-02-04 / 2023-02-04 18:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-05`</span>
+<span class="c1">## [1] &#34;2023-02-05 / 2023-02-05 18:00:00&#34;</span>
+
+<span class="c1"># between 5am and the end of the day</span>
+<span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span><span class="p">)</span>
+<span class="c1">## $`2023-02-01`</span>
+<span class="c1">## [1] &#34;2023-02-01 05:00:00 / 2023-02-01 23:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-02`</span>
+<span class="c1">## [1] &#34;2023-02-02 05:00:00 / 2023-02-02 23:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-03`</span>
+<span class="c1">## [1] &#34;2023-02-03 05:00:00 / 2023-02-03 23:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-04`</span>
+<span class="c1">## [1] &#34;2023-02-04 05:00:00 / 2023-02-04 23:00:00&#34;</span>
+<span class="c1">## </span>
+<span class="c1">## $`2023-02-05`</span>
+<span class="c1">## [1] &#34;2023-02-05 05:00:00 / 2023-02-05 23:00:00&#34;</span>
+</code></pre></div><hr>
+<p>You can now pass custom endpoints to <code>to.period()</code> using the &lsquo;period&rsquo; argument. So you can aggregate on something other than the times that <code>endpoints()</code> supports. Thanks to Ethan B. Smith for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/302">#302</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+
+<span class="c1"># aggregate to OHLC by week ending on Friday</span>
+<span class="n">week_fri</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">endpoints</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;weeks&#34;</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">week_fri</span><span class="p">)</span>
+<span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
+<span class="c1">## 2007-01-07 50.03978 50.42188 49.95041 49.99185</span>
+<span class="c1">## 2007-01-14 50.03555 50.62395 49.80454 50.60145</span>
+<span class="c1">## 2007-01-21 50.61724 50.77336 50.02142 50.42090</span>
+<span class="c1">## 2007-01-28 50.36008 50.43875 49.87468 49.88096</span>
+<span class="c1">## 2007-02-04 49.85624 50.55509 49.76308 50.55509</span>
+<span class="c1">## 2007-02-11 50.52389 50.91776 50.45977 50.91160</span>
+
+<span class="c1"># aggregate to OHLC by week ending on Wednesday</span>
+<span class="n">wednesdays</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">.indexwday</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">week_wed</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wednesdays</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">week_wed</span><span class="p">)</span>
+<span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
+<span class="c1">## 2007-01-03 50.03978 50.42188 49.95041 50.39767</span>
+<span class="c1">## 2007-01-10 50.42096 50.42096 49.80454 49.97246</span>
+<span class="c1">## 2007-01-17 49.88529 50.77336 49.88529 50.48644</span>
+<span class="c1">## 2007-01-24 50.48051 50.60712 50.02142 50.23145</span>
+<span class="c1">## 2007-01-31 50.20738 50.28268 49.76308 50.22578</span>
+<span class="c1">## 2007-02-07 50.22448 50.71661 50.19101 50.60611</span>
+</code></pre></div><h3 id="enhancements">Enhancements</h3>
+<p>The release also contains some quality of life changes to <code>print()</code> and <code>str()</code>. Now <code>print()</code> only shows the first and last &lsquo;show.rows&rsquo; rows (default 10) if number of rows is &gt; &lsquo;max.rows&rsquo; (default 100), similar to <a href="https://cran.r-project.org/package=data.table">data.table</a> (<a href="https://github.com/joshuaulrich/xts/issues/321">#321</a>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="c1">##                Open     High      Low    Close</span>
+<span class="c1">## 2007-01-02 50.03978 50.11778 49.95041 50.11778</span>
+<span class="c1">## 2007-01-03 50.23050 50.42188 50.23050 50.39767</span>
+<span class="c1">## 2007-01-04 50.42096 50.42096 50.26414 50.33236</span>
+<span class="c1">## 2007-01-05 50.37347 50.37347 50.22103 50.33459</span>
+<span class="c1">## 2007-01-06 50.24433 50.24433 50.11121 50.18112</span>
+<span class="c1">## 2007-01-07 50.13211 50.21561 49.99185 49.99185</span>
+<span class="c1">## 2007-01-08 50.03555 50.10363 49.96971 49.98806</span>
+<span class="c1">## 2007-01-09 49.99489 49.99489 49.80454 49.91333</span>
+<span class="c1">## 2007-01-10 49.91228 50.13053 49.91228 49.97246</span>
+<span class="c1">## 2007-01-11 49.88529 50.23910 49.88529 50.23910</span>
+<span class="c1">##        ...                                    </span>
+<span class="c1">## 2007-06-21 47.71012 47.71012 47.61106 47.62921</span>
+<span class="c1">## 2007-06-22 47.56849 47.59266 47.32549 47.32549</span>
+<span class="c1">## 2007-06-23 47.22873 47.24771 47.09144 47.24771</span>
+<span class="c1">## 2007-06-24 47.23996 47.30287 47.20932 47.22764</span>
+<span class="c1">## 2007-06-25 47.20471 47.42772 47.13405 47.42772</span>
+<span class="c1">## 2007-06-26 47.44300 47.61611 47.44300 47.61611</span>
+<span class="c1">## 2007-06-27 47.62323 47.71673 47.60015 47.62769</span>
+<span class="c1">## 2007-06-28 47.67604 47.70460 47.57241 47.60716</span>
+<span class="c1">## 2007-06-29 47.63629 47.77563 47.61733 47.66471</span>
+<span class="c1">## 2007-06-30 47.67468 47.94127 47.67468 47.76719</span>
+</code></pre></div><hr>
+<p>Now <code>str()</code> outputs more descriptive information for xts objects. It differentiates between xts objects that are empty (no data and zero-length index), zero-width (no data and has index values), or zero-length (no data&ndash;but has a column dimension and may have column names&ndash;and zero-length index). It also adds column names to the output. (<a href="https://github.com/joshuaulrich/xts/issues/168">#168</a>, <a href="https://github.com/joshuaulrich/xts/issues/378">#378</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">empty</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">()</span>
+
+<span class="c1"># empty -- no data and zero-length index</span>
+<span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
+<span class="c1">## An empty xts object </span>
+<span class="c1">##   Data:    double [0, 0]</span>
+<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+
+<span class="c1"># zero length -- no rows of data and a zero-length index,</span>
+<span class="c1">#     but has a column dimension and may have column names</span>
+<span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
+<span class="c1">## A zero-length xts object </span>
+<span class="c1">##   Data:    double [0, 1]</span>
+<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+
+<span class="n">zero_length_with_colnames</span> <span class="o">&lt;-</span>
+    <span class="nf">.xts</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">dimnames</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="s">&#34;zero&#34;</span><span class="p">)),</span> <span class="n">empty</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">zero_length_with_colnames</span><span class="p">)</span>
+<span class="c1">## A zero-length xts object </span>
+<span class="c1">##   Data:    double [0, 1]</span>
+<span class="c1">##   Columns: zero</span>
+<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+
+<span class="c1"># zero width -- no data and has index values</span>
+<span class="nf">str</span><span class="p">(</span><span class="nf">xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="nf">Sys.Date</span><span class="p">()))</span>
+<span class="c1">## A zero-width xts object on 2023-02-21 / 2023-02-21 containing:</span>
+<span class="c1">##   Data:    double [0, 0]</span>
+<span class="c1">##   Index:   Date [1] (TZ: &#34;UTC&#34;)</span>
+</code></pre></div><hr>
+<p>There&rsquo;s a nice improvement to <code>as.xts()</code> for data.frame and similar objects (e.g. data.table, tibble). It will look for a time-based column in the data.frame if it cannot create an index from the row names. (<a href="https://github.com/joshuaulrich/xts/issues/381">#381</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2023-02-21&#34;</span><span class="p">),</span> <span class="n">A</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="m">42</span><span class="p">)</span>
+<span class="nf">as.xts</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="c1">##             A  B</span>
+<span class="c1">## 2023-02-21 21 42</span>
+</code></pre></div><hr>
+<p>This release also includes a new xts method for <code>na.fill()</code> that significantly increases performance when &lsquo;fill&rsquo; is a scalar. And it adds a startup warning that <code>dplyr::lag()</code> breaks method dispatch, which means calls to <code>lag(my_xts)</code> won&rsquo;t work any more, and suggests a couple ways to work around that breakage.</p>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>
+<p>Fixed a typo in the Description section of the documentation for <code>period.apply()</code> (<a href="https://github.com/joshuaulrich/xts/issues/205">#205</a>), and added detail to the argument definitions. The original Description has:</p>
+<blockquote>
+<p>the data from <code>INDEX[k]</code> to <code>INDEX[k+1]</code></p>
+</blockquote>
+<p>But that&rsquo;s not consistent with the code. It should be:</p>
+<blockquote>
+<p>the data from <code>INDEX[k]+1</code> to <code>INDEX[k+1]</code></p>
+</blockquote>
+</li>
+<li>
+<p>Made <code>merge.xts()</code> results consistent with <code>merge.zoo()</code> for zero-width objects. Previously, <code>merge.xts()</code> returned an empty xts object if called on two or more zero-width xts objects. <code>merge.zoo()</code> would return a zero-width object with the correct index. (<a href="https://github.com/joshuaulrich/xts/issues/227">#227</a>, <a href="https://github.com/joshuaulrich/xts/issues/379">#379</a>)</p>
+</li>
+<li>
+<p>Also made <code>merge.xts()</code> results consistent with <code>merge.zoo()</code> for zero-length xts objects that have columns. The result of <code>merge.xts()</code> did not include the columns of any objects that had one or more columns, but zero rows. A join should include all the columns of the joined objects, regardless of the number of rows in the object. This is consistent with <code>merge.zoo()</code>. Thanks to Ethan B. Smith for the report and testing! (<a href="https://github.com/joshuaulrich/xts/issues/222">#222</a>)</p>
+</li>
+<li>
+<p>Fixed a long-standing issue with <code>Ops.xts()</code>.  Now it always returns an object with the same class as the first (left-hand side) argument. It previously returned an xts object even if the first argument was a subclass of xts. (<a href="https://github.com/joshuaulrich/xts/issues/49">#49</a>)</p>
+</li>
+<li>
+<p>Squashed a bug in <code>reclass()</code> that did not copy the <code>tclass</code>, <code>tzone</code>, or <code>tformat</code> from &lsquo;match.to&rsquo; to the result object. Now it always copies those index attributes. (<a href="https://github.com/joshuaulrich/xts/issues/43">#43</a>)</p>
+</li>
+</ul>
+<h3 id="other">Other</h3>
+<ul>
+<li>
+<p>Migrated unit tests from <a href="https://github.com/romanzenka/RUnit">RUnit</a> (which is actively maintained, but no longer actively developed) to <a href="https://github.com/markvanderloo/tinytest">tinytest</a>. Thanks <a href="https://github.com/markvanderloo">Mark van der Loo</a>!</p>
+</li>
+<li>
+<p>Added to the <code>endpoints()</code> documentation to make it clearer that the result is based on the UNIX epoch (midnight 1970, UTC) and not the first observation in the xts index. Thanks to GitHub user Eluvias for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/299">#299</a>)</p>
+</li>
+<li>
+<p>Removed an unnecessary check in <code>na.locf()</code> (which is not user-facing). Thanks to GitHub user @cgiachalis for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/307">#307</a>)</p>
+</li>
+<li>
+<p>Updated C entry points so they&rsquo;re not able to accidentally be found via dynamic lookup (i.e. <code>.Call(&quot;foo&quot;, ...)</code>). This makes each call to the C code a few microseconds faster, which is nice. (<a href="https://github.com/joshuaulrich/xts/issues/260">#260</a>)</p>
+</li>
+</ul>
+<div class="container" role="main">
+  <div class="row">
+    <hr>
+    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/xts">[xts]</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+  </div>
+</div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Releases/" rel="tag">Releases</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/xts/" rel="tag">xts</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

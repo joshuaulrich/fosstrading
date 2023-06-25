@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HIstorical Data on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/HIstorical-Data.html</link>
+    <link>https://blog.fosstrading.com/search/label/HIstorical-Data/</link>
     <description>Recent content in HIstorical Data on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Jun 2017 12:25:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/HIstorical-Data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>quantmod 0.4-9 on CRAN</title>
-      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</guid>
       <description>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed.  The actual data available for download changed as well.&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.&lt;/p&gt;
@@ -33,10 +33,10 @@
     
     <item>
       <title>Yahoo Finance Alternatives</title>
-      <link>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html</link>
+      <link>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</link>
       <pubDate>Wed, 07 Jun 2017 12:20:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html</guid>
+      <guid>https://blog.fosstrading.com/2017/06/yahoo-finance-alternatives/</guid>
       <description>&lt;p&gt;I assume that you&amp;rsquo;re reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is now only split-adjusted, whereas it used to be split- and dividend-adjusted.  Another oddity is that only the close prices is unadjusted (strangely, the open, high, and low are split-adjusted).&lt;/p&gt;
 &lt;p&gt;All these issues can be dealt with using tools that are currently available.  For example, you can unadjust the open, high, and low prices using the ratio of close to adjusted close prices.  And you can adjust for both splits and dividends using &lt;code&gt;quantmod::adjustOHLC()&lt;/code&gt;.&lt;/p&gt;
@@ -88,10 +88,10 @@
     
     <item>
       <title>Introducing IBrokers (and Jeff Ryan)</title>
-      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</link>
+      <link>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</link>
       <pubDate>Thu, 13 May 2010 14:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan.html</guid>
+      <guid>https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/</guid>
       <description>&lt;p&gt;Josh had kindly invited me to post on FOSS Trading around the time when he first came up with the idea for the blog. Fast forward a year and I am finally taking him up on his offer.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll start by highlighting that while all the software in this post is indeed &lt;em&gt;free (true to FOSS)&lt;/em&gt;, an account with &lt;a href=&#34;http://www.interactivebrokers.com/&#34;&gt;Interactive Brokers&lt;/a&gt; is needed to make use of it. For those not familiar with IB, they offer a trading platform that excels on numerous fronts but is most appealing to those of us who trade algorithmically. IB makes available a rather comprehensive API that makes data access and trade execution entirely possible programmatically via a handful of &amp;ldquo;supported&amp;rdquo; languages. These include Java (the language of the platform), C#, VBA and even Excel. The also have a POSIX compliant C++ version for those who enjoy C++ but dislike Windows.&lt;/p&gt;
 &lt;p&gt;For those who dislike Windows &lt;em&gt;and&lt;/em&gt; C++, the community of IB users have a few &amp;ldquo;non-official&amp;rdquo; options. They include some nice implementations in C, Python (2), Matlab, and something even more abstracted in the &lt;a href=&#34;http://www.trading-shim.org/&#34;&gt;trading-shim&lt;/a&gt;. While all well and good, there was one missing: R.&lt;/p&gt;

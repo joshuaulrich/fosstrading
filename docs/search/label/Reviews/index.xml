@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reviews on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/Reviews.html</link>
+    <link>https://blog.fosstrading.com/search/label/Reviews/</link>
     <description>Recent content in Reviews on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 Aug 2018 13:03:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Reviews/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learning to code is worth it</title>
-      <link>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it.html</link>
+      <link>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</link>
       <pubDate>Fri, 24 Aug 2018 13:03:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it.html</guid>
+      <guid>https://blog.fosstrading.com/2018/08/learning-to-code-is-worth-it/</guid>
       <description>&lt;p&gt;Someone recently shared this great talk by &lt;a href=&#34;http://bitemyapp.com/&#34;&gt;Chris Allen&lt;/a&gt; from &lt;a href=&#34;http://lambdaconf.us/&#34;&gt;lambda conf&lt;/a&gt; 2017.  The title of the talk is &amp;ldquo;Why Johnny Can&amp;rsquo;t Code Good,&amp;rdquo; but the content is more about how to grow as a programmer.  His points are true whether you&amp;rsquo;re just starting out, or have been coding for years.&lt;/p&gt;
 &lt;p&gt;My notes from Chris&#39; talk are below, in the order they appear in the presentation.  My thoughts are in parentheses.&lt;/p&gt;
 &lt;hr&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>R/Finance 2014 Review</title>
-      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review.html</link>
+      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</link>
       <pubDate>Mon, 30 Jun 2014 07:40:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review.html</guid>
+      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been more than a month since &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance 2014&lt;/a&gt;, and my job has finally slowed down enough to allow me to write down my thoughts (though I&amp;rsquo;m writing this over two days during my train to and from Chicago).&lt;/p&gt;
 &lt;p&gt;The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member. All the currently available conference slides are available &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;on the website&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Friday morning seminar:&lt;br&gt;
@@ -63,10 +63,10 @@ As always, the conference ended with one more trip to &lt;a href=&#34;http://jak
     
     <item>
       <title>R/Finance 2013 Review</title>
-      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review.html</link>
+      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</link>
       <pubDate>Tue, 28 May 2013 08:00:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review.html</guid>
+      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been one week since the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;5th Annual R/Finance conference&lt;/a&gt;, and I finally feel sufficiently recovered enough to share my thoughts. The conference is a two-day whirlwind of applied quantitative finance, fantastic networking, and general geekery.&lt;/p&gt;
 &lt;p&gt;The comments below are based on my personal experience.  If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.  All the currently available conference slides are available &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;on the website&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Friday morning seminar:&lt;br&gt;
@@ -99,10 +99,10 @@ The two-hour conference reception at UIC was a great time to have a drink, talk 
     
     <item>
       <title>Book Review: Parallel R</title>
-      <link>https://blog.fosstrading.com/2012/06/book-review-parallel-r.html</link>
+      <link>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</link>
       <pubDate>Tue, 05 Jun 2012 10:31:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2012/06/book-review-parallel-r.html</guid>
+      <guid>https://blog.fosstrading.com/2012/06/book-review-parallel-r/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/product/1449309925/ref=as_li_ss_il?ie=UTF8&amp;amp;tag=fotr09-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=1449309925&#34;&gt;&lt;img src=&#34;http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;amp;Format=_SL160_&amp;amp;ASIN=1449309925&amp;amp;MarketPlace=US&amp;amp;ID=AsinImage&amp;amp;WS=1&amp;amp;tag=fotr09-20&amp;amp;ServiceVersion=20070822&#34; alt=&#34;&#34;&gt;&lt;/a&gt;You have a problem: &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; is single-threaded, but your code would be faster if it could simultaneously run on more than one core.  You have access to a cluster and/or your computer has multiple cores.  &lt;a href=&#34;http://www.amazon.com/gp/product/1449309925/ref=as_li_ss_tl?ie=UTF8&amp;amp;tag=fosstrading-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=1449309925&#34;&gt;Parallel R&lt;/a&gt;, by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.&lt;/p&gt;
 &lt;p&gt;The book describes 6 approaches to distributed computing.  Thoughts on each approach follow:&lt;/p&gt;
 &lt;ol&gt;

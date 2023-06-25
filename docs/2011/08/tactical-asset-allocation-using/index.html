@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tactical asset allocation using quantstrat - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Tactical asset allocation using quantstrat" />
+<meta property="og:description" content="As promised in the introduction to quantstrat, here is an example strategy. I thought I&rsquo;d start with the obligatory tactical asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
+The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate. There are two major differences:
+  The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2011-08-23T20:55:00-05:00" />
+<meta property="article:modified_time" content="2011-08-23T20:55:00-05:00" />
+
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Tactical asset allocation using quantstrat</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-23T20:55:00-05:00">August 23, 2011</time></div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>As promised in the <a href="http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html">introduction to quantstrat</a>, here is an example strategy.  I thought I&rsquo;d start with the obligatory tactical asset allocation (TAA) strategy.  This post will replicate the strategy in the post, <a href="http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html">tactical asset allocation using blotter</a>.</p>
+<p>The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate.  There are two major differences:</p>
+<ol>
+<li>
+<p>The blotter TAA code initiates a position at the first observation where the close is above the SMA.  The demo only initiates a position when the close <em>crosses</em> the SMA to the upside.</p>
+<p>For example, assume the close is above the SMA at the beginning of the sample.  The demo has to wait for the close to drop below the SMA and then cross above it before taking a position; the blotter TAA code initiates a position on the first observation.</p>
+</li>
+<li>
+<p>The blotter TAA code calculates order size based on total account equity (as stored in the <code>UnitSize</code> object).  The demo always uses an order size of 1,000 shares, regardless of total account value (in case you&rsquo;re wondering, yes, capital/equity-aware order sizing is on the to-do list).</p>
+</li>
+</ol>
+<p>We need to make a few changes to the <code>demo(faber)</code> code to make it work more like the blotter TAA post.  First, we change the <code>add.signal()</code> calls to use <code>sigCrossover()</code> instead of <code>sigComparison()</code>.  This allows us to create an order on the first observation, rather than wait for a crossover.</p>
+<p>Next, we need to change the first call to <code>add.rule()</code> (the entry rule).  <code>sigComparison()</code> will be <code>TRUE</code> for every period where the close is above the SMA and we don&rsquo;t want to buy 1000 shares every period, so we need to tell <code>ruleSignal()</code> to use the max position order sizing function.  We do this by adding <code>osFUN=osMaxPos</code> to the list of arguments passed to <code>ruleSignal()</code>.</p>
+<p>Finally, we need to set the position limits for each instrument.  We do this via two calls to <code>addPosLimit()</code> (one for each symbol) and we set the maximum position to 1000 shares and the minimum position to 0 shares.</p>
+<p>The modified code is below and even includes some simple evaluation of the results at no extra charge.  The <code>tradeStats()</code> function has a ton more columns; I&rsquo;ve only selected a few to make the output more readable.  Feel free to tinker.</p>
+<p>NOTE: I wrote this code using the latest quantmod, xts, and zoo from CRAN; and the latest blotter, FinancialInstrument, and quantstrat from R-Forge.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code is a slight modification of the quantstrat &#34;faber&#34; demo, intended to replicate   </span>
+<span class="c1"># http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html   </span>
+<span class="c1"># Uncomment the line below to install the latest packages on R-Forge:  </span>
+<span class="c1">#install.packages(c(&#34;quantstrat&#34;,&#34;blotter&#34;,&#34;FinancialInstrument&#34;), repos=&#34;http://r-forge.r-project.org&#34;)</span>
+
+<span class="nf">require</span><span class="p">(</span><span class="n">quantstrat</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
+
+<span class="c1"># Set initial values</span>
+<span class="n">initDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2002-07-31&#34;</span>
+<span class="n">endDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2009-10-31&#34;</span>
+<span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>
+
+<span class="c1"># Pull Yahoo Finance data</span>
+<span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">)</span>
+<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">index.class</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;POSIXt&#34;</span><span class="p">,</span><span class="s">&#34;POSIXct&#34;</span><span class="p">))</span>
+
+<span class="c1"># adjust for splits/dividends (comment to replicate blotter example)</span>
+<span class="c1">#IEF &lt;- adjustOHLC(IEF, use.Adjusted=TRUE)</span>
+<span class="c1">#SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)</span>
+
+<span class="c1"># convert to monthly</span>
+<span class="n">IEF</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">IEF</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
+<span class="n">SPY</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">SPY</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
+
+<span class="c1"># Set up instruments with FinancialInstruments package</span>
+<span class="nf">currency</span><span class="p">(</span><span class="s">&#34;USD&#34;</span><span class="p">)</span>
+<span class="nf">for</span><span class="p">(</span><span class="n">symbol</span> <span class="n">in</span> <span class="n">symbols</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">stock</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s">&#34;USD&#34;</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Delete portfolio, account, and order book if they already exist</span>
+<span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;account.faber&#34;</span><span class="p">,</span><span class="s">&#34;portfolio.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.blotter</span><span class="p">))</span>
+<span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;order_book.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.strategy</span><span class="p">))</span>
+
+<span class="c1"># Initialize portfolio and account</span>
+<span class="nf">initPortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
+<span class="nf">initAcct</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">initEq</span><span class="o">=</span><span class="n">initEq</span><span class="p">)</span>
+<span class="nf">initOrders</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
+
+<span class="c1"># Initialize a strategy object</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">strategy</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+
+<span class="c1"># Add the 10-month SMA indicator</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.indicator</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;SMA&#34;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">quote</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">mktdata</span><span class="p">)),</span> <span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;SMA10&#34;</span><span class="p">)</span>
+
+<span class="c1"># There are two signals:</span>
+<span class="c1"># The first is when monthly price crosses over the 10-month SMA</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;gte&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">)</span>
+
+<span class="c1"># The second is when the monthly price crosses under the 10-month SMA</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;lt&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">)</span>
+
+<span class="c1"># There are two rules:</span>
+<span class="c1"># The first is to buy when the price crosses above the SMA</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
+  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">,</span> <span class="n">osFUN</span><span class="o">=</span><span class="n">osMaxPos</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;enter&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># The second is to sell when the price crosses below the SMA</span>
+<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
+  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="s">&#34;all&#34;</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
+  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;exit&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Set position limits so we don&#39;t add to the position every month Close &gt; SMA10</span>
+<span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># Process the indicators and generate trades</span>
+<span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">try</span><span class="p">(</span><span class="nf">applyStrategy</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">))</span>
+<span class="nf">updatePortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+
+<span class="c1"># Evaluate results</span>
+<span class="n">portRet</span> <span class="o">&lt;-</span> <span class="nf">PortfReturns</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+<span class="n">portRet</span><span class="o">$</span><span class="n">Total</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">portRet</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="n">portRet</span><span class="o">$</span><span class="n">Total</span><span class="p">)</span>
+<span class="nf">tradeStats</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span><span class="n">[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Symbol&#34;</span><span class="p">,</span><span class="s">&#34;Num.Trades&#34;</span><span class="p">,</span><span class="s">&#34;Net.Trading.PL&#34;</span><span class="p">,</span><span class="s">&#34;Max.Drawdown&#34;</span><span class="p">)</span><span class="n">]</span>
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Examples/" rel="tag">Examples</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Code/" rel="tag">Code</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/quantstrat/" rel="tag">quantstrat</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mean rolling correlation of XLF constituents - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Mean rolling correlation of XLF constituents" />
+<meta property="og:description" content="I follow Quantocracy on Twitter, and I found Rolling mean correlation in the tidyverse by Robot Wealth. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: xts and TTR." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-09-19T07:23:00-05:00" />
+<meta property="article:modified_time" content="2020-09-19T07:23:00-05:00" />
+
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-3314405-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <script data-ad-client="ca-pub-7427704313601198" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Mean rolling correlation of XLF constituents</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-19T07:23:00-05:00">September 19, 2020</time></div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>I follow <a href="https://twitter.com/Quantocracy">Quantocracy on Twitter</a>, and I found <a href="https://robotwealth.com/rolling-mean-correlations-in-the-tidyverse/">Rolling mean correlation in the tidyverse</a> by <a href="https://robotwealth.com">Robot Wealth</a>. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: <a href="https://cran.r-project.org/package=xts">xts</a> and <a href="https://cran.r-project.org/package=TTR">TTR</a>.</p>
+<p>The xts package is an extension of the very excellent <a href="https://cran.r-project.org/package=zoo">zoo</a> package. zoo objects are for ordered observations. Underneath, they are a matrix that can be ordered by anything: numbers, letters, dates, times, and more. xts objects are a special type of zoo object that can only be ordered by a date-time. They are the most common data structure used for working with financial time series, and are used in many of the major time series packages. You can find more details about xts objects in the <a href="https://cran.r-project.org/web/packages/xts/vignettes/xts.pdf">xts vignette</a>.</p>
+<p>I like xts so much, I took over as maintainer when Jeff Ryan started working at a hedge fund that didn&rsquo;t let him continue open source work.</p>
+<p>TTR is the first R package I wrote, all the way back in 2007, before R was cool! TTR has a collection of over 50 technical indicators for creating technical trading rules. The package also provides fast implementations of common rolling-window functions, and several volatility calculations. We&rsquo;re going to use its <code>ROC()</code> (rate-of-change) function to calculate returns.</p>
+<p>Okay, now on to the code!</p>
+<p>First, you need to download the data set. I&rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can <a href="/xlfprices.RData">download it here</a>. The Robot Wealth post used the <a href="https://www.tidyverse.org/">tidyverse</a>, so data is saved in the preferred tidyverse data structure, a <a href="https://cran.r-project.org/package=tibble">tibble</a> (it&rsquo;s like a data frame).</p>
+<p>Then we need to <code>load()</code> the data into our R session. This creates an object named <code>prices_xlf</code>. The data has 10 columns: ticker, date, open, high, low,close, volume, dividends, closeunadj, inSPX. We&rsquo;re only going to use the date, ticker, and close columns.</p>
+<p>Now we need to convert the <code>prices_xlf</code> tibble into an xts object. There&rsquo;s no standard way to do this, because tibbles don&rsquo;t have a pre-defined structure for financial time series. We can &lsquo;read&rsquo; and convert the data from a tibble into a zoo object using <code>read.zoo()</code>. We&rsquo;re using <code>read.zoo()</code> because there isn&rsquo;t a <code>read.xts()</code> function, and we can easily convert from zoo to xts using <code>as.xts()</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">load</span><span class="p">(</span><span class="s">&#34;xlfprices.RData&#34;</span><span class="p">)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">xts</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">read.zoo</span><span class="p">(</span><span class="n">prices_xlf[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;ticker&#34;</span><span class="p">,</span> <span class="s">&#34;close&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span>
+              <span class="n">index.column</span> <span class="o">=</span> <span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="s">&#34;ticker&#34;</span><span class="p">)</span>
+<span class="c1">## Warning in zoo(rval4[[i]], ix[[i]]):</span>
+<span class="c1">##     some methods for &#34;zoo&#34; objects do not work</span>
+<span class="c1">##     if the index entries in &#39;order.by&#39; are not unique</span>
+<span class="c1">## Error in merge.zoo(AFL = structure(c(30.54, 29.74, 29.475, 29.66, 29.95, :</span>
+<span class="c1">##     series cannot be merged with non-unique index entries in a series</span>
+</code></pre></div><p>We pass <code>prices_xlf</code> to <code>read.zoo()</code>, but only with the columns we need for our analysis. The <code>index.column</code> argument tells <code>read.zoo()</code> which column in the data has the ordered index. The <code>split</code> argument allows us to reshape the data from a long format into a wide format, where each ticker is in its own column. This is the standard format for xts objects, because it makes working with financial time series a lot easier.</p>
+<p>Now to run the code. Hmm&hellip; it throws an error. The error means there are duplicate dates for at least one of the tickers in the <code>prices_xlf</code> object. Depending on how many duplicates there are, this may or may not bias the results, but we should remove them anyway so the analysis is correct. This is another benefit of xts/zoo objects.</p>
+<p>Let&rsquo;s take a look at the duplicates, and then remove them.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># find the duplicates</span>
+<span class="n">duplicate_rows</span> <span class="o">&lt;-</span> <span class="nf">duplicated</span><span class="p">(</span><span class="n">prices_xlf</span><span class="p">)</span>
+
+<span class="c1"># view the duplicates</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">prices_xlf[duplicate_rows</span><span class="p">,</span> <span class="n">]</span><span class="p">)</span>
+<span class="c1">##       ticker       date   open   high    low  close  volume dividends</span>
+<span class="c1">## 61839     CB 2016-01-29 110.18 113.17 110.00 113.07 4205800         0</span>
+<span class="c1">## 61904     CB 2016-01-28 108.55 109.84 108.42 109.52 3313800         0</span>
+<span class="c1">## 61969     CB 2016-01-27 108.15 109.91 107.07 108.10 3433200         0</span>
+<span class="c1">## 62034     CB 2016-01-26 108.51 109.76 108.00 108.58 2669500         0</span>
+<span class="c1">## 62099     CB 2016-01-25 109.95 109.99 107.82 108.00 2985000         0</span>
+<span class="c1">## 62164     CB 2016-01-22 109.70 110.97 109.48 110.04 2296000         0</span>
+<span class="c1">##       closeunadj inSPX</span>
+<span class="c1">## 61839     113.07  TRUE</span>
+<span class="c1">## 61904     109.52  TRUE</span>
+<span class="c1">## 61969     108.10  TRUE</span>
+<span class="c1">## 62034     108.58  TRUE</span>
+<span class="c1">## 62099     108.00  TRUE</span>
+<span class="c1">## 62164     110.04  TRUE</span>
+
+<span class="c1"># remove the duplicates</span>
+<span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="n">prices_xlf</span><span class="p">)</span>
+</code></pre></div><p>The <code>duplicated()</code> function returns a logical (true/false) vector as long as the number of rows in your data. Any row it finds that matches a previous row in the data will be <code>TRUE</code> in the vector. Note that <em>only</em> the duplicated rows are <code>TRUE</code>. The first rows found will be <code>FALSE</code>. Subsetting <code>prices_xlf</code> by the <code>duplicated()</code> result will return the rows that exist somewhere in previous rows in the data.</p>
+<p>You can probably guess what the <code>unique()</code> function does. It removes all the duplicated rows. Now that we removed the duplicates, we can try the <code>read.zoo()</code> call again.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># reshape data into wide format</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">read.zoo</span><span class="p">(</span><span class="n">prices[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="s">&#34;ticker&#34;</span><span class="p">,</span> <span class="s">&#34;close&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span>
+              <span class="n">index.column</span> <span class="o">=</span> <span class="s">&#34;date&#34;</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="s">&#34;ticker&#34;</span><span class="p">)</span>
+</code></pre></div><p>Great, that worked! Now we will convert from zoo to xts, because xts gives us a handful of fancy features in addition to all the awesomeness that comes with zoo. We&rsquo;re not going to use those fancy features in this post, but I promise, they&rsquo;re <em>fancy</em>.</p>
+<p>Next we will calculate returns using the <code>ROC()</code> (rate-of-change) function from the TTR package.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># convert from zoo to xts</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># calculate returns</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">TTR</span><span class="p">)</span>
+<span class="n">returns</span> <span class="o">&lt;-</span> <span class="nf">ROC</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># log returns</span>
+<span class="n">returns</span> <span class="o">&lt;-</span> <span class="nf">ROC</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;discrete&#34;</span><span class="p">)</span>  <span class="c1"># arithmetic returns</span>
+</code></pre></div><p>The single call to <code>as.xts()</code> is all you need to convert from zoo to xts. <code>ROC()</code> calculates log returns by default, but it will calculate discrete (or arithmetic) returns if you set <code>type = &quot;discrete&quot;</code>. We&rsquo;re going to use discrete returns to keep things consistent with the Robot Wealth post.</p>
+<p>Next we will create a function to calculate the mean pairwise correlation for each pair of columns in our xts object. We can get all the pairwise correlations from the correlation matrix.</p>
+<p>Once we calculate the correlation matrix, we can calculate the mean correlation by taking the mean of the entire matrix. You may be thinking that this will take the mean of each correlation value two times (once for the upper triangle of the matrix, and another time for the lower triangle). But the values in both triangles are the same, because the matrix is symmetric about the diagonal. So this will not affect the mean calculation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">mean_cor</span> <span class="o">&lt;-</span>
+  <span class="nf">function</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1"># calculate the correlation matrix</span>
+    <span class="n">cor_matrix</span> <span class="o">&lt;-</span> <span class="nf">cor</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete&#34;</span><span class="p">)</span>
+
+    <span class="c1"># set the diagonal to NA (may not be necessary)</span>
+    <span class="nf">diag</span><span class="p">(</span><span class="n">cor_matrix</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kc">NA</span>
+
+    <span class="c1"># calculate the mean correlation, removing the NA</span>
+    <span class="nf">mean</span><span class="p">(</span><span class="n">cor_matrix</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><p>Since our data are in a wide format, calculating the correlation matrix is takes a single call to the <code>cor()</code> function that comes with your R installation.</p>
+<p>Then we set the diagonal of the matrix to <code>NA</code> because they are all equal to 1. That may not be necessary, but it could bias the results, and I&rsquo;m not ready to spend time thinking about it. :)</p>
+<p>Finally, we take the mean of the entire correlation matrix.</p>
+<p>Now that we have a handy-dandy <code>mean_cor()</code> function to calculate the mean pairwise correlations, we can call the function on a rolling, 60-day period. We can do this with the <code>rollapply()</code> function from the zoo package.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># calculate the rolling mean correlation over 60 periods</span>
+<span class="n">cors</span> <span class="o">&lt;-</span> <span class="nf">rollapply</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="m">60</span><span class="p">,</span> <span class="n">mean_cor</span><span class="p">,</span> <span class="n">by.column</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&#34;right&#34;</span><span class="p">)</span>
+</code></pre></div><p>We set <code>align = &quot;right&quot;</code> in order &lsquo;right-align&rsquo; the result. That means the timestamp for each rolling window will be the right-most (or last/largest) value in the window. This is important because we do not know the value for the rolling period until the end of the window. We would severely bias our results if we used the &lsquo;left&rsquo; (first) or &lsquo;center&rsquo; (middle) timestamp for our window calculation.</p>
+<p>We also need to set <code>by.column = FALSE</code>. Otherwise, the <code>rollapply()</code> function will run the function on each column of the xts object individually. And it doesn&rsquo;t make sense to try and calculation the correlation matrix of a single series.</p>
+<p>Now, let&rsquo;s plot our rolling 60-day correlations. We only need to call the <code>plot()</code> function to get a quick look.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">plot</span><span class="p">(</span><span class="n">cors</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Rolling mean XLF correlations&#34;</span><span class="p">)</span>
+</code></pre></div><p><img src="/post/images/plot-rolling-mean-xlf-correlations-1.png" alt="plot of chunk plot-rolling-mean-xlf-correlations"></p>
+<p>The main thing I like about my approach is how few lines of code it takes. The most complicated piece is the <code>mean_cor()</code> function, but even that is fairly straightforward.</p>
+<p>You can do similar analysis using this same pattern. You need to create another function to calculate the metric, but everything else will be the same.</p>
+<p>Like the Robot Wealth version, you can easily do this entire analysis in memory. You don&rsquo;t have to bother with chunking it up into smaller pieces and piecing it back together.</p>
+<p>One difference is that the data in their version is just under 3 million (!) rows, and 6 columns (~18 million data points). This version is 1346 rows and 65 columns (less than 100,000 data points). So you could quickly do the analysis in memory this way on ETFs or indexes with many more constituents (e.g. the Russell 3000). I&rsquo;ve worked on xts data sets with ~1 <em>billion</em> rows of tick data on my machine with 32GB of RAM.</p>
+<div class="container" role="main">
+  <div class="row">
+    <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  </div>
+</div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">CRAN package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/HIstorical-Data/" title="HIstorical Data">HIstorical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

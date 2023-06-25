@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>quantmod on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/quantmod.html</link>
+    <link>https://blog.fosstrading.com/search/label/quantmod/</link>
     <description>Recent content in quantmod on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 May 2023 10:14:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/quantmod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>getSymbols Rebooted</title>
-      <link>https://blog.fosstrading.com/2023/05/getsymbols-rebooted.html</link>
+      <link>https://blog.fosstrading.com/2023/05/getsymbols-rebooted/</link>
       <pubDate>Mon, 22 May 2023 10:14:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2023/05/getsymbols-rebooted.html</guid>
+      <guid>https://blog.fosstrading.com/2023/05/getsymbols-rebooted/</guid>
       <description>&lt;p&gt;quantmod and &lt;code&gt;getSymbols()&lt;/code&gt; have been a core part of the R/Finance ecosystem for over 15 years. We want to change some things, but they would break existing code. We can make these changes in the new &lt;a href=&#34;https://github.com/joshuaulrich/rfimport/&#34;&gt;&amp;lsquo;rfimport&amp;rsquo;&lt;/a&gt; package instead.&lt;/p&gt;
 &lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
 &lt;p&gt;The quantmod package has been a core part of the R/Finance ecosystem for over 15 years. It&amp;rsquo;s awesome that the package is so popular, but that also comes with responsibility to maintain backward compatibility. Breaking changes may break code used for making business decisions, research, production, blog posts, books, courses, answers on &lt;a href=&#34;https://stackoverflow.com&#34;&gt;stackoverflow&lt;/a&gt;, and much more. We take this responsibility seriously, and do our best to keep functions backward compatible. Sometimes breaking changes are necessary (e.g. bug fixes, changes to external data sources, etc.), but we do our best to make them carefully, with plenty of warning and lead time for users to adjust their code.&lt;/p&gt;
@@ -197,10 +197,10 @@
     
     <item>
       <title>quantmod_0.4.22 on CRAN</title>
-      <link>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran/</link>
       <pubDate>Sun, 16 Apr 2023 03:41:57 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;. It adds functions &lt;code&gt;HL()&lt;/code&gt;, &lt;code&gt;is.HL()&lt;/code&gt;, and &lt;code&gt;has.HL()&lt;/code&gt; to check for &amp;lsquo;high&amp;rsquo; and &amp;lsquo;low&amp;rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. &lt;code&gt;getSymbols.FRED()&lt;/code&gt; got &lt;code&gt;to&lt;/code&gt; and &lt;code&gt;from&lt;/code&gt; arguments, like other &lt;code&gt;getSymbols()&lt;/code&gt; methods. The remaining changes are bug fixes and maintenace chores.&lt;/p&gt;
 &lt;p&gt;This was mainly a maintenance and bug fix release, but it does include a couple nice features. quantmod versions 0.4.17 through 0.4.21 included several relevant features that weren&amp;rsquo;t highlighted in any previous posts. They&amp;rsquo;re included in a separate section below.&lt;/p&gt;
 &lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;/h3&gt;
@@ -331,10 +331,10 @@
     
     <item>
       <title>quantmod_0.4-16 on CRAN</title>
-      <link>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran/</link>
       <pubDate>Tue, 10 Mar 2020 07:23:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2020/03/quantmod-0-4-16-on-cran/</guid>
       <description>&lt;p&gt;A new version of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! One really cool thing about this release is that almost all the changes are contributions from the community.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; made more excellent contributions to &lt;code&gt;getQuote()&lt;/code&gt; in this release. It no longer throws an error if one or more symbols are missing.  And it handles multiple symbols in a semicolon-delimted string, just like &lt;code&gt;getSymbols()&lt;/code&gt;. For example, you can get quotes for multiple symbols by calling &lt;code&gt;getQuote(&amp;quot;SPY;AAPL&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/jrburl&#34;&gt;@jrburl&lt;/a&gt; made a great enhancement to &lt;code&gt;getOptionChain()&lt;/code&gt;. Now, instead of throwing an error, it sets volume and open interest to &lt;code&gt;NA&lt;/code&gt; if those columns are missing from the Yahoo Finance data. They also submitted a pull request to handle cases where Bid and/or Ask data are missing too. Unfortunately, that pull request came after I had already pushed to CRAN.&lt;/p&gt;
@@ -354,10 +354,10 @@
     
     <item>
       <title>quantmod_0.4-14 on CRAN</title>
-      <link>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran/</link>
       <pubDate>Mon, 25 Mar 2019 06:53:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2019/03/quantmod-0-4-14-on-cran/</guid>
       <description>&lt;p&gt;I just pushed a new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! &lt;code&gt;getSymbols()&lt;/code&gt; no longer stops if there&amp;rsquo;s a problem with a ticker symbol. And &lt;code&gt;getQuote()&lt;/code&gt; can now import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m most excited about the update to &lt;code&gt;getSymbols()&lt;/code&gt; so it doesn&amp;rsquo;t throw an error and stop processing if there&amp;rsquo;s a problem with one ticker symbol. Now &lt;code&gt;getSymbols()&lt;/code&gt; will import all the data it can, and provide an informative error message for any ticker symbols it could not import.&lt;/p&gt;
 &lt;p&gt;At a close second, I&amp;rsquo;m also excited about being able to import quotes from &lt;a href=&#34;https://www.tiingo.com/&#34;&gt;Tiingo&lt;/a&gt; using &lt;code&gt;getQuote()&lt;/code&gt;!. But don&amp;rsquo;t thank me; thank &lt;a href=&#34;https://github.com/ethanbsmith&#34;&gt;Ethan Smith&lt;/a&gt; for the feature request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/247&#34;&gt;#247&lt;/a&gt;] and pull request [&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/pull/250&#34;&gt;#250&lt;/a&gt;].&lt;/p&gt;
@@ -375,10 +375,10 @@
     
     <item>
       <title>Goodbye Google, Hello Tiingo!</title>
-      <link>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html</link>
+      <link>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</link>
       <pubDate>Fri, 13 Apr 2018 11:14:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo.html</guid>
+      <guid>https://blog.fosstrading.com/2018/04/goodbye-google-hello-tiingo/</guid>
       <description>&lt;p&gt;First, the bad news:&lt;/p&gt;
 &lt;p&gt;Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to &lt;code&gt;getSymbols.google()&lt;/code&gt; and &lt;code&gt;getFinancials.google()&lt;/code&gt;. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/221&#34;&gt;#221&lt;/a&gt;)  They are now defunct as of quantmod 0.4-13.&lt;/p&gt;
 &lt;p&gt;Now, the good news:&lt;/p&gt;
@@ -402,10 +402,10 @@
     
     <item>
       <title>getSymbols and Alpha Vantage</title>
-      <link>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html</link>
+      <link>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</link>
       <pubDate>Fri, 06 Oct 2017 16:12:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage.html</guid>
+      <guid>https://blog.fosstrading.com/2017/10/getsymbols-and-alpha-vantage/</guid>
       <description>&lt;p&gt;Thanks to &lt;a href=&#34;http://quantdevel.com/public/&#34;&gt;Paul Teetor&lt;/a&gt;, &lt;code&gt;getSymbols()&lt;/code&gt; can now import data from &lt;a href=&#34;https://www.alphavantage.co/&#34;&gt;Alpha Vantage&lt;/a&gt;!  This feature is part of the &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; 0.4-11 release, and provides another &lt;a href=&#34;http://blog.fosstrading.com/2017/06/yahoo-finance-alternatives.html&#34;&gt;another data source&lt;/a&gt; to avoid any &lt;a href=&#34;http://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html&#34;&gt;Yahoo Finance API changes&lt;/a&gt;*.&lt;/p&gt;
 &lt;p&gt;Alpha Vantage is a free web service that provides real-time and historical equity data.  They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data. They also provide near real-time price bars at a resolution of 1 minute or more, for up to 10 recent days.&lt;/p&gt;
 &lt;p&gt;All you need to get started is a &lt;a href=&#34;https://www.alphavantage.co/support/#api-key&#34;&gt;one-time registration for an API key&lt;/a&gt;.  Alpha Vantage has &lt;a href=&#34;https://www.alphavantage.co/documentation/&#34;&gt;clean, documented, public API&lt;/a&gt; that returns either JSON-encoded data or a CSV file.  The arguments to &lt;code&gt;getSymbols.av()&lt;/code&gt; closely follow the native API, so be sure to use their documentation!&lt;/p&gt;
@@ -419,10 +419,10 @@
     
     <item>
       <title>Importing and managing financial data</title>
-      <link>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</link>
+      <link>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data2/</link>
       <pubDate>Wed, 21 Jun 2017 07:07:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data.html</guid>
+      <guid>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data2/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m excited to announce my &lt;a href=&#34;https://www.datacamp.com&#34;&gt;DataCamp&lt;/a&gt; course on &lt;a href=&#34;https://www.datacamp.com/courses/importing-and-managing-financial-data-in-r&#34;&gt;importing and managing financial data in R&lt;/a&gt;! I&amp;rsquo;m also honored that it is included in DataCamp&amp;rsquo;s &lt;a href=&#34;https://www.datacamp.com/tracks/quantitative-analyst-with-r&#34;&gt;Quantitative Analyst with R Career Track&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;You can explore the first chapter for free, so be sure to check it out!&lt;/p&gt;
 &lt;h3 id=&#34;course-description&#34;&gt;Course Description&lt;/h3&gt;
@@ -443,10 +443,10 @@
     
     <item>
       <title>quantmod 0.4-9 on CRAN</title>
-      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</link>
       <pubDate>Wed, 07 Jun 2017 12:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</guid>
       <description>&lt;p&gt;A new release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;CRAN&lt;/a&gt;! The only change was to address changes to &lt;a href=&#34;https://finance.yahoo.com/&#34;&gt;Yahoo! Finance&lt;/a&gt; and their effects on &lt;code&gt;getSymbols.yahoo()&lt;/code&gt;.  GitHub issue &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/157&#34;&gt;#157&lt;/a&gt; contains some details about the fix implementation.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the URL wasn&amp;rsquo;t the only thing that changed.  The actual data available for download changed as well.&lt;/p&gt;
 &lt;p&gt;The most noticeable difference is that the adjusted close column is no longer dividend-adjusted (i.e. it&amp;rsquo;s only split-adjusted).  Also, only the close price is unadjusted; the open, high, and low are split-adjusted.&lt;/p&gt;
@@ -467,10 +467,10 @@
     
     <item>
       <title>quantmod 0.4-8 on CRAN</title>
-      <link>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</link>
       <pubDate>Wed, 19 Apr 2017 10:45:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2017/04/quantmod-0-4-8-on-cran/</guid>
       <description>&lt;p&gt;I pushed a bug-fix release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; last night. The major changes were to&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;getSymbols.FRED()&lt;/code&gt; (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/141&#34;&gt;#141&lt;/a&gt;)&lt;/li&gt;
@@ -496,10 +496,10 @@
     
     <item>
       <title>Stack Financials: Analyze Financial Statement Data</title>
-      <link>https://blog.fosstrading.com/2017/02/stack-financials.html</link>
+      <link>https://blog.fosstrading.com/2017/02/stack-financials/</link>
       <pubDate>Tue, 14 Feb 2017 10:49:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/02/stack-financials.html</guid>
+      <guid>https://blog.fosstrading.com/2017/02/stack-financials/</guid>
       <description>&lt;p&gt;A &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; user asked an interesting question on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;StackOverflow&lt;/a&gt;: &lt;a href=&#34;http://stackoverflow.com/q/42047746/271616&#34;&gt;Looping viewFinancials from quantmod&lt;/a&gt;. Basically, they wanted to create a &lt;code&gt;data.frame&lt;/code&gt; that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&amp;hellip; hence, this post!&lt;/p&gt;
 &lt;p&gt;I called the function &lt;code&gt;stackFinancials()&lt;/code&gt; because it would use &lt;code&gt;getFinancials()&lt;/code&gt; and &lt;code&gt;viewFinancials()&lt;/code&gt; to pull financial statement data for multiple symbols, and stack them together in long form. I chose a long data format because I don’t know whether the output of &lt;code&gt;viewFinancials()&lt;/code&gt; always has the same number of rows and columns for a given &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;period&lt;/code&gt;. The long format makes it easy to put all the data in one object.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;n&#34;&gt;stackFinancials&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;  
@@ -589,10 +589,10 @@
     
     <item>
       <title>quantmod 0.4-6 on CRAN</title>
-      <link>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</link>
       <pubDate>Mon, 29 Aug 2016 11:38:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2016/08/quantmod-0-4-6-on-cran/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt; just accepted a bugfix release of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt;.  The most pertinent changes were to fix getSymbols.oanda (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/36&#34;&gt;#36&lt;/a&gt;) and getOptionChain.yahoo (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/92&#34;&gt;#92&lt;/a&gt;).  It also includes a fix to addTRIX (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/72&#34;&gt;#72&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect.  Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo.  The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.  For more information, see the links to the GitHub issues above.&lt;/p&gt;
 &lt;p&gt;I added documentation for getPrice (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/77&#34;&gt;#77&lt;/a&gt;), and removed the unused unsetSymbolLookup function and corresponding documentation (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/115&#34;&gt;#115&lt;/a&gt;).&lt;/p&gt;
@@ -610,10 +610,10 @@
     
     <item>
       <title>DataCamp course: Importing and managing financial data</title>
-      <link>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data.html</link>
+      <link>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/</link>
       <pubDate>Fri, 17 Jun 2016 11:32:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data.html</guid>
+      <guid>https://blog.fosstrading.com/2016/06/importing-and-managing-financial-data/</guid>
       <description>&lt;p&gt;The team at &lt;a href=&#34;https://www.datacamp.com/&#34;&gt;DataCamp&lt;/a&gt; announced a new R/Finance course series in a recent email:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Subject: Data Mining Tutorial, R/Finance course series, and more!&lt;/p&gt;
@@ -688,10 +688,10 @@ We are working on a whole new course series on applied finance using R. This new
     
     <item>
       <title>New quantmod and TTR on CRAN</title>
-      <link>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</link>
       <pubDate>Fri, 24 Jul 2015 16:04:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2015/07/new-quantmod-and-ttr-on-cran/</guid>
       <description>&lt;p&gt;I just sent &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod_0.4-5&lt;/a&gt; to &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;, and &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR_0.23-0&lt;/a&gt; has been there for a couple weeks. I&amp;rsquo;d like to thank &lt;a href=&#34;http://www.quintuitive.com/&#34;&gt;Ivan Popivanov&lt;/a&gt; for many useful reports and patches to TTR. He provided patches to add &lt;code&gt;HMA()&lt;/code&gt; (Hull MA), &lt;code&gt;ALMA()&lt;/code&gt;, and &lt;code&gt;ultimateOscillator()&lt;/code&gt; functions.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://jtoll.com/&#34;&gt;James Toll&lt;/a&gt; provided a patch to the &lt;code&gt;volatility()&lt;/code&gt; function that uses a zero mean (instead of the sample mean) in close-to-close volatility. The other big change is that moving average functions no longer return objects with column names based on the input object column names. There are many other bug fixes (see the CHANGES file in the package).&lt;/p&gt;
 &lt;p&gt;The biggest changes in quantmod were to fix &lt;code&gt;getSymbols.MySQL()&lt;/code&gt; to use the correct &lt;code&gt;dbConnect()&lt;/code&gt; call based on changes made in RMySQL_0.10 and to fix &lt;code&gt;getSymbols.FRED()&lt;/code&gt; to use https:// instead of http:// when downloading FRED data. &lt;code&gt;getSymbols.csv()&lt;/code&gt; also got some much-needed love.&lt;/p&gt;
@@ -701,10 +701,10 @@ We are working on a whole new course series on applied finance using R. This new
     
     <item>
       <title>Import Japanese equity data into R with quantmod 0.4-4</title>
-      <link>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html</link>
+      <link>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</link>
       <pubDate>Tue, 10 Mar 2015 12:09:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r.html</guid>
+      <guid>https://blog.fosstrading.com/2015/03/import-japanese-equity-data-into-r/</guid>
       <description>&lt;p&gt;I pushed &lt;a href=&#34;http://cran.r-project.org/web/packages/quantmod/&#34;&gt;quantmod 0.4-4 to CRAN&lt;/a&gt; this weekend.  It adds a &lt;code&gt;getSymbols.yahooj&lt;/code&gt; function to pull stock data from Yahoo Finance Japan, and fixes issues in &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; and &lt;code&gt;getSymbols.oanda&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Changes to the Yahoo Finance and Oanda websites broke the &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; and &lt;code&gt;getSymbols.oanda&lt;/code&gt; functions, respectively.  I didn&amp;rsquo;t use &lt;code&gt;getOptionChain.yahoo&lt;/code&gt; much, so I’m not certain I restored all the prior functionality.  Let me know if there’s something I missed. I’d be glad to add a test case for that, or to add a test you&amp;rsquo;ve written.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;getSymbols.yahooj&lt;/code&gt; function is a major enhancement provided by &lt;a href=&#34;http://morannon.org/&#34;&gt;Wouter Thielen&lt;/a&gt;.  It allows quantmod users to pull stock data from Yahoo Finance Japan. &lt;/p&gt;
@@ -720,10 +720,10 @@ We are working on a whole new course series on applied finance using R. This new
     
     <item>
       <title>Updated quantmod on CRAN</title>
-      <link>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran.html</link>
+      <link>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran/</link>
       <pubDate>Mon, 15 Dec 2014 09:43:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran.html</guid>
+      <guid>https://blog.fosstrading.com/2014/12/updated-quantmod-on-cran/</guid>
       <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://www.quantmod.com/&#34;&gt;quantmod&lt;/a&gt; has just been released on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.  This is my first submission as the new maintainer.  The major change was removing the dependency on the &lt;a href=&#34;http://cran.r-project.org/web/packages/Defaults/&#34;&gt;now-archived Defaults&lt;/a&gt; package.  End-users shouldn&amp;rsquo;t notice a difference, since I basically copied the necessary functionality from Defaults and added it to quantmod.&lt;/p&gt;
 &lt;p&gt;There are also several bug fixes. A few worth noting are:&lt;/p&gt;
 &lt;ul&gt;
@@ -739,10 +739,10 @@ We are working on a whole new course series on applied finance using R. This new
     
     <item>
       <title>Packages featured with Inference for R</title>
-      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</link>
+      <link>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</link>
       <pubDate>Tue, 12 May 2009 09:22:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r.html</guid>
+      <guid>https://blog.fosstrading.com/2009/05/packages-featured-with-inference-for-r/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://r-forge.r-project.org/projects/quantmod/&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;http://r-forge.r-project.org/projects/ttr/&#34;&gt;TTR&lt;/a&gt;, and &lt;a href=&#34;http://r-forge.r-project.org/projects/xts/&#34;&gt;xts&lt;/a&gt; were (not so) recently featured on the &lt;a href=&#34;http://inferenceforr.com/blog/default.aspx&#34;&gt;Inference for R Blog&lt;/a&gt;. &lt;a href=&#34;http://inferenceforr.com/default.aspx&#34;&gt;Inference for R&lt;/a&gt; is a Integrated Development Environment (IDE) designed specifically for &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://inferenceforr.com/blog/Lists/Posts/Post.aspx?ID=17&#34;&gt;The post&lt;/a&gt; gives an example of how to easily perform advanced financial stock analysis using Inference in Excel.&lt;/p&gt;
 &lt;p&gt;I appreciate how they&amp;rsquo;re making &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; more accessible to a general audience, even though I like a command line interface and my preferred development environment is &lt;a href=&#34;http://www.vim.org&#34;&gt;vim&lt;/a&gt;. :-)&lt;/p&gt;

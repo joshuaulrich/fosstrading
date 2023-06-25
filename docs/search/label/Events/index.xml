@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Events on FOSS Trading</title>
-    <link>https://blog.fosstrading.com/search/label/Events.html</link>
+    <link>https://blog.fosstrading.com/search/label/Events/</link>
     <description>Recent content in Events on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Apr 2018 13:26:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/search/label/Events/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R/Finance 2018 Registration</title>
-      <link>https://blog.fosstrading.com/2018/04/rfinance-2018-registration.html</link>
+      <link>https://blog.fosstrading.com/2018/04/rfinance-2018-registration/</link>
       <pubDate>Fri, 20 Apr 2018 13:26:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/04/rfinance-2018-registration.html</guid>
+      <guid>https://blog.fosstrading.com/2018/04/rfinance-2018-registration/</guid>
       <description>&lt;p&gt;This year marks the 10th anniversary of the R/Finance Conference!  As in prior years, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 50+ presenters covering all areas of finance with R.  The conference will take place on June 1st and 2nd, at &lt;a href=&#34;http://www.uic.edu/&#34;&gt;UIC&lt;/a&gt; in Chicago.&lt;/p&gt;
 &lt;p&gt;You can find &lt;a href=&#34;http://www.rinfinance.com/#registration&#34;&gt;registration information&lt;/a&gt;on the conference website, or you can go directly to the &lt;a href=&#34;http://go.uic.edu/rfinance&#34;&gt;Cvent registration page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Note that registration fees &lt;em&gt;&lt;strong&gt;will increase by 50%&lt;/strong&gt;&lt;/em&gt; at the end of early registration on May 21, 2018.&lt;/p&gt;
@@ -33,10 +33,10 @@
     
     <item>
       <title>R/Finance 2018: Call for Papers</title>
-      <link>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</link>
       <pubDate>Tue, 09 Jan 2018 11:32:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2018/01/rfinance-2018-call-for-papers/</guid>
       <description>&lt;p&gt;R/Finance 2018: Applied Finance with R&lt;/p&gt;
 &lt;p&gt;June 1 and 2, 2018&lt;/p&gt;
 &lt;p&gt;University of Illinois at Chicago&lt;/p&gt;
@@ -55,10 +55,10 @@
     
     <item>
       <title>R/Finance 2017: Call for Papers</title>
-      <link>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</link>
       <pubDate>Wed, 04 Jan 2017 08:11:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2017/01/rfinance-2017-call-for-papers/</guid>
       <description>&lt;p&gt;R/Finance 2017: Applied Finance with R&lt;/p&gt;
 &lt;p&gt;May 19 and 20, 2017&lt;/p&gt;
 &lt;p&gt;University of Illinois at Chicago&lt;/p&gt;
@@ -76,10 +76,10 @@
     
     <item>
       <title>Registration for R/Finance 2016 is open!</title>
-      <link>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open.html</link>
+      <link>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</link>
       <pubDate>Mon, 11 Apr 2016 08:14:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open.html</guid>
+      <guid>https://blog.fosstrading.com/2016/04/registration-for-rfinance-2016-is-open/</guid>
       <description>&lt;p&gt;You can find &lt;a href=&#34;http://www.rinfinance.com/register/&#34;&gt;registration information&lt;/a&gt; and &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;agenda details&lt;/a&gt; on the conference website.  Or you can go directly to the &lt;a href=&#34;http://go.uic.edu/rfinance&#34;&gt;Cvent registration page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Note that registration fees &lt;em&gt;&lt;strong&gt;will increase by 50%&lt;/strong&gt;&lt;/em&gt; at the end of early registration on May 6, 2016.&lt;/p&gt;
 &lt;p&gt;The conference will take place on May 20 and 21, at &lt;a href=&#34;http://www.uic.edu/&#34;&gt;UIC&lt;/a&gt; in Chicago.  Building on the success of the previous conferences in 2009-2015, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 50 presenters covering all areas of finance with R.&lt;/p&gt;
@@ -101,10 +101,10 @@
     
     <item>
       <title>Registration Open for R/Finance 2015!</title>
-      <link>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015.html</link>
+      <link>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</link>
       <pubDate>Tue, 31 Mar 2015 10:35:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015.html</guid>
+      <guid>https://blog.fosstrading.com/2015/03/registration-open-for-rfinance-2015/</guid>
       <description>&lt;p&gt;You can find &lt;a href=&#34;http://www.rinfinance.com/register/&#34;&gt;registration information&lt;/a&gt; and &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;agenda details&lt;/a&gt; (as they become available) on the conference website.  Or you can go &lt;a href=&#34;http://www.cvent.com/d/94q27k&#34;&gt;directly to the registration page&lt;/a&gt;.  Note that there&amp;rsquo;s an early-bird registration deadline of May 15.&lt;/p&gt;
 &lt;p&gt;The conference will take place on May 29 and 30, at &lt;a href=&#34;http://www.uic.edu/&#34;&gt;UIC&lt;/a&gt; in Chicago.  Building on the success of the previous conferences in 2009-2014, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.&lt;/p&gt;
 &lt;p&gt;We are very excited about the four keynote presentations given by &lt;a href=&#34;http://www.emanuelderman.com/info/about&#34;&gt;Emanuel Derman&lt;/a&gt;, &lt;a href=&#34;http://fitnr.com/about-louis-marascio.html&#34;&gt;Louis Marascio&lt;/a&gt;, &lt;a href=&#34;http://www.macs.hw.ac.uk/~mcneil/&#34;&gt;Alexander McNeil&lt;/a&gt;, and &lt;a href=&#34;http://www.thequantbook.com/about-the-author.html&#34;&gt;Rishi Narang&lt;/a&gt;.  The main agenda (currently) includes 18 full presentations and 19 shorter &amp;ldquo;lightning talks&amp;rdquo;.  As in previous years, several (optional) pre-conference seminars are offered on Friday morning.&lt;/p&gt;
@@ -125,10 +125,10 @@ Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson, Dale Rosenthal, Jeff
     
     <item>
       <title>Google Summer of Code 2015</title>
-      <link>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015.html</link>
+      <link>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015/</link>
       <pubDate>Tue, 03 Mar 2015 09:04:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015.html</guid>
+      <guid>https://blog.fosstrading.com/2015/03/google-summer-of-code-2015/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://developers.google.com/open-source/soc/images/gsoc2015-300x270.jpg&#34;&gt;&lt;img src=&#34;https://developers.google.com/open-source/soc/images/gsoc2015-300x270.jpg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;The R Project has once again been selected as a &lt;a href=&#34;https://github.com/rstats-gsoc/gsoc2015/wiki/Admin_Application&#34;&gt;mentoring organization&lt;/a&gt; for this year&amp;rsquo;s &lt;a href=&#34;https://www.google-melange.com/gsoc/homepage/google/gsoc2015&#34;&gt;Google Summer of Code&lt;/a&gt; (GSoC).  If you&amp;rsquo;re not familiar with GSoC, it&amp;rsquo;s a global program that offers students a stipend to write code for open source projects, under the direction of a mentor.  Mentors get code written for their project, but no money.  Students get something like a paid summer internship, with open-source contributions they can reference on their resume.&lt;/p&gt;
 &lt;p&gt;If you’re interested in participating as a student or a mentor, there&amp;rsquo;s an overview of the GSoC program on &lt;a href=&#34;https://github.com/rstats-gsoc/gsoc2015/wiki&#34;&gt;The R Project GSoC 2015 Wiki&lt;/a&gt;.  The wiki also includes a timeline and links to prior year&amp;rsquo;s projects.&lt;/p&gt;
 &lt;p&gt;Several mentors from various backgrounds have already &lt;a href=&#34;https://github.com/rstats-gsoc/gsoc2015/wiki/table%20of%20proposed%20coding%20projects&#34;&gt;proposed projects&lt;/a&gt; for students to work on this summer.  Mentors have until March 9th to submit projects they would be willing to support, and student applications begin on March 16th.&lt;/p&gt;
@@ -137,10 +137,10 @@ Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson, Dale Rosenthal, Jeff
     
     <item>
       <title>R/Finance 2015 Call for Papers</title>
-      <link>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</link>
       <pubDate>Tue, 18 Nov 2014 13:52:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2014/11/rfinance-2015-call-for-papers/</guid>
       <description>&lt;p&gt;Call for Papers:&lt;/p&gt;
 &lt;p&gt;R/Finance 2015: Applied Finance with R&lt;br&gt;
 May 29 and 30, 2015&lt;br&gt;
@@ -159,10 +159,10 @@ Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson, Dale Rosenthal, Jeff
     
     <item>
       <title>R/Finance 2014 Review</title>
-      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review.html</link>
+      <link>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</link>
       <pubDate>Mon, 30 Jun 2014 07:40:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review.html</guid>
+      <guid>https://blog.fosstrading.com/2014/06/rfinance-2014-review/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been more than a month since &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance 2014&lt;/a&gt;, and my job has finally slowed down enough to allow me to write down my thoughts (though I&amp;rsquo;m writing this over two days during my train to and from Chicago).&lt;/p&gt;
 &lt;p&gt;The comments below are based on my personal experience. If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member. All the currently available conference slides are available &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;on the website&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Friday morning seminar:&lt;br&gt;
@@ -194,10 +194,10 @@ As always, the conference ended with one more trip to &lt;a href=&#34;http://jak
     
     <item>
       <title>R/Finance 2014 Registration Open</title>
-      <link>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open.html</link>
+      <link>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open/</link>
       <pubDate>Sat, 29 Mar 2014 12:24:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open.html</guid>
+      <guid>https://blog.fosstrading.com/2014/03/rfinance-2014-registration-open/</guid>
       <description>&lt;p&gt;As announced on the &lt;a href=&#34;https://stat.ethz.ch/pipermail/r-sig-finance/2014q1/012330.html&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list, registration for R/Finance 2014 is &lt;strong&gt;now open&lt;/strong&gt;! The conference will take place May 17 and 18 in Chicago.&lt;/p&gt;
 &lt;p&gt;Building on the success of the previous conferences in 2009-2013, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.&lt;/p&gt;
 &lt;p&gt;We are very excited about the four keynote presentations given by &lt;a href=&#34;https://www.kellogg.northwestern.edu/faculty/directory/mcdonald_robert.aspx&#34;&gt;Bob McDonald&lt;/a&gt;, &lt;a href=&#34;http://www.stat.purdue.edu/~wsc/&#34;&gt;Bill Cleveland&lt;/a&gt;, &lt;a href=&#34;http://www.unstarched.net/about/&#34;&gt;Alexios Ghalanos&lt;/a&gt;, and &lt;a href=&#34;http://homepage.stat.uiowa.edu/~luke/&#34;&gt;Luke Tierney&lt;/a&gt;. The main agenda (currently) includes 16 full presentations and 21 shorter &amp;ldquo;lightning talks&amp;rdquo;. We are also excited to offer four optional pre-conference seminars on Friday morning.&lt;/p&gt;
@@ -224,10 +224,10 @@ As always, the conference ended with one more trip to &lt;a href=&#34;http://jak
     
     <item>
       <title>R/Finance 2014 Call for Papers</title>
-      <link>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</link>
       <pubDate>Thu, 17 Oct 2013 20:28:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2013/10/rfinance-2014-call-for-papers/</guid>
       <description>&lt;p&gt;We&amp;rsquo;re getting ready for this year&amp;rsquo;s R/Finance conference.  Here&amp;rsquo;s the call for papers.  I hope to see you there!&lt;/p&gt;
 &lt;p&gt;R/Finance 2014: Applied Finance with R&lt;br&gt;
 May 16 and 17, 2014&lt;br&gt;
@@ -247,10 +247,10 @@ Gib Bassett, Peter Carl, Dirk Eddelbuettel, Brian Peterson,&lt;br&gt;
     
     <item>
       <title>R/Finance 2013 Review</title>
-      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review.html</link>
+      <link>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</link>
       <pubDate>Tue, 28 May 2013 08:00:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review.html</guid>
+      <guid>https://blog.fosstrading.com/2013/05/r-finance-2013-review/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been one week since the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;5th Annual R/Finance conference&lt;/a&gt;, and I finally feel sufficiently recovered enough to share my thoughts. The conference is a two-day whirlwind of applied quantitative finance, fantastic networking, and general geekery.&lt;/p&gt;
 &lt;p&gt;The comments below are based on my personal experience.  If I don&amp;rsquo;t comment on a seminar or presentation, it doesn&amp;rsquo;t mean I didn&amp;rsquo;t like it or it wasn&amp;rsquo;t good; it may have been over my head or I may have been distracted with my duties as a committee member.  All the currently available conference slides are available &lt;a href=&#34;http://www.rinfinance.com/agenda/&#34;&gt;on the website&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Friday morning seminar:&lt;br&gt;
@@ -283,10 +283,10 @@ The two-hour conference reception at UIC was a great time to have a drink, talk 
     
     <item>
       <title>R/Finance 2013 Registration Open</title>
-      <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open.html</link>
+      <link>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open/</link>
       <pubDate>Fri, 29 Mar 2013 17:22:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open.html</guid>
+      <guid>https://blog.fosstrading.com/2013/03/rfinance-2013-registration-open/</guid>
       <description>&lt;p&gt;The registration for R/Finance 2013 &amp;ndash; which will take place May 17 and 18 in Chicago &amp;ndash; is NOW OPEN!&lt;/p&gt;
 &lt;p&gt;Building on the success of the previous conferences in 2009, 2010, 2011 and 2012, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 30+ presenters covering all areas of finance with R.&lt;/p&gt;
 &lt;p&gt;We are very excited about the four keynotes by &lt;a href=&#34;http://www.scu.edu/business/finance/faculty/das.cfm&#34;&gt;Sanjiv Das&lt;/a&gt;, &lt;a href=&#34;http://www.symmys.com/attilio-meucci&#34;&gt;Attilio Meucci&lt;/a&gt;, &lt;a href=&#34;http://www.linkedin.com/in/ryansheftel&#34;&gt;Ryan Sheftel&lt;/a&gt;, and &lt;a href=&#34;http://www.chicagobooth.edu/faculty/directory/t/ruey-s-tsay&#34;&gt;Ruey Tsay&lt;/a&gt;. The main agenda (currently) includes seventeen full presentations and fifteen shorter &amp;ldquo;lightning talks&amp;rdquo;. We are also excited to offer five optional pre-conference seminars on Friday morning.&lt;/p&gt;
@@ -313,10 +313,10 @@ The two-hour conference reception at UIC was a great time to have a drink, talk 
     
     <item>
       <title>R in Google Summer of Code 2012</title>
-      <link>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012.html</link>
+      <link>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</link>
       <pubDate>Fri, 23 Mar 2012 13:53:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012.html</guid>
+      <guid>https://blog.fosstrading.com/2012/03/r-in-google-summer-of-code-2012/</guid>
       <description>&lt;p&gt;This post is a slightly revised (and &amp;ldquo;blogified&amp;rdquo;) version of the message &lt;a href=&#34;http://braverock.com/brian/resume.html&#34;&gt;Brian Peterson&lt;/a&gt; has sent to various R mailing lists.&lt;/p&gt;
 &lt;p&gt;Once again, &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; has been accepted as a mentoring organization for the &lt;a href=&#34;http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012&#34;&gt;Google Summer of Code (2012)&lt;/a&gt;.  We invite students interested in this program to learn more about it.  A good starting point is the &lt;a href=&#34;http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012&#34;&gt;R GSoC wiki&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Students participating in the program receive US$5,000 for successful completion of a GSoC project, a great resume item, and an opportunity to work with R package authors.&lt;/p&gt;
@@ -351,10 +351,10 @@ Improve data and model visualization.  Extend xts objects to contain mixed type
     
     <item>
       <title>R/Finance 2012 Registration Open</title>
-      <link>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open.html</link>
+      <link>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open/</link>
       <pubDate>Tue, 20 Mar 2012 10:47:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open.html</guid>
+      <guid>https://blog.fosstrading.com/2012/03/rfinance-2012-registration-open/</guid>
       <description>&lt;p&gt;You can find more information on the &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance conference website&lt;/a&gt;.  Hope to see you in Chicago in May!&lt;/p&gt;
 &lt;p&gt;The registration for R/Finance 2012 &amp;ndash; which will take place May 11 and 12 in Chicago &amp;ndash; is NOW OPEN!&lt;/p&gt;
 &lt;p&gt;Building on the success of the three previous conferences in 2009, 2010, and 2011, we expect more than 250 attendees from around the world.  R users from industry, academia, and government will join 40+ presenters covering all areas of finance with R.&lt;/p&gt;
@@ -385,10 +385,10 @@ Improve data and model visualization.  Extend xts objects to contain mixed type
     
     <item>
       <title>R/Finance 2012 Call for Papers</title>
-      <link>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</link>
       <pubDate>Thu, 15 Dec 2011 00:38:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2011/12/rfinance-2012-call-for-papers/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m excited to share the call for papers for the upcoming R/Finance conference.  Even if you don&amp;rsquo;t submit a presentation, I hope to see you there!&lt;/p&gt;
 &lt;p&gt;Call for Papers:&lt;/p&gt;
 &lt;p&gt;R/Finance 2012: Applied Finance with R&lt;br&gt;
@@ -410,10 +410,10 @@ University of Illinois, Chicago, IL, USA&lt;/p&gt;
     
     <item>
       <title>R/Finance 2011 Presentations are online</title>
-      <link>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online.html</link>
+      <link>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</link>
       <pubDate>Sun, 29 May 2011 18:00:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online.html</guid>
+      <guid>https://blog.fosstrading.com/2011/05/rfinance-2011-presentations-are-online/</guid>
       <description>&lt;p&gt;For those of you who don&amp;rsquo;t subscribe to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;You really should &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;subscribe&lt;/a&gt; ;-)&lt;/li&gt;
@@ -436,20 +436,20 @@ University of Illinois, Chicago, IL, USA&lt;/p&gt;
     
     <item>
       <title>Risk-Opportunity Analysis: Houston</title>
-      <link>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston.html</link>
+      <link>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</link>
       <pubDate>Thu, 17 Mar 2011 11:25:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston.html</guid>
+      <guid>https://blog.fosstrading.com/2011/03/risk-opportunity-analysis-houston/</guid>
       <description>&lt;p&gt;I will be attending &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&amp;rsquo;s&lt;/a&gt; risk-opportunity analysis workshop in Houston this weekend.  I&amp;rsquo;ll be in town Friday-Monday.  Drop me a note if you&amp;rsquo;re in the area and would like to meet for coffee / drinks.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R/Finance 2011 Registration Open</title>
-      <link>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open.html</link>
+      <link>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open/</link>
       <pubDate>Mon, 14 Mar 2011 16:17:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open.html</guid>
+      <guid>https://blog.fosstrading.com/2011/03/rfinance-2011-registration-open/</guid>
       <description>&lt;p&gt;The registration for R/Finance 2011&amp;ndash;which will take place April 29 and 30 in Chicago&amp;ndash;is NOW OPEN!&lt;/p&gt;
 &lt;p&gt;Building on the success of the two previous conferences in 2009 and 2010, we are expecting more than 250 attendees from around the world representing both industry and academia to join a record 30+ presentations covering all areas of finance with R.&lt;/p&gt;
 &lt;p&gt;This year we are excited to have longer tutorial sessions and an optional full-day workshop on the Thursday before the conference. In addition, we have worked hard to extend the great networking opportunities on both days with longer breaks and more hallway time between sessions.&lt;/p&gt;
@@ -471,10 +471,10 @@ University of Illinois, Chicago, IL, USA&lt;/p&gt;
     
     <item>
       <title>R/Finance 2011 Call for Papers</title>
-      <link>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers.html</link>
+      <link>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</link>
       <pubDate>Sun, 26 Dec 2010 18:49:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers.html</guid>
+      <guid>https://blog.fosstrading.com/2010/12/rfinance-2011-call-for-papers/</guid>
       <description>&lt;p&gt;The 2011 R/Finance conference has an updated call for papers.  Dirk Eddelbuettel announced it to the R-SIG-Finance mailing list.  I&amp;rsquo;ve reproduced his email in its entirety below.  Let me know if you plan on attending.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Subject: R/Finance 2011: Call for Papers: Now with prizes and travel money&lt;/p&gt;
@@ -507,20 +507,20 @@ Chicago, IL, USA&lt;/p&gt;
     
     <item>
       <title>Risk-Opportunity Analysis</title>
-      <link>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis.html</link>
+      <link>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis/</link>
       <pubDate>Fri, 12 Nov 2010 09:05:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis.html</guid>
+      <guid>https://blog.fosstrading.com/2010/11/risk-opportunity-analysis/</guid>
       <description>&lt;p&gt;I will be attending &lt;a href=&#34;http://www.ralphvince.com/&#34;&gt;Ralph Vince&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;http://rvincetampa201011.eventbrite.com/&#34;&gt;risk-opportunity analysis workshop&lt;/a&gt; in Tampa this weekend.  Drop me a note if you&amp;rsquo;re in the area and would like to meet for coffee / drinks.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Thoughts on LSPM from R/Finance 2010</title>
-      <link>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010.html</link>
+      <link>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</link>
       <pubDate>Sun, 18 Apr 2010 22:24:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010.html</guid>
+      <guid>https://blog.fosstrading.com/2010/04/thoughts-on-lspm-from-rfinance-2010/</guid>
       <description>&lt;p&gt;I just got back from &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance&lt;/a&gt; &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;2010&lt;/a&gt; in Chicago. If you couldn&amp;rsquo;t make it this year, I strongly encourage you to attend next year. I will post a more comprehensive review of the event in the next couple days, but I wanted to share some of my notes specific to &lt;a href=&#34;http://lspm.r-forge.r-project.org/&#34;&gt;LSPM&lt;/a&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;How sensitive are optimal-f values to the method used to construct the joint probability table?&lt;/li&gt;
@@ -534,10 +534,10 @@ Chicago, IL, USA&lt;/p&gt;
     
     <item>
       <title>R/Finance 2010: Registration Open</title>
-      <link>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open.html</link>
+      <link>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</link>
       <pubDate>Fri, 05 Feb 2010 15:46:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open.html</guid>
+      <guid>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</guid>
       <description>&lt;p&gt;As posted by Dirk Eddelbuettel on R-SIG-Finance:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;R / Finance 2010: Applied Finance with R&lt;br&gt;
@@ -559,10 +559,10 @@ April 16 &amp;amp; 17, Chicago, IL, US&lt;/p&gt;
     
     <item>
       <title>R/Finance 2009 Presentations Online</title>
-      <link>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online.html</link>
+      <link>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</link>
       <pubDate>Mon, 04 May 2009 10:21:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online.html</guid>
+      <guid>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</guid>
       <description>&lt;p&gt;Posted to the R-SIG-Finance mailing list today:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;For those who missed it, the slides for the R/Finance 2009 tutorials&lt;br&gt;
@@ -577,10 +577,10 @@ and presentations are now available on RinFinance.com&lt;/p&gt;
     
     <item>
       <title>R/Finance 2009 Overview</title>
-      <link>https://blog.fosstrading.com/2009/04/rfinance-2009-overview.html</link>
+      <link>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</link>
       <pubDate>Tue, 28 Apr 2009 09:26:00 -0500</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/04/rfinance-2009-overview.html</guid>
+      <guid>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</guid>
       <description>&lt;p&gt;The first international R/Finance 2009 conference in Chicago, IL was a huge success! David Smith from &lt;a href=&#34;http://www.revolution-computing.com/&#34;&gt;REvolution Computing&lt;/a&gt; has written &lt;a href=&#34;http://blog.revolution-computing.com/2009/04/rfinance-2009-roundup.html&#34;&gt;a great summary&lt;/a&gt; of the entire event. I&amp;rsquo;ll take the lazy route and point you to his blog post. :)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The first international conference dedicated to the use of R in the finance industry, &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance 2009&lt;/a&gt;, was a great success. With over 150 attendees (my poor &lt;a href=&#34;http://twitter.com/revodavid/status/1606990522&#34;&gt;estimation&lt;/a&gt; skills notwithstanding), sold-out tutorials, and an outstanding lineup of invited and contributing speakers from around the world, this event really demonstrated the importance of &lt;a href=&#34;http://www.revolution-computing.com/industry/finance.php&#34;&gt;R in the world of financial analysis&lt;/a&gt;.&lt;/p&gt;
@@ -594,10 +594,10 @@ David Smith&lt;br&gt;
     
     <item>
       <title>Registration for R/Finance 2009 is Open!</title>
-      <link>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open.html</link>
+      <link>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</link>
       <pubDate>Fri, 20 Feb 2009 12:20:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open.html</guid>
+      <guid>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://rinfinance.quantmod.com/&#34;&gt;conference website&lt;/a&gt; has details on:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -619,10 +619,10 @@ David Smith&lt;br&gt;
     
     <item>
       <title>R/Finance 2009: Applied Finance with R</title>
-      <link>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r.html</link>
+      <link>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</link>
       <pubDate>Tue, 30 Dec 2008 23:54:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r.html</guid>
+      <guid>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</guid>
       <description>&lt;p&gt;Call for Papers&lt;/p&gt;
 &lt;p&gt;The Finance Department of the University of Illinois at Chicago (UIC),&lt;br&gt;
 the International Center for Futures and Derivatives at UIC, and&lt;br&gt;
@@ -654,10 +654,10 @@ Brian Peterson, Dale Rosenthal, Jeffrey Ryan&lt;/p&gt;
     
     <item>
       <title>Computational Finance with R</title>
-      <link>https://blog.fosstrading.com/2008/12/computational-finance-with-r.html</link>
+      <link>https://blog.fosstrading.com/2008/12/computational-finance-with-r/</link>
       <pubDate>Fri, 05 Dec 2008 20:39:00 -0600</pubDate>
       
-      <guid>https://blog.fosstrading.com/2008/12/computational-finance-with-r.html</guid>
+      <guid>https://blog.fosstrading.com/2008/12/computational-finance-with-r/</guid>
       <description>&lt;p&gt;Krishna Kumar, Jan Vecer and the great folks at &lt;a href=&#34;http://www.revolution-computing.com/&#34;&gt;REvolution computing&lt;/a&gt; put on &lt;a href=&#34;http://www.stat.columbia.edu/pages/ComputationalFinance/index.html&#34;&gt;a great event&lt;/a&gt; at the beautiful &lt;a href=&#34;http://www.columbia.edu/&#34;&gt;Columbia University&lt;/a&gt; campus on the Upper West Side of New York.&lt;/p&gt;
 &lt;p&gt;Presentations by Whit Armstrong, Anthony Brockwell, Bryan Lewis, Scott Payseur, Peter Carl, Brian Peterson, and our own Jeff Ryan made for an impressive display of the power of R in quant finance. Jeff&amp;rsquo;s presentation slides can be found &lt;a href=&#34;http://www.quantmod.com/Columbia2008&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Some great things are happening in this community, and we are certainly glad to be part of them.&lt;/p&gt;
