@@ -71,7 +71,7 @@ Later posts in this series will cover at least the topics below. Please leave a 
 * Introduction to the Web Administrator (viewing/monitoring data, import/export)
 * Introduction to QQL, the quant query language
 
-Thanks to [TheRobotJames](https://robotjames.com/) for helpful feedback!
+Thanks to [TheRobotJames](https://robotjames.com/) for helpful feedback, and to [Adam Butler](https://twitter.com/gestaltu) for encouraging me to write more!
 
 {{< timebase-series-posts id="timebase-series-posts.html" >}}
 
