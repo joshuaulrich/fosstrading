@@ -7,7 +7,7 @@ theme = [ "mainroad" ]
 paginate = "10" # Number of posts per page
 
 disqusShortname = "foss-trading"  # Enable comments by entering your Disqus shortname
-googleAnalytics = "UA-3314405-2"  # Enable Google Analytics by entering your tracking id
+googleAnalytics = "G-LT26X44HDL"  # Enable Google Analytics by entering your tracking id
 
 # code highlighting
 pygmentsUseClasses = true
