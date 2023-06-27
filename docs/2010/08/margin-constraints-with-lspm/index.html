@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2010-08-01T23:31:00-05:00" />
 <meta property="article:modified_time" content="2010-08-01T23:31:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -101,48 +100,48 @@ L = max(f$) / sum( ( max(f$) / f$[i] ) * margin[i] )</p>
 L = percentage of &ldquo;active equity&rdquo; to use when dividing by each f$<br>
 margin = initial margin for each market system</p>
 <p>The <code>maxUnits()</code> function included in this post uses the formula above to return the maximum number of tradeable units.  In this example, we assume our margin is equal to our maximum loss (as is the case with equities).  The code below illustrates how to use the <code>maxUnits()</code> function after optimization.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load the LSPM package</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
-
-<span class="n">maxUnits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lsp</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="p">{</span>
-
-  <span class="c1"># Make sure margin and f are same length</span>
-  <span class="n">NRf</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">lsp</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>
-  <span class="nf">if</span><span class="p">(</span><span class="nf">NROW</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span><span class="o">!=</span><span class="n">NRf</span><span class="p">)</span>
-    <span class="nf">stop</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#34;&#39;margin&#39; must have length =&#34;</span><span class="p">,</span><span class="n">NRf</span><span class="p">))</span>
-
-  <span class="c1"># Calculate maximum equity percentage</span>
-  <span class="n">fDollar</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">lsp</span><span class="o">$</span><span class="n">maxLoss</span> <span class="o">/</span> <span class="n">lsp</span><span class="o">$</span><span class="n">f</span>
-  <span class="n">maxfDollar</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span> <span class="n">fDollar</span><span class="nf">[is.finite</span><span class="p">(</span><span class="n">fDollar</span><span class="p">)</span><span class="n">]</span> <span class="p">)</span>
-
-  <span class="n">den</span> <span class="o">&lt;-</span> <span class="n">maxfDollar</span> <span class="o">/</span> <span class="n">fDollar</span> <span class="o">*</span> <span class="n">margin</span>
-  <span class="n">den[</span><span class="o">!</span><span class="nf">is.finite</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="n">]</span>  <span class="o">&lt;-</span> <span class="m">0</span>
-
-  <span class="n">eqPct</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">maxfDollar</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">den</span><span class="p">))</span>
-
-  <span class="n">max.units</span> <span class="o">&lt;-</span> <span class="n">eqPct</span> <span class="o">*</span> <span class="n">equity</span> <span class="o">/</span> <span class="n">fDollar</span>
-  <span class="nf">return</span><span class="p">(</span><span class="n">max.units</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="nf">data</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>               <span class="c1"># Multiple strategy data</span>
-<span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>         <span class="c1"># Initial equity</span>
-<span class="n">margin</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span>  <span class="c1"># Margin amounts</span>
-
-<span class="n">opt</span> <span class="o">&lt;-</span> <span class="nf">optimalf</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>    <span class="c1"># Optimize portfolio</span>
-<span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">opt</span><span class="o">$</span><span class="n">f</span>          <span class="c1"># Assign optimal f values to lsp object</span>
-
-<span class="c1"># Units to trade</span>
-<span class="n">fUnits</span> <span class="o">&lt;-</span> <span class="n">initEq</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">port</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
-<span class="n">mUnits</span> <span class="o">&lt;-</span> <span class="nf">maxUnits</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">initEq</span><span class="p">)</span> <span class="c1"># margin-constrained</span>
-
-<span class="c1"># Equity needed to trade at f values</span>
-<span class="nf">sum</span><span class="p">(</span><span class="n">fUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
-<span class="nf">sum</span><span class="p">(</span><span class="n">mUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># margin-constrained</span>
-
-<span class="c1"># Implied f values based on maximum units</span>
-<span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">mUnits</span><span class="o">*-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">initEq</span>
-<span class="nf">GHPR</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>  <span class="c1"># 1.209931</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Load the LSPM package</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">maxUnits</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lsp</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Make sure margin and f are same length</span>
+</span></span><span class="line"><span class="cl">  <span class="n">NRf</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">lsp</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">if</span><span class="p">(</span><span class="nf">NROW</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span><span class="o">!=</span><span class="n">NRf</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">stop</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#34;&#39;margin&#39; must have length =&#34;</span><span class="p">,</span><span class="n">NRf</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Calculate maximum equity percentage</span>
+</span></span><span class="line"><span class="cl">  <span class="n">fDollar</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">lsp</span><span class="o">$</span><span class="n">maxLoss</span> <span class="o">/</span> <span class="n">lsp</span><span class="o">$</span><span class="n">f</span>
+</span></span><span class="line"><span class="cl">  <span class="n">maxfDollar</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span> <span class="n">fDollar</span><span class="nf">[is.finite</span><span class="p">(</span><span class="n">fDollar</span><span class="p">)</span><span class="n">]</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">den</span> <span class="o">&lt;-</span> <span class="n">maxfDollar</span> <span class="o">/</span> <span class="n">fDollar</span> <span class="o">*</span> <span class="n">margin</span>
+</span></span><span class="line"><span class="cl">  <span class="n">den[</span><span class="o">!</span><span class="nf">is.finite</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="n">]</span>  <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">eqPct</span> <span class="o">&lt;-</span> <span class="nf">min</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">maxfDollar</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">den</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">max.units</span> <span class="o">&lt;-</span> <span class="n">eqPct</span> <span class="o">*</span> <span class="n">equity</span> <span class="o">/</span> <span class="n">fDollar</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">max.units</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>               <span class="c1"># Multiple strategy data</span>
+</span></span><span class="line"><span class="cl"><span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>         <span class="c1"># Initial equity</span>
+</span></span><span class="line"><span class="cl"><span class="n">margin</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span>  <span class="c1"># Margin amounts</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">opt</span> <span class="o">&lt;-</span> <span class="nf">optimalf</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>    <span class="c1"># Optimize portfolio</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">opt</span><span class="o">$</span><span class="n">f</span>          <span class="c1"># Assign optimal f values to lsp object</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Units to trade</span>
+</span></span><span class="line"><span class="cl"><span class="n">fUnits</span> <span class="o">&lt;-</span> <span class="n">initEq</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">port</span><span class="o">$</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
+</span></span><span class="line"><span class="cl"><span class="n">mUnits</span> <span class="o">&lt;-</span> <span class="nf">maxUnits</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">initEq</span><span class="p">)</span> <span class="c1"># margin-constrained</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Equity needed to trade at f values</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="n">fUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># unconstrained</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="n">mUnits</span><span class="o">*</span><span class="n">margin</span><span class="p">)</span>  <span class="c1"># margin-constrained</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Implied f values based on maximum units</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span><span class="o">$</span><span class="n">f</span> <span class="o">&lt;-</span> <span class="n">mUnits</span><span class="o">*-</span><span class="n">port</span><span class="o">$</span><span class="n">maxLoss</span><span class="o">/</span><span class="n">initEq</span>
+</span></span><span class="line"><span class="cl"><span class="nf">GHPR</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>  <span class="c1"># 1.209931</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -166,7 +165,7 @@ margin = initial margin for each market system</p>
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

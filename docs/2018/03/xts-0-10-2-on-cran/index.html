@@ -9,12 +9,11 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="xts 0.10-2 on CRAN" />
 <meta property="og:description" content="This xts release contains mostly bugfixes, but there are a few noteworthy features. Some of these features were added in version 0.10-1, but I forgot to blog about it. Anyway, in no particular order:
- endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects." />
+endpoints() gained sub-second accuracy on Windows (#202)! na.locf.xts() now honors x and xout arguments by dispatching to the next method (#215). Thanks to Morten Grum for the report. na.locf.xts() and na.omit.xts() now support character xts objects. Thanks to Ken Williams and Samo Pahor for the reports (#42)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2018/03/xts-0-10-2-on-cran/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2018-03-19T05:30:00-05:00" />
 <meta property="article:modified_time" content="2018-03-19T05:30:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -137,7 +136,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

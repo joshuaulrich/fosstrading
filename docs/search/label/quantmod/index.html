@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/search/label/quantmod/" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -114,7 +113,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-04-16T03:41:57-05:00">April 16, 2023</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>An updated version of <a href="http://cran.r-project.org/package=quantmod">quantmod</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. It adds functions <code>HL()</code>, <code>is.HL()</code>, and <code>has.HL()</code> to check for &lsquo;high&rsquo; and &lsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. <code>getSymbols.FRED()</code> got <code>to</code> and <code>from</code> arguments, like other <code>getSymbols()</code> methods. The remaining changes are bug fixes and maintenace chores.</p>
+		<p>An updated version of <a href="http://cran.r-project.org/package=quantmod">quantmod</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. It adds functions <code>HL()</code>, <code>is.HL()</code>, and <code>has.HL()</code> to check for &lsquo;high&rsquo; and &rsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. <code>getSymbols.FRED()</code> got <code>to</code> and <code>from</code> arguments, like other <code>getSymbols()</code> methods. The remaining changes are bug fixes and maintenace chores.</p>
 	</div>
 </article><article class="list__item post">
 	
@@ -228,7 +227,7 @@ The most noticeable difference is that the adjusted close column is no longer di
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149) All three providers made breaking changes to their URLs/interfaces.
 getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
 There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).
 	</div>

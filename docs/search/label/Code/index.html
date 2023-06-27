@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/search/label/Code/" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -166,7 +165,7 @@ Students participating in the program receive US$5,000 for successful completion
 	<div class="content list__excerpt post__content clearfix">
 		As promised in the introduction to quantstrat, here is an example strategy. I thought I&rsquo;d start with the obligatory tactical asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate. There are two major differences:
-  The blotter TAA code initiates a position at the first observation where the close is above the SMA.
+The blotter TAA code initiates a position at the first observation where the close is above the SMA.
 	</div>
 </article><article class="list__item post">
 	
@@ -215,8 +214,8 @@ The contents of this post borrow heavily from code and comments in the &ldquo;lo
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
- Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2)  Here&rsquo;s the R code:
-DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34;  # columns, in that order.  # This is David Varadi&#39;s alternative to the RSI(2).
+Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2) Here&rsquo;s the R code:
+DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34; # columns, in that order. # This is David Varadi&#39;s alternative to the RSI(2).
 	</div>
 </article><article class="list__item post">
 	

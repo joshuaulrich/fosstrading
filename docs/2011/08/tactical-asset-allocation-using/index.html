@@ -10,12 +10,11 @@
 	<meta property="og:title" content="Tactical asset allocation using quantstrat" />
 <meta property="og:description" content="As promised in the introduction to quantstrat, here is an example strategy. I thought I&rsquo;d start with the obligatory tactical asset allocation (TAA) strategy. This post will replicate the strategy in the post, tactical asset allocation using blotter.
 The &ldquo;faber&rdquo; demo in the quanstrat package contains a TAA strategy but it uses a slightly different approach than the code we&rsquo;re trying to replicate. There are two major differences:
-  The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
+The blotter TAA code initiates a position at the first observation where the close is above the SMA." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2011/08/tactical-asset-allocation-using/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2011-08-23T20:55:00-05:00" />
 <meta property="article:modified_time" content="2011-08-23T20:55:00-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -111,87 +110,87 @@ if (!doNotTrack) {
 <p>Finally, we need to set the position limits for each instrument.  We do this via two calls to <code>addPosLimit()</code> (one for each symbol) and we set the maximum position to 1000 shares and the minimum position to 0 shares.</p>
 <p>The modified code is below and even includes some simple evaluation of the results at no extra charge.  The <code>tradeStats()</code> function has a ton more columns; I&rsquo;ve only selected a few to make the output more readable.  Feel free to tinker.</p>
 <p>NOTE: I wrote this code using the latest quantmod, xts, and zoo from CRAN; and the latest blotter, FinancialInstrument, and quantstrat from R-Forge.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># This code is a slight modification of the quantstrat &#34;faber&#34; demo, intended to replicate   </span>
-<span class="c1"># http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html   </span>
-<span class="c1"># Uncomment the line below to install the latest packages on R-Forge:  </span>
-<span class="c1">#install.packages(c(&#34;quantstrat&#34;,&#34;blotter&#34;,&#34;FinancialInstrument&#34;), repos=&#34;http://r-forge.r-project.org&#34;)</span>
-
-<span class="nf">require</span><span class="p">(</span><span class="n">quantstrat</span><span class="p">)</span>
-<span class="nf">require</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
-
-<span class="c1"># Set initial values</span>
-<span class="n">initDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2002-07-31&#34;</span>
-<span class="n">endDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2009-10-31&#34;</span>
-<span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>
-
-<span class="c1"># Pull Yahoo Finance data</span>
-<span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">)</span>
-<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">index.class</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;POSIXt&#34;</span><span class="p">,</span><span class="s">&#34;POSIXct&#34;</span><span class="p">))</span>
-
-<span class="c1"># adjust for splits/dividends (comment to replicate blotter example)</span>
-<span class="c1">#IEF &lt;- adjustOHLC(IEF, use.Adjusted=TRUE)</span>
-<span class="c1">#SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)</span>
-
-<span class="c1"># convert to monthly</span>
-<span class="n">IEF</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">IEF</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
-<span class="n">SPY</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">SPY</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
-
-<span class="c1"># Set up instruments with FinancialInstruments package</span>
-<span class="nf">currency</span><span class="p">(</span><span class="s">&#34;USD&#34;</span><span class="p">)</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">symbol</span> <span class="n">in</span> <span class="n">symbols</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nf">stock</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s">&#34;USD&#34;</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># Delete portfolio, account, and order book if they already exist</span>
-<span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;account.faber&#34;</span><span class="p">,</span><span class="s">&#34;portfolio.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.blotter</span><span class="p">))</span>
-<span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;order_book.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.strategy</span><span class="p">))</span>
-
-<span class="c1"># Initialize portfolio and account</span>
-<span class="nf">initPortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
-<span class="nf">initAcct</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">initEq</span><span class="o">=</span><span class="n">initEq</span><span class="p">)</span>
-<span class="nf">initOrders</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
-
-<span class="c1"># Initialize a strategy object</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">strategy</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
-
-<span class="c1"># Add the 10-month SMA indicator</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.indicator</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;SMA&#34;</span><span class="p">,</span>
-  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">quote</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">mktdata</span><span class="p">)),</span> <span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;SMA10&#34;</span><span class="p">)</span>
-
-<span class="c1"># There are two signals:</span>
-<span class="c1"># The first is when monthly price crosses over the 10-month SMA</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
-  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;gte&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">)</span>
-
-<span class="c1"># The second is when the monthly price crosses under the 10-month SMA</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
-  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;lt&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">)</span>
-
-<span class="c1"># There are two rules:</span>
-<span class="c1"># The first is to buy when the price crosses above the SMA</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
-  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
-  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">,</span> <span class="n">osFUN</span><span class="o">=</span><span class="n">osMaxPos</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;enter&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-
-<span class="c1"># The second is to sell when the price crosses below the SMA</span>
-<span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
-  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="s">&#34;all&#34;</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
-  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;exit&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-
-<span class="c1"># Set position limits so we don&#39;t add to the position every month Close &gt; SMA10</span>
-<span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
-<span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
-
-<span class="c1"># Process the indicators and generate trades</span>
-<span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">try</span><span class="p">(</span><span class="nf">applyStrategy</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">))</span>
-<span class="nf">updatePortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
-
-<span class="c1"># Evaluate results</span>
-<span class="n">portRet</span> <span class="o">&lt;-</span> <span class="nf">PortfReturns</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
-<span class="n">portRet</span><span class="o">$</span><span class="n">Total</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">portRet</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="n">portRet</span><span class="o">$</span><span class="n">Total</span><span class="p">)</span>
-<span class="nf">tradeStats</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span><span class="n">[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Symbol&#34;</span><span class="p">,</span><span class="s">&#34;Num.Trades&#34;</span><span class="p">,</span><span class="s">&#34;Net.Trading.PL&#34;</span><span class="p">,</span><span class="s">&#34;Max.Drawdown&#34;</span><span class="p">)</span><span class="n">]</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># This code is a slight modification of the quantstrat &#34;faber&#34; demo, intended to replicate   </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># http://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter.html   </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Uncomment the line below to install the latest packages on R-Forge:  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#install.packages(c(&#34;quantstrat&#34;,&#34;blotter&#34;,&#34;FinancialInstrument&#34;), repos=&#34;http://r-forge.r-project.org&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">quantstrat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set initial values</span>
+</span></span><span class="line"><span class="cl"><span class="n">initDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2002-07-31&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">endDate</span> <span class="o">&lt;-</span> <span class="s">&#34;2009-10-31&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">initEq</span> <span class="o">&lt;-</span> <span class="m">100000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pull Yahoo Finance data</span>
+</span></span><span class="line"><span class="cl"><span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="n">endDate</span><span class="p">,</span> <span class="n">index.class</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;POSIXt&#34;</span><span class="p">,</span><span class="s">&#34;POSIXct&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># adjust for splits/dividends (comment to replicate blotter example)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#IEF &lt;- adjustOHLC(IEF, use.Adjusted=TRUE)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#SPY &lt;- adjustOHLC(SPY, use.Adjusted=TRUE)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># convert to monthly</span>
+</span></span><span class="line"><span class="cl"><span class="n">IEF</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">IEF</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">SPY</span> <span class="o">&lt;-</span> <span class="nf">to.monthly</span><span class="p">(</span><span class="n">SPY</span><span class="p">,</span> <span class="n">indexAt</span><span class="o">=</span><span class="s">&#34;endof&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set up instruments with FinancialInstruments package</span>
+</span></span><span class="line"><span class="cl"><span class="nf">currency</span><span class="p">(</span><span class="s">&#34;USD&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">symbol</span> <span class="n">in</span> <span class="n">symbols</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">stock</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s">&#34;USD&#34;</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Delete portfolio, account, and order book if they already exist</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;account.faber&#34;</span><span class="p">,</span><span class="s">&#34;portfolio.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.blotter</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">suppressWarnings</span><span class="p">(</span><span class="nf">rm</span><span class="p">(</span><span class="s">&#34;order_book.faber&#34;</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">.strategy</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize portfolio and account</span>
+</span></span><span class="line"><span class="cl"><span class="nf">initPortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">initAcct</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">initEq</span><span class="o">=</span><span class="n">initEq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">initOrders</span><span class="p">(</span><span class="n">portfolio</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="n">initDate</span><span class="o">=</span><span class="n">initDate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize a strategy object</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">strategy</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add the 10-month SMA indicator</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.indicator</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;SMA&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">quote</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">mktdata</span><span class="p">)),</span> <span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;SMA10&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># There are two signals:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The first is when monthly price crosses over the 10-month SMA</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;gte&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># The second is when the monthly price crosses under the 10-month SMA</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.signal</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;sigComparison&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Close&#34;</span><span class="p">,</span><span class="s">&#34;SMA10&#34;</span><span class="p">),</span><span class="n">relationship</span><span class="o">=</span><span class="s">&#34;lt&#34;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># There are two rules:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The first is to buy when the price crosses above the SMA</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.gt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">,</span> <span class="n">osFUN</span><span class="o">=</span><span class="n">osMaxPos</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;enter&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># The second is to sell when the price crosses below the SMA</span>
+</span></span><span class="line"><span class="cl"><span class="n">stratFaber</span> <span class="o">&lt;-</span> <span class="nf">add.rule</span><span class="p">(</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;ruleSignal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">arguments</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sigcol</span><span class="o">=</span><span class="s">&#34;Cl.lt.SMA&#34;</span><span class="p">,</span> <span class="n">sigval</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">orderqty</span><span class="o">=</span><span class="s">&#34;all&#34;</span><span class="p">,</span> <span class="n">ordertype</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">orderside</span><span class="o">=</span><span class="s">&#34;long&#34;</span><span class="p">,</span> <span class="n">pricemethod</span><span class="o">=</span><span class="s">&#34;market&#34;</span><span class="p">,</span> <span class="n">TxnFees</span><span class="o">=</span><span class="m">-5</span><span class="p">),</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;exit&#34;</span><span class="p">,</span> <span class="n">path.dep</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set position limits so we don&#39;t add to the position every month Close &gt; SMA10</span>
+</span></span><span class="line"><span class="cl"><span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;SPY&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">addPosLimit</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">,</span> <span class="s">&#34;IEF&#34;</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">initDate</span><span class="p">,</span> <span class="n">maxpos</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">minpos</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Process the indicators and generate trades</span>
+</span></span><span class="line"><span class="cl"><span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">try</span><span class="p">(</span><span class="nf">applyStrategy</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">stratFaber</span><span class="p">,</span> <span class="n">portfolios</span><span class="o">=</span><span class="s">&#34;faber&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">updatePortf</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Evaluate results</span>
+</span></span><span class="line"><span class="cl"><span class="n">portRet</span> <span class="o">&lt;-</span> <span class="nf">PortfReturns</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">portRet</span><span class="o">$</span><span class="n">Total</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">portRet</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="n">portRet</span><span class="o">$</span><span class="n">Total</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">tradeStats</span><span class="p">(</span><span class="s">&#34;faber&#34;</span><span class="p">)</span><span class="n">[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Symbol&#34;</span><span class="p">,</span><span class="s">&#34;Num.Trades&#34;</span><span class="p">,</span><span class="s">&#34;Net.Trading.PL&#34;</span><span class="p">,</span><span class="s">&#34;Max.Drawdown&#34;</span><span class="p">)</span><span class="n">]</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -218,7 +217,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

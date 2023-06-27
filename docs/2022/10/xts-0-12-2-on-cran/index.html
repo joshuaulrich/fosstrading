@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2022-10-15T10:21:00-05:00" />
 <meta property="article:modified_time" content="2022-10-15T10:21:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -109,16 +108,16 @@ if (!doNotTrack) {
 <p>The &lsquo;ylim&rsquo; argument is now robust against numerical precision issues. Thanks to <a href="https://github.com/bollard">@bollard</a> for the report, PR, and a ton of help debugging intermediate solutions! (<a href="https://github.com/joshuaulrich/xts/issues/368">#368</a>)</p>
 </li>
 <li>
-<p>Series added to a panel now extend the panel&rsquo;s y-axis. Previously the y-axis limits were based on the first series' values and not updated when new series were added. So values of the new series did not appear on the plot if they were outside of the original series' min/max. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
+<p>Series added to a panel now extend the panel&rsquo;s y-axis. Previously the y-axis limits were based on the first series&rsquo; values and not updated when new series were added. So values of the new series did not appear on the plot if they were outside of the original series&rsquo; min/max. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 <li>
-<p>All series added to any panel of a plot now update the x-axis of all panels. So the entire plot&rsquo;s x-axis will include every series' time index values within the original plot&rsquo;s time range. This behavior is consistent with <code>chart_Series()</code>. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>, <a href="https://github.com/joshuaulrich/xts/issues/216">#216</a>)</p>
+<p>All series added to any panel of a plot now update the x-axis of all panels. So the entire plot&rsquo;s x-axis will include every series&rsquo; time index values within the original plot&rsquo;s time range. This behavior is consistent with <code>chart_Series()</code>. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>, <a href="https://github.com/joshuaulrich/xts/issues/216">#216</a>)</p>
 </li>
 <li>
 <p>All y-values are now plotted for series that have duplicate index values, but different data values. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 <li>
-<p>Adding a series can now extend the x-axis before/after the plot&rsquo;s existing time index range by setting <code>extend.xaxis = TRUE</code>. That ensures all of the new series' time index values are included in the plot. <code>extend.xaxis = FALSE</code> by default to maintain backward compatibility. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
+<p>Adding a series can now extend the x-axis before/after the plot&rsquo;s existing time index range by setting <code>extend.xaxis = TRUE</code>. That ensures all of the new series&rsquo; time index values are included in the plot. <code>extend.xaxis = FALSE</code> by default to maintain backward compatibility. Thanks to <a href="https://github.com/vspinu">Vitalie Spinu</a> for the report and help debugging and testing! (<a href="https://github.com/joshuaulrich/xts/issues/360">#360</a>)</p>
 </li>
 </ul>
 <h3 id="other-enhancements-and-bug-fixes">Other enhancements and bug fixes</h3>
@@ -127,7 +126,7 @@ if (!doNotTrack) {
 <p><code>Ops.xts()</code> no longer changes column names (via <code>make.names()</code>) when the two objects do not have identical indexes. This makes it consistent with <code>Ops.zoo()</code>. Thanks to <a href="https://github.com/tonytonov">Anton Antonov</a> for the report! (<a href="https://github.com/joshuaulrich/xts/issues/114">#114</a>)</p>
 </li>
 <li>
-<p>Subsetting a zero-length xts object now returns an object with the same storage type as the input. It previously always returned a &lsquo;logical&rsquo; xts object. (<a href="https://github.com/joshuaulrich/xts/issues/376">#376</a>)</p>
+<p>Subsetting a zero-length xts object now returns an object with the same storage type as the input. It previously always returned a &rsquo;logical&rsquo; xts object. (<a href="https://github.com/joshuaulrich/xts/issues/376">#376</a>)</p>
 </li>
 <li>
 <p><code>tclass()</code> and <code>tzone()</code> now return the correct values for zero-length xts objects, instead of the defaults from the <code>.xts()</code> constructor. Thanks to <a href="https://github.com/AndreMikulec">Andre Mikulec</a> for the report and suggested patch! (<a href="https://github.com/joshuaulrich/xts/issues/255">#255</a>)</p>
@@ -172,9 +171,9 @@ if (!doNotTrack) {
 <hr>
 <p>You may have noticed that several of these issues have been open a long time. I&rsquo;ve been revisiting historical issues and deciding whether to implement them or close them. I&rsquo;ve already implemented some cool ones in the development version of xts.</p>
 <p>I&rsquo;m most excited about open-ended time-of-day subsetting. Now you can do things like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">x[</span><span class="s">&#34;/T1700&#34;</span><span class="n">]</span>  <span class="c1"># start of the day until 5pm</span>
-<span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span>  <span class="c1"># 5am until the end of the day</span>
-</code></pre></div><div class="container" role="main">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x[</span><span class="s">&#34;/T1700&#34;</span><span class="n">]</span>  <span class="c1"># start of the day until 5pm</span>
+</span></span><span class="line"><span class="cl"><span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span>  <span class="c1"># 5am until the end of the day</span>
+</span></span></code></pre></div><div class="container" role="main">
   <div class="row">
     <hr>
     <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
@@ -208,7 +207,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

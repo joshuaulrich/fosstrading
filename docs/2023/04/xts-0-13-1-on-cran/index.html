@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2023-04-24T10:54:00-05:00" />
 <meta property="article:modified_time" content="2023-04-24T10:54:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -98,15 +97,15 @@ if (!doNotTrack) {
 <ul>
 <li>
 <p>Format each column individually before printing. The top/bottom rows could have a different number of decimal places and there are often multiple varying spaces between columns. For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r">                          <span class="n">close</span>      <span class="n">volume</span>          <span class="n">ma</span>
-<span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">31</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.470</span>  <span class="m">803961.000</span>          <span class="kc">NA</span>
-<span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">32</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.700</span>  <span class="m">179476.000</span>          <span class="kc">NA</span>
-<span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">33</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.540</span>  <span class="m">197919.000</span>          <span class="kc">NA</span>
-                <span class="kc">...</span>
-<span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">52</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6000</span>  <span class="m">46728.0000</span>    <span class="m">392.8636</span>
-<span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">53</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6500</span>  <span class="m">64648.0000</span>    <span class="m">392.8755</span>
-<span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">54</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6500</span>  <span class="m">69900.0000</span>    <span class="m">392.8873</span>
-</code></pre></div><p>There are 4 spaces between the index and the &lsquo;close&rsquo; column, 2 between &lsquo;close&rsquo; and &lsquo;volume&rsquo;, and 4 between &lsquo;volume&rsquo; and &lsquo;ma&rsquo;. There should be a consistent number of spaces between the columns. Most other classes of objects print with 1 space between the columns. The top rows have 3 decimals and the bottom rows have 4. These should also be the same. (<a href="https://github.com/joshuaulrich/xts/issues/321">#321</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">                          <span class="n">close</span>      <span class="n">volume</span>          <span class="n">ma</span>
+</span></span><span class="line"><span class="cl"><span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">31</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.470</span>  <span class="m">803961.000</span>          <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl"><span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">32</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.700</span>  <span class="m">179476.000</span>          <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl"><span class="m">2022-01-03</span> <span class="m">09</span><span class="o">:</span><span class="m">33</span><span class="o">:</span><span class="m">00</span>     <span class="m">476.540</span>  <span class="m">197919.000</span>          <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl">                <span class="kc">...</span>
+</span></span><span class="line"><span class="cl"><span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">52</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6000</span>  <span class="m">46728.0000</span>    <span class="m">392.8636</span>
+</span></span><span class="line"><span class="cl"><span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">53</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6500</span>  <span class="m">64648.0000</span>    <span class="m">392.8755</span>
+</span></span><span class="line"><span class="cl"><span class="m">2023-03-16</span> <span class="m">14</span><span class="o">:</span><span class="m">54</span><span class="o">:</span><span class="m">00</span>    <span class="m">394.6500</span>  <span class="m">69900.0000</span>    <span class="m">392.8873</span>
+</span></span></code></pre></div><p>There are 4 spaces between the index and the &lsquo;close&rsquo; column, 2 between &lsquo;close&rsquo; and &lsquo;volume&rsquo;, and 4 between &lsquo;volume&rsquo; and &lsquo;ma&rsquo;. There should be a consistent number of spaces between the columns. Most other classes of objects print with 1 space between the columns. The top rows have 3 decimals and the bottom rows have 4. These should also be the same. (<a href="https://github.com/joshuaulrich/xts/issues/321">#321</a>)</p>
 </li>
 <li>
 <p>Make column names based on number of columns. The original code was a lot more complicated because it tried to account for truncating the number of printed columns. That functionality was removed because of how complicated it was. So now we can simply create printed column names from the number of columns. (<a href="https://github.com/joshuaulrich/xts/issues/395">#395</a>)</p>
@@ -121,7 +120,7 @@ if (!doNotTrack) {
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
 <li>
-<p>Return &lsquo;POSIXct&rsquo; if object has no &lsquo;tclass&rsquo;. An empty string is not a valid &lsquo;tclass&rsquo;, so it can cause an error.</p>
+<p>Return &lsquo;POSIXct&rsquo; if object has no &rsquo;tclass&rsquo;. An empty string is not a valid &rsquo;tclass&rsquo;, so it can cause an error.</p>
 </li>
 <li>
 <p>Fix <code>xts()</code> for zero-row data.frames. The <code>xts()</code> constructor would create an object with a list for coredata when <code>x</code> is a data.frame with no rows. xts objects can&rsquo;t have lists as coredata, so it should convert <code>x</code> to a matrix and throw an error if <code>x</code> is a list. (<a href="https://github.com/joshuaulrich/xts/issues/394">#394</a>)</p>
@@ -130,15 +129,15 @@ if (!doNotTrack) {
 <p>Fix <code>as.data.frame()</code> when converting a data.frame with column names to xts when there&rsquo;s only one non-time-based column. Previously the xts object would not have the data.frame column name. (<a href="https://github.com/joshuaulrich/xts/issues/391">#391</a>)</p>
 </li>
 <li>
-<p>Treat <code>NA</code> the same as <code>NULL</code> for &lsquo;start&rsquo; or &lsquo;end&rsquo; in <code>window.xts()</code>. <code>NULL</code> represents an undefined index value and <code>NA</code> represents an unknown or missing index value. xts does not allow <code>NA</code> as index values, so subsetting an xts or zoo object by <code>NA</code> returns a zero-length object. Therefore a <code>NA</code> (unknown) index value is essentially the same as an undefined index value. (<a href="https://github.com/joshuaulrich/xts/issues/383">#383</a>, <a href="https://github.com/joshuaulrich/xts/issues/345">#345</a>)</p>
+<p>Treat <code>NA</code> the same as <code>NULL</code> for &lsquo;start&rsquo; or &rsquo;end&rsquo; in <code>window.xts()</code>. <code>NULL</code> represents an undefined index value and <code>NA</code> represents an unknown or missing index value. xts does not allow <code>NA</code> as index values, so subsetting an xts or zoo object by <code>NA</code> returns a zero-length object. Therefore a <code>NA</code> (unknown) index value is essentially the same as an undefined index value. (<a href="https://github.com/joshuaulrich/xts/issues/383">#383</a>, <a href="https://github.com/joshuaulrich/xts/issues/345">#345</a>)</p>
 </li>
 <li>
 <p>Warn and remove <code>NA</code> when <code>periodicity()</code> called on date-time vector with any <code>NA</code> values. Previously it threw the uninformative error below. (<a href="https://github.com/joshuaulrich/xts/issues/289">#289</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">Error</span> <span class="n">in</span> <span class="nf">try.xts</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="s">&#34;&#39;x&#39; needs to be timeBased or xtsible&#34;</span><span class="p">)</span> <span class="o">:</span>
-  <span class="s">&#39;x&#39;</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">timeBased</span> <span class="n">or</span> <span class="n">xtsible</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Error</span> <span class="n">in</span> <span class="nf">try.xts</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="s">&#34;&#39;x&#39; needs to be timeBased or xtsible&#34;</span><span class="p">)</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#39;x&#39;</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">timeBased</span> <span class="n">or</span> <span class="n">xtsible</span>
+</span></span></code></pre></div></li>
 <li>
-<p>Account for timezones when making names for the list <code>split.xts()</code> creates. This was specifically a problem if the xts object&rsquo;s index was <code>yearmon</code> because <code>as.yearmon.POSIXct()</code> always sets <code>tz = &quot;GMT&quot;</code> when calling <code>as.POSIXlt()</code>, regardless of the xts' index &lsquo;tzone&rsquo; attribute.  That can cause the <code>as.yearmon()</code> results to be different days for GMT and the index&rsquo;s timezone. Use <code>format.POSIXct()</code> for &ldquo;months&rdquo; because it checks for a &lsquo;tzone&rsquo; attribute before converting to POSIXlt and calling <code>format.POSIXlt()</code>. The conversion to POSIXlt is important because it checks and uses the &lsquo;tzone&rsquo; attribute before considering the &lsquo;tz&rsquo; argument. So it effectively ignores the <code>tz = &quot;GMT&quot;</code> setting in <code>as.yearmon()</code>. This is also the reason for calling <code>as.POSIXlt()</code> before calling <code>as.yearqtr()</code>. (<a href="https://github.com/joshuaulrich/xts/issues/392">#392</a>)</p>
+<p>Account for timezones when making names for the list <code>split.xts()</code> creates. This was specifically a problem if the xts object&rsquo;s index was <code>yearmon</code> because <code>as.yearmon.POSIXct()</code> always sets <code>tz = &quot;GMT&quot;</code> when calling <code>as.POSIXlt()</code>, regardless of the xts&rsquo; index &rsquo;tzone&rsquo; attribute.  That can cause the <code>as.yearmon()</code> results to be different days for GMT and the index&rsquo;s timezone. Use <code>format.POSIXct()</code> for &ldquo;months&rdquo; because it checks for a &rsquo;tzone&rsquo; attribute before converting to POSIXlt and calling <code>format.POSIXlt()</code>. The conversion to POSIXlt is important because it checks and uses the &rsquo;tzone&rsquo; attribute before considering the &rsquo;tz&rsquo; argument. So it effectively ignores the <code>tz = &quot;GMT&quot;</code> setting in <code>as.yearmon()</code>. This is also the reason for calling <code>as.POSIXlt()</code> before calling <code>as.yearqtr()</code>. (<a href="https://github.com/joshuaulrich/xts/issues/392">#392</a>)</p>
 </li>
 <li>
 <p>Ignore attribute order in <code>all.equal()</code>. Attribute order shouldn&rsquo;t matter. That can be checked with <code>identical()</code>.</p>
@@ -150,10 +149,10 @@ if (!doNotTrack) {
 <p>Add notes on <code>plot.xts()</code> nomenclature and structure. Also add ASCII art to illustrate definitions and layout. (<a href="https://github.com/joshuaulrich/xts/issues/103">#103</a>)</p>
 </li>
 <li>
-<p>Register missing S3 methods and update signatures. With R-devel (83995-ish), <code>R CMD check</code> notes these S3 methods are not registered. It also notes that the signatures for <code>as.POSIXct.tis()</code> and <code>str.replot_xts()</code> do not match the respective generics. <code>R CMD check</code> also thinks <code>time.frequency()</code> is a S3 method because <code>time()</code> is a generic. The function isn&rsquo;t exported, so renaming won&rsquo;t break any external code. Thanks to Kurt Hornik for the report. Issues with functionality for &lsquo;tis&rsquo; were also identified. I removed &lsquo;tis&rsquo; support entirely because the implementation was not even a bare minimum, and it&rsquo;s not clear it even worked correctly. (<a href="https://github.com/joshuaulrich/xts/issues/398">#398</a>)</p>
+<p>Register missing S3 methods and update signatures. With R-devel (83995-ish), <code>R CMD check</code> notes these S3 methods are not registered. It also notes that the signatures for <code>as.POSIXct.tis()</code> and <code>str.replot_xts()</code> do not match the respective generics. <code>R CMD check</code> also thinks <code>time.frequency()</code> is a S3 method because <code>time()</code> is a generic. The function isn&rsquo;t exported, so renaming won&rsquo;t break any external code. Thanks to Kurt Hornik for the report. Issues with functionality for &rsquo;tis&rsquo; were also identified. I removed &rsquo;tis&rsquo; support entirely because the implementation was not even a bare minimum, and it&rsquo;s not clear it even worked correctly. (<a href="https://github.com/joshuaulrich/xts/issues/398">#398</a>)</p>
 </li>
 <li>
-<p>Add instructions to update old objects. Old xts objects do not have &lsquo;tclass&rsquo; and &lsquo;tzone&rsquo; attributes on the index. Add a function to update the object attributes and add a note to the warning to show how to use it. Also, only call <code>tzone()</code> and <code>tclass()</code> once in <code>check.TZ()</code>. Calling these functions multiple times throws multiple warnings for xts objects created before the &lsquo;tclass&rsquo; and &lsquo;tzone&rsquo; were attached to the index instead of the xts object. (<a href="https://github.com/joshuaulrich/xts/issues/306">#306</a>)</p>
+<p>Add instructions to update old objects. Old xts objects do not have &rsquo;tclass&rsquo; and &rsquo;tzone&rsquo; attributes on the index. Add a function to update the object attributes and add a note to the warning to show how to use it. Also, only call <code>tzone()</code> and <code>tclass()</code> once in <code>check.TZ()</code>. Calling these functions multiple times throws multiple warnings for xts objects created before the &rsquo;tclass&rsquo; and &rsquo;tzone&rsquo; were attached to the index instead of the xts object. (<a href="https://github.com/joshuaulrich/xts/issues/306">#306</a>)</p>
 </li>
 </ul>
 <div class="container" role="main">
@@ -190,7 +189,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

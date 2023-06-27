@@ -15,7 +15,6 @@ There are some exciting new features, including a rolling single-factor model fu
 <meta property="article:published_time" content="2013-03-18T20:49:00-05:00" />
 <meta property="article:modified_time" content="2013-03-18T20:49:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -111,7 +110,7 @@ if (!doNotTrack) {
 <li>Added <code>runPercentRank()</code> function, thanks to Charlie Friedemann.</li>
 <li>Moved slowest portion of <code>aroon()</code> to C.</li>
 <li><code>DonchianChannel()</code> gains an <code>include.lag = FALSE</code> argument, which includes the current period&rsquo;s data in the calculation. Setting it to <code>TRUE</code> replicates the original calculation. Thanks to Garrett See and John Bollinger.</li>
-<li>The Stochastic Oscillator and Williams' %R now return 0.5 (instead of NaN) when a securities' price doesn&rsquo;t change over a sufficient period.</li>
+<li>The Stochastic Oscillator and Williams&rsquo; %R now return 0.5 (instead of NaN) when a securities&rsquo; price doesn&rsquo;t change over a sufficient period.</li>
 <li>All moving average functions gain <code>...</code>.</li>
 <li>Users can now change <code>alpha</code> in Yang Zhang volatility calculation.</li>
 </ul>
@@ -158,7 +157,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

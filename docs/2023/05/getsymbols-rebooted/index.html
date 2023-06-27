@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2023-05-22T10:14:00-05:00" />
 <meta property="article:modified_time" content="2023-05-22T10:14:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -114,20 +113,20 @@ if (!doNotTrack) {
 <p><code>getSymbols()</code> creates an object for every value in the <code>Symbols</code> argument. This isn&rsquo;t an issue for a few symbols, but it clutters the environment when there are several hundred symbols. You can load all the symbols into a separate environment, but that&rsquo;s not a pattern most users are familiar with.</p>
 <p>We wanted to remove the ability to load objects into the calling environment, and even created a warning about changing <code>auto.assign = FALSE</code> as the default for <code>getSymbols()</code> and recommending users replace their <code>getSymbols()</code> call with the <code>loadSymbols()</code> function that already exists. But we ultimately decided breaking the community&rsquo;s code wasn&rsquo;t worth it.</p>
 <p>Automatically creating objects makes it cumbersome to put prices for all symbols into one object. This is a common use case and there are several steps. It should be possible with one or two function calls. Here&rsquo;s an example.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">,</span> <span class="s">&#34;AAPL&#34;</span><span class="p">)</span>
-<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
-
-<span class="c1"># Put all the prices into one xts object,</span>
-<span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">get</span><span class="p">))</span>
-<span class="c1"># or</span>
-<span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span>
-
-<span class="c1"># Extract only the Close prices</span>
-<span class="n">close_prices</span> <span class="o">&lt;-</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
-
-<span class="c1"># Remove &#34;.Close&#34; suffix so close_prices[, &#34;SPY&#34;] works</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&#34;.Close&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">))</span>
-</code></pre></div><p>Automatically creating objects also makes passing all the data to another function awkward. It causes users to do things like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">,</span> <span class="s">&#34;AAPL&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Put all the prices into one xts object,</span>
+</span></span><span class="line"><span class="cl"><span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">get</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl"><span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract only the Close prices</span>
+</span></span><span class="line"><span class="cl"><span class="n">close_prices</span> <span class="o">&lt;-</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Remove &#34;.Close&#34; suffix so close_prices[, &#34;SPY&#34;] works</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&#34;.Close&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">))</span>
+</span></span></code></pre></div><p>Automatically creating objects also makes passing all the data to another function awkward. It causes users to do things like:</p>
 <ul>
 <li>Call <code>getSymbols()</code> in any function that needs data, which may mean the same data is imported multiple times.</li>
 <li>Pass the same <code>symbols</code> object to <code>getSymbols()</code> and the other function. Then the other function searches through environments to find the objects with named with those <code>symbols</code>.</li>
@@ -150,48 +149,48 @@ if (!doNotTrack) {
 <p><code>getSymbols()</code> tries to create objects with valid R names, but only does so for <em>some</em> symbols that aren&rsquo;t valid R object names. For example, <code>BRK-B</code>, <code>BRK B</code>, and <code>BRK/B</code> aren&rsquo;t valid R objects names because valid names start with a letter or a dot (<code>.</code>), and can only contain letters, numbers, a dot, or an underscore.</p>
 <p>Here are some common examples of ticker symbology woes:</p>
 <p><code>^DJI</code> isn&rsquo;t a valid R object name because it starts with <code>^</code>. So <code>getSymbols()</code> creates an object with the <code>^</code> removed. But then you can&rsquo;t use the code below to put all the prices into one object. Also notice that <code>getSymbols()</code> <em>returns</em> <code>&quot;^DJI&quot;</code> even though it creates an object with a different name.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;^DJI&#34;</span><span class="p">,</span> <span class="s">&#34;BRK-B&#34;</span><span class="p">)</span>
-<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
-<span class="c1">## [1] &#34;^DJI&#34; &#34;BRK-B&#34;</span>
-
-<span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span>
-<span class="c1">## Error: value for &#39;^DJI&#39; not found</span>
-</code></pre></div><p>You have to remove the leading <code>^</code> manually. And you have to set <code>fixed = TRUE</code> in the call to <code>sub()</code> because <code>^</code> is a special character in regular expressions. <em>Sigh</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="nf">sub</span><span class="p">(</span><span class="s">&#34;^&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)))</span>
-</code></pre></div><p>Recall that <code>BRK-B</code> also isn&rsquo;t a valid R name because of the <code>-</code>. But it wasn&rsquo;t an issue in the code above because <code>getSymbols()</code> made an object named <code>BRK-B</code>, not an object with a valid R name. This is confusing for users because they can&rsquo;t easily access that object (i.e. <code>head(BRK-B)</code> is an error). This is a pervasive issue for several foreign exchanges with tickers that begin with numbers (e.g. <code>000001.SZ</code>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">symbols</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;^DJI&#34;</span><span class="p">,</span> <span class="s">&#34;BRK-B&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;^DJI&#34; &#34;BRK-B&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Error: value for &#39;^DJI&#39; not found</span>
+</span></span></code></pre></div><p>You have to remove the leading <code>^</code> manually. And you have to set <code>fixed = TRUE</code> in the call to <code>sub()</code> because <code>^</code> is a special character in regular expressions. <em>Sigh</em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">prices</span> <span class="o">&lt;-</span> <span class="nf">do.call</span><span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="nf">mget</span><span class="p">(</span><span class="nf">sub</span><span class="p">(</span><span class="s">&#34;^&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">fixed</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Recall that <code>BRK-B</code> also isn&rsquo;t a valid R name because of the <code>-</code>. But it wasn&rsquo;t an issue in the code above because <code>getSymbols()</code> made an object named <code>BRK-B</code>, not an object with a valid R name. This is confusing for users because they can&rsquo;t easily access that object (i.e. <code>head(BRK-B)</code> is an error). This is a pervasive issue for several foreign exchanges with tickers that begin with numbers (e.g. <code>000001.SZ</code>).</p>
 <p>Another issue with symbols that aren&rsquo;t valid R object names is that many R functions will convert column names into valid R object names, including <code>merge.xts()</code>. So you can&rsquo;t use the input symbol to subset the resulting xts object. Here&rsquo;s an example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Extract the close prices and remove &#34;.Close&#34; suffix</span>
-<span class="n">close_prices</span> <span class="o">&lt;-</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&#34;.Close&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">))</span>
-
-<span class="c1"># Extract the close price for &#34;BRK-B&#34;</span>
-<span class="n">close_prices[</span><span class="p">,</span> <span class="s">&#34;BRK-B&#34;</span><span class="n">]</span>
-<span class="c1">## Error in `[.xts`(close_prices, , &#34;BRK-B&#34;) : subscript out of bounds</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span>
-<span class="c1">## [1] &#34;DJI&#34;   &#34;BRK.B&#34;</span>
-</code></pre></div><p><code>setSymbolLookup()</code> exists to help with things like this, but it&rsquo;s another function users have to learn to use and my experience is that most users don&rsquo;t know about <code>setSymbolLookup()</code>. I just had to look at the source to figure out how to use it to make <code>getSymbols()</code> return a valid R object for <code>&quot;BRK-B&quot;</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">setSymbolLookup</span><span class="p">(</span><span class="n">BRK.B</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;BRK-B&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;yahoo&#34;</span><span class="p">))</span>
-</code></pre></div><p>If I have to look at the source code to figure out how to do this, users don&rsquo;t have a chance. You may think, &ldquo;but you could document how to do this&rdquo;, but writing documentation isn&rsquo;t fun. And who reads the documentation anyway? ;-)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Extract the close prices and remove &#34;.Close&#34; suffix</span>
+</span></span><span class="line"><span class="cl"><span class="n">close_prices</span> <span class="o">&lt;-</span> <span class="nf">Cl</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&#34;.Close&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract the close price for &#34;BRK-B&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">close_prices[</span><span class="p">,</span> <span class="s">&#34;BRK-B&#34;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Error in `[.xts`(close_prices, , &#34;BRK-B&#34;) : subscript out of bounds</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">close_prices</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;DJI&#34;   &#34;BRK.B&#34;</span>
+</span></span></code></pre></div><p><code>setSymbolLookup()</code> exists to help with things like this, but it&rsquo;s another function users have to learn to use and my experience is that most users don&rsquo;t know about <code>setSymbolLookup()</code>. I just had to look at the source to figure out how to use it to make <code>getSymbols()</code> return a valid R object for <code>&quot;BRK-B&quot;</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">setSymbolLookup</span><span class="p">(</span><span class="n">BRK.B</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;BRK-B&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;yahoo&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>If I have to look at the source code to figure out how to do this, users don&rsquo;t have a chance. You may think, &ldquo;but you could document how to do this&rdquo;, but writing documentation isn&rsquo;t fun. And who reads the documentation anyway? ;-)</p>
 <h3 id="4-defaults-functionality">4. &lsquo;Defaults&rsquo; functionality</h3>
 <p>The &lsquo;Defaults&rsquo; functionality in quantmod comes from the archived <a href="https://cran.r-project.org/package=Defaults">&lsquo;Defaults&rsquo;</a> package. This functionality allows users to set new default argument values to any <code>getSymbols()</code> source function. This is helpful because it makes importing easier. But it means <code>getSymbols()</code> relies on something other than its parameter values, and it&rsquo;s good practice to avoid side-effects like this.</p>
 <p>This gave users the ability to set preferences like return class, periodicity (e.g. hourly, daily, monthly), connection settings (e.g. credentials, API keys).</p>
 <h1 id="rfimport-design-and-features">&lsquo;rfimport&rsquo; design and features</h1>
 <p>The design of <a href="https://github.com/joshuaulrich/rfimport/">&lsquo;rfimport&rsquo;</a> is influenced by the <a href="https://cran.r-project.org/web/packages/DBI/index.html"><code>DBI</code></a> package, which provides a set of generic &lsquo;database interface&rsquo; functions. Users create connection objects by creating a &lsquo;driver&rsquo; object for the specific database and passing that to <code>dbConnect()</code>. Then you pass that connection object to the other <code>DBI</code> functions. For example, to query an execute a statement for a PostgreSQL database:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">RPostgreSQL</span><span class="p">)</span>
-
-<span class="n">driver</span> <span class="o">&lt;-</span> <span class="nf">PostgreSQL</span><span class="p">()</span>
-<span class="n">conn</span> <span class="o">&lt;-</span> <span class="n">DBI</span><span class="o">::</span><span class="nf">dbConnect</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
-<span class="n">student_count</span> <span class="o">&lt;-</span> <span class="n">DBI</span><span class="o">::</span><span class="nf">dbGetQuery</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s">&#34;select count(*) from students&#34;</span><span class="p">)</span>
-</code></pre></div><p>The <a href="https://github.com/joshuaulrich/rfimport/">&lsquo;rfimport&rsquo;</a> <code>sym_yahoo()</code> function corresponds to the <code>PostgreSQL()</code> function in the example above. And the <code>import_ohlc()</code> function pulls the data like <code>DBI::dbGetQuery()</code>. For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">rfimport</span><span class="p">)</span>
-
-<span class="c1"># The sym_* functions are a combination of the</span>
-<span class="c1"># driver, connection, and query in DBI</span>
-<span class="n">syms</span> <span class="o">&lt;-</span> <span class="nf">sym_yahoo</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">)</span>
-
-<span class="c1"># Import some data from Yahoo Finance</span>
-<span class="n">spy</span> <span class="o">&lt;-</span> <span class="nf">import_ohlc</span><span class="p">(</span><span class="n">syms</span><span class="p">)</span>
-</code></pre></div><h3 id="symbol-specification">Symbol specification</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">RPostgreSQL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">driver</span> <span class="o">&lt;-</span> <span class="nf">PostgreSQL</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">&lt;-</span> <span class="n">DBI</span><span class="o">::</span><span class="nf">dbConnect</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">student_count</span> <span class="o">&lt;-</span> <span class="n">DBI</span><span class="o">::</span><span class="nf">dbGetQuery</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s">&#34;select count(*) from students&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <a href="https://github.com/joshuaulrich/rfimport/">&lsquo;rfimport&rsquo;</a> <code>sym_yahoo()</code> function corresponds to the <code>PostgreSQL()</code> function in the example above. And the <code>import_ohlc()</code> function pulls the data like <code>DBI::dbGetQuery()</code>. For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">rfimport</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># The sym_* functions are a combination of the</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># driver, connection, and query in DBI</span>
+</span></span><span class="line"><span class="cl"><span class="n">syms</span> <span class="o">&lt;-</span> <span class="nf">sym_yahoo</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Import some data from Yahoo Finance</span>
+</span></span><span class="line"><span class="cl"><span class="n">spy</span> <span class="o">&lt;-</span> <span class="nf">import_ohlc</span><span class="p">(</span><span class="n">syms</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="symbol-specification">Symbol specification</h3>
 <p>The package introduces a new virtual S3 class <code>&quot;symbol_spec&quot;</code> as the basis for creating sub-classes that hold all necessary information to connect to a data source. This virtual class allows users to combine symbols from different data sources into a single vector. For example: <code>import_collection(c(sym_yahoo(&quot;SPY&quot;), sym_tiingo(&quot;DIA&quot;)))</code> will import data for &ldquo;SPY&rdquo; from <a href="https://finance.yahoo.com/">Yahoo Finance</a> and data for &ldquo;DIA&rdquo; from <a href="https://www.tiingo.com/">Tiingo</a>.</p>
 <p>Each data source will have its own <code>symbol_spec</code> constructor. The constructor will have an argument for the vector of symbols and other arguments for all the other data source connection settings. It will return an object that inherits from the new virtual <code>symbol_spec</code> For example <code>sym_yahoo()</code> will return a <code>c(&quot;yahoo&quot;, &quot;symbol_spec&quot;)</code> class vector.</p>
 <p>The help page for the symbol spec constructors can also document the import methods that the data source supports. So <code>help(&quot;sym_yahoo&quot;)</code> would also contain information about <code>import_ohlc.yahoo()</code> and <code>import_collection.yahoo()</code>. That way, users don&rsquo;t need to know the name of the data source method in order to find its documentation.</p>
@@ -210,13 +209,13 @@ if (!doNotTrack) {
 <p>The generics will have a <code>symbol_spec</code>, <code>dates</code>, <code>periodicity</code>, and <code>...</code> arguments.</p>
 <p><code>dates</code> can be either an ISO 8601 date interval (e.g. <code>dates = &quot;2021-01-01/2021-12-31&quot;</code>) or a two-element vector with the start and end dates (e.g. <code>dates = c(&quot;2021-01-01&quot;, &quot;2021-12-31&quot;)</code>). The vector can be Date, POSIXct, or a character that is coercible to one of those two classes.</p>
 <p>For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># one symbol returned as an xts object</span>
-<span class="n">spy</span> <span class="o">&lt;-</span> <span class="nf">import_ohlc</span><span class="p">(</span><span class="nf">sym_yahoo</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">),</span> <span class="n">dates</span> <span class="o">=</span> <span class="s">&#34;2021/2022&#34;</span><span class="p">)</span>
-
-<span class="c1"># two symbols returned as a list of xts objects</span>
-<span class="n">stocks</span> <span class="o">&lt;-</span> <span class="nf">sym_tiingo</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">,</span> <span class="s">&#34;NFLX&#34;</span><span class="p">))</span> <span class="o">|&gt;</span>
-    <span class="nf">import_collection</span><span class="p">(</span><span class="n">dates</span> <span class="o">=</span> <span class="s">&#34;2021-03-01/2022-11-31&#34;</span><span class="p">)</span>
-</code></pre></div><p>The <code>periodicity</code> argument specifies the interval between data points (e.g. daily, monthly, 15-minute). The data source determines the possible periodicity values, so the data source method is responsible for ensuring the requested periodicity value is available from the data source. <a href="https://github.com/joshuaulrich/rfimport/">&lsquo;rfimport&rsquo;</a> will provide a standard way to specify the periodicity values. Then the source methods can translate those values into the value source needs. For example, one data source may use &ldquo;monthly&rdquo; for monthly data and another may use &ldquo;months&rdquo;. Users would set <code>periodicity = &quot;months&quot;</code> for either source and the source method would translate the value to &ldquo;monthly&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># one symbol returned as an xts object</span>
+</span></span><span class="line"><span class="cl"><span class="n">spy</span> <span class="o">&lt;-</span> <span class="nf">import_ohlc</span><span class="p">(</span><span class="nf">sym_yahoo</span><span class="p">(</span><span class="s">&#34;SPY&#34;</span><span class="p">),</span> <span class="n">dates</span> <span class="o">=</span> <span class="s">&#34;2021/2022&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># two symbols returned as a list of xts objects</span>
+</span></span><span class="line"><span class="cl"><span class="n">stocks</span> <span class="o">&lt;-</span> <span class="nf">sym_tiingo</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;AAPL&#34;</span><span class="p">,</span> <span class="s">&#34;NFLX&#34;</span><span class="p">))</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">import_collection</span><span class="p">(</span><span class="n">dates</span> <span class="o">=</span> <span class="s">&#34;2021-03-01/2022-11-31&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <code>periodicity</code> argument specifies the interval between data points (e.g. daily, monthly, 15-minute). The data source determines the possible periodicity values, so the data source method is responsible for ensuring the requested periodicity value is available from the data source. <a href="https://github.com/joshuaulrich/rfimport/">&lsquo;rfimport&rsquo;</a> will provide a standard way to specify the periodicity values. Then the source methods can translate those values into the value source needs. For example, one data source may use &ldquo;monthly&rdquo; for monthly data and another may use &ldquo;months&rdquo;. Users would set <code>periodicity = &quot;months&quot;</code> for either source and the source method would translate the value to &ldquo;monthly&rdquo;.</p>
 <h3 id="data-source-methods">Data source methods</h3>
 <p>Each data source will have a S3 method for the relevant import generics, rather than a <code>src</code> argument like <code>getSymbols()</code>. Calling <code>import_ohlc(sym_yahoo(&quot;SPY&quot;))</code> will call the corresponding <code>import_ohlc.yahoo()</code> method to import data from <a href="https://finance.yahoo.com">Yahoo Finance</a>. <code>import_ohlc(sym_tiingo(&quot;DIA&quot;))</code> will call <code>import_ohlc.tiingo()</code> to import data from <a href="https://api.tiingo.com/">Tiingo</a>.</p>
 <h4 id="returned-data">Returned data</h4>
@@ -255,7 +254,7 @@ if (!doNotTrack) {
 </ul>
 <h3 id="how-can-we-make-it-easier-to-manipulate-results">How can we make it easier to manipulate results?</h3>
 <p>The most common use case is making a wide xts object with close prices from a list of xts objects. This currently requires several steps that are likely unfamiliar to most users. It should be possible with one or two function calls. We can consider Garrett See&rsquo;s <a href="https://github.com/gsee/qmao">qmao</a> package for inspiration. For example, use &lsquo;price frames&rsquo; to replace <code>do.call(merge, list_of_xts_objects)</code>.</p>
-<p>There are lots of other common manipulations, like aggregating to a higher periodicity or applying a function to many symbols' data. The import functions will return something list-like, so users can use <code>lapply()</code> to apply any other function to each series.</p>
+<p>There are lots of other common manipulations, like aggregating to a higher periodicity or applying a function to many symbols&rsquo; data. The import functions will return something list-like, so users can use <code>lapply()</code> to apply any other function to each series.</p>
 <h1 id="i-need-your-help">I need your help!</h1>
 <p>I don&rsquo;t want to do this in a vacuum. Please try the new package, provide feedback, suggestions, feature requests, and help clarify documentation.</p>
 <p>I need to know how you&rsquo;re using <code>getSymbols()</code> and how you would use the new package. I&rsquo;m not omniscient, so your feedback will be extremely valuable!</p>
@@ -296,7 +295,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

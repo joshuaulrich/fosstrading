@@ -16,7 +16,6 @@ To calculate the probability of drawdown, the function traverses all permutation
 <meta property="article:published_time" content="2010-06-19T20:13:00-05:00" />
 <meta property="article:modified_time" content="2010-06-19T20:13:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -110,55 +109,55 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 <p><img src="/post/images/20100619_probDrawdown.png" alt=""></p>
 <p>Notice that the above calculation assumes each event is independently distributed.  <a href="http://braverock.com/brian/">Brian Peterson</a> suggested a <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap">block bootstrap</a> to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.</p>
 <p><strong>Code:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>
-
-<span class="c1"># Pull data and calculate differences</span>
-<span class="n">symbol</span> <span class="o">&lt;-</span> <span class="s">&#34;SPY&#34;</span>
-<span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="s">&#34;2008-01-01&#34;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s">&#34;2009-01-01&#34;</span><span class="p">)</span>
-<span class="n">sym</span> <span class="o">&lt;-</span> <span class="nf">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-<span class="n">symDiff</span> <span class="o">&lt;-</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
-<span class="n">symDiff[1]</span> <span class="o">&lt;-</span> <span class="m">0</span>
-
-<span class="n">NP</span> <span class="o">&lt;-</span> <span class="m">20</span>    <span class="c1"># number of periods to use in lsp object</span>
-<span class="n">HR</span> <span class="o">&lt;-</span> <span class="m">10</span>    <span class="c1"># drawdown horizon</span>
-<span class="n">DD</span> <span class="o">&lt;-</span> <span class="m">0.05</span>  <span class="c1"># drawdown level</span>
-
-<span class="c1"># Initialize projected / actual drawdown objects</span>
-<span class="n">NR</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">symDiff</span><span class="p">)</span>
-<span class="n">prjDD</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">NR</span><span class="p">),</span><span class="nf">index</span><span class="p">(</span><span class="n">symDiff</span><span class="p">))</span>
-<span class="n">actDD</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">NR</span><span class="p">),</span><span class="nf">index</span><span class="p">(</span><span class="n">symDiff</span><span class="p">))</span>
-
-<span class="c1"># Socket cluster with snow to speed up probDrawdown()</span>
-<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeSOCKcluster</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-
-<span class="c1"># Start loop over data</span>
-<span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="nf">in </span><span class="p">(</span><span class="n">NP</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">NR</span><span class="o">-</span><span class="n">HR</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-  
-  <span class="c1"># Objects to hold data for the last 20 days and next 10 days</span>
-  <span class="n">last20</span> <span class="o">&lt;-</span> <span class="n">symDiff</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">NP</span><span class="p">)</span><span class="o">:</span><span class="n">i]</span>
-  <span class="n">next10</span> <span class="o">&lt;-</span> <span class="n">symDiff</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">HR</span><span class="p">)</span><span class="n">]</span>
-  <span class="n">maxLoss</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="nf">Cl</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span><span class="n">[i]</span>
-  
-  <span class="c1"># Portfolios to estimate drawdown and calculate actual drawdown</span>
-  <span class="n">prjPort</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">last20</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">maxLoss</span><span class="o">=</span><span class="n">maxLoss</span><span class="p">)</span>
-  <span class="n">actPort</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">next10</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">maxLoss</span><span class="o">=</span><span class="n">maxLoss</span><span class="p">)</span>
-  
-  <span class="c1"># Estimate probability of drawdown</span>
-  <span class="n">prjDD[i]</span> <span class="o">&lt;-</span> <span class="nf">probDrawdown</span><span class="p">(</span><span class="n">prjPort</span><span class="p">,</span> <span class="n">DD</span><span class="p">,</span> <span class="n">HR</span><span class="p">,</span> <span class="n">snow</span><span class="o">=</span><span class="n">cl</span><span class="p">)</span>
-  
-  <span class="c1"># Calculate actual drawdown probability</span>
-  <span class="n">actDD[i]</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">HPR</span><span class="p">(</span><span class="n">actPort</span><span class="p">)</span><span class="o">/</span><span class="nf">cummax</span><span class="p">(</span><span class="nf">HPR</span><span class="p">(</span><span class="n">actPort</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">DD</span><span class="p">))</span> <span class="o">/</span> <span class="n">HR</span>
-<span class="p">}</span>
-<span class="c1"># End loop over data</span>
-
-<span class="c1"># Chart results</span>
-<span class="n">drawdown</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">projected</span><span class="o">=</span><span class="n">prjDD</span><span class="p">,</span><span class="n">actual</span><span class="o">=</span><span class="n">actDD</span><span class="p">)</span>
-<span class="n">difference</span> <span class="o">&lt;-</span> <span class="n">prjDD</span><span class="o">-</span><span class="n">actDD</span>
-<span class="nf">chartSeries</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">theme</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
-  <span class="n">TA</span><span class="o">=</span><span class="s">&#34;addTA(drawdown,col=c(&#39;blue&#39;,&#39;green&#39;));addTA(difference)&#34;</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">LSPM</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">snow</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pull data and calculate differences</span>
+</span></span><span class="line"><span class="cl"><span class="n">symbol</span> <span class="o">&lt;-</span> <span class="s">&#34;SPY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="s">&#34;2008-01-01&#34;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s">&#34;2009-01-01&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sym</span> <span class="o">&lt;-</span> <span class="nf">get</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">symDiff</span> <span class="o">&lt;-</span> <span class="nf">diff</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">symDiff[1]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">NP</span> <span class="o">&lt;-</span> <span class="m">20</span>    <span class="c1"># number of periods to use in lsp object</span>
+</span></span><span class="line"><span class="cl"><span class="n">HR</span> <span class="o">&lt;-</span> <span class="m">10</span>    <span class="c1"># drawdown horizon</span>
+</span></span><span class="line"><span class="cl"><span class="n">DD</span> <span class="o">&lt;-</span> <span class="m">0.05</span>  <span class="c1"># drawdown level</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize projected / actual drawdown objects</span>
+</span></span><span class="line"><span class="cl"><span class="n">NR</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">symDiff</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">prjDD</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">NR</span><span class="p">),</span><span class="nf">index</span><span class="p">(</span><span class="n">symDiff</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">actDD</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">NR</span><span class="p">),</span><span class="nf">index</span><span class="p">(</span><span class="n">symDiff</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Socket cluster with snow to speed up probDrawdown()</span>
+</span></span><span class="line"><span class="cl"><span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeSOCKcluster</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Start loop over data</span>
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="nf">in </span><span class="p">(</span><span class="n">NP</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">NR</span><span class="o">-</span><span class="n">HR</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Objects to hold data for the last 20 days and next 10 days</span>
+</span></span><span class="line"><span class="cl">  <span class="n">last20</span> <span class="o">&lt;-</span> <span class="n">symDiff</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">NP</span><span class="p">)</span><span class="o">:</span><span class="n">i]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">next10</span> <span class="o">&lt;-</span> <span class="n">symDiff</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">HR</span><span class="p">)</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">maxLoss</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="nf">Cl</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span><span class="n">[i]</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Portfolios to estimate drawdown and calculate actual drawdown</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prjPort</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">last20</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">maxLoss</span><span class="o">=</span><span class="n">maxLoss</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">actPort</span> <span class="o">&lt;-</span> <span class="nf">lsp</span><span class="p">(</span><span class="n">next10</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">maxLoss</span><span class="o">=</span><span class="n">maxLoss</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Estimate probability of drawdown</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prjDD[i]</span> <span class="o">&lt;-</span> <span class="nf">probDrawdown</span><span class="p">(</span><span class="n">prjPort</span><span class="p">,</span> <span class="n">DD</span><span class="p">,</span> <span class="n">HR</span><span class="p">,</span> <span class="n">snow</span><span class="o">=</span><span class="n">cl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Calculate actual drawdown probability</span>
+</span></span><span class="line"><span class="cl">  <span class="n">actDD[i]</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">HPR</span><span class="p">(</span><span class="n">actPort</span><span class="p">)</span><span class="o">/</span><span class="nf">cummax</span><span class="p">(</span><span class="nf">HPR</span><span class="p">(</span><span class="n">actPort</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">DD</span><span class="p">))</span> <span class="o">/</span> <span class="n">HR</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># End loop over data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Chart results</span>
+</span></span><span class="line"><span class="cl"><span class="n">drawdown</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">projected</span><span class="o">=</span><span class="n">prjDD</span><span class="p">,</span><span class="n">actual</span><span class="o">=</span><span class="n">actDD</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">difference</span> <span class="o">&lt;-</span> <span class="n">prjDD</span><span class="o">-</span><span class="n">actDD</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chartSeries</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">theme</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">TA</span><span class="o">=</span><span class="s">&#34;addTA(drawdown,col=c(&#39;blue&#39;,&#39;green&#39;));addTA(difference)&#34;</span><span class="p">)</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -182,7 +181,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

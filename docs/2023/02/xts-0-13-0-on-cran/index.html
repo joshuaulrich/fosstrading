@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2023-02-21T14:58:00-05:00" />
 <meta property="article:modified_time" content="2023-02-21T14:58:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -98,143 +97,143 @@ if (!doNotTrack) {
 <h3 id="new-features">New Features</h3>
 <p>The coolest new feature is the ability to use open-ended ranges for time-of-day subsetting. So you can subset by time of day from the start/end of the day without providing the start/end times (i.e. 00:00:00.000/23:59:59.999). Thanks to Chris Katsulis for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/243">#243</a>)</p>
 <p>Here&rsquo;s an example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># an hourly sequence of times, and an xts object using them</span>
-<span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">timeBasedSeq</span><span class="p">(</span><span class="s">&#34;2023-02-01/2023-02-05/H&#34;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">times</span><span class="p">)</span>
-
-<span class="c1"># function to show the first and last index values for each day</span>
-<span class="n">index_range_by_day</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">by_day</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;days&#34;</span><span class="p">)</span>
-    <span class="n">index_range</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">paste</span><span class="p">(</span><span class="nf">start</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nf">end</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34; / &#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nf">lapply</span><span class="p">(</span><span class="n">by_day</span><span class="p">,</span> <span class="n">index_range</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># between the start of the day and 5pm</span>
-<span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;/T1800&#34;</span><span class="n">]</span><span class="p">)</span>
-<span class="c1">## $`2023-02-01`</span>
-<span class="c1">## [1] &#34;2023-02-01 / 2023-02-01 18:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-02`</span>
-<span class="c1">## [1] &#34;2023-02-02 / 2023-02-02 18:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-03`</span>
-<span class="c1">## [1] &#34;2023-02-03 / 2023-02-03 18:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-04`</span>
-<span class="c1">## [1] &#34;2023-02-04 / 2023-02-04 18:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-05`</span>
-<span class="c1">## [1] &#34;2023-02-05 / 2023-02-05 18:00:00&#34;</span>
-
-<span class="c1"># between 5am and the end of the day</span>
-<span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span><span class="p">)</span>
-<span class="c1">## $`2023-02-01`</span>
-<span class="c1">## [1] &#34;2023-02-01 05:00:00 / 2023-02-01 23:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-02`</span>
-<span class="c1">## [1] &#34;2023-02-02 05:00:00 / 2023-02-02 23:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-03`</span>
-<span class="c1">## [1] &#34;2023-02-03 05:00:00 / 2023-02-03 23:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-04`</span>
-<span class="c1">## [1] &#34;2023-02-04 05:00:00 / 2023-02-04 23:00:00&#34;</span>
-<span class="c1">## </span>
-<span class="c1">## $`2023-02-05`</span>
-<span class="c1">## [1] &#34;2023-02-05 05:00:00 / 2023-02-05 23:00:00&#34;</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># an hourly sequence of times, and an xts object using them</span>
+</span></span><span class="line"><span class="cl"><span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">timeBasedSeq</span><span class="p">(</span><span class="s">&#34;2023-02-01/2023-02-05/H&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">xts</span><span class="p">(</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">times</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># function to show the first and last index values for each day</span>
+</span></span><span class="line"><span class="cl"><span class="n">index_range_by_day</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">by_day</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;days&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">index_range</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">paste</span><span class="p">(</span><span class="nf">start</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nf">end</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34; / &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">lapply</span><span class="p">(</span><span class="n">by_day</span><span class="p">,</span> <span class="n">index_range</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># between the start of the day and 5pm</span>
+</span></span><span class="line"><span class="cl"><span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;/T1800&#34;</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-01`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-01 / 2023-02-01 18:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-02`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-02 / 2023-02-02 18:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-03`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-03 / 2023-02-03 18:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-04`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-04 / 2023-02-04 18:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-05`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-05 / 2023-02-05 18:00:00&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># between 5am and the end of the day</span>
+</span></span><span class="line"><span class="cl"><span class="nf">index_range_by_day</span><span class="p">(</span><span class="n">x[</span><span class="s">&#34;T0500/&#34;</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-01`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-01 05:00:00 / 2023-02-01 23:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-02`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-02 05:00:00 / 2023-02-02 23:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-03`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-03 05:00:00 / 2023-02-03 23:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-04`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-04 05:00:00 / 2023-02-04 23:00:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## $`2023-02-05`</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## [1] &#34;2023-02-05 05:00:00 / 2023-02-05 23:00:00&#34;</span>
+</span></span></code></pre></div><hr>
 <p>You can now pass custom endpoints to <code>to.period()</code> using the &lsquo;period&rsquo; argument. So you can aggregate on something other than the times that <code>endpoints()</code> supports. Thanks to Ethan B. Smith for the suggestion! (<a href="https://github.com/joshuaulrich/xts/issues/302">#302</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
-
-<span class="c1"># aggregate to OHLC by week ending on Friday</span>
-<span class="n">week_fri</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">endpoints</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;weeks&#34;</span><span class="p">))</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">week_fri</span><span class="p">)</span>
-<span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
-<span class="c1">## 2007-01-07 50.03978 50.42188 49.95041 49.99185</span>
-<span class="c1">## 2007-01-14 50.03555 50.62395 49.80454 50.60145</span>
-<span class="c1">## 2007-01-21 50.61724 50.77336 50.02142 50.42090</span>
-<span class="c1">## 2007-01-28 50.36008 50.43875 49.87468 49.88096</span>
-<span class="c1">## 2007-02-04 49.85624 50.55509 49.76308 50.55509</span>
-<span class="c1">## 2007-02-11 50.52389 50.91776 50.45977 50.91160</span>
-
-<span class="c1"># aggregate to OHLC by week ending on Wednesday</span>
-<span class="n">wednesdays</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">.indexwday</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="m">3</span><span class="p">)</span>
-<span class="n">week_wed</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wednesdays</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">week_wed</span><span class="p">)</span>
-<span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
-<span class="c1">## 2007-01-03 50.03978 50.42188 49.95041 50.39767</span>
-<span class="c1">## 2007-01-10 50.42096 50.42096 49.80454 49.97246</span>
-<span class="c1">## 2007-01-17 49.88529 50.77336 49.88529 50.48644</span>
-<span class="c1">## 2007-01-24 50.48051 50.60712 50.02142 50.23145</span>
-<span class="c1">## 2007-01-31 50.20738 50.28268 49.76308 50.22578</span>
-<span class="c1">## 2007-02-07 50.22448 50.71661 50.19101 50.60611</span>
-</code></pre></div><h3 id="enhancements">Enhancements</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># aggregate to OHLC by week ending on Friday</span>
+</span></span><span class="line"><span class="cl"><span class="n">week_fri</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">endpoints</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#34;weeks&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">week_fri</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-07 50.03978 50.42188 49.95041 49.99185</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-14 50.03555 50.62395 49.80454 50.60145</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-21 50.61724 50.77336 50.02142 50.42090</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-28 50.36008 50.43875 49.87468 49.88096</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-02-04 49.85624 50.55509 49.76308 50.55509</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-02-11 50.52389 50.91776 50.45977 50.91160</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># aggregate to OHLC by week ending on Wednesday</span>
+</span></span><span class="line"><span class="cl"><span class="n">wednesdays</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">.indexwday</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">week_wed</span> <span class="o">&lt;-</span> <span class="nf">to.period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">wednesdays</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">week_wed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##              x.Open   x.High    x.Low  x.Close</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-03 50.03978 50.42188 49.95041 50.39767</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-10 50.42096 50.42096 49.80454 49.97246</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-17 49.88529 50.77336 49.88529 50.48644</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-24 50.48051 50.60712 50.02142 50.23145</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-31 50.20738 50.28268 49.76308 50.22578</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-02-07 50.22448 50.71661 50.19101 50.60611</span>
+</span></span></code></pre></div><h3 id="enhancements">Enhancements</h3>
 <p>The release also contains some quality of life changes to <code>print()</code> and <code>str()</code>. Now <code>print()</code> only shows the first and last &lsquo;show.rows&rsquo; rows (default 10) if number of rows is &gt; &lsquo;max.rows&rsquo; (default 100), similar to <a href="https://cran.r-project.org/package=data.table">data.table</a> (<a href="https://github.com/joshuaulrich/xts/issues/321">#321</a>).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
-<span class="n">x</span>
-<span class="c1">##                Open     High      Low    Close</span>
-<span class="c1">## 2007-01-02 50.03978 50.11778 49.95041 50.11778</span>
-<span class="c1">## 2007-01-03 50.23050 50.42188 50.23050 50.39767</span>
-<span class="c1">## 2007-01-04 50.42096 50.42096 50.26414 50.33236</span>
-<span class="c1">## 2007-01-05 50.37347 50.37347 50.22103 50.33459</span>
-<span class="c1">## 2007-01-06 50.24433 50.24433 50.11121 50.18112</span>
-<span class="c1">## 2007-01-07 50.13211 50.21561 49.99185 49.99185</span>
-<span class="c1">## 2007-01-08 50.03555 50.10363 49.96971 49.98806</span>
-<span class="c1">## 2007-01-09 49.99489 49.99489 49.80454 49.91333</span>
-<span class="c1">## 2007-01-10 49.91228 50.13053 49.91228 49.97246</span>
-<span class="c1">## 2007-01-11 49.88529 50.23910 49.88529 50.23910</span>
-<span class="c1">##        ...                                    </span>
-<span class="c1">## 2007-06-21 47.71012 47.71012 47.61106 47.62921</span>
-<span class="c1">## 2007-06-22 47.56849 47.59266 47.32549 47.32549</span>
-<span class="c1">## 2007-06-23 47.22873 47.24771 47.09144 47.24771</span>
-<span class="c1">## 2007-06-24 47.23996 47.30287 47.20932 47.22764</span>
-<span class="c1">## 2007-06-25 47.20471 47.42772 47.13405 47.42772</span>
-<span class="c1">## 2007-06-26 47.44300 47.61611 47.44300 47.61611</span>
-<span class="c1">## 2007-06-27 47.62323 47.71673 47.60015 47.62769</span>
-<span class="c1">## 2007-06-28 47.67604 47.70460 47.57241 47.60716</span>
-<span class="c1">## 2007-06-29 47.63629 47.77563 47.61733 47.66471</span>
-<span class="c1">## 2007-06-30 47.67468 47.94127 47.67468 47.76719</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="n">sample_matrix</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##                Open     High      Low    Close</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-02 50.03978 50.11778 49.95041 50.11778</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-03 50.23050 50.42188 50.23050 50.39767</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-04 50.42096 50.42096 50.26414 50.33236</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-05 50.37347 50.37347 50.22103 50.33459</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-06 50.24433 50.24433 50.11121 50.18112</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-07 50.13211 50.21561 49.99185 49.99185</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-08 50.03555 50.10363 49.96971 49.98806</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-09 49.99489 49.99489 49.80454 49.91333</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-10 49.91228 50.13053 49.91228 49.97246</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-01-11 49.88529 50.23910 49.88529 50.23910</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##        ...                                    </span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-21 47.71012 47.71012 47.61106 47.62921</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-22 47.56849 47.59266 47.32549 47.32549</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-23 47.22873 47.24771 47.09144 47.24771</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-24 47.23996 47.30287 47.20932 47.22764</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-25 47.20471 47.42772 47.13405 47.42772</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-26 47.44300 47.61611 47.44300 47.61611</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-27 47.62323 47.71673 47.60015 47.62769</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-28 47.67604 47.70460 47.57241 47.60716</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-29 47.63629 47.77563 47.61733 47.66471</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2007-06-30 47.67468 47.94127 47.67468 47.76719</span>
+</span></span></code></pre></div><hr>
 <p>Now <code>str()</code> outputs more descriptive information for xts objects. It differentiates between xts objects that are empty (no data and zero-length index), zero-width (no data and has index values), or zero-length (no data&ndash;but has a column dimension and may have column names&ndash;and zero-length index). It also adds column names to the output. (<a href="https://github.com/joshuaulrich/xts/issues/168">#168</a>, <a href="https://github.com/joshuaulrich/xts/issues/378">#378</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">empty</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">()</span>
-
-<span class="c1"># empty -- no data and zero-length index</span>
-<span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
-<span class="c1">## An empty xts object </span>
-<span class="c1">##   Data:    double [0, 0]</span>
-<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
-
-<span class="c1"># zero length -- no rows of data and a zero-length index,</span>
-<span class="c1">#     but has a column dimension and may have column names</span>
-<span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
-<span class="c1">## A zero-length xts object </span>
-<span class="c1">##   Data:    double [0, 1]</span>
-<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
-
-<span class="n">zero_length_with_colnames</span> <span class="o">&lt;-</span>
-    <span class="nf">.xts</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">dimnames</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="s">&#34;zero&#34;</span><span class="p">)),</span> <span class="n">empty</span><span class="p">)</span>
-<span class="nf">str</span><span class="p">(</span><span class="n">zero_length_with_colnames</span><span class="p">)</span>
-<span class="c1">## A zero-length xts object </span>
-<span class="c1">##   Data:    double [0, 1]</span>
-<span class="c1">##   Columns: zero</span>
-<span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
-
-<span class="c1"># zero width -- no data and has index values</span>
-<span class="nf">str</span><span class="p">(</span><span class="nf">xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="nf">Sys.Date</span><span class="p">()))</span>
-<span class="c1">## A zero-width xts object on 2023-02-21 / 2023-02-21 containing:</span>
-<span class="c1">##   Data:    double [0, 0]</span>
-<span class="c1">##   Index:   Date [1] (TZ: &#34;UTC&#34;)</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">empty</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># empty -- no data and zero-length index</span>
+</span></span><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## An empty xts object </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Data:    double [0, 0]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># zero length -- no rows of data and a zero-length index,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     but has a column dimension and may have column names</span>
+</span></span><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="nf">.xts</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">empty</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## A zero-length xts object </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Data:    double [0, 1]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">zero_length_with_colnames</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">.xts</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">empty</span><span class="p">,</span> <span class="n">dimnames</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="s">&#34;zero&#34;</span><span class="p">)),</span> <span class="n">empty</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="n">zero_length_with_colnames</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## A zero-length xts object </span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Data:    double [0, 1]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Columns: zero</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Index:   POSIXct,POSIXt [0] (TZ: &#34;&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># zero width -- no data and has index values</span>
+</span></span><span class="line"><span class="cl"><span class="nf">str</span><span class="p">(</span><span class="nf">xts</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="nf">Sys.Date</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## A zero-width xts object on 2023-02-21 / 2023-02-21 containing:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Data:    double [0, 0]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   Index:   Date [1] (TZ: &#34;UTC&#34;)</span>
+</span></span></code></pre></div><hr>
 <p>There&rsquo;s a nice improvement to <code>as.xts()</code> for data.frame and similar objects (e.g. data.table, tibble). It will look for a time-based column in the data.frame if it cannot create an index from the row names. (<a href="https://github.com/joshuaulrich/xts/issues/381">#381</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2023-02-21&#34;</span><span class="p">),</span> <span class="n">A</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="m">42</span><span class="p">)</span>
-<span class="nf">as.xts</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="c1">##             A  B</span>
-<span class="c1">## 2023-02-21 21 42</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="s">&#34;2023-02-21&#34;</span><span class="p">),</span> <span class="n">A</span> <span class="o">=</span> <span class="m">21</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="m">42</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">as.xts</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##             A  B</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 2023-02-21 21 42</span>
+</span></span></code></pre></div><hr>
 <p>This release also includes a new xts method for <code>na.fill()</code> that significantly increases performance when &lsquo;fill&rsquo; is a scalar. And it adds a startup warning that <code>dplyr::lag()</code> breaks method dispatch, which means calls to <code>lag(my_xts)</code> won&rsquo;t work any more, and suggests a couple ways to work around that breakage.</p>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
@@ -310,7 +309,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

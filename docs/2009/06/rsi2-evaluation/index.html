@@ -16,7 +16,6 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
 <meta property="article:published_time" content="2009-06-28T22:02:00-05:00" />
 <meta property="article:modified_time" content="2009-06-28T22:02:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -379,162 +378,162 @@ if (!doNotTrack) {
 <p>The chart below shows the output from the PerformanceAnalytics <code>charts.PerformanceSummary()</code> function. It shows the equity curves and drawdown from peak for the long and short sides of the strategy. The middle graph shows the <em>daily</em> returns for the combined strategy.</p>
 <p><a href="/post/images/20090606_rsi2_performance.png"><img src="/post/images/20090606_rsi2_performance.png" alt=""></a></p>
 <p>The code below has everything that created the results above. It also contains the same results for a modified RSI(2) strategy. The modified strategy uses RSI steps of 10 and sizing steps of 0.3 (i.e. RSI&lt;10 -&gt; size=1, 10&lt;20 -&gt; size=0.7, etc.).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Attach packages. You can install packages via:</span>
-<span class="c1"># install.packages(c(&#34;quantmod&#34;,&#34;TTR&#34;,&#34;PerformanceAnalytics&#34;))</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">TTR</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
-
-<span class="c1"># Pull S&amp;P500 index data from Yahoo! Finance</span>
-<span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;^GSPC&#34;</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="s">&#34;2000-01-01&#34;</span><span class="p">)</span>
-
-<span class="c1"># Calculate the RSI indicator</span>
-<span class="n">rsi</span> <span class="o">&lt;-</span> <span class="nf">RSI</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
-
-<span class="c1"># Calculate Close-to-Close returns</span>
-<span class="n">ret</span> <span class="o">&lt;-</span> <span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">))</span>
-<span class="n">ret[1]</span> <span class="o">&lt;-</span> <span class="m">0</span>
-
-<span class="c1"># This function gives us some standard summary</span>
-<span class="c1"># statistics for our trades.</span>
-<span class="n">tradeStats</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span> <span class="n">returns</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1"># Inputs:</span>
-<span class="c1"># signals : trading signals</span>
-<span class="c1"># returns : returns corresponding to signals</span>
-
-<span class="c1"># Combine data and convert to data.frame</span>
-<span class="n">sysRet</span> <span class="o">&lt;-</span> <span class="n">signals</span> <span class="o">*</span> <span class="n">returns</span> <span class="o">*</span> <span class="m">100</span>
-<span class="n">posRet</span> <span class="o">&lt;-</span> <span class="n">sysRet</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="c1"># Positive rule returns</span>
-<span class="n">negRet</span> <span class="o">&lt;-</span> <span class="n">sysRet</span> <span class="o">&lt;</span> <span class="m">0</span> <span class="c1"># Negative rule returns</span>
-<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span><span class="n">posRet</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="n">sysRet[posRet]</span><span class="p">,</span><span class="n">sysRet[negRet]</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-
-<span class="c1"># Aggreate data for summary statistics</span>
-<span class="n">means</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">medians</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">median</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">sums</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">5</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">sum</span><span class="p">)</span>
-
-<span class="nf">colnames</span><span class="p">(</span><span class="n">means</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;% Win&#34;</span><span class="p">,</span><span class="s">&#34;Mean Win&#34;</span><span class="p">,</span><span class="s">&#34;Mean Loss&#34;</span><span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;Median Win&#34;</span><span class="p">,</span><span class="s">&#34;Median Loss&#34;</span><span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;# Trades&#34;</span><span class="p">)</span>
-
-<span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">sums</span><span class="p">,</span><span class="n">means</span><span class="p">)</span>
-<span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">all</span><span class="p">,</span><span class="n">medians</span><span class="p">)</span>
-
-<span class="n">wl</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span> <span class="nf">abs</span><span class="p">(</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Mean Win&#34;</span><span class="n">]</span><span class="o">/</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Mean Loss&#34;</span><span class="n">]</span><span class="p">),</span>
-<span class="nf">abs</span><span class="p">(</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Median Win&#34;</span><span class="n">]</span><span class="o">/</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Median Loss&#34;</span><span class="n">]</span><span class="p">)</span> <span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">wl</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Mean W/L&#34;</span><span class="p">,</span><span class="s">&#34;Median W/L&#34;</span><span class="p">)</span>
-
-<span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">all</span><span class="p">,</span><span class="n">wl</span><span class="p">)</span>
-<span class="nf">return</span><span class="p">(</span><span class="n">all</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># This function determines position size and</span>
-<span class="c1"># enables us to test several ideas with much</span>
-<span class="c1"># greater speed and flexibility.</span>
-<span class="n">rsi2pos</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">indIncr</span><span class="o">=</span><span class="m">5</span><span class="p">,</span> <span class="n">posIncr</span><span class="o">=</span><span class="m">0.25</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1"># Inputs:</span>
-<span class="c1"># ind : indicator vector</span>
-<span class="c1"># indIncr : indicator value increments/breakpoints</span>
-<span class="c1"># posIncr : position value increments/breakpoints</span>
-
-<span class="c1"># Initialize result vector</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">NROW</span><span class="p">(</span><span class="n">ind</span><span class="p">))</span>
-
-<span class="c1"># Long</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">4</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">3</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">3</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">2</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">2</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">1</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">1</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">0</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
-
-<span class="c1"># Short</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-4</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">3</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-3</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">2</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-2</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">1</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-1</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">0</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
-
-<span class="c1"># Today&#39;s position (&#39;size&#39;) is based on today&#39;s</span>
-<span class="c1"># indicator, but we need to apply today&#39;s position</span>
-<span class="c1"># to the Close-to-Close return at tomorrow&#39;s close.</span>
-<span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-
-<span class="c1"># Replace missing signals with no position</span>
-<span class="c1"># (generally just at beginning of series)</span>
-<span class="n">size</span><span class="nf">[is.na</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="m">0</span>
-
-<span class="c1"># Return results</span>
-<span class="nf">return</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1"># Calculate signals with the &#39;rsi2pos()&#39; function,</span>
-<span class="c1"># using 5 as the RSI step: 5, 10, 15, 20, 80, 85, 90, 95</span>
-<span class="c1"># and 0.25 as the size step: 0.25, 0.50, 0.75, 1.00</span>
-<span class="n">sig</span> <span class="o">&lt;-</span> <span class="nf">rsi2pos</span><span class="p">(</span><span class="n">rsi</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">0.25</span><span class="p">)</span>
-
-<span class="c1"># Break out the long (up) and short (dn) signals</span>
-<span class="n">sigup</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
-<span class="n">sigdn</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
-
-<span class="c1"># Calculate rule returns</span>
-<span class="n">ret_up</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigup</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_up</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Long System Return&#39;</span>
-<span class="n">ret_dn</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigdn</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_dn</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Short System Return&#39;</span>
-<span class="n">ret_all</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sig</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_all</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Total System Return&#39;</span>
-
-<span class="c1"># Create performance graphs</span>
-<span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20090606_rsi2_performance.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
-<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">ret_up</span><span class="p">,</span><span class="n">ret_dn</span><span class="p">),</span><span class="n">methods</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>
-<span class="n">main</span><span class="o">=</span><span class="s">&#39;RSI(2) Performance - RSI steps = 5, Size steps = 0.25&#39;</span><span class="p">)</span>
-<span class="nf">dev.off</span><span class="p">()</span>
-
-<span class="c1"># Print trade statistics table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Trade Statistics - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">tradeStats</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">ret</span><span class="p">))</span>
-
-<span class="c1"># Print drawdown table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Drawdowns - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">table.Drawdowns</span><span class="p">(</span><span class="n">ret_all</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
-
-<span class="c1"># Print downside risk table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Downside Risk - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">table.DownsideRisk</span><span class="p">(</span><span class="n">ret_all</span><span class="p">))</span>
-
-<span class="c1"># Calculate signals with the &#39;rsi2pos()&#39; function</span>
-<span class="c1"># using new RSI and size step values</span>
-<span class="n">sig</span> <span class="o">&lt;-</span> <span class="nf">rsi2pos</span><span class="p">(</span><span class="n">rsi</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">0.3</span><span class="p">)</span>
-
-<span class="c1"># Break out the long (up) and short (dn) signals</span>
-<span class="n">sigup</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
-<span class="n">sigdn</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
-
-<span class="c1"># Calculate rule returns</span>
-<span class="n">ret_up</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigup</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_up</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Long System Return&#39;</span>
-<span class="n">ret_dn</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigdn</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_dn</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Short System Return&#39;</span>
-<span class="n">ret_all</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sig</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">ret_all</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Total System Return&#39;</span>
-
-<span class="c1"># Calculate performance statistics</span>
-<span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20090606_rsi2_performance_updated.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
-<span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">ret_up</span><span class="p">,</span><span class="n">ret_dn</span><span class="p">),</span><span class="n">methods</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>
-<span class="n">main</span><span class="o">=</span><span class="s">&#39;RSI(2) Performance - RSI steps = 10, Size steps = 0.30&#39;</span><span class="p">)</span>
-<span class="nf">dev.off</span><span class="p">()</span>
-
-<span class="c1"># Print trade statistics table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Trade Statistics - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">tradeStats</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">ret</span><span class="p">))</span>
-
-<span class="c1"># Print drawdown table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Drawdowns - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">table.Drawdowns</span><span class="p">(</span><span class="n">ret_all</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
-
-<span class="c1"># Print downside risk table</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Downside Risk - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">table.DownsideRisk</span><span class="p">(</span><span class="n">ret_all</span><span class="p">))</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Attach packages. You can install packages via:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># install.packages(c(&#34;quantmod&#34;,&#34;TTR&#34;,&#34;PerformanceAnalytics&#34;))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">quantmod</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">TTR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pull S&amp;P500 index data from Yahoo! Finance</span>
+</span></span><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;^GSPC&#34;</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="s">&#34;2000-01-01&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate the RSI indicator</span>
+</span></span><span class="line"><span class="cl"><span class="n">rsi</span> <span class="o">&lt;-</span> <span class="nf">RSI</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate Close-to-Close returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret</span> <span class="o">&lt;-</span> <span class="nf">ROC</span><span class="p">(</span><span class="nf">Cl</span><span class="p">(</span><span class="n">GSPC</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret[1]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># This function gives us some standard summary</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># statistics for our trades.</span>
+</span></span><span class="line"><span class="cl"><span class="n">tradeStats</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span> <span class="n">returns</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Inputs:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># signals : trading signals</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># returns : returns corresponding to signals</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Combine data and convert to data.frame</span>
+</span></span><span class="line"><span class="cl"><span class="n">sysRet</span> <span class="o">&lt;-</span> <span class="n">signals</span> <span class="o">*</span> <span class="n">returns</span> <span class="o">*</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">posRet</span> <span class="o">&lt;-</span> <span class="n">sysRet</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="c1"># Positive rule returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">negRet</span> <span class="o">&lt;-</span> <span class="n">sysRet</span> <span class="o">&lt;</span> <span class="m">0</span> <span class="c1"># Negative rule returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span><span class="n">posRet</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="n">sysRet[posRet]</span><span class="p">,</span><span class="n">sysRet[negRet]</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Aggreate data for summary statistics</span>
+</span></span><span class="line"><span class="cl"><span class="n">means</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">medians</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">median</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sums</span> <span class="o">&lt;-</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">5</span><span class="n">]</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">dat[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">),</span> <span class="n">sum</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">means</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;% Win&#34;</span><span class="p">,</span><span class="s">&#34;Mean Win&#34;</span><span class="p">,</span><span class="s">&#34;Mean Loss&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;Median Win&#34;</span><span class="p">,</span><span class="s">&#34;Median Loss&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Signal&#34;</span><span class="p">,</span><span class="s">&#34;# Trades&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">sums</span><span class="p">,</span><span class="n">means</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">merge</span><span class="p">(</span><span class="n">all</span><span class="p">,</span><span class="n">medians</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">wl</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span> <span class="nf">abs</span><span class="p">(</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Mean Win&#34;</span><span class="n">]</span><span class="o">/</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Mean Loss&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="nf">abs</span><span class="p">(</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Median Win&#34;</span><span class="n">]</span><span class="o">/</span><span class="n">all[</span><span class="p">,</span><span class="s">&#34;Median Loss&#34;</span><span class="n">]</span><span class="p">)</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">wl</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Mean W/L&#34;</span><span class="p">,</span><span class="s">&#34;Median W/L&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">all</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">all</span><span class="p">,</span><span class="n">wl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">return</span><span class="p">(</span><span class="n">all</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># This function determines position size and</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># enables us to test several ideas with much</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># greater speed and flexibility.</span>
+</span></span><span class="line"><span class="cl"><span class="n">rsi2pos</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">indIncr</span><span class="o">=</span><span class="m">5</span><span class="p">,</span> <span class="n">posIncr</span><span class="o">=</span><span class="m">0.25</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Inputs:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ind : indicator vector</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># indIncr : indicator value increments/breakpoints</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># posIncr : position value increments/breakpoints</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize result vector</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">NROW</span><span class="p">(</span><span class="n">ind</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Long</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">4</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">3</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">3</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">2</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">2</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">1</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&lt;</span> <span class="m">1</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">posIncr</span><span class="o">*</span><span class="m">0</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Short</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-4</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">3</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-3</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">2</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-2</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">1</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="m">100-1</span><span class="o">*</span><span class="n">indIncr</span><span class="p">,</span> <span class="m">0</span><span class="o">*</span><span class="n">posIncr</span><span class="m">-1</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Today&#39;s position (&#39;size&#39;) is based on today&#39;s</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># indicator, but we need to apply today&#39;s position</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># to the Close-to-Close return at tomorrow&#39;s close.</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span> <span class="o">&lt;-</span> <span class="nf">lag</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Replace missing signals with no position</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># (generally just at beginning of series)</span>
+</span></span><span class="line"><span class="cl"><span class="n">size</span><span class="nf">[is.na</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Return results</span>
+</span></span><span class="line"><span class="cl"><span class="nf">return</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate signals with the &#39;rsi2pos()&#39; function,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># using 5 as the RSI step: 5, 10, 15, 20, 80, 85, 90, 95</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and 0.25 as the size step: 0.25, 0.50, 0.75, 1.00</span>
+</span></span><span class="line"><span class="cl"><span class="n">sig</span> <span class="o">&lt;-</span> <span class="nf">rsi2pos</span><span class="p">(</span><span class="n">rsi</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">0.25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Break out the long (up) and short (dn) signals</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigup</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigdn</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate rule returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_up</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigup</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_up</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Long System Return&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_dn</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigdn</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_dn</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Short System Return&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_all</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sig</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_all</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Total System Return&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create performance graphs</span>
+</span></span><span class="line"><span class="cl"><span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20090606_rsi2_performance.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">ret_up</span><span class="p">,</span><span class="n">ret_dn</span><span class="p">),</span><span class="n">methods</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">main</span><span class="o">=</span><span class="s">&#39;RSI(2) Performance - RSI steps = 5, Size steps = 0.25&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">dev.off</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print trade statistics table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Trade Statistics - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">tradeStats</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">ret</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print drawdown table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Drawdowns - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">table.Drawdowns</span><span class="p">(</span><span class="n">ret_all</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print downside risk table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Downside Risk - RSI steps = 5, Size steps = 0.25\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">table.DownsideRisk</span><span class="p">(</span><span class="n">ret_all</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate signals with the &#39;rsi2pos()&#39; function</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># using new RSI and size step values</span>
+</span></span><span class="line"><span class="cl"><span class="n">sig</span> <span class="o">&lt;-</span> <span class="nf">rsi2pos</span><span class="p">(</span><span class="n">rsi</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">0.3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Break out the long (up) and short (dn) signals</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigup</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigdn</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">sig</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate rule returns</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_up</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigup</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_up</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Long System Return&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_dn</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sigdn</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_dn</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Short System Return&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ret_all</span> <span class="o">&lt;-</span> <span class="n">ret</span> <span class="o">*</span> <span class="n">sig</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">ret_all</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&#39;Total System Return&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calculate performance statistics</span>
+</span></span><span class="line"><span class="cl"><span class="nf">png</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#34;20090606_rsi2_performance_updated.png&#34;</span><span class="p">,</span> <span class="m">720</span><span class="p">,</span> <span class="m">720</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">charts.PerformanceSummary</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">ret_up</span><span class="p">,</span><span class="n">ret_dn</span><span class="p">),</span><span class="n">methods</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">main</span><span class="o">=</span><span class="s">&#39;RSI(2) Performance - RSI steps = 10, Size steps = 0.30&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">dev.off</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print trade statistics table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Trade Statistics - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">tradeStats</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">ret</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print drawdown table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Drawdowns - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">table.Drawdowns</span><span class="p">(</span><span class="n">ret_all</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print downside risk table</span>
+</span></span><span class="line"><span class="cl"><span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nRSI(2) Downside Risk - RSI steps = 10, Size steps = 0.30\n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">table.DownsideRisk</span><span class="p">(</span><span class="n">ret_all</span><span class="p">))</span>
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -558,7 +557,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

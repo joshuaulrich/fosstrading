@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.92.2" />
+	<meta name="generator" content="Hugo 0.114.1">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -100,7 +99,7 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		I&rsquo;m pleased to announce that the RQuantLib Windows binaries are now up to 0.4.4! The RQuantLib pre-built Windows binaries have been frozen on CRAN since 0.4.2, but now you can get version 0.4.4 binaries on Dirk&rsquo;s ghrr drat repo.
 Installation is as simple as:
-drat::addRepo(&#34;ghrr&#34;) # maybe use &#39;install.packages(&#34;drat&#34;)&#39; first  install.packages(&#34;RQuantLib&#34;, type=&#34;binary&#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.
+drat::addRepo(&#34;ghrr&#34;) # maybe use &#39;install.packages(&#34;drat&#34;)&#39; first install.packages(&#34;RQuantLib&#34;, type=&#34;binary&#34;) I will be able to create Windows binaries for future RQuantLib versions too, now that I have a Windows QuantLib build (version 1.
 	</div>
 </article><article class="list__item post">
 	
@@ -198,7 +197,7 @@ The most noticeable difference is that the adjusted close column is now only spl
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		I pushed a bug-fix release of quantmod to CRAN last night. The major changes were to
- getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149)  All three providers made breaking changes to their URLs/interfaces.
+getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149) All three providers made breaking changes to their URLs/interfaces.
 getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
 There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).
 	</div>

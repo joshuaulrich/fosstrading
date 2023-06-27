@@ -8,12 +8,11 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="quantmod_0.4.22 on CRAN" />
-<meta property="og:description" content="An updated version of quantmod is now on CRAN. It adds functions HL(), is.HL(), and has.HL() to check for &lsquo;high&rsquo; and &lsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. getSymbols.FRED() got to and from arguments, like other getSymbols() methods. The remaining changes are bug fixes and maintenace chores." />
+<meta property="og:description" content="An updated version of quantmod is now on CRAN. It adds functions HL(), is.HL(), and has.HL() to check for &lsquo;high&rsquo; and &rsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. getSymbols.FRED() got to and from arguments, like other getSymbols() methods. The remaining changes are bug fixes and maintenace chores." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2023/04/quantmod-0-4-22-on-cran/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-04-16T03:41:57-05:00" />
 <meta property="article:modified_time" content="2023-04-16T03:41:57-05:00" />
-
 
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -93,7 +92,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-04-16T03:41:57-05:00">April 16, 2023</time></div></div>
 		</header>
 		<div class="content post__content clearfix">
-			<p>An updated version of <a href="http://cran.r-project.org/package=quantmod">quantmod</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. It adds functions <code>HL()</code>, <code>is.HL()</code>, and <code>has.HL()</code> to check for &lsquo;high&rsquo; and &lsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. <code>getSymbols.FRED()</code> got <code>to</code> and <code>from</code> arguments, like other <code>getSymbols()</code> methods. The remaining changes are bug fixes and maintenace chores.</p>
+			<p>An updated version of <a href="http://cran.r-project.org/package=quantmod">quantmod</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. It adds functions <code>HL()</code>, <code>is.HL()</code>, and <code>has.HL()</code> to check for &lsquo;high&rsquo; and &rsquo;low&rsquo; price columns. It also makes accessing Yahoo Finance price, dividend, and split data more robust. <code>getSymbols.FRED()</code> got <code>to</code> and <code>from</code> arguments, like other <code>getSymbols()</code> methods. The remaining changes are bug fixes and maintenace chores.</p>
 <p>This was mainly a maintenance and bug fix release, but it does include a couple nice features. quantmod versions 0.4.17 through 0.4.21 included several relevant features that weren&rsquo;t highlighted in any previous posts. They&rsquo;re included in a separate section below.</p>
 <h3 id="new-features">New Features</h3>
 <ul>
@@ -104,7 +103,7 @@ if (!doNotTrack) {
 <p>Switched to the Yahoo Finance v8 JSON endpoint and removed the v7 CSV endpoint. There seems to be a rate limit for the number of tickers you can request via the CSV endpoint. The <a href="https://github.com/ranaroussi/yfinance">yfinance python library</a> uses the JSON endpoint and doesn&rsquo;t seem to have rate limit issues. (<a href="https://github.com/joshuaulrich/quantmod/issues/360">#360</a>, <a href="https://github.com/joshuaulrich/quantmod/issues/362">#362</a>, <a href="https://github.com/joshuaulrich/quantmod/issues/364">#364</a>)</p>
 </li>
 <li>
-<p><code>getSymbols.FRED()</code> now supports <code>to</code> and <code>from</code> arguments. So users can set the &lsquo;from&rsquo; and &lsquo;to&rsquo; arguments for FRED data like they can for other data sources like Yahoo. Those values had been ignored and the entire series was always returned. (<a href="https://github.com/joshuaulrich/quantmod/issues/368">#368</a>)</p>
+<p><code>getSymbols.FRED()</code> now supports <code>to</code> and <code>from</code> arguments. So users can set the &lsquo;from&rsquo; and &rsquo;to&rsquo; arguments for FRED data like they can for other data sources like Yahoo. Those values had been ignored and the entire series was always returned. (<a href="https://github.com/joshuaulrich/quantmod/issues/368">#368</a>)</p>
 </li>
 </ul>
 <h3 id="bug-fixes">Bug Fixes</h3>
@@ -245,7 +244,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

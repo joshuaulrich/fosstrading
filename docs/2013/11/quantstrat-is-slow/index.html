@@ -15,7 +15,6 @@ If your strategy is not path-dependent, you can get a fairly substantial perform
 <meta property="article:published_time" content="2013-11-04T06:37:00-06:00" />
 <meta property="article:modified_time" content="2013-11-04T06:37:00-06:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,12 +98,12 @@ if (!doNotTrack) {
 <p>I started working with Brian Peterson in late August of this year, and we&rsquo;ve been working on a series of very large backtests over the last several weeks.  Each backtest consisted of ~7 months of 5-second data on 72 instruments with 15-20 different configurations for each.</p>
 <p>These backtests really pushed quantstrat to its limits.  The longest-running job took 32 hours.  I had some time while they were running, so I decided to profile quantstrat.  I was able to make some substantial improvements, so I thought I&rsquo;d write a post to tell you what&rsquo;s changed and highlight some of the performance gains we&rsquo;re seeing.</p>
 <p>The biggest issue was how the internal function <code>ruleProc</code> was constructing and evaluating the rule function call for each signal.  Basically, the code that constructed the call was evaluating the <code>mktdata</code> object before calling the rule function.  This meant that the rule function call looked like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">ruleFunction</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">50.04</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.13</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span>
-  <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">49.95</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.26</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">50.11</span><span class="p">,</span> <span class="m">49.99</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.4</span><span class="p">,</span>
-  <span class="m">50.33</span><span class="p">,</span> <span class="m">50.33</span><span class="p">,</span> <span class="m">50.18</span><span class="p">,</span> <span class="m">49.99</span><span class="p">),</span> <span class="kc">...</span><span class="p">)</span>
-</code></pre></div><p>instead of this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">ruleFunction</span><span class="p">(</span><span class="n">mktdata</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
-</code></pre></div><p>You can only imagine how large that first call would be for a 10-million-row <code>mktdata</code> object.  Changing the rule function call to use the name (symbol) of the <code>mktdata</code> object instead of the <code>mktdata</code> object itself helped the 32-hour job finish in just over 2 hours.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ruleFunction</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">50.04</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.13</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span> <span class="m">50.42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="m">50.37</span><span class="p">,</span> <span class="m">50.24</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">49.95</span><span class="p">,</span> <span class="m">50.23</span><span class="p">,</span> <span class="m">50.26</span><span class="p">,</span> <span class="m">50.22</span><span class="p">,</span> <span class="m">50.11</span><span class="p">,</span> <span class="m">49.99</span><span class="p">,</span> <span class="m">50.12</span><span class="p">,</span> <span class="m">50.4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="m">50.33</span><span class="p">,</span> <span class="m">50.33</span><span class="p">,</span> <span class="m">50.18</span><span class="p">,</span> <span class="m">49.99</span><span class="p">),</span> <span class="kc">...</span><span class="p">)</span>
+</span></span></code></pre></div><p>instead of this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ruleFunction</span><span class="p">(</span><span class="n">mktdata</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</span></span></code></pre></div><p>You can only imagine how large that first call would be for a 10-million-row <code>mktdata</code> object.  Changing the rule function call to use the name (symbol) of the <code>mktdata</code> object instead of the <code>mktdata</code> object itself helped the 32-hour job finish in just over 2 hours.</p>
 <p>If you think I would be happy enough with that, you don&rsquo;t know me.  Several other changes helped get that 2-hour run down to under 30 minutes.</p>
 <ul>
 <li>
@@ -149,7 +148,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

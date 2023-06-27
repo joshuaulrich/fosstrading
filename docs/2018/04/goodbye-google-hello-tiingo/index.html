@@ -17,7 +17,6 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
 <meta property="article:published_time" content="2018-04-13T11:14:00-05:00" />
 <meta property="article:modified_time" content="2018-04-13T11:14:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -103,10 +102,10 @@ if (!doNotTrack) {
 <p><a href="https://www.tiingo.com/">Tiingo</a> is a web service that provides tools and data for financial analysis.  They provide daily price history for US stocks and ADRs, Chinese stocks, Mutual Funds, and ETFs.  There is up to 30+ years of history, including raw prices and split/dividend adjusted prices.</p>
 <p>All this data is accessible for free, with reasonable symbol and bandwidth limits.  All you need to get started is a one-time registration for an API token.  You should see your API token just above the beginning of the <a href="https://api.tiingo.com/docs/tiingo/daily#metaData">metadata section</a>, after logging in, of course.  Tiingo has a well-documented <a href="https://api.tiingo.com/docs/tiingo/daily">daily price data API</a> that returns either JSON or CSV.</p>
 <p>To get started, install the latest <a href="https://cran.r-project.org/package=quantmod">quantmod from CRAN</a>.  Then you call:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>   
-</code></pre></div><p>Where you replace <code>&quot;\[your key\]&quot;</code> with the API key you receive after registration.  You can use <code>setDefaults()</code> to set your API key one time, and use it for all <code>getSymbols.tiingo()</code> calls.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>  
-</code></pre></div><p>Other notable changes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">getSymbols</span><span class="p">(</span><span class="s">&#34;MSFT&#34;</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="s">&#34;tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>   
+</span></span></code></pre></div><p>Where you replace <code>&quot;\[your key\]&quot;</code> with the API key you receive after registration.  You can use <code>setDefaults()</code> to set your API key one time, and use it for all <code>getSymbols.tiingo()</code> calls.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">setDefaults</span><span class="p">(</span><span class="s">&#34;getSymbols.tiingo&#34;</span><span class="p">,</span> <span class="n">api.key</span> <span class="o">=</span> <span class="s">&#34;\[your key\]&#34;</span><span class="p">)</span>  
+</span></span></code></pre></div><p>Other notable changes:</p>
 <ul>
 <li>There is now a <code>getQuote.alphavantage()</code> that allows you to pull real-time quotes from Alpha Vantage.  Thanks to <a href="https://github.com/ethanbsmith">Ethan Smith</a>! (<a href="https://github.com/joshuaulrich/quantmod/issues/213">#213</a>, <a href="https://github.com/joshuaulrich/quantmod/issues/223">#223</a>)</li>
 <li>Speaking of <a href="https://www.alphavantage.co/">Alpha Vantage</a>, getSymbols.av() can now pull weekly and monthly adjusted prices. (<a href="https://github.com/joshuaulrich/quantmod/issues/212">#212</a>)</li>
@@ -141,7 +140,7 @@ if (!doNotTrack) {
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

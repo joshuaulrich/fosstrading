@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2023-06-24T10:21:00-05:00" />
 <meta property="article:modified_time" content="2023-06-24T10:21:00-05:00" />
 
-
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -100,27 +99,27 @@ if (!doNotTrack) {
 <p>If you&rsquo;re not familiar with Docker, an &ldquo;image&rdquo; contains all the necessary information to run an instance of the application. A &ldquo;container&rdquo; is a running instance of an image.</p>
 <h3 id="running-the-docker-containers">Running the Docker Containers</h3>
 <p>First we need to get the container images from <a href="https://hub.docker.com/">Docker Hub</a>. I will use the <code>docker pull</code> command.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># pull the TimeBase image</span>
-docker pull finos/timebase-ce-server:6.1.16
-
-<span class="c1"># pull the Web Admin image</span>
-docker pull epam/timebase-ws-server:1.0
-</code></pre></div><p>The TimeBase documentation has a page on <a href="https://kb.timebase.info/community/deployment/docker">deploying with Docker</a>. This post closely follows those examples.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># pull the TimeBase image</span>
+</span></span><span class="line"><span class="cl">docker pull finos/timebase-ce-server:6.1.16
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># pull the Web Admin image</span>
+</span></span><span class="line"><span class="cl">docker pull epam/timebase-ws-server:1.0
+</span></span></code></pre></div><p>The TimeBase documentation has a page on <a href="https://kb.timebase.info/community/deployment/docker">deploying with Docker</a>. This post closely follows those examples.</p>
 <p>One major difference is that TimeBase documentation uses the <code>--link</code> option to allow the containers to talk to each other, but the Docker documentation says that is a legacy feature that may be removed. The currently preferred method is to create a user-defined network.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># create a user-defined network so the containers to see each other</span>
-docker network create --driver bridge timebase-net
-
-<span class="c1"># make sure the network was created</span>
-docker network ls
-</code></pre></div><p>By default, the docker containers will write data to a disk that&rsquo;s only available to the container. You won&rsquo;t be able to access the data from your computer or if the container isn&rsquo;t running. There&rsquo;s a <code>--volume</code> option to specify a mapping between a directory in the container and a directory on your local machine. I&rsquo;m not going to use that here because you have to run the container as root in order for it to write to your local file system.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">docker run --rm --detach <span class="se">\
-</span><span class="se"></span>    --publish 8011:8011 <span class="se">\
-</span><span class="se"></span>    --name timebase-server <span class="se">\
-</span><span class="se"></span>    --user deltix:deltix <span class="se">\
-</span><span class="se"></span>    --ulimit<span class="o">=</span><span class="nv">nofile</span><span class="o">=</span>65536:65536 <span class="se">\
-</span><span class="se"></span>    --network timebase-net <span class="se">\
-</span><span class="se"></span>    finos/timebase-ce-server:6.1.16
-</code></pre></div><p>Here are the descriptions of the options used:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># create a user-defined network so the containers to see each other</span>
+</span></span><span class="line"><span class="cl">docker network create --driver bridge timebase-net
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># make sure the network was created</span>
+</span></span><span class="line"><span class="cl">docker network ls
+</span></span></code></pre></div><p>By default, the docker containers will write data to a disk that&rsquo;s only available to the container. You won&rsquo;t be able to access the data from your computer or if the container isn&rsquo;t running. There&rsquo;s a <code>--volume</code> option to specify a mapping between a directory in the container and a directory on your local machine. I&rsquo;m not going to use that here because you have to run the container as root in order for it to write to your local file system.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">docker run --rm --detach <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --publish 8011:8011 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name timebase-server <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --user deltix:deltix <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --ulimit<span class="o">=</span><span class="nv">nofile</span><span class="o">=</span>65536:65536 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --network timebase-net <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    finos/timebase-ce-server:6.1.16
+</span></span></code></pre></div><p>Here are the descriptions of the options used:</p>
 <ul>
 <li><code>--rm</code>: Automatically remove the container when it exits</li>
 <li><code>--detach</code>: Run the container in the background</li>
@@ -128,16 +127,16 @@ docker network ls
 <li><code>--name</code>: Assign a name to the container</li>
 <li><code>--user</code>: Run the container as the &lsquo;deltix&rsquo; user instead of &lsquo;root&rsquo;</li>
 <li><code>--ulimit</code>: Set user process resource limits</li>
-<li><code>--network</code>: Use the &lsquo;timebase-net&rsquo; network</li>
+<li><code>--network</code>: Use the &rsquo;timebase-net&rsquo; network</li>
 </ul>
-<p>Now we can run the Web Admin container. Make sure to use the same network (<code>timebase-net</code>) and make sure the host name (<code>dxtick://timebase-server</code>) is the same as the name you used for the TimeBase container (i.e. &lsquo;timebase-server&rsquo; in this case). The <code>--env</code> option allows us to set environment variables. These are used to control various <a href="https://kb.timebase.info/community/development/tools/Web%20Admin/admin_config#deployment">configuration options</a> (note that these configuration options are for running a local instance, but they give you an idea of what you can change).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">docker run --rm --detach <span class="se">\
-</span><span class="se"></span>    --publish 8099:8099 <span class="se">\
-</span><span class="se"></span>    --name timebase-admin <span class="se">\
-</span><span class="se"></span>    --env <span class="s2">&#34;JAVA_OPTS=-Dtimebase.url=dxtick://timebase-server:8011&#34;</span> <span class="se">\
-</span><span class="se"></span>    --network timebase-net <span class="se">\
-</span><span class="se"></span>    epam/timebase-ws-server:1.0
-</code></pre></div><p>We can use the Web Admin&rsquo;s interface once it&rsquo;s running. Open a browser and enter localhost:8099 in the address bar. That should take you to the login page. The default username/password is <code>admin/admin</code>. After you log in you should see a page like the image below. The only stream in the database is <code>events#</code>.</p>
+<p>Now we can run the Web Admin container. Make sure to use the same network (<code>timebase-net</code>) and make sure the host name (<code>dxtick://timebase-server</code>) is the same as the name you used for the TimeBase container (i.e. &rsquo;timebase-server&rsquo; in this case). The <code>--env</code> option allows us to set environment variables. These are used to control various <a href="https://kb.timebase.info/community/development/tools/Web%20Admin/admin_config#deployment">configuration options</a> (note that these configuration options are for running a local instance, but they give you an idea of what you can change).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">docker run --rm --detach <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --publish 8099:8099 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name timebase-admin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --env <span class="s2">&#34;JAVA_OPTS=-Dtimebase.url=dxtick://timebase-server:8011&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --network timebase-net <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    epam/timebase-ws-server:1.0
+</span></span></code></pre></div><p>We can use the Web Admin&rsquo;s interface once it&rsquo;s running. Open a browser and enter localhost:8099 in the address bar. That should take you to the login page. The default username/password is <code>admin/admin</code>. After you log in you should see a page like the image below. The only stream in the database is <code>events#</code>.</p>
 <p><a href="web-admin-initial-contents.png"><img src="web-admin-initial-contents.png" alt=""></a></p>
 <p>Although this post is about <em>running</em> TimeBase and the Web Admin, I&rsquo;m not going to end it without showing a little functionality.</p>
 <h3 id="import-data">Import Data</h3>
@@ -194,7 +193,7 @@ docker network ls
 <section class="comments">
 	<div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
