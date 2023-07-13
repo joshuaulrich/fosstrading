@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.fosstrading.com/categories/Articles/</loc>
+    <lastmod>2023-06-24T10:21:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/categories/</loc>
+    <lastmod>2023-06-24T10:21:00-05:00</lastmod>
+  </url><url>
     <loc>https://blog.fosstrading.com/search/label/Data/</loc>
     <lastmod>2023-06-24T10:21:00-05:00</lastmod>
   </url><url>
@@ -31,6 +37,9 @@
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/R/</loc>
     <lastmod>2023-05-22T10:14:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/categories/R-Package-Releases/</loc>
+    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/Releases/</loc>
     <lastmod>2023-04-24T10:54:00-05:00</lastmod>
@@ -84,6 +93,9 @@
     <lastmod>2018-08-24T13:03:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/Events/</loc>
+    <lastmod>2018-04-20T13:26:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/categories/Events/</loc>
     <lastmod>2018-04-20T13:26:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2018/04/rfinance-2018-registration/</loc>
@@ -412,10 +424,6 @@
   </url><url>
     <loc>https://blog.fosstrading.com/2008/09/welcome-to-foss-trading/</loc>
     <lastmod>2008-09-28T15:51:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/non-release-posts/</loc>
-  </url><url>
-    <loc>https://blog.fosstrading.com/categories/</loc>
   </url><url>
     <loc>https://blog.fosstrading.com/page/enterprise/</loc>
   </url>

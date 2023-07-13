@@ -2761,5 +2761,125 @@ R CMD INSTALL RQuantLib_0.3.4.tar.gz&lt;/li&gt;
 </description>
     </item>
     
+    <item>
+      <title>R/Finance 2010: Registration Open</title>
+      <link>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</link>
+      <pubDate>Fri, 05 Feb 2010 15:46:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2010/02/rfinance-2010-registration-open/</guid>
+      <description>&lt;p&gt;As posted by Dirk Eddelbuettel on R-SIG-Finance:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;R / Finance 2010: Applied Finance with R&lt;br&gt;
+April 16 &amp;amp; 17, Chicago, IL, US&lt;/p&gt;
+&lt;p&gt;The second annual R / Finance conference for applied finance using R, the premier free software system for statistical computation and graphics, will be held this spring in Chicago, IL, USA on Friday April 16 and Saturday April 17.&lt;/p&gt;
+&lt;p&gt;Building on the success of the inaugural R / Finance 2009 event, this two-day conference will cover topics as diverse as portfolio theory, time-series analysis, as well as advanced risk tools, high-performance computing, and econometrics. All will be discussed within the context of using R as a primary tool for financial risk management and trading.&lt;/p&gt;
+&lt;p&gt;Invited keynote presentations by Bernhard Pfaff, Ralph Vince, Mark Wildi and Achim Zeileis are complemented by over twenty talks (both full-length and &amp;rsquo;lightning&amp;rsquo;) selected from the submissions.  Four optional tutorials are also offered on Friday April 16.&lt;/p&gt;
+&lt;p&gt;R / Finance 2010 is organized by a local group of R package authors and community contributors, and hosted by the International Center for Futures and Derivatives [ICFD] at the University of Illinois at Chicago.&lt;/p&gt;
+&lt;p&gt;Conference registration is now open. Special advanced registration pricing is available, as well as discounted pricing for academic and student registrations.&lt;/p&gt;
+&lt;p&gt;More details and registration information can be found at the website at&lt;/p&gt;
+&lt;p&gt;                      &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;http://www.RinFinance.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For the program committee:&lt;/p&gt;
+&lt;p&gt;    Gib Bassett, Peter Carl, Dirk Eddelbuettel, John Miller,&lt;br&gt;
+    Brian Peterson, Dale Rosenthal, Jeffrey Ryan&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I hope to meet some of you there!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R/Finance 2009 Presentations Online</title>
+      <link>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</link>
+      <pubDate>Mon, 04 May 2009 10:21:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2009/05/rfinance-2009-presentations-online/</guid>
+      <description>&lt;p&gt;Posted to the R-SIG-Finance mailing list today:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For those who missed it, the slides for the R/Finance 2009 tutorials&lt;br&gt;
+and presentations are now available on RinFinance.com&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.RinFinance.com/presentations&#34;&gt;http://www.RinFinance.com/presentations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We want to thank everyone who traveled to Chicago to make this happen. With nearly 200 attendees, coming from 8 countries and 20+ states in the US, the conference exceeded all of our expectations. A very big thank you to our presenters for taking the time to join us, UIC&amp;rsquo;s International Center for Futures and Derivatives for hosting the event, and our sponsors REvolution Computing and Microsoft for their support.&lt;/p&gt;
+&lt;p&gt;We look forward to doing it again in the future. Stay tuned&amp;hellip;&lt;/p&gt;
+&lt;p&gt;On behalf of the committee and sponsors.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R/Finance 2009 Overview</title>
+      <link>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</link>
+      <pubDate>Tue, 28 Apr 2009 09:26:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2009/04/rfinance-2009-overview/</guid>
+      <description>&lt;p&gt;The first international R/Finance 2009 conference in Chicago, IL was a huge success! David Smith from &lt;a href=&#34;http://www.revolution-computing.com/&#34;&gt;REvolution Computing&lt;/a&gt; has written &lt;a href=&#34;http://blog.revolution-computing.com/2009/04/rfinance-2009-roundup.html&#34;&gt;a great summary&lt;/a&gt; of the entire event. I&amp;rsquo;ll take the lazy route and point you to his blog post. :)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The first international conference dedicated to the use of R in the finance industry, &lt;a href=&#34;http://www.rinfinance.com/&#34;&gt;R/Finance 2009&lt;/a&gt;, was a great success. With over 150 attendees (my poor &lt;a href=&#34;http://twitter.com/revodavid/status/1606990522&#34;&gt;estimation&lt;/a&gt; skills notwithstanding), sold-out tutorials, and an outstanding lineup of invited and contributing speakers from around the world, this event really demonstrated the importance of &lt;a href=&#34;http://www.revolution-computing.com/industry/finance.php&#34;&gt;R in the world of financial analysis&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Source:&lt;br&gt;
+&lt;a href=&#34;http://blog.revolution-computing.com/2009/04/rfinance-2009-roundup.html&#34;&gt;R/Finance 2009 roundup&lt;/a&gt;&lt;br&gt;
+David Smith&lt;br&gt;
+&lt;a href=&#34;http://blog.revolution-computing.com/&#34;&gt;Revolutions&lt;/a&gt;, 4/27/2009&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Registration for R/Finance 2009 is Open!</title>
+      <link>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</link>
+      <pubDate>Fri, 20 Feb 2009 12:20:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2009/02/registration-for-r-finance-2009-is-open/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://rinfinance.quantmod.com/&#34;&gt;conference website&lt;/a&gt; has details on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the &lt;a href=&#34;http://rinfinance.quantmod.com/agenda&#34;&gt;agenda&lt;/a&gt; and &lt;a href=&#34;http://rinfinance.quantmod.com/speakers&#34;&gt;speakers&lt;/a&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://rinfinance.quantmod.com/travel&#34;&gt;travel accommodations&lt;/a&gt;,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://rinfinance.quantmod.com/register/&#34;&gt;registration&lt;/a&gt;, and&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://rinfinance.quantmod.com/sponsors&#34;&gt;sponsors&lt;/a&gt;, who made the conference possible.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hope to see you there!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R/Finance 2009: Applied Finance with R</title>
+      <link>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</link>
+      <pubDate>Tue, 30 Dec 2008 23:54:00 -0600</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2008/12/rfinance-2009-applied-finance-with-r/</guid>
+      <description>&lt;p&gt;Call for Papers&lt;/p&gt;
+&lt;p&gt;The Finance Department of the University of Illinois at Chicago (UIC),&lt;br&gt;
+the International Center for Futures and Derivatives at UIC, and&lt;br&gt;
+members of the R finance community are pleased to announce&lt;/p&gt;
+&lt;p&gt;R/Finance 2009: Applied Finance with R&lt;/p&gt;
+&lt;p&gt;on April 24 and 25, 2009, in Chicago, IL, USA&lt;/p&gt;
+&lt;p&gt;Confirmed keynote speakers include:&lt;/p&gt;
+&lt;p&gt;Patrick Burns (Burns Statistics)&lt;br&gt;
+David Kane (Kane Capital)&lt;br&gt;
+Roger Koenker (U of Illinois at Urbana/Champaign)&lt;br&gt;
+David Ruppert (Cornell)&lt;br&gt;
+Diethelm Wuertz (ETH Zürich)&lt;br&gt;
+Eric Zivot (U of Washington)&lt;/p&gt;
+&lt;p&gt;We invite all users of R in Finance to submit one-page abstracts or&lt;br&gt;
+complete papers (in txt/pdf/doc format). We encourage papers both on&lt;br&gt;
+academic research topics and related to use of R by Finance practitioners.&lt;/p&gt;
+&lt;p&gt;Presenters are strongly encouraged to provide working R code to accompany&lt;br&gt;
+the presentation/paper. Datasets need not be made public.&lt;/p&gt;
+&lt;p&gt;Please send submissions to &lt;a href=&#34;mailto:committee@RinFinance.com&#34;&gt;committee@RinFinance.com&lt;/a&gt;.&lt;br&gt;
+The submission deadline is January 31st, 2009.&lt;br&gt;
+Submissions will be evaluated and submitters notified via email&lt;br&gt;
+on a rolling basis.&lt;/p&gt;
+&lt;p&gt;Additional details about the conference will be announced as available.&lt;/p&gt;
+&lt;p&gt;For the program committee:&lt;br&gt;
+Gib Bassett, Peter Carl, Dirk Eddelbuettel, John Miller,&lt;br&gt;
+Brian Peterson, Dale Rosenthal, Jeffrey Ryan&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
