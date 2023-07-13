@@ -3,6 +3,7 @@ title: 'RQuantLib 0.4.4 for Windows'
 date: 2018-01-05T14:02:00.001-06:00
 draft: false
 aliases: [ "/2018/01/rquantlib-044-for-windows.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, R]
 ---
 

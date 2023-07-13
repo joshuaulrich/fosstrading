@@ -3,6 +3,7 @@ title: 'Comment on Overnight SPY Anomaly'
 date: 2015-11-16T11:25:00.000-06:00
 draft: false
 aliases: [ "/2015/11/overnight-spy-anomaly.html" ]
+categories: [ Articles ]
 tags : [R]
 ---
 

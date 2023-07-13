@@ -3,6 +3,7 @@ title: 'Introduction to quantstrat'
 date: 2011-08-12T06:48:00.001-05:00
 draft: false
 aliases: [ "/2011/08/introduction-to-quantstrat.html" ]
+categories: [ Articles ]
 tags : [quantstrat]
 ---
 

@@ -3,6 +3,7 @@ title: 'Tactical asset allocation using blotter'
 date: 2009-11-18T21:18:00.015-06:00
 draft: false
 aliases: [ "/2009/11/tactical-asset-allocation-using-blotter.html" ]
+categories: [ Articles ]
 tags : [blotter, Code]
 ---
 

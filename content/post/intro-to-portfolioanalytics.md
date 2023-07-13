@@ -3,6 +3,7 @@ title: 'Introduction to PortfolioAnalytics'
 date: 2014-03-29T12:25:00.002-05:00
 draft: false
 aliases: [ "/2014/03/intro-to-portfolioanalytics.html" ]
+categories: [ Articles ]
 tags : [Examples, PortfolioAnalytics, Code, R]
 ---
 

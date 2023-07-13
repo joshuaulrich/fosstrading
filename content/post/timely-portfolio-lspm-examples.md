@@ -3,6 +3,7 @@ title: 'Timely Portfolio: LSPM Examples'
 date: 2011-05-01T13:38:00.002-05:00
 draft: false
 aliases: [ "/2011/05/timely-portfolio-lspm-examples.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

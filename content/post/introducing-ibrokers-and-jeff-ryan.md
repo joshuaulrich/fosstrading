@@ -3,6 +3,7 @@ title: 'Introducing IBrokers (and Jeff Ryan)'
 date: 2010-05-13T14:23:00.030-05:00
 draft: false
 aliases: [ "/2010/05/introducing-ibrokers-and-jeff-ryan.html" ]
+categories: [ Articles ]
 tags : [Interactive Brokers, Historical Data, IBrokers, R, API]
 ---
 

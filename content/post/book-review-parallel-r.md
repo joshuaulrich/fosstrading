@@ -3,6 +3,7 @@ title: 'Book Review: Parallel R'
 date: 2012-06-05T10:31:00.000-05:00
 draft: false
 aliases: [ "/2012/06/book-review-parallel-r.html" ]
+categories: [ Articles ]
 tags : [Reviews, R]
 ---
 

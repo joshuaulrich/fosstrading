@@ -3,6 +3,7 @@ title: 'The R Journal, Volume 3/1'
 date: 2011-06-23T21:00:00.001-05:00
 draft: false
 aliases: [ "/2011/06/r-journal-volume-31.html" ]
+categories: [ Articles ]
 tags : [R]
 ---
 

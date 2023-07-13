@@ -3,6 +3,7 @@ title: 'R/Finance 2015 Call for Papers'
 date: 2014-11-18T13:52:00.000-06:00
 draft: false
 aliases: [ "/2014/11/rfinance-2015-call-for-papers.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

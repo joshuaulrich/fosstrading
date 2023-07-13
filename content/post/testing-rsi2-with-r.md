@@ -3,6 +3,7 @@ title: 'Testing RSI(2) with R, First Steps'
 date: 2009-04-13T22:35:00.002-05:00
 draft: false
 aliases: [ "/2009/04/testing-rsi2-with-r.html" ]
+categories: [ Articles ]
 tags : [Examples, Code]
 ---
 

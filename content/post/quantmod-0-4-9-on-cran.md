@@ -3,6 +3,7 @@ title: 'quantmod 0.4-9 on CRAN'
 date: 2017-06-07T12:25:00.004-05:00
 draft: false
 aliases: [ "/2017/06/quantmod-0-4-9-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Historical Data, Releases, quantmod, R]
 ---
 

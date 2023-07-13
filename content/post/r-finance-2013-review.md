@@ -3,6 +3,7 @@ title: 'R/Finance 2013 Review'
 date: 2013-05-28T08:00:00.000-05:00
 draft: false
 aliases: [ "/2013/05/r-finance-2013-review.html" ]
+categories: [ Articles, Events ]
 tags : [Reviews, Events, R]
 ---
 

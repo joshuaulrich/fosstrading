@@ -3,6 +3,7 @@ title: 'Packages featured with Inference for R'
 date: 2009-05-12T09:22:00.003-05:00
 draft: false
 aliases: [ "/2009/05/packages-featured-with-inference-for-r.html" ]
+categories: [ Articles ]
 tags : [Examples, xts, quantmod, TTR]
 ---
 

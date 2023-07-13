@@ -3,6 +3,7 @@ title: 'DataCamp course: Importing and managing financial data'
 date: 2016-06-17T11:32:00.000-05:00
 draft: false
 aliases: [ "/2016/06/importing-and-managing-financial-data.html" ]
+categories: [ Articles ]
 tags : [quantmod, R]
 ---
 

@@ -3,6 +3,7 @@ title: 'Maximum Probability of Profit'
 date: 2010-04-09T10:04:00.001-05:00
 draft: false
 aliases: [ "/2010/04/maximum-probability-of-profit.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

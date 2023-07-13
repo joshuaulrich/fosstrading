@@ -3,6 +3,7 @@ title: 'Xasax closes shop'
 date: 2009-10-18T11:21:00.003-05:00
 draft: false
 aliases: [ "/2009/10/xasax-closes-shop.html" ]
+categories: [ Articles ]
 tags : [Data]
 ---
 

@@ -3,6 +3,7 @@ title: 'DEoptim in Parallel'
 date: 2012-03-04T20:33:00.000-06:00
 draft: false
 aliases: [ "/2012/03/deoptim-in-parallel.html" ]
+categories: [ Articles ]
 tags : [DEoptim, Releases, R]
 ---
 

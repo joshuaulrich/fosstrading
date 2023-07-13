@@ -3,6 +3,7 @@ title: 'R/Finance 2014 Registration Open'
 date: 2014-03-29T12:24:00.000-05:00
 draft: false
 aliases: [ "/2014/03/rfinance-2014-registration-open.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

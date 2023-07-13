@@ -3,7 +3,8 @@ title: 'Registration for R/Finance 2009 is Open!'
 date: 2009-02-20T12:20:00.000-06:00
 draft: false
 aliases: [ "/2009/02/registration-for-r-finance-2009-is-open.html" ]
-tags : [Events]
+categories: [ Articles, Events ]
+tags : [Events, R]
 ---
 
 The [conference website](http://rinfinance.quantmod.com/) has details on:  

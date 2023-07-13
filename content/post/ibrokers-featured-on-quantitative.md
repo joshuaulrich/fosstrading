@@ -3,6 +3,7 @@ title: 'IBrokers Featured on Quantitative Trading'
 date: 2009-01-17T09:01:00.000-06:00
 draft: false
 aliases: [ "/2009/01/ibrokers-featured-on-quantitative.html" ]
+categories: [ Articles ]
 tags : [IBrokers]
 ---
 

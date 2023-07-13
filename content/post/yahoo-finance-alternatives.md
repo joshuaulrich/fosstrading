@@ -3,6 +3,7 @@ title: 'Yahoo Finance Alternatives'
 date: 2017-06-07T12:20:00.001-05:00
 draft: false
 aliases: [ "/2017/06/yahoo-finance-alternatives.html" ]
+categories: [ Articles ]
 tags : [Historical Data]
 ---
 

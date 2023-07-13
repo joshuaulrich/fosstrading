@@ -3,6 +3,7 @@ title: 'Computational Finance with R on Coursera'
 date: 2012-09-12T10:33:00.003-05:00
 draft: false
 aliases: [ "/2012/09/computational-finance-with-r-on-coursera.html" ]
+categories: [ Articles ]
 tags : [R]
 ---
 

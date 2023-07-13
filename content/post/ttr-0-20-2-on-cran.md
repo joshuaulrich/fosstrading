@@ -3,6 +3,7 @@ title: 'TTR_0.20-2 on CRAN'
 date: 2010-03-30T14:48:00.002-05:00
 draft: false
 aliases: [ "/2010/03/ttr020-2-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [TTR]
 ---
 

@@ -3,6 +3,7 @@ title: 'plot.xts RFC'
 date: 2015-04-20T12:45:00.000-05:00
 draft: false
 aliases: [ "/2015/04/plotxts-rfc.html" ]
+categories: [ Articles ]
 tags : [xts, Releases, R]
 ---
 

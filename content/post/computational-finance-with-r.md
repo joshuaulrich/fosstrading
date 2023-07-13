@@ -3,6 +3,7 @@ title: 'Computational Finance with R'
 date: 2008-12-05T20:39:00.000-06:00
 draft: false
 aliases: [ "/2008/12/computational-finance-with-r.html" ]
+categories: [ Articles ]
 tags : [Events]
 ---
 

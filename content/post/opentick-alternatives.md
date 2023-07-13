@@ -3,6 +3,7 @@ title: 'opentick alternatives'
 date: 2009-11-05T18:54:00.007-06:00
 draft: false
 aliases: [ "/2009/11/opentick-alternatives.html" ]
+categories: [ Articles ]
 tags : [Data]
 ---
 

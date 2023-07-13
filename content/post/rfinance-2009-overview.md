@@ -3,7 +3,8 @@ title: 'R/Finance 2009 Overview'
 date: 2009-04-28T09:26:00.004-05:00
 draft: false
 aliases: [ "/2009/04/rfinance-2009-overview.html" ]
-tags : [Events]
+categories: [ Articles, Events ]
+tags : [Events, R]
 ---
 
 The first international R/Finance 2009 conference in Chicago, IL was a huge success! David Smith from [REvolution Computing](http://www.revolution-computing.com/) has written [a great summary](http://blog.revolution-computing.com/2009/04/rfinance-2009-roundup.html) of the entire event. I'll take the lazy route and point you to his blog post. :)  

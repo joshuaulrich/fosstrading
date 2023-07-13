@@ -3,6 +3,7 @@ title: 'microbenchmark_1.4-7 on CRAN'
 date: 2019-10-10T06:21:00.000-05:00
 draft: false
 aliases: [ "/2019/10/microbenchmark14-7-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, R]
 ---
 

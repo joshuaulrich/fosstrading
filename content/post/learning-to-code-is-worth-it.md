@@ -3,6 +3,7 @@ title: 'Learning to code is worth it'
 date: 2018-08-24T13:03:00.000-05:00
 draft: false
 aliases: [ "/2018/08/learning-to-code-is-worth-it.html" ]
+categories: [ Articles ]
 tags : [Reviews]
 ---
 

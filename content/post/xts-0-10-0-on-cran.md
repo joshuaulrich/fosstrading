@@ -3,6 +3,7 @@ title: 'xts 0.10-0 on CRAN!'
 date: 2017-07-07T14:10:00.003-05:00
 draft: false
 aliases: [ "/2017/07/xts-0-10-0-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [xts, Releases, R]
 ---
 

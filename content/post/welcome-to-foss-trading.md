@@ -3,6 +3,7 @@ title: 'Welcome to FOSS Trading'
 date: 2008-09-28T15:51:00.001-05:00
 draft: false
 aliases: [ "/2008/09/welcome-to-foss-trading.html" ]
+categories: [ Articles ]
 ---
 
 This blog will highlight the development and use of free open-source software to research, test, and trade financial markets.  

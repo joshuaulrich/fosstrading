@@ -3,7 +3,8 @@ title: 'R/Finance 2010: Registration Open'
 date: 2010-02-05T15:46:00.001-06:00
 draft: false
 aliases: [ "/2010/02/rfinance-2010-registration-open.html" ]
-tags : [Events]
+categories: [ Articles, Events ]
+tags : [Events, R]
 ---
 
 As posted by Dirk Eddelbuettel on R-SIG-Finance:  

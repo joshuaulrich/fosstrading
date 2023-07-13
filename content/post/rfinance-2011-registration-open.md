@@ -3,6 +3,7 @@ title: 'R/Finance 2011 Registration Open'
 date: 2011-03-14T16:17:00.000-05:00
 draft: false
 aliases: [ "/2011/03/rfinance-2011-registration-open.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

@@ -3,6 +3,7 @@ title: 'Updated quantmod on CRAN'
 date: 2014-12-15T09:43:00.003-06:00
 draft: false
 aliases: [ "/2014/12/updated-quantmod-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, quantmod, R]
 ---
 

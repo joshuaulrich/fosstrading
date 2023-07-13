@@ -3,6 +3,7 @@ title: 'A New plot.xts'
 date: 2012-08-15T13:52:00.002-05:00
 draft: false
 aliases: [ "/2012/08/a-new-plot-xts.html" ]
+categories: [ Articles ]
 tags : [xts, Code, R]
 ---
 

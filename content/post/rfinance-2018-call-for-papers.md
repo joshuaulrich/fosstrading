@@ -3,6 +3,7 @@ title: 'R/Finance 2018: Call for Papers'
 date: 2018-01-09T11:32:00.001-06:00
 draft: false
 aliases: [ "/2018/01/rfinance-2018-call-for-papers.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

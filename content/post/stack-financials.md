@@ -3,6 +3,7 @@ title: 'Stack Financials: Analyze Financial Statement Data'
 date: 2017-02-14T10:49:00.001-06:00
 draft: false
 aliases: [ "/2017/02/stack-financials.html" ]
+categories: [ Articles ]
 tags : [quantmod, R]
 ---
 

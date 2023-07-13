@@ -3,6 +3,7 @@ title: 'opentick is no more'
 date: 2009-04-17T14:46:00.003-05:00
 draft: false
 aliases: [ "/2009/04/opentick-is-no-more.html" ]
+categories: [ Articles ]
 tags : [Data]
 ---
 

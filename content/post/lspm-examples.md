@@ -3,6 +3,7 @@ title: 'LSPM Examples'
 date: 2010-01-02T15:35:00.001-06:00
 draft: false
 aliases: [ "/2010/01/lspm-examples.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

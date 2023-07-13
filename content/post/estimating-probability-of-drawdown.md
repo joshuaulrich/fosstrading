@@ -3,6 +3,7 @@ title: 'Estimating Probability of Drawdown'
 date: 2010-06-19T20:13:00.001-05:00
 draft: false
 aliases: [ "/2010/06/estimating-probability-of-drawdown.html" ]
+categories: [ Articles ]
 tags : [LSPM, Drawdown]
 ---
 

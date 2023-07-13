@@ -3,7 +3,8 @@ title: 'R/Finance 2009: Applied Finance with R'
 date: 2008-12-30T23:54:00.000-06:00
 draft: false
 aliases: [ "/2008/12/rfinance-2009-applied-finance-with-r.html" ]
-tags : [Events]
+categories: [ Articles, Events ]
+tags : [Events, R]
 ---
 
 Call for Papers  

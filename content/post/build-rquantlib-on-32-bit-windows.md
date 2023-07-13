@@ -3,6 +3,7 @@ title: 'Build RQuantLib on 32-bit Windows'
 date: 2010-12-07T17:20:00.006-06:00
 draft: false
 aliases: [ "/2010/12/build-rquantlib-on-32-bit-windows.html" ]
+categories: [ Articles ]
 tags : [R]
 ---
 

@@ -3,6 +3,7 @@ title: 'Registration for R/Finance 2016 is open!'
 date: 2016-04-11T08:14:00.000-05:00
 draft: false
 aliases: [ "/2016/04/registration-for-rfinance-2016-is-open.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

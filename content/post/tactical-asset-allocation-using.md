@@ -3,6 +3,7 @@ title: 'Tactical asset allocation using quantstrat'
 date: 2011-08-23T20:55:00.000-05:00
 draft: false
 aliases: [ "/2011/08/tactical-asset-allocation-using.html" ]
+categories: [ Articles ]
 tags : [Examples, Code, quantstrat]
 ---
 

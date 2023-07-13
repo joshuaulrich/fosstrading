@@ -3,6 +3,7 @@ title: 'RSI(2) Evaluation'
 date: 2009-06-28T22:02:00.012-05:00
 draft: false
 aliases: [ "/2009/06/rsi2-evaluation.html" ]
+categories: [ Articles ]
 tags : [Examples, Code]
 ---
 

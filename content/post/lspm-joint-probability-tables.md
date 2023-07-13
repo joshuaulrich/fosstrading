@@ -3,6 +3,7 @@ title: 'LSPM Joint Probability Tables'
 date: 2010-05-18T22:30:00.004-05:00
 draft: false
 aliases: [ "/2010/05/lspm-joint-probability-tables.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

@@ -3,6 +3,7 @@ title: 'R/Finance 2018 Registration'
 date: 2018-04-20T13:26:00.000-05:00
 draft: false
 aliases: [ "/2018/04/rfinance-2018-registration.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

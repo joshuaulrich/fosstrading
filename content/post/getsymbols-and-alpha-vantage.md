@@ -3,6 +3,7 @@ title: 'getSymbols and Alpha Vantage'
 date: 2017-10-06T16:12:00.000-05:00
 draft: false
 aliases: [ "/2017/10/getsymbols-and-alpha-vantage.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, quantmod, R]
 ---
 

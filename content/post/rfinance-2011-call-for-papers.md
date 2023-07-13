@@ -3,6 +3,7 @@ title: 'R/Finance 2011 Call for Papers'
 date: 2010-12-26T18:49:00.001-06:00
 draft: false
 aliases: [ "/2010/12/rfinance-2011-call-for-papers.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

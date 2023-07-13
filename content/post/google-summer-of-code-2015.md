@@ -3,6 +3,7 @@ title: 'Google Summer of Code 2015'
 date: 2015-03-03T09:04:00.000-06:00
 draft: false
 aliases: [ "/2015/03/google-summer-of-code-2015.html" ]
+categories: [ Articles ]
 tags : [Events, R]
 ---
 

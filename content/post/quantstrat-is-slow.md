@@ -3,6 +3,7 @@ title: 'quantstrat is slow'
 date: 2013-11-04T06:37:00.000-06:00
 draft: false
 aliases: [ "/2013/11/quantstrat-is-slow.html" ]
+categories: [ Articles ]
 tags : [Code, quantstrat, R]
 ---
 

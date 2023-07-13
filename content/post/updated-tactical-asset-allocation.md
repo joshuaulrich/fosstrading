@@ -3,6 +3,7 @@ title: 'Updated Tactical Asset Allocation Results'
 date: 2010-02-06T22:35:00.002-06:00
 draft: false
 aliases: [ "/2010/02/updated-tactical-asset-allocation.html" ]
+categories: [ Articles ]
 tags : [blotter]
 ---
 

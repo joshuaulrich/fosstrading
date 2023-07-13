@@ -3,6 +3,7 @@ title: 'xts_0.13.0 on CRAN'
 date: 2023-02-21T14:58:00.000-05:00
 draft: false
 aliases: [ "/2023/02/xts-0-13-0-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, xts, R]
 ---
 

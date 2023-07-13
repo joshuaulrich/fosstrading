@@ -3,6 +3,7 @@ title: 'Risk-Opportunity Analysis'
 date: 2010-11-12T09:05:00.002-06:00
 draft: false
 aliases: [ "/2010/11/risk-opportunity-analysis.html" ]
+categories: [ Events ]
 tags : [LSPM, Events]
 ---
 

@@ -3,6 +3,7 @@ title: 'xts 0.11-2 on CRAN'
 date: 2018-11-06T06:35:00.001-06:00
 draft: false
 aliases: [ "/2018/11/xts-011-2-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [xts, Releases, R]
 ---
 

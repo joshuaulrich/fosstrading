@@ -3,7 +3,8 @@ title: 'R/Finance 2009 Presentations Online'
 date: 2009-05-04T10:21:00.002-05:00
 draft: false
 aliases: [ "/2009/05/rfinance-2009-presentations-online.html" ]
-tags : [Events]
+categories: [ Articles, Events ]
+tags : [Events, R]
 ---
 
 Posted to the R-SIG-Finance mailing list today:  

@@ -3,6 +3,7 @@ title: 'RQuantLib Windows binary on CRAN'
 date: 2011-04-04T11:47:00.001-05:00
 draft: false
 aliases: [ "/2011/04/rquantlib-windows-binary-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, R]
 ---
 

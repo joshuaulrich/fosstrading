@@ -3,6 +3,7 @@ title: 'R in Google Summer of Code 2012'
 date: 2012-03-23T13:53:00.000-05:00
 draft: false
 aliases: [ "/2012/03/r-in-google-summer-of-code-2012.html" ]
+categories: [ Articles, Events ]
 tags : [Events, Code, R]
 ---
 

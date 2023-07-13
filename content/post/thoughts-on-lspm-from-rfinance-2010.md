@@ -3,6 +3,7 @@ title: 'Thoughts on LSPM from R/Finance 2010'
 date: 2010-04-18T22:24:00.000-05:00
 draft: false
 aliases: [ "/2010/04/thoughts-on-lspm-from-rfinance-2010.html" ]
+categories: [ Articles ]
 tags : [LSPM, Events]
 ---
 

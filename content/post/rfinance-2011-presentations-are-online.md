@@ -3,6 +3,7 @@ title: 'R/Finance 2011 Presentations are online'
 date: 2011-05-29T18:00:00.001-05:00
 draft: false
 aliases: [ "/2011/05/rfinance-2011-presentations-are-online.html" ]
+categories: [ Articles, Events ]
 tags : [Events, R]
 ---
 

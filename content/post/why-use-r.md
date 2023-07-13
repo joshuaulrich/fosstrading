@@ -3,6 +3,7 @@ title: 'Why Use R?'
 date: 2010-12-14T22:35:00.000-06:00
 draft: false
 aliases: [ "/2010/12/why-use-r.html" ]
+categories: [ Articles ]
 tags : [R]
 ---
 

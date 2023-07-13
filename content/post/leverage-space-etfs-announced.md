@@ -3,6 +3,7 @@ title: 'Leverage Space Indexes Announced'
 date: 2011-04-26T08:39:00.001-05:00
 draft: false
 aliases: [ "/2011/04/leverage-space-etfs-announced.html" ]
+categories: [ Articles ]
 tags : [LSPM]
 ---
 

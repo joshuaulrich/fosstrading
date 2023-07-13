@@ -3,6 +3,7 @@ title: 'LSPM with snow'
 date: 2010-01-10T17:01:00.003-06:00
 draft: false
 aliases: [ "/2010/01/lspm-with-snow.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

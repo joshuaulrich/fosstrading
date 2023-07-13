@@ -3,6 +3,7 @@ title: 'Goodbye Google, Hello Tiingo!'
 date: 2018-04-13T11:14:00.001-05:00
 draft: false
 aliases: [ "/2018/04/goodbye-google-hello-tiingo.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, quantmod, R]
 ---
 

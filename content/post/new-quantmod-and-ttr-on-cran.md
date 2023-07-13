@@ -3,6 +3,7 @@ title: 'New quantmod and TTR on CRAN'
 date: 2015-07-24T16:04:00.000-05:00
 draft: false
 aliases: [ "/2015/07/new-quantmod-and-ttr-on-cran.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, quantmod, TTR, R]
 ---
 

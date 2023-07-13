@@ -3,6 +3,7 @@ title: 'Creating Financial Instrument metadata in R'
 date: 2011-07-27T22:16:00.003-05:00
 draft: false
 aliases: [ "/2011/07/creating-financial-instrument-metadata.html" ]
+categories: [ Articles ]
 tags : [Data, R]
 ---
 

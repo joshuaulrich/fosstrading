@@ -3,6 +3,7 @@ title: 'David Varadi''s RSI(2) alternative'
 date: 2009-07-19T08:38:00.003-05:00
 draft: false
 aliases: [ "/2009/07/david-varadis-rsi2-alternative.html" ]
+categories: [ Articles ]
 tags : [Code]
 ---
 

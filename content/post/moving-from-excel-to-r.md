@@ -3,6 +3,7 @@ title: 'Moving from Excel to R'
 date: 2011-03-05T15:09:00.001-06:00
 draft: false
 aliases: [ "/2011/03/moving-from-excel-to-r.html" ]
+categories: [ Articles ]
 tags : [Excel, R]
 ---
 

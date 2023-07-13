@@ -3,6 +3,7 @@ title: 'How to backtest a strategy in R'
 date: 2011-03-26T09:54:00.001-05:00
 draft: false
 aliases: [ "/2011/03/how-to-backtest-strategy-in-r.html" ]
+categories: [ Articles ]
 tags : [Examples, Excel, R]
 ---
 

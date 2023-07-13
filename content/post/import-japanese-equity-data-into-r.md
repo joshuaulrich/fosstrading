@@ -3,6 +3,7 @@ title: 'Import Japanese equity data into R with quantmod 0.4-4'
 date: 2015-03-10T12:09:00.001-05:00
 draft: false
 aliases: [ "/2015/03/import-japanese-equity-data-into-r.html" ]
+categories: [ R Package Releases ]
 tags : [Releases, quantmod, R]
 ---
 

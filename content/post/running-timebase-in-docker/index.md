@@ -2,6 +2,7 @@
 title: 'Running TimeBase in Docker'
 date: 2023-06-24T10:21:00.000-05:00
 draft: false
+categories: [ Articles ]
 tags : [Data, TimeBase]
 ---
 

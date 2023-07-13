@@ -3,6 +3,7 @@ title: 'RSI(2) with Position Sizing'
 date: 2009-05-01T20:58:00.011-05:00
 draft: false
 aliases: [ "/2009/05/rsi2-with-position-sizing.html" ]
+categories: [ Articles ]
 tags : [Examples, Code]
 ---
 

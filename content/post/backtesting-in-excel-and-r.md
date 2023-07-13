@@ -3,6 +3,7 @@ title: 'Backtesting in Excel and R'
 date: 2011-02-17T18:53:00.004-06:00
 draft: false
 aliases: [ "/2011/02/backtesting-in-excel-and-r.html" ]
+categories: [ Articles ]
 tags : [Examples, Excel, R]
 ---
 

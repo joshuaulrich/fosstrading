@@ -3,6 +3,7 @@ title: 'Mean rolling correlation of XLF constituents'
 date: 2020-09-19T07:23:00.000-05:00
 draft: false
 aliases: [ "/2020/09/xlf-rolling-mean-correlation.html" ]
+categories: [ Articles ]
 tags: [R]
 ---
 

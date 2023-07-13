@@ -3,6 +3,7 @@ title: 'Algorithmic Trading with IBrokers'
 date: 2010-10-25T22:01:00.001-05:00
 draft: false
 aliases: [ "/2010/10/algorithmic-trading-with-ibrokers.html" ]
+categories: [ Articles ]
 tags : [IBrokers]
 ---
 

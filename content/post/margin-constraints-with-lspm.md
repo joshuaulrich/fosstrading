@@ -3,6 +3,7 @@ title: 'Margin Constraints with LSPM'
 date: 2010-08-01T23:31:00.000-05:00
 draft: false
 aliases: [ "/2010/08/margin-constraints-with-lspm.html" ]
+categories: [ Articles ]
 tags : [Examples, LSPM]
 ---
 

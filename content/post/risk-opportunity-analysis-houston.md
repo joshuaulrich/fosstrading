@@ -3,6 +3,7 @@ title: 'Risk-Opportunity Analysis: Houston'
 date: 2011-03-17T11:25:00.003-05:00
 draft: false
 aliases: [ "/2011/03/risk-opportunity-analysis-houston.html" ]
+categories: [ Events ]
 tags : [LSPM, Events]
 ---
 
