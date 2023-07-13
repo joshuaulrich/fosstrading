@@ -116,7 +116,7 @@
     <loc>https://blog.fosstrading.com/2017/06/importing-and-managing-financial-data2/</loc>
     <lastmod>2017-06-21T07:07:00-05:00</lastmod>
   </url><url>
-    <loc>https://blog.fosstrading.com/search/label/HIstorical-Data/</loc>
+    <loc>https://blog.fosstrading.com/search/label/Historical-Data/</loc>
     <lastmod>2017-06-07T12:25:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2017/06/quantmod-0-4-9-on-cran/</loc>
@@ -412,6 +412,8 @@
   </url><url>
     <loc>https://blog.fosstrading.com/2008/09/welcome-to-foss-trading/</loc>
     <lastmod>2008-09-28T15:51:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/non-release-posts/</loc>
   </url><url>
     <loc>https://blog.fosstrading.com/categories/</loc>
   </url><url>
