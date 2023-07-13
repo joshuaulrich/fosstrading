@@ -3,7 +3,7 @@ title: 'Yahoo Finance Alternatives'
 date: 2017-06-07T12:20:00.001-05:00
 draft: false
 aliases: [ "/2017/06/yahoo-finance-alternatives.html" ]
-tags : [HIstorical Data]
+tags : [Historical Data]
 ---
 
 I assume that you're reading this because you are one of many people who were affected by the changes to Yahoo Finance data in May (2017).  Not only did the URL change, but the actual data changed as well!  

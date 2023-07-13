@@ -3,7 +3,7 @@ title: 'quantmod 0.4-9 on CRAN'
 date: 2017-06-07T12:25:00.004-05:00
 draft: false
 aliases: [ "/2017/06/quantmod-0-4-9-on-cran.html" ]
-tags : [HIstorical Data, Releases, quantmod, R]
+tags : [Historical Data, Releases, quantmod, R]
 ---
 
 A new release of [quantmod](http://www.quantmod.com/) is now on [CRAN](https://cran.r-project.org/package=quantmod)! The only change was to address changes to [Yahoo! Finance](https://finance.yahoo.com/) and their effects on `getSymbols.yahoo()`.  GitHub issue [#157](https://github.com/joshuaulrich/quantmod/issues/157) contains some details about the fix implementation.  
