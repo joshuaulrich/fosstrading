@@ -159,19 +159,19 @@ library(rfimport)
 
 # The sym_* functions are a combination of the
 # driver, connection, and query in DBI
-syms <- sym_yahoo("SPY")
+sym <- sym_yahoo("SPY")
 
 # Import some data from Yahoo Finance
-spy <- import_ohlc(syms)
+spy <- import_ohlc(sym)
 ```
 
 ### Symbol specification
 
-The package introduces a new virtual S3 class `"symbol_spec"` as the basis for creating sub-classes that hold all necessary information to connect to a data source. This virtual class allows users to combine symbols from different data sources into a single vector. For example: `import_collection(c(sym_yahoo("SPY"), sym_tiingo("DIA")))` will import data for "SPY" from [Yahoo Finance](https://finance.yahoo.com/) and data for "DIA" from [Tiingo](https://www.tiingo.com/).
+The package introduces a new virtual S3 class `"symbol_spec"` as the basis for creating sub-classes that hold all necessary information to connect to a data source. This virtual class allows users to combine symbols from different data sources into a single vector. For example: `import_ohlc_collection(c(sym_yahoo("SPY"), sym_tiingo("DIA")))` will import data for "SPY" from [Yahoo Finance](https://finance.yahoo.com/) and data for "DIA" from [Tiingo](https://www.tiingo.com/).
 
 Each data source will have its own `symbol_spec` constructor. The constructor will have an argument for the vector of symbols and other arguments for all the other data source connection settings. It will return an object that inherits from the new virtual `symbol_spec` For example `sym_yahoo()` will return a `c("yahoo", "symbol_spec")` class vector.
 
-The help page for the symbol spec constructors can also document the import methods that the data source supports. So `help("sym_yahoo")` would also contain information about `import_ohlc.yahoo()` and `import_collection.yahoo()`. That way, users don't need to know the name of the data source method in order to find its documentation.
+The help page for the symbol spec constructors can also document the import methods that the data source supports. So `help("sym_yahoo")` would also contain information about `import_ohlc.yahoo()` and `import_ohlc_collection.yahoo()`. That way, users don't need to know the name of the data source method in order to find its documentation.
 
 ### Ticker symbology
 
@@ -187,9 +187,9 @@ An easier alternative would be creating a way to map source symbols to user-defi
 
 ### Generic import functions
 
-The package will have generic functions `import_ohlc()` and `import_collection()` to dispatch on `symbol_spec` sub-classes. `import_ohlc()` only handles a single symbol and returns one xts object. `import_collection()` will return a list of xts objects for one or more symbols.
+The package will have generic functions `import_ohlc()` and `import_ohlc_collection()` to dispatch on `symbol_spec` sub-classes. `import_ohlc()` only handles a single symbol and returns one xts object. `import_ohlc_collection()` will return a list of xts objects for one or more symbols.
 
-Other generic import functions may be added in the future. It may make sense to include generic `import` functions that return specific types of data. For example: `import_ohlc()` for open, high, low, close, (adjusted, volume), and `import_bbo()` for best bid and offer.
+Other generic import functions may be added in the future. It may make sense to include generic `import` functions that return specific types of data. For example: `import_statements()` for financial statements, and `import_bbo()` for best bid and offer.
 
 The generics will have a `symbol_spec`, `dates`, `periodicity`, and `...` arguments.
 
@@ -203,7 +203,7 @@ spy <- import_ohlc(sym_yahoo("SPY"), dates = "2021/2022")
 
 # two symbols returned as a list of xts objects
 stocks <- sym_tiingo(c("AAPL", "NFLX")) |>
-    import_collection(dates = "2021-03-01/2022-11-31")
+    import_ohlc_collection(dates = "2021-03-01/2022-11-31")
 ```
 
 The `periodicity` argument specifies the interval between data points (e.g. daily, monthly, 15-minute). The data source determines the possible periodicity values, so the data source method is responsible for ensuring the requested periodicity value is available from the data source. ['rfimport'](https://github.com/joshuaulrich/rfimport/) will provide a standard way to specify the periodicity values. Then the source methods can translate those values into the value source needs. For example, one data source may use "monthly" for monthly data and another may use "months". Users would set `periodicity = "months"` for either source and the source method would translate the value to "monthly".
