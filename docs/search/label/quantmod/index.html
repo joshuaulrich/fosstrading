@@ -90,6 +90,24 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/08/quantmod-0-4-25-on-cran/" rel="bookmark">
+			quantmod_0.4.25 on CRAN
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-08-22T11:41:57-05:00">August 22, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>An updated version of <a href="http://cran.r-project.org/package=quantmod">quantmod</a> is now on <a href="http://cran.r-project.org/">CRAN</a>.
+It includes an awesome new feature that allows you to import up to 7 days of intraday data from Yahoo Finance!</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2023/05/getsymbols-rebooted/" rel="bookmark">
 			getSymbols Rebooted
 			</a>
@@ -250,24 +268,6 @@ getSymbols.FRED() (#141) getSymbols.oanda() (#144) getSymbols.yahoo() (#149) All
 getSymbols.google() also got some love. It now honors all arguments set via setSymbolLookup() (#138), and it correctly parses the date column in non-English locales (#140).
 There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows you to request dividends unadjusted for splits (#128).
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2017/02/stack-financials/" rel="bookmark">
-			Stack Financials: Analyze Financial Statement Data
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-14T10:49:00-06:00">February 14, 2017</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		A quantmod user asked an interesting question on StackOverflow: Looping viewFinancials from quantmod. Basically, they wanted to create a data.frame that contained financial statement data for several companies for several years. I answered their question, and thought others might find the function I wrote useful&hellip; hence, this post!
-I called the function stackFinancials() because it would use getFinancials() and viewFinancials() to pull financial statement data for multiple symbols, and stack them together in long form.
-	</div>
 </article>
 </main>
 
@@ -353,11 +353,11 @@ I called the function stackFinancials() because it would use getFinancials() and
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/quantmod-0-4-22-on-cran/">quantmod_0.4.22 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

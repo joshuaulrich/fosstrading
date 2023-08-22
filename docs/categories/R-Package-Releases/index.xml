@@ -6,7 +6,49 @@
     <description>Recent content in R Package Releases on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Apr 2023 10:54:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/categories/R-Package-Releases/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Aug 2023 11:41:57 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/categories/R-Package-Releases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>quantmod_0.4.25 on CRAN</title>
+      <link>https://blog.fosstrading.com/2023/08/quantmod-0-4-25-on-cran/</link>
+      <pubDate>Tue, 22 Aug 2023 11:41:57 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2023/08/quantmod-0-4-25-on-cran/</guid>
+      <description>&lt;p&gt;An updated version of &lt;a href=&#34;http://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt; is now on &lt;a href=&#34;http://cran.r-project.org/&#34;&gt;CRAN&lt;/a&gt;.
+It includes an awesome new feature that allows you to import up to 7 days of intraday data from Yahoo Finance!&lt;/p&gt;
+&lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;getSymbols.yahoo()&lt;/code&gt; can import up to 7 days of intraday data! Thanks to &lt;a href=&#34;https://github.com/kapsner&#34;&gt;@kapsner&lt;/a&gt; for the report and patch! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/351&#34;&gt;#351&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/381&#34;&gt;#381&lt;/a&gt;) It will throw a warning if you try to request more than 7 days of intraday data, but you can suppress the warning (thanks to &lt;a href=&#34;https://dirk.eddelbuettel.com/&#34;&gt;Dirk Eddelbuettel&lt;/a&gt;). (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/399&#34;&gt;#399&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add warning if &lt;code&gt;getSymbols()&lt;/code&gt; is called with tickers that are reserved words because accessing them requires back-quotes (e.g. &lt;code&gt;NA&lt;/code&gt;). (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/401&#34;&gt;#401&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Fix &lt;code&gt;getQuote.yahoo()&lt;/code&gt; for API changes. Thanks to Ethan B. Smith for the report and patch! Also add error message for users in GDPR countries, since we cannot automatically consent to GDPR and the request fails without consent. (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/392&#34;&gt;#392&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/393&#34;&gt;#393&lt;/a&gt;, &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/395&#34;&gt;#395&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix &lt;code&gt;getQuote.yahoo()&lt;/code&gt; when the user only requested metrics that do not have have a value for &amp;lsquo;regularMarketTime&amp;rsquo;. Set the value to NA in these cases so the output remains the same regardless of whether the endpoint returns a &amp;lsquo;regularMarketTime&amp;rsquo; or not. Thanks to &lt;a href=&#34;https://github.com/mehdiMBH&#34;&gt;@mehdiMBH&lt;/a&gt; for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/255&#34;&gt;#255&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add fields to &lt;code&gt;getQuote.yahoo()&lt;/code&gt; that are returned when no fields are explicitly requested. Thanks to &lt;a href=&#34;https://github.com/Courvoisier13&#34;&gt;@Courvoisier13&lt;/a&gt; for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/335&#34;&gt;#335&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fix &lt;code&gt;allReturns()&lt;/code&gt; when &amp;lsquo;subset&amp;rsquo; is specified. Thanks to &lt;a href=&#34;https://github.com/Panagis1980&#34;&gt;@Panagis1980&lt;/a&gt; for the report! (&lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues/402&#34;&gt;#402&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;hr&gt;
+    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
+
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/quantmod&#34;&gt;[quantmod]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>xts_0.13.1 on CRAN</title>
       <link>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran/</link>
