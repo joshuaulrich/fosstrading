@@ -17,12 +17,9 @@ Rscript -e 'rmarkdown::render("adaptive-asset-allocation-replication.Rmd", rmark
 Rscript -e 'knitr::purl("adaptive-asset-allocation-replication.Rmd")'
 -->
 
-Introduction
-============
-
-The [Adaptive Asset Allocation: A
-Primer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254)
-paper by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
+The paper, ["Adaptive Asset Allocation: A
+Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254)
+by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
 addresses flaws in the traditional application of Modern Portfolio
 Theory related to Strategic Asset Allocation. It shows that estimating
 return and (co)variance parameters over shorter time horizons are

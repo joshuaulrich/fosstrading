@@ -15,10 +15,9 @@
       <guid>https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;The &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254&#34;&gt;Adaptive Asset Allocation: A
-Primer&lt;/a&gt;
-paper by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
+&lt;p&gt;The paper, &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254&#34;&gt;&amp;ldquo;Adaptive Asset Allocation: A
+Primer&amp;rdquo;&lt;/a&gt;
+by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
 addresses flaws in the traditional application of Modern Portfolio
 Theory related to Strategic Asset Allocation. It shows that estimating
 return and (co)variance parameters over shorter time horizons are

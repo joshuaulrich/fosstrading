@@ -173,9 +173,7 @@ returns <- returns["/2014"]
 # optimal sample portfolios to determine the final portfolio.
 ```
 
-# Introduction
-
-The [Adaptive Asset Allocation: A Primer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) paper by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.
+The paper, ["Adaptive Asset Allocation: A Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.
 
 # Data
 
