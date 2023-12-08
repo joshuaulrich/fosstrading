@@ -502,7 +502,6 @@ function(returns, n_days_vol = 20)
     # the covariance matrix is the correlation using all returns, but
     # the volatility of the past 'n_days_vol'
     vol_returns <- last(returns, n_days_vol)
-    sigma <- tcrossprod(apply(vol_returns, 2, sd)) * cor(returns)
     sigma <- cov(vol_returns)
 
     Ra <- as.matrix(returns)
