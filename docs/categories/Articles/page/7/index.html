@@ -90,6 +90,24 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2010/01/lspm-with-snow/" rel="bookmark">
+			LSPM with snow
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-01-10T17:01:00-06:00">January 10, 2010</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		My last post provided examples of how to use the LSPM package. Those who experimented with the code have probably found that constrained optimizations with horizon &gt; 6 have long run-times (when calc.max &gt;= horizon).
+This post will illustrate how the snow package can increase the speed of the probDrawdown() and probRuin() functions on computers with multiple cores. This yields nearly linear improvements in run-times relative to the number of cores.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2010/01/lspm-examples/" rel="bookmark">
 			LSPM Examples
 			</a>
@@ -264,25 +282,6 @@ and presentations are now available on RinFinance.com
 http://www.RinFinance.com/presentations
 We want to thank everyone who traveled to Chicago to make this happen. With nearly 200 attendees, coming from 8 countries and 20+ states in the US, the conference exceeded all of our expectations. A very big thank you to our presenters for taking the time to join us, UIC&rsquo;s International Center for Futures and Derivatives for hosting the event, and our sponsors REvolution Computing and Microsoft for their support.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2009/05/rsi2-with-position-sizing/" rel="bookmark">
-			RSI(2) with Position Sizing
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-05-01T20:58:00-05:00">May 01, 2009</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Though it&rsquo;s more than two weeks later, here&rsquo;s the second post in the series that will demonstrate how to build, test, and implement a trading strategy with R. You can find the first post here.
-The first post replicated this simple RSI(2) strategy from the MarketSci Blog. This second post will demonstrate how to replicate this strategy that scales in/out of RSI(2).
-A couple notes before moving to the code:
-	</div>
 </article>
 </main>
 
@@ -369,11 +368,11 @@ A couple notes before moving to the code:
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

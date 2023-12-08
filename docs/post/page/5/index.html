@@ -90,6 +90,25 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2014/12/updated-quantmod-on-cran/" rel="bookmark">
+			Updated quantmod on CRAN
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-12-15T09:43:00-06:00">December 15, 2014</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		An updated version of quantmod has just been released on CRAN. This is my first submission as the new maintainer. The major change was removing the dependency on the now-archived Defaults package. End-users shouldn&rsquo;t notice a difference, since I basically copied the necessary functionality from Defaults and added it to quantmod.
+There are also several bug fixes. A few worth noting are:
+getSplits adjustOHLC getSymbols (when adjust=TRUE) saveSymbols newTA findValleys 
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/rfinance-2015-call-for-papers/" rel="bookmark">
 			R/Finance 2015 Call for Papers
 			</a>
@@ -256,24 +275,6 @@ We are very excited about the four keynotes by Sanjiv Das, Attilio Meucci, Ryan 
 		An updated version of TTR is now on CRAN. The biggest changes to be aware of are that all moving averages attempt to set colnames, CCI() returns an object with colnames, and the initial gap for SAR() is not hard-coded at 0.01. There are also some much-needed bug fixes - most notably to Yang Zhang volatility, MACD(), SAR(), EMA()/EVWMA(), and adjRatios().
 There are some exciting new features, including a rolling single-factor model function (rollSFM(), based on a prototype from James Toll), a runPercentRank() function from Charlie Friedemann, stoch() and WPR() return 0.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2012/09/computational-finance-with-r-on-coursera/" rel="bookmark">
-			Computational Finance with R on Coursera
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-09-12T10:33:00-05:00">September 12, 2012</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		If you haven&rsquo;t signed up for the Introduction to Computational Finance and Financial Econometrics course taught by Eric Zivot on Coursera, it&rsquo;s not too late. The second week just started and the first assignments aren&rsquo;t due until September 18th.
-Join me in getting a good refresher on basic statistics, simulation and bootstrapping, linear algebra, and learning more about portfolio optimization, efficient portfolios, and risk budgeting.
-	</div>
 </article>
 </main>
 
@@ -360,11 +361,11 @@ Join me in getting a good refresher on basic statistics, simulation and bootstra
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>

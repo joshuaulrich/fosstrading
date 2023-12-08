@@ -90,6 +90,24 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2017/10/getsymbols-and-alpha-vantage/" rel="bookmark">
+			getSymbols and Alpha Vantage
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-06T16:12:00-05:00">October 06, 2017</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Thanks to Paul Teetor, getSymbols() can now import data from Alpha Vantage! This feature is part of the quantmod 0.4-11 release, and provides another another data source to avoid any Yahoo Finance API changes*.
+Alpha Vantage is a free web service that provides real-time and historical equity data. They provide daily, weekly, and monthly history for both domestic and international markets, with up to 20 years of history. Dividend and split adjusted close prices are available for daily data.
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2017/07/xts-0-10-0-on-cran/" rel="bookmark">
 			xts 0.10-0 on CRAN!
 			</a>
@@ -257,24 +275,6 @@ We are working on a whole new course series on applied finance using R. This new
 Note that registration fees will increase by 50% at the end of early registration on May 6, 2016.
 The conference will take place on May 20 and 21, at UIC in Chicago. Building on the success of the previous conferences in 2009-2015, we expect more than 250 attendees from around the world.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2015/11/overnight-spy-anomaly/" rel="bookmark">
-			Comment on Overnight SPY Anomaly
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T11:25:00-06:00">November 16, 2015</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This post is in response to Michael Harris&rsquo; Price Action Lab post, where he uses some simple R code to evaluate the asymmetry of returns from the day&rsquo;s close to the following day&rsquo;s open. I&rsquo;d like to respond to his 3 notes, which I&rsquo;ve included below.
-The R backtest assumes fractional shares. This means that equity is fully invested at each new position. This is important because it affects drawdown calculations.
-	</div>
 </article>
 </main>
 
@@ -361,11 +361,11 @@ The R backtest assumes fractional shares. This means that equity is fully invest
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/xts-0-13-1-on-cran/">xts_0.13.1 on CRAN</a></li>
 		</ul>
 	</div>
 </div>
