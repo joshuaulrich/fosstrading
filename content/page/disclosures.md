@@ -41,14 +41,14 @@ However, non-personally identifiable visitor information may be provided to othe
 Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.
 
 #### Google
-Google's advertising requirements can be summed up by [Google's Advertising Principles](http://google%27s%20advertising%20principles/). They are put in place to provide a positive experience for users. 
+[Google Ads policies](https://support.google.com/adspolicy/answer/6008942) are put in place to provide a positive experience for users. 
 
-We use Google AdSense Advertising on our website. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
+We use Google Ads on our website. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
 
-We, along with third-party vendors such as Google, use first-party cookies (such as the Google Analytics cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding user interactions with ad impressions and other ad service functions as they relate to our website.
+We, along with third-party vendors such as Google, use first-party cookies (such as the Google Ads cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding user interactions with ad impressions and other ad service functions as they relate to our website.
 
 Opting out:
-Users can set preferences for how Google advertises to you using the Google Ad Settings page. Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google Analytics Opt Out Browser add on.
+Users can set preferences for how Google advertises to you using the [Google Ad Settings](https://safety.google/privacy/ads-and-data/) page. Alternatively, you can opt out by visiting the [Network Advertising Initiative Opt Out](https://optout.networkadvertising.org/?c=1) page or by using the [Google Analytics Opt Out Browser Add-on](https://tools.google.com/dlpage/gaoptout)
 
 #### CAN SPAM Act
 The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations. 
