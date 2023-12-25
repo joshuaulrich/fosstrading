@@ -30,6 +30,8 @@ Asset Allocation portfolio construction methodology that uses the new
 parameter estimates to substantially improve performance relative to
 Strategic Asset Allocation.
 
+<!--more-->
+
 Data
 ====
 
