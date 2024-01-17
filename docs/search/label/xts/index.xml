@@ -602,7 +602,8 @@ This is a breaking change, but it&amp;rsquo;s only in the C API, and is required
       <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012&#34;&gt;Google Summer of Code (2012)&lt;/a&gt; project to &lt;a href=&#34;http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts&#34;&gt;extend xts&lt;/a&gt; has produced a very promising new plot.xts function.  Michael Weylandt, the project&amp;rsquo;s student, wrote &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; to &lt;a href=&#34;http://draft.blogger.com/%20https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;request impressions, feedback, and bug reports&lt;/a&gt;.  The function is housed in the &lt;a href=&#34;https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/?root=xts&#34;&gt;xtsExtra&lt;/a&gt; package of the &lt;a href=&#34;https://r-forge.r-project.org/projects/xts&#34;&gt;xts project on R-Forge&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please try &lt;code&gt;xtsExtra::plot.xts&lt;/code&gt; and let us know what you think.  A sample of the eye-candy produced by the code in &lt;a href=&#34;https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;Michael&amp;rsquo;s email&lt;/a&gt; is below.  Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!  Great work Michael!&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2012/08/a-new-plot-xts/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2012/08/a-new-plot-xts/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

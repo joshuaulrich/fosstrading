@@ -58,14 +58,17 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    --network timebase-net &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    epam/timebase-ws-server:1.0
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can use the Web Admin&amp;rsquo;s interface once it&amp;rsquo;s running. Open a browser and enter localhost:8099 in the address bar. That should take you to the login page. The default username/password is &lt;code&gt;admin/admin&lt;/code&gt;. After you log in you should see a page like the image below. The only stream in the database is &lt;code&gt;events#&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-initial-contents.png&#34;&gt;&lt;img src=&#34;web-admin-initial-contents.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-initial-contents.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-initial-contents.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Although this post is about &lt;em&gt;running&lt;/em&gt; TimeBase and the Web Admin, I&amp;rsquo;m not going to end it without showing a little functionality.&lt;/p&gt;
 &lt;h3 id=&#34;import-data&#34;&gt;Import Data&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s import some data and take a quick look. Download this &lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/running-timebase-in-docker-bars.qsmsg.gz&#34;&gt;data file&lt;/a&gt;. Then click the &amp;lsquo;Import from QSMSG&amp;rsquo; button highlighted in red below.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-import-qsmsg-button.png&#34;&gt;&lt;img src=&#34;web-admin-import-qsmsg-button.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-import-qsmsg-button.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-import-qsmsg-button.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Navigate to the file you just downloaded. Name the stream &amp;lsquo;bars&amp;rsquo;. You can leave the Description and Symbols fields blank, and leave Periodicity set to irregular.&lt;/p&gt;
 &lt;p&gt;Now click the &amp;lsquo;bars&amp;rsquo; stream in the navigation bar on the left. You should see the data you just imported. It looks like the image below.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-after-importing-bars.png&#34;&gt;&lt;img src=&#34;web-admin-after-importing-bars.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-after-importing-bars.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-after-importing-bars.png&#34; alt=&#34;&#34; &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Okay, that&amp;rsquo;s all for now. In the next post, we&amp;rsquo;ll set up a data connector and watch some data stream into the database!&lt;/p&gt;
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
