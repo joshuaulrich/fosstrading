@@ -15,7 +15,7 @@ post="adaptive-asset-allocation-replication" %}}, by running the
 analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
 [Dale Rosenthal](https://www.q36llc.com/) for helpful comments.
 
-<!-- more -->
+<!--more-->
 
 The paper uses the 5 portfolios below. Each section of this post will
 give a short description of the portfolio construction and then focus on
