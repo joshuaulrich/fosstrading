@@ -13,8 +13,8 @@
       <pubDate>Wed, 17 Jan 2024 13:02:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/</guid>
-      <description>&lt;p&gt;This post extends the replication in the previous post, &lt;a href=&#34;https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/&#34;&gt;Adaptive Asset Allocation Replication&lt;/a&gt;
-, by running the
+      <description>&lt;p&gt;This post extends the replication from the &lt;a href=&#34;https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/&#34;&gt;Adaptive Asset Allocation Replication&lt;/a&gt;
+post by running the
 analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
 &lt;a href=&#34;https://www.q36llc.com/&#34;&gt;Dale Rosenthal&lt;/a&gt; for helpful comments.&lt;/p&gt;
 &lt;p&gt;The paper uses the 5 portfolios below. Each section of this post will
@@ -584,8 +584,8 @@ particular sample period.&lt;/p&gt;
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;The paper, &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254&#34;&gt;&amp;ldquo;Adaptive Asset Allocation: A
-Primer&amp;rdquo;&lt;/a&gt;
-by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
+Primer&amp;rdquo;&lt;/a&gt; by
+Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
 addresses flaws in the traditional application of Modern Portfolio
 Theory related to Strategic Asset Allocation. It shows that estimating
 return and (co)variance parameters over shorter time horizons are
@@ -1010,8 +1010,9 @@ Primer&lt;/a&gt;.
 The differences in the data sets seem to create a significant difference
 in performance during 2012, but otherwise produce similar results on
 monthly data.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ll investigate the out-of-sample performance of this strategy in a
-future post. Thanks for reading!&lt;/p&gt;</description>
+&lt;p&gt;See &lt;a href=&#34;https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/&#34;&gt;Adaptive Asset Allocation Extension&lt;/a&gt;
+for an analysis of the
+out-of-sample performance of these portfolios. Thanks for reading!&lt;/p&gt;</description>
     </item>
     
     <item>
