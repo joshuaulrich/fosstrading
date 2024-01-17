@@ -90,6 +90,28 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2010/03/ttr-0-20-2-on-cran/" rel="bookmark">
+			TTR_0.20-2 on CRAN
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-03-30T14:48:00-05:00">March 30, 2010</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		An updated version of TTR is now on CRAN. It fixes a couple bugs and includes a couple handy tweaks. Here&rsquo;s the full contents of the CHANGES file:
+TTR version 0.20-2
+Changes from version 0.20-1
+NEW FEATURES:
+Added VWAP() and VWMA() (thanks to Brian Peterson) Added v-factor generalization to DEMA() (thanks to John Gavin) CHANGES:
+Updated volatility() to handle univariate case of calc='close' (thanks to Cedrick Johnson) Moved EMA(), SAR(), and wilderSum() from .
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2010/02/updated-tactical-asset-allocation/" rel="bookmark">
 			Updated Tactical Asset Allocation Results
 			</a>
@@ -261,25 +283,6 @@ An introduction to LSPM &ndash; a new R package that implements Ralph Vince&rsqu
 Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2) Here&rsquo;s the R code:
 DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34; # columns, in that order. # This is David Varadi&#39;s alternative to the RSI(2).
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2009/06/rsi2-evaluation/" rel="bookmark">
-			RSI(2) Evaluation
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-28T22:02:00-05:00">June 28, 2009</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This post continues the series of investigating the RSI(2) strategy. The first post replicated this simple RSI(2) strategy from the MarketSci Blog using R. The second post showed how to replicate the strategy that scales in/out of RSI(2).
-If you like the RSI(2), be sure to check out David Varadi&rsquo;s RSI(2) alternative!
-This post will use the PerformanceAnalytics package to evaluate the rules that scale in/out of positions. I&rsquo;ve also provided a simple function that provides some summary statistics.
-	</div>
 </article>
 </main>
 
@@ -366,11 +369,11 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 		</ul>
 	</div>
 </div>
@@ -420,7 +423,7 @@ This post will use the PerformanceAnalytics package to evaluate the rules that s
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 FOSS Trading.
+			&copy; 2024 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

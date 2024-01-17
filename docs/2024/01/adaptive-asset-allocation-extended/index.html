@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Adaptive Asset Allocation Extended - FOSS Trading</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Adaptive Asset Allocation Extended" />
+<meta property="og:description" content="This post extends the replication in the previous post, Adaptive Asset Allocation Replication , by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to Dale Rosenthal for helpful comments.
+The paper uses the 5 portfolios below. Each section of this post will give a short description of the portfolio construction and then focus on comparing the OOS results with the replicated and original results. See the other post for details on the data and portfolio construction methodologies." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-01-17T13:02:00-05:00" />
+<meta property="article:modified_time" content="2024-01-17T13:02:00-05:00" />
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/fosstrading.css"><link rel="stylesheet" href="/syntax.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LT26X44HDL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-LT26X44HDL', { 'anonymize_ip': false });
+}
+</script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="FOSS Trading" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">FOSS Trading</div>
+					<div class="logo__tagline">Algorithmic Trading with Free Open Source Software</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/disclosures/">
+				
+				<span class="menu__text">Disclosures</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/page/enterprise/">
+				
+				<span class="menu__text">For Enterprise</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Adaptive Asset Allocation Extended</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-01-17T13:02:00-05:00">January 17, 2024</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
+	</span>
+</div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p>This post extends the replication in the previous post, <a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a>
+, by running the
+analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
+<a href="https://www.q36llc.com/">Dale Rosenthal</a> for helpful comments.</p>
+<!-- raw HTML omitted -->
+<p>The paper uses the 5 portfolios below. Each section of this post will
+give a short description of the portfolio construction and then focus on
+comparing the OOS results with the replicated and original results. See
+the other post for details on the data and portfolio construction
+methodologies.</p>
+<ol>
+<li>Equal weight of all asset classes</li>
+<li>Equal risk contribution of all asset classes</li>
+<li>Equal weight of highest momentum asset classes</li>
+<li>Equal risk contribution of highest momentum asset classes</li>
+<li>Minimum variance of highest momentum asset classes</li>
+</ol>
+<p>The table below summarizes the date ranges for each sample period in
+this post.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Period</th>
+<th style="text-align:left">Date Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Replication</td>
+<td style="text-align:left">Feb 1996 - Dec 2014</td>
+</tr>
+<tr>
+<td style="text-align:left">OOS</td>
+<td style="text-align:left">Jan 2015 - Dec 2023</td>
+</tr>
+<tr>
+<td style="text-align:left">2015-2021</td>
+<td style="text-align:left">Jan 2015 - Dec 2021</td>
+</tr>
+<tr>
+<td style="text-align:left">Full</td>
+<td style="text-align:left">Feb 1996 - Dec 2023</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-equal-weight-portfolio-of-all-asset-classes">1. Equal weight portfolio of all asset classes</h3>
+<p>This portfolio assumes no knowledge of expected relative asset class
+performance, risk, or correlation. It holds each asset class in equal
+weight and is rebalanced monthly.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_equal_weight</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">returns[</span><span class="s">&#34;/2014&#34;</span><span class="n">]</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ro_equal_weight</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">returns[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_equal_weight</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">monthly_returns</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">merge</span><span class="p">(</span><span class="n">Replication</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rr_equal_weight</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OOS</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_equal_weight</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;2015-2021&#34;</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_equal_weight[</span><span class="s">&#34;2015/2021&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Full</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rf_equal_weight</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">check.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">&lt;-</span> <span class="nf">strat_summary</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chart_performance</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="s">&#34;All Assets - Equal Weight&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="equal_weight-1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Replication</th>
+<th style="text-align:right">OOS</th>
+<th style="text-align:right">2015-2021</th>
+<th style="text-align:right">Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Annualized Return</td>
+<td style="text-align:right">0.079</td>
+<td style="text-align:right">0.049</td>
+<td style="text-align:right">0.072</td>
+<td style="text-align:right">0.069</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Std Dev</td>
+<td style="text-align:right">0.115</td>
+<td style="text-align:right">0.107</td>
+<td style="text-align:right">0.091</td>
+<td style="text-align:right">0.112</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Sharpe (Rf=0%)</td>
+<td style="text-align:right">0.684</td>
+<td style="text-align:right">0.456</td>
+<td style="text-align:right">0.794</td>
+<td style="text-align:right">0.614</td>
+</tr>
+<tr>
+<td style="text-align:left">Worst Drawdown</td>
+<td style="text-align:right">-0.377</td>
+<td style="text-align:right">-0.210</td>
+<td style="text-align:right">-0.136</td>
+<td style="text-align:right">-0.377</td>
+</tr>
+</tbody>
+</table>
+<p>The OOS annualized return is significantly less than the prior results.
+This is largely due to the -21.0% drawdown that started in 2022 and is
+still ongoing. Note that the full-period results are very similar to the
+replication results, though the 2022 drawdown did decrease the
+annualized return by ~1%.</p>
+<p>Note that this portfolio&rsquo;s results from 2015-2021 are very similar to
+the replication results through the end of 2014. That suggests the 2022
+bear market is the main cause for the lower return in the OOS results.</p>
+<h3 id="2-equal-risk-contribution-using-all-asset-classes">2. Equal risk contribution using all asset classes</h3>
+<p>The next portfolio assumes the investor has some knowledge of each
+asset&rsquo;s risk, but still no knowledge of relative performance or
+correlations. So each asset in this portfolio is given a weight
+proportional to its historical relative risk, with the hope that each
+asset will contribute the same amount of risk to the overall portfolio
+in the future.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_equal_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_equal_risk</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ro_equal_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_equal_risk</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_equal_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_equal_risk</span><span class="p">(</span><span class="n">r_full</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">monthly_returns</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">merge</span><span class="p">(</span><span class="n">Replication</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rr_equal_risk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OOS</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_equal_risk[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;2015-2021&#34;</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_equal_risk[</span><span class="s">&#34;2015/2021&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Full</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rf_equal_risk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">check.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">&lt;-</span> <span class="nf">strat_summary</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chart_performance</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="s">&#34;All Assets - Equal Risk&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="equal_risk-1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Replication</th>
+<th style="text-align:right">OOS</th>
+<th style="text-align:right">2015-2021</th>
+<th style="text-align:right">Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Annualized Return</td>
+<td style="text-align:right">0.086</td>
+<td style="text-align:right">0.034</td>
+<td style="text-align:right">0.056</td>
+<td style="text-align:right">0.069</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Std Dev</td>
+<td style="text-align:right">0.073</td>
+<td style="text-align:right">0.082</td>
+<td style="text-align:right">0.061</td>
+<td style="text-align:right">0.076</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Sharpe (Rf=0%)</td>
+<td style="text-align:right">1.177</td>
+<td style="text-align:right">0.411</td>
+<td style="text-align:right">0.908</td>
+<td style="text-align:right">0.903</td>
+</tr>
+<tr>
+<td style="text-align:left">Worst Drawdown</td>
+<td style="text-align:right">-0.142</td>
+<td style="text-align:right">-0.194</td>
+<td style="text-align:right">-0.071</td>
+<td style="text-align:right">-0.194</td>
+</tr>
+</tbody>
+</table>
+<p>Like the equal weight portfolio, this portfolio&rsquo;s OOS annualized return
+is significantly lower than the replication results. This methodology
+only slightly reduced the 2022 drawdown to -19.4% from -21.0%. The
+maximum drawdown is now in 2022 instead of during the 2008 financial
+crisis.</p>
+<p>In the replication, the equal risk contribution portfolio results are
+better than the equal weight portfolio, but the OOS equal risk portfolio
+did not show similar improvement. Even when 2022 is excluded, the OOS
+equal risk portfolio didn&rsquo;t show improvement over the equal weight
+portfolio.</p>
+<h3 id="3-equal-weight-portfolio-of-highest-momentum-asset-classes">3. Equal weight portfolio of highest momentum asset classes</h3>
+<p>The next portfolio assumes the investor has some knowledge of each
+asset&rsquo;s returns, but still no knowledge of risk or correlations. Asset
+returns are based on 6-month momentum (approximately 120 days). Momentum
+is re-estimated every month and only the top 5 assets are included in
+the portfolio.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_eq_wt</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ro_momo_eq_wt</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_momo_eq_wt</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum</span><span class="p">(</span><span class="n">r_full</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">monthly_returns</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">merge</span><span class="p">(</span><span class="n">Replication</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rr_momo_eq_wt</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OOS</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_eq_wt[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;2015-2021&#34;</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_eq_wt[</span><span class="s">&#34;2015/2021&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Full</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rf_momo_eq_wt</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">check.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">&lt;-</span> <span class="nf">strat_summary</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chart_performance</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="s">&#34;Top 5 Momentum Assets - Equal Weight&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="top5_momo_eq_weight-1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Replication</th>
+<th style="text-align:right">OOS</th>
+<th style="text-align:right">2015-2021</th>
+<th style="text-align:right">Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Annualized Return</td>
+<td style="text-align:right">0.142</td>
+<td style="text-align:right">0.051</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.112</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Std Dev</td>
+<td style="text-align:right">0.114</td>
+<td style="text-align:right">0.104</td>
+<td style="text-align:right">0.092</td>
+<td style="text-align:right">0.111</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Sharpe (Rf=0%)</td>
+<td style="text-align:right">1.243</td>
+<td style="text-align:right">0.488</td>
+<td style="text-align:right">0.884</td>
+<td style="text-align:right">1.001</td>
+</tr>
+<tr>
+<td style="text-align:left">Worst Drawdown</td>
+<td style="text-align:right">-0.199</td>
+<td style="text-align:right">-0.213</td>
+<td style="text-align:right">-0.114</td>
+<td style="text-align:right">-0.213</td>
+</tr>
+</tbody>
+</table>
+<p>Again, the OOS annualized return is significantly worse than the
+replicated results. The OOS results for this portfolio show improvement
+in the Sharpe Ratio versus the equal risk contribution portfolio (2).
+The replicated results for this portfolio showed similar improvements
+versus portfolio (2).</p>
+<p>In the replication, equal weight momentum results are better than the
+equal risk portfolio. But the OOS equal weight momentum portfolio did
+not show significant improvement versus the equal risk portfolio (2),
+and is roughly the same as the equal weight portfolio (1).</p>
+<h3 id="4-equal-risk-contribution-portfolio-of-highest-momentum-asset-classes">4. Equal risk contribution portfolio of highest momentum asset classes</h3>
+<p>The previous two portfolios estimated asset weights using either
+risk-based or momentum-based weights. This next portfolio combines
+estimates of momentum-based performance and accounts for asset class
+risk differences. It includes the top 5 asset classes based on 6-month
+returns and weights them using the same equal risk contribution method
+as portfolio (2).</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_eq_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_equal_risk</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ro_momo_eq_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_equal_risk</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_momo_eq_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_equal_risk</span><span class="p">(</span><span class="n">r_full</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">monthly_returns</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">merge</span><span class="p">(</span><span class="n">Replication</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rr_momo_eq_risk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OOS</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_eq_risk[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;2015-2021&#34;</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_eq_risk[</span><span class="s">&#34;2015/2021&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Full</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rf_momo_eq_risk</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">check.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">&lt;-</span> <span class="nf">strat_summary</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chart_performance</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="s">&#34;Top 5 Momentum Assets - Equal Risk&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="top_momo_eq_risk-1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Replication</th>
+<th style="text-align:right">OOS</th>
+<th style="text-align:right">2015-2021</th>
+<th style="text-align:right">Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Annualized Return</td>
+<td style="text-align:right">0.137</td>
+<td style="text-align:right">0.050</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.108</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Std Dev</td>
+<td style="text-align:right">0.102</td>
+<td style="text-align:right">0.095</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.100</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Sharpe (Rf=0%)</td>
+<td style="text-align:right">1.335</td>
+<td style="text-align:right">0.528</td>
+<td style="text-align:right">0.991</td>
+<td style="text-align:right">1.076</td>
+</tr>
+<tr>
+<td style="text-align:left">Worst Drawdown</td>
+<td style="text-align:right">-0.119</td>
+<td style="text-align:right">-0.204</td>
+<td style="text-align:right">-0.086</td>
+<td style="text-align:right">-0.204</td>
+</tr>
+</tbody>
+</table>
+<p>It&rsquo;s clear that the major cause of the poorer OOS performance of this
+portfolio is due to how it handled the 2022 bear market. This portfolio
+handled the 2008 financial crisis very well, but it offered almost no
+protection in 2022. This indicates there was a fundamental difference in
+2008 versus 2022 in the asset classes held by this portfolio.</p>
+<p>Similar to the replicated results, the reduction in risk is the main
+benefit of this portfolio versus the equal weight momentum portfolio
+(3). That said, the OOS performance of this portfolio only showed
+marginal improvement versus portfolio (3). Even more notable, this
+portfolio didn&rsquo;t improve returns versus the simple equal weight
+portfolio (1) during the OOS period like it did for the replication
+period.</p>
+<h3 id="5-minimum-variance-portfolio-of-highest-momentum-asset-classes">5. Minimum variance portfolio of highest momentum asset classes</h3>
+<p>The final portfolio takes the above concepts and adds correlation
+estimates to the portfolio optimization. The previous portfolios only
+accounted for the relative risk between the asset classes, but not the
+correlation between the assets&rsquo; returns. This portfolio accounts for the
+correlations between asset classes by finding the minimum variance
+portfolio.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_min_var</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_min_var</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ro_momo_min_var</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_min_var</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rf_momo_min_var</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_min_var</span><span class="p">(</span><span class="n">r_full</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">monthly_returns</span> <span class="o">&lt;-</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">merge</span><span class="p">(</span><span class="n">Replication</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rr_momo_min_var</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OOS</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_min_var[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;2015-2021&#34;</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">ro_momo_min_var[</span><span class="s">&#34;2015/2021&#34;</span><span class="n">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Full</span> <span class="o">=</span> <span class="nf">to_monthly_returns</span><span class="p">(</span><span class="n">rf_momo_min_var</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">check.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">&lt;-</span> <span class="nf">strat_summary</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">chart_performance</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="s">&#34;Above Average 6mo Momentum - Min Var&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img src="top_momo_min_var-1.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Replication</th>
+<th style="text-align:right">OOS</th>
+<th style="text-align:right">2015-2021</th>
+<th style="text-align:right">Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Annualized Return</td>
+<td style="text-align:right">0.137</td>
+<td style="text-align:right">0.054</td>
+<td style="text-align:right">0.086</td>
+<td style="text-align:right">0.109</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Std Dev</td>
+<td style="text-align:right">0.103</td>
+<td style="text-align:right">0.094</td>
+<td style="text-align:right">0.084</td>
+<td style="text-align:right">0.100</td>
+</tr>
+<tr>
+<td style="text-align:left">Annualized Sharpe (Rf=0%)</td>
+<td style="text-align:right">1.330</td>
+<td style="text-align:right">0.568</td>
+<td style="text-align:right">1.025</td>
+<td style="text-align:right">1.086</td>
+</tr>
+<tr>
+<td style="text-align:left">Worst Drawdown</td>
+<td style="text-align:right">-0.102</td>
+<td style="text-align:right">-0.190</td>
+<td style="text-align:right">-0.080</td>
+<td style="text-align:right">-0.190</td>
+</tr>
+</tbody>
+</table>
+<p>Recall that the original results for portfolio (5) showed improved
+return and lower maximum drawdown versus portfolio (4), while the
+replicated results were almost the same for both portfolios. The OOS
+results for these two portfolios are also very similar. In the 2015-2021
+period, portfolio (5) has a slightly higher return and Sharpe ratio and
+lower max drawdown than portfolio (4).</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>For all 5 portfolios, the OOS results are not as good as the replicated
+results. This is largely due to the 2022 bear market, but the 2015-2021
+results still aren&rsquo;t as good as the replicated results.</p>
+<p><a href="https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/">Allocate
+Smartly</a>
+has a great post about 2022 bear market performance of tactical asset
+allocation (TAA) strategies like this one. They find that TAA strategies
+did poorly in the 2022 bear market if they assumed intermediate and
+long-term bonds provide diversification from risky assets. Both risk
+assets and longer duration bonds performed poorly in 2022, and the
+correlation between bonds and equities was positive instead of negative
+like they have been historically.</p>
+<p>In a future post, I may investigate how these portfolios would have
+performed if they were allowed to allocate to short-term Treasuries.</p>
+<h3 id="portfolio-results-by-sample-period">Portfolio Results by Sample Period</h3>
+<p>This section contains tables with results for all portfolios in a
+particular sample period.</p>
+<h5 id="replication-period">Replication Period</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Equal Weight</th>
+<th style="text-align:right">Equal Risk</th>
+<th style="text-align:right">Momo Eq Weight</th>
+<th style="text-align:right">Momo Eq Risk</th>
+<th style="text-align:right">Momo Min Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ann. Return</td>
+<td style="text-align:right">0.079</td>
+<td style="text-align:right">0.086</td>
+<td style="text-align:right">0.142</td>
+<td style="text-align:right">0.137</td>
+<td style="text-align:right">0.137</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Std Dev</td>
+<td style="text-align:right">0.115</td>
+<td style="text-align:right">0.073</td>
+<td style="text-align:right">0.114</td>
+<td style="text-align:right">0.102</td>
+<td style="text-align:right">0.103</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Sharpe</td>
+<td style="text-align:right">0.684</td>
+<td style="text-align:right">1.177</td>
+<td style="text-align:right">1.243</td>
+<td style="text-align:right">1.335</td>
+<td style="text-align:right">1.330</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Drawdown</td>
+<td style="text-align:right">-0.377</td>
+<td style="text-align:right">-0.142</td>
+<td style="text-align:right">-0.199</td>
+<td style="text-align:right">-0.119</td>
+<td style="text-align:right">-0.102</td>
+</tr>
+</tbody>
+</table>
+<h5 id="out-of-sample-2015-2023">Out-of-Sample: 2015-2023</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Equal Weight</th>
+<th style="text-align:right">Equal Risk</th>
+<th style="text-align:right">Momo Eq Weight</th>
+<th style="text-align:right">Momo Eq Risk</th>
+<th style="text-align:right">Momo Min Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ann. Return</td>
+<td style="text-align:right">0.049</td>
+<td style="text-align:right">0.034</td>
+<td style="text-align:right">0.051</td>
+<td style="text-align:right">0.050</td>
+<td style="text-align:right">0.054</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Std Dev</td>
+<td style="text-align:right">0.107</td>
+<td style="text-align:right">0.082</td>
+<td style="text-align:right">0.104</td>
+<td style="text-align:right">0.095</td>
+<td style="text-align:right">0.094</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Sharpe</td>
+<td style="text-align:right">0.456</td>
+<td style="text-align:right">0.411</td>
+<td style="text-align:right">0.488</td>
+<td style="text-align:right">0.528</td>
+<td style="text-align:right">0.568</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Drawdown</td>
+<td style="text-align:right">-0.210</td>
+<td style="text-align:right">-0.194</td>
+<td style="text-align:right">-0.213</td>
+<td style="text-align:right">-0.204</td>
+<td style="text-align:right">-0.190</td>
+</tr>
+</tbody>
+</table>
+<h5 id="out-of-sample-2015-2021">Out-of-Sample: 2015-2021</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:right">Equal Weight</th>
+<th style="text-align:right">Equal Risk</th>
+<th style="text-align:right">Momo Eq Weight</th>
+<th style="text-align:right">Momo Eq Risk</th>
+<th style="text-align:right">Momo Min Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ann. Return</td>
+<td style="text-align:right">0.072</td>
+<td style="text-align:right">0.056</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.086</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Std Dev</td>
+<td style="text-align:right">0.091</td>
+<td style="text-align:right">0.061</td>
+<td style="text-align:right">0.092</td>
+<td style="text-align:right">0.081</td>
+<td style="text-align:right">0.084</td>
+</tr>
+<tr>
+<td style="text-align:left">Ann. Sharpe</td>
+<td style="text-align:right">0.794</td>
+<td style="text-align:right">0.908</td>
+<td style="text-align:right">0.884</td>
+<td style="text-align:right">0.991</td>
+<td style="text-align:right">1.025</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Drawdown</td>
+<td style="text-align:right">-0.136</td>
+<td style="text-align:right">-0.071</td>
+<td style="text-align:right">-0.114</td>
+<td style="text-align:right">-0.086</td>
+<td style="text-align:right">-0.080</td>
+</tr>
+</tbody>
+</table>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/R/" rel="tag">R</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "foss-trading" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://blog.fosstrading.com/">
+	</form>
+</div>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:12px Helvetica,Arial,sans-serif;}
+ 
+</style>
+<div id="mc_embed_signup">
+    <form action="https://fosstrading.us9.list-manage.com/subscribe/post?u=3b596c57e89d8db5b99daf4ff&amp;id=85bd253834&amp;f_id=00fb1ce1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+        <div id="mc_embed_signup_scroll">
+        <h2>Subscribe to email updates</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-FNAME">First Name </label>
+<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group">
+<label for="mce-LNAME">Last Name </label>
+<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+<span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+</div>
+<div class="mc-field-group input-group">
+    <strong>Interests </strong>
+    <ul><li>
+    <input type="checkbox" value="1" name="group[53492][1]" id="mce-group[53492]-53492-0" checked>
+    <label for="mce-group[53492]-53492-0">R package releases</label>
+</li>
+<li>
+    <input type="checkbox" value="2" name="group[53492][2]" id="mce-group[53492]-53492-1" checked>
+    <label for="mce-group[53492]-53492-1">Everything else</label>
+</li>
+</ul>
+    <span id="mce-group[53492]-HELPERTEXT" class="helper_text"></span>
+</div>
+<div id="mce-responses" class="clear foot">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>    
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b596c57e89d8db5b99daf4ff_85bd253834" tabindex="-1" value=""></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                <p class="brandingLogo"><a href="http://eepurl.com/ijAV-n" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<div>
+    <a title="CSI Data" href="https://www.csicheckout.com/cgi-bin/ua_order_form_nw.pl?referrer=JU" target="_blank">
+      <img class="csi-banner" src="/csi-banner.jpg" width="160" height="312">
+    </a>
+    <p>
+</div>
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/search/label/API/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Code/" title="Code">Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/DEoptim/" title="DEoptim">DEoptim</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Drawdown/" title="Drawdown">Drawdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Events/" title="Events">Events</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Examples/" title="Examples">Examples</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Excel/" title="Excel">Excel</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Historical-Data/" title="Historical Data">Historical Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/IBrokers/" title="IBrokers">IBrokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Interactive-Brokers/" title="Interactive Brokers">Interactive Brokers</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/LSPM/" title="LSPM">LSPM</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/PortfolioAnalytics/" title="PortfolioAnalytics">PortfolioAnalytics</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/R/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Releases/" title="Releases">Releases</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/Reviews/" title="Reviews">Reviews</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TTR/" title="TTR">TTR</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/TimeBase/" title="TimeBase">TimeBase</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/blotter/" title="blotter">blotter</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantmod/" title="quantmod">quantmod</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/quantstrat/" title="quantstrat">quantstrat</a>
+		<a class="widget-taglist__link widget__link btn" href="/search/label/xts/" title="xts">xts</a>
+	</div>
+</div><div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7427704313601198"
+       data-ad-slot="6372007789"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2024 FOSS Trading.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

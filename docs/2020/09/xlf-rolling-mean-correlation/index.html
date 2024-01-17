@@ -100,7 +100,7 @@ if (!doNotTrack) {
 <p>I like xts so much, I took over as maintainer when Jeff Ryan started working at a hedge fund that didn&rsquo;t let him continue open source work.</p>
 <p>TTR is the first R package I wrote, all the way back in 2007, before R was cool! TTR has a collection of over 50 technical indicators for creating technical trading rules. The package also provides fast implementations of common rolling-window functions, and several volatility calculations. We&rsquo;re going to use its <code>ROC()</code> (rate-of-change) function to calculate returns.</p>
 <p>Okay, now on to the code!</p>
-<p>First, you need to download the data set. I&rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can <a href="/xlfprices.RData">download it here</a>. The Robot Wealth post used the <a href="https://www.tidyverse.org/">tidyverse</a>, so data is saved in the preferred tidyverse data structure, a <a href="https://cran.r-project.org/package=tibble">tibble</a> (it&rsquo;s like a data frame).</p>
+<p>First, you need to download the data set. I&rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can <a href="https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation/xlfprices.RData">download it here</a>. The Robot Wealth post used the <a href="https://www.tidyverse.org/">tidyverse</a>, so data is saved in the preferred tidyverse data structure, a <a href="https://cran.r-project.org/package=tibble">tibble</a> (it&rsquo;s like a data frame).</p>
 <p>Then we need to <code>load()</code> the data into our R session. This creates an object named <code>prices_xlf</code>. The data has 10 columns: ticker, date, open, high, low,close, volume, dividends, closeunadj, inSPX. We&rsquo;re only going to use the date, ticker, and close columns.</p>
 <p>Now we need to convert the <code>prices_xlf</code> tibble into an xts object. There&rsquo;s no standard way to do this, because tibbles don&rsquo;t have a pre-defined structure for financial time series. We can &lsquo;read&rsquo; and convert the data from a tibble into a zoo object using <code>read.zoo()</code>. We&rsquo;re using <code>read.zoo()</code> because there isn&rsquo;t a <code>read.xts()</code> function, and we can easily convert from zoo to xts using <code>as.xts()</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">load</span><span class="p">(</span><span class="s">&#34;xlfprices.RData&#34;</span><span class="p">)</span>
@@ -313,11 +313,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 		</ul>
 	</div>
 </div>
@@ -367,7 +367,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 FOSS Trading.
+			&copy; 2024 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

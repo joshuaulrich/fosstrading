@@ -8,7 +8,20 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="Adaptive Asset Allocation Replication" />
-<meta property="og:description" content="The paper, &ldquo;Adaptive Asset Allocation: A Primer&rdquo; by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation." />
+<meta property="og:description" content="
+
+The paper, &ldquo;Adaptive Asset Allocation: A
+Primer&rdquo;
+by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
+addresses flaws in the traditional application of Modern Portfolio
+Theory related to Strategic Asset Allocation. It shows that estimating
+return and (co)variance parameters over shorter time horizons are
+superior to estimates over long-term horizons because parameter
+estimates vary substantially over time. Longer-term estimates do not
+account for this variability in the short-term. They propose an Adaptive
+Asset Allocation portfolio construction methodology that uses the new
+parameter estimates to substantially improve performance relative to
+Strategic Asset Allocation." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-12-08T13:00:00-05:00" />
@@ -220,9 +233,9 @@ to monthly. The <code>strat_summary()</code> function uses the
 <a href="https://cran.r-project.org/package=PerformanceAnalytics">PerformanceAnalytics</a>
 package to calculate summary statistics to compare with the original
 paper. The file
-<a href="adaptive-asset-allocation-replication.R">adaptive-asset-allocation-replication.R</a>
+<a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/adaptive-asset-allocation-replication.R">adaptive-asset-allocation-replication.R</a>
 contains all the code used in this analysis, and the
-<a href="returns.rds">returns.rds</a> function contains the data.</p>
+<a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/returns.rds">returns.rds</a> function contains the data.</p>
 <h3 id="1-equal-weight-portfolio-of-all-asset-classes">1. Equal weight portfolio of all asset classes</h3>
 <p>The baseline example assumes no knowledge of expected relative asset
 class performance, risk, or correlation. The results below are based on
@@ -526,7 +539,6 @@ in performance during 2012, but otherwise produce similar results on
 monthly data.</p>
 <p>I&rsquo;ll investigate the out-of-sample performance of this strategy in a
 future post. Thanks for reading!</p>
-
 		</div>
 		<footer class="post__footer">
 			
@@ -644,11 +656,11 @@ future post. Thanks for reading!</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 		</ul>
 	</div>
 </div>
@@ -698,7 +710,7 @@ future post. Thanks for reading!</p>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 FOSS Trading.
+			&copy; 2024 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

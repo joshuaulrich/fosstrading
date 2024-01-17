@@ -103,9 +103,9 @@
 &lt;p&gt;First find the &amp;ldquo;Configure&amp;rdquo; menu in the TWS&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Next we check for &amp;ldquo;Enable ActiveX and Socket Clients&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&amp;#43;shot&amp;#43;2010-05-13&amp;#43;at&amp;#43;3.10.30&amp;#43;142PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To add a &amp;ldquo;Trusted IP&amp;rdquo; click on &amp;ldquo;All API Settings&amp;hellip;&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&amp;#43;shot&amp;#43;2010-05-13&amp;#43;at&amp;#43;3.10.43&amp;#43;749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IBrokers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;

@@ -140,14 +140,14 @@ if (!doNotTrack) {
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --network timebase-net <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    epam/timebase-ws-server:1.0
 </span></span></code></pre></div><p>We can use the Web Admin&rsquo;s interface once it&rsquo;s running. Open a browser and enter localhost:8099 in the address bar. That should take you to the login page. The default username/password is <code>admin/admin</code>. After you log in you should see a page like the image below. The only stream in the database is <code>events#</code>.</p>
-<p><a href="web-admin-initial-contents.png"><img src="web-admin-initial-contents.png" alt=""></a></p>
+<p><a href="https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-initial-contents.png"><img src="web-admin-initial-contents.png" alt=""></a></p>
 <p>Although this post is about <em>running</em> TimeBase and the Web Admin, I&rsquo;m not going to end it without showing a little functionality.</p>
 <h3 id="import-data">Import Data</h3>
-<p>Let&rsquo;s import some data and take a quick look. Download this <a href="running-timebase-in-docker-bars.qsmsg.gz">data file</a>. Then click the &lsquo;Import from QSMSG&rsquo; button highlighted in red below.</p>
-<p><a href="web-admin-import-qsmsg-button.png"><img src="web-admin-import-qsmsg-button.png" alt=""></a></p>
+<p>Let&rsquo;s import some data and take a quick look. Download this <a href="https://blog.fosstrading.com/2023/06/running-timebase-in-docker/running-timebase-in-docker-bars.qsmsg.gz">data file</a>. Then click the &lsquo;Import from QSMSG&rsquo; button highlighted in red below.</p>
+<p><a href="https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-import-qsmsg-button.png"><img src="web-admin-import-qsmsg-button.png" alt=""></a></p>
 <p>Navigate to the file you just downloaded. Name the stream &lsquo;bars&rsquo;. You can leave the Description and Symbols fields blank, and leave Periodicity set to irregular.</p>
 <p>Now click the &lsquo;bars&rsquo; stream in the navigation bar on the left. You should see the data you just imported. It looks like the image below.</p>
-<p><a href="web-admin-after-importing-bars.png"><img src="web-admin-after-importing-bars.png" alt=""></a></p>
+<p><a href="https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-after-importing-bars.png"><img src="web-admin-after-importing-bars.png" alt=""></a></p>
 <p>Okay, that&rsquo;s all for now. In the next post, we&rsquo;ll set up a data connector and watch some data stream into the database!</p>
 <div class="container" role="main">
   <div class="row">
@@ -293,11 +293,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 		</ul>
 	</div>
 </div>
@@ -347,7 +347,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 FOSS Trading.
+			&copy; 2024 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -6,7 +6,577 @@
     <description>Recent content in Articles on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Dec 2023 13:00:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/categories/Articles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2024 13:02:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/categories/Articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adaptive Asset Allocation Extended</title>
+      <link>https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/</link>
+      <pubDate>Wed, 17 Jan 2024 13:02:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/</guid>
+      <description>&lt;p&gt;This post extends the replication in the previous post, &lt;a href=&#34;https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/&#34;&gt;Adaptive Asset Allocation Replication&lt;/a&gt;
+, by running the
+analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
+&lt;a href=&#34;https://www.q36llc.com/&#34;&gt;Dale Rosenthal&lt;/a&gt; for helpful comments.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The paper uses the 5 portfolios below. Each section of this post will
+give a short description of the portfolio construction and then focus on
+comparing the OOS results with the replicated and original results. See
+the other post for details on the data and portfolio construction
+methodologies.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Equal weight of all asset classes&lt;/li&gt;
+&lt;li&gt;Equal risk contribution of all asset classes&lt;/li&gt;
+&lt;li&gt;Equal weight of highest momentum asset classes&lt;/li&gt;
+&lt;li&gt;Equal risk contribution of highest momentum asset classes&lt;/li&gt;
+&lt;li&gt;Minimum variance of highest momentum asset classes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The table below summarizes the date ranges for each sample period in
+this post.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Period&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Date Range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Replication&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Feb 1996 - Dec 2014&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;OOS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Jan 2015 - Dec 2023&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2015-2021&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Jan 2015 - Dec 2021&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Full&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Feb 1996 - Dec 2023&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;1-equal-weight-portfolio-of-all-asset-classes&#34;&gt;1. Equal weight portfolio of all asset classes&lt;/h3&gt;
+&lt;p&gt;This portfolio assumes no knowledge of expected relative asset class
+performance, risk, or correlation. It holds each asset class in equal
+weight and is rebalanced monthly.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rr_equal_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;returns[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/2014&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;returns[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rf_equal_weight&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;as.xts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replication&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rr_equal_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;OOS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;2015-2021&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_weight[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/2021&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf_equal_weight&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;check.names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;stats&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;strat_summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;chart_performance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;All Assets - Equal Weight&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;equal_weight-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Replication&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;OOS&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;2015-2021&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Full&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.079&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.049&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.072&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.069&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.115&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.107&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.091&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.112&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Sharpe (Rf=0%)&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.684&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.456&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.794&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.614&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Worst Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.377&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.210&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.136&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.377&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The OOS annualized return is significantly less than the prior results.
+This is largely due to the -21.0% drawdown that started in 2022 and is
+still ongoing. Note that the full-period results are very similar to the
+replication results, though the 2022 drawdown did decrease the
+annualized return by ~1%.&lt;/p&gt;
+&lt;p&gt;Note that this portfolio&amp;rsquo;s results from 2015-2021 are very similar to
+the replication results through the end of 2014. That suggests the 2022
+bear market is the main cause for the lower return in the OOS results.&lt;/p&gt;
+&lt;h3 id=&#34;2-equal-risk-contribution-using-all-asset-classes&#34;&gt;2. Equal risk contribution using all asset classes&lt;/h3&gt;
+&lt;p&gt;The next portfolio assumes the investor has some knowledge of each
+asset&amp;rsquo;s risk, but still no knowledge of relative performance or
+correlations. So each asset in this portfolio is given a weight
+proportional to its historical relative risk, with the hope that each
+asset will contribute the same amount of risk to the overall portfolio
+in the future.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rr_equal_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_oos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rf_equal_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_full&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replication&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rr_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;OOS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_risk[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;2015-2021&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_equal_risk[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/2021&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;check.names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;stats&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;strat_summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;chart_performance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;All Assets - Equal Risk&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;equal_risk-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Replication&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;OOS&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;2015-2021&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Full&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.086&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.034&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.056&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.069&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.073&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.082&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.061&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.076&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Sharpe (Rf=0%)&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.177&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.411&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.908&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.903&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Worst Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.142&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.194&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.071&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.194&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Like the equal weight portfolio, this portfolio&amp;rsquo;s OOS annualized return
+is significantly lower than the replication results. This methodology
+only slightly reduced the 2022 drawdown to -19.4% from -21.0%. The
+maximum drawdown is now in 2022 instead of during the 2008 financial
+crisis.&lt;/p&gt;
+&lt;p&gt;In the replication, the equal risk contribution portfolio results are
+better than the equal weight portfolio, but the OOS equal risk portfolio
+did not show similar improvement. Even when 2022 is excluded, the OOS
+equal risk portfolio didn&amp;rsquo;t show improvement over the equal weight
+portfolio.&lt;/p&gt;
+&lt;h3 id=&#34;3-equal-weight-portfolio-of-highest-momentum-asset-classes&#34;&gt;3. Equal weight portfolio of highest momentum asset classes&lt;/h3&gt;
+&lt;p&gt;The next portfolio assumes the investor has some knowledge of each
+asset&amp;rsquo;s returns, but still no knowledge of risk or correlations. Asset
+returns are based on 6-month momentum (approximately 120 days). Momentum
+is re-estimated every month and only the top 5 assets are included in
+the portfolio.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_eq_wt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_wt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_oos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_eq_wt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_full&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replication&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_eq_wt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;OOS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_wt[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;2015-2021&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_wt[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/2021&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_eq_wt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;check.names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;stats&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;strat_summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;chart_performance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Top 5 Momentum Assets - Equal Weight&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;top5_momo_eq_weight-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Replication&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;OOS&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;2015-2021&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Full&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.142&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.051&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.112&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.114&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.104&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.092&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Sharpe (Rf=0%)&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.243&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.488&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.884&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Worst Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.199&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.213&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.114&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.213&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Again, the OOS annualized return is significantly worse than the
+replicated results. The OOS results for this portfolio show improvement
+in the Sharpe Ratio versus the equal risk contribution portfolio (2).
+The replicated results for this portfolio showed similar improvements
+versus portfolio (2).&lt;/p&gt;
+&lt;p&gt;In the replication, equal weight momentum results are better than the
+equal risk portfolio. But the OOS equal weight momentum portfolio did
+not show significant improvement versus the equal risk portfolio (2),
+and is roughly the same as the equal weight portfolio (1).&lt;/p&gt;
+&lt;h3 id=&#34;4-equal-risk-contribution-portfolio-of-highest-momentum-asset-classes&#34;&gt;4. Equal risk contribution portfolio of highest momentum asset classes&lt;/h3&gt;
+&lt;p&gt;The previous two portfolios estimated asset weights using either
+risk-based or momentum-based weights. This next portfolio combines
+estimates of momentum-based performance and accounts for asset class
+risk differences. It includes the top 5 asset classes based on 6-month
+returns and weights them using the same equal risk contribution method
+as portfolio (2).&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_eq_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_oos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_eq_risk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_equal_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_full&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replication&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_eq_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;OOS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_risk[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;2015-2021&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_eq_risk[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/2021&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_eq_risk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;check.names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;stats&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;strat_summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;chart_performance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Top 5 Momentum Assets - Equal Risk&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;top_momo_eq_risk-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Replication&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;OOS&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;2015-2021&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Full&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.137&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.050&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.102&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.095&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Sharpe (Rf=0%)&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.335&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.528&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.991&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.076&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Worst Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.119&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.204&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.086&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.204&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;It&amp;rsquo;s clear that the major cause of the poorer OOS performance of this
+portfolio is due to how it handled the 2022 bear market. This portfolio
+handled the 2008 financial crisis very well, but it offered almost no
+protection in 2022. This indicates there was a fundamental difference in
+2008 versus 2022 in the asset classes held by this portfolio.&lt;/p&gt;
+&lt;p&gt;Similar to the replicated results, the reduction in risk is the main
+benefit of this portfolio versus the equal weight momentum portfolio
+(3). That said, the OOS performance of this portfolio only showed
+marginal improvement versus portfolio (3). Even more notable, this
+portfolio didn&amp;rsquo;t improve returns versus the simple equal weight
+portfolio (1) during the OOS period like it did for the replication
+period.&lt;/p&gt;
+&lt;h3 id=&#34;5-minimum-variance-portfolio-of-highest-momentum-asset-classes&#34;&gt;5. Minimum variance portfolio of highest momentum asset classes&lt;/h3&gt;
+&lt;p&gt;The final portfolio takes the above concepts and adds correlation
+estimates to the portfolio optimization. The previous portfolios only
+accounted for the relative risk between the asset classes, but not the
+correlation between the assets&amp;rsquo; returns. This portfolio accounts for the
+correlations between asset classes by finding the minimum variance
+portfolio.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_min_var&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_min_var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_rep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_min_var&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_min_var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_oos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_min_var&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;portf_top_momentum_min_var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r_full&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Replication&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rr_momo_min_var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;OOS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_min_var[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;s&#34;&gt;&amp;#34;2015-2021&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ro_momo_min_var[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;2015/2021&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;Full&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;to_monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rf_momo_min_var&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;check.names&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;stats&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;strat_summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;chart_performance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;monthly_returns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Above Average 6mo Momentum - Min Var&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;top_momo_min_var-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Replication&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;OOS&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;2015-2021&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Full&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.137&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.054&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.086&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.109&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.103&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.094&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.084&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Annualized Sharpe (Rf=0%)&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.330&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.568&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.025&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.086&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Worst Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.102&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.190&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.080&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.190&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Recall that the original results for portfolio (5) showed improved
+return and lower maximum drawdown versus portfolio (4), while the
+replicated results were almost the same for both portfolios. The OOS
+results for these two portfolios are also very similar. In the 2015-2021
+period, portfolio (5) has a slightly higher return and Sharpe ratio and
+lower max drawdown than portfolio (4).&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;For all 5 portfolios, the OOS results are not as good as the replicated
+results. This is largely due to the 2022 bear market, but the 2015-2021
+results still aren&amp;rsquo;t as good as the replicated results.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/&#34;&gt;Allocate
+Smartly&lt;/a&gt;
+has a great post about 2022 bear market performance of tactical asset
+allocation (TAA) strategies like this one. They find that TAA strategies
+did poorly in the 2022 bear market if they assumed intermediate and
+long-term bonds provide diversification from risky assets. Both risk
+assets and longer duration bonds performed poorly in 2022, and the
+correlation between bonds and equities was positive instead of negative
+like they have been historically.&lt;/p&gt;
+&lt;p&gt;In a future post, I may investigate how these portfolios would have
+performed if they were allowed to allocate to short-term Treasuries.&lt;/p&gt;
+&lt;h3 id=&#34;portfolio-results-by-sample-period&#34;&gt;Portfolio Results by Sample Period&lt;/h3&gt;
+&lt;p&gt;This section contains tables with results for all portfolios in a
+particular sample period.&lt;/p&gt;
+&lt;h5 id=&#34;replication-period&#34;&gt;Replication Period&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Min Var&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.079&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.086&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.142&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.137&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.137&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.115&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.073&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.114&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.102&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.103&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Sharpe&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.684&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.177&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.243&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.335&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.330&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Max Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.377&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.142&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.199&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.119&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.102&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;out-of-sample-2015-2023&#34;&gt;Out-of-Sample: 2015-2023&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Min Var&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.049&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.034&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.051&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.050&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.054&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.107&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.082&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.104&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.095&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.094&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Sharpe&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.456&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.411&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.488&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.528&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.568&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Max Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.210&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.194&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.213&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.204&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.190&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;out-of-sample-2015-2021&#34;&gt;Out-of-Sample: 2015-2021&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Equal Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Weight&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Eq Risk&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Momo Min Var&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Return&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.072&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.056&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.086&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Std Dev&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.091&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.061&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.092&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.081&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.084&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Ann. Sharpe&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.794&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.908&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.884&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.991&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.025&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Max Drawdown&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.136&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.071&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.114&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.086&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-0.080&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
     <item>
       <title>Adaptive Asset Allocation Replication</title>
       <link>https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/</link>
@@ -138,9 +708,9 @@ to monthly. The &lt;code&gt;strat_summary()&lt;/code&gt; function uses the
 &lt;a href=&#34;https://cran.r-project.org/package=PerformanceAnalytics&#34;&gt;PerformanceAnalytics&lt;/a&gt;
 package to calculate summary statistics to compare with the original
 paper. The file
-&lt;a href=&#34;adaptive-asset-allocation-replication.R&#34;&gt;adaptive-asset-allocation-replication.R&lt;/a&gt;
+&lt;a href=&#34;https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/adaptive-asset-allocation-replication.R&#34;&gt;adaptive-asset-allocation-replication.R&lt;/a&gt;
 contains all the code used in this analysis, and the
-&lt;a href=&#34;returns.rds&#34;&gt;returns.rds&lt;/a&gt; function contains the data.&lt;/p&gt;
+&lt;a href=&#34;https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/returns.rds&#34;&gt;returns.rds&lt;/a&gt; function contains the data.&lt;/p&gt;
 &lt;h3 id=&#34;1-equal-weight-portfolio-of-all-asset-classes&#34;&gt;1. Equal weight portfolio of all asset classes&lt;/h3&gt;
 &lt;p&gt;The baseline example assumes no knowledge of expected relative asset
 class performance, risk, or correlation. The results below are based on
@@ -443,8 +1013,7 @@ The differences in the data sets seem to create a significant difference
 in performance during 2012, but otherwise produce similar results on
 monthly data.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll investigate the out-of-sample performance of this strategy in a
-future post. Thanks for reading!&lt;/p&gt;
-</description>
+future post. Thanks for reading!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -498,14 +1067,14 @@ future post. Thanks for reading!&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    --network timebase-net &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    epam/timebase-ws-server:1.0
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can use the Web Admin&amp;rsquo;s interface once it&amp;rsquo;s running. Open a browser and enter localhost:8099 in the address bar. That should take you to the login page. The default username/password is &lt;code&gt;admin/admin&lt;/code&gt;. After you log in you should see a page like the image below. The only stream in the database is &lt;code&gt;events#&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;web-admin-initial-contents.png&#34;&gt;&lt;img src=&#34;web-admin-initial-contents.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-initial-contents.png&#34;&gt;&lt;img src=&#34;web-admin-initial-contents.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Although this post is about &lt;em&gt;running&lt;/em&gt; TimeBase and the Web Admin, I&amp;rsquo;m not going to end it without showing a little functionality.&lt;/p&gt;
 &lt;h3 id=&#34;import-data&#34;&gt;Import Data&lt;/h3&gt;
-&lt;p&gt;Let&amp;rsquo;s import some data and take a quick look. Download this &lt;a href=&#34;running-timebase-in-docker-bars.qsmsg.gz&#34;&gt;data file&lt;/a&gt;. Then click the &amp;lsquo;Import from QSMSG&amp;rsquo; button highlighted in red below.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;web-admin-import-qsmsg-button.png&#34;&gt;&lt;img src=&#34;web-admin-import-qsmsg-button.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s import some data and take a quick look. Download this &lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/running-timebase-in-docker-bars.qsmsg.gz&#34;&gt;data file&lt;/a&gt;. Then click the &amp;lsquo;Import from QSMSG&amp;rsquo; button highlighted in red below.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-import-qsmsg-button.png&#34;&gt;&lt;img src=&#34;web-admin-import-qsmsg-button.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Navigate to the file you just downloaded. Name the stream &amp;lsquo;bars&amp;rsquo;. You can leave the Description and Symbols fields blank, and leave Periodicity set to irregular.&lt;/p&gt;
 &lt;p&gt;Now click the &amp;lsquo;bars&amp;rsquo; stream in the navigation bar on the left. You should see the data you just imported. It looks like the image below.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;web-admin-after-importing-bars.png&#34;&gt;&lt;img src=&#34;web-admin-after-importing-bars.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2023/06/running-timebase-in-docker/web-admin-after-importing-bars.png&#34;&gt;&lt;img src=&#34;web-admin-after-importing-bars.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Okay, that&amp;rsquo;s all for now. In the next post, we&amp;rsquo;ll set up a data connector and watch some data stream into the database!&lt;/p&gt;
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
@@ -823,7 +1392,7 @@ The &lt;a href=&#34;https://medium.com/prooftrading/proof-engineering-the-algori
 &lt;p&gt;I like xts so much, I took over as maintainer when Jeff Ryan started working at a hedge fund that didn&amp;rsquo;t let him continue open source work.&lt;/p&gt;
 &lt;p&gt;TTR is the first R package I wrote, all the way back in 2007, before R was cool! TTR has a collection of over 50 technical indicators for creating technical trading rules. The package also provides fast implementations of common rolling-window functions, and several volatility calculations. We&amp;rsquo;re going to use its &lt;code&gt;ROC()&lt;/code&gt; (rate-of-change) function to calculate returns.&lt;/p&gt;
 &lt;p&gt;Okay, now on to the code!&lt;/p&gt;
-&lt;p&gt;First, you need to download the data set. I&amp;rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can &lt;a href=&#34;https://blog.fosstrading.com/xlfprices.RData&#34;&gt;download it here&lt;/a&gt;. The Robot Wealth post used the &lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidyverse&lt;/a&gt;, so data is saved in the preferred tidyverse data structure, a &lt;a href=&#34;https://cran.r-project.org/package=tibble&#34;&gt;tibble&lt;/a&gt; (it&amp;rsquo;s like a data frame).&lt;/p&gt;
+&lt;p&gt;First, you need to download the data set. I&amp;rsquo;ve saved a copy of the data that was provided in the Robot Wealth post. You can &lt;a href=&#34;https://blog.fosstrading.com/2020/09/xlf-rolling-mean-correlation/xlfprices.RData&#34;&gt;download it here&lt;/a&gt;. The Robot Wealth post used the &lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidyverse&lt;/a&gt;, so data is saved in the preferred tidyverse data structure, a &lt;a href=&#34;https://cran.r-project.org/package=tibble&#34;&gt;tibble&lt;/a&gt; (it&amp;rsquo;s like a data frame).&lt;/p&gt;
 &lt;p&gt;Then we need to &lt;code&gt;load()&lt;/code&gt; the data into our R session. This creates an object named &lt;code&gt;prices_xlf&lt;/code&gt;. The data has 10 columns: ticker, date, open, high, low,close, volume, dividends, closeunadj, inSPX. We&amp;rsquo;re only going to use the date, ticker, and close columns.&lt;/p&gt;
 &lt;p&gt;Now we need to convert the &lt;code&gt;prices_xlf&lt;/code&gt; tibble into an xts object. There&amp;rsquo;s no standard way to do this, because tibbles don&amp;rsquo;t have a pre-defined structure for financial time series. We can &amp;lsquo;read&amp;rsquo; and convert the data from a tibble into a zoo object using &lt;code&gt;read.zoo()&lt;/code&gt;. We&amp;rsquo;re using &lt;code&gt;read.zoo()&lt;/code&gt; because there isn&amp;rsquo;t a &lt;code&gt;read.xts()&lt;/code&gt; function, and we can easily convert from zoo to xts using &lt;code&gt;as.xts()&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;xlfprices.RData&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -1653,11 +2222,11 @@ As always, the conference ended with one more trip to &lt;a href=&#34;http://jak
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;minSD.opt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;risk.col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StdDev&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chart.assets&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;   
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Min SD Optimization&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;ylim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.0083&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.06&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-102.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-102.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics/post/images/unnamed-chunk-102.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-102.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meanES.opt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chart.assets&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;   
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Mean ES Optimization&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;ylim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.0083&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0.16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-101.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-101.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2014/03/intro-to-portfolioanalytics/post/images/unnamed-chunk-101.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/unnamed-chunk-101.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard deviation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.&lt;/p&gt;
 &lt;p&gt;The PortfolioAnalytics package is part of the &lt;a href=&#34;http://r-forge.r-project.org/projects/returnanalytics/&#34;&gt;ReturnAnalytics&lt;/a&gt; project on R-Forge. For additional examples and information, refer to the several vignettes and demos are provided in the package.&lt;/p&gt;
 </description>
@@ -1770,11 +2339,11 @@ The first presentation was by keynote &lt;a href=&#34;http://www.rinfinance.com
 &lt;p&gt;Friday food/networking:&lt;br&gt;
 The two-hour conference reception at UIC was a great time to have a drink, talk with speakers, and say hello to people I had never met in person.  Next was the (optional) dinner at &lt;a href=&#34;http://www.trumphotelcollection.com/chicago/rooftop-restaurants-chicago.php&#34;&gt;The Terrace at Trump&lt;/a&gt;.  Unfortunately, it was cold and windy, so we only spent 15-20 minutes on the terrace before moving inside.  The food was fantastic, but the conversations were even better.&lt;/p&gt;
 &lt;p&gt;Saturday talks:&lt;/p&gt;
-&lt;p&gt;I missed the first block of lightning talks.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/Azzarello+Putnam.pdf&#34;&gt;Samantha Azzarello&lt;/a&gt; discussed her work with Blu Putnam, which used a dynamic linear model to evaluate the Fed&amp;rsquo;s performance vis-a-vis the Taylor Rule.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/JiahanLi.pdf&#34;&gt;Jiahan Li&lt;/a&gt; used constrained least squares on 4 economic fundamentals to forecast foreign exchange rates.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/ThomasHarte.pdf&#34;&gt;Thomas Harte&lt;/a&gt; talked about regulatory requirements of foreign exchange pricing (and wins the award for most slides, 270); basically documentation is important, &lt;a href=&#34;http://www.inside-r.org/r-doc/utils/Sweave&#34;&gt;Sweave&lt;/a&gt; to the rescue!&lt;/p&gt;
+&lt;p&gt;I missed the first block of lightning talks.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/Azzarello&amp;#43;Putnam.pdf&#34;&gt;Samantha Azzarello&lt;/a&gt; discussed her work with Blu Putnam, which used a dynamic linear model to evaluate the Fed&amp;rsquo;s performance vis-a-vis the Taylor Rule.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/JiahanLi.pdf&#34;&gt;Jiahan Li&lt;/a&gt; used constrained least squares on 4 economic fundamentals to forecast foreign exchange rates.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/ThomasHarte.pdf&#34;&gt;Thomas Harte&lt;/a&gt; talked about regulatory requirements of foreign exchange pricing (and wins the award for most slides, 270); basically documentation is important, &lt;a href=&#34;http://www.inside-r.org/r-doc/utils/Sweave&#34;&gt;Sweave&lt;/a&gt; to the rescue!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/SanjivDas.pptx&#34;&gt;Sanjiv Das&lt;/a&gt; gave a keynote on 4 applications: 1) network analysis on SEC and FDIC filings to determine banks that pose systematic risk, 2) determining which home mortgage modification is optimal, 3) portfolio optimization with mental accounting, 4) venture capital communities.&lt;/p&gt;
 &lt;p&gt;I had the pleasure of introducing the following speakers: &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/DirkEddelbuettel.pdf&#34;&gt;Dirk Eddelbuettel&lt;/a&gt; showed how it&amp;rsquo;s easy to write fast linear algebra code with &lt;a href=&#34;http://cran.r-project.org/web/packages/RcppArmadillo/index.html&#34;&gt;RcppArmadillo&lt;/a&gt;.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/KlausSpanderen.pdf&#34;&gt;Klaus Spanderen&lt;/a&gt; showed how to use &lt;a href=&#34;http://quantlib.org/index.shtml&#34;&gt;QuantLib&lt;/a&gt; from R, and even how to to call C++ from R from C++.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/BryanLewis.pdf&#34;&gt;Bryan Lewis&lt;/a&gt; talked about &lt;a href=&#34;http://www.scidb.org/&#34;&gt;SciDB&lt;/a&gt; and the &lt;a href=&#34;http://cran.r-project.org/web/packages/scidb/&#34;&gt;scidb&lt;/a&gt; package (SciDB contains fast linear algebra routines that operate &lt;strong&gt;on&lt;/strong&gt; the database!).  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/MatthewDowle.pdf&#34;&gt;Matthew Dowle&lt;/a&gt; gave an introduction to &lt;a href=&#34;http://cran.r-project.org/web/packages/data.table/index.html&#34;&gt;data.table&lt;/a&gt; (in addition to a seminar).&lt;/p&gt;
 &lt;p&gt;Attilio Meucci gave his keynote on visualizing advanced risk management and portfolio optimization.  Immediately following, &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/BrianPeterson.pdf&#34;&gt;Brian Peterson&lt;/a&gt; gave a lightning on implementing Meucci&amp;rsquo;s work in R (Attilio works in Matlab), which was part of a Google Summer of Code project last year.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/Chance+Hanson+etal.pdf&#34;&gt;Thomas Hanson&lt;/a&gt; presented his work with Don Chance (and others) on computational issues in estimating the volatility smile.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/JeffRyan.pdf&#34;&gt;Jeffrey Ryan&lt;/a&gt; showed how to manipulate options data in R with the &lt;a href=&#34;https://code.google.com/p/rgreeks/&#34;&gt;greeks&lt;/a&gt; package.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/Chance&amp;#43;Hanson&amp;#43;etal.pdf&#34;&gt;Thomas Hanson&lt;/a&gt; presented his work with Don Chance (and others) on computational issues in estimating the volatility smile.  &lt;a href=&#34;http://www.rinfinance.com/agenda/2013/talk/JeffRyan.pdf&#34;&gt;Jeffrey Ryan&lt;/a&gt; showed how to manipulate options data in R with the &lt;a href=&#34;https://code.google.com/p/rgreeks/&#34;&gt;greeks&lt;/a&gt; package.&lt;/p&gt;
 &lt;p&gt;The conference wrapped up by giving away three books, generously donated by Springer, to three random people who submitted feedback surveys.  I performed the random drawing live on stage, using my patent-pending TUMC method (I tossed the papers up in the air).&lt;/p&gt;
 &lt;p&gt;The committee also presented the awards for best papers.  The winners were: &lt;/p&gt;
 &lt;ul&gt;
@@ -1838,7 +2407,7 @@ The two-hour conference reception at UIC was a great time to have a drink, talk 
       <guid>https://blog.fosstrading.com/2012/08/a-new-plot-xts/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://google-melange.appspot.com/gsoc/homepage/google/gsoc2012&#34;&gt;Google Summer of Code (2012)&lt;/a&gt; project to &lt;a href=&#34;http://rwiki.sciviews.org/doku.php?id=developers:projects:gsoc2012:xts&#34;&gt;extend xts&lt;/a&gt; has produced a very promising new plot.xts function.  Michael Weylandt, the project&amp;rsquo;s student, wrote &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; to &lt;a href=&#34;http://draft.blogger.com/%20https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;request impressions, feedback, and bug reports&lt;/a&gt;.  The function is housed in the &lt;a href=&#34;https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/?root=xts&#34;&gt;xtsExtra&lt;/a&gt; package of the &lt;a href=&#34;https://r-forge.r-project.org/projects/xts&#34;&gt;xts project on R-Forge&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Please try &lt;code&gt;xtsExtra::plot.xts&lt;/code&gt; and let us know what you think.  A sample of the eye-candy produced by the code in &lt;a href=&#34;https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html&#34;&gt;Michael&amp;rsquo;s email&lt;/a&gt; is below.  Granted, this isn&amp;rsquo;t a one-liner, but it&amp;rsquo;s certainly impressive!  Great work Michael!&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2012/08/a-new-plot-xts/post/images/edhec.jpeg&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/edhec.jpeg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -2837,9 +3406,9 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 &lt;p&gt;First find the &amp;ldquo;Configure&amp;rdquo; menu in the TWS&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Next we check for &amp;ldquo;Enable ActiveX and Socket Clients&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&amp;#43;shot&amp;#43;2010-05-13&amp;#43;at&amp;#43;3.10.30&amp;#43;142PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To add a &amp;ldquo;Trusted IP&amp;rdquo; click on &amp;ldquo;All API Settings&amp;hellip;&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&amp;#43;shot&amp;#43;2010-05-13&amp;#43;at&amp;#43;3.10.43&amp;#43;749PM.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IBrokers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -2930,7 +3499,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
       <guid>https://blog.fosstrading.com/2010/04/historical-future-volatility/</guid>
       <description>&lt;p&gt;Michael Stokes, author of the &lt;a href=&#34;http://marketsci.wordpress.com/&#34;&gt;MarketSci blog&lt;/a&gt; recently published &lt;a href=&#34;http://marketsci.wordpress.com/2010/04/09/correlation-between-historical-and-future-volatility/&#34;&gt;a thought-provoking post&lt;/a&gt; about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &amp;ldquo;unfinished thought&amp;rdquo;, not a critique.&lt;/p&gt;
 &lt;p&gt;He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table. His table&amp;rsquo;s values are calculated using daily data from 1970-present&amp;hellip; but what if you were to calculate correlations using only one year of data, rather than thirty? The chart below shows the results.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/rolling_volatility_correlations.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/rolling_volatility_correlations.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2010/04/historical-future-volatility/post/images/rolling_volatility_correlations.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/rolling_volatility_correlations.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The chart shows the rolling one-year (252-day) correlations for the diagonal in Michael&amp;rsquo;s table (e.g. historical and future 2-day volatility, &amp;hellip;, historical and future 252-day volatility). You can see the shorter periods are generally more stable, but are also closer to zero. The rolling one-year correlation between historical and future one-year volatility swings wildly from +/-1 over time.&lt;/p&gt;
 &lt;p&gt;This isn&amp;rsquo;t to argue that Michael&amp;rsquo;s back-of-the-envelope approach is incorrect, rather it is an attempt to make the approach more robust by weighing long-term market characteristics against recent market behavior.&lt;/p&gt;
 &lt;p&gt;For those interested, here is the &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; code I used to replicate Michael&amp;rsquo;s table and create the graph above. An interesting extension of this analysis would be to calculate volatility using &lt;a href=&#34;http://cran.r-project.org/web/packages/TTR/&#34;&gt;TTR&amp;rsquo;s&lt;/a&gt; &lt;code&gt;volatility()&lt;/code&gt; function instead of standard deviation. I&amp;rsquo;ll leave that exercise to the interested reader.&lt;/p&gt;
@@ -3154,9 +3723,9 @@ April 16 &amp;amp; 17, Chicago, IL, US&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://r-forge.r-project.org/projects/blotter&#34;&gt;blotter&lt;/a&gt; is an &lt;a href=&#34;http://www.r-project.org/&#34;&gt;R&lt;/a&gt; package that tracks the P&amp;amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.&lt;/p&gt;
 &lt;p&gt;The contents of this post borrow heavily from code and comments in the &amp;ldquo;longtrend&amp;rdquo; demo script in the blotter package. Many thanks to &lt;a href=&#34;http://www.braverock.com/%7Epeter/&#34;&gt;Peter Carl&lt;/a&gt; and &lt;a href=&#34;http://www.braverock.com/%7Ebrian/&#34;&gt;Brian Peterson&lt;/a&gt; for their hard work.&lt;/p&gt;
 &lt;p&gt;The first chart shows the result of holding an equal-weight portfolio of &lt;a href=&#34;http://finance.yahoo.com/q?s=SPY&#34;&gt;SPY&lt;/a&gt; and &lt;a href=&#34;http://finance.yahoo.com/q?s=IEF&#34;&gt;IEF&lt;/a&gt; from 2002-07-31 to 2009-10-31. The 2008 bear market led to a 30% drawdown in this portfolio.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_buyhold.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_buyhold.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/post/images/20091118_blotter_buyhold.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_buyhold.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The second chart shows the result of following &lt;a href=&#34;http://www.mebanefaber.com/&#34;&gt;Mebane Faber&amp;rsquo;s&lt;/a&gt; tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in &lt;a href=&#34;http://ssrn.com/abstract=962461&#34;&gt;Faber&amp;rsquo;s article&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/post/images/20091118_blotter_strategy.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Without further ado, here&amp;rsquo;s the code:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# This code implements the strategy found in:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Faber, Mebane T., &amp;#34;A Quantitative Approach to Tactical Asset Allocation.&amp;#34;&lt;/span&gt;
@@ -3680,7 +4249,7 @@ April 16 &amp;amp; 17, Chicago, IL, US&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;The chart below shows the output from the PerformanceAnalytics &lt;code&gt;charts.PerformanceSummary()&lt;/code&gt; function. It shows the equity curves and drawdown from peak for the long and short sides of the strategy. The middle graph shows the &lt;em&gt;daily&lt;/em&gt; returns for the combined strategy.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20090606_rsi2_performance.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20090606_rsi2_performance.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2009/06/rsi2-evaluation/post/images/20090606_rsi2_performance.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20090606_rsi2_performance.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The code below has everything that created the results above. It also contains the same results for a modified RSI(2) strategy. The modified strategy uses RSI steps of 10 and sizing steps of 0.3 (i.e. RSI&amp;lt;10 -&amp;gt; size=1, 10&amp;lt;20 -&amp;gt; size=0.7, etc.).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Attach packages. You can install packages via:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# install.packages(c(&amp;#34;quantmod&amp;#34;,&amp;#34;TTR&amp;#34;,&amp;#34;PerformanceAnalytics&amp;#34;))&lt;/span&gt;
@@ -3959,7 +4528,7 @@ and presentations are now available on RinFinance.com&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ylab&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Long&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Short&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;green&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;dev.off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20090501_rsi2_updated.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20090501_rsi2_updated.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2009/05/rsi2-with-position-sizing/post/images/20090501_rsi2_updated.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images/20090501_rsi2_updated.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
 Visual inspection of the charts seems to indicate the updated RSI(2) strategy has slightly higher returns, but more volatility and larger drawdowns.&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&#34;http://cran.r-project.org/web/packages/PerformanceAnalytics/index.html&#34;&gt;PerformanceAnalytics&lt;/a&gt; package can evaluate the volatility, drawdowns, and related metrics for investing and trading strategies.  We&amp;rsquo;ll use it in the next post to &lt;a href=&#34;http://blog.fosstrading.com/2009/06/rsi2-evaluation.html&#34;&gt;evaluate RSI(2)&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -4072,7 +4641,7 @@ opentick Staff&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Add the total equity line&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#addTA(eq_all)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;My version of Michael&amp;rsquo;s chart is below. Up next, scaling in/out of positions with RSI(2).&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/post/images/20090413_rsi2_long_short.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images//20090413_rsi2_long_short.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.fosstrading.com/2009/04/testing-rsi2-with-r/post/images/20090413_rsi2_long_short.png&#34;&gt;&lt;img src=&#34;https://blog.fosstrading.com/post/images//20090413_rsi2_long_short.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;br&gt;
 Now, let&amp;rsquo;s look at &lt;a href=&#34;http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html&#34;&gt;RSI(2) with position sizing&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

@@ -90,6 +90,23 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2020/09/xlf-rolling-mean-correlation/" rel="bookmark">
+			Mean rolling correlation of XLF constituents
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-19T07:23:00-05:00">September 19, 2020</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>I follow <a href="https://twitter.com/Quantocracy">Quantocracy on Twitter</a>, and I found <a href="https://robotwealth.com/rolling-mean-correlations-in-the-tidyverse/">Rolling mean correlation in the tidyverse</a> by <a href="https://robotwealth.com">Robot Wealth</a>. They say to let them know if you&rsquo;d approach it differently. I would, so I thought it would be interesting to replicate the analysis using tools I&rsquo;m familiar with: <a href="https://cran.r-project.org/package=xts">xts</a> and <a href="https://cran.r-project.org/package=TTR">TTR</a>.</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2020/09/xts-0-12-1-on-cran/" rel="bookmark">
 			xts_0.12.1 on CRAN
 			</a>
@@ -240,26 +257,6 @@ if (!doNotTrack) {
 		This year marks the 10th anniversary of the R/Finance Conference! As in prior years, we expect more than 250 attendees from around the world. R users from industry, academia, and government will joining 50+ presenters covering all areas of finance with R. The conference will take place on June 1st and 2nd, at UIC in Chicago.
 You can find registration informationon the conference website, or you can go directly to the Cvent registration page.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2018/04/goodbye-google-hello-tiingo/" rel="bookmark">
-			Goodbye Google, Hello Tiingo!
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-13T11:14:00-05:00">April 13, 2018</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		First, the bad news:
-Google Finance no longer provides data for historical prices or financial statements, so we say goodbye to getSymbols.google() and getFinancials.google(). (#221) They are now defunct as of quantmod 0.4-13.
-Now, the good news:
-Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220) This feature is part of quantmod 0.4-13, which is now on CRAN. Windows and Mac binaries should be built in a day or two.
-	</div>
 </article>
 </main>
 
@@ -346,11 +343,11 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/getsymbols-rebooted/">getSymbols Rebooted</a></li>
 		</ul>
 	</div>
 </div>
@@ -400,7 +397,7 @@ Thanks to Steve Bronder, getSymbols() can now import data from Tiingo! (#220)�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 FOSS Trading.
+			&copy; 2024 FOSS Trading.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

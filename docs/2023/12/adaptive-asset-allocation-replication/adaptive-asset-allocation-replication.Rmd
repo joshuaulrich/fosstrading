@@ -175,6 +175,8 @@ returns <- returns["/2014"]
 
 The paper, ["Adaptive Asset Allocation: A Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.
 
+<!--more-->
+
 # Data
 
 The original paper creates portfolios from 10 major global asset classes using data between 1995 and 2014. It uses ETFs when possible, and uses passive no-load mutual funds, underlying indexes, and no-load active mutual funds as proxies for asset class returns prior to ETF inception. The paper doesn't list the actual instruments used at each point in time, so this post attempts to replicate their described methodology using publicly available data.
@@ -502,7 +504,6 @@ function(returns, n_days_vol = 20)
     # the covariance matrix is the correlation using all returns, but
     # the volatility of the past 'n_days_vol'
     vol_returns <- last(returns, n_days_vol)
-    sigma <- tcrossprod(apply(vol_returns, 2, sd)) * cor(returns)
     sigma <- cov(vol_returns)
 
     Ra <- as.matrix(returns)
