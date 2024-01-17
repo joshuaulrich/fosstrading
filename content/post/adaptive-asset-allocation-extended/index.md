@@ -1,7 +1,7 @@
 ---
 title: Adaptive Asset Allocation Extended
 author: Joshua Ulrich
-date: 2024-01-16T13:04:00.000-05:00
+date: 2024-01-17T13:02:00.000-05:00
 draft: false
 categories: [ Articles ]
 tags: [R]
@@ -12,7 +12,8 @@ pandoc_args: [ "-fmarkdown-implicit_figures" ]
 This post extends the replication in the previous post, {{% linkpost
 title="Adaptive Asset Allocation Replication"
 post="adaptive-asset-allocation-replication" %}}, by running the
-analysis on OOS (out-of-sample) data from 2015 through 2023.
+analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
+[Dale Rosenthal](https://www.q36llc.com/) for helpful comments.
 
 <!-- more -->
 
@@ -27,6 +28,16 @@ methodologies.
 3.  Equal weight of highest momentum asset classes
 4.  Equal risk contribution of highest momentum asset classes
 5.  Minimum variance of highest momentum asset classes
+
+The table below summarizes the date ranges for each sample period in
+this post.
+
+| Period      | Date Range          |
+|:------------|:--------------------|
+| Replication | Feb 1996 - Dec 2014 |
+| OOS         | Jan 2015 - Dec 2023 |
+| 2015-2021   | Jan 2015 - Dec 2021 |
+| Full        | Feb 1996 - Dec 2023 |
 
 ### 1. Equal weight portfolio of all asset classes
 
@@ -66,18 +77,18 @@ still ongoing. Note that the full-period results are very similar to the
 replication results, though the 2022 drawdown did decrease the
 annualized return by \~1%.
 
-Note that this portfolio's OOS results are very similar to the
-replication results through the end of 2021. That suggests the 2022 bear
-market is the main cause of the differences between the replication and
-OOS results in this case.
+Note that this portfolio's results from 2015-2021 are very similar to
+the replication results through the end of 2014. That suggests the 2022
+bear market is the main cause for the lower return in the OOS results.
 
 ### 2. Equal risk contribution using all asset classes
 
 The next portfolio assumes the investor has some knowledge of each
 asset's risk, but still no knowledge of relative performance or
 correlations. So each asset in this portfolio is given a weight
-proportional to its relative risk, and each asset contributes the same
-amount of risk to the overall portfolio.  
+proportional to its historical relative risk, with the hope that each
+asset will contribute the same amount of risk to the overall portfolio
+in the future.  
 <!-- new line for spacing -->
 
 ``` r
@@ -139,7 +150,7 @@ monthly_returns <-
         check.names = FALSE)
 
 stats <- strat_summary(monthly_returns)
-chart_performance(monthly_returns, "Top 6-mo Momentum - Equal Weight")
+chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Weight")
 ```
 
 ![](top5_momo_eq_weight-1.png)
@@ -152,9 +163,10 @@ chart_performance(monthly_returns, "Top 6-mo Momentum - Equal Weight")
 | Worst Drawdown            |       -0.199|  -0.213|     -0.114|  -0.213|
 
 Again, the OOS annualized return is significantly worse than the
-replicated results, but the OOS results for this portfolio show similar
-improvement in the Sharpe Ratio versus the equal risk contribution
-portfolio.
+replicated results. The OOS results for this portfolio show improvement
+in the Sharpe Ratio versus the equal risk contribution portfolio (2).
+The replicated results for this portfolio showed similar improvements
+versus portfolio (2).
 
 In the replication, equal weight momentum results are better than the
 equal risk portfolio. But the OOS equal weight momentum portfolio did
@@ -185,7 +197,7 @@ monthly_returns <-
 
 
 stats <- strat_summary(monthly_returns)
-chart_performance(monthly_returns, "Top 6-mo Momentum - Equal Risk")
+chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Risk")
 ```
 
 ![](top_momo_eq_risk-1.png)
@@ -247,9 +259,11 @@ chart_performance(monthly_returns, "Above Average 6mo Momentum - Min Var")
 | Worst Drawdown            |       -0.102|  -0.190|     -0.080|  -0.190|
 
 Recall that the original results for portfolio (5) showed improved
-return and lower drawdown versus portfolio (4), while the replicated
-results were similar for both portfolios. Like the replicated results,
-the OOS results for both portfolios are also similar.
+return and lower maximum drawdown versus portfolio (4), while the
+replicated results were almost the same for both portfolios. The OOS
+results for these two portfolios are also very similar. In the 2015-2021
+period, portfolio (5) has a slightly higher return and Sharpe ratio and
+lower max drawdown than portfolio (4).
 
 Conclusion
 ----------
