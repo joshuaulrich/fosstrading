@@ -18,8 +18,8 @@ Rscript -e 'knitr::purl("adaptive-asset-allocation-replication.Rmd")'
 -->
 
 The paper, ["Adaptive Asset Allocation: A
-Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254)
-by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
+Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by
+Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
 addresses flaws in the traditional application of Modern Portfolio
 Theory related to Strategic Asset Allocation. It shows that estimating
 return and (co)variance parameters over shorter time horizons are
@@ -308,5 +308,6 @@ The differences in the data sets seem to create a significant difference
 in performance during 2012, but otherwise produce similar results on
 monthly data.
 
-I'll investigate the out-of-sample performance of this strategy in a
-future post. Thanks for reading!
+See {{% linkpost title="Adaptive Asset Allocation Extension"
+post="adaptive-asset-allocation-extended" %}} for an analysis of the
+out-of-sample performance of these portfolios. Thanks for reading!
