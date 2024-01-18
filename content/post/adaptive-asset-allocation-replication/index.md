@@ -81,7 +81,7 @@ package to calculate summary statistics to compare with the original
 paper. The file
 [adaptive-asset-allocation-replication.R](adaptive-asset-allocation-replication.R)
 contains all the code used in this analysis, and the
-[returns.rds](returns.rds) function contains the data.
+[returns.rds](returns.rds) file contains the data.
 
 ### 1. Equal weight portfolio of all asset classes
 
