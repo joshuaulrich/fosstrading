@@ -199,4 +199,4 @@ Conclusion
 
 Despite using returns from different instruments in the same asset classes, over a slightly different time period, this analysis closely replicates the results from [Adaptive Asset Allocation: A Primer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254). The differences in the data sets seem to create a significant difference in performance during 2012, but otherwise produce similar results on monthly data.
 
-See {{% linkpost title="Adaptive Asset Allocation Extension" post="adaptive-asset-allocation-extended" %}} for an analysis of the out-of-sample performance of these portfolios. Thanks for reading!
+See {{% linkpost "adaptive-asset-allocation-extended" %}} for an analysis of the out-of-sample performance of these portfolios. Thanks for reading!

@@ -1,1 +1,4 @@
-[{{ .Get "title" }}]({{ ref . ( .Get "post" ) | safeURL }})
+{{- $post := .Get 0 -}}
+{{- with .Site.GetPage $post -}}
+    [{{ .Title }}]({{ ref . $post | safeURL }})
+{{- end -}}

@@ -9,7 +9,7 @@ urlcolor: blue
 pandoc_args: [ "-fmarkdown-implicit_figures" ]
 ---
 
-This post extends the replication from the {{% linkpost title="Adaptive Asset Allocation Replication" post="adaptive-asset-allocation-replication" %}} post by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to [Dale Rosenthal](https://www.q36llc.com/) for helpful comments.
+This post extends the replication from the {{% linkpost "adaptive-asset-allocation-replication" %}} post by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to [Dale Rosenthal](https://www.q36llc.com/) for helpful comments.
 
 <!--more-->
 
