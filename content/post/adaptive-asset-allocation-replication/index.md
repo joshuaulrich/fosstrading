@@ -17,36 +17,16 @@ Rscript -e 'rmarkdown::render("adaptive-asset-allocation-replication.Rmd", rmark
 Rscript -e 'knitr::purl("adaptive-asset-allocation-replication.Rmd")'
 -->
 
-The paper, ["Adaptive Asset Allocation: A
-Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by
-Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
-addresses flaws in the traditional application of Modern Portfolio
-Theory related to Strategic Asset Allocation. It shows that estimating
-return and (co)variance parameters over shorter time horizons are
-superior to estimates over long-term horizons because parameter
-estimates vary substantially over time. Longer-term estimates do not
-account for this variability in the short-term. They propose an Adaptive
-Asset Allocation portfolio construction methodology that uses the new
-parameter estimates to substantially improve performance relative to
-Strategic Asset Allocation.
+The paper, ["Adaptive Asset Allocation: A Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.
 
 <!--more-->
 
 Data
 ====
 
-The original paper creates portfolios from 10 major global asset classes
-using data between 1995 and 2014. It uses ETFs when possible, and uses
-passive no-load mutual funds, underlying indexes, and no-load active
-mutual funds as proxies for asset class returns prior to ETF inception.
-The paper doesn't list the actual instruments used at each point in
-time, so this post attempts to replicate their described methodology
-using publicly available data.
+The original paper creates portfolios from 10 major global asset classes using data between 1995 and 2014. It uses ETFs when possible, and uses passive no-load mutual funds, underlying indexes, and no-load active mutual funds as proxies for asset class returns prior to ETF inception. The paper doesn't list the actual instruments used at each point in time, so this post attempts to replicate their described methodology using publicly available data.
 
-The table below shows the asset class, instruments, and time horizons
-used for each asset class in this replication. The data start in late
-1997 instead of 1995 as in the original paper. Returns in this analysis
-are adjusted for splits and dividends.
+The table below shows the asset class, instruments, and time horizons used for each asset class in this replication. The data start in late 1997 instead of 1995 as in the original paper. Returns in this analysis are adjusted for splits and dividends.
 
 |                            | ETF | ETF Start | Fund  | Fund Start |
 |:---------------------------|:----|:----------|:------|:-----------|
@@ -64,8 +44,7 @@ are adjusted for splits and dividends.
 Replication
 ===========
 
-This analysis attempts to replicate all 5 portfolios in the original
-paper.
+This analysis attempts to replicate all 5 portfolios in the original paper.
 
 1.  Equal weight of all asset classes
 2.  Equal risk contribution of all asset classes
@@ -73,30 +52,13 @@ paper.
 4.  Equal risk contribution of highest momentum asset classes
 5.  Minimum variance of highest momentum asset classes
 
-The original paper showed results as a monthly series. The
-`to_monthly_returns()` function converts the strategy returns from daily
-to monthly. The `strat_summary()` function uses the
-[PerformanceAnalytics](https://cran.r-project.org/package=PerformanceAnalytics)
-package to calculate summary statistics to compare with the original
-paper. The file
-[adaptive-asset-allocation-replication.R](adaptive-asset-allocation-replication.R)
-contains all the code used in this analysis, and the
-[returns.rds](returns.rds) file contains the data.
+The original paper showed results as a monthly series. The `to_monthly_returns()` function converts the strategy returns from daily to monthly. The `strat_summary()` function uses the [PerformanceAnalytics](https://cran.r-project.org/package=PerformanceAnalytics) package to calculate summary statistics to compare with the original paper. The file [adaptive-asset-allocation-replication.R](adaptive-asset-allocation-replication.R) contains all the code used in this analysis, and the [returns.rds](returns.rds) function contains the data.
 
 ### 1. Equal weight portfolio of all asset classes
 
-The baseline example assumes no knowledge of expected relative asset
-class performance, risk, or correlation. The results below are based on
-a portfolio that holds each asset class in equal weight and is
-rebalanced monthly. The table compares the results of this replication
-with the original results. Some of the difference in results are due to
-the different instruments and time frames used for the analysis. Despite
-the differences in the data between the two approaches, the results are
-very similar.
+The baseline example assumes no knowledge of expected relative asset class performance, risk, or correlation. The results below are based on a portfolio that holds each asset class in equal weight and is rebalanced monthly. The table compares the results of this replication with the original results. Some of the difference in results are due to the different instruments and time frames used for the analysis. Despite the differences in the data between the two approaches, the results are very similar.
 
-The `returns_equal_weight` object contains the portfolio returns for
-each day. Then we convert those returns to monthly and evaluate the
-portfolio results.
+The `returns_equal_weight` object contains the portfolio returns for each day. Then we convert those returns to monthly and evaluate the portfolio results.
 
   
 <!-- new line for spacing -->
@@ -122,19 +84,9 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 
 ### 2. Equal risk contribution using all asset classes
 
-The next portfolio assumes the investor has some knowledge of each
-asset's risk, but still no knowledge of relative performance or
-correlations. So each asset in this portfolio is given a weight
-proportional to its relative risk, and each asset contributes the same
-amount of risk to the overall portfolio. That way no asset's risk will
-dominate the risk of the overall portfolio.
+The next portfolio assumes the investor has some knowledge of each asset's risk, but still no knowledge of relative performance or correlations. So each asset in this portfolio is given a weight proportional to its relative risk, and each asset contributes the same amount of risk to the overall portfolio. That way no asset's risk will dominate the risk of the overall portfolio.
 
-The `portf_equal_risk()` estimates the equal risk contribution portfolio
-using the `PERC()` function from the
-[FRAPO](https://cran.r-project.org/package=FRAPO) package. It calculates
-the portfolio weights at the end of month using estimated portfolio risk
-from the returns over the last 60 days. Then those weights are used to
-calculate the portfolio returns for the following month.  
+The `portf_equal_risk()` estimates the equal risk contribution portfolio using the `PERC()` function from the [FRAPO](https://cran.r-project.org/package=FRAPO) package. It calculates the portfolio weights at the end of month using estimated portfolio risk from the returns over the last 60 days. Then those weights are used to calculate the portfolio returns for the following month.  
 <!-- new line for spacing -->
 
 ``` r
@@ -156,33 +108,13 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 | Annualized Sharpe (Rf=0%) |        1.177|     0.990|
 | Worst Drawdown            |       -0.142|    -0.242|
 
-In this case, the replicated results are better than the original
-results. The data differences and the method used to estimate the equal
-risk contribution portfolio weights are the most likely explanation for
-the differences in the replicated results.
+In this case, the replicated results are better than the original results. The data differences and the method used to estimate the equal risk contribution portfolio weights are the most likely explanation for the differences in the replicated results.
 
 ### 3. Equal weight portfolio of highest momentum asset classes
 
-The next portfolio assumes the investor has some knowledge of each
-asset's returns, but still no knowledge of risk or correlations. The
-original paper uses momentum to estimate each asset's returns because
-momentum (also known as long-term memory) is a well-known property of
-financial market returns. Assets that have increased (decreased) in
-price are likely to continue increasing (decreasing) in price in the
-next period. Academic research shows that instruments with higher
-(lower) momentum over the past 1-12 months exhibits better (worse)
-performance over short-term future periods. See the original paper for a
-description of some reasons why momentum exists in financial markets.
+The next portfolio assumes the investor has some knowledge of each asset's returns, but still no knowledge of risk or correlations. The original paper uses momentum to estimate each asset's returns because momentum (also known as long-term memory) is a well-known property of financial market returns. Assets that have increased (decreased) in price are likely to continue increasing (decreasing) in price in the next period. Academic research shows that instruments with higher (lower) momentum over the past 1-12 months exhibits better (worse) performance over short-term future periods. See the original paper for a description of some reasons why momentum exists in financial markets.
 
-The estimates of each asset's returns are based on 6-month momentum
-(approximately 120 days). Momentum is re-estimated every month and only
-the top 5 assets are included in the portfolio, rather than including
-every asset in the portfolio. Note that this doesn't mean every asset
-included in the portfolio has a positive return over the 6-month period.
-All of them could have negative returns over the period, in which case
-the 5 assets with the smallest losses would be included in the
-portfolio. Each of the top 5 assets included in the portfolio are held
-with equal weight.  
+The estimates of each asset's returns are based on 6-month momentum (approximately 120 days). Momentum is re-estimated every month and only the top 5 assets are included in the portfolio, rather than including every asset in the portfolio. Note that this doesn't mean every asset included in the portfolio has a positive return over the 6-month period. All of them could have negative returns over the period, in which case the 5 assets with the smallest losses would be included in the portfolio. Each of the top 5 assets included in the portfolio are held with equal weight.  
 <!-- new line for spacing -->
 
 ``` r
@@ -204,23 +136,11 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 | Annualized Sharpe (Rf=0%) |        1.243|     1.170|
 | Worst Drawdown            |       -0.199|    -0.217|
 
-The replicated results have slightly better returns and maximum
-drawdown, but similar standard deviation. That said, the results are
-similar enough to suggest this analysis replicates the approach
-accurately.
+The replicated results have slightly better returns and maximum drawdown, but similar standard deviation. That said, the results are similar enough to suggest this analysis replicates the approach accurately.
 
 ### 4. Equal risk contribution portfolio of highest momentum asset classes
 
-The previous two portfolios estimated asset weights using either
-risk-based or momentum-based weights. This next portfolio combines
-estimates of momentum-based performance and accounts for asset class
-risk differences. It includes the top 5 asset classes based on 6-month
-returns and weights them using the `estimate_equal_risk_portf()`
-function defined earlier. Recall that the function weights each asset
-class so they each contribute the same amount of risk to the portfolio.
-Note that the asset volatilities are calculated on 60 days
-(approximately 3 months) of returns while the momentum is based on 120
-days (approximately 6 months).
+The previous two portfolios estimated asset weights using either risk-based or momentum-based weights. This next portfolio combines estimates of momentum-based performance and accounts for asset class risk differences. It includes the top 5 asset classes based on 6-month returns and weights them using the `estimate_equal_risk_portf()` function defined earlier. Recall that the function weights each asset class so they each contribute the same amount of risk to the portfolio. Note that the asset volatilities are calculated on 60 days (approximately 3 months) of returns while the momentum is based on 120 days (approximately 6 months).
 
   
 <!-- new line for spacing -->
@@ -245,31 +165,11 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 | Annualized Sharpe (Rf=0%) |        1.335|     1.410|
 | Worst Drawdown            |       -0.119|    -0.148|
 
-The original and replicated results for this portfolio are very similar.
-Note that in the original paper this portfolio's overall return
-increased to 14.0% versus 13.0% for the momentum-based equal weight
-portfolio, but the replicated results were more similar (14.2% versus
-13.7%). Again, the data differences and portfolio weight estimation
-differences likely cause differences in the results. Also, an
-un-scientific comparison of the two cumulative return graphs suggests
-some difference may be due to performance in 2012, when the replicated
-results have a significant drawdown while the original results showed
-positive performance.
+The original and replicated results for this portfolio are very similar. Note that in the original paper this portfolio's overall return increased to 14.0% versus 13.0% for the momentum-based equal weight portfolio, but the replicated results were more similar (14.2% versus 13.7%). Again, the data differences and portfolio weight estimation differences likely cause differences in the results. Also, an un-scientific comparison of the two cumulative return graphs suggests some difference may be due to performance in 2012, when the replicated results have a significant drawdown while the original results showed positive performance.
 
 ### 5. Minimum variance portfolio of highest momentum asset classes
 
-The final portfolio takes the above concepts and adds correlation
-estimates to the portfolio optimization. The previous portfolios only
-accounted for the relative risk between the asset classes, but not the
-correlation between the assets' returns. This portfolio accounts for the
-correlations between asset classes by finding the minimum variance
-portfolio using [modern portfolio
-theory](https://en.wikipedia.org/wiki/Modern_portfolio_theory). The
-asset selection for these portfolios in the original paper differ
-slightly from the previous portfolios. Instead of taking the top 5
-assets with the highest momentum, the original paper selects "assets
-with above average 6-month momentum". So it's not clear how many assets
-are held in the portfolio each month.  
+The final portfolio takes the above concepts and adds correlation estimates to the portfolio optimization. The previous portfolios only accounted for the relative risk between the asset classes, but not the correlation between the assets' returns. This portfolio accounts for the correlations between asset classes by finding the minimum variance portfolio using [modern portfolio theory](https://en.wikipedia.org/wiki/Modern_portfolio_theory). The asset selection for these portfolios in the original paper differ slightly from the previous portfolios. Instead of taking the top 5 assets with the highest momentum, the original paper selects "assets with above average 6-month momentum". So it's not clear how many assets are held in the portfolio each month.  
 <!-- new line for spacing -->
 
 ``` r
@@ -292,22 +192,11 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 | Annualized Sharpe (Rf=0%) |        1.330|     1.600|
 | Worst Drawdown            |       -0.102|    -0.088|
 
-The replicated results still show worse performance than the original
-results, which also seems to be related to performance during 2012. The
-replicated results also do not show significant improvement relative to
-the top 5 momentum equal risk portfolio like the original paper shows.
+The replicated results still show worse performance than the original results, which also seems to be related to performance during 2012. The replicated results also do not show significant improvement relative to the top 5 momentum equal risk portfolio like the original paper shows.
 
 Conclusion
 ==========
 
-Despite using returns from different instruments in the same asset
-classes, over a slightly different time period, this analysis closely
-replicates the results from [Adaptive Asset Allocation: A
-Primer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254).
-The differences in the data sets seem to create a significant difference
-in performance during 2012, but otherwise produce similar results on
-monthly data.
+Despite using returns from different instruments in the same asset classes, over a slightly different time period, this analysis closely replicates the results from [Adaptive Asset Allocation: A Primer](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254). The differences in the data sets seem to create a significant difference in performance during 2012, but otherwise produce similar results on monthly data.
 
-See {{% linkpost title="Adaptive Asset Allocation Extension"
-post="adaptive-asset-allocation-extended" %}} for an analysis of the
-out-of-sample performance of these portfolios. Thanks for reading!
+See {{% linkpost title="Adaptive Asset Allocation Extension" post="adaptive-asset-allocation-extended" %}} for an analysis of the out-of-sample performance of these portfolios. Thanks for reading!
