@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.115.0">
+	<meta name="generator" content="Hugo 0.121.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/" />
+
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -89,6 +90,23 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2024/01/xts-0-13-2-on-cran/" rel="bookmark">
+			xts_0.13.2 on CRAN
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-01-22T12:41:00-05:00">January 22, 2024</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. The most notable change is that <code>plot.xts()</code> now supports a log scale y-axis. This involved a significant refactor of the <code>plot.xts()</code> internals, so it&rsquo;s possible to have introduced some bugs.</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2024/01/adaptive-asset-allocation-extended/" rel="bookmark">
 			Adaptive Asset Allocation Extended
 			</a>
@@ -100,10 +118,7 @@ if (!doNotTrack) {
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>This post extends the replication from the <a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a>
-post by running the
-analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
-<a href="https://www.q36llc.com/">Dale Rosenthal</a> for helpful comments.</p>
+		<p>This post extends the replication from the <a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a> post by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to <a href="https://www.q36llc.com/">Dale Rosenthal</a> for helpful comments.</p>
 	</div>
 </article><article class="list__item post">
 	
@@ -122,18 +137,7 @@ analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
 	<div class="content list__excerpt post__content clearfix">
 		<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p>The paper, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254">&ldquo;Adaptive Asset Allocation: A
-Primer&rdquo;</a> by
-Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi
-addresses flaws in the traditional application of Modern Portfolio
-Theory related to Strategic Asset Allocation. It shows that estimating
-return and (co)variance parameters over shorter time horizons are
-superior to estimates over long-term horizons because parameter
-estimates vary substantially over time. Longer-term estimates do not
-account for this variability in the short-term. They propose an Adaptive
-Asset Allocation portfolio construction methodology that uses the new
-parameter estimates to substantially improve performance relative to
-Strategic Asset Allocation.</p>
+<p>The paper, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254">&ldquo;Adaptive Asset Allocation: A Primer&rdquo;</a> by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.</p>
 	</div>
 </article><article class="list__item post">
 	
@@ -256,23 +260,6 @@ Preface I am not affiliated with the company that created and maintains TimeBase
 	<div class="content list__excerpt post__content clearfix">
 		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release adds several exciting changes: open-ended time-of-day subsetting, smarter conversions to xts from data.frames/data.tables/tibbles; <code>to.period()</code> handles custom endpoint values, <code>print()</code> truncates rows like data.table, and <code>str()</code> provides more informative output. There are also changes to make xts more consistent with zoo, some minor speed improvements, and the usual smattering of bug fixes.</p>
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2022/10/xts-0-12-2-on-cran/" rel="bookmark">
-			xts_0.12.2 on CRAN
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-10-15T10:21:00-05:00">October 15, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/R-Package-Releases/" rel="category">R Package Releases</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>An updated version of <a href="http://cran.r-project.org/package=xts">xts</a> is now on <a href="http://cran.r-project.org/">CRAN</a>. This release is a big one, with lots of changes. Plotting functionality got a lot of attention. Another notable change is that <code>merge.xts()</code> now supports suffixes. Plus the obligatory bug fixes and refinements to make xts more robust.</p>
-	</div>
 </article>
 </main>
 
@@ -357,11 +344,11 @@ Preface I am not affiliated with the company that created and maintains TimeBase
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

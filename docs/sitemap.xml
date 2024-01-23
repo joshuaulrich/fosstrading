@@ -2,25 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.fosstrading.com/categories/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/post/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/R/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/categories/R-Package-Releases/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/Releases/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/tags/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/search/label/xts/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.fosstrading.com/2024/01/xts-0-13-2-on-cran/</loc>
+    <lastmod>2024-01-22T12:41:00-05:00</lastmod>
+  </url><url>
     <loc>https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/</loc>
     <lastmod>2024-01-17T13:02:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/categories/Articles/</loc>
-    <lastmod>2024-01-17T13:02:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/categories/</loc>
-    <lastmod>2024-01-17T13:02:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/</loc>
-    <lastmod>2024-01-17T13:02:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/post/</loc>
-    <lastmod>2024-01-17T13:02:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/R/</loc>
-    <lastmod>2024-01-17T13:02:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/tags/</loc>
     <lastmod>2024-01-17T13:02:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/</loc>
@@ -30,12 +42,6 @@
     <lastmod>2023-08-22T11:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2023/08/quantmod-0-4-25-on-cran/</loc>
-    <lastmod>2023-08-22T11:41:57-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/categories/R-Package-Releases/</loc>
-    <lastmod>2023-08-22T11:41:57-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/Releases/</loc>
     <lastmod>2023-08-22T11:41:57-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/search/label/Data/</loc>
@@ -52,9 +58,6 @@
   </url><url>
     <loc>https://blog.fosstrading.com/2023/05/getsymbols-rebooted/</loc>
     <lastmod>2023-05-22T10:14:00-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.fosstrading.com/search/label/xts/</loc>
-    <lastmod>2023-04-24T10:54:00-05:00</lastmod>
   </url><url>
     <loc>https://blog.fosstrading.com/2023/04/xts-0-13-1-on-cran/</loc>
     <lastmod>2023-04-24T10:54:00-05:00</lastmod>

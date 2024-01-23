@@ -14,6 +14,7 @@
 <meta property="article:published_time" content="2023-04-24T10:54:00-05:00" />
 <meta property="article:modified_time" content="2023-04-24T10:54:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -136,7 +137,7 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>Warn and remove <code>NA</code> when <code>periodicity()</code> called on date-time vector with any <code>NA</code> values. Previously it threw the uninformative error below. (<a href="https://github.com/joshuaulrich/xts/issues/289">#289</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Error</span> <span class="n">in</span> <span class="nf">try.xts</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="s">&#34;&#39;x&#39; needs to be timeBased or xtsible&#34;</span><span class="p">)</span> <span class="o">:</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Error</span> <span class="kr">in</span> <span class="nf">try.xts</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="s">&#34;&#39;x&#39; needs to be timeBased or xtsible&#34;</span><span class="p">)</span> <span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="s">&#39;x&#39;</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">timeBased</span> <span class="n">or</span> <span class="n">xtsible</span>
 </span></span></code></pre></div></li>
 <li>
@@ -158,14 +159,31 @@ if (!doNotTrack) {
 <p>Add instructions to update old objects. Old xts objects do not have &rsquo;tclass&rsquo; and &rsquo;tzone&rsquo; attributes on the index. Add a function to update the object attributes and add a note to the warning to show how to use it. Also, only call <code>tzone()</code> and <code>tclass()</code> once in <code>check.TZ()</code>. Calling these functions multiple times throws multiple warnings for xts objects created before the &rsquo;tclass&rsquo; and &rsquo;tzone&rsquo; were attached to the index instead of the xts object. (<a href="https://github.com/joshuaulrich/xts/issues/306">#306</a>)</p>
 </li>
 </ul>
+
+
 <div class="container" role="main">
   <div class="row">
-    <hr>
-    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
-    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/xts">[xts]</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/xts/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the
+    <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/xts">[xts]</a> tags.
+    Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post).
+    Open an <a href="https://github.com/joshuaulrich/xts/issues">issue on GitHub</a> if you find a bug or want to request a feature.
+    
+        Please read the <a href="https://github.com/joshuaulrich/xts/wiki/Contributing-Guide">contributing guide</a> first!
+        It will help save time for both of us. ;-)</p>
+    
   </div>
 </div>
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -191,7 +209,7 @@ if (!doNotTrack) {
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -289,11 +307,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

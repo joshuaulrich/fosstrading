@@ -15,6 +15,7 @@ Oanda changed their URL format from http to https, and getSymbols.oanda did no
 <meta property="article:published_time" content="2016-08-29T11:38:00-05:00" />
 <meta property="article:modified_time" content="2016-08-29T11:38:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,16 +100,33 @@ if (!doNotTrack) {
 			<p><a href="https://cran.r-project.org/">CRAN</a> just accepted a bugfix release of <a href="http://www.quantmod.com/">quantmod</a>.  The most pertinent changes were to fix getSymbols.oanda (<a href="https://github.com/joshuaulrich/quantmod/issues/36">#36</a>) and getOptionChain.yahoo (<a href="https://github.com/joshuaulrich/quantmod/issues/92">#92</a>).  It also includes a fix to addTRIX (<a href="https://github.com/joshuaulrich/quantmod/issues/72">#72</a>).</p>
 <p>Oanda changed their URL format from http to https, and getSymbols.oanda did not follow the redirect.  Yahoo Finance changed the HTML for displaying options data, which broke getOptionChain.yahoo.  The fix downloads JSON instead of scraping HTML, so hopefully it will be less likely to break.  For more information, see the links to the GitHub issues above.</p>
 <p>I added documentation for getPrice (<a href="https://github.com/joshuaulrich/quantmod/issues/77">#77</a>), and removed the unused unsetSymbolLookup function and corresponding documentation (<a href="https://github.com/joshuaulrich/quantmod/issues/115">#115</a>).</p>
+
+
 <div class="container" role="main">
   <div class="row">
-    <hr>
-    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
-    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/quantmod">[quantmod]</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/quantmod/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the
+    <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/quantmod">[quantmod]</a> tags.
+    Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post).
+    Open an <a href="https://github.com/joshuaulrich/quantmod/issues">issue on GitHub</a> if you find a bug or want to request a feature.
+    
+        Please read the <a href="https://github.com/joshuaulrich/quantmod/wiki/Contributing-Guide">contributing guide</a> first!
+        It will help save time for both of us. ;-)</p>
+    
   </div>
 </div>
 
 
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -134,7 +152,7 @@ if (!doNotTrack) {
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -232,11 +250,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

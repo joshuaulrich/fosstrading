@@ -31,12 +31,18 @@ The bug was caused by the differences in &lt;code&gt;rollapply.default()&lt;/cod
 Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s no money flow for &lt;code&gt;n&lt;/code&gt; consecutive observations (e.g. if there are no trades). This causes the money flow index to be &lt;code&gt;NaN&lt;/code&gt;. Now the money flow index is to 50 in this case.  Thanks to GitHub user &lt;a href=&#34;https://github.com/jgehw&#34;&gt;jgehw&lt;/a&gt; for the report, reproducible example, and suggested patch! (&lt;a href=&#34;https://github.com/joshuaulrich/TTR/issues/81&#34;&gt;#81&lt;/a&gt;)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
-    &lt;hr&gt;
-    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-
-    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the
+    &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.
+    Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post).
+    Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature.
+    
+        Please read the &lt;a href=&#34;https://github.com/joshuaulrich/ttr/wiki/Contributing-Guide&#34;&gt;contributing guide&lt;/a&gt; first!
+        It will help save time for both of us. ;-)&lt;/p&gt;
+    
   &lt;/div&gt;
 &lt;/div&gt;</description>
     </item>
@@ -91,12 +97,18 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;EMA()&lt;/code&gt; and &lt;code&gt;EVWMA()&lt;/code&gt; now ensure &lt;code&gt;n&lt;/code&gt; is less than the number of non-NA values, thanks to Roger Bos.&lt;/li&gt;
 &lt;li&gt;Fix to &lt;code&gt;BBands()&lt;/code&gt; docs, thanks to Evelyn Mitchell.&lt;/li&gt;
 &lt;/ul&gt;
+
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
-    &lt;hr&gt;
-    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-
-    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the
+    &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.
+    Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post).
+    Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature.
+    
+        Please read the &lt;a href=&#34;https://github.com/joshuaulrich/ttr/wiki/Contributing-Guide&#34;&gt;contributing guide&lt;/a&gt; first!
+        It will help save time for both of us. ;-)&lt;/p&gt;
+    
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -134,12 +146,18 @@ Also, the money ratio will be &lt;code&gt;NaN&lt;/code&gt; if there&amp;rsquo;s 
 &lt;li&gt;&lt;code&gt;adjRatios()&lt;/code&gt; failed (spectacularly) if there were missing close prices. Thanks to Garrett See for the report.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
-    &lt;hr&gt;
-    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-
-    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the
+    &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.
+    Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post).
+    Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature.
+    
+        Please read the &lt;a href=&#34;https://github.com/joshuaulrich/ttr/wiki/Contributing-Guide&#34;&gt;contributing guide&lt;/a&gt; first!
+        It will help save time for both of us. ;-)&lt;/p&gt;
+    
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -228,12 +246,18 @@ Changes from version 0.20-1&lt;/p&gt;
 &lt;li&gt;Fixed segfault caused by &lt;code&gt;EMA()&lt;/code&gt; when &lt;code&gt;n &amp;lt; NROW(x)&lt;/code&gt; (thanks to Douglas Hobbs)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;test.EMA.wilder()&lt;/code&gt; failed under R-devel (thanks to Prof Brian Ripley)&lt;/li&gt;
 &lt;/ul&gt;
+
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
-    &lt;hr&gt;
-    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-
-    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the
+    &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.
+    Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post).
+    Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature.
+    
+        Please read the &lt;a href=&#34;https://github.com/joshuaulrich/ttr/wiki/Contributing-Guide&#34;&gt;contributing guide&lt;/a&gt; first!
+        It will help save time for both of us. ;-)&lt;/p&gt;
+    
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -301,12 +325,18 @@ Changes from version 0.20-1&lt;/p&gt;
 &lt;li&gt;Made changes to Rd files to pass &lt;code&gt;R CMD check&lt;/code&gt; on R-devel (2.9.0)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Please do contact me with any questions, concerns, bug reports, etc.&lt;/p&gt;
+
+
 &lt;div class=&#34;container&#34; role=&#34;main&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
-    &lt;hr&gt;
-    &lt;p&gt;If you love using my open-source work (e.g. &lt;a href=&#34;https://cran.r-project.org/package=quantmod&#34;&gt;quantmod&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=TTR&#34;&gt;TTR&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=xts&#34;&gt;xts&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=IBrokers&#34;&gt;IBrokers&lt;/a&gt;, &lt;a href=&#34;https://cran.r-project.org/package=microbenchmark&#34;&gt;microbenchmark&lt;/a&gt;, etc.), you can give back by &lt;a href=&#34;https://github.com/sponsors/joshuaulrich/&#34;&gt;sponsoring me on GitHub&lt;/a&gt;. I truly appreciate anything you&amp;rsquo;re willing and able to give!&lt;/p&gt;
-
-    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.  Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post). Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature. Please &lt;a href=&#34;https://github.com/joshuaulrich/ttr/blob/master/.github/CONTRIBUTING.md&#34;&gt;read the contributing guide&lt;/a&gt; first! It will help save time for both of us. ;-)&lt;/p&gt;
+    &lt;p&gt;I look forward to your questions and feedback! If you have a question, please ask on &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;Stack Overflow&lt;/a&gt; and use the
+    &lt;a href=&#34;http://stackoverflow.com/questions/tagged/r&#34;&gt;[r]&lt;/a&gt; and &lt;a href=&#34;http://stackoverflow.com/questions/tagged/ttr&#34;&gt;[ttr]&lt;/a&gt; tags.
+    Or you can send an email to the &lt;a href=&#34;https://stat.ethz.ch/mailman/listinfo/r-sig-finance&#34;&gt;R-SIG-Finance&lt;/a&gt; mailing list (you must subscribe to post).
+    Open an &lt;a href=&#34;https://github.com/joshuaulrich/ttr/issues&#34;&gt;issue on GitHub&lt;/a&gt; if you find a bug or want to request a feature.
+    
+        Please read the &lt;a href=&#34;https://github.com/joshuaulrich/ttr/wiki/Contributing-Guide&#34;&gt;contributing guide&lt;/a&gt; first!
+        It will help save time for both of us. ;-)&lt;/p&gt;
+    
   &lt;/div&gt;
 &lt;/div&gt;
 

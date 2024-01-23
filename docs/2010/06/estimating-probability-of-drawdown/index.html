@@ -16,6 +16,7 @@ To calculate the probability of drawdown, the function traverses all permutation
 <meta property="article:published_time" content="2010-06-19T20:13:00-05:00" />
 <meta property="article:modified_time" content="2010-06-19T20:13:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -137,7 +138,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 </span></span><span class="line"><span class="cl"><span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeSOCKcluster</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Start loop over data</span>
-</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span> <span class="n">i</span> <span class="nf">in </span><span class="p">(</span><span class="n">NP</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">NR</span><span class="o">-</span><span class="n">HR</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kr">for</span><span class="p">(</span> <span class="n">i</span> <span class="kr">in</span> <span class="p">(</span><span class="n">NP</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">NR</span><span class="o">-</span><span class="n">HR</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl">  <span class="c1"># Objects to hold data for the last 20 days and next 10 days</span>
 </span></span><span class="line"><span class="cl">  <span class="n">last20</span> <span class="o">&lt;-</span> <span class="n">symDiff</span><span class="nf">[</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">NP</span><span class="p">)</span><span class="o">:</span><span class="n">i]</span>
@@ -162,6 +163,17 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 </span></span><span class="line"><span class="cl"><span class="nf">chartSeries</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">theme</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="n">TA</span><span class="o">=</span><span class="s">&#34;addTA(drawdown,col=c(&#39;blue&#39;,&#39;green&#39;));addTA(difference)&#34;</span><span class="p">)</span>
 </span></span></code></pre></div>
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -184,7 +196,7 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -282,11 +294,11 @@ The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

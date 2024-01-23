@@ -17,6 +17,7 @@ There&rsquo;s a handy new argument to getDividends(): split.adjust. It allows yo
 <meta property="article:published_time" content="2017-04-19T10:45:00-05:00" />
 <meta property="article:modified_time" content="2017-04-19T10:45:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -109,16 +110,33 @@ if (!doNotTrack) {
 <p>There&rsquo;s a handy new argument to <code>getDividends()</code>: <code>split.adjust</code>. It allows you to request dividends unadjusted for splits (<a href="https://github.com/joshuaulrich/quantmod/issues/140">#128</a>). Yahoo provides split-adjusted dividends, so you previously had to manually unadjust them for splits if you wanted the original raw values. To import the raw unadjusted dividends, just call:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rawDiv</span> <span class="o">&lt;-</span> <span class="nf">getDividends</span><span class="p">(</span><span class="s">&#34;IBM&#34;</span><span class="p">,</span> <span class="n">split.adjust</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>  
 </span></span></code></pre></div><p>Note that the default is <code>split.adjust = TRUE</code> to maintain backward-compatibility.</p>
+
+
 <div class="container" role="main">
   <div class="row">
-    <hr>
-    <p>If you love using my open-source work (e.g. <a href="https://cran.r-project.org/package=quantmod">quantmod</a>, <a href="https://cran.r-project.org/package=TTR">TTR</a>, <a href="https://cran.r-project.org/package=xts">xts</a>, <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>, <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>, etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-
-    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/quantmod">[quantmod]</a> tags.  Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post). Open an <a href="https://github.com/joshuaulrich/quantmod/issues">issue on GitHub</a> if you find a bug or want to request a feature. Please <a href="https://github.com/joshuaulrich/quantmod/blob/master/.github/CONTRIBUTING.md">read the contributing guide</a> first! It will help save time for both of us. ;-)</p>
+    <p>I look forward to your questions and feedback! If you have a question, please ask on <a href="http://stackoverflow.com/">Stack Overflow</a> and use the
+    <a href="http://stackoverflow.com/questions/tagged/r">[r]</a> and <a href="http://stackoverflow.com/questions/tagged/quantmod">[quantmod]</a> tags.
+    Or you can send an email to the <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-finance">R-SIG-Finance</a> mailing list (you must subscribe to post).
+    Open an <a href="https://github.com/joshuaulrich/quantmod/issues">issue on GitHub</a> if you find a bug or want to request a feature.
+    
+        Please read the <a href="https://github.com/joshuaulrich/quantmod/wiki/Contributing-Guide">contributing guide</a> first!
+        It will help save time for both of us. ;-)</p>
+    
   </div>
 </div>
 
 
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -144,7 +162,7 @@ if (!doNotTrack) {
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -242,11 +260,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

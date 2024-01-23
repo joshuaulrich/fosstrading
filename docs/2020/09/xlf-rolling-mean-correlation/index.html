@@ -14,6 +14,7 @@
 <meta property="article:published_time" content="2020-09-19T07:23:00-05:00" />
 <meta property="article:modified_time" content="2020-09-19T07:23:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -156,7 +157,7 @@ if (!doNotTrack) {
 <p>Next we will create a function to calculate the mean pairwise correlation for each pair of columns in our xts object. We can get all the pairwise correlations from the correlation matrix.</p>
 <p>Once we calculate the correlation matrix, we can calculate the mean correlation by taking the mean of the entire matrix. You may be thinking that this will take the mean of each correlation value two times (once for the upper triangle of the matrix, and another time for the lower triangle). But the values in both triangles are the same, because the matrix is symmetric about the diagonal. So this will not affect the mean calculation.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mean_cor</span> <span class="o">&lt;-</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">function</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">function</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># calculate the correlation matrix</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cor_matrix</span> <span class="o">&lt;-</span> <span class="nf">cor</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete&#34;</span><span class="p">)</span>
@@ -183,9 +184,7 @@ if (!doNotTrack) {
 <p>You can do similar analysis using this same pattern. You need to create another function to calculate the metric, but everything else will be the same.</p>
 <p>Like the Robot Wealth version, you can easily do this entire analysis in memory. You don&rsquo;t have to bother with chunking it up into smaller pieces and piecing it back together.</p>
 <p>One difference is that the data in their version is just under 3 million (!) rows, and 6 columns (~18 million data points). This version is 1346 rows and 65 columns (less than 100,000 data points). So you could quickly do the analysis in memory this way on ETFs or indexes with many more constituents (e.g. the Russell 3000). I&rsquo;ve worked on xts data sets with ~1 <em>billion</em> rows of tick data on my machine with 32GB of RAM.</p>
-<div class="container" role="main">
-  <div class="row">
-    <hr>
+                            <hr>
     <p>If you love using my open-source work (e.g.
       <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
       <a href="https://cran.r-project.org/package=TTR">TTR</a>,
@@ -195,8 +194,7 @@ if (!doNotTrack) {
       <a href="https://github.com/braverock/blotter/">blotter</a>,
       <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
       etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
-  </div>
-</div>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -216,7 +214,7 @@ if (!doNotTrack) {
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -314,11 +312,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

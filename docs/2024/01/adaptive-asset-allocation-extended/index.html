@@ -8,14 +8,12 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="Adaptive Asset Allocation Extended" />
-<meta property="og:description" content="This post extends the replication from the Adaptive Asset Allocation Replication
-post by running the
-analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
-Dale Rosenthal for helpful comments." />
+<meta property="og:description" content="This post extends the replication from the Adaptive Asset Allocation Replication post by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to Dale Rosenthal for helpful comments." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.fosstrading.com/2024/01/adaptive-asset-allocation-extended/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-01-17T13:02:00-05:00" />
 <meta property="article:modified_time" content="2024-01-17T13:02:00-05:00" />
+
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -98,15 +96,8 @@ if (!doNotTrack) {
 </div></div>
 		</header>
 		<div class="content post__content clearfix">
-			<p>This post extends the replication from the <a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a>
-post by running the
-analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to
-<a href="https://www.q36llc.com/">Dale Rosenthal</a> for helpful comments.</p>
-<p>The paper uses the 5 portfolios below. Each section of this post will
-give a short description of the portfolio construction and then focus on
-comparing the OOS results with the replicated and original results. See
-the other post for details on the data and portfolio construction
-methodologies.</p>
+			<p>This post extends the replication from the <a href="https://blog.fosstrading.com/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a> post by running the analysis on OOS (out-of-sample) data from 2015 through 2023. Thanks to <a href="https://www.q36llc.com/">Dale Rosenthal</a> for helpful comments.</p>
+<p>The paper uses the 5 portfolios below. Each section of this post will give a short description of the portfolio construction and then focus on comparing the OOS results with the replicated and original results. See the other post for details on the data and portfolio construction methodologies.</p>
 <ol>
 <li>Equal weight of all asset classes</li>
 <li>Equal risk contribution of all asset classes</li>
@@ -114,8 +105,7 @@ methodologies.</p>
 <li>Equal risk contribution of highest momentum asset classes</li>
 <li>Minimum variance of highest momentum asset classes</li>
 </ol>
-<p>The table below summarizes the date ranges for each sample period in
-this post.</p>
+<p>The table below summarizes the date ranges for each sample period in this post.</p>
 <table>
 <thead>
 <tr>
@@ -143,9 +133,7 @@ this post.</p>
 </tbody>
 </table>
 <h3 id="1-equal-weight-portfolio-of-all-asset-classes">1. Equal weight portfolio of all asset classes</h3>
-<p>This portfolio assumes no knowledge of expected relative asset class
-performance, risk, or correlation. It holds each asset class in equal
-weight and is rebalanced monthly.</p>
+<p>This portfolio assumes no knowledge of expected relative asset class performance, risk, or correlation. It holds each asset class in equal weight and is rebalanced monthly.</p>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_equal_weight</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">returns[</span><span class="s">&#34;/2014&#34;</span><span class="n">]</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="n">ro_equal_weight</span> <span class="o">&lt;-</span> <span class="nf">as.xts</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">returns[</span><span class="s">&#34;2015/&#34;</span><span class="n">]</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">))</span>
@@ -203,21 +191,10 @@ weight and is rebalanced monthly.</p>
 </tr>
 </tbody>
 </table>
-<p>The OOS annualized return is significantly less than the prior results.
-This is largely due to the -21.0% drawdown that started in 2022 and is
-still ongoing. Note that the full-period results are very similar to the
-replication results, though the 2022 drawdown did decrease the
-annualized return by ~1%.</p>
-<p>Note that this portfolio&rsquo;s results from 2015-2021 are very similar to
-the replication results through the end of 2014. That suggests the 2022
-bear market is the main cause for the lower return in the OOS results.</p>
+<p>The OOS annualized return is significantly less than the prior results. This is largely due to the -21.0% drawdown that started in 2022 and is still ongoing. Note that the full-period results are very similar to the replication results, though the 2022 drawdown did decrease the annualized return by ~1%.</p>
+<p>Note that this portfolio&rsquo;s results from 2015-2021 are very similar to the replication results through the end of 2014. That suggests the 2022 bear market is the main cause for the lower return in the OOS results.</p>
 <h3 id="2-equal-risk-contribution-using-all-asset-classes">2. Equal risk contribution using all asset classes</h3>
-<p>The next portfolio assumes the investor has some knowledge of each
-asset&rsquo;s risk, but still no knowledge of relative performance or
-correlations. So each asset in this portfolio is given a weight
-proportional to its historical relative risk, with the hope that each
-asset will contribute the same amount of risk to the overall portfolio
-in the future.</p>
+<p>The next portfolio assumes the investor has some knowledge of each asset&rsquo;s risk, but still no knowledge of relative performance or correlations. So each asset in this portfolio is given a weight proportional to its historical relative risk, with the hope that each asset will contribute the same amount of risk to the overall portfolio in the future.</p>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_equal_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_equal_risk</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ro_equal_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_equal_risk</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
@@ -275,22 +252,10 @@ in the future.</p>
 </tr>
 </tbody>
 </table>
-<p>Like the equal weight portfolio, this portfolio&rsquo;s OOS annualized return
-is significantly lower than the replication results. This methodology
-only slightly reduced the 2022 drawdown to -19.4% from -21.0%. The
-maximum drawdown is now in 2022 instead of during the 2008 financial
-crisis.</p>
-<p>In the replication, the equal risk contribution portfolio results are
-better than the equal weight portfolio, but the OOS equal risk portfolio
-did not show similar improvement. Even when 2022 is excluded, the OOS
-equal risk portfolio didn&rsquo;t show improvement over the equal weight
-portfolio.</p>
+<p>Like the equal weight portfolio, this portfolio&rsquo;s OOS annualized return is significantly lower than the replication results. This methodology only slightly reduced the 2022 drawdown to -19.4% from -21.0%. The maximum drawdown is now in 2022 instead of during the 2008 financial crisis.</p>
+<p>In the replication, the equal risk contribution portfolio results are better than the equal weight portfolio, but the OOS equal risk portfolio did not show similar improvement. Even when 2022 is excluded, the OOS equal risk portfolio didn&rsquo;t show improvement over the equal weight portfolio.</p>
 <h3 id="3-equal-weight-portfolio-of-highest-momentum-asset-classes">3. Equal weight portfolio of highest momentum asset classes</h3>
-<p>The next portfolio assumes the investor has some knowledge of each
-asset&rsquo;s returns, but still no knowledge of risk or correlations. Asset
-returns are based on 6-month momentum (approximately 120 days). Momentum
-is re-estimated every month and only the top 5 assets are included in
-the portfolio.</p>
+<p>The next portfolio assumes the investor has some knowledge of each asset&rsquo;s returns, but still no knowledge of risk or correlations. Asset returns are based on 6-month momentum (approximately 120 days). Momentum is re-estimated every month and only the top 5 assets are included in the portfolio.</p>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_eq_wt</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ro_momo_eq_wt</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">)</span>
@@ -348,22 +313,10 @@ the portfolio.</p>
 </tr>
 </tbody>
 </table>
-<p>Again, the OOS annualized return is significantly worse than the
-replicated results. The OOS results for this portfolio show improvement
-in the Sharpe Ratio versus the equal risk contribution portfolio (2).
-The replicated results for this portfolio showed similar improvements
-versus portfolio (2).</p>
-<p>In the replication, equal weight momentum results are better than the
-equal risk portfolio. But the OOS equal weight momentum portfolio did
-not show significant improvement versus the equal risk portfolio (2),
-and is roughly the same as the equal weight portfolio (1).</p>
+<p>Again, the OOS annualized return is significantly worse than the replicated results. The OOS results for this portfolio show improvement in the Sharpe Ratio versus the equal risk contribution portfolio (2). The replicated results for this portfolio showed similar improvements versus portfolio (2).</p>
+<p>In the replication, equal weight momentum results are better than the equal risk portfolio. But the OOS equal weight momentum portfolio did not show significant improvement versus the equal risk portfolio (2), and is roughly the same as the equal weight portfolio (1).</p>
 <h3 id="4-equal-risk-contribution-portfolio-of-highest-momentum-asset-classes">4. Equal risk contribution portfolio of highest momentum asset classes</h3>
-<p>The previous two portfolios estimated asset weights using either
-risk-based or momentum-based weights. This next portfolio combines
-estimates of momentum-based performance and accounts for asset class
-risk differences. It includes the top 5 asset classes based on 6-month
-returns and weights them using the same equal risk contribution method
-as portfolio (2).</p>
+<p>The previous two portfolios estimated asset weights using either risk-based or momentum-based weights. This next portfolio combines estimates of momentum-based performance and accounts for asset class risk differences. It includes the top 5 asset classes based on 6-month returns and weights them using the same equal risk contribution method as portfolio (2).</p>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_eq_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_equal_risk</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ro_momo_eq_risk</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_equal_risk</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
@@ -422,25 +375,10 @@ as portfolio (2).</p>
 </tr>
 </tbody>
 </table>
-<p>It&rsquo;s clear that the major cause of the poorer OOS performance of this
-portfolio is due to how it handled the 2022 bear market. This portfolio
-handled the 2008 financial crisis very well, but it offered almost no
-protection in 2022. This indicates there was a fundamental difference in
-2008 versus 2022 in the asset classes held by this portfolio.</p>
-<p>Similar to the replicated results, the reduction in risk is the main
-benefit of this portfolio versus the equal weight momentum portfolio
-(3). That said, the OOS performance of this portfolio only showed
-marginal improvement versus portfolio (3). Even more notable, this
-portfolio didn&rsquo;t improve returns versus the simple equal weight
-portfolio (1) during the OOS period like it did for the replication
-period.</p>
+<p>It&rsquo;s clear that the major cause of the poorer OOS performance of this portfolio is due to how it handled the 2022 bear market. This portfolio handled the 2008 financial crisis very well, but it offered almost no protection in 2022. This indicates there was a fundamental difference in 2008 versus 2022 in the asset classes held by this portfolio.</p>
+<p>Similar to the replicated results, the reduction in risk is the main benefit of this portfolio versus the equal weight momentum portfolio (3). That said, the OOS performance of this portfolio only showed marginal improvement versus portfolio (3). Even more notable, this portfolio didn&rsquo;t improve returns versus the simple equal weight portfolio (1) during the OOS period like it did for the replication period.</p>
 <h3 id="5-minimum-variance-portfolio-of-highest-momentum-asset-classes">5. Minimum variance portfolio of highest momentum asset classes</h3>
-<p>The final portfolio takes the above concepts and adds correlation
-estimates to the portfolio optimization. The previous portfolios only
-accounted for the relative risk between the asset classes, but not the
-correlation between the assets&rsquo; returns. This portfolio accounts for the
-correlations between asset classes by finding the minimum variance
-portfolio.</p>
+<p>The final portfolio takes the above concepts and adds correlation estimates to the portfolio optimization. The previous portfolios only accounted for the relative risk between the asset classes, but not the correlation between the assets&rsquo; returns. This portfolio accounts for the correlations between asset classes by finding the minimum variance portfolio.</p>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rr_momo_min_var</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_min_var</span><span class="p">(</span><span class="n">r_rep</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">ro_momo_min_var</span> <span class="o">&lt;-</span> <span class="nf">portf_top_momentum_min_var</span><span class="p">(</span><span class="n">r_oos</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">120</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
@@ -498,30 +436,13 @@ portfolio.</p>
 </tr>
 </tbody>
 </table>
-<p>Recall that the original results for portfolio (5) showed improved
-return and lower maximum drawdown versus portfolio (4), while the
-replicated results were almost the same for both portfolios. The OOS
-results for these two portfolios are also very similar. In the 2015-2021
-period, portfolio (5) has a slightly higher return and Sharpe ratio and
-lower max drawdown than portfolio (4).</p>
+<p>Recall that the original results for portfolio (5) showed improved return and lower maximum drawdown versus portfolio (4), while the replicated results were almost the same for both portfolios. The OOS results for these two portfolios are also very similar. In the 2015-2021 period, portfolio (5) has a slightly higher return and Sharpe ratio and lower max drawdown than portfolio (4).</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>For all 5 portfolios, the OOS results are not as good as the replicated
-results. This is largely due to the 2022 bear market, but the 2015-2021
-results still aren&rsquo;t as good as the replicated results.</p>
-<p><a href="https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/">Allocate
-Smartly</a>
-has a great post about 2022 bear market performance of tactical asset
-allocation (TAA) strategies like this one. They find that TAA strategies
-did poorly in the 2022 bear market if they assumed intermediate and
-long-term bonds provide diversification from risky assets. Both risk
-assets and longer duration bonds performed poorly in 2022, and the
-correlation between bonds and equities was positive instead of negative
-like they have been historically.</p>
-<p>In a future post, I may investigate how these portfolios would have
-performed if they were allowed to allocate to short-term Treasuries.</p>
+<p>For all 5 portfolios, the OOS results are not as good as the replicated results. This is largely due to the 2022 bear market, but the 2015-2021 results still aren&rsquo;t as good as the replicated results.</p>
+<p><a href="https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/">Allocate Smartly</a> has a great post about 2022 bear market performance of tactical asset allocation (TAA) strategies like this one. They find that TAA strategies did poorly in the 2022 bear market if they assumed intermediate and long-term bonds provide diversification from risky assets. Both risk assets and longer duration bonds performed poorly in 2022, and the correlation between bonds and equities was positive instead of negative like they have been historically.</p>
+<p>In a future post, I may investigate how these portfolios would have performed if they were allowed to allocate to short-term Treasuries.</p>
 <h3 id="portfolio-results-by-sample-period">Portfolio Results by Sample Period</h3>
-<p>This section contains tables with results for all portfolios in a
-particular sample period.</p>
+<p>This section contains tables with results for all portfolios in a particular sample period.</p>
 <h5 id="replication-period">Replication Period</h5>
 <table>
 <thead>
@@ -663,6 +584,17 @@ particular sample period.</p>
 </tr>
 </tbody>
 </table>
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -682,7 +614,7 @@ particular sample period.</p>
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -780,11 +712,11 @@ particular sample period.</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

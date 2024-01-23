@@ -6,13 +6,31 @@
     <description>Recent content in Tags on FOSS Trading</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Jan 2024 13:02:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Jan 2024 12:41:00 -0500</lastBuildDate><atom:link href="https://blog.fosstrading.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>R</title>
       <link>https://blog.fosstrading.com/search/label/R/</link>
-      <pubDate>Wed, 17 Jan 2024 13:02:00 -0500</pubDate>
+      <pubDate>Mon, 22 Jan 2024 12:41:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/R/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Releases</title>
+      <link>https://blog.fosstrading.com/search/label/Releases/</link>
+      <pubDate>Mon, 22 Jan 2024 12:41:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/Releases/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xts</title>
+      <link>https://blog.fosstrading.com/search/label/xts/</link>
+      <pubDate>Mon, 22 Jan 2024 12:41:00 -0500</pubDate>
+      
+      <guid>https://blog.fosstrading.com/search/label/xts/</guid>
       <description></description>
     </item>
     
@@ -22,15 +40,6 @@
       <pubDate>Tue, 22 Aug 2023 11:41:57 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/quantmod/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Releases</title>
-      <link>https://blog.fosstrading.com/search/label/Releases/</link>
-      <pubDate>Tue, 22 Aug 2023 11:41:57 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/search/label/Releases/</guid>
       <description></description>
     </item>
     
@@ -49,15 +58,6 @@
       <pubDate>Sat, 24 Jun 2023 10:21:00 -0500</pubDate>
       
       <guid>https://blog.fosstrading.com/search/label/TimeBase/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>xts</title>
-      <link>https://blog.fosstrading.com/search/label/xts/</link>
-      <pubDate>Mon, 24 Apr 2023 10:54:00 -0500</pubDate>
-      
-      <guid>https://blog.fosstrading.com/search/label/xts/</guid>
       <description></description>
     </item>
     

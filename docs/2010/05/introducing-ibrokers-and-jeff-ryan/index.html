@@ -15,6 +15,7 @@ I&rsquo;ll start by highlighting that while all the software in this post is ind
 <meta property="article:published_time" content="2010-05-13T14:23:00-05:00" />
 <meta property="article:modified_time" content="2010-05-13T14:23:00-05:00" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -176,6 +177,17 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>The <code>reqHistoricalData()</code> call takes a few arguments that can specify the <code>barSize</code> and <code>duration</code> of the data that is returned. Be warned that not all combinations work, not all working combinations are applicable to all contract types, and there are strict limits on how many queries you can make in any time period. These are IB enforced limitations and often are a source of great frustration when trying to reconcile why your simple request has failed. More information regarding the details of what works and when can be found in the <a href="http://cran.r-project.org/web/packages/IBrokers/IBrokers.pdf">IBrokers documentation,</a> as well as the more authoritative <a href="http://www.interactivebrokers.com/php/apiUsersGuide/apiguide/api/historical_data_limitations.htm">reference</a> from IB.</p>
 <p>Next time we&rsquo;ll explore the real-time data features of IBrokers, including live market data, real-time bars, and order-book data capabilities.</p>
 
+                            <hr>
+    <p>If you love using my open-source work (e.g.
+      <a href="https://cran.r-project.org/package=quantmod">quantmod</a>,
+      <a href="https://cran.r-project.org/package=TTR">TTR</a>,
+      <a href="https://cran.r-project.org/package=xts">xts</a>,
+      <a href="https://cran.r-project.org/package=IBrokers">IBrokers</a>,
+      <a href="https://cran.r-project.org/package=microbenchmark">microbenchmark</a>,
+      <a href="https://github.com/braverock/blotter/">blotter</a>,
+      <a href="https://github.com/braverock/quantstrat/">quantstrat</a>,
+      etc.), you can give back by <a href="https://github.com/sponsors/joshuaulrich/">sponsoring me on GitHub</a>. I truly appreciate anything you&rsquo;re willing and able to give!</p>
+  
 		</div>
 		<footer class="post__footer">
 			
@@ -207,7 +219,7 @@ if (!doNotTrack) {
 
 <section class="comments">
 	<div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -305,11 +317,11 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

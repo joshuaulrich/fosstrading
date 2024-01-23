@@ -12,6 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/post/" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -87,6 +88,25 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2010/12/build-rquantlib-on-32-bit-windows/" rel="bookmark">
+			Build RQuantLib on 32-bit Windows
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-12-07T17:20:00-06:00">December 07, 2010</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Before you start, note that there is now a Windows binary of RQuantLib is available on CRAN.
+Due to a change in how R-2.12.0 is built, CRAN maintainers could no longer provide a Windows binary of RQuantLib with the QuantLib library they had been using. I decided to try and build an updated QuantLib library from source, which would allow me (and them) to build the current RQuantLib.
+Instructions for Getting Started with QuantLib and MinGW from Scratch by Terry August (found in QuantLib FAQ 3.
+	</div>
+</article><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -247,24 +267,6 @@ How sensitive are optimal-f values to the method used to construct the joint pro
 		Michael Stokes, author of the MarketSci blog recently published a thought-provoking post about the correlation between historical and future volatility (measured as the standard deviation of daily close price percentage changes). This post is intended as an extension of his &ldquo;unfinished thought&rdquo;, not a critique.
 He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2010/04/maximum-probability-of-profit/" rel="bookmark">
-			Maximum Probability of Profit
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-04-09T10:04:00-05:00">April 09, 2010</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
-These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.
-	</div>
 </article>
 </main>
 
@@ -351,11 +353,11 @@ These optimizations take a very long time. 100 iterations on a 10-core Amazon EC
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>

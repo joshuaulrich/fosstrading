@@ -12,6 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.fosstrading.com/post/" />
 
+
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -87,6 +88,24 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2010/04/maximum-probability-of-profit/" rel="bookmark">
+			Maximum Probability of Profit
+			</a>
+		</h2>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-04-09T10:04:00-05:00">April 09, 2010</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		To continue with the LSPM examples, this post shows how to optimize a Leverage Space Portfolio for the maximum probability of profit. The data and example are again taken from The Leverage Space Trading Model by Ralph Vince.
+These optimizations take a very long time. 100 iterations on a 10-core Amazon EC2 cluster took 21 hours. Again, the results will not necessarily match the book because of differences between DEoptim and Ralph&rsquo;s genetic algorithm and because there are multiple possible paths one can take through leverage space that will achieve similar results.
+	</div>
+</article><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -264,25 +283,6 @@ It looks like Xasax hit funding problems in August&hellip; Inside Market Data me
 		I can&rsquo;t believe it&rsquo;s been two months since I last posted&hellip; wow, time has a way of slipping through my fingers. Here&rsquo;s a short list of some upcoming posts:
 An introduction to LSPM &ndash; a new R package that implements Ralph Vince&rsquo;s leverage space portfolio model (co-authored with Soren Macbeth). Updated charting with quantmod. An introduction to blotter &ndash; a transaction-based infrastructure for trading systems and simulation, providing support for multi-asset class and multi-currency portfolios.
 	</div>
-</article><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2009/07/david-varadis-rsi2-alternative/" rel="bookmark">
-			David Varadi&#39;s RSI(2) alternative
-			</a>
-		</h2>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-19T08:38:00-05:00">July 19, 2009</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/Articles/" rel="category">Articles</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Here&rsquo;s a quick R implementation of David Varadi&rsquo;s alternative to the RSI(2). Michael Stokes over at the MarketSci blog has three great posts exploring this indicator:
-Varadi&rsquo;s RSI(2) Alternative: The DV(2) RSI(2) vs. DV(2) Last Couple of Notes on DV(2) Here&rsquo;s the R code:
-DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object with &#34;High&#34;, &#34;Low&#34;, and &#34;Close&#34; # columns, in that order. # This is David Varadi&#39;s alternative to the RSI(2).
-	</div>
 </article>
 </main>
 
@@ -369,11 +369,11 @@ DV &lt;- function(HLC, n=2, bounded=FALSE) { # &#34;HLC&#34; is an _xts_ object 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/01/xts-0-13-2-on-cran/">xts_0.13.2 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/01/adaptive-asset-allocation-extended/">Adaptive Asset Allocation Extended</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/adaptive-asset-allocation-replication/">Adaptive Asset Allocation Replication</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/08/quantmod-0-4-25-on-cran/">quantmod_0.4.25 on CRAN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/06/running-timebase-in-docker/">Running TimeBase in Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/06/streaming-data-with-timebase/">Streaming Market Data with TimeBase</a></li>
 		</ul>
 	</div>
 </div>
