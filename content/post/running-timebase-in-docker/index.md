@@ -96,5 +96,3 @@ Now click the 'bars' stream in the navigation bar on the left. You should see th
 Okay, that's all for now. In the next post, we'll set up a data connector and watch some data stream into the database!
 
 {{< timebase-series-posts id="timebase-series-posts.html" >}}
-
-{{< post-footer id="post-footer.html" >}}

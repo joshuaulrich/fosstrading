@@ -136,5 +136,3 @@ You can do similar analysis using this same pattern. You need to create another 
 Like the Robot Wealth version, you can easily do this entire analysis in memory. You don't have to bother with chunking it up into smaller pieces and piecing it back together.
 
 One difference is that the data in their version is just under 3 million (!) rows, and 6 columns (~18 million data points). This version is 1346 rows and 65 columns (less than 100,000 data points). So you could quickly do the analysis in memory this way on ETFs or indexes with many more constituents (e.g. the Russell 3000). I've worked on xts data sets with ~1 *billion* rows of tick data on my machine with 32GB of RAM.
-
-{{< post-footer id="post-footer.html" >}}

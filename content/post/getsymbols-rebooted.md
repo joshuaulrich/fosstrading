@@ -253,5 +253,3 @@ There are lots of other common manipulations, like aggregating to a higher perio
 I don't want to do this in a vacuum. Please try the new package, provide feedback, suggestions, feature requests, and help clarify documentation.
 
 I need to know how you're using `getSymbols()` and how you would use the new package. I'm not omniscient, so your feedback will be extremely valuable!
-
-{{< post-footer id="post-footer.html" >}}
