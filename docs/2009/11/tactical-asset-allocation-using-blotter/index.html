@@ -102,11 +102,11 @@ if (!doNotTrack) {
 <p><a href="https://r-forge.r-project.org/projects/blotter">blotter</a> is an <a href="http://www.r-project.org/">R</a> package that tracks the P&amp;L of your trading systems (or simulations), even if your portfolio spans many security types and/or currencies. This post uses blotter to track a simple two-ETF trading system.</p>
 <p>The contents of this post borrow heavily from code and comments in the &ldquo;longtrend&rdquo; demo script in the blotter package. Many thanks to <a href="http://www.braverock.com/%7Epeter/">Peter Carl</a> and <a href="http://www.braverock.com/%7Ebrian/">Brian Peterson</a> for their hard work.</p>
 <p>The first chart shows the result of holding an equal-weight portfolio of <a href="http://finance.yahoo.com/q?s=SPY">SPY</a> and <a href="http://finance.yahoo.com/q?s=IEF">IEF</a> from 2002-07-31 to 2009-10-31. The 2008 bear market led to a 30% drawdown in this portfolio.</p>
-<p><a href="https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/post/images/20091118_blotter_buyhold.png"><img src="https://blog.fosstrading.com/post/images/20091118_blotter_buyhold.png" alt="" >
-</a></p>
+<p><img src="https://blog.fosstrading.com/post-images/20091118_blotter_buyhold.png" alt="" >
+</p>
 <p>The second chart shows the result of following <a href="http://www.mebanefaber.com/">Mebane Faber&rsquo;s</a> tactical asset allocation approach using the same ETFs and time period. Though it did not perform as well as buy-and-hold through 2007, the 2008 bear market only caused a 5% drawdown for this strategy. Both observations are consistent with the conclusion in <a href="http://ssrn.com/abstract=962461">Faber&rsquo;s article</a>.</p>
-<p><a href="https://blog.fosstrading.com/2009/11/tactical-asset-allocation-using-blotter/post/images/20091118_blotter_strategy.png"><img src="https://blog.fosstrading.com/post/images/20091118_blotter_strategy.png" alt="" >
-</a></p>
+<p><img src="https://blog.fosstrading.com/post-images/20091118_blotter_strategy.png" alt="" >
+</p>
 <p>Without further ado, here&rsquo;s the code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># This code implements the strategy found in:</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Faber, Mebane T., &#34;A Quantitative Approach to Tactical Asset Allocation.&#34;</span>

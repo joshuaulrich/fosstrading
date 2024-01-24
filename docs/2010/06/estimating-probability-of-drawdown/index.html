@@ -110,7 +110,7 @@ both by <a href="http://www.ralphvince.com/">Ralph Vince</a>.</p>
 The results below were run on daily SPY from 2008-01-01 to 2009-01-01, using 20 days of data to estimate the probability of a 5% drawdown over the next 10 days.  Results on daily QQQQ over the same period, and monthly SPX from 1950-present produced similar results.</p>
 <p>I chose a prediction horizon of 10 periods to provide a fairly smooth actual probability of drawdown curve without making the <code>probDrawdown()</code> calculation time too long.  Using 10 (instead of 20) days of data in the lsp object only changed results slightly.</p>
 <p>The chart below shows that <code>probDrawdown()</code> nearly always over estimates actual drawdown over the next 10 periods and <em>hardly ever</em> under estimates it.  While it&rsquo;s comforting the function doesn&rsquo;t under estimate risk, I would prefer a less biased estimator.</p>
-<p><img src="https://blog.fosstrading.com/post/images/20100619_probDrawdown.png" alt="" >
+<p><img src="https://blog.fosstrading.com/post-images/20100619_probDrawdown.png" alt="" >
 </p>
 <p>Notice that the above calculation assumes each event is independently distributed.  <a href="http://braverock.com/brian/">Brian Peterson</a> suggested a <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Moving_block_bootstrap">block bootstrap</a> to attempt to preserve any dependence that may exist.  My next post will investigate if that materially improves estimates.</p>
 <p><strong>Code:</strong></p>

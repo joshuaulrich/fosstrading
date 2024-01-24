@@ -53,6 +53,20 @@ img.csi-banner {
 
 /* inline code should be black, not red */
 code {
-	padding: 0 5px;
-	color: #000;
+    padding: 0 5px;
+    color: #000;
+}
+
+figure.floatright {
+    max-width: 30%;
+    width: auto;
+    height: auto;
+    float: right;
+}
+
+figure.floatleft {
+    max-width: 30%;
+    width: auto;
+    height: auto;
+    float: left;
 }

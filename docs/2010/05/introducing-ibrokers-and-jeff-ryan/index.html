@@ -106,14 +106,14 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;IBrokers&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p>Next up would be to make sure that your TWS has sockets enable, and you have your localhost entered as a &ldquo;trusted IP&rdquo;.</p>
 <p>First find the &ldquo;Configure&rdquo; menu in the TWS</p>
-<p><img src="https://blog.fosstrading.com/post/images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.05&#43;195PM.png" alt="" >
+<p><img src="https://blog.fosstrading.com/post-images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.05&#43;195PM.png" alt="" >
 </p>
 <p>Next we check for &ldquo;Enable ActiveX and Socket Clients&rdquo;</p>
-<p><a href="https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.30&#43;142PM.png"><img src="https://blog.fosstrading.com/post/images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.30&#43;142PM.png" alt="" >
-</a></p>
+<p><img src="https://blog.fosstrading.com/post-images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.30&#43;142PM.png" alt="" >
+</p>
 <p>To add a &ldquo;Trusted IP&rdquo; click on &ldquo;All API Settings&hellip;&rdquo;</p>
-<p><a href="https://blog.fosstrading.com/2010/05/introducing-ibrokers-and-jeff-ryan/post/images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.43&#43;749PM.png"><img src="https://blog.fosstrading.com/post/images/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.43&#43;749PM.png" alt="" >
-</a></p>
+<p><img src="https://blog.fosstrading.com/postimages/Screen&#43;shot&#43;2010-05-13&#43;at&#43;3.10.43&#43;749PM.png" alt="" >
+</p>
 <p>Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">IBrokers</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">

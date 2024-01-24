@@ -169,7 +169,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="c1">## Sep 2016              46852            90605  </span>
 </span></span><span class="line"><span class="cl"><span class="c1">## Dec 2016              78351            33088</span>
 </span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">totalRevenue</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Quarterly Total Revenue, AAPL (black) vs GE (red)&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img src="" alt="" >
+</span></span></code></pre></div><p><img src="https://blog.fosstrading.com/post-images/stack-financials-1.png" alt="" >
 </p>
 <p>You could also combine multiple calls to <code>extractLineItem()</code> to calculate ratios not included in the output from <code>viewFinancials()</code>. For example, you could divide operating income by total revenue to calculate operating margin.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">operatingIncome</span> <span class="o">&lt;-</span> <span class="nf">extractLineItem</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="s">&#34;operating income&#34;</span><span class="p">)</span>  
@@ -181,7 +181,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="c1">## Sep 2016                 11761                6138  </span>
 </span></span><span class="line"><span class="cl"><span class="c1">## Dec 2016                 23359                2892</span>
 </span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">operatingIncome</span> <span class="o">/</span> <span class="n">totalRevenue</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Quarterly Operating Margin, AAPL (black) vs GE (red)&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img src="" alt="" >
+</span></span></code></pre></div><p><img src="https://blog.fosstrading.com/post-images/stack-financials-2.png" alt="" >
 </p>
 
                             <hr>

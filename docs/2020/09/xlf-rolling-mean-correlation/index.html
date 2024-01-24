@@ -178,7 +178,7 @@ if (!doNotTrack) {
 <p>We also need to set <code>by.column = FALSE</code>. Otherwise, the <code>rollapply()</code> function will run the function on each column of the xts object individually. And it doesn&rsquo;t make sense to try and calculation the correlation matrix of a single series.</p>
 <p>Now, let&rsquo;s plot our rolling 60-day correlations. We only need to call the <code>plot()</code> function to get a quick look.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">cors</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Rolling mean XLF correlations&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img src="https://blog.fosstrading.com/post/images/plot-rolling-mean-xlf-correlations-1.png" alt="plot of chunk plot-rolling-mean-xlf-correlations" >
+</span></span></code></pre></div><p><img src="https://blog.fosstrading.com/post-images/plot-rolling-mean-xlf-correlations-1.png" alt="plot of chunk plot-rolling-mean-xlf-correlations" >
 </p>
 <p>The main thing I like about my approach is how few lines of code it takes. The most complicated piece is the <code>mean_cor()</code> function, but even that is fairly straightforward.</p>
 <p>You can do similar analysis using this same pattern. You need to create another function to calculate the metric, but everything else will be the same.</p>
