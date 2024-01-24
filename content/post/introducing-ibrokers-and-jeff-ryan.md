@@ -28,15 +28,15 @@ Next up would be to make sure that your TWS has sockets enable, and you have you
 
 First find the "Configure" menu in the TWS
 
-![](/post/images/Screen+shot+2010-05-13+at+3.10.05+195PM.png)
+![](/post-images/Screen+shot+2010-05-13+at+3.10.05+195PM.png)
 
 Next we check for "Enable ActiveX and Socket Clients"
 
-[![](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)  
+![](/post-images/Screen+shot+2010-05-13+at+3.10.30+142PM.png)
 
 To add a "Trusted IP" click on "All API Settings..."
 
-[![](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)](/post/images/Screen+shot+2010-05-13+at+3.10.43+749PM.png)
+![](/postimages/Screen+shot+2010-05-13+at+3.10.43+749PM.png)
 
 Okay, that was easy. Now we are back to R code. Next we need to load our freshly installed IBrokers package and connect.
 

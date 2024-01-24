@@ -94,7 +94,7 @@ main="RSI(2) Strategy, with Position Scaling:\n 2000-01-03 through 2008-12-07" )
 dev.off()
 ```
 
-[![](/post/images/20090501_rsi2_updated.png)](/post/images/20090501_rsi2_updated.png)  
+![](/post-images/20090501_rsi2_updated.png)
 Visual inspection of the charts seems to indicate the updated RSI(2) strategy has slightly higher returns, but more volatility and larger drawdowns.  
   
 The [PerformanceAnalytics](http://cran.r-project.org/web/packages/PerformanceAnalytics/index.html) package can evaluate the volatility, drawdowns, and related metrics for investing and trading strategies.  We'll use it in the next post to [evaluate RSI(2)](http://blog.fosstrading.com/2009/06/rsi2-evaluation.html).

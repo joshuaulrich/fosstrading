@@ -261,7 +261,7 @@ plot(minSD.opt, risk.col="StdDev", chart.assets=TRUE,
      ylim=c(0, 0.0083), xlim=c(0, 0.06))  
 ```
 
-[![](/post/images/unnamed-chunk-102.png)](/post/images/unnamed-chunk-102.png)
+![](/post-images/unnamed-chunk-102.png)
 
 ```r
 plot(meanES.opt, chart.assets=TRUE,   
@@ -269,7 +269,7 @@ plot(meanES.opt, chart.assets=TRUE,
      ylim=c(0, 0.0083), xlim=c(0, 0.16))  
 ```
 
-[![](/post/images/unnamed-chunk-101.png)](/post/images/unnamed-chunk-101.png)
+![](/post-images/unnamed-chunk-101.png)
 
 This post demonstrates how to construct a portfolio object, add constraints, and add objectives for two simple optimization problems; one to minimize portfolio standard deviation and another to maximize mean return per unit expected shortfall. We then run optimizations on both portfolio objects and plot the results of each portfolio optimization. Although this post demonstrates fairly simple constraints and objectives, PortfolioAnalytics supports complex constraints and objectives as well as many other features that will be covered in subsequent posts.
 

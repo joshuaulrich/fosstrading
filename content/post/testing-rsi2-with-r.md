@@ -72,5 +72,5 @@ main="Simple RSI(2) Strategy: 2000-01-02 through 2008-12-07" )
 
 My version of Michael's chart is below. Up next, scaling in/out of positions with RSI(2).  
   
-[![](/post/images//20090413_rsi2_long_short.png)](/post/images/20090413_rsi2_long_short.png)  
+![](/post-images//20090413_rsi2_long_short.png)
 Now, let's look at [RSI(2) with position sizing](http://blog.fosstrading.com/2009/05/rsi2-with-position-sizing.html).

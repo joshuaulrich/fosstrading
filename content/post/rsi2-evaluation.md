@@ -74,7 +74,7 @@ Table 3: RSI(2) Downside Risk - RSI steps = 5, Size steps = 0.25
 The chart below shows the output from the PerformanceAnalytics `charts.PerformanceSummary()` function. It shows the equity curves and drawdown from peak for the long and short sides of the strategy. The middle graph shows the *daily* returns for the combined strategy.  
   
 
-[![](/post/images/20090606_rsi2_performance.png)](/post/images/20090606_rsi2_performance.png)
+![](/post-images/20090606_rsi2_performance.png)
 
   
 The code below has everything that created the results above. It also contains the same results for a modified RSI(2) strategy. The modified strategy uses RSI steps of 10 and sizing steps of 0.3 (i.e. RSI<10 -> size=1, 10<20 -> size=0.7, etc.).  

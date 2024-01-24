@@ -145,7 +145,7 @@ Now, let's plot our rolling 60-day correlations. We only need to call the `plot(
 plot(cors, main = "Rolling mean XLF correlations")
 ```
 
-![plot of chunk plot-rolling-mean-xlf-correlations](/post/images/plot-rolling-mean-xlf-correlations-1.png)
+![plot of chunk plot-rolling-mean-xlf-correlations](/post-images/plot-rolling-mean-xlf-correlations-1.png)
 
 The main thing I like about my approach is how few lines of code it takes. The most complicated piece is the `mean_cor()` function, but even that is fairly straightforward.
 

@@ -12,7 +12,7 @@ Michael Stokes, author of the [MarketSci blog](http://marketsci.wordpress.com/) 
 He suggests using his table of volatility correlations as a back-of-the-envelope approach to estimate future volatility, which led me to question the stability of the correlations in his table. His table's values are calculated using daily data from 1970-present... but what if you were to calculate correlations using only one year of data, rather than thirty? The chart below shows the results.  
   
 
-[![](/post/images/rolling_volatility_correlations.png)](/post/images/rolling_volatility_correlations.png)
+![](/post-images/rolling_volatility_correlations.png)
 
   
 

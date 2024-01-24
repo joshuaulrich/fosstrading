@@ -7,7 +7,9 @@ categories: [ Articles ]
 tags : [Reviews, R]
 ---
 
-[![](http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&Format=_SL160_&ASIN=1449309925&MarketPlace=US&ID=AsinImage&WS=1&tag=fotr09-20&ServiceVersion=20070822)](http://www.amazon.com/gp/product/1449309925/ref=as_li_ss_il?ie=UTF8&tag=fotr09-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=1449309925)You have a problem: [R](http://www.r-project.org/) is single-threaded, but your code would be faster if it could simultaneously run on more than one core.  You have access to a cluster and/or your computer has multiple cores.  [Parallel R](http://www.amazon.com/gp/product/1449309925/ref=as_li_ss_tl?ie=UTF8&tag=fosstrading-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=1449309925), by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.  
+{{< figure src="/post-images/parallel-r.jpeg" class="floatright" link="https://amzn.to/3SdoW7j" >}}
+
+You have a problem: [R](http://www.r-project.org/) is single-threaded, but your code would be faster if it could simultaneously run on more than one core.  You have access to a cluster and/or your computer has multiple cores.  [Parallel R](https://amzn.to/3SdoW7j), by Q. Ethan McCallum and Stephen Weston, can help you put this extra computing power to use.  
   
 The book describes 6 approaches to distributed computing.  Thoughts on each approach follow:  
   
