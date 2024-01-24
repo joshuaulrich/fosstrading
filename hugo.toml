@@ -1,7 +1,6 @@
 baseurl = "https://blog.fosstrading.com/"
 title = "FOSS Trading"
 languageCode = "en-us"
-publishDir = "docs"
 
 theme = [ "mainroad" ]
 paginate = "10" # Number of posts per page
