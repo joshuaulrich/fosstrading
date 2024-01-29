@@ -62,6 +62,9 @@ library(PerformanceAnalytics)
 # Make sure system timezone is "UTC"
 Sys.setenv(TZ = "UTC")
 
+# Clean up in case the code was already run in this session
+try(rm("account.default","portfolio.default",pos=.blotter),silent=TRUE)
+
 # Set initial values
 initDate='2002-07-31'
 endDate='2009-10-31'
