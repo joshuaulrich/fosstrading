@@ -85,8 +85,8 @@ getSymbols(symbols, from=initDate, to=endDate, index.class=c("POSIXt","POSIXct")
 #SPY = adjustOHLC(SPY)
 
 # Convert data to monthly frequency (to.weekly() needs drop.time=FALSE)
-IEF = to.monthly(IEF, indexAt='endof')
-SPY = to.monthly(SPY, indexAt='endof')
+IEF = to.monthly(IEF, indexAt='endof', drop.time=FALSE)
+SPY = to.monthly(SPY, indexAt='endof', drop.time=FALSE)
 
 # Set up indicators with TTR
 print("Setting up indicators")
