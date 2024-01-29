@@ -59,6 +59,9 @@ library(TTR)
 library(blotter) # r-forge revision 193
 library(PerformanceAnalytics)
 
+# Make sure system timezone is "UTC"
+Sys.setenv(TZ = "UTC")
+
 # Set initial values
 initDate='2002-07-31'
 endDate='2009-10-31'
@@ -138,11 +141,7 @@ cat('Buy and Hold Return: ',tail(buyhold,1)-1,'\n')
 
 # Plot Strategy Summary
 png(filename="20091118_blotter_strategy.png", 720, 720)
-
-#charts.PerformanceSummary(ROC(getAccount('default')$TOTAL$End.Eq)[-1],main="Tactical Asset Allocation")
-
 charts.PerformanceSummary(ROC(getAccount('default')$summary$End.Eq)[-1],main="Tactical Asset Allocation")
-
 dev.off()
 
 # Plot Buy and Hold Summary
