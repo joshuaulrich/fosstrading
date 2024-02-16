@@ -184,20 +184,12 @@ The original paper creates portfolios from 10 major global asset classes using d
 The table below shows the asset class, instruments, and time horizons used for each asset class in this replication. The data start in late 1997 instead of 1995 as in the original paper. Returns in this analysis are adjusted for splits and dividends.
 
 ```{r asset_table, echo=FALSE}
-suppressWarnings({
-tbl <- kbl(asset_table,
-           caption = "Data Sources by Date",
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE) |>
-       column_spec(1, "2.0in") |>
-       column_spec(2, "0.5in") |>
-       column_spec(3, "1.0in") |>
-       column_spec(4, "0.5in") |>
-       column_spec(5, "1.0in")
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(asset_table,
+    caption = "Data Sources by Date",
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 ```{r helper_functions, echo=FALSE}
@@ -265,16 +257,12 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 ```
 
 ```{r equal_weight_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           caption = title,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    caption = title,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 
@@ -339,16 +327,12 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 ```
 
 ```{r equal_risk_table, eval=TRUE}
-suppressWarnings({
-tbl <- kbl(stats,
-           caption = title,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    caption = title,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 In this case, the replicated results are better than the original results. The data differences and the method used to estimate the equal risk contribution portfolio weights are the most likely explanation for the differences in the replicated results.
@@ -406,16 +390,12 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 ```
 
 ```{r top_5_momo_eq_weight_table, echo=FALSE}
-suppressWarnings({
-tbl <- kbl(stats,
-           caption = title,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    caption = title,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 The replicated results have slightly better returns and maximum drawdown, but similar standard deviation. That said, the results are similar enough to suggest this analysis replicates the approach accurately.
@@ -477,16 +457,12 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 ```
 
 ```{r top_5_momo_eq_risk_table, echo=FALSE}
-suppressWarnings({
-tbl <- kbl(stats,
-           caption = title,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    caption = title,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 The original and replicated results for this portfolio are very similar. Note that in the original paper this portfolio's overall return increased to 14.0% versus 13.0% for the momentum-based equal weight portfolio, but the replicated results were more similar (`r 100*strat_summary(to_monthly_returns(portf_top_momentum(returns, 5, 120)))[1,1]`% versus `r 100* strat_summary(to_monthly_returns(portf_top_momentum_equal_risk(returns, 5, 120, 60)))[1,1]`%). Again, the data differences and portfolio weight estimation differences likely cause differences in the results. Also, an un-scientific comparison of the two cumulative return graphs suggests some difference may be due to performance in 2012, when the replicated results have a significant drawdown while the original results showed positive performance.
@@ -564,16 +540,12 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 ```
 
 ```{r top_5_momo_min_var_table, echo=FALSE}
-suppressWarnings({
-tbl <- kbl(stats,
-           caption = title,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    caption = title,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 The replicated results still show worse performance than the original results, which also seems to be related to performance during 2012. The replicated results also do not show significant improvement relative to the top 5 momentum equal risk portfolio like the original paper shows.

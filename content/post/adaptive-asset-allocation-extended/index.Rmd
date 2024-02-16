@@ -241,15 +241,11 @@ chart_performance(monthly_returns, "All Assets - Equal Weight")
 ```
 
 ```{r equal_weight_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 
 oos_eq_wt_stats <- stats
 ```
@@ -323,15 +319,11 @@ chart_performance(monthly_returns, "All Assets - Equal Risk")
 ```
 
 ```{r equal_risk_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 
 oos_eq_risk_stats <- stats
 ```
@@ -397,15 +389,11 @@ chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Weight")
 ```
 
 ```{r top_5_momo_eq_weight_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 
 oos_momo_eq_wt_stats <- stats
 ```
@@ -474,15 +462,11 @@ chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Risk")
 ```
 
 ```{r top_5_momo_eq_risk_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 
 oos_momo_eq_risk_stats <- stats
 ```
@@ -569,15 +553,11 @@ chart_performance(monthly_returns, "Above Average 6mo Momentum - Min Var")
 ```
 
 ```{r top_5_momo_min_var_table}
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 
 oos_momo_min_var_stats <- stats
 ```
@@ -617,14 +597,11 @@ stats <-
 dimnames(stats) <- list(rn, cn_portf)
 #dimnames(stats) <- list(rownames(oos_eq_wt_stats), cn_portf)
 
-suppressWarnings({
 kbl(stats,
     format = "pipe",
     booktabs = TRUE,
     linesep = "",
-    escape = TRUE) |>
-kable_classic(full_width = FALSE, latex_options = "hold_position")
-})
+    escape = TRUE)
 ```
 
 ##### Out-of-Sample: 2015-2023
@@ -639,15 +616,11 @@ stats <-
         oos_momo_min_var_stats[, cn_sample])
 dimnames(stats) <- list(rn, cn_portf)
 
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
 
 ##### Out-of-Sample: 2015-2021
@@ -662,13 +635,9 @@ stats <-
         oos_momo_min_var_stats[, cn_sample])
 dimnames(stats) <- list(rn, cn_portf)
 
-suppressWarnings({
-tbl <- kbl(stats,
-           format = "pipe",
-           booktabs = TRUE,
-           linesep = "",
-           escape = TRUE)
-
-kable_classic(tbl, full_width = FALSE, latex_options = "hold_position")
-})
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
 ```
