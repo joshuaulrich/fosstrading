@@ -144,7 +144,7 @@ returns_equal_weight <-
     to_monthly_returns()
 
 title <- "All Assets - Equal Weight"
-stats <- strat_summary(returns_equal_weight, title,
+stats <- strat_summary(returns_equal_weight,
                        original_results = c(0.081, 0.112, 0.72, -0.392))
 charts.PerformanceSummary(returns_equal_weight, main = title, wealth.index = TRUE)
 ```
@@ -173,7 +173,7 @@ returns_equal_risk <-
     to_monthly_returns()
 
 title <- "All Assets - Equal Risk Contribution"
-stats <- strat_summary(returns_equal_risk, title,
+stats <- strat_summary(returns_equal_risk,
                        original_results = c(0.085, 0.086, 0.99, -0.242))
 charts.PerformanceSummary(returns_equal_risk, main = title, wealth.index = TRUE)
 ```
@@ -203,7 +203,7 @@ returns_momo_equal_weight <-
     to_monthly_returns()
 
 title <- "Top 5 Assets by 6-month Momentum - Equal Weight"
-stats <- strat_summary(returns_momo_equal_weight, title,
+stats <- strat_summary(returns_momo_equal_weight,
                        original_results = c(0.130, 0.110, 1.17, -0.217))
 charts.PerformanceSummary(returns_momo_equal_weight, main = title, wealth.index = TRUE)
 ```
@@ -232,7 +232,7 @@ returns_momo_equal_risk <-
     to_monthly_returns()
 
 title <- "Top 5 Assets by 6-month Momentum - Equal Risk Contribution"
-stats <- strat_summary(returns_momo_equal_risk, title,
+stats <- strat_summary(returns_momo_equal_risk,
                        original_results = c(0.140, 0.099, 1.41, -0.148))
 charts.PerformanceSummary(returns_momo_equal_risk, main = title, wealth.index = TRUE)
 ```
@@ -260,7 +260,7 @@ returns_momo_min_var <-
     to_monthly_returns()
 
 title <- "Assets With Above Average 6-month Momentum - Minimum Variance"
-stats <- strat_summary(returns_momo_min_var, title,
+stats <- strat_summary(returns_momo_min_var,
                        original_results = c(0.150, 0.094, 1.60, -0.088))
 charts.PerformanceSummary(returns_momo_min_var, main = title, wealth.index = TRUE)
 ```
