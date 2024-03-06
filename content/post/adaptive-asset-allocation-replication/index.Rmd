@@ -256,7 +256,7 @@ The final portfolio takes the above concepts and adds correlation estimates to t
 
 ```{r top_momo_min_var, echo=TRUE}
 returns_momo_min_var <-
-    portf_return_momo_min_var(returns, 5, 120, 60) |>
+    portf_return_momo_min_var(returns, 5, 120, 60, "above average") |>
     to_monthly_returns()
 
 title <- "Assets With Above Average 6-month Momentum - Minimum Variance"
