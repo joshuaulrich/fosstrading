@@ -13,16 +13,14 @@ pandoc_args: [ "-fmarkdown-implicit_figures" ]
 # render for blog:
 # Rscript -e 'rmarkdown::render("index.Rmd", rmarkdown::md_document(preserve_yaml = TRUE, pandoc_args = "--to=markdown_strict+all_symbols_escapable+backtick_code_blocks+fenced_code_blocks+space_in_atx_header+intraword_underscores+lists_without_preceding_blankline+shortcut_reference_links+pipe_tables+strikeout+autolink_bare_uris+task_lists+definition_lists+footnotes+smart+tex_math_dollars"), "index.md")'
 
-
 # create R code for blog:
 # Rscript -e 'knitr::purl("index.Rmd")'
 ```
 
 ```{r setup, include=FALSE, purl=TRUE}
 suppressPackageStartupMessages({
+    library(ftblog)
     library(PerformanceAnalytics)
-    library(quantmod)
-    library(tseries)
     library(kableExtra)
     library(knitr)
     knitr::opts_chunk$set(
@@ -38,119 +36,15 @@ suppressPackageStartupMessages({
     options(digits.secs = 6,
             xts_check_TZ = FALSE)
     Sys.setenv(TZ = "UTC")
+
+    data(aaa_returns, package = "ftblog")
 })
 
-checkUsage <- function(fun) {
-    codetools::checkUsage(fun, all = TRUE, report = print)
-}
-
-splice_returns <-
-function(Ra, Rb)
-{
-    # fills NA values in Ra with values from Rb
-    R <- merge(Ra, Rb, join = "left")
-    is_na <- is.na(R[, 1])
-    R[is_na, 1] <- R[is_na, 2]
-
-    colnames(R) <- NULL
-    return(R[,1])
-}
-
-import_spliced_returns <-
-function(symbols, from = "1990-01-01")
-{
-    symbols <- symbols[1:2]
-
-    data_env <- new.env()
-    getSymbols(symbols, from = from, env = data_env, src = "tiingo")
-
-    # combine into xts object
-    prices <- do.call(merge, lapply(data_env, Ad))
-
-    # clean up column names
-    colnames(prices) <- sub(".Adjusted", "", colnames(prices), fixed = TRUE)
-
-    # order columns
-    prices <- prices[, symbols]
-
-    # calculate returns
-    returns <- Return.calculate(prices)
-
-    result <- splice_returns(returns[,1], returns[,2])
-
-    return(result)
-}
-
-# symbols
-symbols <-
-    c("VTI",  # US Stocks                  VTI   (2001-05), VITSX (1990-07), WFIVX (1999)
-      "VGK",  # European Stocks            VGK   (2005-03), VEURX (1990-06),
-      "EWJ",  # Japanese Stocks            EWJ   (1996-03), FJPNX (1992   )
-      "EEM",  # Emerging Market Stocks     EEM   (2003-04), VEIEX (1994   )
-      "VNQ",  # US Real Estate             VNQ   (2004-09), VGSIX (1996-05), (Wilshire indexes from FRED), ICF (2001-02)
-      "RWX",  # International Real Estate  RWX   (2006-12), IERBX (1997-09), MSUAX (1997-11)
-      "IEF",  # 7-10 Year Treasuries       IEF   (2002-07), LUTAX (1991, 7 WAL), PRTIX (1989 3-7 tho)
-      "TLT",  # 20+ Year Treasuries        TLT   (2002-07), VUSTX (1986   ), PRULX (1989)
-      "DBC",  # Commodities                DBC   (2006-02), QRACX (1997-03)
-      "GLD")  # Gold                       GLD   (2004-11), SGGDX (1993-08), IAU (2005-01, lower ER than GLD)
-
-# US Real Estate: WILLRESIND  (FRED)
-# Commodities: ^SPGSCI        (YAHOO)
-
-# SPY, EZU, EWJ, EEM, VNQ, RWX, IEF, TLT, DBC, GLD
-
-asset_table <- read.csv(text = "ETF,ETF Start,Fund,Fund Start
-US Equity,                  VTI, 2001-05, VTSMX, 1992-04
-European Equity,            VGK, 2005-03, VEURX, 1990-06
-Japanese Equity,            EWJ, 1996-03, FJPNX, 1992-12
-Emerging Market Equity,     EEM, 2003-04, VEIEX, 1994-12
-US Real Estate,             ICF, 2001-02, VGSIX, 1996-05
-International Real Estate,  RWX, 2006-12, XRFIX, 1997-09
-Intermediate Term Treasury, IEF, 2002-07, VFITX, 1991-12
-Long Term Treasury,         TLT, 2002-07, VUSTX, 1986-12
-Commodities,                DBC, 2006-02, QRACX, 1997-03
-Gold,                       GLD, 2004-11, SGGDX, 1993-08",
-strip.white = TRUE, check.names = FALSE)
-
-# ETF/Fund pairs
-assets <- data.frame(t(asset_table[, c(1, 3)]))
-
-if (file.exists("returns.rds")) {
-    returns <- readRDS("returns.rds")
-} else {
-    return_history <- do.call(merge, lapply(assets, import_spliced_returns))
-    returns <- return_history
-
-    # Replace missing returns with GSCI index from Yahoo Finance
-    gsci <- Ad(getSymbols("^SPGSCI", from = "1990-01-01", src = "yahoo", auto.assign = FALSE))
-    asset_col <- "Commodities"
-    returns[, asset_col] <- splice_returns(returns[, asset_col], Return.calculate(gsci))
-
-    # Replace missing returns with Russell Global Real Estate Securities Fund
-    global_re <- Ad(getSymbols("RRESX", from = "1990-01-01", src = "tiingo", auto.assign = FALSE))
-    asset_col <- "International.Real.Estate"
-    returns[, asset_col] <- splice_returns(returns[, asset_col], Return.calculate(global_re))
-
-    # Replace missing returns with Willshire Real Estate Securities index from FRED
-    # Daily data start in 1996-01-31
-    us_re <- getSymbols("WILLRESIND", from = "1996-01-31", src = "FRED", auto.assign = FALSE)
-    asset_col <- "US.Real.Estate"
-    returns[, asset_col] <- splice_returns(returns[, asset_col], Return.calculate(us_re))
-
-    returns <- na.omit(returns)["/2023"]
-
-    saveRDS(returns, file = "returns.rds")
-}
-
+returns <- aaa_returns[, -1]  # no cash
 r_rep <- returns["/2014"]
 r_oos <- returns["2014-07/"]  # need 6 months for 120-day lags (this is 128 days)
 r_full <- returns
 
-# convert daily returns to monthly
-to_monthly_returns <-
-function(returns) {
-    apply.monthly(returns, Return.cumulative)
-}
 
 # calculate strategy statistics
 strat_summary <-
@@ -191,8 +85,6 @@ function(R,
     p <- addSeries(Drawdowns(r), main = "Drawdown")
     p
 }
-
-format_pct <- function(x) { paste0(sprintf("%0.1f", 100 * x), "%") }
 ```
 
 This post extends the replication from the
@@ -260,59 +152,17 @@ The next portfolio assumes the investor has some knowledge of each asset's risk,
 \
 <!-- new line for spacing -->
 
-```{r equal_risk_functions}
-estimate_equal_risk_portf <-
-function(returns, n_days = 60)
-{
-    if (!requireNamespace("FRAPO", quietly = TRUE)) {
-        stop("please install the FRAPO package")
-    }
-    n_day_returns <- last(returns, n_days)
-    sigma <- cov(n_day_returns)
-
-    capture.output({  # this optimization function is chatty
-        optim_portf <- FRAPO::PERC(sigma, percentage = FALSE)
-    })
-
-    return(FRAPO::Weights(optim_portf))
-}
-
-portf_equal_risk <-
-function(returns,
-         n_days = 120,
-         n_days_vol = 60)
-{
-    month_end_i <- endpoints(returns, "months")       # rebalance monthly
-    month_end_i <- month_end_i[month_end_i > n_days]  # skip 'n_days'
-    weights <- returns * NA                           # pre-allocate
-
-    # calculate portfolio weights using the prior 'n_days'
-    for (i in month_end_i) {
-        n_day_returns <- returns[(i - n_days):i, ]
-        weights[i,] <- estimate_equal_risk_portf(n_day_returns, n_days_vol)
-    }
-
-    weights <- lag(weights)      # use prior month-end weights
-    weights <- na.locf(weights)  # fill weights for all days
-
-    xts(rowSums(returns * weights), index(returns))
-}
-
-checkUsage(estimate_equal_risk_portf)
-checkUsage(portf_equal_risk)
-```
-
 ```{r equal_risk, echo=TRUE}
-rr_equal_risk <- portf_equal_risk(r_rep, 120, 60)
-ro_equal_risk <- portf_equal_risk(r_oos, 120, 60)
-rf_equal_risk <- portf_equal_risk(r_full, 120, 60)
+rr_equal_risk <- portf_return_equal_risk(r_rep, 120, 60)
+ro_equal_risk <- portf_return_equal_risk(r_oos, 120, 60)
+rf_equal_risk <- portf_return_equal_risk(r_full, 120, 60)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_equal_risk),
-        OOS = to_monthly_returns(ro_equal_risk["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_equal_risk["2015/2021"]),
-        Full = to_monthly_returns(rf_equal_risk),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_equal_risk),
+        to_monthly_returns(ro_equal_risk["2015/"]),
+        to_monthly_returns(ro_equal_risk["2015/2021"]),
+        to_monthly_returns(rf_equal_risk))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "All Assets - Equal Risk")
@@ -338,51 +188,17 @@ The next portfolio assumes the investor has some knowledge of each asset's retur
 \
 <!-- new line for spacing -->
 
-```{r top5_momo_eq_weight_functions}
-portf_top_momentum <-
-function(returns,
-         n_assets = 5,
-         n_days = 120)
-{
-    month_end_i <- endpoints(returns, "months")       # rebalance monthly
-    month_end_i <- month_end_i[month_end_i > n_days]  # skip 'n_days'
-    weights <- returns * NA                           # pre-allocate
-
-    # calculate portfolio components and weights using the prior 'n_days'
-    for (i in month_end_i) {
-        # total returns for each asset class over the prior 'n_days'
-        n_day_returns <- returns[(i - n_days):i, ]
-        momentum_returns <- apply(1 + n_day_returns, 2, prod) - 1
-
-        # find 'n_assets' with highest total return over previous 'n_days'
-        momentum_rank <- order(momentum_returns, decreasing = TRUE)
-        top_n_loc <- head(momentum_rank, n_assets)
-
-        # set all weights to 0, then equal-risk-weight the top 'n_assets'
-        weights[i, ] <- 0
-        weights[i, top_n_loc] <- 1 / n_assets
-    }
-
-    weights <- lag(weights)      # use prior month-end weights
-    weights <- na.locf(weights)  # fill weights for all days
-
-    xts(rowSums(returns * weights), index(returns))
-}
-
-checkUsage(portf_top_momentum)
-```
-
 ```{r top5_momo_eq_weight, echo=TRUE}
-rr_momo_eq_wt <- portf_top_momentum(r_rep, 5, 120)
-ro_momo_eq_wt <- portf_top_momentum(r_oos, 5, 120)
-rf_momo_eq_wt <- portf_top_momentum(r_full, 5, 120)
+rr_momo_eq_wt <- portf_return_momo(r_rep, 5, 120)
+ro_momo_eq_wt <- portf_return_momo(r_oos, 5, 120)
+rf_momo_eq_wt <- portf_return_momo(r_full, 5, 120)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_eq_wt),
-        OOS = to_monthly_returns(ro_momo_eq_wt["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_eq_wt["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_eq_wt),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_momo_eq_wt),
+        to_monthly_returns(ro_momo_eq_wt["2015/"]),
+        to_monthly_returns(ro_momo_eq_wt["2015/2021"]),
+        to_monthly_returns(rf_momo_eq_wt))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Weight")
@@ -408,54 +224,17 @@ The previous two portfolios estimated asset weights using either risk-based or m
 \
 <!-- new line for spacing -->
 
-```{r top_momo_eq_risk_functions}
-portf_top_momentum_equal_risk <-
-function(returns,
-         n_assets = 5,
-         n_days = 120,
-         n_days_vol = 60)
-{
-    month_end_i <- endpoints(returns, "months")       # rebalance monthly
-    month_end_i <- month_end_i[month_end_i > n_days]  # skip 'n_days'
-    weights <- returns * NA                           # pre-allocate
-
-    # calculate portfolio components and weights using the prior 'n_days'
-    for (i in month_end_i) {
-        # total returns for each asset class over the prior 'n_days'
-        n_day_returns <- returns[(i - n_days):i, ]
-        momentum_returns <- apply(1 + n_day_returns, 2, prod) - 1
-
-        # portfolio will always be invested, even if momentum is negative
-
-        # find 'n_assets' with highest total return over previous 'n_days'
-        momentum_rank <- order(momentum_returns, decreasing = TRUE)
-        top_cols <- head(momentum_rank, n_assets)
-
-        # set all weights to 0, then equal-risk-weight the top 'n_assets'
-        weights[i, ] <- 0
-        weights[i, top_cols] <-
-            estimate_equal_risk_portf(n_day_returns[, top_cols], n_days_vol)
-    }
-
-    weights <- lag(weights)      # use prior month-end weights
-    weights <- na.locf(weights)  # fill weights for all days
-
-    return(xts(rowSums(returns * weights), index(returns)))
-}
-```
-
 ```{r top_momo_eq_risk, echo=TRUE}
-rr_momo_eq_risk <- portf_top_momentum_equal_risk(r_rep, 5, 120, 60)
-ro_momo_eq_risk <- portf_top_momentum_equal_risk(r_oos, 5, 120, 60)
-rf_momo_eq_risk <- portf_top_momentum_equal_risk(r_full, 5, 120, 60)
+rr_momo_eq_risk <- portf_return_momo_equal_risk(r_rep, 5, 120, 60)
+ro_momo_eq_risk <- portf_return_momo_equal_risk(r_oos, 5, 120, 60)
+rf_momo_eq_risk <- portf_return_momo_equal_risk(r_full, 5, 120, 60)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_eq_risk),
-        OOS = to_monthly_returns(ro_momo_eq_risk["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_eq_risk["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_eq_risk),
-        check.names = FALSE)
-
+  merge(to_monthly_returns(rr_momo_eq_risk),
+        to_monthly_returns(ro_momo_eq_risk["2015/"]),
+        to_monthly_returns(ro_momo_eq_risk["2015/2021"]),
+        to_monthly_returns(rf_momo_eq_risk))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Risk")
@@ -481,72 +260,17 @@ The final portfolio takes the above concepts and adds correlation estimates to t
 \
 <!-- new line for spacing -->
 
-```{r top_momo_min_var_functions}
-estimate_min_var_portf <-
-function(returns, n_days_vol = 20)
-{
-    # the covariance matrix is the correlation using all returns, but
-    # the volatility of the past 'n_days_vol'
-    vol_returns <- last(returns, n_days_vol)
-    sigma <- cov(vol_returns)
-
-    Ra <- as.matrix(returns)
-    min_var_portf <- portfolio.optim(x = Ra, covmat = sigma)
-    weights <- round(min_var_portf$pw, 7)
-    return(weights)
-}
-
-portf_top_momentum_min_var <-
-function(returns,
-         n_assets = 5,
-         n_days = 120,
-         n_days_vol = 60)
-{
-    month_end_i <- endpoints(returns, "months")       # rebalance monthly
-    month_end_i <- month_end_i[month_end_i > n_days]  # skip 'n_days'
-    weights <- returns * NA                           # pre-allocate
-
-    # calculate portfolio components and weights using the prior 'n_days'
-    for (i in month_end_i) {
-        n_day_returns <- returns[(i - n_days):i, ]
-        momentum_returns <- apply(1 + n_day_returns, 2, prod) - 1
-
-        # momentum must be positive and above average
-        top_cols <- momentum_returns > mean(momentum_returns)
-        weights[i, ] <- 0
-
-        if (sum(top_cols) >= 2) {
-            # need at least 2 assets to calculate non-zero weights
-
-            momentum_rank <- order(momentum_returns, decreasing = TRUE)
-            top_cols <- head(momentum_rank, n_assets)
-
-            weights[i, top_cols] <-
-                estimate_min_var_portf(n_day_returns[, top_cols], n_days_vol)
-        }
-    }
-
-    weights <- lag(weights)      # use prior month-end weights
-    weights <- na.locf(weights)  # fill weights for all days
-
-    xts(rowSums(returns * weights), index(returns))
-}
-
-checkUsage(estimate_min_var_portf)
-checkUsage(portf_top_momentum_min_var)
-```
-
 ```{r top_momo_min_var, echo=TRUE}
-rr_momo_min_var <- portf_top_momentum_min_var(r_rep, 5, 120, 60)
-ro_momo_min_var <- portf_top_momentum_min_var(r_oos, 5, 120, 60)
-rf_momo_min_var <- portf_top_momentum_min_var(r_full, 5, 120, 60)
+rr_momo_min_var <- portf_return_momo_min_var(r_rep, 5, 120, 60, "above average")
+ro_momo_min_var <- portf_return_momo_min_var(r_oos, 5, 120, 60, "above average")
+rf_momo_min_var <- portf_return_momo_min_var(r_full, 5, 120, 60, "above average")
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_min_var),
-        OOS = to_monthly_returns(ro_momo_min_var["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_min_var["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_min_var),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_momo_min_var),
+        to_monthly_returns(ro_momo_min_var["2015/"]),
+        to_monthly_returns(ro_momo_min_var["2015/2021"]),
+        to_monthly_returns(rf_momo_min_var))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Above Average 6mo Momentum - Min Var")
