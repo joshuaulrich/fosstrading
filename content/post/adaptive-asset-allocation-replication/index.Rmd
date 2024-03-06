@@ -17,10 +17,8 @@ Rscript -e 'rmarkdown::render("adaptive-asset-allocation-replication.Rmd", rmark
 Rscript -e 'knitr::purl("index.Rmd")'
 -->
 
-```{r setup, include=FALSE, purl=TRUE}
+```{r setup_knitr, include=FALSE, purl=TRUE}
 suppressPackageStartupMessages({
-    library(ftblog)
-    library(PerformanceAnalytics)
     library(kableExtra)
     library(knitr)
     knitr::opts_chunk$set(
@@ -36,13 +34,7 @@ suppressPackageStartupMessages({
     options(digits.secs = 6,
             xts_check_TZ = FALSE)
     Sys.setenv(TZ = "UTC")
-
-    data(aaa_returns, package = "ftblog")
 })
-
-# Only use data through the end of 2014, and no cash
-returns <- aaa_returns["/2014", -1]
-
 ```
 
 ```{r notes, eval=FALSE, purl=FALSE}
@@ -90,17 +82,24 @@ kbl(ftblog:::.aaa_asset_table[-1,],
     escape = TRUE)
 ```
 
-```{r helper_functions, echo=FALSE}
+This post uses the [ftblog](https://github.com/joshuaulrich/ftblog) package. You can install it using the `remotes::install_github()` function in the code block below. First we need to setup our environment with the necessary packages, data, and functions.
+
+```{r setup_code, include=TRUE, echo=TRUE}
+# remotes::install_github("joshuaulrich/ftblog")
+suppressPackageStartupMessages({
+    library(ftblog)
+    library(PerformanceAnalytics)
+})
+
+data(aaa_returns, package = "ftblog")
+# Only use data through the end of 2014, and no cash
+returns <- aaa_returns["/2014", -1]
+
 # calculate strategy statistics
 strat_summary <-
 function(returns,
-         colname = "Returns",
          original_results = NULL)
 {
-    if (!requireNamespace("PerformanceAnalytics", quietly = TRUE)) {
-        stop("please install the PerformanceAnalytics package")
-    }
-
     stats <- table.AnnualizedReturns(returns)
     stats <- rbind(stats,
                    "Worst Drawdown" = -maxDrawdown(returns))
