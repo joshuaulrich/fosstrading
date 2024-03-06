@@ -41,6 +41,40 @@ The table below shows the asset class, instruments, and time horizons used for e
 | Commodities                | DBC | 2006-02   | QRACX | 1997-03    |
 | Gold                       | GLD | 2004-11   | SGGDX | 1993-08    |
 
+This post uses the [ftblog](https://github.com/joshuaulrich/ftblog) package. You can install it using the `remotes::install_github()` function in the code block below. First we need to setup our environment with the necessary packages, data, and functions.
+
+``` r
+# remotes::install_github("joshuaulrich/ftblog")
+suppressPackageStartupMessages({
+    library(ftblog)
+    library(PerformanceAnalytics)
+})
+
+data(aaa_returns, package = "ftblog")
+# Only use data through the end of 2014, and no cash
+returns <- aaa_returns["/2014", -1]
+
+# calculate strategy statistics
+strat_summary <-
+function(returns,
+         original_results = NULL)
+{
+    stats <- table.AnnualizedReturns(returns)
+    stats <- rbind(stats,
+                   "Worst Drawdown" = -maxDrawdown(returns))
+    colnames(stats) <- "Replication"
+
+    if (!is.null(original_results)) {
+        stats <- cbind(stats, original_results)
+        colnames(stats)[2] <- "Original"
+    }
+
+    stats <- round(stats, 3)
+
+    return(stats)
+}
+```
+
 Replication
 ===========
 

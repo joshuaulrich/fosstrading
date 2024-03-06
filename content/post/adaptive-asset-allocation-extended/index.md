@@ -30,6 +30,58 @@ The table below summarizes the date ranges for each sample period in this post.
 | 2015-2021   | Jan 2015 - Dec 2021 |
 | Full        | Feb 1996 - Dec 2023 |
 
+This post uses the [ftblog](https://github.com/joshuaulrich/ftblog) package. You can install it using the `remotes::install_github()` function in the code block below. First we need to setup our environment with the necessary packages, data, and functions.
+
+``` r
+# remotes::install_github("joshuaulrich/ftblog")
+suppressPackageStartupMessages({
+    library(ftblog)
+    library(PerformanceAnalytics)
+})
+
+data(aaa_returns, package = "ftblog")
+returns <- aaa_returns[, -1]    # no cash
+r_rep   <- returns["/2014"]
+r_oos   <- returns["2014-07/"]  # need 6 months for 120-day lags (this is 128 days)
+r_full  <- returns
+
+# calculate strategy statistics
+strat_summary <-
+function(returns,
+         original_results = NULL)
+{
+    stats <- table.AnnualizedReturns(returns)
+    stats <- rbind(stats,
+                   "Worst Drawdown" = -maxDrawdown(returns))
+
+    if (!is.null(original_results)) {
+        stats <- cbind(original_results, stats)
+        colnames(stats)[1] <- "Original"
+    }
+
+    stats <- round(stats, 3)
+
+    return(stats)
+}
+
+chart_performance <-
+function(R,
+         title = "Performance")
+{
+    stopifnot(all(c("Replication", "OOS") %in% colnames(R)))
+    r <- R[, c("Replication", "OOS")]
+    p <- chart.CumReturns(r,
+                          main = title,
+                          main.timespan = FALSE,
+                          yaxis.right = TRUE)
+    p <- addLegend("topleft", lty = 1, lwd = 1)
+    p <- addSeries(r[,1], type = "h", main = "Return")
+    p <- addSeries(r[,2], type = "h", on = 0, col = "red")
+    p <- addSeries(Drawdowns(r), main = "Drawdown")
+    p
+}
+```
+
 ### 1. Equal weight portfolio of all asset classes
 
 This portfolio assumes no knowledge of expected relative asset class performance, risk, or correlation. It holds each asset class in equal weight and is rebalanced monthly.  
@@ -70,16 +122,16 @@ The next portfolio assumes the investor has some knowledge of each asset's risk,
 <!-- new line for spacing -->
 
 ``` r
-rr_equal_risk <- portf_equal_risk(r_rep, 120, 60)
-ro_equal_risk <- portf_equal_risk(r_oos, 120, 60)
-rf_equal_risk <- portf_equal_risk(r_full, 120, 60)
+rr_equal_risk <- portf_return_equal_risk(r_rep, 120, 60)
+ro_equal_risk <- portf_return_equal_risk(r_oos, 120, 60)
+rf_equal_risk <- portf_return_equal_risk(r_full, 120, 60)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_equal_risk),
-        OOS = to_monthly_returns(ro_equal_risk["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_equal_risk["2015/2021"]),
-        Full = to_monthly_returns(rf_equal_risk),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_equal_risk),
+        to_monthly_returns(ro_equal_risk["2015/"]),
+        to_monthly_returns(ro_equal_risk["2015/2021"]),
+        to_monthly_returns(rf_equal_risk))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "All Assets - Equal Risk")
@@ -104,16 +156,16 @@ The next portfolio assumes the investor has some knowledge of each asset's retur
 <!-- new line for spacing -->
 
 ``` r
-rr_momo_eq_wt <- portf_top_momentum(r_rep, 5, 120)
-ro_momo_eq_wt <- portf_top_momentum(r_oos, 5, 120)
-rf_momo_eq_wt <- portf_top_momentum(r_full, 5, 120)
+rr_momo_eq_wt <- portf_return_momo(r_rep, 5, 120)
+ro_momo_eq_wt <- portf_return_momo(r_oos, 5, 120)
+rf_momo_eq_wt <- portf_return_momo(r_full, 5, 120)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_eq_wt),
-        OOS = to_monthly_returns(ro_momo_eq_wt["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_eq_wt["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_eq_wt),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_momo_eq_wt),
+        to_monthly_returns(ro_momo_eq_wt["2015/"]),
+        to_monthly_returns(ro_momo_eq_wt["2015/2021"]),
+        to_monthly_returns(rf_momo_eq_wt))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Weight")
@@ -138,17 +190,16 @@ The previous two portfolios estimated asset weights using either risk-based or m
 <!-- new line for spacing -->
 
 ``` r
-rr_momo_eq_risk <- portf_top_momentum_equal_risk(r_rep, 5, 120, 60)
-ro_momo_eq_risk <- portf_top_momentum_equal_risk(r_oos, 5, 120, 60)
-rf_momo_eq_risk <- portf_top_momentum_equal_risk(r_full, 5, 120, 60)
+rr_momo_eq_risk <- portf_return_momo_equal_risk(r_rep, 5, 120, 60)
+ro_momo_eq_risk <- portf_return_momo_equal_risk(r_oos, 5, 120, 60)
+rf_momo_eq_risk <- portf_return_momo_equal_risk(r_full, 5, 120, 60)
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_eq_risk),
-        OOS = to_monthly_returns(ro_momo_eq_risk["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_eq_risk["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_eq_risk),
-        check.names = FALSE)
-
+  merge(to_monthly_returns(rr_momo_eq_risk),
+        to_monthly_returns(ro_momo_eq_risk["2015/"]),
+        to_monthly_returns(ro_momo_eq_risk["2015/2021"]),
+        to_monthly_returns(rf_momo_eq_risk))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Top 5 Momentum Assets - Equal Risk")
@@ -173,16 +224,16 @@ The final portfolio takes the above concepts and adds correlation estimates to t
 <!-- new line for spacing -->
 
 ``` r
-rr_momo_min_var <- portf_top_momentum_min_var(r_rep, 5, 120, 60)
-ro_momo_min_var <- portf_top_momentum_min_var(r_oos, 5, 120, 60)
-rf_momo_min_var <- portf_top_momentum_min_var(r_full, 5, 120, 60)
+rr_momo_min_var <- portf_return_momo_min_var(r_rep, 5, 120, 60, "above average")
+ro_momo_min_var <- portf_return_momo_min_var(r_oos, 5, 120, 60, "above average")
+rf_momo_min_var <- portf_return_momo_min_var(r_full, 5, 120, 60, "above average")
 
 monthly_returns <-
-  merge(Replication = to_monthly_returns(rr_momo_min_var),
-        OOS = to_monthly_returns(ro_momo_min_var["2015/"]),
-        "2015-2021" = to_monthly_returns(ro_momo_min_var["2015/2021"]),
-        Full = to_monthly_returns(rf_momo_min_var),
-        check.names = FALSE)
+  merge(to_monthly_returns(rr_momo_min_var),
+        to_monthly_returns(ro_momo_min_var["2015/"]),
+        to_monthly_returns(ro_momo_min_var["2015/2021"]),
+        to_monthly_returns(rf_momo_min_var))
+colnames(monthly_returns) <- c("Replication", "OOS", "2015-2021", "Full")
 
 stats <- strat_summary(monthly_returns)
 chart_performance(monthly_returns, "Above Average 6mo Momentum - Min Var")
@@ -192,10 +243,10 @@ chart_performance(monthly_returns, "Above Average 6mo Momentum - Min Var")
 
 |                           |  Replication|     OOS|  2015-2021|    Full|
 |:--------------------------|------------:|-------:|----------:|-------:|
-| Annualized Return         |        0.137|   0.054|      0.086|   0.109|
-| Annualized Std Dev        |        0.103|   0.094|      0.084|   0.100|
-| Annualized Sharpe (Rf=0%) |        1.330|   0.568|      1.025|   1.086|
-| Worst Drawdown            |       -0.102|  -0.190|     -0.080|  -0.190|
+| Annualized Return         |        0.130|   0.058|      0.082|   0.106|
+| Annualized Std Dev        |        0.099|   0.095|      0.081|   0.098|
+| Annualized Sharpe (Rf=0%) |        1.315|   0.612|      1.008|   1.086|
+| Worst Drawdown            |       -0.112|  -0.162|     -0.083|  -0.162|
 
 Recall that the original results for portfolio (5) showed improved return and lower maximum drawdown versus portfolio (4), while the replicated results were almost the same for both portfolios. The OOS results for these two portfolios are also very similar. In the 2015-2021 period, portfolio (5) has a slightly higher return and Sharpe ratio and lower max drawdown than portfolio (4).
 
@@ -216,25 +267,25 @@ This section contains tables with results for all portfolios in a particular sam
 
 |              |  Equal Weight|  Equal Risk|  Momo Eq Weight|  Momo Eq Risk|  Momo Min Var|
 |:-------------|-------------:|-----------:|---------------:|-------------:|-------------:|
-| Ann. Return  |         0.079|       0.086|           0.142|         0.137|         0.137|
-| Ann. Std Dev |         0.115|       0.073|           0.114|         0.102|         0.103|
-| Ann. Sharpe  |         0.684|       1.177|           1.243|         1.335|         1.330|
-| Max Drawdown |        -0.377|      -0.142|          -0.199|        -0.119|        -0.102|
+| Ann. Return  |         0.079|       0.086|           0.142|         0.137|         0.130|
+| Ann. Std Dev |         0.115|       0.073|           0.114|         0.102|         0.099|
+| Ann. Sharpe  |         0.684|       1.177|           1.243|         1.335|         1.315|
+| Max Drawdown |        -0.377|      -0.142|          -0.199|        -0.119|        -0.112|
 
 ##### Out-of-Sample: 2015-2023
 
 |              |  Equal Weight|  Equal Risk|  Momo Eq Weight|  Momo Eq Risk|  Momo Min Var|
 |:-------------|-------------:|-----------:|---------------:|-------------:|-------------:|
-| Ann. Return  |         0.049|       0.034|           0.051|         0.050|         0.054|
-| Ann. Std Dev |         0.107|       0.082|           0.104|         0.095|         0.094|
-| Ann. Sharpe  |         0.456|       0.411|           0.488|         0.528|         0.568|
-| Max Drawdown |        -0.210|      -0.194|          -0.213|        -0.204|        -0.190|
+| Ann. Return  |         0.049|       0.034|           0.051|         0.050|         0.058|
+| Ann. Std Dev |         0.107|       0.082|           0.104|         0.095|         0.095|
+| Ann. Sharpe  |         0.456|       0.411|           0.488|         0.528|         0.612|
+| Max Drawdown |        -0.210|      -0.194|          -0.213|        -0.204|        -0.162|
 
 ##### Out-of-Sample: 2015-2021
 
 |              |  Equal Weight|  Equal Risk|  Momo Eq Weight|  Momo Eq Risk|  Momo Min Var|
 |:-------------|-------------:|-----------:|---------------:|-------------:|-------------:|
-| Ann. Return  |         0.072|       0.056|           0.081|         0.081|         0.086|
-| Ann. Std Dev |         0.091|       0.061|           0.092|         0.081|         0.084|
-| Ann. Sharpe  |         0.794|       0.908|           0.884|         0.991|         1.025|
-| Max Drawdown |        -0.136|      -0.071|          -0.114|        -0.086|        -0.080|
+| Ann. Return  |         0.072|       0.056|           0.081|         0.081|         0.082|
+| Ann. Std Dev |         0.091|       0.061|           0.092|         0.081|         0.081|
+| Ann. Sharpe  |         0.794|       0.908|           0.884|         0.991|         1.008|
+| Max Drawdown |        -0.136|      -0.071|          -0.114|        -0.086|        -0.083|
