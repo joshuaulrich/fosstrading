@@ -14,7 +14,7 @@ pandoc_args: [ "-fmarkdown-implicit_figures" ]
 Rscript -e 'rmarkdown::render("adaptive-asset-allocation-replication.Rmd", rmarkdown::md_document(preserve_yaml = TRUE, pandoc_args = "--to=markdown_strict+all_symbols_escapable+backtick_code_blocks+fenced_code_blocks+space_in_atx_header+intraword_underscores+lists_without_preceding_blankline+shortcut_reference_links+pipe_tables+strikeout+autolink_bare_uris+task_lists+definition_lists+footnotes+smart+tex_math_dollars"), "index.md")'
 
 # create R code for blog
-Rscript -e 'knitr::purl("adaptive-asset-allocation-replication.Rmd")'
+Rscript -e 'knitr::purl("index.Rmd")'
 -->
 
 The paper, ["Adaptive Asset Allocation: A Primer"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2328254) by Adam Butler, Mike Philbrick, Rodrigo Gordillo, and David Varadi addresses flaws in the traditional application of Modern Portfolio Theory related to Strategic Asset Allocation. It shows that estimating return and (co)variance parameters over shorter time horizons are superior to estimates over long-term horizons because parameter estimates vary substantially over time. Longer-term estimates do not account for this variability in the short-term. They propose an Adaptive Asset Allocation portfolio construction methodology that uses the new parameter estimates to substantially improve performance relative to Strategic Asset Allocation.
@@ -64,13 +64,14 @@ The `returns_equal_weight` object contains the portfolio returns for each day. T
 <!-- new line for spacing -->
 
 ``` r
-returns_equal_weight <- as.xts(apply(returns, 1, mean))
-monthly_returns <- to_monthly_returns(returns_equal_weight)
+returns_equal_weight <-
+    as.xts(apply(returns, 1, mean)) |>
+    to_monthly_returns()
 
 title <- "All Assets - Equal Weight"
-stats <- strat_summary(monthly_returns, title,
+stats <- strat_summary(returns_equal_weight,
                        original_results = c(0.081, 0.112, 0.72, -0.392))
-charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
+charts.PerformanceSummary(returns_equal_weight, main = title, wealth.index = TRUE)
 ```
 
 ![](equal_weight-1.png)
@@ -86,17 +87,18 @@ charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
 
 The next portfolio assumes the investor has some knowledge of each asset's risk, but still no knowledge of relative performance or correlations. So each asset in this portfolio is given a weight proportional to its relative risk, and each asset contributes the same amount of risk to the overall portfolio. That way no asset's risk will dominate the risk of the overall portfolio.
 
-The `portf_equal_risk()` estimates the equal risk contribution portfolio using the `PERC()` function from the [FRAPO](https://cran.r-project.org/package=FRAPO) package. It calculates the portfolio weights at the end of month using estimated portfolio risk from the returns over the last 60 days. Then those weights are used to calculate the portfolio returns for the following month.  
+The `portf_return_equal_risk()` estimates the equal risk contribution portfolio using the `PERC()` function from the [FRAPO](https://cran.r-project.org/package=FRAPO) package. It calculates the portfolio weights at the end of month using estimated portfolio risk from the returns over the last 60 days. Then those weights are used to calculate the portfolio returns for the following month.  
 <!-- new line for spacing -->
 
 ``` r
-returns_equal_risk <- portf_equal_risk(returns, 120, 60)
-monthly_returns <- to_monthly_returns(returns_equal_risk)
+returns_equal_risk <-
+    portf_return_equal_risk(returns, 120, 60) |>
+    to_monthly_returns()
 
 title <- "All Assets - Equal Risk Contribution"
-stats <- strat_summary(monthly_returns, title,
+stats <- strat_summary(returns_equal_risk,
                        original_results = c(0.085, 0.086, 0.99, -0.242))
-charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
+charts.PerformanceSummary(returns_equal_risk, main = title, wealth.index = TRUE)
 ```
 
 ![](equal_risk-1.png)
@@ -118,13 +120,14 @@ The estimates of each asset's returns are based on 6-month momentum (approximate
 <!-- new line for spacing -->
 
 ``` r
-returns_momentum_equal_weight <- portf_top_momentum(returns, 5, 120)
-monthly_returns <- to_monthly_returns(returns_momentum_equal_weight)
+returns_momo_equal_weight <-
+    portf_return_momo(returns, 5, 120) |>
+    to_monthly_returns()
 
 title <- "Top 5 Assets by 6-month Momentum - Equal Weight"
-stats <- strat_summary(monthly_returns, title,
+stats <- strat_summary(returns_momo_equal_weight,
                        original_results = c(0.130, 0.110, 1.17, -0.217))
-charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
+charts.PerformanceSummary(returns_momo_equal_weight, main = title, wealth.index = TRUE)
 ```
 
 ![](top5_momo_eq_weight-1.png)
@@ -146,14 +149,14 @@ The previous two portfolios estimated asset weights using either risk-based or m
 <!-- new line for spacing -->
 
 ``` r
-returns_top_momentum_equal_risk <-
-    portf_top_momentum_equal_risk(returns, 5, 120, 60)
-monthly_returns <- to_monthly_returns(returns_top_momentum_equal_risk)
+returns_momo_equal_risk <-
+    portf_return_momo_equal_risk(returns, 5, 120, 60) |>
+    to_monthly_returns()
 
 title <- "Top 5 Assets by 6-month Momentum - Equal Risk Contribution"
-stats <- strat_summary(monthly_returns, title,
+stats <- strat_summary(returns_momo_equal_risk,
                        original_results = c(0.140, 0.099, 1.41, -0.148))
-charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
+charts.PerformanceSummary(returns_momo_equal_risk, main = title, wealth.index = TRUE)
 ```
 
 ![](top_momo_eq_risk-1.png)
@@ -173,24 +176,24 @@ The final portfolio takes the above concepts and adds correlation estimates to t
 <!-- new line for spacing -->
 
 ``` r
-returns_momentum_min_var <-
-    portf_top_momentum_min_var(returns, 5, 120, 60)
-monthly_returns <- to_monthly_returns(returns_momentum_min_var)
+returns_momo_min_var <-
+    portf_return_momo_min_var(returns, 5, 120, 60, "above average") |>
+    to_monthly_returns()
 
 title <- "Assets With Above Average 6-month Momentum - Minimum Variance"
-stats <- strat_summary(monthly_returns, title,
+stats <- strat_summary(returns_momo_min_var,
                        original_results = c(0.150, 0.094, 1.60, -0.088))
-charts.PerformanceSummary(monthly_returns, main = title, wealth.index = TRUE)
+charts.PerformanceSummary(returns_momo_min_var, main = title, wealth.index = TRUE)
 ```
 
 ![](top_momo_min_var-1.png)
 
 |                           |  Replication|  Original|
 |:--------------------------|------------:|---------:|
-| Annualized Return         |        0.137|     0.150|
-| Annualized Std Dev        |        0.103|     0.094|
-| Annualized Sharpe (Rf=0%) |        1.330|     1.600|
-| Worst Drawdown            |       -0.102|    -0.088|
+| Annualized Return         |        0.130|     0.150|
+| Annualized Std Dev        |        0.099|     0.094|
+| Annualized Sharpe (Rf=0%) |        1.315|     1.600|
+| Worst Drawdown            |       -0.112|    -0.088|
 
 The replicated results still show worse performance than the original results, which also seems to be related to performance during 2012. The replicated results also do not show significant improvement relative to the top 5 momentum equal risk portfolio like the original paper shows.
 
