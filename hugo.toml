@@ -54,14 +54,14 @@ disablePathToLower = true
 
 # mainroad theme
   highlightColor = '#5282d1'
-  customCSS = [ "fosstrading.css", "syntax.css" ]
+  customCSS = [ "fosstrading.css", "syntax.css", "primer.css" ]
 
 [Params.sidebar]
   home = "right"   # Configure layout for home page
   list = "right"   # Configure layout for list pages
   single = "right" # Configure layout for single pages
   # Enable widgets in given order
-  widgets = ["search", "email-form", "recent", "taglist", "adsense-sidebar" ]
+  widgets = ["search", "email-form", "github-sponsors", "recent", "taglist", "adsense-sidebar" ]
 
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
