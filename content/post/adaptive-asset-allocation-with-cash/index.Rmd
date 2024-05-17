@@ -1,0 +1,188 @@
+---
+title: Adaptive Asset Allocation With Cash
+author: Joshua Ulrich
+date: 2024-02-15T11:29:00.000-05:00
+draft: false
+categories: [ Articles ]
+tags: [R]
+urlcolor: blue
+pandoc_args: [ "-fmarkdown-implicit_figures" ]
+---
+
+```{r setup, include=FALSE, purl=TRUE}
+suppressPackageStartupMessages({
+    library(kableExtra)
+    library(knitr)
+    knitr::opts_chunk$set(
+        eval = TRUE,
+        echo = FALSE,
+        message = FALSE,
+        warnings = FALSE,
+        fig.width = 7,
+        fig.height = 6,
+        fig.path = "",
+        fig.keep = "last",
+        purl = TRUE
+    )
+
+    options(digits.secs = 6,
+            xts_check_TZ = FALSE)
+    Sys.setenv(TZ = "UTC")
+})
+```
+
+This is the third post in the Adaptive Asset Allocation series. The previous post ({{% linkpost "adaptive-asset-allocation-extended" %}}) showed the strategy performed poorly during the 2022 bear market because intermediate and long-term bonds did not provide diversification from risky assets during the downturn. This post adds a short-term Treasury ETF to the universe of assets, which gives the strategy another option to invest in.
+
+<!--more-->
+
+This post uses the [ftblog](https://github.com/joshuaulrich/ftblog) package. You can install it using the `remotes::install_github()` function in the code block below. First we need to setup our environment with the necessary packages, data, and functions.
+
+```{r setup_code, include=TRUE, echo=TRUE}
+# remotes::install_github("joshuaulrich/ftblog")
+suppressPackageStartupMessages({
+    library(ftblog)
+    library(quantmod)
+    library(PerformanceAnalytics)
+})
+
+data(aaa_returns, package = "ftblog")
+
+# calculate strategy statistics
+strat_summary <-
+function(returns,
+         original_results = NULL)
+{
+    stats <- table.AnnualizedReturns(returns)
+    stats <- rbind(stats,
+                   "Worst Drawdown" = -maxDrawdown(returns))
+
+    if (!is.null(original_results)) {
+        stats <- cbind(original_results, stats)
+        colnames(stats)[1] <- "Original"
+    }
+
+    stats <- round(stats, 3)
+
+    return(stats)
+}
+```
+
+The inspiration for this post comes from an [Allocate Smartly](https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/) post that shows TAA strategies did poorly in the 2022 bear market if they assumed intermediate and long-term bonds provide diversification from risky assets. Both risk assets and longer duration bonds performed poorly in 2022, and the correlation between bonds and equities was positive instead of negative like they have been historically.
+
+The two previous posts in this series used portfolios that were equal weight, equal risk contribution, and minimum variance. This post doesn't use equal risk contribution or minimum variance portfolios because their optimal weights would have a significant cash allocation due to the low volatility of cash assets. Instead, this post uses the efficient market portfolio, which is the portfolio that provides highest return for
+
+The portfolios in the prior posts always used the highest momentum asset classes, even if they had negative momentum. This post will explore using the asset classes with the highest *positive* momentum.
+
+To be consistent with the other posts, this one uses the full data set through the end of 2023. The table below shows the asset class, instruments, and time horizons used for each asset class. The data start in late 1997 instead of 1995 as in the original paper. All returns are adjusted for splits and dividends.
+
+The [iShares Short Treasury Bond ETF](https://www.ishares.com/us/products/239466/ishares-short-treasury-bond-etf) (SHV) is used as a proxy for "cash". The daily 3-month Treasury Bill Secondary Market Rate from FRED ([DTB3](https://fred.stlouisfed.org/series/DTB3)) is used prior to the ETF inception.
+
+```{r asset_table, echo=FALSE}
+kbl(ftblog:::.aaa_asset_table,
+    caption = "Data Sources by Date",
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+```
+
+### Results without a cash asset
+
+First without cash.
+
+\ <!-- new line for spacing -->
+
+```{r all_no_cash, echo=TRUE}
+returns_with_cash <- aaa_returns
+returns_no_cash <- aaa_returns[, -1]
+
+momo_type <- "relative"
+r_no_cash <-
+    portf_return_momo_efficient(returns_no_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_with_cash <-
+    portf_return_momo_efficient(returns_with_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_all <- cbind(r_with_cash, r_no_cash)
+colnames(r_all) <- c("With Cash", "Without Cash")
+
+stats_no_cash <- strat_summary(r_all)
+charts.PerformanceSummary(r_all,
+    main = "Relative 6mo Momentum",
+    log = TRUE, wealth.index = TRUE)
+```
+
+```{r all_no_cash_table}
+kbl(stats_no_cash,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+
+```
+
+Now with cash.
+
+```{r top_relative_momo_efficient_with_cash, echo=TRUE}
+
+momo_type <- "above average"
+r_no_cash <-
+    portf_return_momo_efficient(returns_no_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_with_cash <-
+    portf_return_momo_efficient(returns_with_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_all <- cbind(r_with_cash, r_no_cash)
+colnames(r_all) <- c("With Cash", "Without Cash")
+
+stats_momo_efficient <- strat_summary(r_all)
+charts.PerformanceSummary(r_all,
+    main = "Above Average 6mo Momentum: Efficient",
+    log = TRUE, wealth.index = TRUE)
+```
+
+```{r top_5_momo_efficient_with_cash_table}
+kbl(stats_momo_efficient,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+```
+
+```{r top_momo_efficient_no_cash, echo=TRUE}
+momo_type <- "positive"
+r_no_cash <-
+    portf_return_momo_efficient(returns_no_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_with_cash <-
+    portf_return_momo_efficient(returns_with_cash, 5, 120, 60, momo_type) |>
+    to_monthly_returns()
+
+r_all <- cbind(r_with_cash, r_no_cash)
+colnames(r_all) <- c("With Cash", "Without Cash")
+
+stats_momo_efficient <- strat_summary(r_all)
+
+charts.PerformanceSummary(r_all,
+    main = "Positive 6mo Momentum: Efficient",
+    log = TRUE, wealth.index = TRUE)
+```
+
+```{r top_momo_efficient_no_cash_table}
+kbl(stats_momo_efficient,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+```
+
+
+
+## Conclusion
+
+
