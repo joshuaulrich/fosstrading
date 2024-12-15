@@ -1,0 +1,244 @@
+---
+title: Adaptive Asset Allocation Implementation
+author: Joshua Ulrich
+date: 2024-10-04T11:00:00.000-05:00
+draft: false
+categories: [ Articles ]
+tags: [R]
+urlcolor: blue
+pandoc_args: [ "-fmarkdown-implicit_figures" ]
+---
+
+```{r setup, include=FALSE, purl=TRUE}
+suppressPackageStartupMessages({
+    library(kableExtra)
+    library(knitr)
+    knitr::opts_chunk$set(
+        eval = TRUE,
+        echo = FALSE,
+        message = FALSE,
+        warnings = FALSE,
+        fig.width = 7,
+        fig.height = 6,
+        fig.path = "",
+        fig.keep = "last",
+        purl = TRUE
+    )
+
+    options(digits.secs = 6,
+            xts_check_TZ = FALSE)
+    Sys.setenv(TZ = "UTC")
+})
+```
+
+This is the third post in the Adaptive Asset Allocation series. The previous post ({{% linkpost "adaptive-asset-allocation-extended" %}}) showed the strategy performed poorly during the 2022 bear market because intermediate and long-term bonds did not provide diversification from risky assets during the downturn. This post uses a portfolio that only includes ETFs with positive momentum, extends the data through the end of September 2024, and records trades I made during the day on October 1st.
+
+<!--more-->
+
+This post uses the [ftblog](https://github.com/joshuaulrich/ftblog) package. You can install it using the `remotes::install_github()` function in the code block below. First we need to setup our environment with the necessary packages, data, and functions.
+
+```{r setup_code, include=TRUE, echo=TRUE}
+# remotes::install_github("joshuaulrich/ftblog")
+suppressPackageStartupMessages({
+    library(ftblog)
+    library(quantmod)
+    library(PerformanceAnalytics)
+})
+
+data(aaa_returns, package = "ftblog")
+```
+
+The inspiration for this post comes from an [Allocate Smartly](https://allocatesmartly.com/tactical-asset-allocation-performance-during-the-2022-bear-market/) post that shows Tactical Asset Allocation strategies did poorly in the 2022 bear market if they assumed intermediate and long-term bonds provide diversification from risky assets. Both risk assets and longer duration bonds performed poorly in 2022, and the correlation between bonds and equities was positive instead of negative like they have been historically.
+
+The two previous posts in this series used portfolios that were equal weight, equal risk contribution, and minimum variance. This post compares the minimum variance portfolio with the efficient portfolio (the highest return per unit of risk) using data through the end of 2023.
+
+The portfolios in the prior posts always used the highest momentum asset classes, even if they had negative momentum. This post will only use the asset classes with the highest *positive* momentum. So assets are only included if the price has increased over the past 6 months.
+
+### Minimum Variance vs Efficient Portfolio
+
+First let's compare the performance of the minimum variance and efficient portfolios using data through the end of 2023.
+
+\ <!-- new line for spacing -->
+
+```{r compare_2023, echo=TRUE}
+# remove cash component from 'aaa_returns'
+returns <- aaa_returns['/2023', -1]
+
+r_efficient <-
+    portf_return_momo_efficient(returns, 5, 120, 60, "positive") |>
+    to_monthly_returns()
+
+r_min_var <-
+    portf_return_momo_min_var(returns, 5, 120, 60, "positive") |>
+    to_monthly_returns()
+
+r_all <- cbind(r_efficient, r_min_var)
+colnames(r_all) <- c("Efficient", "Min Variance")
+
+
+stats <- portf_summary(r_all)
+charts.PerformanceSummary(r_all,
+    main = "Positive 6mo Momentum",
+    log = TRUE, wealth.index = TRUE)
+```
+
+```{r compare_2023_table}
+kbl(stats,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+
+```
+
+The minimum variance portfolio has a better Sharpe Ratio and lower maximum drawdown, but the efficient portfolio has a higher total return. I chose to make trades using the efficient portfolio weights because it has higher return and the standard deviation and drawdown aren't significantly different.
+
+### Update data and calculate efficient portfolio weights
+
+We create trades for October 2024 using the weights of efficient market portfolio weights. First, we need to update the `aaa_returns` data through the end of September 2024. Then we'll re-run the comparison between the efficient portfolio and the minimum variance portfolio using the updated data. Both portfolios have higher return with the updated data, but the risk and drawdown are similar.
+
+```{r compare_2024, echo=TRUE}
+# update data through October 2024
+aaa_returns <- update_aaa_returns(aaa_returns)
+
+# remove cash component from 'aaa_returns'
+returns <- aaa_returns["/2024-09", -1]
+
+r_efficient_2024 <-
+    portf_return_momo_efficient(returns, 5, 120, 60, "positive") |>
+    to_monthly_returns()
+
+r_min_var_2024 <-
+    portf_return_momo_min_var(returns, 5, 120, 60, "positive") |>
+    to_monthly_returns()
+
+r_all_2024 <- cbind(r_efficient_2024, r_min_var_2024)
+colnames(r_all_2024) <- c("Efficient", "Min Variance")
+
+stats_2024 <- portf_summary(r_all_2024)
+charts.PerformanceSummary(r_all_2024,
+    main = "Positive 6mo Momentum",
+    log = TRUE, wealth.index = TRUE)
+```
+
+```{r compare_2024_table}
+kbl(stats_2024,
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+```
+
+Now let's create the trades using the weights from the efficient portfolio. The result from `portf_return_momo_efficient()` includes an attribute that contains the weights from the last most recent data available. We're going to calculate trade quantities using an initial account balance of \$100,000.
+
+```{r weights, echo=TRUE}
+weights <- attr(r_efficient_2024, "last_weights")
+```
+
+```{r weights_table}
+## 2024-10-01,Buy,ICF,ISHARES COHEN AND STEERSREIT ETF,350,65.63
+## 2024-10-01,Sell,VTI,VANGUARD TOTAL STOCK MARKET ETF,70,280.237
+## 2024-10-01,Buy,RWX,SPDR DOW JONES INTER REAL ESTATE ETF,1300,27.5499
+## 2024-10-01,Buy,GLD,SPDR GOLD SHARES ETF,135,245.9321
+## 2024-10-01,Buy,GLD,SPDR GOLD SHARES ETF,125,246.006
+## 2024-10-01,Buy,RWX,SPDR DOW JONES INTER REAL ESTATE ETF,1200,27.63
+## 2024-10-01,Buy,ICF,ISHARES COHEN AND STEERSREIT ETF,315,65.6118
+## 2024-10-01,Sell,VTI,VANGUARD TOTAL STOCK MARKET ETF,75,281.25
+txns <- structure(
+    list(
+        date = c("2024-10-01", "2024-10-01", "2024-10-01", "2024-10-01", "2024-10-01", "2024-10-01", "2024-10-01", "2024-10-01"),
+        side = c("Buy", "Sell", "Buy", "Buy", "Buy", "Buy", "Buy", "Sell"),
+        symbols = c("ICF", "VTI", "RWX", "GLD", "GLD", "RWX", "ICF", "VTI"),
+        #description = c("ISHARES COHEN AND STEERSREIT ETF", "VANGUARD TOTAL STOCK MARKET ETF", "SPDR DOW JONES INTER REAL ESTATE ETF", "SPDR GOLD SHARES ETF", "SPDR GOLD SHARES ETF", "SPDR DOW JONES INTER REAL ESTATE ETF", "ISHARES COHEN AND STEERSREIT ETF", "VANGUARD TOTAL STOCK MARKET ETF"),
+        size = c(350L, 70L, 1300L, 135L, 125L, 1200L, 315L, 75L),
+        price = c(65.63, 280.237, 27.5499, 245.9321, 246.006, 27.63, 65.6118, 281.25)
+    ), class = "data.frame", row.names = c(NA, -8L))
+txns$date <- as.POSIXct(txns$date)
+# weighted average prices
+price <- tapply(txns, txns["symbols"], function(x) { weighted.mean(x$price, x$size) })
+price <- data.frame(symbols = names(price), price = price)
+# symbols
+etf_symbols <- attr(aaa_returns, "symbols")[-1]
+# weights
+t_wts <- t(weights)
+colnames(t_wts) <- "weights"
+# dollar amounts
+dollars <- 100000 * drop(t_wts)
+
+table_data <-
+    data.frame(symbols = etf_symbols,
+               weights = round(100*t_wts, 2),
+               dollars)
+table_data <- merge(table_data, price)
+table_data$shares <- floor(table_data$dollars / table_data$price)
+rownames(table_data) <- NULL # gsub(".", " ", rownames(table_data), fixed = TRUE)
+
+aaa_txns <- table_data
+aaa_txns$date <- as.POSIXct("2024-10-01")
+aaa_txns$side <- "Buy"
+aaa_txns$size <- aaa_txns$shares
+aaa_txns <- aaa_txns[, c("date", "side", "symbols", "size", "price")]
+
+# format pretty
+table_data$weights <- paste0(table_data$weights, "%")
+table_data$dollars <- paste0("$", format(round(table_data$dollars), trim = TRUE, big.mark = ","))
+table_data$price   <- format(table_data$price, big.mark = ",")
+table_data$shares  <- format(round(table_data$shares), big.mark = ",")
+
+kbl(table_data[, c("symbols", "weights", "dollars", "price", "shares")],
+    format = "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    escape = TRUE)
+
+library(blotter)
+try(rm("portfolio.aaa","account.aaa",pos=.blotter), silent = TRUE)
+
+currency("USD")
+stock(etf_symbols, currency = "USD", multiplier = 1)
+Sys.setenv(TZ = "UTC")
+initPortf("aaa", symbols = etf_symbols, initDate = "2024-09-30")
+initAcct("aaa", portfolios = "aaa", initDate = "2024-09-30", initEq = 100000)
+
+add_txns <-
+function(txns, portfolio)
+{
+    colmap <- c(TxnDate = "date", TxnQty = "size", TxnPrice = "price")
+    txn_list <- split(txns[, colmap], txns$symbols)
+    txn_list <- lapply(txn_list, setNames, nm = names(colmap))
+    txn_list <- lapply(txn_list, as.xts)
+
+    syms <- names(txn_list)
+    for (s in syms) {
+        addTxns(portfolio, s, txn_list[[s]])
+    }
+    invisible(txns)
+}
+
+#getSymbols(etf_symbols, env = (data_env <- new.env()), from = "2024-10-01", src = "tiingo")
+
+add_txns(aaa_txns, "aaa")
+
+attach(data_env)
+updatePortf("aaa")
+detach(data_env)
+
+daily_pnl <- blotter::dailyEqPL("aaa")
+print(colSums(daily_pnl))
+cat("\ntotal pnl:", sum(daily_pnl), "\n")
+
+updateAcct("aaa")
+updateEndEq("aaa")
+getEndEq("aaa", end(daily_pnl))
+
+#getPortfolio("aaa")$summary
+#getAccount("aaa")$summary
+
+```
+
+Some stuff...
+
+
+### Conclusion
+
+A conclusion...
