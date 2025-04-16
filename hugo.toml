@@ -51,7 +51,7 @@ disablePathToLower = true
   authorbox = false
   post_navigation = true
   post_meta = ["date", "categories"] # Order of post meta information
-  customCSS = [ "fosstrading.css", "syntax.css" ]
+  customCSS = [ "css/fosstrading.css", "css/syntax.css" ]
 
 [Params.sidebar]
   home = "right"   # Configure layout for home page
